@@ -46,7 +46,7 @@ export const CONTROLS = [
   { key: "Mouse",     act: "Aim",
     note: "The wizard faces the cursor whichever way it is walking." },
   { key: "Left click", act: "Throw / swing",
-    note: "With the orb in hand, throws it. With the orb out, swings at whatever is next to you." },
+    note: "With the orb in hand, throws it. With the orb out, swings at whatever is next to you. Holding it does nothing unless you have taken Charged Shot, which moves the throw to the release." },
   { key: "Right click (hold)", act: "Recall",
     note: "Drags the orb back to you. Let go early and it keeps the velocity it had built." },
   { key: "Space",     act: "Blink",
