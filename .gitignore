@@ -1,0 +1,7 @@
+# The LOVE harnesses log to disk, because a LOVE script that fails with its
+# window off-screen fails silently. Local noise.
+tools/*.log
+
+# Staging folders the harness runners build and tear down. Present only if a
+# run was killed hard enough to skip the trap.
+tools/.stage-*

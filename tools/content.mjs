@@ -1,0 +1,455 @@
+// Tools/wiki/content.mjs
+//
+// The half of the wiki that cannot be dumped.
+//
+// data.json carries every NUMBER in the game, straight off the working tree.
+// What it cannot carry is what those numbers mean: an AI class's behaviour
+// lives in a 200-line update function, not in a field, and "why is this card
+// rare" is a design decision with no representation in source at all.
+//
+// So everything here is hand-written and should read as such. Anything that
+// could have been derived belongs in dump_main.lua instead -- if a number
+// appears in this file, that is a bug waiting to drift.
+
+export const SITE = {
+  title: "Ricochet Ritual",
+  tagline: "A wave-survival game about one orb, thrown and recalled.",
+
+  // The PUBLISHED site's own repository -- public, and what Pages serves from.
+  //
+  // This deliberately does not link the game's source. That repository is
+  // private, so every "Source on GitHub" in the footer of a public page would
+  // have been a 404 for everyone who clicked it. A link that only works for
+  // the people who did not need it is worse than no link.
+  repo: "https://github.com/TheLepr0s/ricochet-ritual-wiki",
+  repoLabel: "This site on GitHub",
+};
+
+export const NAV = [
+  { file: "index.html",        label: "Home",         icon: "◆" },
+  { file: "guide.html",        label: "How to play",   icon: "▶" },
+  { file: "bestiary.html",     label: "Bestiary",      icon: "☠" },
+  { file: "bosses.html",       label: "Bosses",        icon: "♛" },
+  { file: "cards.html",        label: "Upgrade cards", icon: "🂠" },
+  { file: "abilities.html",    label: "Abilities",     icon: "✦" },
+  { file: "classes.html",      label: "Classes",       icon: "⚑" },
+  { file: "waves.html",        label: "Waves",         icon: "≋" },
+  { file: "achievements.html", label: "Achievements",  icon: "★" },
+  { file: "systems.html",      label: "Systems",       icon: "⚙" },
+];
+
+/* ── Controls ──────────────────────────────────────────────────────────────
+   Read off Objects/Entities/Input/Playerinput.lua and main.lua's keypressed. */
+export const CONTROLS = [
+  { key: "W A S D",   act: "Move",
+    note: "Diagonals are normalised, so cutting a corner is not faster than running straight." },
+  { key: "Mouse",     act: "Aim",
+    note: "The wizard faces the cursor whichever way it is walking." },
+  { key: "Left click", act: "Throw / swing",
+    note: "With the orb in hand, throws it. With the orb out, swings at whatever is next to you." },
+  { key: "Right click (hold)", act: "Recall",
+    note: "Drags the orb back to you. Let go early and it keeps the velocity it had built." },
+  { key: "Space",     act: "Blink",
+    note: "Instant, passes through walls and enemies, and cannot land you inside geometry." },
+  { key: "F",         act: "Utility ability",
+    note: "Only bound once you have taken one — abilities are offered as a fourth card on every third pick." },
+  { key: "Escape",    act: "Pause",
+    note: "Opens settings without leaving the run." },
+  { key: "F11",       act: "Fullscreen" },
+  { key: "F3",        act: "Developer overlay",
+    note: "Spawns anything, grants any card or ability, forces a wave modifier, class or designed wave." },
+];
+
+/* ── The run, in one page ───────────────────────────────────────────────── */
+export const LOOP = [
+  {
+    h: "Throw it, then get it back",
+    p: `You have one orb and it is both the weapon and the problem. Thrown, it flies until
+        something stops it, bouncing off walls and enemies and losing speed the whole time.
+        Held, you have a melee swing and nothing else. Nearly every card in the game is an
+        answer to some version of the question "what happens between the throw and the catch".`,
+  },
+  {
+    h: "Recall is a second weapon",
+    p: `Holding right click hauls the orb back through everything in the way, and a returning
+        orb hits just as hard as a thrown one. Releasing early keeps the speed it gathered, so
+        a recall is also how you re-aim without picking the orb up. Walking into a moving orb
+        catches it — you do not have to wait for it to come to rest.`,
+  },
+  {
+    h: "A wave, then two cards",
+    p: `Clear the field and the upgrade screen opens with two choices, a third of the time a
+        third, and on every third pick a fourth card that is a utility ability rather than a
+        passive. Rerolls and banishes accumulate on a timer rather than being spent currency,
+        so a bad screen late in a run is a smaller disaster than a bad screen early.`,
+  },
+  {
+    h: "It gets specific, not just bigger",
+    p: `Waves ramp, but the interesting pressure comes from named events: a modifier that
+        changes the rules of one wave, a designed wave built from one kind of enemy, and a
+        fixed boss every tenth. None of them are simply "the same wave with more health".`,
+  },
+];
+
+/* ── AI classes ─────────────────────────────────────────────────────────────
+   Keyed by the MODULE NAME the dumper recovers from ENEMY_CLASS, so a class
+   that gets renamed shows up as an unstyled row rather than silently keeping
+   the old description. `label` is the friendly name for the badge. */
+export const AI = {
+  MeleeEnemy: {
+    label: "Melee", tone: "common",
+    p: `Walks straight at you and swings once in range. The damage lands on frame 6 of the
+        attack animation, so the wind-up is a real window to move out of rather than a
+        formality.`,
+  },
+  RangedEnemy: {
+    label: "Ranged", tone: "rare",
+    p: `Closes to its attack range, stops, and throws fireballs — 450px/s, 22 ± 7 damage, four
+        seconds before they expire. It keeps firing for as long as you stay in range, so the
+        answer is either to close or to leave, never to trade.`,
+  },
+  BomberEnemy: {
+    label: "Bomber", tone: "warn",
+    p: `No attack at all: it sprints at you and detonates on contact, after a 0.45s flashing
+        warning. Its health is deliberately low enough that a base-damage orb one-shots it, so
+        popping it early is always a clean single hit.`,
+  },
+  VampireEnemy: {
+    label: "Vampire", tone: "epic",
+    p: `Bites for contact damage, heals itself, and <b>roots you</b> while it drinks. Killing it
+        mid-bite frees you immediately, which makes it the one enemy where burst damage is
+        worth more than its health bar suggests.`,
+  },
+  EvilWizardEnemy: {
+    label: "Caster", tone: "legendary",
+    p: `Stands still and drips a chain of grasping hands along the line to where you were when
+        the cast began. A hand that closes roots you and deals the caster's damage. Taking a hit
+        cancels the cast. Come within 100px and it discharges at its own feet instead —
+        <b>Backlash</b>, a 0.4s telegraphed blast and a hard shove — so standing on top of a
+        caster is no longer the free answer it once was.`,
+  },
+  ChargerEnemy: {
+    label: "Charger", tone: "warn",
+    p: `CHASE → WINDUP → DASH → RECOVER. It plants at range, flashes a ground lane, then commits.
+        The direction locks when the wind-up starts, so the telegraph is the entire fight: step
+        out of the lane and it charges anyway, then stands winded and takes damage like anything
+        else.`,
+  },
+  SplitterEnemy: {
+    label: "Splitter", tone: "uncommon",
+    p: `An ordinary melee enemy until it dies. Death spawns two children — of the type named in
+        its own row — each at a fraction of the parent's max health, with a moment of
+        invulnerability so a single explosion cannot wipe the litter it just created.`,
+  },
+  ShieldEnemy: {
+    label: "Shield", tone: "rare",
+    p: `Carries a shield across an arc in front of it. An orb arriving inside that arc is refused
+        outright — <code>takeDamage</code> returns false, exactly as an iframe-swallowed hit does
+        — and bounces off harder than it arrived. Hit it from behind, or arrive fast enough to
+        punch straight through the guard.`,
+  },
+  SupportEnemy: {
+    label: "Support", tone: "uncommon",
+    p: `Never closes. It kites to a mid-range band, strafing at reduced speed, and spends a short
+        cast pose on the thing it is actually for: mending the most wounded allies in range, or
+        calling fresh bodies out of the ground. Both wear a role badge above the health bar,
+        because at range the silhouette is identical.`,
+  },
+  BossEnemy: {
+    label: "Boss", tone: "legendary",
+    p: `Three phases with an enrage flash at each threshold, a screen-wide health bar, and
+        exemption from a wave modifier's health multiplier — nothing else in the game has that.`,
+  },
+  RevenantBoss: {
+    label: "Boss", tone: "legendary",
+    p: `The mobile boss. Dash combos and a leap, no ranged attack whatsoever, and every move a
+        commitment it has to cross the floor to land.`,
+  },
+};
+
+/* ── One line each on what a type is FOR ────────────────────────────────── */
+export const ENEMY_NOTE = {
+  Mushroom:   "The baseline, and the reason “+5 orb damage” is a breakpoint worth chasing rather than a rounding error.",
+  Toadstool:  "Half a Mushroom's health at nearly double the speed. The enemy that punishes standing still.",
+  Brute:      "The opposite trade: slow enough to kite forever, and the first enemy an un-upgraded orb genuinely cannot one-shot.",
+  Bat:        "Ranged, but no faster than a Mushroom — you can simply walk away from it, which is the point of a first ranged enemy.",
+  Wisp:       "A Bat that keeps up with you, and outranges it. It glows because the bat sprite is near-black, and a hue rotation preserves luma — recolouring alone was invisible on it.",
+  Hivemind:   "A Bat that fires three bolts in a narrow fan. Individually weak, but it punishes the straight-line retreat that answers every other ranged enemy.",
+  Bomber:     "The clock in a wave. It forces you to deal with it now rather than later, which is the only thing on the field that does.",
+  Vampire:    "The first enemy that takes your movement away, and heals off you for doing it.",
+  Nosferatu:  "More than twice a Vampire's health and faster. It roots for the same time, so the danger is purely how long it survives to keep doing it.",
+  EvilWizard: "Casts from range and has no melee swing, but it is not safe to stand on any more — Backlash punishes anything inside 100px, including a player who walked into a cast.",
+  Archmage:   "The late-game priority target. Longer range, far more health, every cast another root somewhere on the map, and the hardest Backlash in the game.",
+  Ravager:    "The first enemy you beat by reading it rather than out-damaging it. Low health, so the lane is the whole threat — and the time it spends winded afterwards is the damage window the fight pays you back with.",
+  Sporeling:  "Health that becomes two Toadstools, which are faster than the thing that made them. Kill it with room around you, or inside an explosion big enough to catch what comes out.",
+  Bulwark:    "The card check. An orb that only goes forwards bounces off it all day; anything that flanks, pierces, arcs or simply arrives fast walks through. Its health is a long time to spend doing the wrong thing.",
+  Witchdoctor:"Heals the most wounded allies around it often enough to outpace chip damage across a crowd. Capped at two alive at once, because three means nothing dies.",
+  Bonecaller: "Calls fresh bodies out of the ground on a timer. Ignore it and the wave stops emptying. Violet and badged so it is not mistaken for the healer at range — an earlier olive hue made the two indistinguishable.",
+  DreadSovereign: "A siege engine. It walks, and the fight is read from a distance.",
+  PaleRevenant:   "The opposite fight, and the reason there are two.",
+};
+
+/* Facts about a type that live in its AI file rather than its data row, and so
+   would otherwise be invisible. Only where there is something to say. */
+export const ENEMY_EXTRA = {
+  Ravager:      "Its row's <code>attackRange</code> is dead data — ChargerEnemy replaces the melee update entirely and uses its own trigger range, so the row value looks authoritative and governs nothing.",
+  PaleRevenant: "No ranged attack at all. Its speed is capped below the wizard's own, on purpose, even at phase three.",
+  Bomber:       "Shares the skeleton sheet with the Ravager and the Revenant, which is why all three read as bone rather than flesh.",
+};
+
+/* ── Bosses ─────────────────────────────────────────────────────────────── */
+export const BOSSES = {
+  DreadSovereign: {
+    sub: "Wave 10, and every 20th after",
+    lead: `A siege engine. It moves at a walking pace and the whole fight is read from a
+           distance — every attack announces itself long before it lands, and every one of them
+           is survivable by moving.`,
+    moves: [
+      { n: "Slam", d: `A wide ground telegraph, then a shockwave. The radius and the wind-up are
+                       tuned together against one rule: running must work. From the edge of its
+                       own trigger range you can clear the circle on foot, without blink.` },
+      { n: "Bolt fan", d: `A spread of oversized, slowed projectiles — more of them each phase.
+                           They are big and slow enough to walk between, which is the point: a
+                           fan is a movement puzzle, not a damage check.` },
+      { n: "Summon", d: `Calls bodies out of the ground, more each phase. Shares one cooldown
+                         with the other two, so it never does two things at once.` },
+    ],
+    close: `The telegraph lengths are the design. At over a second of wind-up, the Sovereign is
+            asking you to read it. Compare the Revenant, which asks you to already be moving.`,
+  },
+  PaleRevenant: {
+    sub: "Wave 20, and every 20th after",
+    lead: `The opposite fight, and the reason there are two. Nearly three times the Sovereign's
+           speed, no ranged attack whatsoever, and every move a commitment it has to cross the
+           floor to land.`,
+    moves: [
+      { n: "Dash combo", d: `Three, four, then five dashes in a row as phases fall, each with its
+                             own short wind-up and a gap between. The direction locks at the
+                             wind-up, so a combo is a sequence of dodges rather than one.` },
+      { n: "Leap", d: `Goes airborne and comes down in a wide circle. The hitbox stays on the
+                       ground for the whole flight — only the sprite is lifted — so what you see
+                       and what hurts never disagree.` },
+      { n: "Forced leap", d: `After two dash combos it must leap. Without that it would simply
+                              never do it at close range, which is exactly what the first build
+                              did until a state-coverage assertion caught it.` },
+    ],
+    close: `Its speed is capped below the wizard's own, even at phase three, on purpose: kiting
+            has to stay an answer, or the fight stops being about reading it and becomes a
+            question about whether blink is up.`,
+  },
+};
+
+export const BOSS_SHARED = `Which boss arrives is <b>fixed rather than rolled</b>. A coin flip
+  would take away the one thing about a boss wave worth knowing in advance, and fixing the order
+  also guarantees that the first two bosses anyone meets are one of each. Both pay the same on
+  death: a large flat heal on the spot, plus one extra card banked for the next time the upgrade
+  screen opens — banked rather than granted, because that screen is not showing mid-wave.`;
+
+/* ── Classes ────────────────────────────────────────────────────────────────
+   Measured, not asserted. bench_main.lua with ARCHETYPE_ONLY=1, ten trials,
+   paired against the same seeds. */
+export const ARCH_MEASURED = {
+  warden:      { dmg: "+0.0%",  live: "+33.0%" },
+  stormcaller: { dmg: "+36.5%", live: "+13.1%" },
+  stalker:     { dmg: "+8.8%",  live: "+5.4%", blind: true },
+  breaker:     { dmg: "+37.5%", live: "+21.6%" },
+};
+
+export const ARCH_NOTE = `<b>These were measured, because “balanced” is not something you can
+  assert.</b> Each class was run against a classless baseline on the same seeds, ten trials,
+  offence as damage dealt and defence as frames survived. <b>Breaker and Stormcaller came out
+  statistically identical</b> — well inside each other's error bars — and the Warden trades all
+  of its offence for the best survival of the four.
+  <br><br>
+  It did not do that at first. It opened with less health, measured +0.0% damage <em>and</em>
+  tied survival with the damage classes, and was simply the worse pick: killing faster also keeps
+  you alive, so giving up offence bought it nothing. The extra health is the correction.
+  <br><br>
+  <b>The fixture is blind to the Stalker</b>, and that is worth saying plainly rather than tuning
+  around. Both fixtures use a <b>stationary</b> wizard, so extra move speed and a shorter blink —
+  the whole of what the class is — contribute exactly nothing, and it duly reads as noise on both
+  axes. What could be judged was its opening card, which was genuinely the thinnest of the four,
+  so that is what was doubled. The bias lists are all 12–13 cards by design: a class steering
+  toward twenty would find its pieces far more reliably than one steering toward eight, which is
+  a power difference wearing an identity's clothes.`;
+
+/* ── Abilities ──────────────────────────────────────────────────────────── */
+export const ABI_MEASURED = {
+  nuke:        { kills: "20.0", per: "0.40+", note: "ceiling — it clears the screen" },
+  singularity: { kills: "18.9", per: "0.34" },
+  storm:       { kills: "15.0", per: "0.33", was: "6.0" },
+  meteor:      { kills: "14.8", per: "0.33" },
+  sentry:      { kills: "12.1", per: "0.30", note: "capped by shot count, not by targets" },
+};
+
+export const ABI_NOTE = `<b>The five damaging abilities were measured against each other</b>,
+  because “the Nuke is stronger than Thunderstorm” turned out to be exactly right and nothing in
+  the card benchmark could see it. An ability is a button, not a passive, so the fixture leaves
+  the wizard completely idle — no swinging, no moving, orb pinned in hand — fires the ability the
+  moment it is off cooldown, and counts <b>kills</b> rather than damage.
+  <br><br>
+  Kills, because damage clamps at the target's remaining health and therefore cannot see
+  <em>overkill</em>. A Nuke does several times a trash enemy's health, four fifths of it
+  uncounted, and the damage table duly ranked the game's screen-clear mid-table while the player
+  reporting the problem was looking at an empty field.
+  <br><br>
+  Thunderstorm sat at less than half of anything else before this pass, which is exactly what was
+  reported. It picked one random target per bolt, so most of a storm landed on things already
+  dying; bolts now splash to a neighbour and it spends that overkill instead. <b>The Nuke stays
+  above the band on purpose</b> — it is the only ability that takes your weapon away for five
+  seconds to do what it does.
+  <br><br>
+  <b>Six of the twelve do no damage at all</b> and come back as a row of zeros. That is the
+  fixture admitting what it cannot see, not a verdict. <b>Overload</b> is in the same position for
+  a different reason: it amplifies an orb this fixture deliberately never throws. All seven are
+  covered instead by behavioural assertions that check the one thing that matters — that pressing
+  the button does its stated thing at all.`;
+
+/* ── Designed waves ─────────────────────────────────────────────────────── */
+export const COMP_ANSWER = {
+  siege:        "Anything that flanks, pierces or ignores a guard. Four of them is a wave.",
+  murmuration:  "Close the distance, or swat the shots out of the air.",
+  thehunt:      "Footwork. Nothing here can be out-damaged from a standstill.",
+  congregation: "Target priority. Kill the supports or the wave refills faster than it empties.",
+  demolition:   "Spacing. Everything on the field punishes killing it up close.",
+  coven:        "Do not get chained. Every one of them is a root somewhere on the map.",
+};
+
+export const COMP_NOTE = `<b>Every entry pays for its roster.</b> A wave of nothing but Bulwarks
+  and Brutes at the normal count is not a themed wave, it is a wall — so THE SIEGE runs at a
+  fraction of the usual number with a tighter concurrent cap, while MURMURATION, built from things
+  that die to a glance, runs above it. A composition is a different <b>shape</b> of wave, not a
+  harder one, and the score multiplier is what it pays you for the trouble.
+  <br><br>
+  <b>The same two safety rails as an ordinary wave still apply</b>: members are filtered against
+  their own unlock waves, and the concurrent caps hold — so THE CONGREGATION cannot put four
+  healers on the field however its weights fall. If every member of a rolled composition turns out
+  to be locked or capped, the spawn table falls back to the normal one, because a wave that spawns
+  nothing never ends.
+  <br><br>
+  They are <b>events</b>, not a per-wave roll: never two waves running, and never on a wave that
+  already carries a modifier. Two banners at once is two things to read and no time to read
+  either.`;
+
+/* ── Drops ──────────────────────────────────────────────────────────────── */
+export const DROPS = [
+  { n: "Above 85% health", rate: "1.2%",   per: "per body",
+    d: "You are fine, so the field stays clean. A heart here would only be walked over and wasted." },
+  { n: "60 – 85%",         rate: "4.5%",   per: "per body",
+    d: "Chipped. Just often enough to notice that bodies are worth walking to." },
+  { n: "35 – 60%",         rate: "10%",    per: "per body",
+    d: "In trouble. The wave starts paying you back for clearing it." },
+  { n: "Below 35%",        rate: "20%",    per: "per body",
+    d: "One in five. The band is deliberately steep at the bottom, because this is where a run is decided." },
+  { n: "Elite kill",       rate: "×5",     per: "capped at 85%",
+    d: "A fight you chose to take should pay for itself." },
+  { n: "Boss kill",        rate: "4 drops", per: "guaranteed",
+    d: "One heart for two minutes of work would read as an insult." },
+];
+
+export const DROP_NOTE = `The drop rate reads your health <b>fraction</b>, so it is a rubber band
+  rather than a constant. Shield drops only roll for a build that can actually hold them — without
+  Overflow or Kinetic Plating there is nowhere to put the points, and a pickup that does nothing is
+  worse than no pickup at all.
+  <br><br>
+  <b>Healing goes somewhere.</b> <code>Player:heal</code> banks the excess so Overflow can turn it
+  into shield instead of letting it evaporate at the cap. Shield absorbs before health, and draws
+  as plates over the bar. Mitigation — Stoneskin, Last Stand — runs through a single
+  <code>mitigate()</code> funnel, so two sources cannot silently multiply into immunity.`;
+
+/* ── Combat model ───────────────────────────────────────────────────────── */
+export const COMBAT = [
+  { h: "Two damage entry points",
+    p: `<code>takeDamage</code> is the one every weapon uses: it respects invulnerability frames,
+        shields, mitigation and the shield enemy's guard arc, and it <b>returns whether the hit
+        landed</b>. <code>takeDamageRaw</code> skips all of it and is for damage-over-time ticks
+        that have already been gated elsewhere. Anything that rewards you for hitting — life
+        steal, combo, on-hit procs — has to check the return value, or it pays out on hits that
+        were refused.` },
+  { h: "Invulnerability frames are shared",
+    p: `An enemy that has just been hit ignores further hits for a moment. This is what stops a
+        multi-hit effect from deleting a boss in one frame, and it is also why an orb passing
+        through a crowd does not double-dip on the enemy it is touching.` },
+  { h: "Every status ticks in one place",
+    p: `Burn, bleed, freeze, chill, stun, curse and root all tick in a single function on the base
+        enemy. A status applied by a card that is never ticked there is a dead upgrade — which has
+        happened, and is why they all live together.` },
+  { h: "Telegraphs match their hitboxes",
+    p: `Ground circles are drawn flattened for perspective, but damage is tested in plain
+        Euclidean distance. For a long time the two disagreed, so a boss slam and a meteor both
+        hit outside the circle they had drawn. Every ground telegraph now announces the radius it
+        actually uses.` },
+  { h: "Enemies share one chase direction",
+    p: `Pathfinding is greedy and shared, because a hundred independent A* searches per frame buys
+        nothing in an open arena. Full pathing runs only for enemies that have detected they are
+        stuck.` },
+];
+
+/* ── Score ──────────────────────────────────────────────────────────────── */
+export const SCORE = `Score comes from kills, weighted by what died and multiplied by the wave's
+  modifier and composition, plus a survival term. An elite is worth more than the trash it spawned
+  among; a boss is worth more again. Records persist between runs, and the difficulty a run was
+  played on is recorded with it — a HARD score and an EASY score are not the same number and are
+  not stored as though they were.`;
+
+/* ── Audio ─────────────────────────────────────────────────────────────── */
+export const AUDIO_NOTE = `<b>What a kill sounds like.</b> Every orb kill fires a short confirm
+  pitched to your current combo tier, several voices deep and rate-limited — short enough that a
+  double kill is two sounds, long enough that an effect wiping eight bodies on one frame is not
+  eight. Crossing a tier fires a full stab on top. Dropping the combo fires the only sound in the
+  set that falls in pitch.
+  <br><br>
+  <b>Voices and rate limits are central, not per-caller.</b> A pool of sources per sound key lets
+  one overlap itself where that overlap <em>is</em> the feedback, and pins announcements to exactly
+  one, since two wave-clears at once is always a mistake. Minimum spacing is enforced in one place,
+  because the callers that get this wrong are exactly the ones that never think about audio — a
+  per-frame branch in an enemy update, a damage tick in a crowd.
+  <br><br>
+  Nearly every sound in the game is <b>synthesised by a Lua script in the repo</b> rather than
+  licensed, which is why they sit together tonally. One bought sound was kept: the orb recall.`;
+
+export const AUDIO_BUG = `<b>Known: the top combo stab never plays.</b> Seven stabs were
+  generated, but seven tiers give only <em>six</em> promotions, and the single call site asks for
+  the stab one rung below the tier you are entering — so the ladder tops out one file short. That
+  top rung is synthesised, registered, loaded at boot, and silent. Fixing it needs either an eighth
+  tier to promote into or a remapping that lands the last promotion on the last stab; both are
+  design calls rather than typo fixes, so it is recorded rather than quietly changed.`;
+
+export const KILL_TIERS = [
+  { t: 1, at: 1,   name: "COMBO" },
+  { t: 2, at: 5,   name: "NICE" },
+  { t: 3, at: 10,  name: "SLICK" },
+  { t: 4, at: 18,  name: "WICKED" },
+  { t: 5, at: 28,  name: "SAVAGE" },
+  { t: 6, at: 40,  name: "RUTHLESS" },
+  { t: 7, at: 60,  name: "GODLIKE" },
+];
+
+/* ── Modifier field labels ─────────────────────────────────────────────── */
+export const FIELD_LABEL = {
+  healthMult: "enemy health", damageMult: "enemy damage", speedMult: "enemy speed",
+  countMult: "wave size", spawnIntervalMult: "spawn interval", maxAliveMult: "concurrent cap",
+  scoreMult: "score per kill", allElite: "every spawn is elite", volatile: "corpses explode",
+  splitAll: "everything splits on death", rampMult: "scaling rate",
+  healFrac: "between-wave heal", healFlat: "between-wave heal (flat)",
+  rerolls: "starting rerolls", banishes: "starting banishes",
+};
+
+export const ELITES = `Any ordinary spawn can arrive <b>crowned</b>: more health, more damage,
+  a visible crown and a wider health bar, and a much better drop. They are a fight you can choose
+  to take or leave, and the reward is scaled so that taking one is usually correct but never
+  free. Bosses are never elite — they are already the exception to the health multipliers.`;
+
+/* ── Glossary ──────────────────────────────────────────────────────────── */
+export const GLOSSARY = [
+  { t: "Direct hit", d: "The orb striking an enemy body, as opposed to an explosion, arc or aura. Most on-hit cards read direct hits only." },
+  { t: "Recall", d: "Holding right click to drag the orb back. A returning orb does full damage." },
+  { t: "Combo", d: "Consecutive hits inside a time window. Drops to zero if the window lapses; several cards scale off it." },
+  { t: "Elite", d: "A crowned ordinary enemy with boosted stats and a far better drop." },
+  { t: "Modifier", d: "A named rule change applied to a single wave, announced by a banner." },
+  { t: "Designed wave", d: "A wave built from a hand-picked roster instead of the usual weighted table." },
+  { t: "Class", d: "Picked once at the start of a run. Biases which cards you are offered, and opens with one signature card." },
+  { t: "Utility", d: "The F-key ability. Offered as a fourth card on every third upgrade screen; you hold one at a time." },
+  { t: "Stack cap", d: "How many times a repeatable card can be taken. At the cap it stops being offered." },
+  { t: "Banish", d: "Removing a card from the pool for the rest of the run, rather than rerolling the screen." },
+];

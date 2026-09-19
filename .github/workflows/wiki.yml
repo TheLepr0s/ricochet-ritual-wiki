@@ -1,0 +1,45 @@
+# Guard the published site.
+#
+# Pages deploys docs/ straight from the branch, so this job does not publish
+# anything -- it makes sure what gets published is what the generator produces.
+# The obvious failure mode is someone editing a built page directly: it works,
+# it looks right, and the next build silently throws it away. Better to fail
+# the push.
+#
+# It does NOT re-dump. That needs LOVE and the game's source, and the game is a
+# separate private repository CI cannot see -- tools/data.json is committed
+# precisely so the site can be rebuilt and validated anywhere.
+name: wiki
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Generate
+        run: node tools/build.mjs
+
+      - name: Validate links, anchors and coverage
+        run: node tools/check.mjs
+
+      - name: Validate page behaviour
+        run: node tools/runtime.mjs
+
+      - name: docs/ matches the generator
+        run: |
+          if ! git diff --quiet -- docs/; then
+            echo "::error::docs/ is out of date, or was edited by hand."
+            echo "Run 'node tools/build.mjs' and commit the result."
+            git diff --stat -- docs/
+            exit 1
+          fi
+          echo "docs/ is exactly what the generator produces."
