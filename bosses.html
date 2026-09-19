@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-page="bosses-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bosses · Ricochet Ritual</title>
+<meta name="description" content="Two fights, deliberately opposite. One asks you to read it; the other asks you to already be moving.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="bosses-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html" aria-current="page"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="classes.html"><em>⚑</em>Classes</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#rotation">The rotation</a><a href="#dreadsovereign">DREAD SOVEREIGN</a><a href="#palerevenant">PALE REVENANT</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <h1>Bosses</h1>
+      <p>Two fights, deliberately opposite. One asks you to read it; the other asks you to already be moving.</p>
+    </div>
+    <div class="note">Which boss arrives is <b>fixed rather than rolled</b>. A coin flip
+  would take away the one thing about a boss wave worth knowing in advance, and fixing the order
+  also guarantees that the first two bosses anyone meets are one of each. Both pay the same on
+  death: a large flat heal on the spot, plus one extra card banked for the next time the upgrade
+  screen opens — banked rather than granted, because that screen is not showing mid-wave.</div>
+
+    <h2 id="rotation">The rotation</h2>
+    <p>
+      A boss arrives every tenth wave and the order is fixed, cycling through
+      2 of them:
+    </p>
+    <table>
+      <thead><tr><th>Wave</th><th>Boss</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>10, 30, …</td><td><a href="#dreadsovereign">DREAD SOVEREIGN</a></td><td>A siege engine. It walks, and the fight is read from a distance.</td></tr>
+        <tr><td>20, 40, …</td><td><a href="#palerevenant">PALE REVENANT</a></td><td>The opposite fight, and the reason there are two.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="dreadsovereign">DREAD SOVEREIGN</h2>
+    <div class="beast" style="--stripe:var(--legendary)">
+      <div class="portrait"><img src="assets/img/DreadSovereign.png" alt="DreadSovereign" loading="lazy" width="82"></div>
+      <div class="beast-body">
+        <div class="beast-head">
+          <h3>Wave 10, and every 20th after</h3>
+          <span class="badge">Boss</span>
+        </div>
+        <p>A siege engine. It moves at a walking pace and the whole fight is read from a
+           distance — every attack announces itself long before it lands, and every one of them
+           is survivable by moving.</p>
+        <div class="statline"><span class="stat">base HP <b>1100</b></span><span class="stat">speed <b>42</b></span><span class="stat">contact <b>22</b></span><span class="stat">hitbox <b>74×66</b></span><span class="stat">scale <b>×2.4</b></span></div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>Move</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td>Slam</td><td>A wide ground telegraph, then a shockwave. The radius and the wind-up are
+                       tuned together against one rule: running must work. From the edge of its
+                       own trigger range you can clear the circle on foot, without blink.</td></tr>
+        <tr><td>Bolt fan</td><td>A spread of oversized, slowed projectiles — more of them each phase.
+                           They are big and slow enough to walk between, which is the point: a
+                           fan is a movement puzzle, not a damage check.</td></tr>
+        <tr><td>Summon</td><td>Calls bodies out of the ground, more each phase. Shares one cooldown
+                         with the other two, so it never does two things at once.</td></tr>
+      </tbody>
+    </table>
+    <p>The telegraph lengths are the design. At over a second of wind-up, the Sovereign is
+            asking you to read it. Compare the Revenant, which asks you to already be moving.</p>
+
+    <h2 id="palerevenant">PALE REVENANT</h2>
+    <div class="beast" style="--stripe:var(--legendary)">
+      <div class="portrait"><img src="assets/img/PaleRevenant.png" alt="PaleRevenant" loading="lazy" width="82"></div>
+      <div class="beast-body">
+        <div class="beast-head">
+          <h3>Wave 20, and every 20th after</h3>
+          <span class="badge">Boss</span>
+        </div>
+        <p>The opposite fight, and the reason there are two. Nearly three times the Sovereign's
+           speed, no ranged attack whatsoever, and every move a commitment it has to cross the
+           floor to land.</p>
+        <div class="statline"><span class="stat">base HP <b>860</b></span><span class="stat">speed <b>120</b></span><span class="stat">contact <b>19</b></span><span class="stat">hitbox <b>58×58</b></span><span class="stat">scale <b>×2.1</b></span></div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>Move</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td>Dash combo</td><td>Three, four, then five dashes in a row as phases fall, each with its
+                             own short wind-up and a gap between. The direction locks at the
+                             wind-up, so a combo is a sequence of dodges rather than one.</td></tr>
+        <tr><td>Leap</td><td>Goes airborne and comes down in a wide circle. The hitbox stays on the
+                       ground for the whole flight — only the sprite is lifted — so what you see
+                       and what hurts never disagree.</td></tr>
+        <tr><td>Forced leap</td><td>After two dash combos it must leap. Without that it would simply
+                              never do it at close range, which is exactly what the first build
+                              did until a state-coverage assertion caught it.</td></tr>
+      </tbody>
+    </table>
+    <p>Its speed is capped below the wizard's own, even at phase three, on purpose: kiting
+            has to stay an answer, or the fight stops being about reading it and becomes a
+            question about whether blink is up.</p>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

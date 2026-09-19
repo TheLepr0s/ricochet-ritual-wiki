@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-page="systems-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Systems · Ricochet Ritual</title>
+<meta name="description" content="The machinery underneath: how damage resolves, how score is earned, how the audio tracks a run, and how these pages are generated.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="systems-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="classes.html"><em>⚑</em>Classes</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html" aria-current="page"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#combat">Combat</a><a href="#combo">The combo ladder</a><a href="#score">Score</a><a href="#sound">Sound</a><a href="#tooling">How this wiki is built</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <h1>Systems</h1>
+      <p>The machinery underneath: how damage resolves, how score is earned, how the audio tracks a run, and how these pages are generated.</p>
+    </div>
+    <h2 id="combat">Combat</h2>
+    <h3 id="two-damage-entry-points">Two damage entry points</h3>
+    <p><code>takeDamage</code> is the one every weapon uses: it respects invulnerability frames,
+        shields, mitigation and the shield enemy's guard arc, and it <b>returns whether the hit
+        landed</b>. <code>takeDamageRaw</code> skips all of it and is for damage-over-time ticks
+        that have already been gated elsewhere. Anything that rewards you for hitting — life
+        steal, combo, on-hit procs — has to check the return value, or it pays out on hits that
+        were refused.</p>
+    <h3 id="invulnerability-frames-are-shared">Invulnerability frames are shared</h3>
+    <p>An enemy that has just been hit ignores further hits for a moment. This is what stops a
+        multi-hit effect from deleting a boss in one frame, and it is also why an orb passing
+        through a crowd does not double-dip on the enemy it is touching.</p>
+    <h3 id="every-status-ticks-in-one-place">Every status ticks in one place</h3>
+    <p>Burn, bleed, freeze, chill, stun, curse and root all tick in a single function on the base
+        enemy. A status applied by a card that is never ticked there is a dead upgrade — which has
+        happened, and is why they all live together.</p>
+    <h3 id="telegraphs-match-their-hitboxes">Telegraphs match their hitboxes</h3>
+    <p>Ground circles are drawn flattened for perspective, but damage is tested in plain
+        Euclidean distance. For a long time the two disagreed, so a boss slam and a meteor both
+        hit outside the circle they had drawn. Every ground telegraph now announces the radius it
+        actually uses.</p>
+    <h3 id="enemies-share-one-chase-direction">Enemies share one chase direction</h3>
+    <p>Pathfinding is greedy and shared, because a hundred independent A* searches per frame buys
+        nothing in an open arena. Full pathing runs only for enemies that have detected they are
+        stuck.</p>
+
+    <h2 id="combo">The combo ladder</h2>
+    <p>
+      Consecutive hits inside a window. Several cards scale off it, and the audio tracks it — every
+      kill fires a confirm pitched to your current tier, so the sound of a run climbing is
+      information rather than decoration.
+    </p>
+    <table>
+      <thead><tr><th>Tier</th><th>At</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>COMBO</td><td><code>×1</code></td><td>where every combo starts — nothing is promoted into it</td></tr>
+        <tr><td>NICE</td><td><code>×5</code></td><td>promotes here, with a banner and a stab</td></tr>
+        <tr><td>SLICK</td><td><code>×10</code></td><td>promotes here, with a banner and a stab</td></tr>
+        <tr><td>WICKED</td><td><code>×18</code></td><td>promotes here, with a banner and a stab</td></tr>
+        <tr><td>SAVAGE</td><td><code>×28</code></td><td>promotes here, with a banner and a stab</td></tr>
+        <tr><td>RUTHLESS</td><td><code>×40</code></td><td>promotes here, with a banner and a stab</td></tr>
+        <tr><td>GODLIKE</td><td><code>×60</code></td><td>promotes here, with a banner and a stab</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="score">Score</h2>
+    <p>Score comes from kills, weighted by what died and multiplied by the wave's
+  modifier and composition, plus a survival term. An elite is worth more than the trash it spawned
+  among; a boss is worth more again. Records persist between runs, and the difficulty a run was
+  played on is recorded with it — a HARD score and an EASY score are not the same number and are
+  not stored as though they were.</p>
+
+    <h2 id="sound">Sound</h2>
+    <div class="note"><b>What a kill sounds like.</b> Every orb kill fires a short confirm
+  pitched to your current combo tier, several voices deep and rate-limited — short enough that a
+  double kill is two sounds, long enough that an effect wiping eight bodies on one frame is not
+  eight. Crossing a tier fires a full stab on top. Dropping the combo fires the only sound in the
+  set that falls in pitch.
+  <br><br>
+  <b>Voices and rate limits are central, not per-caller.</b> A pool of sources per sound key lets
+  one overlap itself where that overlap <em>is</em> the feedback, and pins announcements to exactly
+  one, since two wave-clears at once is always a mistake. Minimum spacing is enforced in one place,
+  because the callers that get this wrong are exactly the ones that never think about audio — a
+  per-frame branch in an enemy update, a damage tick in a crowd.
+  <br><br>
+  Nearly every sound in the game is <b>synthesised by a Lua script in the repo</b> rather than
+  licensed, which is why they sit together tonally. One bought sound was kept: the orb recall.</div>
+    <div class="note warn"><b>Known: the top combo stab never plays.</b> Seven stabs were
+  generated, but seven tiers give only <em>six</em> promotions, and the single call site asks for
+  the stab one rung below the tier you are entering — so the ladder tops out one file short. That
+  top rung is synthesised, registered, loaded at boot, and silent. Fixing it needs either an eighth
+  tier to promote into or a remapping that lands the last promotion on the last stab; both are
+  design calls rather than typo fixes, so it is recorded rather than quietly changed.</div>
+
+    <h2 id="tooling">How this wiki is built</h2>
+    <p>
+      Two commands. <code>Tools/wiki/dump_main.lua</code> runs under LÖVE, loads the game's own
+      modules, and writes every definition table to JSON — including the ones that are
+      <em>file-local</em> and therefore invisible to an ordinary dumper. Those are recovered
+      through <code>debug.getupvalue</code>, which is how unlock waves, spawn weights, stack caps
+      and prerequisites reach this site without anyone retyping them.
+    </p>
+    <p>
+      <code>Tools/wiki/build.mjs</code> then renders <code>docs/</code> from that JSON plus the
+      hand-written prose in <code>content.mjs</code>. The split is the point: if a fact could have
+      been derived and was typed instead, it is a bug waiting to drift. An earlier version of this
+      reference kept those tables by hand, and three of them had already gone stale.
+    </p>
+    <p>
+      Enemy portraits are not copied out of the sprite folder. Eleven of the eighteen types share
+      art with another one, so <code>Tools/wiki/portraits_main.lua</code> renders each frame through
+      the same recolour shader the game uses at draw time — a hue rotation in YIQ, or a multiply
+      tint for the sprites with no chroma to rotate. Copying the PNGs would produce a bestiary in
+      which a third of the roster is the same picture repeated.
+    </p>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

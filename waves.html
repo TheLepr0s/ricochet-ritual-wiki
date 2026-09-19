@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" data-page="waves-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Waves · Ricochet Ritual</title>
+<meta name="description" content="How a wave is built, what can be done to it, and when each enemy joins the pool.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="waves-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="classes.html"><em>⚑</em>Classes</a>
+        <a href="waves.html" aria-current="page"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#shape">The shape of a wave</a><a href="#unlocks">When each enemy appears</a><a href="#modifiers">Wave modifiers</a><a href="#compositions">Designed waves</a><a href="#elites">Elites</a><a href="#bossrot">Boss waves</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <h1>Waves</h1>
+      <p>How a wave is built, what can be done to it, and when each enemy joins the pool.</p>
+    </div>
+    <div class="toolbar">
+      <input class="filter" id="page-filter" type="search" placeholder="Filter modifiers and designed waves…" autocomplete="off" aria-label="Filter this page">
+      <div id="page-chips"></div>
+      <span class="hits" id="page-hits"></span>
+    </div>
+
+    <h2 id="shape">The shape of a wave</h2>
+    <p>
+      Enemies spawn over time rather than all at once, against a cap on how many can be alive
+      together. Both the count and the cap ramp with the wave number and are scaled by the
+      difficulty. Clearing the field ends the wave and opens the upgrade screen.
+    </p>
+    <p>
+      A wave can also carry <b>one</b> event: a modifier, or a designed roster. Never both — two
+      banners at once is two things to read and no time to read either.
+    </p>
+
+    <h2 id="unlocks">When each enemy appears</h2>
+    <p>
+      New types stagger in rather than arriving together, and the weights of the earlier ones were
+      trimmed to make room instead of inflating the total number of spawns.
+    </p>
+    <table>
+      <thead><tr><th>From</th><th>Joins the pool</th></tr></thead>
+      <tbody>
+        <tr><td>Wave 1</td><td><a href="bestiary.html#mushroom">Mushroom</a> <span class="tot">(weight 4)</span></td></tr>
+        <tr><td>Wave 2</td><td><a href="bestiary.html#bat">Bat</a> <span class="tot">(weight 3)</span></td></tr>
+        <tr><td>Wave 3</td><td><a href="bestiary.html#bomber">Bomber</a> <span class="tot">(weight 3)</span>, <a href="bestiary.html#toadstool">Toadstool</a> <span class="tot">(weight 4)</span></td></tr>
+        <tr><td>Wave 4</td><td><a href="bestiary.html#vampire">Vampire</a> <span class="tot">(weight 3)</span></td></tr>
+        <tr><td>Wave 5</td><td><a href="bestiary.html#evilwizard">EvilWizard</a> <span class="tot">(weight 2)</span>, <a href="bestiary.html#ravager">Ravager</a> <span class="tot">(weight 3)</span></td></tr>
+        <tr><td>Wave 6</td><td><a href="bestiary.html#sporeling">Sporeling</a> <span class="tot">(weight 3)</span>, <a href="bestiary.html#wisp">Wisp</a> <span class="tot">(weight 3)</span></td></tr>
+        <tr><td>Wave 7</td><td><a href="bestiary.html#brute">Brute</a> <span class="tot">(weight 2)</span></td></tr>
+        <tr><td>Wave 8</td><td><a href="bestiary.html#bulwark">Bulwark</a> <span class="tot">(weight 2)</span></td></tr>
+        <tr><td>Wave 9</td><td><a href="bestiary.html#nosferatu">Nosferatu</a> <span class="tot">(weight 2)</span></td></tr>
+        <tr><td>Wave 10</td><td><a href="bestiary.html#witchdoctor">Witchdoctor</a> <span class="tot">(weight 1)</span></td></tr>
+        <tr><td>Wave 11</td><td><a href="bestiary.html#archmage">Archmage</a> <span class="tot">(weight 1)</span></td></tr>
+        <tr><td>Wave 12</td><td><a href="bestiary.html#hivemind">Hivemind</a> <span class="tot">(weight 2)</span></td></tr>
+        <tr><td>Wave 14</td><td><a href="bestiary.html#bonecaller">Bonecaller</a> <span class="tot">(weight 1)</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="modifiers">Wave modifiers</h2>
+    <p>A named rule change on a single wave, announced by a banner before it starts.</p>
+    <div class="rows">
+      <div class="row" id="bloodmoon" style="--stripe:var(--epic)" data-hay="bloodmoon blood moon the horde is faster and hits harder. kills are worth more.">
+        <div class="r-name" data-anchor><span>BLOOD MOON</span><span class="r-key">bloodmoon</span></div>
+        <div class="r-desc">The horde is faster and hits harder. Kills are worth more.</div>
+        <div class="r-meta"><div class="per">enemy damage <span class="tot">+15%</span></div><div class="per">score per kill <span class="tot">+50%</span></div><div class="per">enemy speed <span class="tot">+30%</span></div></div>
+      </div>
+      <div class="row" id="swarm" style="--stripe:var(--epic)" data-hay="swarm swarm far more of them, far more fragile, and they arrive fast.">
+        <div class="r-name" data-anchor><span>SWARM</span><span class="r-key">swarm</span></div>
+        <div class="r-desc">Far more of them, far more fragile, and they arrive fast.</div>
+        <div class="r-meta"><div class="per">wave size <span class="tot">+70%</span></div><div class="per">enemy health <span class="tot">-55%</span></div><div class="per">concurrent cap <span class="tot">+50%</span></div><div class="per">spawn interval <span class="tot">-45%</span></div></div>
+      </div>
+      <div class="row" id="ironhide" style="--stripe:var(--epic)" data-hay="ironhide iron hide thick-skinned and slow. bring something that hits hard.">
+        <div class="r-name" data-anchor><span>IRON HIDE</span><span class="r-key">ironhide</span></div>
+        <div class="r-desc">Thick-skinned and slow. Bring something that hits hard.</div>
+        <div class="r-meta"><div class="per">enemy health <span class="tot">+90%</span></div><div class="per">score per kill <span class="tot">+30%</span></div><div class="per">enemy speed <span class="tot">-25%</span></div></div>
+      </div>
+      <div class="row" id="eliteguard" style="--stripe:var(--epic)" data-hay="eliteguard elite guard every single one wears a crown. there are fewer of them.">
+        <div class="r-name" data-anchor><span>ELITE GUARD</span><span class="r-key">eliteguard</span></div>
+        <div class="r-desc">Every single one wears a crown. There are fewer of them.</div>
+        <div class="r-meta"><div class="per">every spawn is elite</div><div class="per">wave size <span class="tot">-58%</span></div><div class="per">concurrent cap <span class="tot">-30%</span></div></div>
+      </div>
+      <div class="row" id="volatile" style="--stripe:var(--epic)" data-hay="volatile volatile everything you kill explodes. mind where you are standing.">
+        <div class="r-name" data-anchor><span>VOLATILE</span><span class="r-key">volatile</span></div>
+        <div class="r-desc">Everything you kill explodes. Mind where you are standing.</div>
+        <div class="r-meta"><div class="per">enemy health <span class="tot">-20%</span></div><div class="per">score per kill <span class="tot">+25%</span></div><div class="per">corpses explode</div></div>
+      </div>
+      <div class="row" id="bounty" style="--stripe:var(--epic)" data-hay="bounty bounty they hit harder, but every kill pays double.">
+        <div class="r-name" data-anchor><span>BOUNTY</span><span class="r-key">bounty</span></div>
+        <div class="r-desc">They hit harder, but every kill pays double.</div>
+        <div class="r-meta"><div class="per">enemy damage <span class="tot">+25%</span></div><div class="per">score per kill <span class="tot">+120%</span></div></div>
+      </div>
+      <div class="row" id="infestation" style="--stripe:var(--epic)" data-hay="infestation infestation everything here breeds. kill them somewhere with room.">
+        <div class="r-name" data-anchor><span>INFESTATION</span><span class="r-key">infestation</span></div>
+        <div class="r-desc">Everything here breeds. Kill them somewhere with room.</div>
+        <div class="r-meta"><div class="per">wave size <span class="tot">-45%</span></div><div class="per">enemy health <span class="tot">-30%</span></div><div class="per">score per kill <span class="tot">+40%</span></div><div class="per">everything splits on death</div></div>
+      </div>
+      <div class="row" id="frenzy" style="--stripe:var(--epic)" data-hay="frenzy frenzy they come in a constant stream and never stop arriving.">
+        <div class="r-name" data-anchor><span>FRENZY</span><span class="r-key">frenzy</span></div>
+        <div class="r-desc">They come in a constant stream and never stop arriving.</div>
+        <div class="r-meta"><div class="per">enemy health <span class="tot">-25%</span></div><div class="per">concurrent cap <span class="tot">+80%</span></div><div class="per">score per kill <span class="tot">+35%</span></div><div class="per">spawn interval <span class="tot">-70%</span></div><div class="per">enemy speed <span class="tot">+10%</span></div></div>
+      </div>
+    </div>
+
+    <h2 id="compositions">Designed waves</h2>
+    <p>
+      A hand-picked roster instead of the usual weighted table. They start from
+      <b>wave 6</b> and roll at about <b>17%</b> on an
+      eligible wave, so they stay an event rather than a rotation.
+    </p>
+    <div class="rows">
+      <div class="row" id="siege" style="--stripe:var(--epic)"
+        data-hay="siege the siege armour, and plenty of it. few, slow, and very hard to move. brute bulwark nosferatu">
+        <div class="r-name" data-anchor><span>THE SIEGE</span><span class="r-key">siege</span></div>
+        <div class="r-desc">
+          <div>Armour, and plenty of it. Few, slow, and very hard to move.</div>
+          <div class="tot"><b>Answer:</b> Anything that flanks, pierces or ignores a guard. Four of them is a wave.</div>
+          <div class="per"><a href="bestiary.html#brute">Brute</a> <span class="tot">4</span> · <a href="bestiary.html#bulwark">Bulwark</a> <span class="tot">4</span> · <a href="bestiary.html#nosferatu">Nosferatu</a> <span class="tot">2</span></div>
+        </div>
+        <div class="r-meta">
+          <div class="per">wave size <span class="tot">-60%</span></div>
+          <div class="per">concurrent cap <span class="tot">-45%</span></div>
+          <div class="per">score <span class="tot">+35%</span></div>
+          <div class="dep">from <b>wave 9</b></div>
+        </div>
+      </div>
+      <div class="row" id="murmuration" style="--stripe:var(--epic)"
+        data-hay="murmuration murmuration all of it is airborne, all of it shoots, and none of it will come to you. bat hivemind wisp">
+        <div class="r-name" data-anchor><span>MURMURATION</span><span class="r-key">murmuration</span></div>
+        <div class="r-desc">
+          <div>All of it is airborne, all of it shoots, and none of it will come to you.</div>
+          <div class="tot"><b>Answer:</b> Close the distance, or swat the shots out of the air.</div>
+          <div class="per"><a href="bestiary.html#bat">Bat</a> <span class="tot">3</span> · <a href="bestiary.html#hivemind">Hivemind</a> <span class="tot">3</span> · <a href="bestiary.html#wisp">Wisp</a> <span class="tot">4</span></div>
+        </div>
+        <div class="r-meta">
+          <div class="per">wave size <span class="tot">+25%</span></div>
+          <div class="per">concurrent cap <span class="tot">+15%</span></div>
+          <div class="per">score <span class="tot">+25%</span></div>
+          <div class="dep">from <b>wave 12</b></div>
+        </div>
+      </div>
+      <div class="row" id="thehunt" style="--stripe:var(--epic)"
+        data-hay="thehunt the hunt everything here is faster than you and none of it stops. ravager sporeling toadstool">
+        <div class="r-name" data-anchor><span>THE HUNT</span><span class="r-key">thehunt</span></div>
+        <div class="r-desc">
+          <div>Everything here is faster than you and none of it stops.</div>
+          <div class="tot"><b>Answer:</b> Footwork. Nothing here can be out-damaged from a standstill.</div>
+          <div class="per"><a href="bestiary.html#ravager">Ravager</a> <span class="tot">4</span> · <a href="bestiary.html#sporeling">Sporeling</a> <span class="tot">2</span> · <a href="bestiary.html#toadstool">Toadstool</a> <span class="tot">4</span></div>
+        </div>
+        <div class="r-meta">
+          <div class="per">wave size <span class="tot">-15%</span></div>
+          <div class="per">concurrent cap <span class="tot">0%</span></div>
+          <div class="per">score <span class="tot">+30%</span></div>
+          <div class="dep">from <b>wave 6</b></div>
+        </div>
+      </div>
+      <div class="row" id="congregation" style="--stripe:var(--epic)"
+        data-hay="congregation the congregation they are keeping each other alive. decide what dies first. bonecaller mushroom vampire witchdoctor">
+        <div class="r-name" data-anchor><span>THE CONGREGATION</span><span class="r-key">congregation</span></div>
+        <div class="r-desc">
+          <div>They are keeping each other alive. Decide what dies first.</div>
+          <div class="tot"><b>Answer:</b> Target priority. Kill the supports or the wave refills faster than it empties.</div>
+          <div class="per"><a href="bestiary.html#bonecaller">Bonecaller</a> <span class="tot">3</span> · <a href="bestiary.html#mushroom">Mushroom</a> <span class="tot">4</span> · <a href="bestiary.html#vampire">Vampire</a> <span class="tot">3</span> · <a href="bestiary.html#witchdoctor">Witchdoctor</a> <span class="tot">3</span></div>
+        </div>
+        <div class="r-meta">
+          <div class="per">wave size <span class="tot">-10%</span></div>
+          <div class="per">concurrent cap <span class="tot">0%</span></div>
+          <div class="per">score <span class="tot">+40%</span></div>
+          <div class="dep">from <b>wave 14</b></div>
+        </div>
+      </div>
+      <div class="row" id="demolition" style="--stripe:var(--epic)"
+        data-hay="demolition demolition everything on this wave either explodes or divides. mind where you stand. bomber mushroom sporeling">
+        <div class="r-name" data-anchor><span>DEMOLITION</span><span class="r-key">demolition</span></div>
+        <div class="r-desc">
+          <div>Everything on this wave either explodes or divides. Mind where you stand.</div>
+          <div class="tot"><b>Answer:</b> Spacing. Everything on the field punishes killing it up close.</div>
+          <div class="per"><a href="bestiary.html#bomber">Bomber</a> <span class="tot">5</span> · <a href="bestiary.html#mushroom">Mushroom</a> <span class="tot">2</span> · <a href="bestiary.html#sporeling">Sporeling</a> <span class="tot">4</span></div>
+        </div>
+        <div class="r-meta">
+          <div class="per">wave size <span class="tot">-20%</span></div>
+          <div class="per">concurrent cap <span class="tot">-10%</span></div>
+          <div class="per">score <span class="tot">+30%</span></div>
+          <div class="dep">from <b>wave 7</b></div>
+        </div>
+      </div>
+      <div class="row" id="coven" style="--stripe:var(--epic)"
+        data-hay="coven the coven nothing but casters. every one of them is reaching for your feet. archmage evilwizard">
+        <div class="r-name" data-anchor><span>THE COVEN</span><span class="r-key">coven</span></div>
+        <div class="r-desc">
+          <div>Nothing but casters. Every one of them is reaching for your feet.</div>
+          <div class="tot"><b>Answer:</b> Do not get chained. Every one of them is a root somewhere on the map.</div>
+          <div class="per"><a href="bestiary.html#archmage">Archmage</a> <span class="tot">3</span> · <a href="bestiary.html#evilwizard">EvilWizard</a> <span class="tot">4</span></div>
+        </div>
+        <div class="r-meta">
+          <div class="per">wave size <span class="tot">-55%</span></div>
+          <div class="per">concurrent cap <span class="tot">-45%</span></div>
+          <div class="per">score <span class="tot">+45%</span></div>
+          <div class="dep">from <b>wave 13</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="note"><b>Every entry pays for its roster.</b> A wave of nothing but Bulwarks
+  and Brutes at the normal count is not a themed wave, it is a wall — so THE SIEGE runs at a
+  fraction of the usual number with a tighter concurrent cap, while MURMURATION, built from things
+  that die to a glance, runs above it. A composition is a different <b>shape</b> of wave, not a
+  harder one, and the score multiplier is what it pays you for the trouble.
+  <br><br>
+  <b>The same two safety rails as an ordinary wave still apply</b>: members are filtered against
+  their own unlock waves, and the concurrent caps hold — so THE CONGREGATION cannot put four
+  healers on the field however its weights fall. If every member of a rolled composition turns out
+  to be locked or capped, the spawn table falls back to the normal one, because a wave that spawns
+  nothing never ends.
+  <br><br>
+  They are <b>events</b>, not a per-wave roll: never two waves running, and never on a wave that
+  already carries a modifier. Two banners at once is two things to read and no time to read
+  either.</div>
+
+    <h2 id="elites">Elites</h2>
+    <div class="note">Any ordinary spawn can arrive <b>crowned</b>: more health, more damage,
+  a visible crown and a wider health bar, and a much better drop. They are a fight you can choose
+  to take or leave, and the reward is scaled so that taking one is usually correct but never
+  free. Bosses are never elite — they are already the exception to the health multipliers.</div>
+
+    <h2 id="bossrot">Boss waves</h2>
+    <p>
+      Every tenth wave, in a fixed order: <b>wave 10</b> is <a href="bosses.html#dreadsovereign">DREAD SOVEREIGN</a>, <b>wave 20</b> is <a href="bosses.html#palerevenant">PALE REVENANT</a>, then it cycles.
+    </p>
+    <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

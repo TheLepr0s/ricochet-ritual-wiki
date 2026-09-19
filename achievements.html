@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en" data-page="achievements-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Achievements · Ricochet Ritual</title>
+<meta name="description" content="All 120, hidden ones included, with the counter behind each.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="achievements-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="classes.html"><em>⚑</em>Classes</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html" aria-current="page"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <h1>Achievements</h1>
+      <p>All 120, hidden ones included, with the counter behind each.</p>
+    </div>
+    <div class="counts">
+      <div class="count"><b>120</b><span>total</span></div>
+      <div class="count"><b>34</b><span>single run</span></div>
+      <div class="count"><b>86</b><span>lifetime</span></div>
+      <div class="count"><b>4</b><span>HARD only</span></div>
+      <div class="count"><b>26</b><span>hidden</span></div>
+    </div>
+
+    <div class="toolbar">
+      <input class="filter" id="page-filter" type="search" placeholder="Filter achievements…" autocomplete="off" aria-label="Filter this page">
+      <div id="page-chips"><button type="button" class="chip" data-attr="run" aria-pressed="false">single run</button><button type="button" class="chip" data-attr="hard" aria-pressed="false">HARD only</button><button type="button" class="chip" data-attr="hidden" aria-pressed="false">hidden</button></div>
+      <span class="hits" id="page-hits"></span>
+    </div>
+
+    <div class="note">
+      <b>Hidden ones are listed here anyway.</b> A wiki that omits them is a wiki you stop trusting
+      the moment you find one it did not mention. They are hidden <em>in the game</em>, which is
+      where the surprise belongs.
+      <br><br>
+      Every one is backed by a counter with a stable id, so progress survives a rename and nothing
+      is ever revoked once earned — a reconcile pass grants retroactively but never takes back.
+    </div>
+
+    <div class="rows">
+      <div class="row" id="ach-first-blood" style="--stripe:var(--uncommon)"
+        data-hay="ach_first_blood first blood kill your first enemy. kills"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>First Blood</span><span class="r-key">ACH_FIRST_BLOOD</span></div>
+        <div class="r-desc">Kill your first enemy.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>kills</code></div></div>
+      </div>
+      <div class="row" id="ach-hundred" style="--stripe:var(--uncommon)"
+        data-hay="ach_hundred culling kill 100 enemies in total. kills"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Culling</span><span class="r-key">ACH_HUNDRED</span></div>
+        <div class="r-desc">Kill 100 enemies in total.</div>
+        <div class="r-meta"><div class="per">target <b>100</b></div><div class="tot">lifetime</div><div class="tot"><code>kills</code></div></div>
+      </div>
+      <div class="row" id="ach-exterminator" style="--stripe:var(--uncommon)"
+        data-hay="ach_exterminator exterminator kill 1,000 enemies in total. kills"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Exterminator</span><span class="r-key">ACH_EXTERMINATOR</span></div>
+        <div class="r-desc">Kill 1,000 enemies in total.</div>
+        <div class="r-meta"><div class="per">target <b>1,000</b></div><div class="tot">lifetime</div><div class="tot"><code>kills</code></div></div>
+      </div>
+      <div class="row" id="ach-ritualist" style="--stripe:var(--uncommon)"
+        data-hay="ach_ritualist ritualist kill 5,000 enemies in total. kills"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Ritualist</span><span class="r-key">ACH_RITUALIST</span></div>
+        <div class="r-desc">Kill 5,000 enemies in total.</div>
+        <div class="r-meta"><div class="per">target <b>5,000</b></div><div class="tot">lifetime</div><div class="tot"><code>kills</code></div></div>
+      </div>
+      <div class="row" id="ach-wave-5" style="--stripe:var(--rare)"
+        data-hay="ach_wave_5 finding a rhythm reach wave 5. wave"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Finding a Rhythm</span><span class="r-key">ACH_WAVE_5</span></div>
+        <div class="r-desc">Reach wave 5.</div>
+        <div class="r-meta"><div class="per">target <b>5</b></div><div class="tot">single run</div><div class="tot"><code>wave</code></div></div>
+      </div>
+      <div class="row" id="ach-wave-10" style="--stripe:var(--rare)"
+        data-hay="ach_wave_10 double digits reach wave 10. wave"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Double Digits</span><span class="r-key">ACH_WAVE_10</span></div>
+        <div class="r-desc">Reach wave 10.</div>
+        <div class="r-meta"><div class="per">target <b>10</b></div><div class="tot">single run</div><div class="tot"><code>wave</code></div></div>
+      </div>
+      <div class="row" id="ach-wave-15" style="--stripe:var(--rare)"
+        data-hay="ach_wave_15 deep ritual reach wave 15. wave"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Deep Ritual</span><span class="r-key">ACH_WAVE_15</span></div>
+        <div class="r-desc">Reach wave 15.</div>
+        <div class="r-meta"><div class="per">target <b>15</b></div><div class="tot">single run</div><div class="tot"><code>wave</code></div></div>
+      </div>
+      <div class="row" id="ach-wave-20" style="--stripe:var(--rare)"
+        data-hay="ach_wave_20 unbroken circle reach wave 20. wave"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Unbroken Circle</span><span class="r-key">ACH_WAVE_20</span></div>
+        <div class="r-desc">Reach wave 20.</div>
+        <div class="r-meta"><div class="per">target <b>20</b></div><div class="tot">single run</div><div class="tot"><code>wave</code></div></div>
+      </div>
+      <div class="row" id="ach-hard-wave-5" style="--stripe:var(--warn)"
+        data-hay="ach_hard_wave_5 trial by fire reach wave 5 on hard. wave"
+        data-hidden="0" data-run="1" data-hard="1">
+        <div class="r-name" data-anchor><span>Trial by Fire</span><span class="r-key">ACH_HARD_WAVE_5</span></div>
+        <div class="r-desc">Reach wave 5 on HARD.</div>
+        <div class="r-meta"><div class="per">target <b>5</b></div><div class="tot">single run</div><div class="dep flag"><b>HARD only</b></div><div class="tot"><code>wave</code></div></div>
+      </div>
+      <div class="row" id="ach-hard-wave-10" style="--stripe:var(--warn)"
+        data-hay="ach_hard_wave_10 tempered reach wave 10 on hard. wave"
+        data-hidden="0" data-run="1" data-hard="1">
+        <div class="r-name" data-anchor><span>Tempered</span><span class="r-key">ACH_HARD_WAVE_10</span></div>
+        <div class="r-desc">Reach wave 10 on HARD.</div>
+        <div class="r-meta"><div class="per">target <b>10</b></div><div class="tot">single run</div><div class="dep flag"><b>HARD only</b></div><div class="tot"><code>wave</code></div></div>
+      </div>
+      <div class="row" id="ach-hard-wave-20" style="--stripe:var(--warn)"
+        data-hay="ach_hard_wave_20 unmaker reach wave 20 on hard. wave"
+        data-hidden="0" data-run="1" data-hard="1">
+        <div class="r-name" data-anchor><span>Unmaker</span><span class="r-key">ACH_HARD_WAVE_20</span></div>
+        <div class="r-desc">Reach wave 20 on HARD.</div>
+        <div class="r-meta"><div class="per">target <b>20</b></div><div class="tot">single run</div><div class="dep flag"><b>HARD only</b></div><div class="tot"><code>wave</code></div></div>
+      </div>
+      <div class="row" id="ach-combo-25" style="--stripe:var(--rare)"
+        data-hay="ach_combo_25 on a roll reach a x25 combo. combo"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>On a Roll</span><span class="r-key">ACH_COMBO_25</span></div>
+        <div class="r-desc">Reach a x25 combo.</div>
+        <div class="r-meta"><div class="per">target <b>25</b></div><div class="tot">single run</div><div class="tot"><code>combo</code></div></div>
+      </div>
+      <div class="row" id="ach-combo-50" style="--stripe:var(--rare)"
+        data-hay="ach_combo_50 pinball wizard reach a x50 combo. combo"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Pinball Wizard</span><span class="r-key">ACH_COMBO_50</span></div>
+        <div class="r-desc">Reach a x50 combo.</div>
+        <div class="r-meta"><div class="per">target <b>50</b></div><div class="tot">single run</div><div class="tot"><code>combo</code></div></div>
+      </div>
+      <div class="row" id="ach-combo-100" style="--stripe:var(--rare)"
+        data-hay="ach_combo_100 perpetual motion reach a x100 combo. combo"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Perpetual Motion</span><span class="r-key">ACH_COMBO_100</span></div>
+        <div class="r-desc">Reach a x100 combo.</div>
+        <div class="r-meta"><div class="per">target <b>100</b></div><div class="tot">single run</div><div class="tot"><code>combo</code></div></div>
+      </div>
+      <div class="row" id="ach-clean-wave" style="--stripe:var(--rare)"
+        data-hay="ach_clean_wave untouchable clear a wave past wave 3 without being hit. cleanwaves"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Untouchable</span><span class="r-key">ACH_CLEAN_WAVE</span></div>
+        <div class="r-desc">Clear a wave past wave 3 without being hit.</div>
+        <div class="r-meta"><div class="tot">single run</div><div class="tot"><code>cleanwaves</code></div></div>
+      </div>
+      <div class="row" id="ach-clean-streak" style="--stripe:var(--rare)"
+        data-hay="ach_clean_streak ghost clear 5 waves in a row without being hit. cleanstreak"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Ghost</span><span class="r-key">ACH_CLEAN_STREAK</span></div>
+        <div class="r-desc">Clear 5 waves in a row without being hit.</div>
+        <div class="r-meta"><div class="per">target <b>5</b></div><div class="tot">single run</div><div class="tot"><code>cleanstreak</code></div></div>
+      </div>
+      <div class="row" id="ach-flawless-10" style="--stripe:var(--rare)"
+        data-hay="ach_flawless_10 flawless reach wave 10 without taking a single hit. flawlesswave"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Flawless</span><span class="r-key">ACH_FLAWLESS_10</span></div>
+        <div class="r-desc">Reach wave 10 without taking a single hit.</div>
+        <div class="r-meta"><div class="per">target <b>10</b></div><div class="tot">single run</div><div class="tot"><code>flawlesswave</code></div></div>
+      </div>
+      <div class="row" id="ach-legendary" style="--stripe:var(--uncommon)"
+        data-hay="ach_legendary ascendant take a legendary upgrade. legendaries"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Ascendant</span><span class="r-key">ACH_LEGENDARY</span></div>
+        <div class="r-desc">Take a legendary upgrade.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>legendaries</code></div></div>
+      </div>
+      <div class="row" id="ach-collector" style="--stripe:var(--rare)"
+        data-hay="ach_collector collector take 20 upgrades in a single run. upgrades"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Collector</span><span class="r-key">ACH_COLLECTOR</span></div>
+        <div class="r-desc">Take 20 upgrades in a single run.</div>
+        <div class="r-meta"><div class="per">target <b>20</b></div><div class="tot">single run</div><div class="tot"><code>upgrades</code></div></div>
+      </div>
+      <div class="row" id="ach-hoarder" style="--stripe:var(--rare)"
+        data-hay="ach_hoarder overloaded take 40 upgrades in a single run. upgrades"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Overloaded</span><span class="r-key">ACH_HOARDER</span></div>
+        <div class="r-desc">Take 40 upgrades in a single run.</div>
+        <div class="r-meta"><div class="per">target <b>40</b></div><div class="tot">single run</div><div class="tot"><code>upgrades</code></div></div>
+      </div>
+      <div class="row" id="ach-menagerie" style="--stripe:var(--rare)"
+        data-hay="ach_menagerie menagerie have the owl and the demon at once. bothpets"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Menagerie</span><span class="r-key">ACH_MENAGERIE</span></div>
+        <div class="r-desc">Have the owl and the demon at once.</div>
+        <div class="r-meta"><div class="tot">single run</div><div class="tot"><code>bothpets</code></div></div>
+      </div>
+      <div class="row" id="ach-purist" style="--stripe:var(--rare)"
+        data-hay="ach_purist purist reach wave 10 without rerolling or banishing. puristwave"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Purist</span><span class="r-key">ACH_PURIST</span></div>
+        <div class="r-desc">Reach wave 10 without rerolling or banishing.</div>
+        <div class="r-meta"><div class="per">target <b>10</b></div><div class="tot">single run</div><div class="tot"><code>puristwave</code></div></div>
+      </div>
+      <div class="row" id="ach-wizard-slayer" style="--stripe:var(--uncommon)"
+        data-hay="ach_wizard_slayer wizard slayer kill 50 evil wizards. kills_wizard"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Wizard Slayer</span><span class="r-key">ACH_WIZARD_SLAYER</span></div>
+        <div class="r-desc">Kill 50 evil wizards.</div>
+        <div class="r-meta"><div class="per">target <b>50</b></div><div class="tot">lifetime</div><div class="tot"><code>kills_wizard</code></div></div>
+      </div>
+      <div class="row" id="ach-bomb-disposal" style="--stripe:var(--uncommon)"
+        data-hay="ach_bomb_disposal bomb disposal kill 50 bombers. kills_bomber"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Bomb Disposal</span><span class="r-key">ACH_BOMB_DISPOSAL</span></div>
+        <div class="r-desc">Kill 50 bombers.</div>
+        <div class="r-meta"><div class="per">target <b>50</b></div><div class="tot">lifetime</div><div class="tot"><code>kills_bomber</code></div></div>
+      </div>
+      <div class="row" id="ach-stake" style="--stripe:var(--uncommon)"
+        data-hay="ach_stake stake through it kill 50 vampires. kills_vampire"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Stake Through It</span><span class="r-key">ACH_STAKE</span></div>
+        <div class="r-desc">Kill 50 vampires.</div>
+        <div class="r-meta"><div class="per">target <b>50</b></div><div class="tot">lifetime</div><div class="tot"><code>kills_vampire</code></div></div>
+      </div>
+      <div class="row" id="ach-blink" style="--stripe:var(--uncommon)"
+        data-hay="ach_blink here and gone blink 250 times. blinks"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Here and Gone</span><span class="r-key">ACH_BLINK</span></div>
+        <div class="r-desc">Blink 250 times.</div>
+        <div class="r-meta"><div class="per">target <b>250</b></div><div class="tot">lifetime</div><div class="tot"><code>blinks</code></div></div>
+      </div>
+      <div class="row" id="ach-veteran" style="--stripe:var(--uncommon)"
+        data-hay="ach_veteran veteran play 25 runs. runs"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Veteran</span><span class="r-key">ACH_VETERAN</span></div>
+        <div class="r-desc">Play 25 runs.</div>
+        <div class="r-meta"><div class="per">target <b>25</b></div><div class="tot">lifetime</div><div class="tot"><code>runs</code></div></div>
+      </div>
+      <div class="row" id="ach-hubris" style="--stripe:var(--epic)"
+        data-hay="ach_hubris hubris die on wave 1. diedwave1"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Hubris</span><span class="r-key">ACH_HUBRIS</span></div>
+        <div class="r-desc">Die on wave 1.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>diedwave1</code></div></div>
+      </div>
+      <div class="row" id="ach-wave-30" style="--stripe:var(--rare)"
+        data-hay="ach_wave_30 no such thing reach wave 30. wave"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>No Such Thing</span><span class="r-key">ACH_WAVE_30</span></div>
+        <div class="r-desc">Reach wave 30.</div>
+        <div class="r-meta"><div class="per">target <b>30</b></div><div class="tot">single run</div><div class="tot"><code>wave</code></div></div>
+      </div>
+      <div class="row" id="ach-myriad" style="--stripe:var(--uncommon)"
+        data-hay="ach_myriad myriad kill 10,000 enemies in total. kills"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Myriad</span><span class="r-key">ACH_MYRIAD</span></div>
+        <div class="r-desc">Kill 10,000 enemies in total.</div>
+        <div class="r-meta"><div class="per">target <b>10,000</b></div><div class="tot">lifetime</div><div class="tot"><code>kills</code></div></div>
+      </div>
+      <div class="row" id="ach-centurion" style="--stripe:var(--uncommon)"
+        data-hay="ach_centurion centurion play 100 runs. runs"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Centurion</span><span class="r-key">ACH_CENTURION</span></div>
+        <div class="r-desc">Play 100 runs.</div>
+        <div class="r-meta"><div class="per">target <b>100</b></div><div class="tot">lifetime</div><div class="tot"><code>runs</code></div></div>
+      </div>
+      <div class="row" id="ach-marathon" style="--stripe:var(--rare)"
+        data-hay="ach_marathon long night survive 10 minutes in a single run. survived10m"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Long Night</span><span class="r-key">ACH_MARATHON</span></div>
+        <div class="r-desc">Survive 10 minutes in a single run.</div>
+        <div class="r-meta"><div class="tot">single run</div><div class="tot"><code>survived10m</code></div></div>
+      </div>
+      <div class="row" id="ach-combo-150" style="--stripe:var(--rare)"
+        data-hay="ach_combo_150 unstoppable reach a x150 combo. combo"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Unstoppable</span><span class="r-key">ACH_COMBO_150</span></div>
+        <div class="r-desc">Reach a x150 combo.</div>
+        <div class="r-meta"><div class="per">target <b>150</b></div><div class="tot">single run</div><div class="tot"><code>combo</code></div></div>
+      </div>
+      <div class="row" id="ach-score-50k" style="--stripe:var(--uncommon)"
+        data-hay="ach_score_50k scoreboard finish a run with 50,000 points. score50k"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Scoreboard</span><span class="r-key">ACH_SCORE_50K</span></div>
+        <div class="r-desc">Finish a run with 50,000 points.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>score50k</code></div></div>
+      </div>
+      <div class="row" id="ach-score-250k" style="--stripe:var(--uncommon)"
+        data-hay="ach_score_250k ritual mastery finish a run with 250,000 points. score250k"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Ritual Mastery</span><span class="r-key">ACH_SCORE_250K</span></div>
+        <div class="r-desc">Finish a run with 250,000 points.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>score250k</code></div></div>
+      </div>
+      <div class="row" id="ach-twins" style="--stripe:var(--uncommon)"
+        data-hay="ach_twins double or nothing take twin orbs. twinorbs"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Double or Nothing</span><span class="r-key">ACH_TWINS</span></div>
+        <div class="r-desc">Take Twin Orbs.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>twinorbs</code></div></div>
+      </div>
+      <div class="row" id="ach-disco" style="--stripe:var(--rare)"
+        data-hay="ach_disco disco inferno have four mirror ball shards orbiting at once. discoball"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Disco Inferno</span><span class="r-key">ACH_DISCO</span></div>
+        <div class="r-desc">Have four Mirror Ball shards orbiting at once.</div>
+        <div class="r-meta"><div class="tot">single run</div><div class="tot"><code>discoball</code></div></div>
+      </div>
+      <div class="row" id="ach-deflector" style="--stripe:var(--uncommon)"
+        data-hay="ach_deflector return to sender swat 100 enemy projectiles with aegis. deflected"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Return to Sender</span><span class="r-key">ACH_DEFLECTOR</span></div>
+        <div class="r-desc">Swat 100 enemy projectiles with Aegis.</div>
+        <div class="r-meta"><div class="per">target <b>100</b></div><div class="tot">lifetime</div><div class="tot"><code>deflected</code></div></div>
+      </div>
+      <div class="row" id="ach-thorns" style="--stripe:var(--uncommon)"
+        data-hay="ach_thorns spite kill 25 enemies with thornmail. thornkills"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Spite</span><span class="r-key">ACH_THORNS</span></div>
+        <div class="r-desc">Kill 25 enemies with Thornmail.</div>
+        <div class="r-meta"><div class="per">target <b>25</b></div><div class="tot">lifetime</div><div class="tot"><code>thornkills</code></div></div>
+      </div>
+      <div class="row" id="ach-shattered" style="--stripe:var(--uncommon)"
+        data-hay="ach_shattered butterfingers shatter a glass cannon orb 50 times. shatters"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Butterfingers</span><span class="r-key">ACH_SHATTERED</span></div>
+        <div class="r-desc">Shatter a Glass Cannon orb 50 times.</div>
+        <div class="r-meta"><div class="per">target <b>50</b></div><div class="tot">lifetime</div><div class="tot"><code>shatters</code></div></div>
+      </div>
+      <div class="row" id="ach-phaser" style="--stripe:var(--uncommon)"
+        data-hay="ach_phaser out of phase ghost through 50 enemies with phase shot. phased"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Out of Phase</span><span class="r-key">ACH_PHASER</span></div>
+        <div class="r-desc">Ghost through 50 enemies with Phase Shot.</div>
+        <div class="r-meta"><div class="per">target <b>50</b></div><div class="tot">lifetime</div><div class="tot"><code>phased</code></div></div>
+      </div>
+      <div class="row" id="ach-catcher" style="--stripe:var(--rare)"
+        data-hay="ach_catcher safe hands catch your orb 100 times in a single run. catches"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Safe Hands</span><span class="r-key">ACH_CATCHER</span></div>
+        <div class="r-desc">Catch your orb 100 times in a single run.</div>
+        <div class="r-meta"><div class="per">target <b>100</b></div><div class="tot">single run</div><div class="tot"><code>catches</code></div></div>
+      </div>
+      <div class="row" id="ach-fetch" style="--stripe:var(--rare)"
+        data-hay="ach_fetch fetch recall your orb 50 times in a single run. recalls"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Fetch</span><span class="r-key">ACH_FETCH</span></div>
+        <div class="r-desc">Recall your orb 50 times in a single run.</div>
+        <div class="r-meta"><div class="per">target <b>50</b></div><div class="tot">single run</div><div class="tot"><code>recalls</code></div></div>
+      </div>
+      <div class="row" id="ach-kamikaze" style="--stripe:var(--epic)"
+        data-hay="ach_kamikaze hoist by their own petard get blown up by a kamikaze skeleton. diedtobomber"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Hoist by Their Own Petard</span><span class="r-key">ACH_KAMIKAZE</span></div>
+        <div class="r-desc">Get blown up by a kamikaze skeleton.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>diedtobomber</code></div></div>
+      </div>
+      <div class="row" id="ach-blood-bank" style="--stripe:var(--epic)"
+        data-hay="ach_blood_bank blood bank let one vampire drink from near death back to full health. vampfullheal"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Blood Bank</span><span class="r-key">ACH_BLOOD_BANK</span></div>
+        <div class="r-desc">Let one vampire drink from near death back to full health.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>vampfullheal</code></div></div>
+      </div>
+      <div class="row" id="ach-any-percent" style="--stripe:var(--epic)"
+        data-hay="ach_any_percent any% (failed) die within 30 seconds of starting a run. fastdeath"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Any% (Failed)</span><span class="r-key">ACH_ANY_PERCENT</span></div>
+        <div class="r-desc">Die within 30 seconds of starting a run.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>fastdeath</code></div></div>
+      </div>
+      <div class="row" id="ach-what-point" style="--stripe:var(--epic)"
+        data-hay="ach_what_point what was the point die within 3 seconds of second wind saving you. wastedwind"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>What Was The Point</span><span class="r-key">ACH_WHAT_POINT</span></div>
+        <div class="r-desc">Die within 3 seconds of Second Wind saving you.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>wastedwind</code></div></div>
+      </div>
+      <div class="row" id="ach-paper-thin" style="--stripe:var(--epic)"
+        data-hay="ach_paper_thin paper thin clear a wave sitting on exactly 1 hp. onehpwave"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Paper Thin</span><span class="r-key">ACH_PAPER_THIN</span></div>
+        <div class="r-desc">Clear a wave sitting on exactly 1 HP.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>onehpwave</code></div></div>
+      </div>
+      <div class="row" id="ach-long-distance" style="--stripe:var(--epic)"
+        data-hay="ach_long_distance long-distance relationship get your orb 1500px away from you. farorb"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Long-Distance Relationship</span><span class="r-key">ACH_LONG_DISTANCE</span></div>
+        <div class="r-desc">Get your orb 1500px away from you.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>farorb</code></div></div>
+      </div>
+      <div class="row" id="ach-nice" style="--stripe:var(--epic)"
+        data-hay="ach_nice nice reach a x69 combo. combo"
+        data-hidden="1" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Nice</span><span class="r-key">ACH_NICE</span></div>
+        <div class="r-desc">Reach a x69 combo.</div>
+        <div class="r-meta"><div class="per">target <b>69</b></div><div class="tot">single run</div><div class="dep">hidden until earned</div><div class="tot"><code>combo</code></div></div>
+      </div>
+      <div class="row" id="ach-not-like-this" style="--stripe:var(--epic)"
+        data-hay="ach_not_like_this not like this open the cheat menu. cheated"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Not Like This</span><span class="r-key">ACH_NOT_LIKE_THIS</span></div>
+        <div class="r-desc">Open the cheat menu.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>cheated</code></div></div>
+      </div>
+      <div class="row" id="ach-utility-first" style="--stripe:var(--uncommon)"
+        data-hay="ach_utility_first hands on take your first utility ability. utilitytaken"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Hands On</span><span class="r-key">ACH_UTILITY_FIRST</span></div>
+        <div class="r-desc">Take your first utility ability.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>utilitytaken</code></div></div>
+      </div>
+      <div class="row" id="ach-utility-100" style="--stripe:var(--uncommon)"
+        data-hay="ach_utility_100 button masher use utility abilities 100 times. utilityused"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Button Masher</span><span class="r-key">ACH_UTILITY_100</span></div>
+        <div class="r-desc">Use utility abilities 100 times.</div>
+        <div class="r-meta"><div class="per">target <b>100</b></div><div class="tot">lifetime</div><div class="tot"><code>utilityused</code></div></div>
+      </div>
+      <div class="row" id="ach-indecisive" style="--stripe:var(--epic)"
+        data-hay="ach_indecisive commitment issues swap your utility ability 10 times. utilityswaps"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Commitment Issues</span><span class="r-key">ACH_INDECISIVE</span></div>
+        <div class="r-desc">Swap your utility ability 10 times.</div>
+        <div class="r-meta"><div class="per">target <b>10</b></div><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>utilityswaps</code></div></div>
+      </div>
+      <div class="row" id="ach-weedkiller" style="--stripe:var(--uncommon)"
+        data-hay="ach_weedkiller weedkiller kill 100 toadstools. kills_toadstool"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Weedkiller</span><span class="r-key">ACH_WEEDKILLER</span></div>
+        <div class="r-desc">Kill 100 toadstools.</div>
+        <div class="r-meta"><div class="per">target <b>100</b></div><div class="tot">lifetime</div><div class="tot"><code>kills_toadstool</code></div></div>
+      </div>
+      <div class="row" id="ach-giant-slayer" style="--stripe:var(--uncommon)"
+        data-hay="ach_giant_slayer giant slayer kill 25 brutes. kills_brute"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Giant Slayer</span><span class="r-key">ACH_GIANT_SLAYER</span></div>
+        <div class="r-desc">Kill 25 brutes.</div>
+        <div class="r-meta"><div class="per">target <b>25</b></div><div class="tot">lifetime</div><div class="tot"><code>kills_brute</code></div></div>
+      </div>
+      <div class="row" id="ach-ghostbuster" style="--stripe:var(--uncommon)"
+        data-hay="ach_ghostbuster ghostbuster kill 50 wisps. kills_wisp"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Ghostbuster</span><span class="r-key">ACH_GHOSTBUSTER</span></div>
+        <div class="r-desc">Kill 50 wisps.</div>
+        <div class="r-meta"><div class="per">target <b>50</b></div><div class="tot">lifetime</div><div class="tot"><code>kills_wisp</code></div></div>
+      </div>
+      <div class="row" id="ach-count-no-more" style="--stripe:var(--uncommon)"
+        data-hay="ach_count_no_more count no more kill 25 nosferatu. kills_nosferatu"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Count No More</span><span class="r-key">ACH_COUNT_NO_MORE</span></div>
+        <div class="r-desc">Kill 25 nosferatu.</div>
+        <div class="r-meta"><div class="per">target <b>25</b></div><div class="tot">lifetime</div><div class="tot"><code>kills_nosferatu</code></div></div>
+      </div>
+      <div class="row" id="ach-archnemesis" style="--stripe:var(--uncommon)"
+        data-hay="ach_archnemesis archnemesis kill 25 archmages. kills_archmage"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Archnemesis</span><span class="r-key">ACH_ARCHNEMESIS</span></div>
+        <div class="r-desc">Kill 25 archmages.</div>
+        <div class="r-meta"><div class="per">target <b>25</b></div><div class="tot">lifetime</div><div class="tot"><code>kills_archmage</code></div></div>
+      </div>
+      <div class="row" id="ach-bestiary" style="--stripe:var(--uncommon)"
+        data-hay="ach_bestiary full bestiary kill at least one of every enemy type. bestiary"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Full Bestiary</span><span class="r-key">ACH_BESTIARY</span></div>
+        <div class="r-desc">Kill at least one of every enemy type.</div>
+        <div class="r-meta"><div class="per">target <b>16</b></div><div class="tot">lifetime</div><div class="tot"><code>bestiary</code></div></div>
+      </div>
+      <div class="row" id="ach-seeker-chain" style="--stripe:var(--rare)"
+        data-hay="ach_seeker_chain chain reaction redirect a single throw through 5 enemies. seekchain"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Chain Reaction</span><span class="r-key">ACH_SEEKER_CHAIN</span></div>
+        <div class="r-desc">Redirect a single throw through 5 enemies.</div>
+        <div class="r-meta"><div class="per">target <b>5</b></div><div class="tot">single run</div><div class="tot"><code>seekchain</code></div></div>
+      </div>
+      <div class="row" id="ach-pacifist" style="--stripe:var(--epic)"
+        data-hay="ach_pacifist conscientious objector clear a wave without landing a single orb hit. pacifistwave"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Conscientious Objector</span><span class="r-key">ACH_PACIFIST</span></div>
+        <div class="r-desc">Clear a wave without landing a single orb hit.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>pacifistwave</code></div></div>
+      </div>
+      <div class="row" id="ach-own-goal" style="--stripe:var(--epic)"
+        data-hay="ach_own_goal own goal nuke your orb while it is sitting in your hand. owngoal"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Own Goal</span><span class="r-key">ACH_OWN_GOAL</span></div>
+        <div class="r-desc">Nuke your orb while it is sitting in your hand.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>owngoal</code></div></div>
+      </div>
+      <div class="row" id="ach-shield-nothing" style="--stripe:var(--epic)"
+        data-hay="ach_shield_nothing just in case raise a forcefield with no enemies anywhere near you. shieldnothing"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Just In Case</span><span class="r-key">ACH_SHIELD_NOTHING</span></div>
+        <div class="r-desc">Raise a Forcefield with no enemies anywhere near you.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>shieldnothing</code></div></div>
+      </div>
+      <div class="row" id="ach-decoy-death" style="--stripe:var(--epic)"
+        data-hay="ach_decoy_death worked perfectly die while your decoy is still out there running. decoydeath"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Worked Perfectly</span><span class="r-key">ACH_DECOY_DEATH</span></div>
+        <div class="r-desc">Die while your Decoy is still out there running.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>decoydeath</code></div></div>
+      </div>
+      <div class="row" id="ach-rewind-worse" style="--stripe:var(--epic)"
+        data-hay="ach_rewind_worse that went well rewind into less health than you started with. rewindworse"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>That Went Well</span><span class="r-key">ACH_REWIND_WORSE</span></div>
+        <div class="r-desc">Rewind into less health than you started with.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>rewindworse</code></div></div>
+      </div>
+      <div class="row" id="ach-hoard-reroll" style="--stripe:var(--epic)"
+        data-hay="ach_hoard_reroll analysis paralysis reroll the same hand 5 times in one wave. rerollspam"
+        data-hidden="1" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Analysis Paralysis</span><span class="r-key">ACH_HOARD_REROLL</span></div>
+        <div class="r-desc">Reroll the same hand 5 times in one wave.</div>
+        <div class="r-meta"><div class="per">target <b>5</b></div><div class="tot">single run</div><div class="dep">hidden until earned</div><div class="tot"><code>rerollspam</code></div></div>
+      </div>
+      <div class="row" id="ach-banish-all" style="--stripe:var(--epic)"
+        data-hay="ach_banish_all not for me, thanks banish 10 cards in a single run. banishes"
+        data-hidden="1" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Not For Me, Thanks</span><span class="r-key">ACH_BANISH_ALL</span></div>
+        <div class="r-desc">Banish 10 cards in a single run.</div>
+        <div class="r-meta"><div class="per">target <b>10</b></div><div class="tot">single run</div><div class="dep">hidden until earned</div><div class="tot"><code>banishes</code></div></div>
+      </div>
+      <div class="row" id="ach-naked" style="--stripe:var(--epic)"
+        data-hay="ach_naked minimalist reach wave 8 having taken 5 upgrades or fewer. minimalist"
+        data-hidden="1" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Minimalist</span><span class="r-key">ACH_NAKED</span></div>
+        <div class="r-desc">Reach wave 8 having taken 5 upgrades or fewer.</div>
+        <div class="r-meta"><div class="tot">single run</div><div class="dep">hidden until earned</div><div class="tot"><code>minimalist</code></div></div>
+      </div>
+      <div class="row" id="ach-full-circle" style="--stripe:var(--epic)"
+        data-hay="ach_full_circle full circle die on the exact wave you last died on. samewave"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Full Circle</span><span class="r-key">ACH_FULL_CIRCLE</span></div>
+        <div class="r-desc">Die on the exact wave you last died on.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>samewave</code></div></div>
+      </div>
+      <div class="row" id="ach-headsman" style="--stripe:var(--uncommon)"
+        data-hay="ach_headsman headsman finish off 50 enemies with executioner. executes"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Headsman</span><span class="r-key">ACH_HEADSMAN</span></div>
+        <div class="r-desc">Finish off 50 enemies with Executioner.</div>
+        <div class="r-meta"><div class="per">target <b>50</b></div><div class="tot">lifetime</div><div class="tot"><code>executes</code></div></div>
+      </div>
+      <div class="row" id="ach-stonewalled" style="--stripe:var(--uncommon)"
+        data-hay="ach_stonewalled stonewalled absorb 50 hits with ward. wardblocks"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Stonewalled</span><span class="r-key">ACH_STONEWALLED</span></div>
+        <div class="r-desc">Absorb 50 hits with Ward.</div>
+        <div class="r-meta"><div class="per">target <b>50</b></div><div class="tot">lifetime</div><div class="tot"><code>wardblocks</code></div></div>
+      </div>
+      <div class="row" id="ach-soul-collector" style="--stripe:var(--uncommon)"
+        data-hay="ach_soul_collector soul collector harvest 100 souls. souls"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Soul Collector</span><span class="r-key">ACH_SOUL_COLLECTOR</span></div>
+        <div class="r-desc">Harvest 100 souls.</div>
+        <div class="r-meta"><div class="per">target <b>100</b></div><div class="tot">lifetime</div><div class="tot"><code>souls</code></div></div>
+      </div>
+      <div class="row" id="ach-cold-snap" style="--stripe:var(--uncommon)"
+        data-hay="ach_cold_snap cold snap shatter 100 frozen enemies with frostbite. frostbites"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Cold Snap</span><span class="r-key">ACH_COLD_SNAP</span></div>
+        <div class="r-desc">Shatter 100 frozen enemies with Frostbite.</div>
+        <div class="r-meta"><div class="per">target <b>100</b></div><div class="tot">lifetime</div><div class="tot"><code>frostbites</code></div></div>
+      </div>
+      <div class="row" id="ach-harmonics" style="--stripe:var(--uncommon)"
+        data-hay="ach_harmonics harmonics detonate 50 enemies with resonance. resonances"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Harmonics</span><span class="r-key">ACH_HARMONICS</span></div>
+        <div class="r-desc">Detonate 50 enemies with Resonance.</div>
+        <div class="r-meta"><div class="per">target <b>50</b></div><div class="tot">lifetime</div><div class="tot"><code>resonances</code></div></div>
+      </div>
+      <div class="row" id="ach-trick-shot" style="--stripe:var(--uncommon)"
+        data-hay="ach_trick_shot trick shot land a hit carrying a full five-bounce carom charge. caromfull"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Trick Shot</span><span class="r-key">ACH_TRICK_SHOT</span></div>
+        <div class="r-desc">Land a hit carrying a full five-bounce Carom charge.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>caromfull</code></div></div>
+      </div>
+      <div class="row" id="ach-sniper" style="--stripe:var(--uncommon)"
+        data-hay="ach_sniper sniper land an orb hit 1,000px away from yourself. longshot"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Sniper</span><span class="r-key">ACH_SNIPER</span></div>
+        <div class="r-desc">Land an orb hit 1,000px away from yourself.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>longshot</code></div></div>
+      </div>
+      <div class="row" id="ach-piercer" style="--stripe:var(--rare)"
+        data-hay="ach_piercer through and through plough through 6 enemies in one throw as a juggernaut. pierce"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Through and Through</span><span class="r-key">ACH_PIERCER</span></div>
+        <div class="r-desc">Plough through 6 enemies in one throw as a Juggernaut.</div>
+        <div class="r-meta"><div class="per">target <b>6</b></div><div class="tot">single run</div><div class="tot"><code>pierce</code></div></div>
+      </div>
+      <div class="row" id="ach-no-windup" style="--stripe:var(--uncommon)"
+        data-hay="ach_no_windup no wind-up take 100 backhand swings. backhands"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>No Wind-Up</span><span class="r-key">ACH_NO_WINDUP</span></div>
+        <div class="r-desc">Take 100 Backhand swings.</div>
+        <div class="r-meta"><div class="per">target <b>100</b></div><div class="tot">lifetime</div><div class="tot"><code>backhands</code></div></div>
+      </div>
+      <div class="row" id="ach-overkill" style="--stripe:var(--uncommon)"
+        data-hay="ach_overkill overkill deal 500 damage with a single orb hit. bighit500"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Overkill</span><span class="r-key">ACH_OVERKILL</span></div>
+        <div class="r-desc">Deal 500 damage with a single orb hit.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>bighit500</code></div></div>
+      </div>
+      <div class="row" id="ach-absurd" style="--stripe:var(--uncommon)"
+        data-hay="ach_absurd absolutely absurd deal 2,000 damage with a single orb hit. bighit2k"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Absolutely Absurd</span><span class="r-key">ACH_ABSURD</span></div>
+        <div class="r-desc">Deal 2,000 damage with a single orb hit.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>bighit2k</code></div></div>
+      </div>
+      <div class="row" id="ach-extinction" style="--stripe:var(--uncommon)"
+        data-hay="ach_extinction extinction event kill 6 enemies with one meteor. meteor6"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Extinction Event</span><span class="r-key">ACH_EXTINCTION</span></div>
+        <div class="r-desc">Kill 6 enemies with one Meteor.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>meteor6</code></div></div>
+      </div>
+      <div class="row" id="ach-turret-meta" style="--stripe:var(--uncommon)"
+        data-hay="ach_turret_meta turret meta fire 250 sentry shots. sentryshots"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Turret Meta</span><span class="r-key">ACH_TURRET_META</span></div>
+        <div class="r-desc">Fire 250 Sentry shots.</div>
+        <div class="r-meta"><div class="per">target <b>250</b></div><div class="tot">lifetime</div><div class="tot"><code>sentryshots</code></div></div>
+      </div>
+      <div class="row" id="ach-event-horizon" style="--stripe:var(--uncommon)"
+        data-hay="ach_event_horizon event horizon drag 12 enemies into a single singularity. singularity12"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Event Horizon</span><span class="r-key">ACH_EVENT_HORIZON</span></div>
+        <div class="r-desc">Drag 12 enemies into a single Singularity.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>singularity12</code></div></div>
+      </div>
+      <div class="row" id="ach-big-game" style="--stripe:var(--uncommon)"
+        data-hay="ach_big_game big game kill your first elite. elites"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Big Game</span><span class="r-key">ACH_BIG_GAME</span></div>
+        <div class="r-desc">Kill your first elite.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>elites</code></div></div>
+      </div>
+      <div class="row" id="ach-trophy-hunter" style="--stripe:var(--uncommon)"
+        data-hay="ach_trophy_hunter trophy hunter kill 100 elites. elites"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Trophy Hunter</span><span class="r-key">ACH_TROPHY_HUNTER</span></div>
+        <div class="r-desc">Kill 100 elites.</div>
+        <div class="r-meta"><div class="per">target <b>100</b></div><div class="tot">lifetime</div><div class="tot"><code>elites</code></div></div>
+      </div>
+      <div class="row" id="ach-wave-40" style="--stripe:var(--rare)"
+        data-hay="ach_wave_40 ritual without end reach wave 40. wave"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Ritual Without End</span><span class="r-key">ACH_WAVE_40</span></div>
+        <div class="r-desc">Reach wave 40.</div>
+        <div class="r-meta"><div class="per">target <b>40</b></div><div class="tot">single run</div><div class="tot"><code>wave</code></div></div>
+      </div>
+      <div class="row" id="ach-score-1m" style="--stripe:var(--uncommon)"
+        data-hay="ach_score_1m seven figures finish a run with 1,000,000 points. score1m"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Seven Figures</span><span class="r-key">ACH_SCORE_1M</span></div>
+        <div class="r-desc">Finish a run with 1,000,000 points.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>score1m</code></div></div>
+      </div>
+      <div class="row" id="ach-blitz" style="--stripe:var(--uncommon)"
+        data-hay="ach_blitz blitz clear a wave past wave 5 in under 20 seconds. blitzwave"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Blitz</span><span class="r-key">ACH_BLITZ</span></div>
+        <div class="r-desc">Clear a wave past wave 5 in under 20 seconds.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>blitzwave</code></div></div>
+      </div>
+      <div class="row" id="ach-whiff" style="--stripe:var(--epic)"
+        data-hay="ach_whiff swing and a miss call down a meteor with no enemies anywhere. meteorwhiff"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Swing and a Miss</span><span class="r-key">ACH_WHIFF</span></div>
+        <div class="r-desc">Call down a Meteor with no enemies anywhere.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>meteorwhiff</code></div></div>
+      </div>
+      <div class="row" id="ach-right-there" style="--stripe:var(--epic)"
+        data-hay="ach_right_there it was right there recall an orb that is already in your hands. pointlessrecall"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>It Was Right There</span><span class="r-key">ACH_RIGHT_THERE</span></div>
+        <div class="r-desc">Recall an orb that is already in your hands.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>pointlessrecall</code></div></div>
+      </div>
+      <div class="row" id="ach-statue" style="--stripe:var(--epic)"
+        data-hay="ach_statue statue stand perfectly still for 45 seconds with enemies alive. statue"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Statue</span><span class="r-key">ACH_STATUE</span></div>
+        <div class="r-desc">Stand perfectly still for 45 seconds with enemies alive.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>statue</code></div></div>
+      </div>
+      <div class="row" id="ach-group-project" style="--stripe:var(--epic)"
+        data-hay="ach_group_project group project get hit by three different enemies within two seconds. groupproject"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Group Project</span><span class="r-key">ACH_GROUP_PROJECT</span></div>
+        <div class="r-desc">Get hit by three different enemies within two seconds.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>groupproject</code></div></div>
+      </div>
+      <div class="row" id="ach-taking-time" style="--stripe:var(--epic)"
+        data-hay="ach_taking_time taking your time spend more than four minutes on a single wave. slowwave"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Taking Your Time</span><span class="r-key">ACH_TAKING_TIME</span></div>
+        <div class="r-desc">Spend more than four minutes on a single wave.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>slowwave</code></div></div>
+      </div>
+      <div class="row" id="ach-full-house" style="--stripe:var(--epic)"
+        data-hay="ach_full_house waste not harvest a soul while already on full health. wastedsoul"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Waste Not</span><span class="r-key">ACH_FULL_HOUSE</span></div>
+        <div class="r-desc">Harvest a soul while already on full health.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>wastedsoul</code></div></div>
+      </div>
+      <div class="row" id="ach-twist-first" style="--stripe:var(--uncommon)"
+        data-hay="ach_twist_first something's wrong clear your first modified wave. modwaves"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Something's Wrong</span><span class="r-key">ACH_TWIST_FIRST</span></div>
+        <div class="r-desc">Clear your first modified wave.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>modwaves</code></div></div>
+      </div>
+      <div class="row" id="ach-twist-25" style="--stripe:var(--uncommon)"
+        data-hay="ach_twist_25 change of plan clear 25 modified waves. modwaves"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Change of Plan</span><span class="r-key">ACH_TWIST_25</span></div>
+        <div class="r-desc">Clear 25 modified waves.</div>
+        <div class="r-meta"><div class="per">target <b>25</b></div><div class="tot">lifetime</div><div class="tot"><code>modwaves</code></div></div>
+      </div>
+      <div class="row" id="ach-twist-all" style="--stripe:var(--uncommon)"
+        data-hay="ach_twist_all seen it all clear a wave under every modifier. alltwists"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Seen It All</span><span class="r-key">ACH_TWIST_ALL</span></div>
+        <div class="r-desc">Clear a wave under every modifier.</div>
+        <div class="r-meta"><div class="per">target <b>8</b></div><div class="tot">lifetime</div><div class="tot"><code>alltwists</code></div></div>
+      </div>
+      <div class="row" id="ach-crowned" style="--stripe:var(--uncommon)"
+        data-hay="ach_crowned coronation clear an elite guard wave. mod_eliteguard"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Coronation</span><span class="r-key">ACH_CROWNED</span></div>
+        <div class="r-desc">Clear an Elite Guard wave.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>mod_eliteguard</code></div></div>
+      </div>
+      <div class="row" id="ach-moonlit" style="--stripe:var(--uncommon)"
+        data-hay="ach_moonlit moonlit clear a blood moon wave without being hit. cleanmodwave"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Moonlit</span><span class="r-key">ACH_MOONLIT</span></div>
+        <div class="r-desc">Clear a Blood Moon wave without being hit.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>cleanmodwave</code></div></div>
+      </div>
+      <div class="row" id="ach-own-petard" style="--stripe:var(--epic)"
+        data-hay="ach_own_petard last laugh get killed by an enemy you had already killed. killedbycorpse"
+        data-hidden="1" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Last Laugh</span><span class="r-key">ACH_OWN_PETARD</span></div>
+        <div class="r-desc">Get killed by an enemy you had already killed.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep">hidden until earned</div><div class="tot"><code>killedbycorpse</code></div></div>
+      </div>
+      <div class="row" id="ach-ascetic-10" style="--stripe:var(--rare)"
+        data-hay="ach_ascetic_10 ascetic reach wave 10 without taking a single upgrade. nakedwave"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Ascetic</span><span class="r-key">ACH_ASCETIC_10</span></div>
+        <div class="r-desc">Reach wave 10 without taking a single upgrade.</div>
+        <div class="r-meta"><div class="per">target <b>10</b></div><div class="tot">single run</div><div class="tot"><code>nakedwave</code></div></div>
+      </div>
+      <div class="row" id="ach-ascetic-50" style="--stripe:var(--rare)"
+        data-hay="ach_ascetic_50 vow of poverty reach wave 50 without taking a single upgrade. nakedwave"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Vow of Poverty</span><span class="r-key">ACH_ASCETIC_50</span></div>
+        <div class="r-desc">Reach wave 50 without taking a single upgrade.</div>
+        <div class="r-meta"><div class="per">target <b>50</b></div><div class="tot">single run</div><div class="tot"><code>nakedwave</code></div></div>
+      </div>
+      <div class="row" id="ach-ascetic-100" style="--stripe:var(--rare)"
+        data-hay="ach_ascetic_100 nothing but the orb reach wave 100 without taking a single upgrade. nakedwave"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Nothing but the Orb</span><span class="r-key">ACH_ASCETIC_100</span></div>
+        <div class="r-desc">Reach wave 100 without taking a single upgrade.</div>
+        <div class="r-meta"><div class="per">target <b>100</b></div><div class="tot">single run</div><div class="tot"><code>nakedwave</code></div></div>
+      </div>
+      <div class="row" id="ach-boss-first" style="--stripe:var(--uncommon)"
+        data-hay="ach_boss_first kingslayer kill your first dread sovereign. kills_sovereign"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Kingslayer</span><span class="r-key">ACH_BOSS_FIRST</span></div>
+        <div class="r-desc">Kill your first Dread Sovereign.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>kills_sovereign</code></div></div>
+      </div>
+      <div class="row" id="ach-boss-5" style="--stripe:var(--uncommon)"
+        data-hay="ach_boss_5 dynasty's end kill 5 bosses. bosses"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Dynasty's End</span><span class="r-key">ACH_BOSS_5</span></div>
+        <div class="r-desc">Kill 5 bosses.</div>
+        <div class="r-meta"><div class="per">target <b>5</b></div><div class="tot">lifetime</div><div class="tot"><code>bosses</code></div></div>
+      </div>
+      <div class="row" id="ach-boss-clean" style="--stripe:var(--uncommon)"
+        data-hay="ach_boss_clean flawless audience kill a boss without being hit that wave. cleanboss"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Flawless Audience</span><span class="r-key">ACH_BOSS_CLEAN</span></div>
+        <div class="r-desc">Kill a boss without being hit that wave.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>cleanboss</code></div></div>
+      </div>
+      <div class="row" id="ach-boss-hard" style="--stripe:var(--warn)"
+        data-hay="ach_boss_hard regicide kill a boss on hard. bosses"
+        data-hidden="0" data-run="0" data-hard="1">
+        <div class="r-name" data-anchor><span>Regicide</span><span class="r-key">ACH_BOSS_HARD</span></div>
+        <div class="r-desc">Kill a boss on HARD.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="dep flag"><b>HARD only</b></div><div class="tot"><code>bosses</code></div></div>
+      </div>
+      <div class="row" id="ach-boss-revenant" style="--stripe:var(--uncommon)"
+        data-hay="ach_boss_revenant outpaced kill your first pale revenant. kills_revenant"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Outpaced</span><span class="r-key">ACH_BOSS_REVENANT</span></div>
+        <div class="r-desc">Kill your first Pale Revenant.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>kills_revenant</code></div></div>
+      </div>
+      <div class="row" id="ach-boss-both" style="--stripe:var(--rare)"
+        data-hay="ach_boss_both both crowns kill both bosses in a single run. bossbrace"
+        data-hidden="0" data-run="1" data-hard="0">
+        <div class="r-name" data-anchor><span>Both Crowns</span><span class="r-key">ACH_BOSS_BOTH</span></div>
+        <div class="r-desc">Kill both bosses in a single run.</div>
+        <div class="r-meta"><div class="per">target <b>2</b></div><div class="tot">single run</div><div class="tot"><code>bossbrace</code></div></div>
+      </div>
+      <div class="row" id="ach-comp-first" style="--stripe:var(--uncommon)"
+        data-hay="ach_comp_first something organised clear your first designed wave. compwaves"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Something Organised</span><span class="r-key">ACH_COMP_FIRST</span></div>
+        <div class="r-desc">Clear your first designed wave.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>compwaves</code></div></div>
+      </div>
+      <div class="row" id="ach-comp-15" style="--stripe:var(--uncommon)"
+        data-hay="ach_comp_15 read the room clear 15 designed waves. compwaves"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Read the Room</span><span class="r-key">ACH_COMP_15</span></div>
+        <div class="r-desc">Clear 15 designed waves.</div>
+        <div class="r-meta"><div class="per">target <b>15</b></div><div class="tot">lifetime</div><div class="tot"><code>compwaves</code></div></div>
+      </div>
+      <div class="row" id="ach-comp-all" style="--stripe:var(--uncommon)"
+        data-hay="ach_comp_all order of battle clear a wave of every composition. allcomps"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Order of Battle</span><span class="r-key">ACH_COMP_ALL</span></div>
+        <div class="r-desc">Clear a wave of every composition.</div>
+        <div class="r-meta"><div class="per">target <b>6</b></div><div class="tot">lifetime</div><div class="tot"><code>allcomps</code></div></div>
+      </div>
+      <div class="row" id="ach-siege-clean" style="--stripe:var(--uncommon)"
+        data-hay="ach_siege_clean immovable clear a siege without being hit. cleansiege"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Immovable</span><span class="r-key">ACH_SIEGE_CLEAN</span></div>
+        <div class="r-desc">Clear a Siege without being hit.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>cleansiege</code></div></div>
+      </div>
+      <div class="row" id="ach-kill-ravager" style="--stripe:var(--uncommon)"
+        data-hay="ach_kill_ravager matador kill 25 ravagers. kills_ravager"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Matador</span><span class="r-key">ACH_KILL_RAVAGER</span></div>
+        <div class="r-desc">Kill 25 ravagers.</div>
+        <div class="r-meta"><div class="per">target <b>25</b></div><div class="tot">lifetime</div><div class="tot"><code>kills_ravager</code></div></div>
+      </div>
+      <div class="row" id="ach-kill-sporeling" style="--stripe:var(--uncommon)"
+        data-hay="ach_kill_sporeling fungicide kill 40 sporelings. kills_sporeling"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Fungicide</span><span class="r-key">ACH_KILL_SPORELING</span></div>
+        <div class="r-desc">Kill 40 sporelings.</div>
+        <div class="r-meta"><div class="per">target <b>40</b></div><div class="tot">lifetime</div><div class="tot"><code>kills_sporeling</code></div></div>
+      </div>
+      <div class="row" id="ach-kill-bulwark" style="--stripe:var(--uncommon)"
+        data-hay="ach_kill_bulwark shield breaker kill 25 bulwarks. kills_bulwark"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Shield Breaker</span><span class="r-key">ACH_KILL_BULWARK</span></div>
+        <div class="r-desc">Kill 25 bulwarks.</div>
+        <div class="r-meta"><div class="per">target <b>25</b></div><div class="tot">lifetime</div><div class="tot"><code>kills_bulwark</code></div></div>
+      </div>
+      <div class="row" id="ach-kill-support" style="--stripe:var(--uncommon)"
+        data-hay="ach_kill_support cut the head off kill 25 witchdoctors or bonecallers. kills_support"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Cut the Head Off</span><span class="r-key">ACH_KILL_SUPPORT</span></div>
+        <div class="r-desc">Kill 25 witchdoctors or bonecallers.</div>
+        <div class="r-meta"><div class="per">target <b>25</b></div><div class="tot">lifetime</div><div class="tot"><code>kills_support</code></div></div>
+      </div>
+      <div class="row" id="ach-pierce-shield" style="--stripe:var(--uncommon)"
+        data-hay="ach_pierce_shield straight through punch through a bulwark's shield with raw speed. shieldpierce"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Straight Through</span><span class="r-key">ACH_PIERCE_SHIELD</span></div>
+        <div class="r-desc">Punch through a bulwark's shield with raw speed.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>shieldpierce</code></div></div>
+      </div>
+      <div class="row" id="ach-dodge-charge" style="--stripe:var(--uncommon)"
+        data-hay="ach_dodge_charge olé have 10 ravager charges miss you. chargemiss"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Olé</span><span class="r-key">ACH_DODGE_CHARGE</span></div>
+        <div class="r-desc">Have 10 ravager charges miss you.</div>
+        <div class="r-meta"><div class="per">target <b>10</b></div><div class="tot">lifetime</div><div class="tot"><code>chargemiss</code></div></div>
+      </div>
+    </div>
+    <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

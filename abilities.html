@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-page="abilities-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Utility abilities · Ricochet Ritual</title>
+<meta name="description" content="Twelve buttons on a long cooldown. Five of them do damage, and those five were measured against each other rather than tuned by eye.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="abilities-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="abilities.html" aria-current="page"><em>✦</em>Abilities</a>
+        <a href="classes.html"><em>⚑</em>Classes</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#balance">How these were balanced</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <h1>Utility abilities</h1>
+      <p>Twelve buttons on a long cooldown. Five of them do damage, and those five were measured against each other rather than tuned by eye.</p>
+    </div>
+    <div class="toolbar">
+      <input class="filter" id="page-filter" type="search" placeholder="Filter abilities…" autocomplete="off" aria-label="Filter this page">
+      <div id="page-chips"><button type="button" class="chip" data-attr="damaging" aria-pressed="false">damaging</button></div>
+      <span class="hits" id="page-hits"></span>
+    </div>
+
+    <p>
+      Bound to <code>F</code>. You carry exactly one, and one is offered as an extra card on every
+      <b>3rd</b> upgrade screen — taking a new
+      one replaces what you had.
+    </p>
+
+    <div class="rows">
+      <div class="row" id="decoy" style="--stripe:var(--legendary)"
+        data-hay="decoy decoy send out a double that sprints away. enemies chase it instead of you for 6 seconds." data-damaging="0">
+        <div class="r-name" data-anchor><span>Decoy</span><span class="r-key">decoy</span></div>
+        <div class="r-desc">Send out a double that sprints away. Enemies chase it instead of you for 6 seconds.</div>
+        <div class="r-meta"><div class="per">35s cooldown</div><div class="tot">6s active</div><div class="dep">no damage — judged behaviourally</div></div>
+      </div>
+      <div class="row" id="rewind" style="--stripe:var(--legendary)"
+        data-hay="rewind rewind snap back to where you stood 3 seconds ago and restore the health you had then." data-damaging="0">
+        <div class="r-name" data-anchor><span>Rewind</span><span class="r-key">rewind</span></div>
+        <div class="r-desc">Snap back to where you stood 3 seconds ago and restore the health you had then.</div>
+        <div class="r-meta"><div class="per">40s cooldown</div><div class="tot">instant</div><div class="dep">no damage — judged behaviourally</div></div>
+      </div>
+      <div class="row" id="sentry" style="--stripe:var(--legendary)"
+        data-hay="sentry sentry plant a crystal sentry that fires on the nearest enemy for 12 seconds, twice a second, hitting for 28 a shot and growing with the wave." data-damaging="1">
+        <div class="r-name" data-anchor><span>Sentry</span><span class="r-key">sentry</span></div>
+        <div class="r-desc">Plant a crystal sentry that fires on the nearest enemy for 12 seconds, twice a second, hitting for 28 a shot and growing with the wave.</div>
+        <div class="r-meta"><div class="per">40s cooldown</div><div class="tot">12s active</div><div class="per"><b>12.1</b> kills/cast</div><div class="tot">0.30 per second of cooldown</div><div class="dep">capped by shot count, not by targets</div></div>
+      </div>
+      <div class="row" id="forcefield" style="--stripe:var(--legendary)"
+        data-hay="forcefield forcefield raise a dome nothing can enter. enemies inside are shoved out, and none can follow, for 6 seconds." data-damaging="0">
+        <div class="r-name" data-anchor><span>Forcefield</span><span class="r-key">forcefield</span></div>
+        <div class="r-desc">Raise a dome nothing can enter. Enemies inside are shoved out, and none can follow, for 6 seconds.</div>
+        <div class="r-meta"><div class="per">45s cooldown</div><div class="tot">6s active</div><div class="dep">no damage — judged behaviourally</div></div>
+      </div>
+      <div class="row" id="meteor" style="--stripe:var(--legendary)"
+        data-hay="meteor meteor call down a meteor on the largest group of enemies. 195 damage in a wide crater, growing with the wave, one second after the sky opens." data-damaging="1">
+        <div class="r-name" data-anchor><span>Meteor</span><span class="r-key">meteor</span></div>
+        <div class="r-desc">Call down a meteor on the largest group of enemies. 195 damage in a wide crater, growing with the wave, one second after the sky opens.</div>
+        <div class="r-meta"><div class="per">45s cooldown</div><div class="tot">1s active</div><div class="per"><b>14.8</b> kills/cast</div><div class="tot">0.33 per second of cooldown</div></div>
+      </div>
+      <div class="row" id="storm" style="--stripe:var(--legendary)"
+        data-hay="storm thunderstorm call a storm. for 5 seconds, lightning hammers the crowd three times a second -- 34 to what it hits and 15 to everything beside it, growing with the wave." data-damaging="1">
+        <div class="r-name" data-anchor><span>Thunderstorm</span><span class="r-key">storm</span></div>
+        <div class="r-desc">Call a storm. For 5 seconds, lightning hammers the crowd three times a second -- 34 to what it hits and 15 to everything beside it, growing with the wave.</div>
+        <div class="r-meta"><div class="per">45s cooldown</div><div class="tot">5s active</div><div class="per"><b>15.0</b> kills/cast</div><div class="tot">0.33 per second of cooldown</div><div class="dep flag">was <b>6.0</b> before the retune</div></div>
+      </div>
+      <div class="row" id="bulwark" style="--stripe:var(--legendary)"
+        data-hay="bulwark bulwark brace. gain 60 shield and take half damage for 8 seconds." data-damaging="0">
+        <div class="r-name" data-anchor><span>Bulwark</span><span class="r-key">bulwark</span></div>
+        <div class="r-desc">Brace. Gain 60 shield and take half damage for 8 seconds.</div>
+        <div class="r-meta"><div class="per">45s cooldown</div><div class="tot">8s active</div><div class="dep">no damage — judged behaviourally</div></div>
+      </div>
+      <div class="row" id="nuke" style="--stripe:var(--legendary)"
+        data-hay="nuke nuke detonate your orb: 220 damage in a huge radius plus massive knockback, growing with the wave. the orb reforms after 5 seconds." data-damaging="1">
+        <div class="r-name" data-anchor><span>Nuke</span><span class="r-key">nuke</span></div>
+        <div class="r-desc">Detonate your orb: 220 damage in a huge radius plus massive knockback, growing with the wave. The orb reforms after 5 seconds.</div>
+        <div class="r-meta"><div class="per">50s cooldown</div><div class="tot">instant</div><div class="per"><b>20.0</b> kills/cast</div><div class="tot">0.40+ per second of cooldown</div><div class="dep">ceiling — it clears the screen</div></div>
+      </div>
+      <div class="row" id="overload" style="--stripe:var(--legendary)"
+        data-hay="overload overload your orb swells into a comet for 6 seconds: triple size, triple damage, and it ploughs through enemies." data-damaging="0">
+        <div class="r-name" data-anchor><span>Overload</span><span class="r-key">overload</span></div>
+        <div class="r-desc">Your orb swells into a comet for 6 seconds: triple size, triple damage, and it ploughs through enemies.</div>
+        <div class="r-meta"><div class="per">50s cooldown</div><div class="tot">6s active</div><div class="dep">no damage — judged behaviourally</div></div>
+      </div>
+      <div class="row" id="cryo" style="--stripe:var(--legendary)"
+        data-hay="cryo cryostasis freeze every enemy on screen solid for 4 seconds. they cannot move, attack or detonate." data-damaging="0">
+        <div class="r-name" data-anchor><span>Cryostasis</span><span class="r-key">cryo</span></div>
+        <div class="r-desc">Freeze every enemy on screen solid for 4 seconds. They cannot move, attack or detonate.</div>
+        <div class="r-meta"><div class="per">50s cooldown</div><div class="tot">4s active</div><div class="dep">no damage — judged behaviourally</div></div>
+      </div>
+      <div class="row" id="singularity" style="--stripe:var(--legendary)"
+        data-hay="singularity singularity tear a hole in the world. everything nearby is dragged in for 3 seconds, then it collapses for 140 damage, growing with the wave." data-damaging="1">
+        <div class="r-name" data-anchor><span>Singularity</span><span class="r-key">singularity</span></div>
+        <div class="r-desc">Tear a hole in the world. Everything nearby is dragged in for 3 seconds, then it collapses for 140 damage, growing with the wave.</div>
+        <div class="r-meta"><div class="per">55s cooldown</div><div class="tot">3s active</div><div class="per"><b>18.9</b> kills/cast</div><div class="tot">0.34 per second of cooldown</div></div>
+      </div>
+      <div class="row" id="dilation" style="--stripe:var(--legendary)"
+        data-hay="dilation time dilation crawl the world to a quarter speed for 5 seconds. you are unaffected." data-damaging="0">
+        <div class="r-name" data-anchor><span>Time Dilation</span><span class="r-key">dilation</span></div>
+        <div class="r-desc">Crawl the world to a quarter speed for 5 seconds. You are unaffected.</div>
+        <div class="r-meta"><div class="per">60s cooldown</div><div class="tot">5s active</div><div class="dep">no damage — judged behaviourally</div></div>
+      </div>
+    </div>
+    <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
+
+    <h2 id="balance">How these were balanced</h2>
+    <div class="note"><b>The five damaging abilities were measured against each other</b>,
+  because “the Nuke is stronger than Thunderstorm” turned out to be exactly right and nothing in
+  the card benchmark could see it. An ability is a button, not a passive, so the fixture leaves
+  the wizard completely idle — no swinging, no moving, orb pinned in hand — fires the ability the
+  moment it is off cooldown, and counts <b>kills</b> rather than damage.
+  <br><br>
+  Kills, because damage clamps at the target's remaining health and therefore cannot see
+  <em>overkill</em>. A Nuke does several times a trash enemy's health, four fifths of it
+  uncounted, and the damage table duly ranked the game's screen-clear mid-table while the player
+  reporting the problem was looking at an empty field.
+  <br><br>
+  Thunderstorm sat at less than half of anything else before this pass, which is exactly what was
+  reported. It picked one random target per bolt, so most of a storm landed on things already
+  dying; bolts now splash to a neighbour and it spends that overkill instead. <b>The Nuke stays
+  above the band on purpose</b> — it is the only ability that takes your weapon away for five
+  seconds to do what it does.
+  <br><br>
+  <b>Six of the twelve do no damage at all</b> and come back as a row of zeros. That is the
+  fixture admitting what it cannot see, not a verdict. <b>Overload</b> is in the same position for
+  a different reason: it amplifies an orb this fixture deliberately never throws. All seven are
+  covered instead by behavioural assertions that check the one thing that matters — that pressing
+  the button does its stated thing at all.</div>
+
+    <h3>Kills per cast, and per second of cooldown</h3>
+    <table>
+      <thead><tr><th>Ability</th><th>Kills / cast</th><th>Per second of cooldown</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><a href="#nuke">Nuke</a></td><td><code>20.0</code></td><td><code>0.40+</code></td><td>ceiling — it clears the screen</td></tr>
+        <tr><td><a href="#singularity">Singularity</a></td><td><code>18.9</code></td><td><code>0.34</code></td><td></td></tr>
+        <tr><td><a href="#storm">Thunderstorm</a></td><td><code>15.0</code></td><td><code>0.33</code></td><td>was 6.0</td></tr>
+        <tr><td><a href="#meteor">Meteor</a></td><td><code>14.8</code></td><td><code>0.33</code></td><td></td></tr>
+        <tr><td><a href="#sentry">Sentry</a></td><td><code>12.1</code></td><td><code>0.30</code></td><td>capped by shot count, not by targets</td></tr>
+      </tbody>
+    </table>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

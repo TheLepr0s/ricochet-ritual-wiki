@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" data-page="bestiary-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bestiary · Ricochet Ritual</title>
+<meta name="description" content="All 18 enemy types, with the AI that drives each one. Portraits are rendered through the game's own recolour shader, so a variant looks here exactly as it does in play.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="bestiary-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html" aria-current="page"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="classes.html"><em>⚑</em>Classes</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#roster">The roster</a><a href="#bosses">Bosses</a><a href="#behaviour">Behaviour classes</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <h1>Bestiary</h1>
+      <p>All 18 enemy types, with the AI that drives each one. Portraits are rendered through the game's own recolour shader, so a variant looks here exactly as it does in play.</p>
+    </div>
+    <div class="toolbar">
+      <input class="filter" id="page-filter" type="search" placeholder="Filter enemies…" autocomplete="off" aria-label="Filter this page">
+      <div id="page-chips"><button type="button" class="chip" data-attr="boss" aria-pressed="false">bosses</button><button type="button" class="chip" data-attr="ranged" aria-pressed="false">ranged</button><button type="button" class="chip" data-attr="variant" aria-pressed="false">recolours</button></div>
+      <span class="hits" id="page-hits"></span>
+    </div>
+
+    <h2 id="roster">The roster</h2>
+    <p>
+      Ordered by the wave they start appearing on. <b>Weight</b> is how often a type is drawn once
+      it has unlocked, relative to everything else eligible — the behaviour enemies are deliberately
+      rare, because a wave that is half Ravagers is not six times as interesting as a wave with one
+      in it.
+    </p>
+    <div class="rows">
+      <div class="beast" id="mushroom" style="--stripe:var(--common)"
+        data-hay="mushroom melee the baseline, and the reason “+5 orb damage” is a breakpoint worth chasing rather than a rounding error. wave 1"
+        data-boss="0" data-ranged="0"
+        data-variant="0">
+        <div class="portrait"><img src="assets/img/Mushroom.png" alt="Mushroom" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Mushroom</h3>
+            <span class="badge">Melee</span>
+            
+            
+          </div>
+          <p>The baseline, and the reason “+5 orb damage” is a breakpoint worth chasing rather than a rounding error.</p>
+          <div class="statline"><span class="stat">HP <b>45</b></span><span class="stat">speed <b>40</b></span><span class="stat">damage <b>5</b></span><span class="stat">range <b>80</b></span><span class="stat">from wave <b>1</b></span><span class="stat">weight <b>4</b></span><span class="stat">hitbox <b>30×34</b></span></div>
+          <p class="tot">The original art. <a href="#brute">Brute</a>, <a href="#sporeling">Sporeling</a>, <a href="#toadstool">Toadstool</a> are recolours of it.</p>
+        </div>
+      </div>
+      <div class="beast" id="bat" style="--stripe:var(--rare)"
+        data-hay="bat ranged ranged, but no faster than a mushroom — you can simply walk away from it, which is the point of a first ranged enemy. fireball wave 2"
+        data-boss="0" data-ranged="1"
+        data-variant="0">
+        <div class="portrait"><img src="assets/img/Bat.png" alt="Bat" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Bat</h3>
+            <span class="badge">Ranged</span>
+            
+            
+          </div>
+          <p>Ranged, but no faster than a Mushroom — you can simply walk away from it, which is the point of a first ranged enemy.</p>
+          <div class="statline"><span class="stat">HP <b>40</b></span><span class="stat">speed <b>40</b></span><span class="stat">damage <b>8</b></span><span class="stat">range <b>300</b></span><span class="stat">fires <b>Fireball</b></span><span class="stat">from wave <b>2</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>38×34</b></span></div>
+          <p class="tot">The original art. <a href="#hivemind">Hivemind</a>, <a href="#wisp">Wisp</a> are recolours of it.</p>
+        </div>
+      </div>
+      <div class="beast" id="bomber" style="--stripe:var(--warn)"
+        data-hay="bomber bomber the clock in a wave. it forces you to deal with it now rather than later, which is the only thing on the field that does. wave 3"
+        data-boss="0" data-ranged="0"
+        data-variant="0">
+        <div class="portrait"><img src="assets/img/Bomber.png" alt="Bomber" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Bomber</h3>
+            <span class="badge">Bomber</span>
+            
+            
+          </div>
+          <p>The clock in a wave. It forces you to deal with it now rather than later, which is the only thing on the field that does.</p>
+          <div class="statline"><span class="stat">HP <b>30</b></span><span class="stat">speed <b>80</b></span><span class="stat">blast <b>90</b> for <b>15</b></span><span class="stat">from wave <b>3</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>38×34</b></span></div>
+          <p class="tot">The original art. <a href="#palerevenant">PaleRevenant</a>, <a href="#ravager">Ravager</a> are recolours of it.</p><p class="tot">Shares the skeleton sheet with the Ravager and the Revenant, which is why all three read as bone rather than flesh.</p>
+        </div>
+      </div>
+      <div class="beast" id="toadstool" style="--stripe:var(--common)"
+        data-hay="toadstool melee half a mushroom's health at nearly double the speed. the enemy that punishes standing still. wave 3"
+        data-boss="0" data-ranged="0"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/Toadstool.png" alt="Toadstool" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Toadstool</h3>
+            <span class="badge">Melee</span>
+            
+            
+          </div>
+          <p>Half a Mushroom's health at nearly double the speed. The enemy that punishes standing still.</p>
+          <div class="statline"><span class="stat">HP <b>24</b></span><span class="stat">speed <b>78</b></span><span class="stat">damage <b>4</b></span><span class="stat">range <b>80</b></span><span class="stat">from wave <b>3</b></span><span class="stat">weight <b>4</b></span><span class="stat">hitbox <b>26×30</b></span></div>
+          <p class="tot">A recolour of <a href="#mushroom">Mushroom</a>'s art, told apart by a hue rotation.</p>
+        </div>
+      </div>
+      <div class="beast" id="vampire" style="--stripe:var(--epic)"
+        data-hay="vampire vampire the first enemy that takes your movement away, and heals off you for doing it. wave 4"
+        data-boss="0" data-ranged="0"
+        data-variant="0">
+        <div class="portrait"><img src="assets/img/Vampire.png" alt="Vampire" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Vampire</h3>
+            <span class="badge">Vampire</span>
+            
+            
+          </div>
+          <p>The first enemy that takes your movement away, and heals off you for doing it.</p>
+          <div class="statline"><span class="stat">HP <b>85</b></span><span class="stat">speed <b>55</b></span><span class="stat">damage <b>10</b></span><span class="stat">range <b>80</b></span><span class="stat">from wave <b>4</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>38×34</b></span></div>
+          <p class="tot">The original art. <a href="#bulwark">Bulwark</a>, <a href="#nosferatu">Nosferatu</a> are recolours of it.</p>
+        </div>
+      </div>
+      <div class="beast" id="evilwizard" style="--stripe:var(--legendary)"
+        data-hay="evilwizard caster casts from range and has no melee swing, but it is not safe to stand on any more — backlash punishes anything inside 100px, including a player who walked into a cast. wave 5"
+        data-boss="0" data-ranged="1"
+        data-variant="0">
+        <div class="portrait"><img src="assets/img/EvilWizard.png" alt="EvilWizard" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>EvilWizard</h3>
+            <span class="badge">Caster</span>
+            
+            
+          </div>
+          <p>Casts from range and has no melee swing, but it is not safe to stand on any more — Backlash punishes anything inside 100px, including a player who walked into a cast.</p>
+          <div class="statline"><span class="stat">HP <b>120</b></span><span class="stat">speed <b>38</b></span><span class="stat">damage <b>9</b></span><span class="stat">range <b>320</b></span><span class="stat">from wave <b>5</b></span><span class="stat">weight <b>2</b></span><span class="stat">hitbox <b>38×34</b></span></div>
+          <p class="tot">The original art. <a href="#archmage">Archmage</a>, <a href="#bonecaller">Bonecaller</a>, <a href="#dreadsovereign">DreadSovereign</a>, <a href="#witchdoctor">Witchdoctor</a> are recolours of it.</p>
+        </div>
+      </div>
+      <div class="beast" id="ravager" style="--stripe:var(--warn)"
+        data-hay="ravager charger the first enemy you beat by reading it rather than out-damaging it. low health, so the lane is the whole threat — and the time it spends winded afterwards is the damage window the fight pays you back with. wave 5"
+        data-boss="0" data-ranged="1"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/Ravager.png" alt="Ravager" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Ravager</h3>
+            <span class="badge">Charger</span>
+            
+            
+          </div>
+          <p>The first enemy you beat by reading it rather than out-damaging it. Low health, so the lane is the whole threat — and the time it spends winded afterwards is the damage window the fight pays you back with.</p>
+          <div class="statline"><span class="stat">HP <b>75</b></span><span class="stat">speed <b>52</b></span><span class="stat">damage <b>14</b></span><span class="stat">range <b>300</b></span><span class="stat">from wave <b>5</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>34×34</b></span></div>
+          <p class="tot">A recolour of <a href="#bomber">Bomber</a>'s art, told apart by a colour tint.</p><p class="tot">Its row's <code>attackRange</code> is dead data — ChargerEnemy replaces the melee update entirely and uses its own trigger range, so the row value looks authoritative and governs nothing.</p>
+        </div>
+      </div>
+      <div class="beast" id="sporeling" style="--stripe:var(--uncommon)"
+        data-hay="sporeling splitter health that becomes two toadstools, which are faster than the thing that made them. kill it with room around you, or inside an explosion big enough to catch what comes out. wave 6"
+        data-boss="0" data-ranged="0"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/Sporeling.png" alt="Sporeling" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Sporeling</h3>
+            <span class="badge">Splitter</span>
+            
+            
+          </div>
+          <p>Health that becomes two Toadstools, which are faster than the thing that made them. Kill it with room around you, or inside an explosion big enough to catch what comes out.</p>
+          <div class="statline"><span class="stat">HP <b>80</b></span><span class="stat">speed <b>44</b></span><span class="stat">damage <b>6</b></span><span class="stat">range <b>80</b></span><span class="stat">from wave <b>6</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>34×38</b></span></div>
+          <p class="tot">A recolour of <a href="#mushroom">Mushroom</a>'s art, told apart by a hue rotation.</p>
+        </div>
+      </div>
+      <div class="beast" id="wisp" style="--stripe:var(--rare)"
+        data-hay="wisp ranged a bat that keeps up with you, and outranges it. it glows because the bat sprite is near-black, and a hue rotation preserves luma — recolouring alone was invisible on it. fireball wave 6"
+        data-boss="0" data-ranged="1"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/Wisp.png" alt="Wisp" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Wisp</h3>
+            <span class="badge">Ranged</span>
+            
+            
+          </div>
+          <p>A Bat that keeps up with you, and outranges it. It glows because the bat sprite is near-black, and a hue rotation preserves luma — recolouring alone was invisible on it.</p>
+          <div class="statline"><span class="stat">HP <b>30</b></span><span class="stat">speed <b>72</b></span><span class="stat">damage <b>11</b></span><span class="stat">range <b>360</b></span><span class="stat">fires <b>Fireball</b></span><span class="stat">from wave <b>6</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>30×28</b></span></div>
+          <p class="tot">A recolour of <a href="#bat">Bat</a>'s art, told apart by a hue rotation.</p>
+        </div>
+      </div>
+      <div class="beast" id="brute" style="--stripe:var(--common)"
+        data-hay="brute melee the opposite trade: slow enough to kite forever, and the first enemy an un-upgraded orb genuinely cannot one-shot. wave 7"
+        data-boss="0" data-ranged="0"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/Brute.png" alt="Brute" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Brute</h3>
+            <span class="badge">Melee</span>
+            
+            
+          </div>
+          <p>The opposite trade: slow enough to kite forever, and the first enemy an un-upgraded orb genuinely cannot one-shot.</p>
+          <div class="statline"><span class="stat">HP <b>260</b></span><span class="stat">speed <b>24</b></span><span class="stat">damage <b>16</b></span><span class="stat">range <b>95</b></span><span class="stat">from wave <b>7</b></span><span class="stat">weight <b>2</b></span><span class="stat">hitbox <b>44×46</b></span></div>
+          <p class="tot">A recolour of <a href="#mushroom">Mushroom</a>'s art, told apart by a hue rotation.</p>
+        </div>
+      </div>
+      <div class="beast" id="bulwark" style="--stripe:var(--rare)"
+        data-hay="bulwark shield the card check. an orb that only goes forwards bounces off it all day; anything that flanks, pierces, arcs or simply arrives fast walks through. its health is a long time to spend doing the wrong thing. wave 8"
+        data-boss="0" data-ranged="0"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/Bulwark.png" alt="Bulwark" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Bulwark</h3>
+            <span class="badge">Shield</span>
+            
+            
+          </div>
+          <p>The card check. An orb that only goes forwards bounces off it all day; anything that flanks, pierces, arcs or simply arrives fast walks through. Its health is a long time to spend doing the wrong thing.</p>
+          <div class="statline"><span class="stat">HP <b>230</b></span><span class="stat">speed <b>30</b></span><span class="stat">damage <b>14</b></span><span class="stat">range <b>95</b></span><span class="stat">from wave <b>8</b></span><span class="stat">weight <b>2</b></span><span class="stat">max <b>3</b> alive</span><span class="stat">hitbox <b>42×40</b></span></div>
+          <p class="tot">A recolour of <a href="#vampire">Vampire</a>'s art, told apart by a hue rotation.</p>
+        </div>
+      </div>
+      <div class="beast" id="nosferatu" style="--stripe:var(--epic)"
+        data-hay="nosferatu vampire more than twice a vampire's health and faster. it roots for the same time, so the danger is purely how long it survives to keep doing it. wave 9"
+        data-boss="0" data-ranged="0"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/Nosferatu.png" alt="Nosferatu" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Nosferatu</h3>
+            <span class="badge">Vampire</span>
+            
+            
+          </div>
+          <p>More than twice a Vampire's health and faster. It roots for the same time, so the danger is purely how long it survives to keep doing it.</p>
+          <div class="statline"><span class="stat">HP <b>190</b></span><span class="stat">speed <b>62</b></span><span class="stat">damage <b>15</b></span><span class="stat">range <b>85</b></span><span class="stat">from wave <b>9</b></span><span class="stat">weight <b>2</b></span><span class="stat">hitbox <b>40×36</b></span></div>
+          <p class="tot">A recolour of <a href="#vampire">Vampire</a>'s art, told apart by a hue rotation.</p>
+        </div>
+      </div>
+      <div class="beast" id="witchdoctor" style="--stripe:var(--uncommon)"
+        data-hay="witchdoctor support heals the most wounded allies around it often enough to outpace chip damage across a crowd. capped at two alive at once, because three means nothing dies. wave 10"
+        data-boss="0" data-ranged="1"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/Witchdoctor.png" alt="Witchdoctor" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Witchdoctor</h3>
+            <span class="badge">Support</span>
+            
+            
+          </div>
+          <p>Heals the most wounded allies around it often enough to outpace chip damage across a crowd. Capped at two alive at once, because three means nothing dies.</p>
+          <div class="statline"><span class="stat">HP <b>130</b></span><span class="stat">speed <b>46</b></span><span class="stat">damage <b>6</b></span><span class="stat">range <b>300</b></span><span class="stat">from wave <b>10</b></span><span class="stat">weight <b>1</b></span><span class="stat">max <b>2</b> alive</span><span class="stat">hitbox <b>36×36</b></span></div>
+          <p class="tot">A recolour of <a href="#evilwizard">EvilWizard</a>'s art, told apart by a hue rotation.</p>
+        </div>
+      </div>
+      <div class="beast" id="archmage" style="--stripe:var(--legendary)"
+        data-hay="archmage caster the late-game priority target. longer range, far more health, every cast another root somewhere on the map, and the hardest backlash in the game. wave 11"
+        data-boss="0" data-ranged="1"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/Archmage.png" alt="Archmage" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Archmage</h3>
+            <span class="badge">Caster</span>
+            
+            
+          </div>
+          <p>The late-game priority target. Longer range, far more health, every cast another root somewhere on the map, and the hardest Backlash in the game.</p>
+          <div class="statline"><span class="stat">HP <b>240</b></span><span class="stat">speed <b>34</b></span><span class="stat">damage <b>13</b></span><span class="stat">range <b>400</b></span><span class="stat">from wave <b>11</b></span><span class="stat">weight <b>1</b></span><span class="stat">hitbox <b>42×38</b></span></div>
+          <p class="tot">A recolour of <a href="#evilwizard">EvilWizard</a>'s art, told apart by a hue rotation.</p>
+        </div>
+      </div>
+      <div class="beast" id="hivemind" style="--stripe:var(--rare)"
+        data-hay="hivemind ranged a bat that fires three bolts in a narrow fan. individually weak, but it punishes the straight-line retreat that answers every other ranged enemy. fireball wave 12"
+        data-boss="0" data-ranged="1"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/Hivemind.png" alt="Hivemind" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Hivemind</h3>
+            <span class="badge">Ranged</span>
+            
+            
+          </div>
+          <p>A Bat that fires three bolts in a narrow fan. Individually weak, but it punishes the straight-line retreat that answers every other ranged enemy.</p>
+          <div class="statline"><span class="stat">HP <b>65</b></span><span class="stat">speed <b>48</b></span><span class="stat">damage <b>9</b></span><span class="stat">range <b>340</b></span><span class="stat">fires <b>Fireball</b></span><span class="stat">from wave <b>12</b></span><span class="stat">weight <b>2</b></span><span class="stat">hitbox <b>34×32</b></span></div>
+          <p class="tot">A recolour of <a href="#bat">Bat</a>'s art, told apart by a hue rotation.</p>
+        </div>
+      </div>
+      <div class="beast" id="bonecaller" style="--stripe:var(--uncommon)"
+        data-hay="bonecaller support calls fresh bodies out of the ground on a timer. ignore it and the wave stops emptying. violet and badged so it is not mistaken for the healer at range — an earlier olive hue made the two indistinguishable. wave 14"
+        data-boss="0" data-ranged="1"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/Bonecaller.png" alt="Bonecaller" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Bonecaller</h3>
+            <span class="badge">Support</span>
+            
+            
+          </div>
+          <p>Calls fresh bodies out of the ground on a timer. Ignore it and the wave stops emptying. Violet and badged so it is not mistaken for the healer at range — an earlier olive hue made the two indistinguishable.</p>
+          <div class="statline"><span class="stat">HP <b>165</b></span><span class="stat">speed <b>34</b></span><span class="stat">damage <b>8</b></span><span class="stat">range <b>340</b></span><span class="stat">from wave <b>14</b></span><span class="stat">weight <b>1</b></span><span class="stat">max <b>2</b> alive</span><span class="stat">hitbox <b>38×36</b></span></div>
+          <p class="tot">A recolour of <a href="#evilwizard">EvilWizard</a>'s art, told apart by a hue rotation.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="bosses">Bosses</h2>
+    <p>Exempt from wave modifiers' health multipliers, and never elite. <a href="bosses.html">The fights in full →</a></p>
+    <div class="rows">
+      <div class="beast" id="dreadsovereign" style="--stripe:var(--legendary)"
+        data-hay="dreadsovereign boss a siege engine. it walks, and the fight is read from a distance. fireball wave null"
+        data-boss="1" data-ranged="1"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/DreadSovereign.png" alt="DreadSovereign" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>DREAD SOVEREIGN</h3>
+            <span class="badge">Boss</span>
+            <span class="badge plain">DreadSovereign</span>
+             <a href="bosses.html#dreadsovereign" class="tot">full fight →</a>
+          </div>
+          <p>A siege engine. It walks, and the fight is read from a distance.</p>
+          <div class="statline"><span class="stat">HP <b>1100</b></span><span class="stat">speed <b>42</b></span><span class="stat">damage <b>22</b></span><span class="stat">range <b>460</b></span><span class="stat">fires <b>Fireball</b></span><span class="stat">hitbox <b>74×66</b></span></div>
+          <p class="tot">A recolour of <a href="#evilwizard">EvilWizard</a>'s art, told apart by a hue rotation.</p>
+        </div>
+      </div>
+      <div class="beast" id="palerevenant" style="--stripe:var(--legendary)"
+        data-hay="palerevenant boss the opposite fight, and the reason there are two. wave null"
+        data-boss="1" data-ranged="0"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/PaleRevenant.png" alt="PaleRevenant" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>PALE REVENANT</h3>
+            <span class="badge">Boss</span>
+            <span class="badge plain">PaleRevenant</span>
+             <a href="bosses.html#palerevenant" class="tot">full fight →</a>
+          </div>
+          <p>The opposite fight, and the reason there are two.</p>
+          <div class="statline"><span class="stat">HP <b>860</b></span><span class="stat">speed <b>120</b></span><span class="stat">damage <b>19</b></span><span class="stat">hitbox <b>58×58</b></span></div>
+          <p class="tot">A recolour of <a href="#bomber">Bomber</a>'s art, told apart by a colour tint.</p><p class="tot">No ranged attack at all. Its speed is capped below the wizard's own, on purpose, even at phase three.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="behaviour">Behaviour classes</h2>
+    <p>
+      What actually drives each type. Several enemies share a class and differ only in their stat
+      block — a Nosferatu is a Vampire with different numbers — and that is the cheap half of the
+      roster. The rest have their own code.
+    </p>
+    <div class="rows">
+      <div class="row" id="ai-evilwizardenemy" style="--stripe:var(--legendary)" data-hay="evilwizardenemy caster stands still and drips a chain of grasping hands along the line to where you were when
+        the cast began. a hand that closes roots you and deals the caster's damage. taking a hit
+        cancels the cast. come within 100px and it discharges at its own feet instead —
+        &lt;b&gt;backlash&lt;/b&gt;, a 0.4s telegraphed blast and a hard shove — so standing on top of a
+        caster is no longer the free answer it once was.">
+        <div class="r-name" data-anchor><span>Caster</span><span class="r-key">EvilWizardEnemy</span></div>
+        <div class="r-desc">Stands still and drips a chain of grasping hands along the line to where you were when
+        the cast began. A hand that closes roots you and deals the caster's damage. Taking a hit
+        cancels the cast. Come within 100px and it discharges at its own feet instead —
+        <b>Backlash</b>, a 0.4s telegraphed blast and a hard shove — so standing on top of a
+        caster is no longer the free answer it once was.</div>
+        <div class="r-meta"><div class="per"><a href="#archmage">Archmage</a>, <a href="#evilwizard">EvilWizard</a></div></div>
+      </div>
+      <div class="row" id="ai-rangedenemy" style="--stripe:var(--rare)" data-hay="rangedenemy ranged closes to its attack range, stops, and throws fireballs — 450px/s, 22 ± 7 damage, four
+        seconds before they expire. it keeps firing for as long as you stay in range, so the
+        answer is either to close or to leave, never to trade.">
+        <div class="r-name" data-anchor><span>Ranged</span><span class="r-key">RangedEnemy</span></div>
+        <div class="r-desc">Closes to its attack range, stops, and throws fireballs — 450px/s, 22 ± 7 damage, four
+        seconds before they expire. It keeps firing for as long as you stay in range, so the
+        answer is either to close or to leave, never to trade.</div>
+        <div class="r-meta"><div class="per"><a href="#bat">Bat</a>, <a href="#hivemind">Hivemind</a>, <a href="#wisp">Wisp</a></div></div>
+      </div>
+      <div class="row" id="ai-bomberenemy" style="--stripe:var(--warn)" data-hay="bomberenemy bomber no attack at all: it sprints at you and detonates on contact, after a 0.45s flashing
+        warning. its health is deliberately low enough that a base-damage orb one-shots it, so
+        popping it early is always a clean single hit.">
+        <div class="r-name" data-anchor><span>Bomber</span><span class="r-key">BomberEnemy</span></div>
+        <div class="r-desc">No attack at all: it sprints at you and detonates on contact, after a 0.45s flashing
+        warning. Its health is deliberately low enough that a base-damage orb one-shots it, so
+        popping it early is always a clean single hit.</div>
+        <div class="r-meta"><div class="per"><a href="#bomber">Bomber</a></div></div>
+      </div>
+      <div class="row" id="ai-supportenemy" style="--stripe:var(--uncommon)" data-hay="supportenemy support never closes. it kites to a mid-range band, strafing at reduced speed, and spends a short
+        cast pose on the thing it is actually for: mending the most wounded allies in range, or
+        calling fresh bodies out of the ground. both wear a role badge above the health bar,
+        because at range the silhouette is identical.">
+        <div class="r-name" data-anchor><span>Support</span><span class="r-key">SupportEnemy</span></div>
+        <div class="r-desc">Never closes. It kites to a mid-range band, strafing at reduced speed, and spends a short
+        cast pose on the thing it is actually for: mending the most wounded allies in range, or
+        calling fresh bodies out of the ground. Both wear a role badge above the health bar,
+        because at range the silhouette is identical.</div>
+        <div class="r-meta"><div class="per"><a href="#bonecaller">Bonecaller</a>, <a href="#witchdoctor">Witchdoctor</a></div></div>
+      </div>
+      <div class="row" id="ai-meleeenemy" style="--stripe:var(--common)" data-hay="meleeenemy melee walks straight at you and swings once in range. the damage lands on frame 6 of the
+        attack animation, so the wind-up is a real window to move out of rather than a
+        formality.">
+        <div class="r-name" data-anchor><span>Melee</span><span class="r-key">MeleeEnemy</span></div>
+        <div class="r-desc">Walks straight at you and swings once in range. The damage lands on frame 6 of the
+        attack animation, so the wind-up is a real window to move out of rather than a
+        formality.</div>
+        <div class="r-meta"><div class="per"><a href="#brute">Brute</a>, <a href="#mushroom">Mushroom</a>, <a href="#toadstool">Toadstool</a></div></div>
+      </div>
+      <div class="row" id="ai-shieldenemy" style="--stripe:var(--rare)" data-hay="shieldenemy shield carries a shield across an arc in front of it. an orb arriving inside that arc is refused
+        outright — &lt;code&gt;takedamage&lt;/code&gt; returns false, exactly as an iframe-swallowed hit does
+        — and bounces off harder than it arrived. hit it from behind, or arrive fast enough to
+        punch straight through the guard.">
+        <div class="r-name" data-anchor><span>Shield</span><span class="r-key">ShieldEnemy</span></div>
+        <div class="r-desc">Carries a shield across an arc in front of it. An orb arriving inside that arc is refused
+        outright — <code>takeDamage</code> returns false, exactly as an iframe-swallowed hit does
+        — and bounces off harder than it arrived. Hit it from behind, or arrive fast enough to
+        punch straight through the guard.</div>
+        <div class="r-meta"><div class="per"><a href="#bulwark">Bulwark</a></div></div>
+      </div>
+      <div class="row" id="ai-bossenemy" style="--stripe:var(--legendary)" data-hay="bossenemy boss three phases with an enrage flash at each threshold, a screen-wide health bar, and
+        exemption from a wave modifier's health multiplier — nothing else in the game has that.">
+        <div class="r-name" data-anchor><span>Boss</span><span class="r-key">BossEnemy</span></div>
+        <div class="r-desc">Three phases with an enrage flash at each threshold, a screen-wide health bar, and
+        exemption from a wave modifier's health multiplier — nothing else in the game has that.</div>
+        <div class="r-meta"><div class="per"><a href="#dreadsovereign">DreadSovereign</a></div></div>
+      </div>
+      <div class="row" id="ai-vampireenemy" style="--stripe:var(--epic)" data-hay="vampireenemy vampire bites for contact damage, heals itself, and &lt;b&gt;roots you&lt;/b&gt; while it drinks. killing it
+        mid-bite frees you immediately, which makes it the one enemy where burst damage is
+        worth more than its health bar suggests.">
+        <div class="r-name" data-anchor><span>Vampire</span><span class="r-key">VampireEnemy</span></div>
+        <div class="r-desc">Bites for contact damage, heals itself, and <b>roots you</b> while it drinks. Killing it
+        mid-bite frees you immediately, which makes it the one enemy where burst damage is
+        worth more than its health bar suggests.</div>
+        <div class="r-meta"><div class="per"><a href="#nosferatu">Nosferatu</a>, <a href="#vampire">Vampire</a></div></div>
+      </div>
+      <div class="row" id="ai-revenantboss" style="--stripe:var(--legendary)" data-hay="revenantboss boss the mobile boss. dash combos and a leap, no ranged attack whatsoever, and every move a
+        commitment it has to cross the floor to land.">
+        <div class="r-name" data-anchor><span>Boss</span><span class="r-key">RevenantBoss</span></div>
+        <div class="r-desc">The mobile boss. Dash combos and a leap, no ranged attack whatsoever, and every move a
+        commitment it has to cross the floor to land.</div>
+        <div class="r-meta"><div class="per"><a href="#palerevenant">PaleRevenant</a></div></div>
+      </div>
+      <div class="row" id="ai-chargerenemy" style="--stripe:var(--warn)" data-hay="chargerenemy charger chase → windup → dash → recover. it plants at range, flashes a ground lane, then commits.
+        the direction locks when the wind-up starts, so the telegraph is the entire fight: step
+        out of the lane and it charges anyway, then stands winded and takes damage like anything
+        else.">
+        <div class="r-name" data-anchor><span>Charger</span><span class="r-key">ChargerEnemy</span></div>
+        <div class="r-desc">CHASE → WINDUP → DASH → RECOVER. It plants at range, flashes a ground lane, then commits.
+        The direction locks when the wind-up starts, so the telegraph is the entire fight: step
+        out of the lane and it charges anyway, then stands winded and takes damage like anything
+        else.</div>
+        <div class="r-meta"><div class="per"><a href="#ravager">Ravager</a></div></div>
+      </div>
+      <div class="row" id="ai-splitterenemy" style="--stripe:var(--uncommon)" data-hay="splitterenemy splitter an ordinary melee enemy until it dies. death spawns two children — of the type named in
+        its own row — each at a fraction of the parent's max health, with a moment of
+        invulnerability so a single explosion cannot wipe the litter it just created.">
+        <div class="r-name" data-anchor><span>Splitter</span><span class="r-key">SplitterEnemy</span></div>
+        <div class="r-desc">An ordinary melee enemy until it dies. Death spawns two children — of the type named in
+        its own row — each at a fraction of the parent's max health, with a moment of
+        invulnerability so a single explosion cannot wipe the litter it just created.</div>
+        <div class="r-meta"><div class="per"><a href="#sporeling">Sporeling</a></div></div>
+      </div>
+    </div>
+    <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-page="index-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ricochet Ritual · Ricochet Ritual</title>
+<meta name="description" content="A wave-survival game about one orb, thrown and recalled. You get one orb. Everything else is a consequence of that.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="index-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html" aria-current="page"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="classes.html"><em>⚑</em>Classes</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#what">What the game is</a><a href="#glossary">Glossary</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <h1>Ricochet Ritual</h1>
+      <p>A wave-survival game about one orb, thrown and recalled. You get one orb. Everything else is a consequence of that.</p>
+    </div>
+    <div class="counts">
+      <div class="count"><b>18</b><span>enemies</span></div>
+      <div class="count"><b>104</b><span>cards</span></div>
+      <div class="count"><b>12</b><span>abilities</span></div>
+      <div class="count"><b>4</b><span>classes</span></div>
+      <div class="count"><b>8</b><span>modifiers</span></div>
+      <div class="count"><b>6</b><span>designed waves</span></div>
+      <div class="count"><b>120</b><span>achievements</span></div>
+      <div class="count"><b>2</b><span>bosses</span></div>
+    </div>
+
+    <div class="tiles">
+      <a class="tile" href="guide.html"><b>▶ How to play</b><span>Controls, the run loop, and what the orb actually does.</span></a>
+      <a class="tile" href="bestiary.html"><b>☠ Bestiary</b><span>Every enemy, what drives it, and when it starts appearing.</span></a>
+      <a class="tile" href="bosses.html"><b>♛ Bosses</b><span>The two boss fights, attack by attack.</span></a>
+      <a class="tile" href="cards.html"><b>🂠 Upgrade cards</b><span>All 104 upgrade cards, with stack caps, prerequisites and exclusions.</span></a>
+      <a class="tile" href="abilities.html"><b>✦ Abilities</b><span>The twelve F-key abilities, and how they measured against each other.</span></a>
+      <a class="tile" href="classes.html"><b>⚑ Classes</b><span>The four starting classes, and the benchmark that set them.</span></a>
+      <a class="tile" href="waves.html"><b>≋ Waves</b><span>Difficulty, modifiers, designed waves, elites and the boss rotation.</span></a>
+      <a class="tile" href="achievements.html"><b>★ Achievements</b><span>All 120, including the hidden ones.</span></a>
+      <a class="tile" href="systems.html"><b>⚙ Systems</b><span>Damage, drops, score and sound — how the machinery fits together.</span></a>
+    </div>
+
+    <h2 id="what">What the game is</h2>
+    <h3>Throw it, then get it back</h3>
+    <p>You have one orb and it is both the weapon and the problem. Thrown, it flies until
+        something stops it, bouncing off walls and enemies and losing speed the whole time.
+        Held, you have a melee swing and nothing else. Nearly every card in the game is an
+        answer to some version of the question "what happens between the throw and the catch".</p>
+    <h3>Recall is a second weapon</h3>
+    <p>Holding right click hauls the orb back through everything in the way, and a returning
+        orb hits just as hard as a thrown one. Releasing early keeps the speed it gathered, so
+        a recall is also how you re-aim without picking the orb up. Walking into a moving orb
+        catches it — you do not have to wait for it to come to rest.</p>
+    <h3>A wave, then two cards</h3>
+    <p>Clear the field and the upgrade screen opens with two choices, a third of the time a
+        third, and on every third pick a fourth card that is a utility ability rather than a
+        passive. Rerolls and banishes accumulate on a timer rather than being spent currency,
+        so a bad screen late in a run is a smaller disaster than a bad screen early.</p>
+    <h3>It gets specific, not just bigger</h3>
+    <p>Waves ramp, but the interesting pressure comes from named events: a modifier that
+        changes the rules of one wave, a designed wave built from one kind of enemy, and a
+        fixed boss every tenth. None of them are simply "the same wave with more health".</p>
+
+    <div class="note">
+      <b>This wiki is generated, not written.</b> Every stat, cost, cooldown, weight, cap and
+      prerequisite on these pages is dumped out of the game's own definition tables by a script in
+      the repository. The prose around them is hand-written; the numbers never are. If a number
+      here is wrong, the game is wrong.
+    </div>
+
+    <h2 id="glossary">Glossary</h2>
+    <table>
+      <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>Direct hit</td><td>The orb striking an enemy body, as opposed to an explosion, arc or aura. Most on-hit cards read direct hits only.</td></tr>
+        <tr><td>Recall</td><td>Holding right click to drag the orb back. A returning orb does full damage.</td></tr>
+        <tr><td>Combo</td><td>Consecutive hits inside a time window. Drops to zero if the window lapses; several cards scale off it.</td></tr>
+        <tr><td>Elite</td><td>A crowned ordinary enemy with boosted stats and a far better drop.</td></tr>
+        <tr><td>Modifier</td><td>A named rule change applied to a single wave, announced by a banner.</td></tr>
+        <tr><td>Designed wave</td><td>A wave built from a hand-picked roster instead of the usual weighted table.</td></tr>
+        <tr><td>Class</td><td>Picked once at the start of a run. Biases which cards you are offered, and opens with one signature card.</td></tr>
+        <tr><td>Utility</td><td>The F-key ability. Offered as a fourth card on every third upgrade screen; you hold one at a time.</td></tr>
+        <tr><td>Stack cap</td><td>How many times a repeatable card can be taken. At the cap it stops being offered.</td></tr>
+        <tr><td>Banish</td><td>Removing a card from the pool for the rest of the run, rather than rerolling the screen.</td></tr>
+      </tbody>
+    </table>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-page="classes-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Classes · Ricochet Ritual</title>
+<meta name="description" content="4 starting classes. None of them is the correct pick, and that was checked rather than assumed.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="classes-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="classes.html" aria-current="page"><em>⚑</em>Classes</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#balance">How these were balanced</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <h1>Classes</h1>
+      <p>4 starting classes. None of them is the correct pick, and that was checked rather than assumed.</p>
+    </div>
+    <p>
+      Picked once, after the difficulty, before the first wave. A class is not new content — it is
+      a <b>weighting</b>. Each one multiplies the draw weight of about a dozen cards that already
+      exist, so a Stormcaller run finds its chain pieces early and a Warden run finds its armour.
+      The pool is never restricted: every card can still appear for every class, so the bias steers
+      a run without railroading it, and taking the off-class card you were offered stays a real
+      decision.
+    </p>
+
+    <div class="toolbar">
+      <input class="filter" id="page-filter" type="search" placeholder="Filter classes…" autocomplete="off" aria-label="Filter this page">
+      <div id="page-chips"></div>
+      <span class="hits" id="page-hits"></span>
+    </div>
+    <div class="rows">
+      <div class="row" id="warden" style="--stripe:rgb(115,204,255)"
+        data-hay="warden warden outlast it. you start tougher, and the armour finds you first. forgiving. the one to learn a new wave on. bloodfeast ironskin kineticplating laststand overflow regrowth safehands secondheart stoneskin thornmail vampiricaura ward wizardhealth">
+        <div class="r-name" data-anchor><span>WARDEN</span><span class="r-key">warden</span></div>
+        <div class="r-desc">
+          <div>Outlast it. You start tougher, and the armour finds you first.</div>
+          <div class="tot">Forgiving. The one to learn a new wave on.</div>
+          <div class="per">opens with <b><a href="cards.html#stoneskin">Stoneskin</a></b></div>
+          <div class="tot">biased toward: <a href="cards.html#bloodfeast">Blood Feast</a>, <a href="cards.html#ironskin">Iron Skin</a>, <a href="cards.html#kineticplating">Kinetic Plating</a>, <a href="cards.html#laststand">Last Stand</a>, <a href="cards.html#overflow">Overflow</a>, <a href="cards.html#regrowth">Regrowth</a>, <a href="cards.html#safehands">Safe Hands</a>, <a href="cards.html#secondheart">Second Heart</a>, <a href="cards.html#stoneskin">Stoneskin</a>, <a href="cards.html#thornmail">Thornmail</a>, <a href="cards.html#vampiricaura">Vampiric Aura</a>, <a href="cards.html#ward">Ward</a>, <a href="cards.html#wizardhealth">Vitality</a></div>
+        </div>
+        <div class="r-meta"><div class="per">damage <b>+0.0%</b></div><div class="per">survival <b>+33.0%</b></div><div class="dep">13 cards biased</div></div>
+      </div>
+      <div class="row" id="stormcaller" style="--stripe:rgb(140,217,255)"
+        data-hay="stormcaller stormcaller nothing is hit once. arcs, pulses and rings, spreading outward. strong into crowds, thin against a single big body. chaindamage chainlightning chainrange crescendo deathnova explosivetouch lightningrod soullink staticfield superconductor voidfrequency voidpulse voidrange">
+        <div class="r-name" data-anchor><span>STORMCALLER</span><span class="r-key">stormcaller</span></div>
+        <div class="r-desc">
+          <div>Nothing is hit once. Arcs, pulses and rings, spreading outward.</div>
+          <div class="tot">Strong into crowds, thin against a single big body.</div>
+          <div class="per">opens with <b><a href="cards.html#chainlightning">Chain Lightning</a></b></div>
+          <div class="tot">biased toward: <a href="cards.html#chaindamage">Arc Damage</a>, <a href="cards.html#chainlightning">Chain Lightning</a>, <a href="cards.html#chainrange">Arc Range</a>, <a href="cards.html#crescendo">Crescendo</a>, <a href="cards.html#deathnova">Death Nova</a>, <a href="cards.html#explosivetouch">Explosive Touch</a>, <a href="cards.html#lightningrod">Lightning Rod</a>, <a href="cards.html#soullink">Soul Link</a>, <a href="cards.html#staticfield">Static Field</a>, <a href="cards.html#superconductor">Superconductor</a>, <a href="cards.html#voidfrequency">Void Tempo</a>, <a href="cards.html#voidpulse">Void Pulse</a>, <a href="cards.html#voidrange">Void Reach</a></div>
+        </div>
+        <div class="r-meta"><div class="per">damage <b>+36.5%</b></div><div class="per">survival <b>+13.1%</b></div><div class="dep">13 cards biased</div></div>
+      </div>
+      <div class="row" id="stalker" style="--stripe:rgb(191,153,255)"
+        data-hay="stalker stalker never where it swings. faster feet, a shorter blink, and hits that pick their moment. rewards movement. punishes standing still hardest of the four. backhand blinkstrike bloodrush criticalmass featherweight marksman quickening riftstep rupture seeker sniperseye wizardspeed">
+        <div class="r-name" data-anchor><span>STALKER</span><span class="r-key">stalker</span></div>
+        <div class="r-desc">
+          <div>Never where it swings. Faster feet, a shorter blink, and hits that pick their moment.</div>
+          <div class="tot">Rewards movement. Punishes standing still hardest of the four.</div>
+          <div class="per">opens with <b><a href="cards.html#criticalmass">Critical Mass</a> ×2</b></div>
+          <div class="tot">biased toward: <a href="cards.html#backhand">Backhand</a>, <a href="cards.html#blinkstrike">Blink Strike</a>, <a href="cards.html#bloodrush">Bloodrush</a>, <a href="cards.html#criticalmass">Critical Mass</a>, <a href="cards.html#featherweight">Featherweight</a>, <a href="cards.html#marksman">Marksman</a>, <a href="cards.html#quickening">Quickening</a>, <a href="cards.html#riftstep">Rift Step</a>, <a href="cards.html#rupture">Rupture</a>, <a href="cards.html#seeker">Seeker</a>, <a href="cards.html#sniperseye">Sniper's Eye</a>, <a href="cards.html#wizardspeed">Swift Steps</a></div>
+        </div>
+        <div class="r-meta"><div class="per">damage <b>+8.8%</b></div><div class="per">survival <b>+5.4%</b></div><div class="dep flag"><b>the fixture cannot see this class</b></div><div class="dep">12 cards biased</div></div>
+      </div>
+      <div class="row" id="breaker" style="--stripe:rgb(255,158,77)"
+        data-hay="breaker breaker hit it until it stops. a heavier orb, and everything it touches goes flying. the most damage per hit, and the least room for error. aftershock blastradius carom deadstop heavycore inertiabattery juggernaut orbdamage orbsize overclock pushback rampage thunderclap">
+        <div class="r-name" data-anchor><span>BREAKER</span><span class="r-key">breaker</span></div>
+        <div class="r-desc">
+          <div>Hit it until it stops. A heavier orb, and everything it touches goes flying.</div>
+          <div class="tot">The most damage per hit, and the least room for error.</div>
+          <div class="per">opens with <b><a href="cards.html#heavycore">Heavy Core</a></b></div>
+          <div class="tot">biased toward: <a href="cards.html#aftershock">Aftershock</a>, <a href="cards.html#blastradius">Blast Radius</a>, <a href="cards.html#carom">Carom</a>, <a href="cards.html#deadstop">Dead Stop</a>, <a href="cards.html#heavycore">Heavy Core</a>, <a href="cards.html#inertiabattery">Inertia Battery</a>, <a href="cards.html#juggernaut">Juggernaut</a>, <a href="cards.html#orbdamage">Striking Force</a>, <a href="cards.html#orbsize">Heavy Orb</a>, <a href="cards.html#overclock">Overclock</a>, <a href="cards.html#pushback">Pushback</a>, <a href="cards.html#rampage">Rampage</a>, <a href="cards.html#thunderclap">Thunderclap</a></div>
+        </div>
+        <div class="r-meta"><div class="per">damage <b>+37.5%</b></div><div class="per">survival <b>+21.6%</b></div><div class="dep">13 cards biased</div></div>
+      </div>
+    </div>
+    <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
+
+    <h2 id="balance">How these were balanced</h2>
+    <div class="note"><b>These were measured, because “balanced” is not something you can
+  assert.</b> Each class was run against a classless baseline on the same seeds, ten trials,
+  offence as damage dealt and defence as frames survived. <b>Breaker and Stormcaller came out
+  statistically identical</b> — well inside each other's error bars — and the Warden trades all
+  of its offence for the best survival of the four.
+  <br><br>
+  It did not do that at first. It opened with less health, measured +0.0% damage <em>and</em>
+  tied survival with the damage classes, and was simply the worse pick: killing faster also keeps
+  you alive, so giving up offence bought it nothing. The extra health is the correction.
+  <br><br>
+  <b>The fixture is blind to the Stalker</b>, and that is worth saying plainly rather than tuning
+  around. Both fixtures use a <b>stationary</b> wizard, so extra move speed and a shorter blink —
+  the whole of what the class is — contribute exactly nothing, and it duly reads as noise on both
+  axes. What could be judged was its opening card, which was genuinely the thinnest of the four,
+  so that is what was doubled. The bias lists are all 12–13 cards by design: a class steering
+  toward twenty would find its pieces far more reliably than one steering toward eight, which is
+  a power difference wearing an identity's clothes.</div>
+
+    <table>
+      <thead><tr><th>Class</th><th>Damage</th><th>Survival</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><a href="#warden">WARDEN</a></td><td><code>+0.0%</code></td><td><code>+33.0%</code></td><td></td></tr>
+        <tr><td><a href="#stormcaller">STORMCALLER</a></td><td><code>+36.5%</code></td><td><code>+13.1%</code></td><td></td></tr>
+        <tr><td><a href="#stalker">STALKER</a></td><td><code>+8.8%</code></td><td><code>+5.4%</code></td><td>measured as noise — the fixture is stationary</td></tr>
+        <tr><td><a href="#breaker">BREAKER</a></td><td><code>+37.5%</code></td><td><code>+21.6%</code></td><td></td></tr>
+      </tbody>
+    </table>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

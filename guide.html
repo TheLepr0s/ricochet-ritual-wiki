@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" data-page="guide-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to play · Ricochet Ritual</title>
+<meta name="description" content="One orb, thrown and recalled. Everything below follows from that.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="guide-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html" aria-current="page"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="classes.html"><em>⚑</em>Classes</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#controls">Controls</a><a href="#loop">The run</a><a href="#upgrades">The upgrade screen</a><a href="#drops">Staying alive</a><a href="#difficulty">Difficulty</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <h1>How to play</h1>
+      <p>One orb, thrown and recalled. Everything below follows from that.</p>
+    </div>
+    <h2 id="controls">Controls</h2>
+    <table>
+      <thead><tr><th>Input</th><th>Does</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><code>W A S D</code></td><td>Move</td><td>Diagonals are normalised, so cutting a corner is not faster than running straight.</td></tr>
+        <tr><td><code>Mouse</code></td><td>Aim</td><td>The wizard faces the cursor whichever way it is walking.</td></tr>
+        <tr><td><code>Left click</code></td><td>Throw / swing</td><td>With the orb in hand, throws it. With the orb out, swings at whatever is next to you.</td></tr>
+        <tr><td><code>Right click (hold)</code></td><td>Recall</td><td>Drags the orb back to you. Let go early and it keeps the velocity it had built.</td></tr>
+        <tr><td><code>Space</code></td><td>Blink</td><td>Instant, passes through walls and enemies, and cannot land you inside geometry.</td></tr>
+        <tr><td><code>F</code></td><td>Utility ability</td><td>Only bound once you have taken one — abilities are offered as a fourth card on every third pick.</td></tr>
+        <tr><td><code>Escape</code></td><td>Pause</td><td>Opens settings without leaving the run.</td></tr>
+        <tr><td><code>F11</code></td><td>Fullscreen</td><td></td></tr>
+        <tr><td><code>F3</code></td><td>Developer overlay</td><td>Spawns anything, grants any card or ability, forces a wave modifier, class or designed wave.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="loop">The run</h2>
+    <h3>Throw it, then get it back</h3>
+    <p>You have one orb and it is both the weapon and the problem. Thrown, it flies until
+        something stops it, bouncing off walls and enemies and losing speed the whole time.
+        Held, you have a melee swing and nothing else. Nearly every card in the game is an
+        answer to some version of the question "what happens between the throw and the catch".</p>
+    <h3>Recall is a second weapon</h3>
+    <p>Holding right click hauls the orb back through everything in the way, and a returning
+        orb hits just as hard as a thrown one. Releasing early keeps the speed it gathered, so
+        a recall is also how you re-aim without picking the orb up. Walking into a moving orb
+        catches it — you do not have to wait for it to come to rest.</p>
+    <h3>A wave, then two cards</h3>
+    <p>Clear the field and the upgrade screen opens with two choices, a third of the time a
+        third, and on every third pick a fourth card that is a utility ability rather than a
+        passive. Rerolls and banishes accumulate on a timer rather than being spent currency,
+        so a bad screen late in a run is a smaller disaster than a bad screen early.</p>
+    <h3>It gets specific, not just bigger</h3>
+    <p>Waves ramp, but the interesting pressure comes from named events: a modifier that
+        changes the rules of one wave, a designed wave built from one kind of enemy, and a
+        fixed boss every tenth. None of them are simply "the same wave with more health".</p>
+
+    <h2 id="upgrades">The upgrade screen</h2>
+    <p>
+      Clearing a wave opens it. You are offered two cards, and on every
+      <b>3rd</b> screen a further card that is
+      a <a href="abilities.html">utility ability</a> rather than a passive — you carry one of those
+      at a time, so taking a second replaces the first.
+    </p>
+    <p>
+      <b>Rerolls</b> redraw the screen; <b>banishes</b> remove a card from the pool for the rest of
+      the run. Both accumulate on a timer rather than being spent currency: you gain a reroll every
+      <b>2</b> waves and a banish every <b>4</b>,
+      capped at <b>9</b> and <b>9</b>. A bad screen late in a run is
+      therefore a much smaller disaster than a bad screen early, which is the intent — the early
+      screens are where a build is decided.
+    </p>
+    <p>
+      Rarity is a draw weight, not a power ranking. A card is offered in proportion to it:
+      <code>common 40</code> · <code>uncommon 28</code> · <code>rare 16</code> · <code>epic 8</code> · <code>legendary 3</code>.
+      Cards at their stack cap, cards whose prerequisite you do not own, and cards that conflict
+      with something you already took are all removed from the draw rather than offered and
+      wasted.
+    </p>
+
+    <h2 id="drops">Staying alive</h2>
+    <p>
+      Bodies drop hearts, and the chance depends on how badly you need one — it reads your health
+      <b>fraction</b>, so the field stays clean while you are healthy and starts paying out when
+      you are not.
+    </p>
+    <table>
+      <thead><tr><th>When</th><th>Chance</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Above 85% health</td><td><code>1.2%</code> per body</td><td>You are fine, so the field stays clean. A heart here would only be walked over and wasted.</td></tr>
+        <tr><td>60 – 85%</td><td><code>4.5%</code> per body</td><td>Chipped. Just often enough to notice that bodies are worth walking to.</td></tr>
+        <tr><td>35 – 60%</td><td><code>10%</code> per body</td><td>In trouble. The wave starts paying you back for clearing it.</td></tr>
+        <tr><td>Below 35%</td><td><code>20%</code> per body</td><td>One in five. The band is deliberately steep at the bottom, because this is where a run is decided.</td></tr>
+        <tr><td>Elite kill</td><td><code>×5</code> capped at 85%</td><td>A fight you chose to take should pay for itself.</td></tr>
+        <tr><td>Boss kill</td><td><code>4 drops</code> guaranteed</td><td>One heart for two minutes of work would read as an insult.</td></tr>
+      </tbody>
+    </table>
+    <p class="tot">
+      A heart lives <b>13s</b>, flashes for the last <b>3.5s</b>, drifts to
+      you inside <b>130px</b> at <b>520px/s</b> and is collected at
+      <b>34px</b>. At most <b>8</b> sit on the field at once, so a
+      wipe in a big wave cannot carpet the ground.
+    </p>
+    <div class="note">The drop rate reads your health <b>fraction</b>, so it is a rubber band
+  rather than a constant. Shield drops only roll for a build that can actually hold them — without
+  Overflow or Kinetic Plating there is nowhere to put the points, and a pickup that does nothing is
+  worse than no pickup at all.
+  <br><br>
+  <b>Healing goes somewhere.</b> <code>Player:heal</code> banks the excess so Overflow can turn it
+  into shield instead of letting it evaporate at the cap. Shield absorbs before health, and draws
+  as plates over the bar. Mitigation — Stoneskin, Last Stand — runs through a single
+  <code>mitigate()</code> funnel, so two sources cannot silently multiply into immunity.</div>
+
+    <h2 id="difficulty">Difficulty</h2>
+    <p>
+      Picked before the class, at the start of a run, and locked for its duration — changing the
+      menu mid-run cannot rewrite what you are playing. Records store the difficulty alongside the
+      score, because a HARD score and an EASY score are not the same number.
+    </p>
+    <div class="rows">
+      <div class="row" id="diff-easy" style="--stripe:var(--uncommon)" data-hay="easy easy weaker foes, room to breathe, and a deeper bag of rerolls. for learning the orb.">
+        <div class="r-name" data-anchor><span>EASY</span><span class="r-key">easy</span></div>
+        <div class="r-desc"><div>Weaker foes, room to breathe, and a deeper bag of rerolls.</div><div class="tot">For learning the orb.</div></div>
+        <div class="r-meta"><div class="per">enemy health <span class="tot">-25%</span></div><div class="per">enemy damage <span class="tot">-30%</span></div><div class="per">enemy speed <span class="tot">-5%</span></div><div class="per">scaling rate <span class="tot">-30%</span></div><div class="per">spawn interval <span class="tot">+30%</span></div><div class="per">concurrent cap <span class="tot">-25%</span></div>
+          <div class="dep">heals 50% + 6 between waves</div>
+          <div class="dep">5 rerolls · 5 banishes</div>
+        </div>
+      </div>
+      <div class="row" id="diff-medium" style="--stripe:var(--rare)" data-hay="medium medium the ritual as it was written. the intended fight. recommended.">
+        <div class="r-name" data-anchor><span>MEDIUM</span><span class="r-key">medium</span></div>
+        <div class="r-desc"><div>The ritual as it was written. The intended fight.</div><div class="tot">Recommended.</div></div>
+        <div class="r-meta"><div class="per">enemy health <span class="tot">0%</span></div><div class="per">enemy damage <span class="tot">0%</span></div><div class="per">enemy speed <span class="tot">0%</span></div><div class="per">scaling rate <span class="tot">0%</span></div><div class="per">spawn interval <span class="tot">0%</span></div><div class="per">concurrent cap <span class="tot">0%</span></div>
+          <div class="dep">heals 33% + 3 between waves</div>
+          <div class="dep">3 rerolls · 3 banishes</div>
+        </div>
+      </div>
+      <div class="row" id="diff-hard" style="--stripe:var(--warn)" data-hay="hard hard they come faster, hit harder, and the wave's respite is thin. some achievements only unlock here.">
+        <div class="r-name" data-anchor><span>HARD</span><span class="r-key">hard</span></div>
+        <div class="r-desc"><div>They come faster, hit harder, and the wave's respite is thin.</div><div class="tot">Some achievements only unlock here.</div></div>
+        <div class="r-meta"><div class="per">enemy health <span class="tot">+45%</span></div><div class="per">enemy damage <span class="tot">+35%</span></div><div class="per">enemy speed <span class="tot">+8%</span></div><div class="per">scaling rate <span class="tot">+30%</span></div><div class="per">spawn interval <span class="tot">-22%</span></div><div class="per">concurrent cap <span class="tot">+35%</span></div>
+          <div class="dep">heals 18% between waves</div>
+          <div class="dep">2 rerolls · 2 banishes</div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>
