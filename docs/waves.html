@@ -251,7 +251,20 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <div class="note">Any ordinary spawn can arrive <b>crowned</b>: more health, more damage,
   a visible crown and a wider health bar, and a much better drop. They are a fight you can choose
   to take or leave, and the reward is scaled so that taking one is usually correct but never
-  free. Bosses are never elite — they are already the exception to the health multipliers.</div>
+  free. Bosses are never elite — they are already the exception to the health multipliers.
+  <br><br>
+  <b>The health bonus is not one number.</b> It was — a flat ×2.6 — and that reads fair while
+  being nothing of the kind, because base health across the roster spans twelve-fold. A flat
+  multiplier charges the same percentage and a completely different <em>absolute</em> price: at
+  wave 10 it added 155 HP to a Mushroom and 900 to a Brute. Measured, an elite Brute took
+  <b>12 seconds</b> against a boss's 19 — two thirds of a boss fight, from a piece of trash.
+  <br><br>
+  So the bonus now falls off with the type's <b>base</b> health on a square root: quadruple the
+  base and the bonus halves, with a floor so a tank is still meaningfully tankier. It is read off
+  the row rather than off the scaled figure, so the shape is identical on every wave and elites do
+  not quietly weaken as a run goes on. Anything at or below the reference keeps the full
+  multiplier, which means <b>elite trash is untouched</b> — that was the case that was already
+  working.</div>
 
     <h2 id="bossrot">Boss waves</h2>
     <p>
