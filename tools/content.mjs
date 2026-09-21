@@ -46,13 +46,13 @@ export const CONTROLS = [
   { key: "Mouse",     act: "Aim",
     note: "The wizard faces the cursor whichever way it is walking." },
   { key: "Left click", act: "Throw / swing",
-    note: "With the orb in hand, throws it. With the orb out, swings at whatever is next to you. Holding it does nothing unless you have taken Charged Shot, which moves the throw to the release." },
+    note: "With the orb in hand, throws it. With the orb out, swings at whatever is next to you. Holding it does nothing unless you have taken Charged Shot, which moves the throw to the release and winds it up while held." },
   { key: "Right click (hold)", act: "Recall",
     note: "Drags the orb back to you. Let go early and it keeps the velocity it had built." },
   { key: "Space",     act: "Blink",
     note: "Instant, passes through walls and enemies, and cannot land you inside geometry." },
   { key: "F",         act: "Utility ability",
-    note: "Only bound once you have taken one — abilities are offered as a fourth card on every third pick." },
+    note: "Only bound once you have taken one — an ability is offered as a fourth card once on every third wave." },
   { key: "Escape",    act: "Pause",
     note: "Opens settings without leaving the run." },
   { key: "F11",       act: "Fullscreen" },
@@ -79,7 +79,7 @@ export const LOOP = [
   {
     h: "A wave, then two cards",
     p: `Clear the field and the upgrade screen opens with two choices, a third of the time a
-        third, and on every third pick a fourth card that is a utility ability rather than a
+        third, and on every third WAVE a fourth card that is a utility ability rather than a
         passive. Rerolls and banishes accumulate on a timer rather than being spent currency,
         so a bad screen late in a run is a smaller disaster than a bad screen early.`,
   },
@@ -382,7 +382,27 @@ export const COMBAT = [
   { h: "Enemies share one chase direction",
     p: `Pathfinding is greedy and shared, because a hundred independent A* searches per frame buys
         nothing in an open arena. Full pathing runs only for enemies that have detected they are
-        stuck.` },
+        stuck. Movement is then clamped against the grid: the steering pass gives up and returns
+        the straight line when every candidate angle is blocked, and with no final check a cornered
+        enemy simply walked through the trunk -- which read as bats and vampires flying over trees,
+        because the sprite is drawn above the body that is crossing it.` },
+  { h: "An orb that gets stuck lets itself out",
+    p: `Two obstacles with a narrow gap between them can hold a thrown orb indefinitely, because
+        nothing damps a wall bounce enough to end it. There are two answers.
+        <b>Recall passes through scenery</b>, so holding right click is a guarantee rather than a
+        suggestion -- it used to fight the wall resolver and lose, which left the player with no
+        move at all. And the orb frees itself: if it has not travelled more than a short distance
+        for about a second and a half, it checks whether it is in a <em>pocket</em>, and phases out
+        through the scenery if it is.
+        <br><br>
+        <b>Confinement is what marks a trap, not speed.</b> The first version also required the orb
+        to still be moving, on the reasoning that a stationary orb is one waiting to be collected --
+        and that let exactly the worst case through, because a wall bounce bleeds speed and a slow
+        trapped orb comes to rest <em>inside</em> the gap. Measured: an orb entering at 260px/s
+        stopped three pixels from the centre and stayed there forever. So it samples a ring
+        instead. A flat wall the orb has rolled up against blocks at most half of it and is
+        reachable on foot; a gap or an inside corner blocks more. An orb already at rest is nudged
+        toward you as well, since phasing alone does nothing for something with no momentum.` },
 ];
 
 /* ── Score ──────────────────────────────────────────────────────────────── */
