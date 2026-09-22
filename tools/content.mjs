@@ -392,6 +392,40 @@ export const COMBAT = [
         the straight line when every candidate angle is blocked, and with no final check a cornered
         enemy simply walked through the trunk -- which read as bats and vampires flying over trees,
         because the sprite is drawn above the body that is crossing it.` },
+  { h: "A card is worth what it measures, not what it says",
+    p: `Every card in the pool is benchmarked against a no-card baseline on the same seed, so
+        the map cancels out and what is left is the card. The September 2026 pass ran all 105
+        of them and the interesting results were not the numbers, they were the things the
+        numbers exposed.
+        <br><br>
+        <b>Explosive Touch was cheating.</b> It measured +157.6%, the highest figure in the
+        catalogue and nearly five times the median epic — and it barely responded to its own
+        damage number. At 1 damage per blast it still measured +123.7%, which meant almost none
+        of its output was the blast. Its explosion spawns eight fire particles for the look, into
+        the same list the Blazing Trail damage loop walks, and that loop charged full trail damage
+        for them without asking where they came from. The card was handing out a free Blazing
+        Trail on every landed hit to players who had never taken Blazing Trail. Particles now carry
+        a cosmetic flag; the card is linear again and sits at +37.0%, almost exactly the epic median,
+        at the damage value it always had.
+        <br><br>
+        <b>Twin Orbs did nothing.</b> A legendary measuring +2.7%, because a swing threw only the
+        NEAREST orb — so a second orb bought no extra throughput and simply waited its turn. One
+        swing now throws every orb in reach, which is what the card always claimed.
+        <br><br>
+        <b>Pushback made you worse.</b> Knocking a body away from you is knocking it out of the
+        orb's path, and the card measured −17.2% damage while being sold as brute force. The shove
+        is smaller now and carries damage with it.` },
+  { h: "Two thirds of a fixture is knowing what it cannot see",
+    p: `The same pass found three faults in the measuring equipment, each of which made working
+        cards look dead. Thirteen dependent cards were measured with no base card underneath them
+        and all reported an identical, impossible zero — Arc Damage without Chain Lightning is not
+        a weak card, it is not a card. The fixture could not see a second orb at all, so Resonance,
+        which needs both orbs to strike one target, could not register. And the defence fixture was
+        measuring its own ceiling: the baseline survived 1463 frames of a 1500-frame window, so
+        forty-two unrelated cards returned the same number.
+        <br><br>
+        A zero with a zero error bar is never "this card is weak". It means nothing happened, and
+        the first thing to suspect is the fixture.` },
   { h: "An orb that gets stuck lets itself out",
     p: `Two obstacles with a narrow gap between them can hold a thrown orb indefinitely, because
         nothing damps a wall bounce enough to end it. There are two answers.

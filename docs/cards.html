@@ -136,10 +136,10 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"><div class="tot"><code>carom</code></div></div>
         </div>
       <div class="row" id="featherweight" style="--stripe:var(--uncommon)"
-          data-hay="featherweight featherweight nothing to carry. move speed +40%, but max hp -30%. uncommon"
+          data-hay="featherweight featherweight nothing to carry. move speed +40%, but max hp -15%. uncommon"
           data-stackable="0" data-req="0" data-con="0">
           <div class="r-name" data-anchor><span>Featherweight</span><span class="r-key">Featherweight</span></div>
-          <div class="r-desc">Nothing to carry. Move speed +40%, but max HP -30%.</div>
+          <div class="r-desc">Nothing to carry. Move speed +40%, but max HP -15%.</div>
           <div class="r-meta"></div>
         </div>
       <div class="row" id="fortune" style="--stripe:var(--uncommon)"
@@ -220,10 +220,10 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"><div class="per">stackable · <b>cap 5</b></div></div>
         </div>
       <div class="row" id="pushback" style="--stripe:var(--uncommon)"
-          data-hay="pushback pushback brute force. everything you hit is knocked back 40% harder per stack. uncommon"
+          data-hay="pushback pushback brute force. everything you hit is knocked back 25% harder and takes 10% more damage, per stack. uncommon"
           data-stackable="1" data-req="0" data-con="0">
           <div class="r-name" data-anchor><span>Pushback</span><span class="r-key">Pushback</span></div>
-          <div class="r-desc">Brute force. Everything you hit is knocked back 40% harder per stack.</div>
+          <div class="r-desc">Brute force. Everything you hit is knocked back 25% harder and takes 10% more damage, per stack.</div>
           <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div></div>
         </div>
       <div class="row" id="safehands" style="--stripe:var(--uncommon)"
@@ -247,7 +247,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Close feeding. Anything that dies near you gives back 2 HP.</div>
           <div class="r-meta"><div class="tot"><code>vampiric_aura</code></div></div>
         </div>
-      <div class="group-label" id="rare">rare <span style="opacity:.6">· 45 cards · draw weight 16</span></div>
+      <div class="group-label" id="rare">rare <span style="opacity:.6">· 40 cards · draw weight 16</span></div>
       <div class="row" id="adrenaline" style="--stripe:var(--rare)"
           data-hay="adrenaline adrenaline cornered animal. orb damage climbs as your health falls, up to +80% at death's door. adrenaline rare"
           data-stackable="0" data-req="0" data-con="0">
@@ -261,20 +261,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-name" data-anchor><span>Aegis</span><span class="r-key">Aegis</span></div>
           <div class="r-desc">Guarded. Your orb swats enemy projectiles out of the air, even at a standstill.</div>
           <div class="r-meta"><div class="tot"><code>aegis</code></div></div>
-        </div>
-      <div class="row" id="aftershock" style="--stripe:var(--rare)"
-          data-hay="aftershock aftershock the ground remembers. half a second after each direct hit, the spot detonates for 40% of the damage. aftershock rare"
-          data-stackable="0" data-req="0" data-con="0">
-          <div class="r-name" data-anchor><span>Aftershock</span><span class="r-key">Aftershock</span></div>
-          <div class="r-desc">The ground remembers. Half a second after each direct hit, the spot detonates for 40% of the damage.</div>
-          <div class="r-meta"><div class="tot"><code>aftershock</code></div></div>
-        </div>
-      <div class="row" id="chainrange" style="--stripe:var(--rare)"
-          data-hay="chainrange arc range longer sparks. lightning arc jumps 50 further to reach more enemies. rare"
-          data-stackable="1" data-req="1" data-con="0">
-          <div class="r-name" data-anchor><span>Arc Range</span><span class="r-key">ChainRange</span></div>
-          <div class="r-desc">Longer sparks. Lightning arc jumps 50 further to reach more enemies.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#chainlightning"><b>Chain Lightning</b></a></div></div>
         </div>
       <div class="row" id="berserkercore" style="--stripe:var(--rare)"
           data-hay="berserkercore berserker core blood frenzy. each kill adds speed &amp; damage. stacks up to 8, lost on hit. berserker_core rare"
@@ -367,26 +353,12 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Dragnet. A recalled orb hauls every enemy it passes along behind it.</div>
           <div class="r-meta"><div class="tot"><code>gravity_snap</code></div></div>
         </div>
-      <div class="row" id="heavycore" style="--stripe:var(--rare)"
-          data-hay="heavycore heavy core dense iron core. bleeds speed faster, but +20 bonus damage on every hit. rare"
-          data-stackable="0" data-req="0" data-con="1">
-          <div class="r-name" data-anchor><span>Heavy Core</span><span class="r-key">HeavyCore</span></div>
-          <div class="r-desc">Dense iron core. Bleeds speed faster, but +20 bonus damage on every hit.</div>
-          <div class="r-meta"><div class="dep flag">excludes <a href="#lightcore"><b>Light Core</b></a></div></div>
-        </div>
       <div class="row" id="hominginstinct" style="--stripe:var(--rare)"
           data-hay="hominginstinct homing instinct seeks warm flesh. orb gently steers toward the nearest enemy. homing_instinct rare"
           data-stackable="0" data-req="0" data-con="0">
           <div class="r-name" data-anchor><span>Homing Instinct</span><span class="r-key">HomingInstinct</span></div>
           <div class="r-desc">Seeks warm flesh. Orb gently steers toward the nearest enemy.</div>
           <div class="r-meta"><div class="tot"><code>homing_instinct</code></div></div>
-        </div>
-      <div class="row" id="inertiabattery" style="--stripe:var(--rare)"
-          data-hay="inertiabattery inertia battery speed becomes power. a moving orb hits harder the faster it travels, with no upper limit -- every point of launch force you own finally counts. inertia_battery rare"
-          data-stackable="0" data-req="0" data-con="0">
-          <div class="r-name" data-anchor><span>Inertia Battery</span><span class="r-key">InertiaBattery</span></div>
-          <div class="r-desc">Speed becomes power. A moving orb hits harder the faster it travels, with no upper limit -- every point of launch force you own finally counts.</div>
-          <div class="r-meta"><div class="tot"><code>inertia_battery</code></div></div>
         </div>
       <div class="row" id="kineticplating" style="--stripe:var(--rare)"
           data-hay="kineticplating kinetic plating force into armour. every 6 orb hits you land build 8 points of shield. rare"
@@ -416,13 +388,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">A shard circles you forever, striking anything it sweeps through. Weaker than your orb, but never stops.</div>
           <div class="r-meta"><div class="tot"><code>orbit_mode</code></div></div>
         </div>
-      <div class="row" id="bleed" style="--stripe:var(--rare)"
-          data-hay="bleed open wound cuts that linger. direct hits apply a bleed dealing 5 damage per second for 3s. bleed rare"
-          data-stackable="0" data-req="0" data-con="0">
-          <div class="r-name" data-anchor><span>Open Wound</span><span class="r-key">Bleed</span></div>
-          <div class="r-desc">Cuts that linger. Direct hits apply a bleed dealing 5 damage per second for 3s.</div>
-          <div class="r-meta"><div class="tot"><code>bleed</code></div></div>
-        </div>
       <div class="row" id="overclock" style="--stripe:var(--rare)"
           data-hay="overclock overclock build the charge. every 5th consecutive enemy hit (no wall bounces) deals double damage. overclock rare"
           data-stackable="0" data-req="0" data-con="0">
@@ -438,24 +403,24 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"></div>
         </div>
       <div class="row" id="owlfrequency" style="--stripe:var(--rare)"
-          data-hay="owlfrequency owl swiftness relentless diver. owl attack cooldown -1s. rare"
+          data-hay="owlfrequency owl swiftness relentless diver. owl attack cooldown -0.6s. rare"
           data-stackable="1" data-req="1" data-con="0">
           <div class="r-name" data-anchor><span>Owl Swiftness</span><span class="r-key">OwlFrequency</span></div>
-          <div class="r-desc">Relentless diver. Owl attack cooldown -1s.</div>
+          <div class="r-desc">Relentless diver. Owl attack cooldown -0.6s.</div>
           <div class="r-meta"><div class="per">stackable · <b>cap 3</b></div><div class="dep">needs <a href="#owlcompanion"><b>Owl Companion</b></a></div></div>
         </div>
       <div class="row" id="owldamage" style="--stripe:var(--rare)"
-          data-hay="owldamage owl talons razor-sharp claws. owl attack damage +8. rare"
+          data-hay="owldamage owl talons razor-sharp claws. owl attack damage +16. rare"
           data-stackable="1" data-req="1" data-con="0">
           <div class="r-name" data-anchor><span>Owl Talons</span><span class="r-key">OwlDamage</span></div>
-          <div class="r-desc">Razor-sharp claws. Owl attack damage +8.</div>
+          <div class="r-desc">Razor-sharp claws. Owl attack damage +16.</div>
           <div class="r-meta"><div class="per">stackable · <b>cap 6</b></div><div class="dep">needs <a href="#owlcompanion"><b>Owl Companion</b></a></div></div>
         </div>
       <div class="row" id="owlrange" style="--stripe:var(--rare)"
-          data-hay="owlrange owl vision keen eyes. owl detects and attacks from 75 further away. rare"
+          data-hay="owlrange owl vision keen eyes. owl detects and attacks from 110 further away. rare"
           data-stackable="1" data-req="1" data-con="0">
           <div class="r-name" data-anchor><span>Owl Vision</span><span class="r-key">OwlRange</span></div>
-          <div class="r-desc">Keen eyes. Owl detects and attacks from 75 further away.</div>
+          <div class="r-desc">Keen eyes. Owl detects and attacks from 110 further away.</div>
           <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#owlcompanion"><b>Owl Companion</b></a></div></div>
         </div>
       <div class="row" id="quickening" style="--stripe:var(--rare)"
@@ -563,12 +528,26 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Wider circle. Mirror Ball radius +30, covers more ground.</div>
           <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#orbitmode"><b>Mirror Ball</b></a></div></div>
         </div>
-      <div class="group-label" id="epic">epic <span style="opacity:.6">· 29 cards · draw weight 8</span></div>
+      <div class="group-label" id="epic">epic <span style="opacity:.6">· 34 cards · draw weight 8</span></div>
+      <div class="row" id="aftershock" style="--stripe:var(--epic)"
+          data-hay="aftershock aftershock the ground remembers. half a second after each direct hit, the spot detonates for 40% of the damage. aftershock epic"
+          data-stackable="0" data-req="0" data-con="0">
+          <div class="r-name" data-anchor><span>Aftershock</span><span class="r-key">Aftershock</span></div>
+          <div class="r-desc">The ground remembers. Half a second after each direct hit, the spot detonates for 40% of the damage.</div>
+          <div class="r-meta"><div class="tot"><code>aftershock</code></div></div>
+        </div>
       <div class="row" id="chaindamage" style="--stripe:var(--epic)"
           data-hay="chaindamage arc damage supercharged bolts. lightning arc damage +5 per jump. epic"
           data-stackable="1" data-req="1" data-con="0">
           <div class="r-name" data-anchor><span>Arc Damage</span><span class="r-key">ChainDamage</span></div>
           <div class="r-desc">Supercharged bolts. Lightning arc damage +5 per jump.</div>
+          <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#chainlightning"><b>Chain Lightning</b></a></div></div>
+        </div>
+      <div class="row" id="chainrange" style="--stripe:var(--epic)"
+          data-hay="chainrange arc range longer sparks. lightning arc jumps 50 further to reach more enemies. epic"
+          data-stackable="1" data-req="1" data-con="0">
+          <div class="r-name" data-anchor><span>Arc Range</span><span class="r-key">ChainRange</span></div>
+          <div class="r-desc">Longer sparks. Lightning arc jumps 50 further to reach more enemies.</div>
           <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#chainlightning"><b>Chain Lightning</b></a></div></div>
         </div>
       <div class="row" id="bloodpact" style="--stripe:var(--epic)"
@@ -641,6 +620,20 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">All or nothing. Orb deals 2x damage but shatters if it hits a wall.</div>
           <div class="r-meta"><div class="tot"><code>glass_cannon</code></div><div class="dep flag">excludes <a href="#berserkercore"><b>Berserker Core</b></a>, <a href="#ricochet"><b>Ricochet</b></a></div></div>
         </div>
+      <div class="row" id="heavycore" style="--stripe:var(--epic)"
+          data-hay="heavycore heavy core dense iron core. bleeds speed faster, but +20 bonus damage on every hit. epic"
+          data-stackable="0" data-req="0" data-con="1">
+          <div class="r-name" data-anchor><span>Heavy Core</span><span class="r-key">HeavyCore</span></div>
+          <div class="r-desc">Dense iron core. Bleeds speed faster, but +20 bonus damage on every hit.</div>
+          <div class="r-meta"><div class="dep flag">excludes <a href="#lightcore"><b>Light Core</b></a></div></div>
+        </div>
+      <div class="row" id="inertiabattery" style="--stripe:var(--epic)"
+          data-hay="inertiabattery inertia battery speed becomes power. a moving orb hits harder the faster it travels, with no upper limit -- every point of launch force you own finally counts. inertia_battery epic"
+          data-stackable="0" data-req="0" data-con="0">
+          <div class="r-name" data-anchor><span>Inertia Battery</span><span class="r-key">InertiaBattery</span></div>
+          <div class="r-desc">Speed becomes power. A moving orb hits harder the faster it travels, with no upper limit -- every point of launch force you own finally counts.</div>
+          <div class="r-meta"><div class="tot"><code>inertia_battery</code></div></div>
+        </div>
       <div class="row" id="juggernaut" style="--stripe:var(--epic)"
           data-hay="juggernaut juggernaut unstoppable. the orb no longer bounces off enemies -- it ploughs straight through them. juggernaut epic"
           data-stackable="0" data-req="0" data-con="1">
@@ -668,6 +661,13 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-name" data-anchor><span>Momentum</span><span class="r-key">Momentum</span></div>
           <div class="r-desc">Rolling thunder. Orb damage +3% per point of combo, lost when the combo drops.</div>
           <div class="r-meta"><div class="tot"><code>momentum</code></div></div>
+        </div>
+      <div class="row" id="bleed" style="--stripe:var(--epic)"
+          data-hay="bleed open wound cuts that linger. direct hits apply a bleed dealing 5 damage per second for 3s. bleed epic"
+          data-stackable="0" data-req="0" data-con="0">
+          <div class="r-name" data-anchor><span>Open Wound</span><span class="r-key">Bleed</span></div>
+          <div class="r-desc">Cuts that linger. Direct hits apply a bleed dealing 5 damage per second for 3s.</div>
+          <div class="r-meta"><div class="tot"><code>bleed</code></div></div>
         </div>
       <div class="row" id="phantomcopies" style="--stripe:var(--epic)"
           data-hay="phantomcopies phantom copies mirror images. two ghost orbs flank and mimic the main orb's path. phantom_copies epic"
@@ -783,10 +783,10 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"></div>
         </div>
       <div class="row" id="owlcompanion" style="--stripe:var(--legendary)"
-          data-hay="owlcompanion owl companion a wise familiar joins you. flies overhead and swoops on nearby enemies. legendary"
+          data-hay="owlcompanion owl companion a wise familiar joins you. flies overhead and dives on nearby enemies, often and hard. legendary"
           data-stackable="0" data-req="0" data-con="0">
           <div class="r-name" data-anchor><span>Owl Companion</span><span class="r-key">OwlCompanion</span></div>
-          <div class="r-desc">A wise familiar joins you. Flies overhead and swoops on nearby enemies.</div>
+          <div class="r-desc">A wise familiar joins you. Flies overhead and dives on nearby enemies, often and hard.</div>
           <div class="r-meta"></div>
         </div>
       <div class="row" id="resonance" style="--stripe:var(--legendary)"
@@ -804,10 +804,10 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"><div class="tot"><code>second_wind</code></div></div>
         </div>
       <div class="row" id="twinorbs" style="--stripe:var(--legendary)"
-          data-hay="twinorbs twin orbs two of everything. a second orb joins you, swung and recalled just like the first. legendary"
+          data-hay="twinorbs twin orbs two of everything. a second orb joins you, and a single swing throws both. legendary"
           data-stackable="0" data-req="0" data-con="0">
           <div class="r-name" data-anchor><span>Twin Orbs</span><span class="r-key">TwinOrbs</span></div>
-          <div class="r-desc">Two of everything. A second orb joins you, swung and recalled just like the first.</div>
+          <div class="r-desc">Two of everything. A second orb joins you, and a single swing throws both.</div>
           <div class="r-meta"></div>
         </div>
     </div>
