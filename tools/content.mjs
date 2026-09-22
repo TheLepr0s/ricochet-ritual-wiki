@@ -184,7 +184,10 @@ export const ENEMY_NOTE = {
   Sporeling:  "Health that becomes two Toadstools, which are faster than the thing that made them. Kill it with room around you, or inside an explosion big enough to catch what comes out.",
   Bulwark:    "The card check. An orb that only goes forwards bounces off it all day; anything that flanks, pierces, arcs or simply arrives fast walks through. Its health is a long time to spend doing the wrong thing.",
   Witchdoctor:"Heals the most wounded allies around it often enough to outpace chip damage across a crowd. Capped at two alive at once, because three means nothing dies.",
-  Bonecaller: "Calls fresh bodies out of the ground on a timer. Ignore it and the wave stops emptying. Violet and badged so it is not mistaken for the healer at range — an earlier olive hue made the two indistinguishable.",
+  Bonecaller: "Calls fresh bodies out of the ground on a timer, and what it calls OUTLIVES it — so killing it late buys you nothing. Violet and badged so it is not mistaken for the healer at range; an earlier olive hue made the two indistinguishable. It unlocked at wave 14 with one point of weight for its first few versions, which meant most players never met it at all.",
+  Blightspore:"Barely fights. It leaves a pool of rot every time it walks a body length, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.",
+  Siphon:     "Hangs at range and drains you through a beam, healing off what it takes. The beam needs line of sight, so a tree is a real answer to it — the first time scenery has been anything but an obstacle.",
+  Broodmother:"The Bonecaller inverted. She calls faster, and every Toadstool she makes is tethered to her: kill the mother and the whole swarm drops at once. The swarm is a decoy, and walking past it is the correct play.",
   DreadSovereign: "A siege engine. It walks, and the fight is read from a distance.",
   PaleRevenant:   "The opposite fight, and the reason there are two.",
 };
@@ -195,6 +198,9 @@ export const ENEMY_EXTRA = {
   Ravager:      "Its row's <code>attackRange</code> is dead data — ChargerEnemy replaces the melee update entirely and uses its own trigger range, so the row value looks authoritative and governs nothing.",
   PaleRevenant: "No ranged attack at all. Its speed is capped below the wizard's own, on purpose, even at phase three.",
   Bomber:       "Shares the skeleton sheet with the Ravager and the Revenant, which is why all three read as bone rather than flesh.",
+  Siphon:       "Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well.",
+  Blightspore:  "Drops are keyed to DISTANCE WALKED, not to a timer. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.",
+  Broodmother:  "Shares SupportEnemy with the Witchdoctor and the Bonecaller; <code>summon_bound</code> in her row is the single flag that makes her brood die with her. Her summons are killed rather than deleted, so each one still scores, drops loot and triggers every on-kill upgrade you own.",
 };
 
 /* ── Bosses ─────────────────────────────────────────────────────────────── */

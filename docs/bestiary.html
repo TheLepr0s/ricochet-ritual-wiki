@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bestiary · Ricochet Ritual</title>
-<meta name="description" content="All 18 enemy types, with the AI that drives each one. Portraits are rendered through the game's own recolour shader, so a variant looks here exactly as it does in play.">
+<meta name="description" content="All 21 enemy types, with the AI that drives each one. Portraits are rendered through the game's own recolour shader, so a variant looks here exactly as it does in play.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
 <link rel="stylesheet" href="assets/wiki.css">
 <script>
@@ -45,7 +45,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   <main>
     <div class="page-head">
       <h1>Bestiary</h1>
-      <p>All 18 enemy types, with the AI that drives each one. Portraits are rendered through the game's own recolour shader, so a variant looks here exactly as it does in play.</p>
+      <p>All 21 enemy types, with the AI that drives each one. Portraits are rendered through the game's own recolour shader, so a variant looks here exactly as it does in play.</p>
     </div>
     <div class="toolbar">
       <input class="filter" id="page-filter" type="search" placeholder="Filter enemies…" autocomplete="off" aria-label="Filter this page">
@@ -75,7 +75,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           </div>
           <p>The baseline, and the reason “+5 orb damage” is a breakpoint worth chasing rather than a rounding error.</p>
           <div class="statline"><span class="stat">HP <b>45</b></span><span class="stat">speed <b>40</b></span><span class="stat">damage <b>5</b></span><span class="stat">range <b>80</b></span><span class="stat">from wave <b>1</b></span><span class="stat">weight <b>4</b></span><span class="stat">hitbox <b>30×34</b></span></div>
-          <p class="tot">The original art. <a href="#brute">Brute</a>, <a href="#sporeling">Sporeling</a>, <a href="#toadstool">Toadstool</a> are recolours of it.</p>
+          <p class="tot">The original art. <a href="#blightspore">Blightspore</a>, <a href="#broodmother">Broodmother</a>, <a href="#brute">Brute</a>, <a href="#sporeling">Sporeling</a>, <a href="#toadstool">Toadstool</a> are recolours of it.</p>
         </div>
       </div>
       <div class="beast" id="bat" style="--stripe:var(--rare)"
@@ -143,7 +143,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           </div>
           <p>The first enemy that takes your movement away, and heals off you for doing it.</p>
           <div class="statline"><span class="stat">HP <b>85</b></span><span class="stat">speed <b>55</b></span><span class="stat">damage <b>10</b></span><span class="stat">range <b>80</b></span><span class="stat">from wave <b>4</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>38×34</b></span></div>
-          <p class="tot">The original art. <a href="#bulwark">Bulwark</a>, <a href="#nosferatu">Nosferatu</a> are recolours of it.</p>
+          <p class="tot">The original art. <a href="#bulwark">Bulwark</a>, <a href="#nosferatu">Nosferatu</a>, <a href="#siphon">Siphon</a> are recolours of it.</p>
         </div>
       </div>
       <div class="beast" id="evilwizard" style="--stripe:var(--legendary)"
@@ -214,6 +214,23 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <p class="tot">A recolour of <a href="#bat">Bat</a>'s art, told apart by a hue rotation.</p>
         </div>
       </div>
+      <div class="beast" id="blightspore" style="--stripe:var(--common)"
+        data-hay="blightspore — barely fights. it leaves a pool of rot every time it walks a body length, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. the first enemy that makes where the fight happens matter. wave 7"
+        data-boss="0" data-ranged="0"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/Blightspore.png" alt="Blightspore" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Blightspore</h3>
+            <span class="badge">—</span>
+            
+            
+          </div>
+          <p>Barely fights. It leaves a pool of rot every time it walks a body length, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.</p>
+          <div class="statline"><span class="stat">HP <b>210</b></span><span class="stat">speed <b>30</b></span><span class="stat">damage <b>10</b></span><span class="stat">range <b>90</b></span><span class="stat">from wave <b>7</b></span><span class="stat">weight <b>3</b></span><span class="stat">max <b>3</b> alive</span><span class="stat">hitbox <b>42×44</b></span></div>
+          <p class="tot">A recolour of <a href="#mushroom">Mushroom</a>'s art, told apart by a hue rotation.</p><p class="tot">Drops are keyed to DISTANCE WALKED, not to a timer. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.</p>
+        </div>
+      </div>
       <div class="beast" id="brute" style="--stripe:var(--common)"
         data-hay="brute melee the opposite trade: slow enough to kite forever, and the first enemy an un-upgraded orb genuinely cannot one-shot. wave 7"
         data-boss="0" data-ranged="0"
@@ -265,6 +282,23 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <p class="tot">A recolour of <a href="#vampire">Vampire</a>'s art, told apart by a hue rotation.</p>
         </div>
       </div>
+      <div class="beast" id="siphon" style="--stripe:var(--common)"
+        data-hay="siphon — hangs at range and drains you through a beam, healing off what it takes. the beam needs line of sight, so a tree is a real answer to it — the first time scenery has been anything but an obstacle. wave 9"
+        data-boss="0" data-ranged="0"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/Siphon.png" alt="Siphon" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Siphon</h3>
+            <span class="badge">—</span>
+            
+            
+          </div>
+          <p>Hangs at range and drains you through a beam, healing off what it takes. The beam needs line of sight, so a tree is a real answer to it — the first time scenery has been anything but an obstacle.</p>
+          <div class="statline"><span class="stat">HP <b>140</b></span><span class="stat">speed <b>44</b></span><span class="stat">from wave <b>9</b></span><span class="stat">weight <b>3</b></span><span class="stat">max <b>2</b> alive</span><span class="stat">hitbox <b>40×36</b></span></div>
+          <p class="tot">A recolour of <a href="#vampire">Vampire</a>'s art, told apart by a hue rotation.</p><p class="tot">Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well.</p>
+        </div>
+      </div>
       <div class="beast" id="witchdoctor" style="--stripe:var(--uncommon)"
         data-hay="witchdoctor support heals the most wounded allies around it often enough to outpace chip damage across a crowd. capped at two alive at once, because three means nothing dies. wave 10"
         data-boss="0" data-ranged="1"
@@ -299,6 +333,23 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <p class="tot">A recolour of <a href="#evilwizard">EvilWizard</a>'s art, told apart by a hue rotation.</p>
         </div>
       </div>
+      <div class="beast" id="bonecaller" style="--stripe:var(--uncommon)"
+        data-hay="bonecaller support calls fresh bodies out of the ground on a timer, and what it calls outlives it — so killing it late buys you nothing. violet and badged so it is not mistaken for the healer at range; an earlier olive hue made the two indistinguishable. it unlocked at wave 14 with one point of weight for its first few versions, which meant most players never met it at all. wave 11"
+        data-boss="0" data-ranged="1"
+        data-variant="1">
+        <div class="portrait"><img src="assets/img/Bonecaller.png" alt="Bonecaller" loading="lazy" width="82"></div>
+        <div class="beast-body">
+          <div class="beast-head" data-anchor>
+            <h3>Bonecaller</h3>
+            <span class="badge">Support</span>
+            
+            
+          </div>
+          <p>Calls fresh bodies out of the ground on a timer, and what it calls OUTLIVES it — so killing it late buys you nothing. Violet and badged so it is not mistaken for the healer at range; an earlier olive hue made the two indistinguishable. It unlocked at wave 14 with one point of weight for its first few versions, which meant most players never met it at all.</p>
+          <div class="statline"><span class="stat">HP <b>165</b></span><span class="stat">speed <b>34</b></span><span class="stat">damage <b>8</b></span><span class="stat">range <b>340</b></span><span class="stat">from wave <b>11</b></span><span class="stat">weight <b>2</b></span><span class="stat">max <b>2</b> alive</span><span class="stat">hitbox <b>38×36</b></span></div>
+          <p class="tot">A recolour of <a href="#evilwizard">EvilWizard</a>'s art, told apart by a hue rotation.</p>
+        </div>
+      </div>
       <div class="beast" id="hivemind" style="--stripe:var(--rare)"
         data-hay="hivemind ranged a bat that fires three bolts in a narrow fan. individually weak, but it punishes the straight-line retreat that answers every other ranged enemy. fireball wave 12"
         data-boss="0" data-ranged="1"
@@ -316,21 +367,21 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <p class="tot">A recolour of <a href="#bat">Bat</a>'s art, told apart by a hue rotation.</p>
         </div>
       </div>
-      <div class="beast" id="bonecaller" style="--stripe:var(--uncommon)"
-        data-hay="bonecaller support calls fresh bodies out of the ground on a timer. ignore it and the wave stops emptying. violet and badged so it is not mistaken for the healer at range — an earlier olive hue made the two indistinguishable. wave 14"
+      <div class="beast" id="broodmother" style="--stripe:var(--uncommon)"
+        data-hay="broodmother support the bonecaller inverted. she calls faster, and every toadstool she makes is tethered to her: kill the mother and the whole swarm drops at once. the swarm is a decoy, and walking past it is the correct play. wave 13"
         data-boss="0" data-ranged="1"
         data-variant="1">
-        <div class="portrait"><img src="assets/img/Bonecaller.png" alt="Bonecaller" loading="lazy" width="82"></div>
+        <div class="portrait"><img src="assets/img/Broodmother.png" alt="Broodmother" loading="lazy" width="82"></div>
         <div class="beast-body">
           <div class="beast-head" data-anchor>
-            <h3>Bonecaller</h3>
+            <h3>Broodmother</h3>
             <span class="badge">Support</span>
             
             
           </div>
-          <p>Calls fresh bodies out of the ground on a timer. Ignore it and the wave stops emptying. Violet and badged so it is not mistaken for the healer at range — an earlier olive hue made the two indistinguishable.</p>
-          <div class="statline"><span class="stat">HP <b>165</b></span><span class="stat">speed <b>34</b></span><span class="stat">damage <b>8</b></span><span class="stat">range <b>340</b></span><span class="stat">from wave <b>14</b></span><span class="stat">weight <b>1</b></span><span class="stat">max <b>2</b> alive</span><span class="stat">hitbox <b>38×36</b></span></div>
-          <p class="tot">A recolour of <a href="#evilwizard">EvilWizard</a>'s art, told apart by a hue rotation.</p>
+          <p>The Bonecaller inverted. She calls faster, and every Toadstool she makes is tethered to her: kill the mother and the whole swarm drops at once. The swarm is a decoy, and walking past it is the correct play.</p>
+          <div class="statline"><span class="stat">HP <b>260</b></span><span class="stat">speed <b>30</b></span><span class="stat">damage <b>8</b></span><span class="stat">range <b>340</b></span><span class="stat">from wave <b>13</b></span><span class="stat">weight <b>2</b></span><span class="stat">max <b>1</b> alive</span><span class="stat">hitbox <b>46×46</b></span></div>
+          <p class="tot">A recolour of <a href="#mushroom">Mushroom</a>'s art, told apart by a hue rotation.</p><p class="tot">Shares SupportEnemy with the Witchdoctor and the Bonecaller; <code>summon_bound</code> in her row is the single flag that makes her brood die with her. Her summons are killed rather than deleted, so each one still scores, drops loot and triggers every on-kill upgrade you own.</p>
         </div>
       </div>
     </div>
@@ -421,7 +472,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         cast pose on the thing it is actually for: mending the most wounded allies in range, or
         calling fresh bodies out of the ground. Both wear a role badge above the health bar,
         because at range the silhouette is identical.</div>
-        <div class="r-meta"><div class="per"><a href="#bonecaller">Bonecaller</a>, <a href="#witchdoctor">Witchdoctor</a></div></div>
+        <div class="r-meta"><div class="per"><a href="#bonecaller">Bonecaller</a>, <a href="#broodmother">Broodmother</a>, <a href="#witchdoctor">Witchdoctor</a></div></div>
       </div>
       <div class="row" id="ai-meleeenemy" style="--stripe:var(--common)" data-hay="meleeenemy melee walks straight at you and swings once in range. the damage lands on frame 6 of the
         attack animation, so the wind-up is a real window to move out of rather than a
