@@ -303,10 +303,16 @@ local function build()
     -- identity against a re-require of each AI file recovers the class name.
     -- Which AI drives a type is otherwise unknowable from the data, and it is
     -- the single most useful fact about an enemy.
+    --
+    -- A type whose module is not in this list dumps with ai = nil and the page
+    -- shows it with no behaviour at all -- which is what happened to the
+    -- Blightspore and the Siphon for a day. So an unresolved constructor is
+    -- recorded as MISSING below and fails the dump, the same as a renamed local.
     local AI_FILES = {
         "MeleeEnemy", "RangedEnemy", "BomberEnemy", "VampireEnemy", "CasterEnemy",
         "ChargerEnemy", "SplitterEnemy", "ShieldEnemy", "SupportEnemy",
-        "EvilWizardEnemy", "BossEnemy", "RevenantBoss", "BaseEnemy",
+        "EvilWizardEnemy", "BossEnemy", "RevenantBoss", "BlightsporeEnemy",
+        "SiphonEnemy", "BaseEnemy",
     }
     local aiName = {}
     for _, f in ipairs(AI_FILES) do
@@ -348,6 +354,11 @@ local function build()
     for _, k in ipairs(sortedKeys(EnemyTypes)) do
         local e = EnemyTypes[k]
         local hb = e.hitbox or {}
+        local ai = aiOf(ENEMY_CLASS[k])
+        if ENEMY_CLASS[k] and not ai then
+            REQUIRED_MISSING[#REQUIRED_MISSING + 1] = "AI module for " .. k .. " (add it to AI_FILES)"
+            say("!! unresolved AI module for " .. k)
+        end
         local row = obj(
             "k", k,
             "hp", e.health, "spd", e.speed, "dmg", e.damage,
@@ -359,7 +370,7 @@ local function build()
             "proj", e.projectile,
             "br", e.explosion_radius, "bd", e.explosion_damage,
             -- Straight off WaveManager's own tables rather than retyped.
-            "ai", aiOf(ENEMY_CLASS[k]),
+            "ai", ai,
             "unlock", UNLOCK_WAVE[k],
             "weight", lateWeight(SPAWN_WEIGHTS[k]),
             "ramp", weightRamp(SPAWN_WEIGHTS[k]),

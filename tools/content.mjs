@@ -98,15 +98,20 @@ export const LOOP = [
 export const AI = {
   MeleeEnemy: {
     label: "Melee", tone: "common",
-    p: `Walks straight at you and swings once in range. The damage lands on frame 6 of the
-        attack animation, so the wind-up is a real window to move out of rather than a
-        formality.`,
+    p: `Walks straight at you and swings once in range. The first swing skips its wind-up —
+        it starts on frame 5 and the damage lands on frame 6, a few hundredths of a second after
+        you step into reach — so treat its reach as contact damage and keep out of it. A swing
+        that keeps going while you stay in range plays the full wind-up each time.`,
   },
   RangedEnemy: {
     label: "Ranged", tone: "rare",
-    p: `Closes to its attack range, stops, and throws fireballs — 450px/s, 22 ± 7 damage, four
-        seconds before they expire. It keeps firing for as long as you stay in range, so the
-        answer is either to close or to leave, never to trade.`,
+    p: `Closes to its attack range, stops, and throws fireballs at 450px/s that hit for its own
+        damage stat — so they scale with the wave — and expire after four seconds. A shooter
+        that fires a fan hits for less with each bolt. <b>Scenery is cover</b>: a shot dies on the
+        first solid obstacle it crosses, and a shooter only opens fire with a clear line to you.
+        Blind, it circles you at range looking for one, then closes in round whatever is in the
+        way. So the answer is to close, to leave, or to put a tree between you — never to trade
+        in the open.`,
   },
   BomberEnemy: {
     label: "Bomber", tone: "warn",
@@ -126,7 +131,9 @@ export const AI = {
         the cast began. A hand that closes roots you and deals the caster's damage. Taking a hit
         cancels the cast. Come within 100px and it discharges at its own feet instead —
         <b>Backlash</b>, a 0.4s telegraphed blast and a hard shove — so standing on top of a
-        caster is no longer the free answer it once was.`,
+        caster is no longer the free answer it once was. Between casts it holds a band inside
+        its own range, giving ground if you press it and circling if you do not, so it never
+        walks itself into Backlash range: you have to go in after it.`,
   },
   ChargerEnemy: {
     label: "Charger", tone: "warn",
@@ -155,6 +162,20 @@ export const AI = {
         calling fresh bodies out of the ground. Both wear a role badge above the health bar,
         because at range the silhouette is identical.`,
   },
+  BlightsporeEnemy: {
+    label: "Hazard", tone: "uncommon",
+    p: `A slow melee body whose real attack is the floor. Every body length it walks it drops a
+        pool of rot that blooms for a moment, then bites whatever stands in it on a slow pulse —
+        an ordinary hit, so every defensive card applies to it. The pools outlast the thing that
+        made them, so killing it stops the line from growing and does nothing about the line.`,
+  },
+  SiphonEnemy: {
+    label: "Drain", tone: "epic",
+    p: `No attack of its own. It holds a band at range, winds up for a moment, then latches a beam
+        onto you and sends a bead of drain down it every second or so, healing itself on most of
+        what it takes. The beam holds only while it can see you: put a tree or a rock between you
+        and it snaps, and it has to wind up again.`,
+  },
   BossEnemy: {
     label: "Boss", tone: "legendary",
     p: `Three phases with an enrage flash at each threshold, a screen-wide health bar, and
@@ -169,7 +190,7 @@ export const AI = {
 
 /* ── One line each on what a type is FOR ────────────────────────────────── */
 export const ENEMY_NOTE = {
-  Mushroom:   "The baseline, and the reason “+5 orb damage” is a breakpoint worth chasing rather than a rounding error.",
+  Mushroom:   "The baseline: two orb hits at base damage and one after two stacks of Striking Force, which is what makes early orb damage a breakpoint rather than a rounding error.",
   Toadstool:  "Half a Mushroom's health at nearly double the speed. The enemy that punishes standing still.",
   Brute:      "The opposite trade: slow enough to kite forever, and the first enemy an un-upgraded orb genuinely cannot one-shot.",
   Bat:        "Ranged, but no faster than a Mushroom — you can simply walk away from it, which is the point of a first ranged enemy.",
@@ -385,13 +406,30 @@ export const COMBAT = [
         Euclidean distance. For a long time the two disagreed, so a boss slam and a meteor both
         hit outside the circle they had drawn. Every ground telegraph now announces the radius it
         actually uses.` },
-  { h: "Enemies share one chase direction",
-    p: `Pathfinding is greedy and shared, because a hundred independent A* searches per frame buys
-        nothing in an open arena. Full pathing runs only for enemies that have detected they are
-        stuck. Movement is then clamped against the grid: the steering pass gives up and returns
-        the straight line when every candidate angle is blocked, and with no final check a cornered
-        enemy simply walked through the trunk -- which read as bats and vampires flying over trees,
-        because the sprite is drawn above the body that is crossing it.` },
+  { h: "Enemies share one map of the way to you",
+    p: `An enemy that can see you walks straight at you. One that cannot follows a single
+        <b>flow field</b> — one distance-to-you map over the arena, rebuilt when you cross into a
+        new cell and shared by every enemy — instead of each running its own path search. Nothing
+        has to be rationed, and nothing gives up on a long detour: an enemy in a pocket whose only
+        way out is away from you now walks out of it, where the old per-enemy search threw the
+        long route away and left it pressing on the back wall.
+        <br><br>
+        Bodies are tested at their <b>feet</b> against the real obstacle boxes, not at the sprite
+        origin (which sits on the creature's head) against the coarse planning grid. Measured on
+        the navigation harness: enemy-frames spent inside a trunk went from 11.5% to 0.05%, and
+        enemies reaching their fighting range from 91.7% to 99.5% — with the crowd spacing
+        below switched off, since a ring holds late arrivals back by design. Knockback and the
+        drag of a Black Hole, Singularity or Gravity Snap go through the same collision, so
+        nothing is thrown through a tree any more.
+        <br><br>
+        <b>The horde keeps its shape.</b> Bodies ease apart rather than stacking, bigger ones
+        shouldering smaller ones aside, so a crowd forms a ring round you instead of a single pile
+        an orb could clear in one strike. Anything dashing is exempt, anything frozen or holding
+        you stands firm, and whatever a crowd-control card is dragging is left to be piled up.
+        Enemies arrive from just outside the camera's view — the real view, which stops at the
+        map's edge — and one left far out of sight for a few seconds is brought back to just off
+        screen ahead of you. Bosses are never moved. Once the wave has nothing left to send and
+        three or fewer remain, arrows at the screen edge point to them.` },
   { h: "A card is worth what it measures, not what it says",
     p: `Every card in the pool is benchmarked against a no-card baseline on the same seed, so
         the map cancels out and what is left is the card. The September 2026 pass ran all 105
@@ -465,8 +503,19 @@ export const AUDIO_NOTE = `<b>What a kill sounds like.</b> Every orb kill fires 
   because the callers that get this wrong are exactly the ones that never think about audio — a
   per-frame branch in an enemy update, a damage tick in a crowd.
   <br><br>
+  <b>Sounds are placed where they happen</b> — against the middle of the camera's view, with a
+  gentle fade: full volume anywhere on screen, easing to about a third a screen or so beyond it,
+  and a soft pan that never puts a sound hard in one ear. Your own orb's sounds keep a floor, so
+  your weapon connecting is always audible. Every effect is made mono when it loads so this
+  applies to all of them. (The old falloff was so steep that a crit or a freeze a few hundred
+  pixels away, in plain view, came out close to silent — while stereo samples, which could not
+  be placed at all, played at full volume from anywhere on the map.)
+  <br><br>
   Nearly every sound in the game is <b>synthesised by a Lua script in the repo</b> rather than
-  licensed, which is why they sit together tonally. One bought sound was kept: the orb recall.`;
+  licensed, which is why they sit together tonally — including a voice of its own for every card
+  that fires an effect: Void Pulse, Crescendo, Death Nova, Explosive Touch, Thunderclap, Volatile
+  Core, Rupture, Aegis's parry, the Owl's strike and Slingshot's arming click. One bought sound
+  was kept: the orb recall.`;
 
 export const AUDIO_BUG = `<b>Known: the top combo stab never plays.</b> Seven stabs were
   generated, but seven tiers give only <em>six</em> promotions, and the single call site asks for

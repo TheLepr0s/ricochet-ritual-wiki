@@ -101,6 +101,19 @@ cover(D.compositions, "designed waves", (c) => c.n);
 cover(D.modifiers, "modifiers", (m) => m.n);
 cover(D.enemies, "enemies", (e) => e.x.boss_name || e.k);
 
+// Every enemy is driven by a known AI class, and that class has a behaviour
+// row. A type the dumper could not resolve used to publish with a "—" badge
+// and no behaviour at all, and nothing here noticed.
+{
+  const noAi = D.enemies.filter((e) => !e.ai).map((e) => e.k);
+  const bestiary = html["bestiary.html"] || "";
+  const noRow = [...new Set(D.enemies.map((e) => e.ai).filter(Boolean))]
+    .filter((a) => !bestiary.includes(`<span class="r-key">${a}</span>`));
+  if (noAi.length) fail(`enemies with no AI class: ${noAi.join(", ")}`);
+  if (noRow.length) fail(`AI classes with no behaviour row: ${noRow.join(", ")}`);
+  if (!noAi.length && !noRow.length) ok(`every enemy has an AI class with a behaviour row`);
+}
+
 /* ── Portraits ───────────────────────────────────────────────────────── */
 const imgDir = join(DOCS, "assets", "img");
 const imgs = existsSync(imgDir) ? readdirSync(imgDir) : [];

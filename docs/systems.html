@@ -68,13 +68,30 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         Euclidean distance. For a long time the two disagreed, so a boss slam and a meteor both
         hit outside the circle they had drawn. Every ground telegraph now announces the radius it
         actually uses.</p>
-    <h3 id="enemies-share-one-chase-direction">Enemies share one chase direction</h3>
-    <p>Pathfinding is greedy and shared, because a hundred independent A* searches per frame buys
-        nothing in an open arena. Full pathing runs only for enemies that have detected they are
-        stuck. Movement is then clamped against the grid: the steering pass gives up and returns
-        the straight line when every candidate angle is blocked, and with no final check a cornered
-        enemy simply walked through the trunk -- which read as bats and vampires flying over trees,
-        because the sprite is drawn above the body that is crossing it.</p>
+    <h3 id="enemies-share-one-map-of-the-way-to-you">Enemies share one map of the way to you</h3>
+    <p>An enemy that can see you walks straight at you. One that cannot follows a single
+        <b>flow field</b> — one distance-to-you map over the arena, rebuilt when you cross into a
+        new cell and shared by every enemy — instead of each running its own path search. Nothing
+        has to be rationed, and nothing gives up on a long detour: an enemy in a pocket whose only
+        way out is away from you now walks out of it, where the old per-enemy search threw the
+        long route away and left it pressing on the back wall.
+        <br><br>
+        Bodies are tested at their <b>feet</b> against the real obstacle boxes, not at the sprite
+        origin (which sits on the creature's head) against the coarse planning grid. Measured on
+        the navigation harness: enemy-frames spent inside a trunk went from 11.5% to 0.05%, and
+        enemies reaching their fighting range from 91.7% to 99.5% — with the crowd spacing
+        below switched off, since a ring holds late arrivals back by design. Knockback and the
+        drag of a Black Hole, Singularity or Gravity Snap go through the same collision, so
+        nothing is thrown through a tree any more.
+        <br><br>
+        <b>The horde keeps its shape.</b> Bodies ease apart rather than stacking, bigger ones
+        shouldering smaller ones aside, so a crowd forms a ring round you instead of a single pile
+        an orb could clear in one strike. Anything dashing is exempt, anything frozen or holding
+        you stands firm, and whatever a crowd-control card is dragging is left to be piled up.
+        Enemies arrive from just outside the camera's view — the real view, which stops at the
+        map's edge — and one left far out of sight for a few seconds is brought back to just off
+        screen ahead of you. Bosses are never moved. Once the wave has nothing left to send and
+        three or fewer remain, arrows at the screen edge point to them.</p>
     <h3 id="a-card-is-worth-what-it-measures-not-what-it-says">A card is worth what it measures, not what it says</h3>
     <p>Every card in the pool is benchmarked against a no-card baseline on the same seed, so
         the map cancels out and what is left is the card. The September 2026 pass ran all 105
@@ -166,8 +183,19 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   because the callers that get this wrong are exactly the ones that never think about audio — a
   per-frame branch in an enemy update, a damage tick in a crowd.
   <br><br>
+  <b>Sounds are placed where they happen</b> — against the middle of the camera's view, with a
+  gentle fade: full volume anywhere on screen, easing to about a third a screen or so beyond it,
+  and a soft pan that never puts a sound hard in one ear. Your own orb's sounds keep a floor, so
+  your weapon connecting is always audible. Every effect is made mono when it loads so this
+  applies to all of them. (The old falloff was so steep that a crit or a freeze a few hundred
+  pixels away, in plain view, came out close to silent — while stereo samples, which could not
+  be placed at all, played at full volume from anywhere on the map.)
+  <br><br>
   Nearly every sound in the game is <b>synthesised by a Lua script in the repo</b> rather than
-  licensed, which is why they sit together tonally. One bought sound was kept: the orb recall.</div>
+  licensed, which is why they sit together tonally — including a voice of its own for every card
+  that fires an effect: Void Pulse, Crescendo, Death Nova, Explosive Touch, Thunderclap, Volatile
+  Core, Rupture, Aegis's parry, the Owl's strike and Slingshot's arming click. One bought sound
+  was kept: the orb recall.</div>
     <div class="note warn"><b>Known: the top combo stab never plays.</b> Seven stabs were
   generated, but seven tiers give only <em>six</em> promotions, and the single call site asks for
   the stab one rung below the tier you are entering — so the ladder tops out one file short. That

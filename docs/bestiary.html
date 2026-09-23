@@ -62,7 +62,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </p>
     <div class="rows">
       <div class="beast" id="mushroom" style="--stripe:var(--common)"
-        data-hay="mushroom melee the baseline, and the reason “+5 orb damage” is a breakpoint worth chasing rather than a rounding error. wave 1"
+        data-hay="mushroom melee the baseline: two orb hits at base damage and one after two stacks of striking force, which is what makes early orb damage a breakpoint rather than a rounding error. wave 1"
         data-boss="0" data-ranged="0"
         data-variant="0">
         <div class="portrait"><img src="assets/img/Mushroom.png" alt="Mushroom" loading="lazy" width="82"></div>
@@ -73,7 +73,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
             
             
           </div>
-          <p>The baseline, and the reason “+5 orb damage” is a breakpoint worth chasing rather than a rounding error.</p>
+          <p>The baseline: two orb hits at base damage and one after two stacks of Striking Force, which is what makes early orb damage a breakpoint rather than a rounding error.</p>
           <div class="statline"><span class="stat">HP <b>45</b></span><span class="stat">speed <b>40</b></span><span class="stat">damage <b>5</b></span><span class="stat">range <b>80</b></span><span class="stat">from wave <b>1</b></span><span class="stat">weight <b>4</b></span><span class="stat">hitbox <b>30×34</b></span></div>
           <p class="tot">The original art. <a href="#blightspore">Blightspore</a>, <a href="#broodmother">Broodmother</a>, <a href="#brute">Brute</a>, <a href="#sporeling">Sporeling</a>, <a href="#toadstool">Toadstool</a> are recolours of it.</p>
         </div>
@@ -214,15 +214,15 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <p class="tot">A recolour of <a href="#bat">Bat</a>'s art, told apart by a hue rotation.</p>
         </div>
       </div>
-      <div class="beast" id="blightspore" style="--stripe:var(--common)"
-        data-hay="blightspore — barely fights. it leaves a pool of rot every time it walks a body length, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. the first enemy that makes where the fight happens matter. wave 7"
+      <div class="beast" id="blightspore" style="--stripe:var(--uncommon)"
+        data-hay="blightspore hazard barely fights. it leaves a pool of rot every time it walks a body length, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. the first enemy that makes where the fight happens matter. wave 7"
         data-boss="0" data-ranged="0"
         data-variant="1">
         <div class="portrait"><img src="assets/img/Blightspore.png" alt="Blightspore" loading="lazy" width="82"></div>
         <div class="beast-body">
           <div class="beast-head" data-anchor>
             <h3>Blightspore</h3>
-            <span class="badge">—</span>
+            <span class="badge">Hazard</span>
             
             
           </div>
@@ -282,15 +282,15 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <p class="tot">A recolour of <a href="#vampire">Vampire</a>'s art, told apart by a hue rotation.</p>
         </div>
       </div>
-      <div class="beast" id="siphon" style="--stripe:var(--common)"
-        data-hay="siphon — hangs at range and drains you through a beam, healing off what it takes. the beam needs line of sight, so a tree is a real answer to it — the first time scenery has been anything but an obstacle. wave 9"
+      <div class="beast" id="siphon" style="--stripe:var(--epic)"
+        data-hay="siphon drain hangs at range and drains you through a beam, healing off what it takes. the beam needs line of sight, so a tree is a real answer to it — the first time scenery has been anything but an obstacle. wave 9"
         data-boss="0" data-ranged="0"
         data-variant="1">
         <div class="portrait"><img src="assets/img/Siphon.png" alt="Siphon" loading="lazy" width="82"></div>
         <div class="beast-body">
           <div class="beast-head" data-anchor>
             <h3>Siphon</h3>
-            <span class="badge">—</span>
+            <span class="badge">Drain</span>
             
             
           </div>
@@ -436,23 +436,46 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         the cast began. a hand that closes roots you and deals the caster's damage. taking a hit
         cancels the cast. come within 100px and it discharges at its own feet instead —
         &lt;b&gt;backlash&lt;/b&gt;, a 0.4s telegraphed blast and a hard shove — so standing on top of a
-        caster is no longer the free answer it once was.">
+        caster is no longer the free answer it once was. between casts it holds a band inside
+        its own range, giving ground if you press it and circling if you do not, so it never
+        walks itself into backlash range: you have to go in after it.">
         <div class="r-name" data-anchor><span>Caster</span><span class="r-key">EvilWizardEnemy</span></div>
         <div class="r-desc">Stands still and drips a chain of grasping hands along the line to where you were when
         the cast began. A hand that closes roots you and deals the caster's damage. Taking a hit
         cancels the cast. Come within 100px and it discharges at its own feet instead —
         <b>Backlash</b>, a 0.4s telegraphed blast and a hard shove — so standing on top of a
-        caster is no longer the free answer it once was.</div>
+        caster is no longer the free answer it once was. Between casts it holds a band inside
+        its own range, giving ground if you press it and circling if you do not, so it never
+        walks itself into Backlash range: you have to go in after it.</div>
         <div class="r-meta"><div class="per"><a href="#archmage">Archmage</a>, <a href="#evilwizard">EvilWizard</a></div></div>
       </div>
-      <div class="row" id="ai-rangedenemy" style="--stripe:var(--rare)" data-hay="rangedenemy ranged closes to its attack range, stops, and throws fireballs — 450px/s, 22 ± 7 damage, four
-        seconds before they expire. it keeps firing for as long as you stay in range, so the
-        answer is either to close or to leave, never to trade.">
+      <div class="row" id="ai-rangedenemy" style="--stripe:var(--rare)" data-hay="rangedenemy ranged closes to its attack range, stops, and throws fireballs at 450px/s that hit for its own
+        damage stat — so they scale with the wave — and expire after four seconds. a shooter
+        that fires a fan hits for less with each bolt. &lt;b&gt;scenery is cover&lt;/b&gt;: a shot dies on the
+        first solid obstacle it crosses, and a shooter only opens fire with a clear line to you.
+        blind, it circles you at range looking for one, then closes in round whatever is in the
+        way. so the answer is to close, to leave, or to put a tree between you — never to trade
+        in the open.">
         <div class="r-name" data-anchor><span>Ranged</span><span class="r-key">RangedEnemy</span></div>
-        <div class="r-desc">Closes to its attack range, stops, and throws fireballs — 450px/s, 22 ± 7 damage, four
-        seconds before they expire. It keeps firing for as long as you stay in range, so the
-        answer is either to close or to leave, never to trade.</div>
+        <div class="r-desc">Closes to its attack range, stops, and throws fireballs at 450px/s that hit for its own
+        damage stat — so they scale with the wave — and expire after four seconds. A shooter
+        that fires a fan hits for less with each bolt. <b>Scenery is cover</b>: a shot dies on the
+        first solid obstacle it crosses, and a shooter only opens fire with a clear line to you.
+        Blind, it circles you at range looking for one, then closes in round whatever is in the
+        way. So the answer is to close, to leave, or to put a tree between you — never to trade
+        in the open.</div>
         <div class="r-meta"><div class="per"><a href="#bat">Bat</a>, <a href="#hivemind">Hivemind</a>, <a href="#wisp">Wisp</a></div></div>
+      </div>
+      <div class="row" id="ai-blightsporeenemy" style="--stripe:var(--uncommon)" data-hay="blightsporeenemy hazard a slow melee body whose real attack is the floor. every body length it walks it drops a
+        pool of rot that blooms for a moment, then bites whatever stands in it on a slow pulse —
+        an ordinary hit, so every defensive card applies to it. the pools outlast the thing that
+        made them, so killing it stops the line from growing and does nothing about the line.">
+        <div class="r-name" data-anchor><span>Hazard</span><span class="r-key">BlightsporeEnemy</span></div>
+        <div class="r-desc">A slow melee body whose real attack is the floor. Every body length it walks it drops a
+        pool of rot that blooms for a moment, then bites whatever stands in it on a slow pulse —
+        an ordinary hit, so every defensive card applies to it. The pools outlast the thing that
+        made them, so killing it stops the line from growing and does nothing about the line.</div>
+        <div class="r-meta"><div class="per"><a href="#blightspore">Blightspore</a></div></div>
       </div>
       <div class="row" id="ai-bomberenemy" style="--stripe:var(--warn)" data-hay="bomberenemy bomber no attack at all: it sprints at you and detonates on contact, after a 0.45s flashing
         warning. its health is deliberately low enough that a base-damage orb one-shots it, so
@@ -474,13 +497,15 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         because at range the silhouette is identical.</div>
         <div class="r-meta"><div class="per"><a href="#bonecaller">Bonecaller</a>, <a href="#broodmother">Broodmother</a>, <a href="#witchdoctor">Witchdoctor</a></div></div>
       </div>
-      <div class="row" id="ai-meleeenemy" style="--stripe:var(--common)" data-hay="meleeenemy melee walks straight at you and swings once in range. the damage lands on frame 6 of the
-        attack animation, so the wind-up is a real window to move out of rather than a
-        formality.">
+      <div class="row" id="ai-meleeenemy" style="--stripe:var(--common)" data-hay="meleeenemy melee walks straight at you and swings once in range. the first swing skips its wind-up —
+        it starts on frame 5 and the damage lands on frame 6, a few hundredths of a second after
+        you step into reach — so treat its reach as contact damage and keep out of it. a swing
+        that keeps going while you stay in range plays the full wind-up each time.">
         <div class="r-name" data-anchor><span>Melee</span><span class="r-key">MeleeEnemy</span></div>
-        <div class="r-desc">Walks straight at you and swings once in range. The damage lands on frame 6 of the
-        attack animation, so the wind-up is a real window to move out of rather than a
-        formality.</div>
+        <div class="r-desc">Walks straight at you and swings once in range. The first swing skips its wind-up —
+        it starts on frame 5 and the damage lands on frame 6, a few hundredths of a second after
+        you step into reach — so treat its reach as contact damage and keep out of it. A swing
+        that keeps going while you stay in range plays the full wind-up each time.</div>
         <div class="r-meta"><div class="per"><a href="#brute">Brute</a>, <a href="#mushroom">Mushroom</a>, <a href="#toadstool">Toadstool</a></div></div>
       </div>
       <div class="row" id="ai-shieldenemy" style="--stripe:var(--rare)" data-hay="shieldenemy shield carries a shield across an arc in front of it. an orb arriving inside that arc is refused
@@ -527,6 +552,17 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         out of the lane and it charges anyway, then stands winded and takes damage like anything
         else.</div>
         <div class="r-meta"><div class="per"><a href="#ravager">Ravager</a></div></div>
+      </div>
+      <div class="row" id="ai-siphonenemy" style="--stripe:var(--epic)" data-hay="siphonenemy drain no attack of its own. it holds a band at range, winds up for a moment, then latches a beam
+        onto you and sends a bead of drain down it every second or so, healing itself on most of
+        what it takes. the beam holds only while it can see you: put a tree or a rock between you
+        and it snaps, and it has to wind up again.">
+        <div class="r-name" data-anchor><span>Drain</span><span class="r-key">SiphonEnemy</span></div>
+        <div class="r-desc">No attack of its own. It holds a band at range, winds up for a moment, then latches a beam
+        onto you and sends a bead of drain down it every second or so, healing itself on most of
+        what it takes. The beam holds only while it can see you: put a tree or a rock between you
+        and it snaps, and it has to wind up again.</div>
+        <div class="r-meta"><div class="per"><a href="#siphon">Siphon</a></div></div>
       </div>
       <div class="row" id="ai-splitterenemy" style="--stripe:var(--uncommon)" data-hay="splitterenemy splitter an ordinary melee enemy until it dies. death spawns two children — of the type named in
         its own row — each at a fraction of the parent's max health, with a moment of
