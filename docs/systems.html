@@ -154,12 +154,12 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <thead><tr><th>Tier</th><th>At</th><th></th></tr></thead>
       <tbody>
         <tr><td>COMBO</td><td><code>×1</code></td><td>where every combo starts — nothing is promoted into it</td></tr>
-        <tr><td>NICE</td><td><code>×5</code></td><td>promotes here, with a banner and a stab</td></tr>
-        <tr><td>SLICK</td><td><code>×10</code></td><td>promotes here, with a banner and a stab</td></tr>
-        <tr><td>WICKED</td><td><code>×18</code></td><td>promotes here, with a banner and a stab</td></tr>
-        <tr><td>SAVAGE</td><td><code>×28</code></td><td>promotes here, with a banner and a stab</td></tr>
-        <tr><td>RUTHLESS</td><td><code>×40</code></td><td>promotes here, with a banner and a stab</td></tr>
-        <tr><td>GODLIKE</td><td><code>×60</code></td><td>promotes here, with a banner and a stab</td></tr>
+        <tr><td>NICE</td><td><code>×5</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
+        <tr><td>SLICK</td><td><code>×10</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
+        <tr><td>WICKED</td><td><code>×18</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
+        <tr><td>SAVAGE</td><td><code>×28</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
+        <tr><td>RUTHLESS</td><td><code>×40</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
+        <tr><td>GODLIKE</td><td><code>×60</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
       </tbody>
     </table>
 
@@ -174,8 +174,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <div class="note"><b>What a kill sounds like.</b> Every orb kill fires a short confirm
   pitched to your current combo tier, several voices deep and rate-limited — short enough that a
   double kill is two sounds, long enough that an effect wiping eight bodies on one frame is not
-  eight. Crossing a tier fires a full stab on top. Dropping the combo fires the only sound in the
-  set that falls in pitch.
+  eight. Dropping the combo fires the only sound in the set that falls in pitch.
+  <br><br>
+  <b>Crossing a tier fires the next rung of the streak ladder</b>, built the way a Valorant kill
+  streak is: one instrument, and every rung a clear step higher and a little bigger than the one
+  before. Each is a quick run up to its note, from C5 at the first tier to C7 at the last, and the
+  last one is an event of its own, with a chord that blooms underneath and sparkle off the top.
+  There are six rungs because seven tiers give six promotions; the set they replaced had seven
+  sounds, and its top one could never play.
   <br><br>
   <b>Voices and rate limits are central, not per-caller.</b> A pool of sources per sound key lets
   one overlap itself where that overlap <em>is</em> the feedback, and pins announcements to exactly
@@ -196,30 +202,25 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   that fires an effect: Void Pulse, Crescendo, Death Nova, Explosive Touch, Thunderclap, Volatile
   Core, Rupture, Aegis's parry, the Owl's strike and Slingshot's arming click. One bought sound
   was kept: the orb recall.</div>
-    <div class="note warn"><b>Known: the top combo stab never plays.</b> Seven stabs were
-  generated, but seven tiers give only <em>six</em> promotions, and the single call site asks for
-  the stab one rung below the tier you are entering — so the ladder tops out one file short. That
-  top rung is synthesised, registered, loaded at boot, and silent. Fixing it needs either an eighth
-  tier to promote into or a remapping that lands the last promotion on the last stab; both are
-  design calls rather than typo fixes, so it is recorded rather than quietly changed.</div>
 
     <h2 id="tooling">How this wiki is built</h2>
     <p>
-      Two commands. <code>Tools/wiki/dump_main.lua</code> runs under LÖVE, loads the game's own
-      modules, and writes every definition table to JSON — including the ones that are
+      Two commands, run from this site's own repository against a checkout of the game.
+      <code>tools/dump_main.lua</code> runs under LÖVE, loads the game's own modules, and writes
+      every definition table to JSON — including the ones that are
       <em>file-local</em> and therefore invisible to an ordinary dumper. Those are recovered
       through <code>debug.getupvalue</code>, which is how unlock waves, spawn weights, stack caps
       and prerequisites reach this site without anyone retyping them.
     </p>
     <p>
-      <code>Tools/wiki/build.mjs</code> then renders <code>docs/</code> from that JSON plus the
+      <code>tools/build.mjs</code> then renders <code>docs/</code> from that JSON plus the
       hand-written prose in <code>content.mjs</code>. The split is the point: if a fact could have
       been derived and was typed instead, it is a bug waiting to drift. An earlier version of this
       reference kept those tables by hand, and three of them had already gone stale.
     </p>
     <p>
-      Enemy portraits are not copied out of the sprite folder. Eleven of the eighteen types share
-      art with another one, so <code>Tools/wiki/portraits_main.lua</code> renders each frame through
+      Enemy portraits are not copied out of the sprite folder. 16
+      of the 21 types borrow another one's art, so <code>tools/portraits_main.lua</code> renders each frame through
       the same recolour shader the game uses at draw time — a hue rotation in YIQ, or a multiply
       tint for the sprites with no chroma to rotate. Copying the PNGs would produce a bestiary in
       which a third of the roster is the same picture repeated.

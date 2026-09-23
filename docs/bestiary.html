@@ -508,15 +508,17 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         that keeps going while you stay in range plays the full wind-up each time.</div>
         <div class="r-meta"><div class="per"><a href="#brute">Brute</a>, <a href="#mushroom">Mushroom</a>, <a href="#toadstool">Toadstool</a></div></div>
       </div>
-      <div class="row" id="ai-shieldenemy" style="--stripe:var(--rare)" data-hay="shieldenemy shield carries a shield across an arc in front of it. an orb arriving inside that arc is refused
-        outright — &lt;code&gt;takedamage&lt;/code&gt; returns false, exactly as an iframe-swallowed hit does
-        — and bounces off harder than it arrived. hit it from behind, or arrive fast enough to
-        punch straight through the guard.">
+      <div class="row" id="ai-shieldenemy" style="--stripe:var(--rare)" data-hay="shieldenemy shield carries a shield across a wide arc, and the shield turns to face you — up, down or
+        sideways. an orb arriving inside that arc is refused outright — &lt;code&gt;takedamage&lt;/code&gt;
+        returns false, exactly as an iframe-swallowed hit does — and bounces off harder than it
+        arrived. make the orb arrive from somewhere you are not, arrive fast enough to punch
+        straight through, or blink past it: the shield swings round quickly, but not instantly.">
         <div class="r-name" data-anchor><span>Shield</span><span class="r-key">ShieldEnemy</span></div>
-        <div class="r-desc">Carries a shield across an arc in front of it. An orb arriving inside that arc is refused
-        outright — <code>takeDamage</code> returns false, exactly as an iframe-swallowed hit does
-        — and bounces off harder than it arrived. Hit it from behind, or arrive fast enough to
-        punch straight through the guard.</div>
+        <div class="r-desc">Carries a shield across a wide arc, and the shield turns to face you — up, down or
+        sideways. An orb arriving inside that arc is refused outright — <code>takeDamage</code>
+        returns false, exactly as an iframe-swallowed hit does — and bounces off harder than it
+        arrived. Make the orb arrive from somewhere you are not, arrive fast enough to punch
+        straight through, or blink past it: the shield swings round quickly, but not instantly.</div>
         <div class="r-meta"><div class="per"><a href="#bulwark">Bulwark</a></div></div>
       </div>
       <div class="row" id="ai-bossenemy" style="--stripe:var(--legendary)" data-hay="bossenemy boss three phases with an enrage flash at each threshold, a screen-wide health bar, and

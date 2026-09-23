@@ -150,10 +150,11 @@ export const AI = {
   },
   ShieldEnemy: {
     label: "Shield", tone: "rare",
-    p: `Carries a shield across an arc in front of it. An orb arriving inside that arc is refused
-        outright — <code>takeDamage</code> returns false, exactly as an iframe-swallowed hit does
-        — and bounces off harder than it arrived. Hit it from behind, or arrive fast enough to
-        punch straight through the guard.`,
+    p: `Carries a shield across a wide arc, and the shield turns to face you — up, down or
+        sideways. An orb arriving inside that arc is refused outright — <code>takeDamage</code>
+        returns false, exactly as an iframe-swallowed hit does — and bounces off harder than it
+        arrived. Make the orb arrive from somewhere you are not, arrive fast enough to punch
+        straight through, or blink past it: the shield swings round quickly, but not instantly.`,
   },
   SupportEnemy: {
     label: "Support", tone: "uncommon",
@@ -494,8 +495,14 @@ export const SCORE = `Score comes from kills, weighted by what died and multipli
 export const AUDIO_NOTE = `<b>What a kill sounds like.</b> Every orb kill fires a short confirm
   pitched to your current combo tier, several voices deep and rate-limited — short enough that a
   double kill is two sounds, long enough that an effect wiping eight bodies on one frame is not
-  eight. Crossing a tier fires a full stab on top. Dropping the combo fires the only sound in the
-  set that falls in pitch.
+  eight. Dropping the combo fires the only sound in the set that falls in pitch.
+  <br><br>
+  <b>Crossing a tier fires the next rung of the streak ladder</b>, built the way a Valorant kill
+  streak is: one instrument, and every rung a clear step higher and a little bigger than the one
+  before. Each is a quick run up to its note, from C5 at the first tier to C7 at the last, and the
+  last one is an event of its own, with a chord that blooms underneath and sparkle off the top.
+  There are six rungs because seven tiers give six promotions; the set they replaced had seven
+  sounds, and its top one could never play.
   <br><br>
   <b>Voices and rate limits are central, not per-caller.</b> A pool of sources per sound key lets
   one overlap itself where that overlap <em>is</em> the feedback, and pins announcements to exactly
@@ -516,13 +523,6 @@ export const AUDIO_NOTE = `<b>What a kill sounds like.</b> Every orb kill fires 
   that fires an effect: Void Pulse, Crescendo, Death Nova, Explosive Touch, Thunderclap, Volatile
   Core, Rupture, Aegis's parry, the Owl's strike and Slingshot's arming click. One bought sound
   was kept: the orb recall.`;
-
-export const AUDIO_BUG = `<b>Known: the top combo stab never plays.</b> Seven stabs were
-  generated, but seven tiers give only <em>six</em> promotions, and the single call site asks for
-  the stab one rung below the tier you are entering — so the ladder tops out one file short. That
-  top rung is synthesised, registered, loaded at boot, and silent. Fixing it needs either an eighth
-  tier to promote into or a remapping that lands the last promotion on the last stab; both are
-  design calls rather than typo fixes, so it is recorded rather than quietly changed.`;
 
 export const KILL_TIERS = [
   { t: 1, at: 1,   name: "COMBO" },

@@ -989,7 +989,7 @@ function systemsPage() {
 
   const tiers = C.KILL_TIERS.map(
     (k) => `<tr><td>${esc(k.name)}</td><td><code>×${k.at}</code></td><td>${
-      k.t === 1 ? "where every combo starts — nothing is promoted into it" : "promotes here, with a banner and a stab"
+      k.t === 1 ? "where every combo starts — nothing is promoted into it" : "promotes here: a banner, and the next rung of the streak"
     }</td></tr>`
   ).join("\n        ");
 
@@ -1014,25 +1014,25 @@ function systemsPage() {
 
     <h2 id="sound">Sound</h2>
     <div class="note">${C.AUDIO_NOTE}</div>
-    <div class="note warn">${C.AUDIO_BUG}</div>
 
     <h2 id="tooling">How this wiki is built</h2>
     <p>
-      Two commands. <code>Tools/wiki/dump_main.lua</code> runs under LÖVE, loads the game's own
-      modules, and writes every definition table to JSON — including the ones that are
+      Two commands, run from this site's own repository against a checkout of the game.
+      <code>tools/dump_main.lua</code> runs under LÖVE, loads the game's own modules, and writes
+      every definition table to JSON — including the ones that are
       <em>file-local</em> and therefore invisible to an ordinary dumper. Those are recovered
       through <code>debug.getupvalue</code>, which is how unlock waves, spawn weights, stack caps
       and prerequisites reach this site without anyone retyping them.
     </p>
     <p>
-      <code>Tools/wiki/build.mjs</code> then renders <code>docs/</code> from that JSON plus the
+      <code>tools/build.mjs</code> then renders <code>docs/</code> from that JSON plus the
       hand-written prose in <code>content.mjs</code>. The split is the point: if a fact could have
       been derived and was typed instead, it is a bug waiting to drift. An earlier version of this
       reference kept those tables by hand, and three of them had already gone stale.
     </p>
     <p>
-      Enemy portraits are not copied out of the sprite folder. Eleven of the eighteen types share
-      art with another one, so <code>Tools/wiki/portraits_main.lua</code> renders each frame through
+      Enemy portraits are not copied out of the sprite folder. ${D.enemies.length - new Set(D.enemies.map((e) => e.sheet)).size}
+      of the ${D.enemies.length} types borrow another one's art, so <code>tools/portraits_main.lua</code> renders each frame through
       the same recolour shader the game uses at draw time — a hue rotation in YIQ, or a multiply
       tint for the sprites with no chroma to rotate. Copying the PNGs would produce a bestiary in
       which a third of the roster is the same picture repeated.
