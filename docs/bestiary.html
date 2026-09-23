@@ -215,7 +215,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         </div>
       </div>
       <div class="beast" id="blightspore" style="--stripe:var(--uncommon)"
-        data-hay="blightspore hazard barely fights. it leaves a pool of rot every time it walks a body length, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. the first enemy that makes where the fight happens matter. wave 7"
+        data-hay="blightspore hazard barely fights. it leaves a small pool of rot every half body length it walks, laying a continuous trail, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. the first enemy that makes where the fight happens matter. wave 7"
         data-boss="0" data-ranged="0"
         data-variant="1">
         <div class="portrait"><img src="assets/img/Blightspore.png" alt="Blightspore" loading="lazy" width="82"></div>
@@ -226,9 +226,9 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
             
             
           </div>
-          <p>Barely fights. It leaves a pool of rot every time it walks a body length, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.</p>
-          <div class="statline"><span class="stat">HP <b>210</b></span><span class="stat">speed <b>30</b></span><span class="stat">damage <b>10</b></span><span class="stat">range <b>90</b></span><span class="stat">from wave <b>7</b></span><span class="stat">weight <b>3</b></span><span class="stat">max <b>3</b> alive</span><span class="stat">hitbox <b>42×44</b></span></div>
-          <p class="tot">A recolour of <a href="#mushroom">Mushroom</a>'s art, told apart by a hue rotation.</p><p class="tot">Drops are keyed to DISTANCE WALKED, not to a timer. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.</p>
+          <p>Barely fights. It leaves a small pool of rot every half body length it walks, laying a continuous trail, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.</p>
+          <div class="statline"><span class="stat">HP <b>210</b></span><span class="stat">speed <b>46</b></span><span class="stat">damage <b>10</b></span><span class="stat">range <b>90</b></span><span class="stat">from wave <b>7</b></span><span class="stat">weight <b>3</b></span><span class="stat">max <b>3</b> alive</span><span class="stat">hitbox <b>42×44</b></span></div>
+          <p class="tot">A recolour of <a href="#mushroom">Mushroom</a>'s art, told apart by a hue rotation.</p><p class="tot">Drops are keyed to DISTANCE WALKED (every 70px since 24 September, with 58px pools; it was 130px and 86px, on a body a third slower), not to a timer. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.</p>
         </div>
       </div>
       <div class="beast" id="brute" style="--stripe:var(--common)"
@@ -420,7 +420,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           </div>
           <p>The opposite fight, and the reason there are two.</p>
           <div class="statline"><span class="stat">HP <b>860</b></span><span class="stat">speed <b>120</b></span><span class="stat">damage <b>19</b></span><span class="stat">hitbox <b>58×58</b></span></div>
-          <p class="tot">A recolour of <a href="#bomber">Bomber</a>'s art, told apart by a colour tint.</p><p class="tot">No ranged attack at all. Its speed is capped below the wizard's own, on purpose, even at phase three.</p>
+          <p class="tot">A recolour of <a href="#bomber">Bomber</a>'s art, told apart by a colour tint.</p><p class="tot">No projectile at all — even the Phantom Cross is aimed at your feet, not fired. Its speed is capped below the wizard's own, on purpose, even at phase three.</p>
         </div>
       </div>
     </div>
@@ -466,13 +466,13 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         in the open.</div>
         <div class="r-meta"><div class="per"><a href="#bat">Bat</a>, <a href="#hivemind">Hivemind</a>, <a href="#wisp">Wisp</a></div></div>
       </div>
-      <div class="row" id="ai-blightsporeenemy" style="--stripe:var(--uncommon)" data-hay="blightsporeenemy hazard a slow melee body whose real attack is the floor. every body length it walks it drops a
-        pool of rot that blooms for a moment, then bites whatever stands in it on a slow pulse —
+      <div class="row" id="ai-blightsporeenemy" style="--stripe:var(--uncommon)" data-hay="blightsporeenemy hazard a melee body whose real attack is the floor. every half body length it walks it drops a
+        small pool of rot that blooms for a moment, then bites whatever stands in it on a slow pulse —
         an ordinary hit, so every defensive card applies to it. the pools outlast the thing that
         made them, so killing it stops the line from growing and does nothing about the line.">
         <div class="r-name" data-anchor><span>Hazard</span><span class="r-key">BlightsporeEnemy</span></div>
-        <div class="r-desc">A slow melee body whose real attack is the floor. Every body length it walks it drops a
-        pool of rot that blooms for a moment, then bites whatever stands in it on a slow pulse —
+        <div class="r-desc">A melee body whose real attack is the floor. Every half body length it walks it drops a
+        small pool of rot that blooms for a moment, then bites whatever stands in it on a slow pulse —
         an ordinary hit, so every defensive card applies to it. The pools outlast the thing that
         made them, so killing it stops the line from growing and does nothing about the line.</div>
         <div class="r-meta"><div class="per"><a href="#blightspore">Blightspore</a></div></div>
@@ -522,10 +522,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-meta"><div class="per"><a href="#bulwark">Bulwark</a></div></div>
       </div>
       <div class="row" id="ai-bossenemy" style="--stripe:var(--legendary)" data-hay="bossenemy boss three phases with an enrage flash at each threshold, a screen-wide health bar, and
-        exemption from a wave modifier's health multiplier — nothing else in the game has that.">
+        exemption from a wave modifier's health multiplier — nothing else in the game has that.
+        from range it cycles five bullet patterns in a fixed order per phase, each asking a
+        different movement of you.">
         <div class="r-name" data-anchor><span>Boss</span><span class="r-key">BossEnemy</span></div>
         <div class="r-desc">Three phases with an enrage flash at each threshold, a screen-wide health bar, and
-        exemption from a wave modifier's health multiplier — nothing else in the game has that.</div>
+        exemption from a wave modifier's health multiplier — nothing else in the game has that.
+        From range it cycles five bullet patterns in a fixed order per phase, each asking a
+        different movement of you.</div>
         <div class="r-meta"><div class="per"><a href="#dreadsovereign">DreadSovereign</a></div></div>
       </div>
       <div class="row" id="ai-vampireenemy" style="--stripe:var(--epic)" data-hay="vampireenemy vampire bites for contact damage, heals itself, and &lt;b&gt;roots you&lt;/b&gt; while it drinks. killing it
@@ -537,11 +541,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         worth more than its health bar suggests.</div>
         <div class="r-meta"><div class="per"><a href="#nosferatu">Nosferatu</a>, <a href="#vampire">Vampire</a></div></div>
       </div>
-      <div class="row" id="ai-revenantboss" style="--stripe:var(--legendary)" data-hay="revenantboss boss the mobile boss. dash combos and a leap, no ranged attack whatsoever, and every move a
-        commitment it has to cross the floor to land.">
+      <div class="row" id="ai-revenantboss" style="--stripe:var(--legendary)" data-hay="revenantboss boss the mobile boss. dash combos, a leap and the phantom cross, no projectile whatsoever,
+        and every move a commitment you answer by moving.">
         <div class="r-name" data-anchor><span>Boss</span><span class="r-key">RevenantBoss</span></div>
-        <div class="r-desc">The mobile boss. Dash combos and a leap, no ranged attack whatsoever, and every move a
-        commitment it has to cross the floor to land.</div>
+        <div class="r-desc">The mobile boss. Dash combos, a leap and the Phantom Cross, no projectile whatsoever,
+        and every move a commitment you answer by moving.</div>
         <div class="r-meta"><div class="per"><a href="#palerevenant">PaleRevenant</a></div></div>
       </div>
       <div class="row" id="ai-chargerenemy" style="--stripe:var(--warn)" data-hay="chargerenemy charger chase → windup → dash → recover. it plants at range, flashes a ground lane, then commits.

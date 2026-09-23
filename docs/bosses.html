@@ -93,15 +93,35 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <tr><td>Slam</td><td>A wide ground telegraph, then a shockwave. The radius and the wind-up are
                        tuned together against one rule: running must work. From the edge of its
                        own trigger range you can clear the circle on foot, without blink.</td></tr>
-        <tr><td>Bolt fan</td><td>A spread of oversized, slowed projectiles — more of them each phase.
-                           They are big and slow enough to walk between, which is the point: a
-                           fan is a movement puzzle, not a damage check.</td></tr>
-        <tr><td>Summon</td><td>Calls bodies out of the ground, more each phase. Shares one cooldown
-                         with the other two, so it never does two things at once.</td></tr>
+        <tr><td>Bolt ring</td><td>A full ring of oversized bolts, one aimed at you — 8, 11 then 15 as
+                            phases fall. Big enough to walk between: a movement puzzle, not a
+                            damage check. Since 24 September the bolts fly at 495px/s (was 360),
+                            fast enough that a ring has to be read rather than strolled through.</td></tr>
+        <tr><td>Alternating rings</td><td>Three to five rings in quick succession, each turned half a
+                                    gap from the one before, so the lane you stood in for one ring
+                                    is a bolt for the next. You step sideways every ring.</td></tr>
+        <tr><td>Wall</td><td>A line of bolts fifteen wide, aimed at you, with a two-bolt hole in
+                       it. The line and its hole are drawn on the ground first and it fires exactly
+                       as drawn. The hole is never where you stand and never further than you can
+                       walk before it arrives, even from slam range. Two walls back to back in
+                       phase three.</td></tr>
+        <tr><td>Volley</td><td>A fast stream of five to nine single bolts, each re-aimed at you as it
+                         fires. Standing still eats every one; a steady sideways walk makes each
+                         miss behind you.</td></tr>
+        <tr><td>Spiral</td><td>Phase two onwards. Two arms of bolts wound out over a second and a half.
+                         The space between shots widens as they fly, so the way through is a little
+                         way out, not up close.</td></tr>
+        <tr><td>Summon</td><td>Calls bodies out of the ground, more each phase. Everything shares one
+                         cooldown, and a pattern's own length is added to it, so it never does two
+                         things at once.</td></tr>
       </tbody>
     </table>
     <p>The telegraph lengths are the design. At over a second of wind-up, the Sovereign is
-            asking you to read it. Compare the Revenant, which asks you to already be moving.</p>
+            asking you to read it. Compare the Revenant, which asks you to already be moving.
+            The ranged patterns come in a <b>fixed order per phase</b> — ring, wall, volley,
+            summon, alternating rings in phase one — so the fight can be learned, and each new
+            phase starts its rotation from the top. Until 24 September it had a single ranged
+            attack and a summon, and from range the whole fight was one ring and a wait.</p>
 
     <h2 id="palerevenant">PALE REVENANT</h2>
     <div class="beast" style="--stripe:var(--legendary)">
@@ -112,8 +132,8 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <span class="badge">Boss</span>
         </div>
         <p>The opposite fight, and the reason there are two. Nearly three times the Sovereign's
-           speed, no ranged attack whatsoever, and every move a commitment it has to cross the
-           floor to land.</p>
+           speed, not one projectile, and every move a commitment you beat by moving rather than
+           by standing somewhere clever.</p>
         <div class="statline"><span class="stat">base HP <b>860</b></span><span class="stat">speed <b>120</b></span><span class="stat">contact <b>19</b></span><span class="stat">hitbox <b>58×58</b></span><span class="stat">scale <b>×2.1</b></span></div>
       </div>
     </div>
@@ -129,6 +149,13 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <tr><td>Forced leap</td><td>After two dash combos it must leap. Without that it would simply
                               never do it at close range, which is exactly what the first build
                               did until a state-coverage assertion caught it.</td></tr>
+        <tr><td>Phantom Cross</td><td>Added 24 September; every third attack. It plants and marks two,
+                                three, then four lanes that all cross at your feet, a thousand
+                                pixels long. After the wind-up a ghost of it streaks down every
+                                lane at once, through scenery. One hit however many lanes you stand
+                                in. Step out of the X between two lanes: the wind-up is long enough
+                                that walking between them clears the nearest lane even in phase
+                                three.</td></tr>
       </tbody>
     </table>
     <p>Its speed is capped below the wizard's own, even at phase three, on purpose: kiting

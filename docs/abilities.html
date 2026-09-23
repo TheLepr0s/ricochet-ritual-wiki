@@ -60,17 +60,17 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </p>
 
     <div class="rows">
+      <div class="row" id="rewind" style="--stripe:var(--legendary)"
+        data-hay="rewind rewind snap back to where you stood 3 seconds ago, restore the health you had then plus 15%, and leave a time-quake where you were: 60 damage, growing with the wave, and a 1.5 second stun." data-damaging="0">
+        <div class="r-name" data-anchor><span>Rewind</span><span class="r-key">rewind</span></div>
+        <div class="r-desc">Snap back to where you stood 3 seconds ago, restore the health you had then plus 15%, and leave a time-quake where you were: 60 damage, growing with the wave, and a 1.5 second stun.</div>
+        <div class="r-meta"><div class="per">25s cooldown</div><div class="tot">instant</div><div class="dep">no damage — judged behaviourally</div></div>
+      </div>
       <div class="row" id="decoy" style="--stripe:var(--legendary)"
         data-hay="decoy decoy send out a double that sprints away. enemies chase it instead of you for 6 seconds." data-damaging="0">
         <div class="r-name" data-anchor><span>Decoy</span><span class="r-key">decoy</span></div>
         <div class="r-desc">Send out a double that sprints away. Enemies chase it instead of you for 6 seconds.</div>
         <div class="r-meta"><div class="per">35s cooldown</div><div class="tot">6s active</div><div class="dep">no damage — judged behaviourally</div></div>
-      </div>
-      <div class="row" id="rewind" style="--stripe:var(--legendary)"
-        data-hay="rewind rewind snap back to where you stood 3 seconds ago and restore the health you had then." data-damaging="0">
-        <div class="r-name" data-anchor><span>Rewind</span><span class="r-key">rewind</span></div>
-        <div class="r-desc">Snap back to where you stood 3 seconds ago and restore the health you had then.</div>
-        <div class="r-meta"><div class="per">40s cooldown</div><div class="tot">instant</div><div class="dep">no damage — judged behaviourally</div></div>
       </div>
       <div class="row" id="sentry" style="--stripe:var(--legendary)"
         data-hay="sentry sentry plant a crystal sentry that fires on the nearest enemy for 12 seconds, twice a second, hitting for 28 a shot and growing with the wave." data-damaging="1">

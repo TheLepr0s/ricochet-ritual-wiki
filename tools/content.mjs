@@ -176,8 +176,8 @@ export const AI = {
   },
   BlightsporeEnemy: {
     label: "Hazard", tone: "uncommon",
-    p: `A slow melee body whose real attack is the floor. Every body length it walks it drops a
-        pool of rot that blooms for a moment, then bites whatever stands in it on a slow pulse —
+    p: `A melee body whose real attack is the floor. Every half body length it walks it drops a
+        small pool of rot that blooms for a moment, then bites whatever stands in it on a slow pulse —
         an ordinary hit, so every defensive card applies to it. The pools outlast the thing that
         made them, so killing it stops the line from growing and does nothing about the line.`,
   },
@@ -191,12 +191,14 @@ export const AI = {
   BossEnemy: {
     label: "Boss", tone: "legendary",
     p: `Three phases with an enrage flash at each threshold, a screen-wide health bar, and
-        exemption from a wave modifier's health multiplier — nothing else in the game has that.`,
+        exemption from a wave modifier's health multiplier — nothing else in the game has that.
+        From range it cycles five bullet patterns in a fixed order per phase, each asking a
+        different movement of you.`,
   },
   RevenantBoss: {
     label: "Boss", tone: "legendary",
-    p: `The mobile boss. Dash combos and a leap, no ranged attack whatsoever, and every move a
-        commitment it has to cross the floor to land.`,
+    p: `The mobile boss. Dash combos, a leap and the Phantom Cross, no projectile whatsoever,
+        and every move a commitment you answer by moving.`,
   },
 };
 
@@ -218,7 +220,7 @@ export const ENEMY_NOTE = {
   Bulwark:    "The card check. An orb that only goes forwards bounces off it all day; anything that flanks, pierces, arcs or simply arrives fast walks through. Its health is a long time to spend doing the wrong thing.",
   Witchdoctor:"Heals the most wounded allies around it often enough to outpace chip damage across a crowd. Capped at two alive at once, because three means nothing dies.",
   Bonecaller: "Calls fresh bodies out of the ground on a timer, and what it calls OUTLIVES it — so killing it late buys you nothing. Violet and badged so it is not mistaken for the healer at range; an earlier olive hue made the two indistinguishable. It unlocked at wave 14 with one point of weight for its first few versions, which meant most players never met it at all.",
-  Blightspore:"Barely fights. It leaves a pool of rot every time it walks a body length, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.",
+  Blightspore:"Barely fights. It leaves a small pool of rot every half body length it walks, laying a continuous trail, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.",
   Siphon:     "Hangs at range and drains you through a beam, healing off what it takes. The beam needs line of sight, so a tree is a real answer to it — the first time scenery has been anything but an obstacle.",
   Broodmother:"The Bonecaller inverted. She calls faster, and every Toadstool she makes is tethered to her: kill the mother and the whole swarm drops at once. The swarm is a decoy, and walking past it is the correct play.",
   DreadSovereign: "A siege engine. It walks, and the fight is read from a distance.",
@@ -229,10 +231,10 @@ export const ENEMY_NOTE = {
    would otherwise be invisible. Only where there is something to say. */
 export const ENEMY_EXTRA = {
   Ravager:      "Its row's <code>attackRange</code> is dead data — ChargerEnemy replaces the melee update entirely and uses its own trigger range, so the row value looks authoritative and governs nothing.",
-  PaleRevenant: "No ranged attack at all. Its speed is capped below the wizard's own, on purpose, even at phase three.",
+  PaleRevenant: "No projectile at all — even the Phantom Cross is aimed at your feet, not fired. Its speed is capped below the wizard's own, on purpose, even at phase three.",
   Bomber:       "Shares the skeleton sheet with the Ravager and the Revenant, which is why all three read as bone rather than flesh.",
   Siphon:       "Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well. Its self-heal never actually fired until 23 September: the drain waited for a result that a landed hit never returns, so a Siphon left alone was not getting any harder to kill.",
-  Blightspore:  "Drops are keyed to DISTANCE WALKED, not to a timer. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.",
+  Blightspore:  "Drops are keyed to DISTANCE WALKED (every 70px since 24 September, with 58px pools; it was 130px and 86px, on a body a third slower), not to a timer. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.",
   Broodmother:  "Shares SupportEnemy with the Witchdoctor and the Bonecaller; <code>summon_bound</code> in her row is the single flag that makes her brood die with her. Her summons are killed rather than deleted, so each one still scores, drops loot and triggers every on-kill upgrade you own.",
 };
 
@@ -244,6 +246,11 @@ export const CARD_NOTE = {
   TwinOrbs:    "The second orb matches the first's size, Heavy Orb included, and drops Overload when it ends. Until 23 September it collided at its old size and kept Overload's boost forever.",
   Thunderclap: "Needs a real bounce: a wall touched slower than the orb's damage speed does nothing, as with Carom and Fracture. Until 23 September any touch set it off.",
   VampireOrb:  "The card said +2 extra HP per stack until 23 September. The code has always given +1, so the text was corrected rather than the number.",
+  BlackHoleCore: "Stackable since 24 September: 150px at one card, 205 at two, 260 at three. It used to be a single card with a flat 240px well. The pull and the grind are as strong at the centre at every size and fade to nothing at the rim, so a wider well also pulls harder at any given distance, not just further.",
+  OwlCompanion:  "Buffed on 24 September to 72 damage every 1.8s (from 55 every 2.2s) at 420px range, and each bolt now arcs once to the nearest other enemy within 190px for half damage. The arc never chains a second time.",
+  DemonCompanion:"Buffed on 24 September: 16 damage every 0.8s (was 8 every 1.2s), a 5s ×1.6 curse (was 4s ×1.5), and every swipe rakes everything within 70px of its target for 60% and curses it too. The curse multiplies every source, including the orb, which is why spreading it is worth more than the claws.",
+  OrbitMode:     "Until 24 September the ring could vanish for no visible reason. The shards orbit you but were drawn as part of the main orb, so flinging the orb more than a screen away culled them with it, and a Nuke hiding the orb hid them too. Each shard now draws on its own.",
+  Quickening:    "The chevrons at your feet point one way, as a fast-forward row. Until 24 September they flipped whenever you turned.",
 };
 
 /* ── Bosses ─────────────────────────────────────────────────────────────── */
@@ -257,20 +264,40 @@ export const BOSSES = {
       { n: "Slam", d: `A wide ground telegraph, then a shockwave. The radius and the wind-up are
                        tuned together against one rule: running must work. From the edge of its
                        own trigger range you can clear the circle on foot, without blink.` },
-      { n: "Bolt fan", d: `A spread of oversized, slowed projectiles — more of them each phase.
-                           They are big and slow enough to walk between, which is the point: a
-                           fan is a movement puzzle, not a damage check.` },
-      { n: "Summon", d: `Calls bodies out of the ground, more each phase. Shares one cooldown
-                         with the other two, so it never does two things at once.` },
+      { n: "Bolt ring", d: `A full ring of oversized bolts, one aimed at you — 8, 11 then 15 as
+                            phases fall. Big enough to walk between: a movement puzzle, not a
+                            damage check. Since 24 September the bolts fly at 495px/s (was 360),
+                            fast enough that a ring has to be read rather than strolled through.` },
+      { n: "Alternating rings", d: `Three to five rings in quick succession, each turned half a
+                                    gap from the one before, so the lane you stood in for one ring
+                                    is a bolt for the next. You step sideways every ring.` },
+      { n: "Wall", d: `A line of bolts fifteen wide, aimed at you, with a two-bolt hole in
+                       it. The line and its hole are drawn on the ground first and it fires exactly
+                       as drawn. The hole is never where you stand and never further than you can
+                       walk before it arrives, even from slam range. Two walls back to back in
+                       phase three.` },
+      { n: "Volley", d: `A fast stream of five to nine single bolts, each re-aimed at you as it
+                         fires. Standing still eats every one; a steady sideways walk makes each
+                         miss behind you.` },
+      { n: "Spiral", d: `Phase two onwards. Two arms of bolts wound out over a second and a half.
+                         The space between shots widens as they fly, so the way through is a little
+                         way out, not up close.` },
+      { n: "Summon", d: `Calls bodies out of the ground, more each phase. Everything shares one
+                         cooldown, and a pattern's own length is added to it, so it never does two
+                         things at once.` },
     ],
     close: `The telegraph lengths are the design. At over a second of wind-up, the Sovereign is
-            asking you to read it. Compare the Revenant, which asks you to already be moving.`,
+            asking you to read it. Compare the Revenant, which asks you to already be moving.
+            The ranged patterns come in a <b>fixed order per phase</b> — ring, wall, volley,
+            summon, alternating rings in phase one — so the fight can be learned, and each new
+            phase starts its rotation from the top. Until 24 September it had a single ranged
+            attack and a summon, and from range the whole fight was one ring and a wait.`,
   },
   PaleRevenant: {
     sub: "Wave 20, and every 20th after",
     lead: `The opposite fight, and the reason there are two. Nearly three times the Sovereign's
-           speed, no ranged attack whatsoever, and every move a commitment it has to cross the
-           floor to land.`,
+           speed, not one projectile, and every move a commitment you beat by moving rather than
+           by standing somewhere clever.`,
     moves: [
       { n: "Dash combo", d: `Three, four, then five dashes in a row as phases fall, each with its
                              own short wind-up and a gap between. The direction locks at the
@@ -281,6 +308,13 @@ export const BOSSES = {
       { n: "Forced leap", d: `After two dash combos it must leap. Without that it would simply
                               never do it at close range, which is exactly what the first build
                               did until a state-coverage assertion caught it.` },
+      { n: "Phantom Cross", d: `Added 24 September; every third attack. It plants and marks two,
+                                three, then four lanes that all cross at your feet, a thousand
+                                pixels long. After the wind-up a ghost of it streaks down every
+                                lane at once, through scenery. One hit however many lanes you stand
+                                in. Step out of the X between two lanes: the wind-up is long enough
+                                that walking between them clears the nearest lane even in phase
+                                three.` },
     ],
     close: `Its speed is capped below the wizard's own, even at phase three, on purpose: kiting
             has to stay an answer, or the fight stops being about reading it and becomes a
@@ -542,6 +576,23 @@ export const COMBAT = [
         instead. A flat wall the orb has rolled up against blocks at most half of it and is
         reachable on foot; a gap or an inside corner blocks more. An orb already at rest is nudged
         toward you as well, since phasing alone does nothing for something with no momentum.` },
+  { h: "The September 24 pass",
+    p: `<b>Bosses.</b> The <a href="bosses.html">Dread Sovereign</a> fires faster bolts and gained
+        four patterns: alternating rings, an aimed wall with a hole, a re-aimed volley and a spiral.
+        The <a href="bosses.html">Pale Revenant</a> gained a third attack, the Phantom Cross.
+        <br><br>
+        <b>Buffs.</b> The Owl and the Demon hit harder and more often, and each now spreads to a
+        second target; see their card notes for the numbers. <b>Rewind</b> is on a 25s
+        cooldown (was 40), always heals at least 15% on top of the health it restores, and leaves a
+        time-quake where you were that stuns for 1.5s. The
+        <a href="bestiary.html#blightspore">Blightspore</a> is half again as fast and drops smaller
+        pools twice as often, so its rot is a trail rather than a scatter of puddles.
+        <br><br>
+        <b>Black Hole</b> is a stackable card now, capped at three: a smaller well at one card
+        (150px, from 240) that grows to 260px at three.
+        <br><br>
+        <b>Fixes.</b> The Mirror Ball ring could vanish whenever the main orb was far off screen or
+        hidden by a Nuke, and the Quickening chevrons flipped when you turned.` },
   { h: "The September 23 sweep",
     p: `A pass over the whole game for bugs, most of them the quiet kind: nothing crashed, the
         game simply did less than it said. In one place, so the list is findable:
