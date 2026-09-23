@@ -71,8 +71,9 @@ export const LOOP = [
   },
   {
     h: "Recall is a second weapon",
-    p: `Holding right click hauls the orb back through everything in the way, and a returning
-        orb hits just as hard as a thrown one. Releasing early keeps the speed it gathered, so
+    p: `Holding right click hauls the orb back, and a returning orb hits whatever it meets just
+        as hard as a thrown one. It comes home round the scenery, not through it — a tree in the
+        way stops it until you step aside. Releasing early keeps the speed it gathered, so
         a recall is also how you re-aim without picking the orb up. Walking into a moving orb
         catches it — you do not have to wait for it to come to rest.`,
   },
@@ -444,21 +445,39 @@ export const COMBAT = [
         Euclidean distance. For a long time the two disagreed, so a boss slam and a meteor both
         hit outside the circle they had drawn. Every ground telegraph now announces the radius it
         actually uses.` },
-  { h: "Enemies share one map of the way to you",
-    p: `An enemy that can see you walks straight at you. One that cannot follows a single
-        <b>flow field</b> — one distance-to-you map over the arena, rebuilt when you cross into a
-        new cell and shared by every enemy — instead of each running its own path search. Nothing
-        has to be rationed, and nothing gives up on a long detour: an enemy in a pocket whose only
-        way out is away from you now walks out of it, where the old per-enemy search threw the
-        long route away and left it pressing on the back wall.
+  { h: "Enemies go round trees by how much room there is",
+    p: `Everything rests on one number, <b>clearance</b>: how far a point is from the nearest solid
+        box. The navigation this replaced only ever asked yes or no — does the body fit here? — and
+        a body that fits by one pixel slides along the trunk it is touching, with its sprite drawn
+        half inside the tree. Players saw exactly that: enemies sliding on trees, walking into
+        them, and stuck between one obstacle and the next.
+        <br><br>
+        <b>Routes are planned for each body size.</b> One distance-to-you map per size of body on
+        the field, over a 32px grid round you, where a cell is open only if a body that size fits
+        there and costs more the tighter it is. So a Brute is never sent at a gap only a Mushroom
+        fits through: it goes round. If you are somewhere it cannot reach at all, it waits in open
+        ground until you come out, rather than wedging itself in the mouth of the gap and corking
+        it for everything behind. And a step between two cells only counts if the straight line
+        between them has room all the way along — a route that promised a step steering would not
+        take left the front body backing in and out of the gap while the queue behind it stood
+        still, which was two thirds of all the jams in a dense forest.
+        <br><br>
+        <b>Steering keeps its distance.</b> Every frame the body scores the headings round the one
+        it wants by how well they point and how much room they leave, so it swings wide of a trunk
+        early instead of meeting it and sliding.
+        <br><br>
+        Measured on the navigation harness, eight seeds, a ring of enemies round a still wizard:
+        enemy-frames touching scenery fell from 2.29% to 0.02%, frames within 12px of it — where a
+        sprite visibly sinks into a tree — from 7.29% to 0.72%, time spent going nowhere from 0.63%
+        to zero, and every enemy arrived. In a forest three times denser than any real map,
+        touching fell from 13.7% to 0.05% and going nowhere from 29.7% to 0.6%; most of the enemies
+        that still do not arrive there are big bodies with no way in, waiting in the open.
         <br><br>
         Bodies are tested at their <b>feet</b> against the real obstacle boxes, not at the sprite
-        origin (which sits on the creature's head) against the coarse planning grid. Measured on
-        the navigation harness: enemy-frames spent inside a trunk went from 11.5% to 0.05%, and
-        enemies reaching their fighting range from 91.7% to 99.5% — with the crowd spacing
-        below switched off, since a ring holds late arrivals back by design. Knockback and the
-        drag of a Black Hole, Singularity or Gravity Snap go through the same collision, so
-        nothing is thrown through a tree any more.
+        origin (which sits on the creature's head), and a body inside a trunk is down to under
+        one enemy-frame in ten thousand.
+        Knockback and the drag of a Black Hole, Singularity or Gravity Snap go through the same
+        collision, so nothing is thrown through a tree either.
         <br><br>
         <b>The horde keeps its shape.</b> Bodies ease apart rather than stacking, bigger ones
         shouldering smaller ones aside, so a crowd forms a ring round you instead of a single pile
@@ -504,12 +523,16 @@ export const COMBAT = [
         the first thing to suspect is the fixture.` },
   { h: "An orb that gets stuck lets itself out",
     p: `Two obstacles with a narrow gap between them can hold a thrown orb indefinitely, because
-        nothing damps a wall bounce enough to end it. There are two answers.
-        <b>Recall passes through scenery</b>, so holding right click is a guarantee rather than a
-        suggestion -- it used to fight the wall resolver and lose, which left the player with no
-        move at all. And the orb frees itself: if it has not travelled more than a short distance
-        for about a second and a half, it checks whether it is in a <em>pocket</em>, and phases out
-        through the scenery if it is.
+        nothing damps a wall bounce enough to end it. So the orb frees itself: if it has not
+        travelled more than a short distance for about a second and a half, it checks whether it is
+        in a <em>pocket</em>, and phases out through the scenery if it is.
+        <br><br>
+        <b>Recall does not phase.</b> For one day in September 2026 a recalled orb passed through
+        everything on its way home, which made holding right click a guarantee — and looked like a
+        bug, an orb flying through trees. It collides again: it comes home round the scenery,
+        bouncing and sliding off it, and if a tree catches it you can step aside, since the pull
+        comes from wherever you stand. A pull that cannot arrive gives up after five seconds and
+        the orb brakes to a stop. The escape above stands down while the orb is being recalled.
         <br><br>
         <b>Confinement is what marks a trap, not speed.</b> The first version also required the orb
         to still be moving, on the reasoning that a stationary orb is one waiting to be collected --
@@ -528,8 +551,10 @@ export const COMBAT = [
         pause menu — see <a href="#sound">Sound</a> below. The combo tier-ups became a
         <a href="#combo">streak ladder</a> that climbs, and its top rung finally plays.
         <br><br>
-        <b>Enemies.</b> One shared flow field replaced per-enemy path searches, bodies collide at
-        their feet, the crowd spreads into a ring, spawns come from outside the real view,
+        <b>Enemies.</b> Navigation was rebuilt around how much room there is (above): routes per
+        body size, steering that keeps clear of trunks, and big bodies that wait in the open rather
+        than wedge in a gap. Bodies collide at their feet, the crowd spreads into a ring, spawns
+        come from outside the real view,
         stragglers are brought back, and arrows point to the last few. Scenery blocks enemy shots,
         and shooters need a line to you. Casters hold their distance between casts, the
         <a href="bestiary.html#bulwark">Bulwark</a>'s shield turns to face you in any direction, and
@@ -539,7 +564,8 @@ export const COMBAT = [
         collided at the wrong size and kept Overload forever. Thunderclap fired on any touch.
         Vampire Orb's card said +2. Nuke could leave the orb gone for the rest of the run, Rewind
         spent its cooldown on nothing, Cryostasis let a lit fuse go off, and boss knockback
-        resistance never applied. The off-screen orb arrow pointed the wrong way.
+        resistance never applied. The off-screen orb arrow pointed the wrong way, and a recalled
+        orb passed through trees; it collides again.
         <br><br>
         <b>Achievements.</b> <a href="achievements.html#ach-bestiary">Full Bestiary</a> unlocked
         without the three newest enemies, which had no kill counter; it now counts every ordinary
