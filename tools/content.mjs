@@ -565,7 +565,10 @@ export const COMBAT = [
         Vampire Orb's card said +2. Nuke could leave the orb gone for the rest of the run, Rewind
         spent its cooldown on nothing, Cryostasis let a lit fuse go off, and boss knockback
         resistance never applied. The off-screen orb arrow pointed the wrong way, and a recalled
-        orb passed through trees; it collides again.
+        orb passed through trees; it collides again. And the orb's direct hit was aimed at every
+        enemy's head: it measured from the sprite's anchor, which sits on the head, instead of
+        the body — so on a Mushroom it struck the air above the cap and passed through the
+        stalk. It now hits the body where it is drawn.
         <br><br>
         <b>Achievements.</b> <a href="achievements.html#ach-bestiary">Full Bestiary</a> unlocked
         without the three newest enemies, which had no kill counter; it now counts every ordinary
