@@ -576,11 +576,12 @@ function cardsPage() {
               .join(", ")}</div>`
           );
         }
+        const note = C.CARD_NOTE[u.k];
         return `<div class="row" id="${slug(u.k)}" style="--stripe:var(--${r})"
-          data-hay="${hay(u.k, u.n, u.d, u.v, r)}"
+          data-hay="${hay(u.k, u.n, u.d, u.v, r, note)}"
           data-stackable="${u.s ? 1 : 0}" data-req="${u.req ? 1 : 0}" data-con="${u.con ? 1 : 0}">
           <div class="r-name" data-anchor><span>${esc(u.n)}</span><span class="r-key">${esc(u.k)}</span></div>
-          <div class="r-desc">${esc(u.d)}</div>
+          <div class="r-desc">${esc(u.d)}${note ? `<div class="tot">${esc(note)}</div>` : ""}</div>
           <div class="r-meta">${meta.join("")}</div>
         </div>`;
       })
@@ -855,6 +856,13 @@ function wavesPage() {
       difficulty. Clearing the field ends the wave and opens the upgrade screen.
     </p>
     <p>
+      They arrive from just outside the camera's view — the real view, which stops at the map's
+      edge, so nothing pops in on screen when you fight near a border. One left far out of sight
+      for a few seconds is brought back to just off screen, ahead of where you are heading; a boss
+      never is. Once the wave has nothing left to send and three or fewer remain, arrows at the
+      screen edge point to them.
+    </p>
+    <p>
       A wave can also carry <b>one</b> event: a modifier, or a designed roster. Never both — two
       banners at once is two things to read and no time to read either.
     </p>
@@ -942,6 +950,7 @@ function achievementsPage() {
 
   const hidden = D.achievements.filter((a) => a.h).length;
   const hard = D.achievements.filter((a) => a.md).length;
+  const bestiary = D.achievements.find((a) => a.id === "ACH_BESTIARY");
   const perRun = D.achievements.filter((a) => a.scope === "run").length;
 
   const body = `    <div class="counts">
@@ -965,6 +974,11 @@ function achievementsPage() {
       <br><br>
       Every one is backed by a counter with a stable id, so progress survives a rename and nothing
       is ever revoked once earned — a reconcile pass grants retroactively but never takes back.
+      <br><br>
+      <b>Full Bestiary</b> counts ${bestiary ? bestiary.t : "every"} lines: one for every ordinary
+      enemy type, the Witchdoctor and the Bonecaller separately, and neither boss — they have
+      achievements of their own. A test kills one of each type and checks the target against the
+      roster, because twice now new enemies shipped without a line of their own.
     </div>
 
     <div class="rows">

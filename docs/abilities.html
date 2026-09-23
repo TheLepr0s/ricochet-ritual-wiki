@@ -157,7 +157,17 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   fixture admitting what it cannot see, not a verdict. <b>Overload</b> is in the same position for
   a different reason: it amplifies an orb this fixture deliberately never throws. All seven are
   covered instead by behavioural assertions that check the one thing that matters — that pressing
-  the button does its stated thing at all.</div>
+  the button does its stated thing at all.
+  <br><br>
+  <b>Fixed on 23 September.</b> Firing <b>Nuke</b> and then taking a different ability before the
+  orb had reformed left it invisible and unable to deal damage for the rest of the run: the
+  five-second hide only counted down inside the Nuke's own update, which stops running once the
+  slot holds something else. It was a likely thing to do, too — a Nuke often ends the wave, and
+  every third upgrade screen offers an ability. <b>Rewind</b> with nothing to rewind to no longer
+  spends its cooldown. <b>Cryostasis</b>'s “cannot detonate” is now true of a Bomber whose fuse
+  was already lit. And <b>Nuke</b>, <b>Meteor</b>, <b>Forcefield</b> and <b>Singularity</b> move
+  enemies through the same collision as everything else, so none of them throws a body into a
+  tree any more.</div>
 
     <h3>Kills per cast, and per second of cooldown</h3>
     <table>

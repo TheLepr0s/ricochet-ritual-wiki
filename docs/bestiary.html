@@ -296,7 +296,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           </div>
           <p>Hangs at range and drains you through a beam, healing off what it takes. The beam needs line of sight, so a tree is a real answer to it — the first time scenery has been anything but an obstacle.</p>
           <div class="statline"><span class="stat">HP <b>140</b></span><span class="stat">speed <b>44</b></span><span class="stat">from wave <b>9</b></span><span class="stat">weight <b>3</b></span><span class="stat">max <b>2</b> alive</span><span class="stat">hitbox <b>40×36</b></span></div>
-          <p class="tot">A recolour of <a href="#vampire">Vampire</a>'s art, told apart by a hue rotation.</p><p class="tot">Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well.</p>
+          <p class="tot">A recolour of <a href="#vampire">Vampire</a>'s art, told apart by a hue rotation.</p><p class="tot">Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well. Its self-heal never actually fired until 23 September: the drain waited for a result that a landed hit never returns, so a Siphon left alone was not getting any harder to kill.</p>
         </div>
       </div>
       <div class="beast" id="witchdoctor" style="--stripe:var(--uncommon)"
@@ -479,11 +479,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       </div>
       <div class="row" id="ai-bomberenemy" style="--stripe:var(--warn)" data-hay="bomberenemy bomber no attack at all: it sprints at you and detonates on contact, after a 0.45s flashing
         warning. its health is deliberately low enough that a base-damage orb one-shots it, so
-        popping it early is always a clean single hit.">
+        popping it early is always a clean single hit. frozen or stunned, even a lit fuse stops.">
         <div class="r-name" data-anchor><span>Bomber</span><span class="r-key">BomberEnemy</span></div>
         <div class="r-desc">No attack at all: it sprints at you and detonates on contact, after a 0.45s flashing
         warning. Its health is deliberately low enough that a base-damage orb one-shots it, so
-        popping it early is always a clean single hit.</div>
+        popping it early is always a clean single hit. Frozen or stunned, even a lit fuse stops.</div>
         <div class="r-meta"><div class="per"><a href="#bomber">Bomber</a></div></div>
       </div>
       <div class="row" id="ai-supportenemy" style="--stripe:var(--uncommon)" data-hay="supportenemy support never closes. it kites to a mid-range band, strafing at reduced speed, and spends a short

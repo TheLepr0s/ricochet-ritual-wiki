@@ -57,7 +57,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <tr><td><code>Right click (hold)</code></td><td>Recall</td><td>Drags the orb back to you. Let go early and it keeps the velocity it had built.</td></tr>
         <tr><td><code>Space</code></td><td>Blink</td><td>Instant, passes through walls and enemies, and cannot land you inside geometry.</td></tr>
         <tr><td><code>F</code></td><td>Utility ability</td><td>Only bound once you have taken one — an ability is offered as a fourth card once on every third wave.</td></tr>
-        <tr><td><code>Escape</code></td><td>Pause</td><td>Opens settings without leaving the run.</td></tr>
+        <tr><td><code>Escape</code></td><td>Pause</td><td>Opens settings without leaving the run. Everything freezes, sound effects included.</td></tr>
         <tr><td><code>F11</code></td><td>Fullscreen</td><td></td></tr>
         <tr><td><code>F3</code></td><td>Developer overlay</td><td>Spawns anything, grants any card or ability, forces a wave modifier, class or designed wave.</td></tr>
       </tbody>
@@ -83,6 +83,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <p>Waves ramp, but the interesting pressure comes from named events: a modifier that
         changes the rules of one wave, a designed wave built from one kind of enemy, and a
         fixed boss every tenth. None of them are simply "the same wave with more health".</p>
+    <h3>The field is part of the fight</h3>
+    <p>Trees and rocks are cover, not just obstacles. A ranged enemy only fires with a clear
+        line to you and its shots die on the first solid thing they cross, and a Siphon's beam
+        snaps the moment something comes between you. Enemies arrive from just past the edge of
+        the screen, walk round scenery rather than through it, and spread into a ring rather
+        than a heap. When your orb is off screen an arrow at the edge points to it — one per orb
+        if you have two — and once a wave has nothing left to send and three or fewer enemies
+        remain, arrows point to them too.</p>
 
     <h2 id="upgrades">The upgrade screen</h2>
     <p>

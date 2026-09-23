@@ -12,6 +12,7 @@
 import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import * as C from "./content.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const DOCS = join(HERE, "..", "docs");
@@ -112,6 +113,20 @@ cover(D.enemies, "enemies", (e) => e.x.boss_name || e.k);
   if (noAi.length) fail(`enemies with no AI class: ${noAi.join(", ")}`);
   if (noRow.length) fail(`AI classes with no behaviour row: ${noRow.join(", ")}`);
   if (!noAi.length && !noRow.length) ok(`every enemy has an AI class with a behaviour row`);
+}
+
+// A note keyed by a card or enemy that has since been renamed renders nowhere
+// and says nothing about it.
+{
+  const cards = new Set(D.upgrades.map((u) => u.k));
+  const enemies = new Set(D.enemies.map((e) => e.k));
+  const stale = [
+    ...Object.keys(C.CARD_NOTE || {}).filter((k) => !cards.has(k)).map((k) => `CARD_NOTE.${k}`),
+    ...Object.keys(C.ENEMY_NOTE || {}).filter((k) => !enemies.has(k)).map((k) => `ENEMY_NOTE.${k}`),
+    ...Object.keys(C.ENEMY_EXTRA || {}).filter((k) => !enemies.has(k)).map((k) => `ENEMY_EXTRA.${k}`),
+  ];
+  if (stale.length) fail(`notes for things that do not exist: ${stale.join(", ")}`);
+  else ok(`every hand-written note names a real card or enemy`);
 }
 
 /* ── Portraits ───────────────────────────────────────────────────────── */

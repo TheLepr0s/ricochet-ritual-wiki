@@ -54,7 +54,7 @@ export const CONTROLS = [
   { key: "F",         act: "Utility ability",
     note: "Only bound once you have taken one — an ability is offered as a fourth card once on every third wave." },
   { key: "Escape",    act: "Pause",
-    note: "Opens settings without leaving the run." },
+    note: "Opens settings without leaving the run. Everything freezes, sound effects included." },
   { key: "F11",       act: "Fullscreen" },
   { key: "F3",        act: "Developer overlay",
     note: "Spawns anything, grants any card or ability, forces a wave modifier, class or designed wave." },
@@ -89,6 +89,16 @@ export const LOOP = [
         changes the rules of one wave, a designed wave built from one kind of enemy, and a
         fixed boss every tenth. None of them are simply "the same wave with more health".`,
   },
+  {
+    h: "The field is part of the fight",
+    p: `Trees and rocks are cover, not just obstacles. A ranged enemy only fires with a clear
+        line to you and its shots die on the first solid thing they cross, and a Siphon's beam
+        snaps the moment something comes between you. Enemies arrive from just past the edge of
+        the screen, walk round scenery rather than through it, and spread into a ring rather
+        than a heap. When your orb is off screen an arrow at the edge points to it — one per orb
+        if you have two — and once a wave has nothing left to send and three or fewer enemies
+        remain, arrows point to them too.`,
+  },
 ];
 
 /* ── AI classes ─────────────────────────────────────────────────────────────
@@ -117,7 +127,7 @@ export const AI = {
     label: "Bomber", tone: "warn",
     p: `No attack at all: it sprints at you and detonates on contact, after a 0.45s flashing
         warning. Its health is deliberately low enough that a base-damage orb one-shots it, so
-        popping it early is always a clean single hit.`,
+        popping it early is always a clean single hit. Frozen or stunned, even a lit fuse stops.`,
   },
   VampireEnemy: {
     label: "Vampire", tone: "epic",
@@ -220,9 +230,19 @@ export const ENEMY_EXTRA = {
   Ravager:      "Its row's <code>attackRange</code> is dead data — ChargerEnemy replaces the melee update entirely and uses its own trigger range, so the row value looks authoritative and governs nothing.",
   PaleRevenant: "No ranged attack at all. Its speed is capped below the wizard's own, on purpose, even at phase three.",
   Bomber:       "Shares the skeleton sheet with the Ravager and the Revenant, which is why all three read as bone rather than flesh.",
-  Siphon:       "Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well.",
+  Siphon:       "Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well. Its self-heal never actually fired until 23 September: the drain waited for a result that a landed hit never returns, so a Siphon left alone was not getting any harder to kill.",
   Blightspore:  "Drops are keyed to DISTANCE WALKED, not to a timer. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.",
   Broodmother:  "Shares SupportEnemy with the Witchdoctor and the Bonecaller; <code>summon_bound</code> in her row is the single flag that makes her brood die with her. Her summons are killed rather than deleted, so each one still scores, drops loot and triggers every on-kill upgrade you own.",
+};
+
+/* ── Cards: facts that live in code rather than on the card ────────────────
+   Keyed by card key. Only where the card text leaves out something a player
+   would want to know, or where the card used to do something else. */
+export const CARD_NOTE = {
+  GlassCannon: "Breaks once. Until 23 September a shattered orb pinballing between trees re-shattered on every wall it touched — the sound, the blast, the hitstop and a Butterfingers count each time.",
+  TwinOrbs:    "The second orb matches the first's size, Heavy Orb included, and drops Overload when it ends. Until 23 September it collided at its old size and kept Overload's boost forever.",
+  Thunderclap: "Needs a real bounce: a wall touched slower than the orb's damage speed does nothing, as with Carom and Fracture. Until 23 September any touch set it off.",
+  VampireOrb:  "The card said +2 extra HP per stack until 23 September. The code has always given +1, so the text was corrected rather than the number.",
 };
 
 /* ── Bosses ─────────────────────────────────────────────────────────────── */
@@ -271,7 +291,14 @@ export const BOSS_SHARED = `Which boss arrives is <b>fixed rather than rolled</b
   would take away the one thing about a boss wave worth knowing in advance, and fixing the order
   also guarantees that the first two bosses anyone meets are one of each. Both pay the same on
   death: a large flat heal on the spot, plus one extra card banked for the next time the upgrade
-  screen opens — banked rather than granted, because that screen is not showing mid-wave.`;
+  screen opens — banked rather than granted, because that screen is not showing mid-wave.
+  <br><br>
+  <b>Both shrug off most knockback</b> — 85% for the Sovereign, 88% for the Revenant. Until
+  23 September they only claimed to: the resistance was applied inside the boss's own damage
+  handler, before the orb wrote its shove, so it never took effect, and every other push in the
+  game bypassed it entirely. It now sits where every push goes through. A boss is also never
+  pulled back toward you as a straggler, and neither boss counts toward Full Bestiary — they
+  have achievements of their own.`;
 
 /* ── Classes ────────────────────────────────────────────────────────────────
    Measured, not asserted. bench_main.lua with ARCHETYPE_ONLY=1, ten trials,
@@ -331,7 +358,17 @@ export const ABI_NOTE = `<b>The five damaging abilities were measured against ea
   fixture admitting what it cannot see, not a verdict. <b>Overload</b> is in the same position for
   a different reason: it amplifies an orb this fixture deliberately never throws. All seven are
   covered instead by behavioural assertions that check the one thing that matters — that pressing
-  the button does its stated thing at all.`;
+  the button does its stated thing at all.
+  <br><br>
+  <b>Fixed on 23 September.</b> Firing <b>Nuke</b> and then taking a different ability before the
+  orb had reformed left it invisible and unable to deal damage for the rest of the run: the
+  five-second hide only counted down inside the Nuke's own update, which stops running once the
+  slot holds something else. It was a likely thing to do, too — a Nuke often ends the wave, and
+  every third upgrade screen offers an ability. <b>Rewind</b> with nothing to rewind to no longer
+  spends its cooldown. <b>Cryostasis</b>'s “cannot detonate” is now true of a Bomber whose fuse
+  was already lit. And <b>Nuke</b>, <b>Meteor</b>, <b>Forcefield</b> and <b>Singularity</b> move
+  enemies through the same collision as everything else, so none of them throws a body into a
+  tree any more.`;
 
 /* ── Designed waves ─────────────────────────────────────────────────────── */
 export const COMP_ANSWER = {
@@ -482,6 +519,32 @@ export const COMBAT = [
         instead. A flat wall the orb has rolled up against blocks at most half of it and is
         reachable on foot; a gap or an inside corner blocks more. An orb already at rest is nudged
         toward you as well, since phasing alone does nothing for something with no momentum.` },
+  { h: "The September 23 sweep",
+    p: `A pass over the whole game for bugs, most of them the quiet kind: nothing crashed, the
+        game simply did less than it said. In one place, so the list is findable:
+        <br><br>
+        <b>Sound.</b> Card sounds were placed so that most of them were near-silent at ordinary
+        range, several cards had no sound or someone else's, and effects kept playing under the
+        pause menu — see <a href="#sound">Sound</a> below. The combo tier-ups became a
+        <a href="#combo">streak ladder</a> that climbs, and its top rung finally plays.
+        <br><br>
+        <b>Enemies.</b> One shared flow field replaced per-enemy path searches, bodies collide at
+        their feet, the crowd spreads into a ring, spawns come from outside the real view,
+        stragglers are brought back, and arrows point to the last few. Scenery blocks enemy shots,
+        and shooters need a line to you. Casters hold their distance between casts, the
+        <a href="bestiary.html#bulwark">Bulwark</a>'s shield turns to face you in any direction, and
+        the <a href="bestiary.html#siphon">Siphon</a>'s heal works.
+        <br><br>
+        <b>Cards and abilities.</b> Glass Cannon re-shattered on every wall. The Twin Orbs twin
+        collided at the wrong size and kept Overload forever. Thunderclap fired on any touch.
+        Vampire Orb's card said +2. Nuke could leave the orb gone for the rest of the run, Rewind
+        spent its cooldown on nothing, Cryostasis let a lit fuse go off, and boss knockback
+        resistance never applied. The off-screen orb arrow pointed the wrong way.
+        <br><br>
+        <b>Achievements.</b> <a href="achievements.html#ach-bestiary">Full Bestiary</a> unlocked
+        without the three newest enemies, which had no kill counter; it now counts every ordinary
+        type on a line of its own — the Witchdoctor and the Bonecaller separately — and neither
+        boss.` },
 ];
 
 /* ── Score ──────────────────────────────────────────────────────────────── */
@@ -503,6 +566,17 @@ export const AUDIO_NOTE = `<b>What a kill sounds like.</b> Every orb kill fires 
   last one is an event of its own, with a chord that blooms underneath and sparkle off the top.
   There are six rungs because seven tiers give six promotions; the set they replaced had seven
   sounds, and its top one could never play.
+  <br><br>
+  <b>Fixed on 23 September.</b> Crescendo asked for a sound that was never loaded, and was
+  silent. Aegis played Glass Cannon's shatter on every deflect. Twin Orbs doubled the throw, and
+  Charged Shot with Backhand fired two full-volume swings at once. Chain Lightning zapped on
+  every hit whether or not there was anything to arc to. Slingshot's arming borrowed the
+  “ability ready” cue, and the Owl whooshed when it appeared rather than when it struck. Soul
+  Harvest chimed on full health with nothing healed. Death Nova, Explosive Touch, Volatile Core,
+  Rupture, Void Pulse and Thunderclap made no sound at all. Evil Wizards and Archmages groaned
+  twice per hit, each wizard's hand chain fired about eleven full-volume digs per cast, the
+  Bomber had no hurt sound, and effects kept playing under the pause menu. A test now fails on
+  any sound name in the code that does not exist.
   <br><br>
   <b>Voices and rate limits are central, not per-caller.</b> A pool of sources per sound key lets
   one overlap itself where that overlap <em>is</em> the feedback, and pins announcements to exactly
@@ -574,4 +648,5 @@ export const GLOSSARY = [
   { t: "Utility", d: "The F-key ability. Offered as a fourth card on every third upgrade screen; you hold one at a time." },
   { t: "Stack cap", d: "How many times a repeatable card can be taken. At the cap it stops being offered." },
   { t: "Banish", d: "Removing a card from the pool for the rest of the run, rather than rerolling the screen." },
+  { t: "Cover", d: "Scenery between you and a ranged enemy. Its shots die on the first solid thing they cross, and it will not fire without a clear line." },
 ];
