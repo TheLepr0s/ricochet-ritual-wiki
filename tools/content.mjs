@@ -258,6 +258,7 @@ export const CARD_NOTE = {
   OrbitMode:     "Until 24 September the ring could vanish for no visible reason. The shards orbit you but were drawn as part of the main orb, so flinging the orb more than a screen away culled them with it, and a Nuke hiding the orb hid them too. Each shard now draws on its own.",
   Quickening:    "The chevrons at your feet point one way, as a fast-forward row. Until 24 September they flipped whenever you turned.",
   MagneticGrip:  "Pulls the orb home until it is within 40px of you (inside swing reach), then brakes it to rest there. Until 25 September it never stopped pulling: the orb reached you, was caught, was nudged into you again and caught again, every frame — a loud buzz of catch sounds, and a Dead Stop blast each time if you held that card.",
+  SecondWind:    "Since 25 September it puts you back on 30 HP (it used to leave you at 1) and makes you invulnerable for 5 seconds (it used to be 1.6s of ordinary iframes): no damage and no roots, shown as a golden shell that flickers in its last second. The window is its own timer, so the Evil Wizard's hand, which wipes your ordinary iframes when it grabs you, cannot cut it short.",
   Tether:        "Until 25 September the cord went invisible once the orb was more than a screen away, while still cutting everything it crossed: it was drawn as part of the orb, which is culled when far off screen. It now draws on its own.",
 };
 
@@ -599,6 +600,7 @@ export const COMBAT = [
   { h: "The September 25 fixes",
     p: `<b>Fireballs</b> fly over rocks and stumps and only stop on trees. <b>Both bosses</b>
         have twice the health (Sovereign 2,200 and Revenant 1,720 before wave scaling).
+        <b>Second Wind</b> saves you on 30 HP with 5 seconds of invulnerability, not 1 HP.
         <br><br>
         <b>Companions.</b> The <a href="cards.html">Owl and Demon</a> were rebuilt to stand level
         with Black Hole, the legendary they are measured against, and their damage now rides the
