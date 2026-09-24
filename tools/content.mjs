@@ -94,8 +94,9 @@ export const LOOP = [
   },
   {
     h: "The field is part of the fight",
-    p: `Trees and rocks are cover, not just obstacles. A ranged enemy only fires with a clear
-        line to you and its shots die on the first solid thing they cross, and a Siphon's beam
+    p: `Trees are cover, not just obstacles. A ranged enemy only fires with a clear line to
+        you and its shots die on the first tree they cross (they fly over rocks and stumps), and
+        a Siphon's beam
         snaps the moment something comes between you. Enemies arrive from just past the edge of
         the screen, walk round scenery rather than through it, and spread into a ring rather
         than a heap. When your orb is off screen an arrow at the edge points to it — one per orb
@@ -120,8 +121,10 @@ export const AI = {
     label: "Ranged", tone: "rare",
     p: `Closes to its attack range, stops, and throws fireballs at 450px/s that hit for its own
         damage stat — so they scale with the wave — and expire after four seconds. A shooter
-        that fires a fan hits for less with each bolt. <b>Scenery is cover</b>: a shot dies on the
-        first solid obstacle it crosses, and a shooter only opens fire with a clear line to you.
+        that fires a fan hits for less with each bolt. <b>Trees are cover</b>: a shot dies on the
+        first tree it crosses, and a shooter only opens fire with a clear line to you. Rocks and
+        stumps are knee-high, and shots fly over them (since 25 September; before that anything
+        solid stopped a shot).
         Blind, it circles you at range looking for one, then closes in round whatever is in the
         way. So the answer is to close, to leave, or to put a tree between you — never to trade
         in the open.`,
@@ -251,7 +254,7 @@ export const CARD_NOTE = {
   VampireOrb:  "The card said +2 extra HP per stack until 23 September. The code has always given +1, so the text was corrected rather than the number.",
   BlackHoleCore: "Stackable since 24 September: 150px at one card, 205 at two, 260 at three. It used to be a single card with a flat 240px well. The pull and the grind are as strong at the centre at every size and fade to nothing at the rim, so a wider well also pulls harder at any given distance, not just further.",
   OwlCompanion:  "Rebuilt on 25 September to stand level with Black Hole: a bolt every 1.0s at 420px range, and each one leaps on through up to three more enemies within 220px, each taking 60% of the first bolt, never the same enemy twice. Its damage rides the enemy health curve, 48 at wave 1 (about 92 at wave 8, 166 at wave 20), so it no longer fades as the run goes on. Owl Swiftness is now 25% more strikes per stack rather than a flat −0.6s. Measured against the damage benchmark, the owl went from +46% (a rare's worth) to about +195%; Black Hole measures +170%.",
-  DemonCompanion:"Rebuilt on 25 September to stand level with Black Hole: 20 claw damage at wave 1, riding the enemy health curve (about 38 at wave 8), every 0.6s, and every swipe rakes everything within 90px of its target for 60% and curses it. The curse is ×1.75 for 5s, up from ×1.6, and multiplies every source, including the orb; Curse Potency now tops out at ×2.15. Benchmark: from +81% to about +110–300% depending on how tightly packed the crowd is (Black Hole +42–170%).",
+  DemonCompanion:"Rebuilt on 25 September to stand level with Black Hole: 20 claw damage at wave 1, riding the enemy health curve (about 38 at wave 8), every 0.6s, and every swipe rakes everything within 90px of its target for 60% and curses it. The curse is ×1.75 for 5s, up from ×1.6, and multiplies every source, including the orb; Curse Potency now tops out at ×2.15. It always goes for the nearest enemy that is NOT cursed yet, changing target the moment its swipe marks one; only when everything in reach is cursed does it renew the curse closest to running out. Benchmark: from +81% to about +110–300% depending on how tightly packed the crowd is (Black Hole +42–170%).",
   OrbitMode:     "Until 24 September the ring could vanish for no visible reason. The shards orbit you but were drawn as part of the main orb, so flinging the orb more than a screen away culled them with it, and a Nuke hiding the orb hid them too. Each shard now draws on its own.",
   Quickening:    "The chevrons at your feet point one way, as a fast-forward row. Until 24 September they flipped whenever you turned.",
   MagneticGrip:  "Pulls the orb home until it is within 40px of you (inside swing reach), then brakes it to rest there. Until 25 September it never stopped pulling: the orb reached you, was caught, was nudged into you again and caught again, every frame — a loud buzz of catch sounds, and a Dead Stop blast each time if you held that card.",
@@ -594,7 +597,10 @@ export const COMBAT = [
         reachable on foot; a gap or an inside corner blocks more. An orb already at rest is nudged
         toward you as well, since phasing alone does nothing for something with no momentum.` },
   { h: "The September 25 fixes",
-    p: `<b>Companions.</b> The <a href="cards.html">Owl and Demon</a> were rebuilt to stand level
+    p: `<b>Fireballs</b> fly over rocks and stumps and only stop on trees. <b>Both bosses</b>
+        have twice the health (Sovereign 2,200 and Revenant 1,720 before wave scaling).
+        <br><br>
+        <b>Companions.</b> The <a href="cards.html">Owl and Demon</a> were rebuilt to stand level
         with Black Hole, the legendary they are measured against, and their damage now rides the
         enemy health curve instead of staying flat. See their card notes.
         <br><br>
@@ -644,7 +650,7 @@ export const COMBAT = [
         body size, steering that keeps clear of trunks, and big bodies that wait in the open rather
         than wedge in a gap. Bodies collide at their feet, the crowd spreads into a ring, spawns
         come from outside the real view,
-        stragglers are brought back, and arrows point to the last few. Scenery blocks enemy shots,
+        stragglers are brought back, and arrows point to the last few. Trees block enemy shots,
         and shooters need a line to you. Casters hold their distance between casts, the
         <a href="bestiary.html#bulwark">Bulwark</a>'s shield turns to face you in any direction, and
         the <a href="bestiary.html#siphon">Siphon</a>'s heal works.
@@ -766,5 +772,5 @@ export const GLOSSARY = [
   { t: "Utility", d: "The F-key ability. Offered as a fourth card on every third upgrade screen; you hold one at a time." },
   { t: "Stack cap", d: "How many times a repeatable card can be taken. At the cap it stops being offered." },
   { t: "Banish", d: "Removing a card from the pool for the rest of the run, rather than rerolling the screen." },
-  { t: "Cover", d: "Scenery between you and a ranged enemy. Its shots die on the first solid thing they cross, and it will not fire without a clear line." },
+  { t: "Cover", d: "A tree between you and a ranged enemy. Its shots die on the first tree they cross (rocks and stumps they fly over), and it will not fire without a clear line." },
 ];

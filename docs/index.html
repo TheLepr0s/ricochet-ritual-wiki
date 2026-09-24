@@ -92,8 +92,9 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         changes the rules of one wave, a designed wave built from one kind of enemy, and a
         fixed boss every tenth. None of them are simply "the same wave with more health".</p>
     <h3>The field is part of the fight</h3>
-    <p>Trees and rocks are cover, not just obstacles. A ranged enemy only fires with a clear
-        line to you and its shots die on the first solid thing they cross, and a Siphon's beam
+    <p>Trees are cover, not just obstacles. A ranged enemy only fires with a clear line to
+        you and its shots die on the first tree they cross (they fly over rocks and stumps), and
+        a Siphon's beam
         snaps the moment something comes between you. Enemies arrive from just past the edge of
         the screen, walk round scenery rather than through it, and spread into a ring rather
         than a heap. When your orb is off screen an arrow at the edge points to it — one per orb
@@ -121,7 +122,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <tr><td>Utility</td><td>The F-key ability. Offered as a fourth card on every third upgrade screen; you hold one at a time.</td></tr>
         <tr><td>Stack cap</td><td>How many times a repeatable card can be taken. At the cap it stops being offered.</td></tr>
         <tr><td>Banish</td><td>Removing a card from the pool for the rest of the run, rather than rerolling the screen.</td></tr>
-        <tr><td>Cover</td><td>Scenery between you and a ranged enemy. Its shots die on the first solid thing they cross, and it will not fire without a clear line.</td></tr>
+        <tr><td>Cover</td><td>A tree between you and a ranged enemy. Its shots die on the first tree they cross (rocks and stumps they fly over), and it will not fire without a clear line.</td></tr>
       </tbody>
     </table>
     <footer>

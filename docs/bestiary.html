@@ -402,7 +402,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
              <a href="bosses.html#dreadsovereign" class="tot">full fight →</a>
           </div>
           <p>A siege engine. It walks, and the fight is read from a distance.</p>
-          <div class="statline"><span class="stat">HP <b>1100</b></span><span class="stat">speed <b>42</b></span><span class="stat">damage <b>22</b></span><span class="stat">range <b>460</b></span><span class="stat">fires <b>Fireball</b></span><span class="stat">hitbox <b>74×66</b></span></div>
+          <div class="statline"><span class="stat">HP <b>2200</b></span><span class="stat">speed <b>42</b></span><span class="stat">damage <b>22</b></span><span class="stat">range <b>460</b></span><span class="stat">fires <b>Fireball</b></span><span class="stat">hitbox <b>74×66</b></span></div>
           <p class="tot">A recolour of <a href="#evilwizard">EvilWizard</a>'s art, told apart by a hue rotation.</p>
         </div>
       </div>
@@ -419,7 +419,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
              <a href="bosses.html#palerevenant" class="tot">full fight →</a>
           </div>
           <p>The opposite fight, and the reason there are two.</p>
-          <div class="statline"><span class="stat">HP <b>860</b></span><span class="stat">speed <b>120</b></span><span class="stat">damage <b>19</b></span><span class="stat">hitbox <b>58×58</b></span></div>
+          <div class="statline"><span class="stat">HP <b>1720</b></span><span class="stat">speed <b>120</b></span><span class="stat">damage <b>19</b></span><span class="stat">hitbox <b>58×58</b></span></div>
           <p class="tot">A recolour of <a href="#bomber">Bomber</a>'s art, told apart by a colour tint.</p><p class="tot">No projectile at all — even the Phantom Cross is aimed at your feet, not fired. It goes straight through trees and rocks, so scenery is no cover from it. Its speed is capped below the wizard's own, on purpose, even at phase three.</p>
         </div>
       </div>
@@ -451,16 +451,20 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       </div>
       <div class="row" id="ai-rangedenemy" style="--stripe:var(--rare)" data-hay="rangedenemy ranged closes to its attack range, stops, and throws fireballs at 450px/s that hit for its own
         damage stat — so they scale with the wave — and expire after four seconds. a shooter
-        that fires a fan hits for less with each bolt. &lt;b&gt;scenery is cover&lt;/b&gt;: a shot dies on the
-        first solid obstacle it crosses, and a shooter only opens fire with a clear line to you.
+        that fires a fan hits for less with each bolt. &lt;b&gt;trees are cover&lt;/b&gt;: a shot dies on the
+        first tree it crosses, and a shooter only opens fire with a clear line to you. rocks and
+        stumps are knee-high, and shots fly over them (since 25 september; before that anything
+        solid stopped a shot).
         blind, it circles you at range looking for one, then closes in round whatever is in the
         way. so the answer is to close, to leave, or to put a tree between you — never to trade
         in the open.">
         <div class="r-name" data-anchor><span>Ranged</span><span class="r-key">RangedEnemy</span></div>
         <div class="r-desc">Closes to its attack range, stops, and throws fireballs at 450px/s that hit for its own
         damage stat — so they scale with the wave — and expire after four seconds. A shooter
-        that fires a fan hits for less with each bolt. <b>Scenery is cover</b>: a shot dies on the
-        first solid obstacle it crosses, and a shooter only opens fire with a clear line to you.
+        that fires a fan hits for less with each bolt. <b>Trees are cover</b>: a shot dies on the
+        first tree it crosses, and a shooter only opens fire with a clear line to you. Rocks and
+        stumps are knee-high, and shots fly over them (since 25 September; before that anything
+        solid stopped a shot).
         Blind, it circles you at range looking for one, then closes in round whatever is in the
         way. So the answer is to close, to leave, or to put a tree between you — never to trade
         in the open.</div>
