@@ -53,6 +53,8 @@ export const CONTROLS = [
     note: "Instant, passes through walls and enemies, and cannot land you inside geometry." },
   { key: "F",         act: "Utility ability",
     note: "Only bound once you have taken one — an ability is offered as a fourth card once on every third wave." },
+  { key: "U",         act: "My Upgrades",
+    note: "Lists every card you hold, coloured by rarity. Escape (or U again) closes it; it was on I until 24 September." },
   { key: "Escape",    act: "Pause",
     note: "Opens settings without leaving the run. Everything freezes, sound effects included." },
   { key: "F11",       act: "Fullscreen" },
@@ -252,6 +254,8 @@ export const CARD_NOTE = {
   DemonCompanion:"Buffed on 24 September: 16 damage every 0.8s (was 8 every 1.2s), a 5s ×1.6 curse (was 4s ×1.5), and every swipe rakes everything within 70px of its target for 60% and curses it too. The curse multiplies every source, including the orb, which is why spreading it is worth more than the claws.",
   OrbitMode:     "Until 24 September the ring could vanish for no visible reason. The shards orbit you but were drawn as part of the main orb, so flinging the orb more than a screen away culled them with it, and a Nuke hiding the orb hid them too. Each shard now draws on its own.",
   Quickening:    "The chevrons at your feet point one way, as a fast-forward row. Until 24 September they flipped whenever you turned.",
+  MagneticGrip:  "Pulls the orb home until it is within 40px of you (inside swing reach), then brakes it to rest there. Until 25 September it never stopped pulling: the orb reached you, was caught, was nudged into you again and caught again, every frame — a loud buzz of catch sounds, and a Dead Stop blast each time if you held that card.",
+  Tether:        "Until 25 September the cord went invisible once the orb was more than a screen away, while still cutting everything it crossed: it was drawn as part of the orb, which is culled when far off screen. It now draws on its own.",
 };
 
 /* ── Bosses ─────────────────────────────────────────────────────────────── */
@@ -589,6 +593,21 @@ export const COMBAT = [
         instead. A flat wall the orb has rolled up against blocks at most half of it and is
         reachable on foot; a gap or an inside corner blocks more. An orb already at rest is nudged
         toward you as well, since phasing alone does nothing for something with no momentum.` },
+  { h: "The September 25 fixes",
+    p: `<b>Damage numbers</b> are bigger and climb a colour ladder with the size of the hit:
+        white under 50, then yellow, orange (120+), red (250+), magenta (500+), purple (1,000+)
+        and cyan from 2,000. A base orb hit is 36, so an early run is mostly white and the colours
+        are how you see a build come together. Crits add a "!". Burn ticks, heals and damage
+        you take keep their own fixed colours.
+        <br><br>
+        <b>Nuke</b>: while the orb is blown apart and reforming, a swing no longer "throws" it.
+        The hidden orb sits in your hand, so every swing launched an invisible, harmless orb that
+        snapped straight back, with the full swing sound: pushing nothing.
+        <br><br>
+        <b>Catching</b> an orb that is barely moving (under 40px/s) stops it silently. It no
+        longer plays the catch sound or triggers Backhand, Dead Stop or the catch achievement,
+        which is what let <b>Magnetic Grip</b> fire all of them every frame. The
+        <b>Tether</b> cord no longer disappears at long range. See those cards' notes.` },
   { h: "The September 24 pass",
     p: `<b>Bosses.</b> The <a href="bosses.html">Dread Sovereign</a> fires faster bolts and gained
         four patterns: alternating rings, an aimed wall with a hole, a re-aimed volley and a spiral.
