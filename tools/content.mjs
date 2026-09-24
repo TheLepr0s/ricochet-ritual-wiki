@@ -181,7 +181,10 @@ export const AI = {
   },
   BlightsporeEnemy: {
     label: "Hazard", tone: "uncommon",
-    p: `A melee body whose real attack is the floor. Every half body length it walks it drops a
+    p: `A melee body whose real attack is the floor. From 150 to 440px away it also plants and
+        lobs a ball of poison every 3.4s: the ball arcs over anything in the way to the spot you
+        stood on when it left the cap, marked on the ground for the whole flight, and bursts
+        there into a pool, splashing you for its own damage if you are still on the mark. Every half body length it walks it drops a
         small pool of rot that blooms for a moment, then bites whatever stands in it on a slow pulse —
         an ordinary hit, so every defensive card applies to it. The pools outlast the thing that
         made them, so killing it stops the line from growing and does nothing about the line.`,
@@ -226,7 +229,7 @@ export const ENEMY_NOTE = {
   Bulwark:    "The card check. An orb that only goes forwards bounces off it all day; anything that flanks, pierces, arcs or simply arrives fast walks through. Its health is a long time to spend doing the wrong thing.",
   Witchdoctor:"Heals the most wounded allies around it often enough to outpace chip damage across a crowd. Capped at two alive at once, because three means nothing dies.",
   Bonecaller: "Calls fresh bodies out of the ground on a timer, and what it calls OUTLIVES it — so killing it late buys you nothing. Violet and badged so it is not mistaken for the healer at range; an earlier olive hue made the two indistinguishable. It unlocked at wave 14 with one point of weight for its first few versions, which meant most players never met it at all.",
-  Blightspore:"Barely fights. It leaves a small pool of rot every half body length it walks, laying a continuous trail, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.",
+  Blightspore:"Barely fights, but lobs poison: from range it stops, swings, and throws a ball that lands where you stood and leaves a pool. It also leaves a small pool of rot every half body length it walks, laying a continuous trail, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.",
   Siphon:     "Hangs at range and drains you through a beam, healing off what it takes. The beam needs line of sight, so a tree is a real answer to it — the first time scenery has been anything but an obstacle.",
   Broodmother:"The Bonecaller inverted. She calls faster, and every Toadstool she makes is tethered to her: kill the mother and the whole swarm drops at once. The swarm is a decoy, and walking past it is the correct play.",
   DreadSovereign: "A siege engine. It walks, and the fight is read from a distance.",
@@ -258,6 +261,7 @@ export const CARD_NOTE = {
   OrbitMode:     "Until 24 September the ring could vanish for no visible reason. The shards orbit you but were drawn as part of the main orb, so flinging the orb more than a screen away culled them with it, and a Nuke hiding the orb hid them too. Each shard now draws on its own.",
   Quickening:    "The chevrons at your feet point one way, as a fast-forward row. Until 24 September they flipped whenever you turned.",
   MagneticGrip:  "Pulls the orb home until it is within 40px of you (inside swing reach), then brakes it to rest there. Until 25 September it never stopped pulling: the orb reached you, was caught, was nudged into you again and caught again, every frame — a loud buzz of catch sounds, and a Dead Stop blast each time if you held that card.",
+  ReserveCharge: "Added 25 September. Your F ability holds two charges, and the cooldown refills one at a time whenever you are below two, so while one charge sits ready the other is already coming back. Spending the spare mid-refill does not restart the clock. Only offered once an ability is in the slot, and a newly swapped-in ability arrives with both charges. The ability bar shows the count after its name.",
   SecondWind:    "Since 25 September it puts you back on 30 HP (it used to leave you at 1) and makes you invulnerable for 5 seconds (it used to be 1.6s of ordinary iframes): no damage and no roots, shown as a golden shell that flickers in its last second. The window is its own timer, so the Evil Wizard's hand, which wipes your ordinary iframes when it grabs you, cannot cut it short.",
   Tether:        "Until 25 September the cord went invisible once the orb was more than a screen away, while still cutting everything it crossed: it was drawn as part of the orb, which is culled when far off screen. It now draws on its own.",
 };
@@ -607,10 +611,13 @@ export const COMBAT = [
         enemy health curve instead of staying flat. See their card notes.
         <br><br>
         <b>Damage numbers</b> are bigger and climb a colour ladder with the size of the hit:
-        white under 50, then yellow, orange (120+), red (250+), magenta (500+), purple (1,000+)
-        and cyan from 2,000. A base orb hit is 36, so an early run is mostly white and the colours
-        are how you see a build come together. Crits add a "!". Burn ticks, heals and damage
-        you take keep their own fixed colours.
+        white under 20, yellow 20+, orange 50+, red 100+, magenta 200+, purple 350+, cyan 500+,
+        blue 700+, gold 1,000+, white-hot with a red glow from 1,500, and cycling through the
+        rainbow from 2,000. Each step is also drawn a little larger. Crits add a "!". Burn
+        ticks, heals and damage you take keep their own fixed colours.
+        <br><br>
+        <b>Blightspores</b> lob poison balls that land as pools, and <b>Reserve Charge</b>
+        (legendary, offered once you hold an F ability) gives the ability a second charge.
         <br><br>
         <b>Nuke</b>: while the orb is blown apart and reforming, a swing no longer "throws" it.
         The hidden orb sits in your hand, so every swing launched an invisible, harmless orb that
