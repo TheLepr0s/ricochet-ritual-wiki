@@ -197,8 +197,9 @@ export const AI = {
   },
   RevenantBoss: {
     label: "Boss", tone: "legendary",
-    p: `The mobile boss. Dash combos, a leap and the Phantom Cross, no projectile whatsoever,
-        and every move a commitment you answer by moving.`,
+    p: `The mobile boss. Dash combos, a leap, the Phantom Cross and the Reaper's Wheel, no
+        projectile whatsoever, and every move a commitment you answer by moving. Nothing it does
+        is stopped by trees or rocks.`,
   },
 };
 
@@ -231,7 +232,7 @@ export const ENEMY_NOTE = {
    would otherwise be invisible. Only where there is something to say. */
 export const ENEMY_EXTRA = {
   Ravager:      "Its row's <code>attackRange</code> is dead data — ChargerEnemy replaces the melee update entirely and uses its own trigger range, so the row value looks authoritative and governs nothing.",
-  PaleRevenant: "No projectile at all — even the Phantom Cross is aimed at your feet, not fired. Its speed is capped below the wizard's own, on purpose, even at phase three.",
+  PaleRevenant: "No projectile at all — even the Phantom Cross is aimed at your feet, not fired. It goes straight through trees and rocks, so scenery is no cover from it. Its speed is capped below the wizard's own, on purpose, even at phase three.",
   Bomber:       "Shares the skeleton sheet with the Ravager and the Revenant, which is why all three read as bone rather than flesh.",
   Siphon:       "Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well. Its self-heal never actually fired until 23 September: the drain waited for a result that a landed hit never returns, so a Siphon left alone was not getting any harder to kill.",
   Blightspore:  "Drops are keyed to DISTANCE WALKED (every 70px since 24 September, with 58px pools; it was 130px and 86px, on a body a third slower), not to a timer. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.",
@@ -301,7 +302,10 @@ export const BOSSES = {
     moves: [
       { n: "Dash combo", d: `Three, four, then five dashes in a row as phases fall, each with its
                              own short wind-up and a gap between. The direction locks at the
-                             wind-up, so a combo is a sequence of dodges rather than one.` },
+                             wind-up, so a combo is a sequence of dodges rather than one. Since
+                             24 September every dash runs its full length straight through trees
+                             and rocks (it used to stop dead on them and get stuck), and the lane
+                             is drawn full length to match.` },
       { n: "Leap", d: `Goes airborne and comes down in a wide circle. The hitbox stays on the
                        ground for the whole flight — only the sprite is lifted — so what you see
                        and what hurts never disagree.` },
@@ -310,11 +314,20 @@ export const BOSSES = {
                               did until a state-coverage assertion caught it.` },
       { n: "Phantom Cross", d: `Added 24 September; every third attack. It plants and marks two,
                                 three, then four lanes that all cross at your feet, a thousand
-                                pixels long. After the wind-up a ghost of it streaks down every
-                                lane at once, through scenery. One hit however many lanes you stand
-                                in. Step out of the X between two lanes: the wind-up is long enough
-                                that walking between them clears the nearest lane even in phase
-                                three.` },
+                                pixels long. After the wind-up it slashes down the lanes itself,
+                                one after another: it vanishes, reappears at the end of a lane and
+                                streaks through in a tenth of a second, so the whole X lands in
+                                about half a second. It goes through scenery. One hit however many
+                                lanes you stand in. Step out of the X between two lanes: the
+                                wind-up is long enough that walking between them clears the nearest
+                                lane even in phase three.` },
+      { n: "Reaper's Wheel", d: `Added 24 September. When you are close it plants, and a
+                                  spectral scythe appears pointing just past you, with arrows round
+                                  a 300 / 330 / 350px circle showing which way it will turn. Then
+                                  it swings one full turn. The blade starts past you, so it
+                                  reaches you last: running straight out of the circle always
+                                  works, even from point blank. Running the way it turns carries
+                                  you across the blade.` },
     ],
     close: `Its speed is capped below the wizard's own, even at phase three, on purpose: kiting
             has to stay an answer, or the fight stops being about reading it and becomes a
@@ -579,7 +592,9 @@ export const COMBAT = [
   { h: "The September 24 pass",
     p: `<b>Bosses.</b> The <a href="bosses.html">Dread Sovereign</a> fires faster bolts and gained
         four patterns: alternating rings, an aimed wall with a hole, a re-aimed volley and a spiral.
-        The <a href="bosses.html">Pale Revenant</a> gained a third attack, the Phantom Cross.
+        The <a href="bosses.html">Pale Revenant</a> gained the Phantom Cross, then (later the
+        same day) the Reaper's Wheel. The Cross became a quick run of slashes by the boss itself
+        rather than a single simultaneous strike, and its dashes now go through trees and rocks.
         <br><br>
         <b>Buffs.</b> The Owl and the Demon hit harder and more often, and each now spreads to a
         second target; see their card notes for the numbers. <b>Rewind</b> is on a 25s

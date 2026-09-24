@@ -142,7 +142,10 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <tbody>
         <tr><td>Dash combo</td><td>Three, four, then five dashes in a row as phases fall, each with its
                              own short wind-up and a gap between. The direction locks at the
-                             wind-up, so a combo is a sequence of dodges rather than one.</td></tr>
+                             wind-up, so a combo is a sequence of dodges rather than one. Since
+                             24 September every dash runs its full length straight through trees
+                             and rocks (it used to stop dead on them and get stuck), and the lane
+                             is drawn full length to match.</td></tr>
         <tr><td>Leap</td><td>Goes airborne and comes down in a wide circle. The hitbox stays on the
                        ground for the whole flight — only the sprite is lifted — so what you see
                        and what hurts never disagree.</td></tr>
@@ -151,11 +154,20 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
                               did until a state-coverage assertion caught it.</td></tr>
         <tr><td>Phantom Cross</td><td>Added 24 September; every third attack. It plants and marks two,
                                 three, then four lanes that all cross at your feet, a thousand
-                                pixels long. After the wind-up a ghost of it streaks down every
-                                lane at once, through scenery. One hit however many lanes you stand
-                                in. Step out of the X between two lanes: the wind-up is long enough
-                                that walking between them clears the nearest lane even in phase
-                                three.</td></tr>
+                                pixels long. After the wind-up it slashes down the lanes itself,
+                                one after another: it vanishes, reappears at the end of a lane and
+                                streaks through in a tenth of a second, so the whole X lands in
+                                about half a second. It goes through scenery. One hit however many
+                                lanes you stand in. Step out of the X between two lanes: the
+                                wind-up is long enough that walking between them clears the nearest
+                                lane even in phase three.</td></tr>
+        <tr><td>Reaper's Wheel</td><td>Added 24 September. When you are close it plants, and a
+                                  spectral scythe appears pointing just past you, with arrows round
+                                  a 300 / 330 / 350px circle showing which way it will turn. Then
+                                  it swings one full turn. The blade starts past you, so it
+                                  reaches you last: running straight out of the circle always
+                                  works, even from point blank. Running the way it turns carries
+                                  you across the blade.</td></tr>
       </tbody>
     </table>
     <p>Its speed is capped below the wizard's own, even at phase three, on purpose: kiting
