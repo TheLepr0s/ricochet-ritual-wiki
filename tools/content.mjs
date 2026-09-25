@@ -56,7 +56,7 @@ export const CONTROLS = [
   { key: "U",         act: "My Upgrades",
     note: "Lists every card you hold, coloured by rarity. Escape (or U again) closes it; it was on I until 24 September." },
   { key: "Escape",    act: "Pause",
-    note: "Opens settings without leaving the run. Everything freezes, sound effects included." },
+    note: "Opens settings without leaving the run. Everything freezes and goes silent: sound effects are held and the music stops (it used to only get quieter). The music also stops whenever the game window is in the background, and comes back when you return — unless the game is still paused." },
   { key: "F11",       act: "Fullscreen" },
   { key: "F3",        act: "Developer overlay",
     note: "Spawns anything, grants any card or ability, forces a wave modifier, class or designed wave." },
@@ -99,9 +99,15 @@ export const LOOP = [
         a Siphon's beam
         snaps the moment something comes between you. Enemies arrive from just past the edge of
         the screen, walk round scenery rather than through it, and spread into a ring rather
-        than a heap. When your orb is off screen an arrow at the edge points to it — one per orb
-        if you have two — and once a wave has nothing left to send and three or fewer enemies
-        remain, arrows point to them too.`,
+        than a heap. When your orb is off screen a big outlined arrow at the edge points to it —
+        one per orb if you have two — with how far away it is written beside it. A boss always has
+        its own arrow: a large crimson one at the edge, labelled BOSS and with its name, whenever it
+        is off screen, and a crimson marker bobbing over its head when it is on screen. Once a wave
+        has nothing left to send and three or fewer enemies remain, arrows point to them too.
+        <br><br>
+        On easy and normal the map always leaves at least two orbs' width (96px) between any two
+        solid obstacles, so there is room to throw between them and nothing to wedge in. Hard keeps
+        its tight woods.`,
   },
 ];
 
@@ -184,8 +190,8 @@ export const AI = {
     p: `A melee body whose real attack is the floor. From 150 to 440px away it also plants and
         lobs a ball of poison every 3.4s: the ball arcs over anything in the way to the spot you
         stood on when it left the cap, marked on the ground for the whole flight, and bursts
-        there into a pool, splashing you for its own damage if you are still on the mark. Every half body length it walks it drops a
-        small pool of rot that blooms for a moment, then bites whatever stands in it on a slow pulse —
+        there into a big 90px pool, splashing you for its own damage if you are still on the mark.
+        Every 35px it walks it also drops a small 40px pool of rot that blooms for a moment, then bites whatever stands in it on a slow pulse —
         an ordinary hit, so every defensive card applies to it. The pools outlast the thing that
         made them, so killing it stops the line from growing and does nothing about the line.`,
   },
@@ -229,7 +235,7 @@ export const ENEMY_NOTE = {
   Bulwark:    "The card check. An orb that only goes forwards bounces off it all day; anything that flanks, pierces, arcs or simply arrives fast walks through. Its health is a long time to spend doing the wrong thing.",
   Witchdoctor:"Heals the most wounded allies around it often enough to outpace chip damage across a crowd. Capped at two alive at once, because three means nothing dies.",
   Bonecaller: "Calls fresh bodies out of the ground on a timer, and what it calls OUTLIVES it — so killing it late buys you nothing. Violet and badged so it is not mistaken for the healer at range; an earlier olive hue made the two indistinguishable. It unlocked at wave 14 with one point of weight for its first few versions, which meant most players never met it at all.",
-  Blightspore:"Barely fights, but lobs poison: from range it stops, swings, and throws a ball that lands where you stood and leaves a pool. It also leaves a small pool of rot every half body length it walks, laying a continuous trail, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.",
+  Blightspore:"Barely fights, but lobs poison: from range it stops, swings, and throws a ball that lands where you stood and leaves a pool. It also leaves a small pool of rot every 35px it walkh it walks, laying a continuous trail, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.",
   Siphon:     "Hangs at range and drains you through a beam, healing off what it takes. The beam needs line of sight, so a tree is a real answer to it — the first time scenery has been anything but an obstacle.",
   Broodmother:"The Bonecaller inverted. She calls faster, and every Toadstool she makes is tethered to her: kill the mother and the whole swarm drops at once. The swarm is a decoy, and walking past it is the correct play.",
   DreadSovereign: "A siege engine. It walks, and the fight is read from a distance.",
@@ -243,7 +249,7 @@ export const ENEMY_EXTRA = {
   PaleRevenant: "No projectile at all — even the Phantom Cross is aimed at your feet, not fired. It goes straight through trees and rocks, so scenery is no cover from it. Its speed is capped below the wizard's own, on purpose, even at phase three.",
   Bomber:       "Shares the skeleton sheet with the Ravager and the Revenant, which is why all three read as bone rather than flesh.",
   Siphon:       "Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well. Its self-heal never actually fired until 23 September: the drain waited for a result that a landed hit never returns, so a Siphon left alone was not getting any harder to kill.",
-  Blightspore:  "Drops are keyed to DISTANCE WALKED (every 70px since 24 September, with 58px pools; it was 130px and 86px, on a body a third slower), not to a timer. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.",
+  Blightspore:  "Drops are keyed to DISTANCE WALKED (every 35px since 25 September, with 40px pools; before that 70px and 58px, and originally 130px and 86px on a body a third slower), not to a timer. The pool a THROWN ball leaves is the big one, 90px. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.",
   Broodmother:  "Shares SupportEnemy with the Witchdoctor and the Bonecaller; <code>summon_bound</code> in her row is the single flag that makes her brood die with her. Her summons are killed rather than deleted, so each one still scores, drops loot and triggers every on-kill upgrade you own.",
 };
 
@@ -251,7 +257,6 @@ export const ENEMY_EXTRA = {
    Keyed by card key. Only where the card text leaves out something a player
    would want to know, or where the card used to do something else. */
 export const CARD_NOTE = {
-  GlassCannon: "Breaks once. Until 23 September a shattered orb pinballing between trees re-shattered on every wall it touched — the sound, the blast, the hitstop and a Butterfingers count each time.",
   TwinOrbs:    "The second orb matches the first's size, Heavy Orb included, and drops Overload when it ends. Until 23 September it collided at its old size and kept Overload's boost forever.",
   Thunderclap: "Needs a real bounce: a wall touched slower than the orb's damage speed does nothing, as with Carom and Fracture. Until 23 September any touch set it off.",
   VampireOrb:  "The card said +2 extra HP per stack until 23 September. The code has always given +1, so the text was corrected rather than the number.",
@@ -602,7 +607,18 @@ export const COMBAT = [
         reachable on foot; a gap or an inside corner blocks more. An orb already at rest is nudged
         toward you as well, since phasing alone does nothing for something with no momentum.` },
   { h: "The September 25 fixes",
-    p: `<b>Fireballs</b> fly over rocks and stumps and only stop on trees. <b>Both bosses</b>
+    p: `<b>Later the same day.</b> A big crimson <b>boss arrow</b> is always showing: at the screen
+        edge, labelled with the boss's name, while it is off screen, and bobbing over its head while
+        it is on screen. The <b>orb arrow</b> is bigger, sits on a dark badge so it reads on any
+        ground, and says how far away the orb is. <b>Pausing</b> now stops the music outright
+        (sound effects were already held), and the music also stops while the game window is in
+        the background. On <b>easy and normal</b> the map leaves at least 96px — two orbs — between
+        any two solid obstacles. <b>Fireballs</b> are drawn over the rocks and stumps they fly
+        over; they used to be drawn underneath them. <b>Glass Cannon</b> has been removed, and its
+        achievement, Butterfingers, with it. <b>Blightspore</b> pools: thrown ones are bigger
+        (90px), and the trail it walks is smaller pools (40px) dropped twice as often (every 35px).
+        <br><br>
+        <b>Fireballs</b> fly over rocks and stumps and only stop on trees. <b>Both bosses</b>
         have twice the health (Sovereign 2,200 and Revenant 1,720 before wave scaling).
         <b>Second Wind</b> saves you on 30 HP with 5 seconds of invulnerability, not 1 HP.
         <br><br>
@@ -664,7 +680,7 @@ export const COMBAT = [
         <a href="bestiary.html#bulwark">Bulwark</a>'s shield turns to face you in any direction, and
         the <a href="bestiary.html#siphon">Siphon</a>'s heal works.
         <br><br>
-        <b>Cards and abilities.</b> Glass Cannon re-shattered on every wall. The Twin Orbs twin
+        <b>Cards and abilities.</b> Glass Cannon (removed on 25 September) re-shattered on every wall. The Twin Orbs twin
         collided at the wrong size and kept Overload forever. Thunderclap fired on any touch.
         Vampire Orb's card said +2. Nuke could leave the orb gone for the rest of the run, Rewind
         spent its cooldown on nothing, Cryostasis let a lit fuse go off, and boss knockback

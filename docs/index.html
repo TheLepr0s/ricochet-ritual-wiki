@@ -49,12 +49,12 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </div>
     <div class="counts">
       <div class="count"><b>21</b><span>enemies</span></div>
-      <div class="count"><b>106</b><span>cards</span></div>
+      <div class="count"><b>105</b><span>cards</span></div>
       <div class="count"><b>12</b><span>abilities</span></div>
       <div class="count"><b>4</b><span>classes</span></div>
       <div class="count"><b>8</b><span>modifiers</span></div>
       <div class="count"><b>6</b><span>designed waves</span></div>
-      <div class="count"><b>120</b><span>achievements</span></div>
+      <div class="count"><b>119</b><span>achievements</span></div>
       <div class="count"><b>2</b><span>bosses</span></div>
     </div>
 
@@ -62,11 +62,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <a class="tile" href="guide.html"><b>▶ How to play</b><span>Controls, the run loop, and what the orb actually does.</span></a>
       <a class="tile" href="bestiary.html"><b>☠ Bestiary</b><span>Every enemy, what drives it, and when it starts appearing.</span></a>
       <a class="tile" href="bosses.html"><b>♛ Bosses</b><span>The two boss fights, attack by attack.</span></a>
-      <a class="tile" href="cards.html"><b>🂠 Upgrade cards</b><span>All 106 upgrade cards, with stack caps, prerequisites and exclusions.</span></a>
+      <a class="tile" href="cards.html"><b>🂠 Upgrade cards</b><span>All 105 upgrade cards, with stack caps, prerequisites and exclusions.</span></a>
       <a class="tile" href="abilities.html"><b>✦ Abilities</b><span>The twelve F-key abilities, and how they measured against each other.</span></a>
       <a class="tile" href="classes.html"><b>⚑ Classes</b><span>The four starting classes, and the benchmark that set them.</span></a>
       <a class="tile" href="waves.html"><b>≋ Waves</b><span>Difficulty, modifiers, designed waves, elites and the boss rotation.</span></a>
-      <a class="tile" href="achievements.html"><b>★ Achievements</b><span>All 120, including the hidden ones.</span></a>
+      <a class="tile" href="achievements.html"><b>★ Achievements</b><span>All 119, including the hidden ones.</span></a>
       <a class="tile" href="systems.html"><b>⚙ Systems</b><span>Damage, drops, score and sound — how the machinery fits together.</span></a>
     </div>
 
@@ -97,9 +97,15 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         a Siphon's beam
         snaps the moment something comes between you. Enemies arrive from just past the edge of
         the screen, walk round scenery rather than through it, and spread into a ring rather
-        than a heap. When your orb is off screen an arrow at the edge points to it — one per orb
-        if you have two — and once a wave has nothing left to send and three or fewer enemies
-        remain, arrows point to them too.</p>
+        than a heap. When your orb is off screen a big outlined arrow at the edge points to it —
+        one per orb if you have two — with how far away it is written beside it. A boss always has
+        its own arrow: a large crimson one at the edge, labelled BOSS and with its name, whenever it
+        is off screen, and a crimson marker bobbing over its head when it is on screen. Once a wave
+        has nothing left to send and three or fewer enemies remain, arrows point to them too.
+        <br><br>
+        On easy and normal the map always leaves at least two orbs' width (96px) between any two
+        solid obstacles, so there is room to throw between them and nothing to wedge in. Hard keeps
+        its tight woods.</p>
 
     <div class="note">
       <b>This wiki is generated, not written.</b> Every stat, cost, cooldown, weight, cap and

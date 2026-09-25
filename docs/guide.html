@@ -58,7 +58,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <tr><td><code>Space</code></td><td>Blink</td><td>Instant, passes through walls and enemies, and cannot land you inside geometry.</td></tr>
         <tr><td><code>F</code></td><td>Utility ability</td><td>Only bound once you have taken one — an ability is offered as a fourth card once on every third wave.</td></tr>
         <tr><td><code>U</code></td><td>My Upgrades</td><td>Lists every card you hold, coloured by rarity. Escape (or U again) closes it; it was on I until 24 September.</td></tr>
-        <tr><td><code>Escape</code></td><td>Pause</td><td>Opens settings without leaving the run. Everything freezes, sound effects included.</td></tr>
+        <tr><td><code>Escape</code></td><td>Pause</td><td>Opens settings without leaving the run. Everything freezes and goes silent: sound effects are held and the music stops (it used to only get quieter). The music also stops whenever the game window is in the background, and comes back when you return — unless the game is still paused.</td></tr>
         <tr><td><code>F11</code></td><td>Fullscreen</td><td></td></tr>
         <tr><td><code>F3</code></td><td>Developer overlay</td><td>Spawns anything, grants any card or ability, forces a wave modifier, class or designed wave.</td></tr>
       </tbody>
@@ -91,9 +91,15 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         a Siphon's beam
         snaps the moment something comes between you. Enemies arrive from just past the edge of
         the screen, walk round scenery rather than through it, and spread into a ring rather
-        than a heap. When your orb is off screen an arrow at the edge points to it — one per orb
-        if you have two — and once a wave has nothing left to send and three or fewer enemies
-        remain, arrows point to them too.</p>
+        than a heap. When your orb is off screen a big outlined arrow at the edge points to it —
+        one per orb if you have two — with how far away it is written beside it. A boss always has
+        its own arrow: a large crimson one at the edge, labelled BOSS and with its name, whenever it
+        is off screen, and a crimson marker bobbing over its head when it is on screen. Once a wave
+        has nothing left to send and three or fewer enemies remain, arrows point to them too.
+        <br><br>
+        On easy and normal the map always leaves at least two orbs' width (96px) between any two
+        solid obstacles, so there is room to throw between them and nothing to wedge in. Hard keeps
+        its tight woods.</p>
 
     <h2 id="upgrades">The upgrade screen</h2>
     <p>

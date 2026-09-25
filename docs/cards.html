@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Upgrade cards · Ricochet Ritual</title>
-<meta name="description" content="All 106 of them, grouped by rarity. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.">
+<meta name="description" content="All 105 of them, grouped by rarity. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
 <link rel="stylesheet" href="assets/wiki.css">
 <script>
@@ -45,14 +45,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   <main>
     <div class="page-head">
       <h1>Upgrade cards</h1>
-      <p>All 106 of them, grouped by rarity. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.</p>
+      <p>All 105 of them, grouped by rarity. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.</p>
     </div>
     <div class="counts">
-      <div class="count"><b>106</b><span>cards</span></div>
+      <div class="count"><b>105</b><span>cards</span></div>
       <div class="count"><b>30</b><span>stackable</span></div>
       <div class="count"><b>30</b><span>with a cap</span></div>
       <div class="count"><b>21</b><span>need a prereq</span></div>
-      <div class="count"><b>10</b><span>mutually exclusive</span></div>
+      <div class="count"><b>8</b><span>mutually exclusive</span></div>
     </div>
 
     <div class="toolbar">
@@ -264,10 +264,10 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         </div>
       <div class="row" id="berserkercore" style="--stripe:var(--rare)"
           data-hay="berserkercore berserker core blood frenzy. each kill adds speed &amp; damage. stacks up to 8, lost on hit. berserker_core rare"
-          data-stackable="0" data-req="0" data-con="1">
+          data-stackable="0" data-req="0" data-con="0">
           <div class="r-name" data-anchor><span>Berserker Core</span><span class="r-key">BerserkerCore</span></div>
           <div class="r-desc">Blood frenzy. Each kill adds speed &amp; damage. Stacks up to 8, lost on hit.</div>
-          <div class="r-meta"><div class="tot"><code>berserker_core</code></div><div class="dep flag">excludes <a href="#glasscannon"><b>Glass Cannon</b></a></div></div>
+          <div class="r-meta"><div class="tot"><code>berserker_core</code></div></div>
         </div>
       <div class="row" id="blastradius" style="--stripe:var(--rare)"
           data-hay="blastradius blast radius wider ruin. every explosion, pulse and shockwave your orb makes reaches 30% further. rare"
@@ -528,7 +528,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Wider circle. Mirror Ball radius +30, covers more ground.</div>
           <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#orbitmode"><b>Mirror Ball</b></a></div></div>
         </div>
-      <div class="group-label" id="epic">epic <span style="opacity:.6">· 34 cards · draw weight 8</span></div>
+      <div class="group-label" id="epic">epic <span style="opacity:.6">· 33 cards · draw weight 8</span></div>
       <div class="row" id="aftershock" style="--stripe:var(--epic)"
           data-hay="aftershock aftershock the ground remembers. half a second after each direct hit, the spot detonates for 40% of the damage. aftershock epic"
           data-stackable="0" data-req="0" data-con="0">
@@ -613,13 +613,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Dizzying spin. Mirror Ball rotation speed increases.</div>
           <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#orbitmode"><b>Mirror Ball</b></a></div></div>
         </div>
-      <div class="row" id="glasscannon" style="--stripe:var(--epic)"
-          data-hay="glasscannon glass cannon all or nothing. orb deals 2x damage but shatters if it hits a wall. glass_cannon epic breaks once. until 23 september a shattered orb pinballing between trees re-shattered on every wall it touched — the sound, the blast, the hitstop and a butterfingers count each time."
-          data-stackable="0" data-req="0" data-con="1">
-          <div class="r-name" data-anchor><span>Glass Cannon</span><span class="r-key">GlassCannon</span></div>
-          <div class="r-desc">All or nothing. Orb deals 2x damage but shatters if it hits a wall.<div class="tot">Breaks once. Until 23 September a shattered orb pinballing between trees re-shattered on every wall it touched — the sound, the blast, the hitstop and a Butterfingers count each time.</div></div>
-          <div class="r-meta"><div class="tot"><code>glass_cannon</code></div><div class="dep flag">excludes <a href="#berserkercore"><b>Berserker Core</b></a>, <a href="#ricochet"><b>Ricochet</b></a></div></div>
-        </div>
       <div class="row" id="heavycore" style="--stripe:var(--epic)"
           data-hay="heavycore heavy core dense iron core. bleeds speed faster, but +20 bonus damage on every hit. epic"
           data-stackable="0" data-req="0" data-con="1">
@@ -695,7 +688,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           data-stackable="0" data-req="0" data-con="1">
           <div class="r-name" data-anchor><span>Ricochet</span><span class="r-key">Ricochet</span></div>
           <div class="r-desc">Elastic bounce. Orb gains +100 speed every time it bounces off an enemy.</div>
-          <div class="r-meta"><div class="tot"><code>ricochet</code></div><div class="dep flag">excludes <a href="#glasscannon"><b>Glass Cannon</b></a>, <a href="#juggernaut"><b>Juggernaut</b></a></div></div>
+          <div class="r-meta"><div class="tot"><code>ricochet</code></div><div class="dep flag">excludes <a href="#juggernaut"><b>Juggernaut</b></a></div></div>
         </div>
       <div class="row" id="rupture" style="--stripe:var(--epic)"
           data-hay="rupture rupture torn space. blinking detonates for 30 damage at both the place you left and the place you arrive. rupture epic"
