@@ -421,7 +421,13 @@ export const BOSSES = {
                             exactly, and companions, which it holds rather than kills (the pet
                             simply stops until it is returned). Never Twin Orbs or a Contract, and
                             never a card that something else you own depends on. A stackable card
-                            goes with all its stacks.` },
+                            goes with all its stacks.
+                            <br><br>
+                            You are shown what it took: a <b>THE COLLECTOR TAKES</b> banner deals
+                            the three cards face up and chains them, each card circling its head
+                            wears a padlock, the health bar names them in their rarity colours,
+                            and your <b>[U] upgrade list</b> keeps them, dimmed and chained, marked
+                            <em>held by the Collector</em>, until it dies.` },
       { n: "Coin fan", d: `Aimed fans of gold coins — 5, 7 then 9 wide, two or three rounds, each
                            round shifted half a gap. Unlike the Sovereign's patterns these die on
                            trees: cover is a real answer here.` },
