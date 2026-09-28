@@ -341,7 +341,11 @@ export const BOSSES = {
                                 about half a second. It goes through scenery. One hit however many
                                 lanes you stand in. Step out of the X between two lanes: the
                                 wind-up is long enough that walking between them clears the nearest
-                                lane even in phase three.` },
+                                lane even in phase three. Since 28 September the lanes are drawn as
+                                one shape with a thick border (they used to be separate strips whose
+                                edges and ends overlapped), and the boss and its lanes are drawn over
+                                the scenery for the whole attack — it always cut through trees, but
+                                trees in front of it used to cover the lanes and hide it.` },
       { n: "Reaper's Wheel", d: `Added 24 September. When you are close it plants, and a
                                   spectral scythe appears pointing just past you, with arrows round
                                   a 300 / 330 / 350px circle showing which way it will turn. Then
@@ -631,7 +635,8 @@ export const COMBAT = [
         <b>Screen shake</b> now fades under rapid hits the way the hit freeze already did (below),
         so a crowd being carved up no longer rattles the camera nonstop. An
         <b>Overloaded</b> orb is drawn above every tree, enemy and blast, so the thing you are
-        steering never disappears behind the scenery.` },
+        steering never disappears behind the scenery. The Revenant's
+        <a href="bosses.html">Phantom Cross</a> is drawn as one clean shape, over the scenery.` },
   { h: "The September 27 pass",
     p: `<b>Hitstop no longer stutters.</b> Each hit on an enemy freezes the game for a few
         hundredths of a second so it lands with weight. Late in a run the orb hits several things a
