@@ -154,7 +154,7 @@ function homePage() {
         "guide.html": "Controls, the run loop, and what the orb actually does.",
         "bestiary.html": "Every enemy, what drives it, and when it starts appearing.",
         "bosses.html": "The three boss fights, attack by attack.",
-        "builds.html": "Families, build names, curses, class cards, and the Ember Shop.",
+        "builds.html": "Families, build names, curses, class cards, and the Essence Shop.",
         "cards.html": `All ${D.upgrades.length} upgrade cards, with stack caps, prerequisites and exclusions.`,
         "abilities.html": "The twelve F-key abilities, and how they measured against each other.",
         "classes.html": "The four starting classes, and the benchmark that set them.",
@@ -273,7 +273,7 @@ function guidePage() {
       a <a href="abilities.html">utility ability</a> rather than a passive — you carry one of those
       at a time, so taking a second replaces the first. After every
       <b>${D.consts.shop.every}th</b> wave the free card is replaced by the
-      <a href="builds.html#shop">Ember Shop</a> instead. Which cards you are dealt leans toward the
+      <a href="builds.html#shop">Essence Shop</a> instead. Which cards you are dealt leans toward the
       <a href="builds.html">families</a> you already own, and every legendary carries a curse.
     </p>
     <p>
@@ -764,8 +764,8 @@ function buildsPage() {
         `<tr><td><b style="color:var(--${t.from})">${t.need} ${esc(t.from)}</b></td><td>→</td><td>a choice of one of three <b style="color:var(--${t.into})">${esc(t.into)}</b></td></tr>`
     )
     .join("\n        ");
-  const emb = shop.embers || {};
-  idx("Ember Shop", "Builds", "builds.html", "shop", "shop", C.SHOP_NOTE.replace(/<[^>]+>/g, ""));
+  const ess = shop.essence || {};
+  idx("Essence Shop", "Builds", "builds.html", "shop", "shop", C.SHOP_NOTE.replace(/<[^>]+>/g, ""));
   idx("Transmute", "Builds", "builds.html", "transmute", "transmute", C.TRANSMUTE_NOTE.replace(/<[^>]+>/g, ""));
 
   const body = `    <div class="note">${C.BUILDS_NOTE}</div>
@@ -810,10 +810,10 @@ function buildsPage() {
       </tbody>
     </table>
 
-    <h2 id="shop">The Ember Shop</h2>
+    <h2 id="shop">The Essence Shop</h2>
     <p>${C.SHOP_NOTE}</p>
     <p>
-      Embers: <b>${emb.normal}</b> a kill, <b>${emb.elite}</b> an elite, <b>${emb.boss}</b> a boss
+      Essence: <b>${ess.normal}</b> a kill, <b>${ess.elite}</b> an elite, <b>${ess.boss}</b> a boss
       (the Taxed curse pays 70% of that). The shelf holds <b>${shop.stock}</b> cards, six when an
       ability card is due. A price is a number of <b>units</b> by rarity —
       ${RARITY_ORDER.map((r) => `<code>${r} ${units[r]}</code>`).join(" · ")}, an ability
@@ -840,13 +840,13 @@ function buildsPage() {
   return page({
     file: "builds.html",
     title: "Builds & shop",
-    lead: `Twelve families, ${(D.curses || []).length} curses, ${D.upgrades.filter((u) => u.cls).length} class cards and the Ember Shop: how a run turns into a build rather than a pile.`,
+    lead: `Twelve families, ${(D.curses || []).length} curses, ${D.upgrades.filter((u) => u.cls).length} class cards and the Essence Shop: how a run turns into a build rather than a pile.`,
     toc: [
       { id: "families", label: "Families" },
       { id: "names", label: "Build names" },
       { id: "curses", label: "Curses" },
       { id: "class-cards", label: "Class cards" },
-      { id: "shop", label: "The Ember Shop" },
+      { id: "shop", label: "The Essence Shop" },
       { id: "transmute", label: "Transmute" },
     ],
     body,

@@ -498,7 +498,7 @@ local function build()
     }))
 
 
-    -- ── Families, curses, the Ember Shop (Sept 29 2026) ─────────────────────
+    -- ── Families, curses, the Essence Shop (Sept 29 2026) ───────────────────
     local fams = arr({})
     for _, d in ipairs(Families.DEFS or {}) do
         local col = d.color or {}
@@ -527,7 +527,7 @@ local function build()
         local t = (Shop.TRANSMUTE or {})[r]
         if t then trans[#trans + 1] = obj("from", r, "need", t.need, "into", t.into) end
     end
-    local EMB = UpgradeManager.EMBERS or {}
+    local ESS = UpgradeManager.ESSENCE or {}
     put(consts, "shop", obj(
         "every", Shop.EVERY,
         "units", scalarMap(units),
@@ -537,7 +537,7 @@ local function build()
         "stock", need(shLocals, "STOCK", "Shop"),
         "waves", shopWaves,
         "transmute", trans,
-        "embers", scalarMap(EMB)))
+        "essence", scalarMap(ESS)))
 
     -- ── Out ──────────────────────────────────────────────────────────────────
     local root = obj("upgrades", ups, "achievements", achs,

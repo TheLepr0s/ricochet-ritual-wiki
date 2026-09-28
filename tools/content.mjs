@@ -98,11 +98,12 @@ export const LOOP = [
         <i>Frost Juggernaut</i> — and each build name keeps its own records.`,
   },
   {
-    h: "Every fifth wave, the Ember Shop",
-    p: `Kills earn embers — one each, five for an elite, twenty-five for a boss — and after every
+    h: "Every fifth wave, the Essence Shop",
+    p: `Kills earn essence — one each, five for an elite, twenty-five for a boss — and after every
         fifth wave the free card is replaced by a <a href="builds.html#shop">shop</a>: a priced
         shelf, a restock, and <b>Transmute</b>, which sacrifices random cards you own for a choice
-        of one a rarity higher. Unspent embers carry over.`,
+        of one a rarity higher. Unspent essence carries over, and your total sits in the top-right
+        corner beside a purple orb.`,
   },
   {
     h: "Why you died",
@@ -722,7 +723,7 @@ export const COMBAT = [
         Leader, Raise Dead, a Wolf and an Angel companion (the Angel excludes the Demon), Combo
         Breaker, Showboat, Contract, and the twelve class cards.
         <br><br>
-        <b>The Ember Shop</b> replaces the free card every fifth wave: embers from kills, a priced
+        <b>The Essence Shop</b> replaces the free card every fifth wave: essence from kills, a priced
         shelf, restocks, and Transmute. See <a href="builds.html#shop">Builds &amp; shop</a>.
         <br><br>
         <b>Survival.</b> Invulnerability 0.3s, shields capped and draining, Life Steal on kills,
@@ -997,9 +998,9 @@ export const CLASS_CARD_NOTE = `Each class has three cards only it is ever offer
   class's name on the card. They are strong on purpose — a reason to pick the class — but sized
   against the ordinary cards of their rarity rather than above them.`;
 
-export const SHOP_NOTE = `After every fifth wave the free card is replaced by the <b>Ember
-  Shop</b>. Embers come from every death, whoever or whatever landed it: pets, burns and a
-  bomber's own blast all pay. Unspent embers carry over, so saving through one shop for a
+export const SHOP_NOTE = `After every fifth wave the free card is replaced by the <b>Essence
+  Shop</b>. Essence comes from every death, whoever or whatever landed it: pets, burns and a
+  bomber's own blast all pay. Unspent essence carries over, so saving through one shop for a
   legendary at the next is a real plan. Extra cards the wave owes you — Tithe, a boss kill's bonus
   — are still dealt as ordinary hands once you leave, and the ability card a third wave would have
   offered goes on the shelf instead of being lost.`;
@@ -1026,6 +1027,6 @@ export const GLOSSARY = [
   { t: "Cover", d: "A tree between you and a ranged enemy. Its shots die on the first tree they cross (rocks and stumps they fly over), and it will not fire without a clear line." },
   { t: "Family", d: "One of twelve groups every card belongs to. Owning a family's cards makes its other cards likelier, and your two leading families name the build." },
   { t: "Curse", d: "The downside every legendary is dealt with, printed on the card. It lasts the rest of the run." },
-  { t: "Embers", d: "The Ember Shop's currency: one a kill, five an elite, twenty-five a boss. Carried over between shops." },
-  { t: "Transmute", d: "Sacrificing random cards you own of one rarity, in the Ember Shop, for a choice of one card a rarity higher." },
+  { t: "Essence", d: "The Essence Shop's currency, shown top-right with a purple orb: one a kill, five an elite, twenty-five a boss. Carried over between shops." },
+  { t: "Transmute", d: "Sacrificing random cards you own of one rarity, in the Essence Shop, for a choice of one card a rarity higher." },
 ];
