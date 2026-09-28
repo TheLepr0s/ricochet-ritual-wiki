@@ -317,12 +317,12 @@ local function build()
     --
     -- A type whose module is not in this list dumps with ai = nil and the page
     -- shows it with no behaviour at all -- which is what happened to the
-    -- Blightspore and the Siphon for a day. So an unresolved constructor is
+    -- Slug and the Siphon for a day. So an unresolved constructor is
     -- recorded as MISSING below and fails the dump, the same as a renamed local.
     local AI_FILES = {
         "MeleeEnemy", "RangedEnemy", "BomberEnemy", "VampireEnemy", "CasterEnemy",
         "ChargerEnemy", "SplitterEnemy", "ShieldEnemy", "SupportEnemy",
-        "EvilWizardEnemy", "BossEnemy", "RevenantBoss", "BlightsporeEnemy",
+        "EvilWizardEnemy", "BossEnemy", "RevenantBoss", "SlugEnemy",
         "SiphonEnemy", "CollectorBoss", "BaseEnemy",
     }
     local aiName = {}

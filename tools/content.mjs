@@ -217,11 +217,11 @@ export const AI = {
         keeps close enough to hold you there. Each wears a role badge above the health bar,
         because at range the silhouette is identical.`,
   },
-  BlightsporeEnemy: {
+  SlugEnemy: {
     label: "Hazard", tone: "uncommon",
     p: `A melee body whose real attack is the floor. From 150 to 440px away it also plants and
         lobs a ball of poison every 3.4s: the ball arcs over anything in the way to the spot you
-        stood on when it left the cap, marked on the ground for the whole flight, and bursts
+        stood on when it was thrown, marked on the ground for the whole flight, and bursts
         there into a big 90px pool, splashing you for its own damage if you are still on the mark.
         Every 35px it walks it also drops a small 40px pool of rot that blooms for a moment, then bites whatever stands in it on a slow pulse —
         an ordinary hit, so every defensive card applies to it. The pools outlast the thing that
@@ -273,7 +273,7 @@ export const ENEMY_NOTE = {
   Bulwark:    "The card check. An orb that only goes forwards bounces off it all day; anything that flanks, pierces, arcs or simply arrives fast walks through. Its health is a long time to spend doing the wrong thing.",
   Witchdoctor:"Heals the most wounded allies around it often enough to outpace chip damage across a crowd. Capped at two alive at once, because three means nothing dies.",
   Bonecaller: "Calls fresh bodies out of the ground on a timer, and what it calls OUTLIVES it — so killing it late buys you nothing. Violet and badged so it is not mistaken for the healer at range; an earlier olive hue made the two indistinguishable. It unlocked at wave 14 with one point of weight for its first few versions, which meant most players never met it at all.",
-  Blightspore:"A slug. Barely fights, but everything it does POISONS you: its bite, the ball it lobs from range (it lands where you stood and leaves a pool), and the small pool of rot it leaves every 35px it walks. Poison is a tick a second for three seconds, each a fifth of its damage, and a new dose refreshes it rather than stacking; your health bar turns green and a POISONED plate counts it down. The pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.",
+  Slug:"Barely fights, but everything it does POISONS you: its bite, the ball it lobs from range (it lands where you stood and leaves a pool), and the small pool of rot it leaves every 35px it walks. Poison is a tick a second for three seconds, each a fifth of its damage, and a new dose refreshes it rather than stacking; your health bar turns green and a POISONED plate counts it down. The pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.",
   Siphon:     "Hangs at range and drains you through a beam, healing off what it takes. The beam needs line of sight, so a tree is a real answer to it — the first time scenery has been anything but an obstacle.",
   Broodmother:"The Bonecaller inverted. She calls faster, and every Toadstool she makes is tethered to her: kill the mother and the whole swarm drops at once. The swarm is a decoy, and walking past it is the correct play.",
   PlaguePriest: "Halves your healing while you stand in its ring, and keeps close enough to hold you in it — walking away does not work for long, so the answer is to kill it. Frozen or stunned, the aura switches off. Healing had become the answer to everything, and nothing on the roster argued with it; the HUD says HEALING HALVED beside your health bar while it does.",
@@ -289,7 +289,7 @@ export const ENEMY_EXTRA = {
   PaleRevenant: "No projectile at all — even the Phantom Cross is aimed at your feet, not fired. It goes straight through trees and rocks, so scenery is no cover from it. Its speed is capped below the wizard's own, on purpose, even at phase three.",
   Bomber:       "Shares the skeleton sheet with the Ravager and the Revenant, which is why all three read as bone rather than flesh.",
   Siphon:       "Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well. Its self-heal never actually fired until 23 September: the drain waited for a result that a landed hit never returns, so a Siphon left alone was not getting any harder to kill.",
-  Blightspore:  "Drops are keyed to DISTANCE WALKED (every 35px since 25 September, with 40px pools; before that 70px and 58px, and originally 130px and 86px on a body a third slower), not to a timer. The pool a THROWN ball leaves is the big one, 90px. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.",
+  Slug:  "Drops are keyed to DISTANCE WALKED (every 35px since 25 September, with 40px pools; before that 70px and 58px, and originally 130px and 86px on a body a third slower), not to a timer. The pool a THROWN ball leaves is the big one, 90px. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.",
   Broodmother:  "Shares SupportEnemy with the Witchdoctor and the Bonecaller; <code>summon_bound</code> in her row is the single flag that makes her brood die with her. Her summons are killed rather than deleted, so each one still scores, drops loot and triggers every on-kill upgrade you own.",
   PlaguePriest: "The fourth SupportEnemy, told apart by <code>plague_range</code> in its row, and it carries <code>keep_min</code>/<code>keep_max</code> of its own so it stands inside its ring rather than at a healer's distance. It never attacks. The skeleton sheet is achromatic, so it is TINTED a bile yellow-green, clear of the Ravager's orange and the Revenant's mint.",
   Collector:    "On the vampire sheet, TINTED gold: the cloak is too dark for a hue rotation to reach gold (a rotation keeps luminance, and the rendered sweep only ever found brown), while a multiply turns the face and hands gold and leaves the cloak a royal purple.",
@@ -758,7 +758,9 @@ export const COMBAT = [
         <b>+1.4%</b> a wave (was +2%), capped at <b>×1.8</b> (was ×2). Wave 20 is now ×1.37 on
         Medium (was ×1.59) and ×1.77 on Nightmare (was ×2.13). And every difficulty heals
         <b>a third of your max health</b> after each wave — Easy 40% — where it used to heal a
-        share of what you were missing, and Nightmare healed nothing.` },
+        share of what you were missing, and Nightmare healed nothing.
+        <br><br>
+        The Blightspore is now simply the <a href="bestiary.html#slug">Slug</a>, in name as well as art.` },
   { h: "The September 28 pass",
     p: `<b>Nerfs.</b> <a href="cards.html#tether">Tether</a>, <a href="cards.html#quickening">Quickening</a>
         and <a href="cards.html#seeker">Seeker</a> are weaker and now epic. Seeker is the first card
@@ -816,7 +818,7 @@ export const COMBAT = [
         the background. On <b>easy and normal</b> the map leaves at least 96px — two orbs — between
         any two solid obstacles. <b>Fireballs</b> are drawn over the rocks and stumps they fly
         over; they used to be drawn underneath them. <b>Glass Cannon</b> has been removed, and its
-        achievement, Butterfingers, with it. <b>Blightspore</b> pools: thrown ones are bigger
+        achievement, Butterfingers, with it. <b>Slug</b> pools: thrown ones are bigger
         (90px), and the trail it walks is smaller pools (40px) dropped twice as often (every 35px).
         <br><br>
         <b>Fireballs</b> fly over rocks and stumps and only stop on trees. <b>Both bosses</b>
@@ -833,7 +835,7 @@ export const COMBAT = [
         rainbow from 2,000. Each step is also drawn a little larger. Crits add a "!". Burn
         ticks, heals and damage you take keep their own fixed colours.
         <br><br>
-        <b>Blightspores</b> lob poison balls that land as pools, and <b>Reserve Charge</b>
+        <b>Slugs</b> lob poison balls that land as pools, and <b>Reserve Charge</b>
         (legendary, offered once you hold an F ability) gives the ability a second charge.
         <br><br>
         <b>Nuke</b>: while the orb is blown apart and reforming, a swing no longer "throws" it.
@@ -855,7 +857,7 @@ export const COMBAT = [
         second target; see their card notes for the numbers. <b>Rewind</b> is on a 25s
         cooldown (was 40), always heals at least 15% on top of the health it restores, and leaves a
         time-quake where you were that stuns for 1.5s. The
-        <a href="bestiary.html#blightspore">Blightspore</a> is half again as fast and drops smaller
+        <a href="bestiary.html#slug">Slug</a> is half again as fast and drops smaller
         pools twice as often, so its rot is a trail rather than a scatter of puddles.
         <br><br>
         <b>Black Hole</b> is a stackable card now, capped at three: a smaller well at one card
