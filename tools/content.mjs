@@ -314,6 +314,10 @@ export const CARD_NOTE = {
   Ward:          "Rebuilds 25 seconds after it breaks since 29 September (it was 14).",
   IronSkin:      "+0.06s of invulnerability a stack since 29 September, when the base window halved from 0.6s to 0.3s — three stacks of the old +0.12s would have more than doubled it.",
   SafeHands:     "0.6s of invulnerability since 29 September, to sit above the halved 0.3s base.",
+  GoatCompanion: "It was a spirit Wolf that hurled enemies into your orb's path until the player asked for something that kept them off instead: the goat charges whatever comes within 300px of you and rams it straight away from you.",
+  AngelCompanion: "Hovers over your right shoulder whichever way you face; it used to sit behind you and swap sides every time you turned.",
+  Boomerang:     "Turns the recall button off, since every throw comes back by itself. Until the player's report on 29 September a right-click while the orb was flying home cancelled the return, and a return blocked by scenery for five seconds gave up — either way the orb lay stranded until you walked over and hit it. The return can no longer be cancelled, and a throw that has not come home sets off again by itself.",
+  RaiseDead:     "A risen enemy with nothing to fight within 320px walks back to you rather than standing where it rose.",
   WreckingBall:  "The slow was 40% when the card arrived, which made the orb feel stuck in mud, and the recall ignored it altogether: the heavy orb came home at full speed. It is now 20%, on the throw and the recall alike (a recall tops out at 304px/s instead of 380).",
   Tether:        "Nerfed on 28 September and made an epic (it was an uncommon): 24 damage every 0.36s to everything on the cord, 67 a second (it was 34 every 0.28s, 121 a second, several times the orb's own rate across a whole crowd), and the slow is ×0.70 for 0.8s (was ×0.55 for 1.2s). Until 25 September the cord went invisible once the orb was more than a screen away, while still cutting everything it crossed; it now draws on its own.",
 };
@@ -721,7 +725,7 @@ export const COMBAT = [
         that keeps its own records. <b>38 new cards</b> — Boomerang, Split Shot, Deadeye, Wrecking
         Ball, a burn status (Ignition, Kindling, Wildfire, Cremation), Permafrost, Cold Snap,
         Absolute Zero, Static Charge, Storm Front, Blood Price, Hemorrhage, Event Horizon, Pack
-        Leader, Raise Dead, a Wolf and an Angel companion (the Angel excludes the Demon), Combo
+        Leader, Raise Dead, a Goat and an Angel companion (the Angel excludes the Demon), Combo
         Breaker, Showboat, Contract, and the twelve class cards.
         <br><br>
         <b>The Essence Shop</b> replaces the free card every fifth wave: essence from kills, a priced
