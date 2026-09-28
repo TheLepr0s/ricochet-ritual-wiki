@@ -543,6 +543,29 @@ ${sections}`;
 /* ═══════════════════════════════════════════════════════════════════════
    Cards
    ═══════════════════════════════════════════════════════════════════ */
+/* How every spawn scales with the wave. Read from WaveManager's own locals
+   (consts.scaling), so the numbers here cannot drift from the game. */
+function scalingPara() {
+  const s = D.consts.scaling || {};
+  const p = (x) => `+${Math.round(x * 100)}%`;
+  const capWave = Math.round((s.SPEED_RAMP_MAX - 1) / s.SPEED_SCALE + 1);
+  return `<p>
+      <b>How enemies scale.</b> Each wave adds <b>${p(s.HEALTH_SCALE)}</b> health and
+      <b>${p(s.DAMAGE_SCALE)}</b> damage to every spawn, of its wave-1 figures. Speed starts
+      <b>${p(s.SPEED_BASE - 1)}</b> above an enemy's listed speed and adds
+      <b>${p(s.SPEED_SCALE)}</b> a wave, stopping at <b>×${s.SPEED_RAMP_MAX}</b> of the ramp
+      (wave ${capWave} on medium). The difficulty's scaling rate stretches all three ramps, and
+      a wave's event multiplies on top: Blood Moon, Frenzy and The Hunt are the fast ones.
+    </p>
+    <p>
+      <b>Bosses compound.</b> The Nth boss of a run (wave ${s.BOSS_EVERY}×N) also gets
+      ×${s.BOSS_HEALTH_GROWTH}<sup>N</sup> health and ×${s.BOSS_DAMAGE_GROWTH}<sup>N</sup>
+      damage on top of the ramp — a player two cards a wave richer is compounding too, and a boss
+      that only kept pace with a Mushroom was a smaller speed bump every time. Bosses keep a
+      gentler speed ramp (${p(s.BOSS_SPEED_SCALE)} a wave) so the Revenant can always be outrun.
+    </p>`;
+}
+
 function cardsPage() {
   const byRarity = {};
   for (const u of D.upgrades) (byRarity[u.rarity || u.r] ||= []).push(u);
@@ -557,6 +580,11 @@ function cardsPage() {
         if (u.s) {
           meta.push(
             `<div class="per">stackable${u.cap ? ` · <b>cap ${u.cap}</b>` : " · <b>no cap</b>"}</div>`
+          );
+        }
+        if (u.sr && u.sr !== r) {
+          meta.push(
+            `<div class="per">further stacks drawn as <b style="color:var(--${u.sr})">${esc(u.sr)}</b></div>`
           );
         }
         if (u.val != null && u.v) {
@@ -820,6 +848,7 @@ function wavesPage() {
           <div class="per">wave size <span class="tot">${pct(c.countMult)}</span></div>
           <div class="per">concurrent cap <span class="tot">${pct(c.maxAliveMult)}</span></div>
           <div class="per">score <span class="tot">${pct(c.scoreMult)}</span></div>
+          ${c.speedMult ? `<div class="per">speed <span class="tot">${pct(c.speedMult)}</span></div>` : ""}
           <div class="dep">from <b>wave ${c.minWave}</b></div>
         </div>
       </div>`;
@@ -866,6 +895,7 @@ function wavesPage() {
       A wave can also carry <b>one</b> event: a modifier, or a designed roster. Never both — two
       banners at once is two things to read and no time to read either.
     </p>
+    ${scalingPara()}
 
     <h2 id="unlocks">When each enemy appears</h2>
     <p>

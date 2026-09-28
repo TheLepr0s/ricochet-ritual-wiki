@@ -258,17 +258,19 @@ export const ENEMY_EXTRA = {
    would want to know, or where the card used to do something else. */
 export const CARD_NOTE = {
   TwinOrbs:    "The second orb matches the first's size, Heavy Orb included, and drops Overload when it ends. Until 23 September it collided at its old size and kept Overload's boost forever.",
-  Thunderclap: "Needs a real bounce: a wall touched slower than the orb's damage speed does nothing, as with Carom and Fracture. Until 23 September any touch set it off.",
+  Thunderclap: "Needs a real bounce: a wall touched slower than the orb's damage speed does nothing, as with Carom and Fracture. Until 23 September any touch set it off. Since 27 September it no longer shakes the screen or freezes the game: it fires on every fast wall bounce, which on a wooded map is constantly, and was the only thing that made hitting a tree jolt the camera.",
   VampireOrb:  "The card said +2 extra HP per stack until 23 September. The code has always given +1, so the text was corrected rather than the number.",
   BlackHoleCore: "Stackable since 24 September: 150px at one card, 205 at two, 260 at three. It used to be a single card with a flat 240px well. The pull and the grind are as strong at the centre at every size and fade to nothing at the rim, so a wider well also pulls harder at any given distance, not just further.",
   OwlCompanion:  "Rebuilt on 25 September to stand level with Black Hole: a bolt every 1.0s at 420px range, and each one leaps on through up to three more enemies within 220px, each taking 60% of the first bolt, never the same enemy twice. Its damage rides the enemy health curve, 48 at wave 1 (about 92 at wave 8, 166 at wave 20), so it no longer fades as the run goes on. Owl Swiftness is now 25% more strikes per stack rather than a flat −0.6s. Measured against the damage benchmark, the owl went from +46% (a rare's worth) to about +195%; Black Hole measures +170%.",
   DemonCompanion:"Rebuilt on 25 September to stand level with Black Hole: 20 claw damage at wave 1, riding the enemy health curve (about 38 at wave 8), every 0.6s, and every swipe rakes everything within 90px of its target for 60% and curses it. The curse is ×1.75 for 10s (5s until later on 25 September), up from ×1.6, and multiplies every source, including the orb; Curse Potency now tops out at ×2.15. It always goes for the nearest enemy that is NOT cursed yet, changing target the moment its swipe marks one; only when everything in reach is cursed does it renew the curse closest to running out. Benchmark: from +81% to about +110–300% depending on how tightly packed the crowd is (Black Hole +42–170%).",
-  OrbitMode:     "Until 24 September the ring could vanish for no visible reason. The shards orbit you but were drawn as part of the main orb, so flinging the orb more than a screen away culled them with it, and a Nuke hiding the orb hid them too. Each shard now draws on its own.",
-  Quickening:    "The chevrons at your feet point one way, as a fast-forward row. Until 24 September they flipped whenever you turned.",
+  OrbitMode:     "Until 24 September the ring could vanish for no visible reason. The shards orbit you but were drawn as part of the main orb, so flinging the orb more than a screen away culled them with it, and a Nuke hiding the orb hid them too. Each shard now draws on its own. Until 26 September every shard hit for a flat 8 all run, whatever you built. A hit now carries the orb's standing bonuses — Berserker, Blood Pact, Momentum, Adrenaline, Rampage, Last Stand — can crit through Critical Mass, and grows with the square root of the enemy health curve (about ×1.9 by wave 20). Per-throw bonuses like Charged Shot and Comet do not apply: the ring is not a throw.",
+  Quickening:    "Nerfed on 28 September and made an epic: +9 move speed a stack, so ten stacks is +90 (+45%); it was +14 (+70%). A hit now costs 4 stacks (was 3). The chevrons at your feet point one way, as a fast-forward row; until 24 September they flipped whenever you turned.",
+  Seeker:        "An epic to find, a rare to stack: once you own one, further copies are drawn at rare odds and in a rare frame. Nerfed on 28 September: a redirect relaunches the orb at no less than 400px/s (was 520, most of a fresh throw, so a chain never lost pace) and looks 460px for its next target (was 620, nearly anywhere on screen). The five-redirect cap is unchanged.",
+  Backhand:      "Since 26 September a swing that meets the orb while it is still flying at you (faster than 60px/s) counts too, judged per orb, so you can rally it: slap it back, it returns, slap it again. An orb already heading away does not count, so swinging twice cannot bank a second bonus. Before, only the second after a catch counted, and a catch stops the orb dead — so it only ever worked on a standing ball.",
   MagneticGrip:  "Pulls the orb home until it is within 40px of you (inside swing reach), then brakes it to rest there. Until 25 September it never stopped pulling: the orb reached you, was caught, was nudged into you again and caught again, every frame — a loud buzz of catch sounds, and a Dead Stop blast each time if you held that card.",
   ReserveCharge: "Added 25 September. Your F ability holds two charges, and the cooldown refills one at a time whenever you are below two, so while one charge sits ready the other is already coming back. Spending the spare mid-refill does not restart the clock. Only offered once an ability is in the slot, and a newly swapped-in ability arrives with both charges. The ability bar shows the count after its name.",
   SecondWind:    "Since 25 September it puts you back on 30 HP (it used to leave you at 1) and makes you invulnerable for 5 seconds (it used to be 1.6s of ordinary iframes): no damage and no roots, shown as a golden shell that flickers in its last second. The window is its own timer, so the Evil Wizard's hand, which wipes your ordinary iframes when it grabs you, cannot cut it short.",
-  Tether:        "Until 25 September the cord went invisible once the orb was more than a screen away, while still cutting everything it crossed: it was drawn as part of the orb, which is culled when far off screen. It now draws on its own.",
+  Tether:        "Nerfed on 28 September and made an epic (it was an uncommon): 24 damage every 0.36s to everything on the cord, 67 a second (it was 34 every 0.28s, 121 a second, several times the orb's own rate across a whole crowd), and the slow is ×0.70 for 0.8s (was ×0.55 for 1.2s). Until 25 September the cord went invisible once the orb was more than a screen away, while still cutting everything it crossed; it now draws on its own.",
 };
 
 /* ── Bosses ─────────────────────────────────────────────────────────────── */
@@ -281,7 +283,9 @@ export const BOSSES = {
     moves: [
       { n: "Slam", d: `A wide ground telegraph, then a shockwave. The radius and the wind-up are
                        tuned together against one rule: running must work. From the edge of its
-                       own trigger range you can clear the circle on foot, without blink.` },
+                       own trigger range you can clear the circle on foot, without blink. The
+                       wind-up is 0.9s since 27 September (was 1.15s); 0.8s was tried and failed
+                       that rule, so 0.9 is as fast as it goes.` },
       { n: "Bolt ring", d: `A full ring of oversized bolts, one aimed at you — 8, 11 then 15 as
                             phases fall. Big enough to walk between: a movement puzzle, not a
                             damage check. Since 24 September the bolts fly at 495px/s (was 360),
@@ -304,7 +308,7 @@ export const BOSSES = {
                          cooldown, and a pattern's own length is added to it, so it never does two
                          things at once.` },
     ],
-    close: `The telegraph lengths are the design. At over a second of wind-up, the Sovereign is
+    close: `The telegraph lengths are the design. At nearly a second of wind-up, the Sovereign is
             asking you to read it. Compare the Revenant, which asks you to already be moving.
             The ranged patterns come in a <b>fixed order per phase</b> — ring, wall, volley,
             summon, alternating rings in phase one — so the fight can be learned, and each new
@@ -363,7 +367,13 @@ export const BOSS_SHARED = `Which boss arrives is <b>fixed rather than rolled</b
   handler, before the orb wrote its shove, so it never took effect, and every other push in the
   game bypassed it entirely. It now sits where every push goes through. A boss is also never
   pulled back toward you as a straggler, and neither boss counts toward Full Bestiary — they
-  have achievements of their own.`;
+  have achievements of their own.
+  <br><br>
+  <b>Every boss is tougher than the last.</b> Since 27 September the Nth boss of a run carries
+  ×1.75<sup>N</sup> health and ×1.15<sup>N</sup> damage on top of the ordinary wave ramp — see
+  <a href="waves.html#shape">how enemies scale</a>. A wave-30 Sovereign has about 56,000 health
+  on medium, where it used to have about 10,500. Their speed deliberately stays on a gentler
+  ramp than everything else, so the Revenant can always be outrun.`;
 
 /* ── Classes ────────────────────────────────────────────────────────────────
    Measured, not asserted. bench_main.lua with ARCHETYPE_ONLY=1, ten trials,
@@ -596,7 +606,8 @@ export const COMBAT = [
         bug, an orb flying through trees. It collides again: it comes home round the scenery,
         bouncing and sliding off it, and if a tree catches it you can step aside, since the pull
         comes from wherever you stand. A pull that cannot arrive gives up after five seconds and
-        the orb brakes to a stop. The escape above stands down while the orb is being recalled.
+        the orb flies on at the speed the pull gave it (until 27 September it braked to a dead
+        stop wherever the pull gave up). The escape above stands down while the orb is being recalled.
         <br><br>
         <b>Confinement is what marks a trap, not speed.</b> The first version also required the orb
         to still be moving, on the reasoning that a stationary orb is one waiting to be collected --
@@ -606,6 +617,53 @@ export const COMBAT = [
         instead. A flat wall the orb has rolled up against blocks at most half of it and is
         reachable on foot; a gap or an inside corner blocks more. An orb already at rest is nudged
         toward you as well, since phasing alone does nothing for something with no momentum.` },
+  { h: "The September 28 pass",
+    p: `<b>Nerfs.</b> <a href="cards.html#tether">Tether</a>, <a href="cards.html#quickening">Quickening</a>
+        and <a href="cards.html#seeker">Seeker</a> are weaker and now epic. Seeker is the first card
+        with a separate rarity for further stacks: an epic to find, a rare to stack. See their notes.
+        <br><br>
+        <b>Faster enemies.</b> Everything walks 15% faster from wave 1, and speed now ramps +2% a
+        wave (was +1%), up to ×2. The fast events are much faster: <b>Blood Moon</b> ×1.7 (was ×1.3),
+        <b>Frenzy</b> ×1.5 (was ×1.1), and <b>The Hunt</b>, whose description always promised
+        "faster than you", has a real ×1.6 for the first time. Bosses keep the old gentle speed
+        ramp. See <a href="waves.html#shape">how enemies scale</a>.
+        <br><br>
+        <b>Screen shake</b> now fades under rapid hits the way the hit freeze already did (below),
+        so a crowd being carved up no longer rattles the camera nonstop. An
+        <b>Overloaded</b> orb is drawn above every tree, enemy and blast, so the thing you are
+        steering never disappears behind the scenery.` },
+  { h: "The September 27 pass",
+    p: `<b>Hitstop no longer stutters.</b> Each hit on an enemy freezes the game for a few
+        hundredths of a second so it lands with weight. Late in a run the orb hits several things a
+        second, and the freezes, each up to 0.12s, piled into what looked exactly like lag. Every
+        freeze now adds heat that drains over time and scales the next one down: a lone hit, or hits
+        a second or more apart, get the full freeze; a rally goes 0.12, 0.06, 0.03, 0.01s and then
+        nothing, and the punch comes back after a short breather. Hitting a tree freezes and shakes
+        nothing at all (Thunderclap was the one card that did).
+        <br><br>
+        <b>Bosses compound</b> (×1.75 health and ×1.15 damage per boss reached) and enemy damage
+        ramps +8% a wave (was +5%). The <b>combo ladder</b> has ten tiers, with GODLIKE at a 500
+        combo (was 60) and BRUTAL, UNREAL and LEGENDARY in between; the score multiplier still tops
+        out at ×3, spread over the ten. The <b>Sovereign's slam</b> winds up in 0.9s (was 1.15s).
+        <br><br>
+        <b>Fixes.</b> An orb shoved out of an enemy and into a tree used to stop dead at full speed
+        — the code that freed it from the trunk zeroed its velocity — and that was the "ball just
+        stops in a crowd" report; it now keeps its speed. A recall that times out leaves the orb
+        moving instead of braking it to a halt. An <b>Overloaded</b> orb can be swung from its rim:
+        swing reach grows with how much bigger the orb is than normal (Heavy Orb and Rampage
+        extend it a little too). The <b>My Upgrades</b> panel scrolls one row per wheel notch; it
+        moved about 7px.` },
+  { h: "The September 26 changes",
+    p: `<b>Ability bar.</b> Pressing F now drains the ability's bar over the effect's duration, so
+        you can see how long it lasts, and the cooldown only starts once the effect has ended (it
+        used to run underneath the effect). With Reserve Charge, a refill in progress waits too.
+        <br><br>
+        <b>Recall spam fixed.</b> Holding recall, swinging the orb out of the pull and releasing
+        used to skip the recall cooldown entirely, so you could recall again at once. Ending a
+        recall with a swing now spends the cooldown like any other ending.
+        <br><br>
+        <a href="cards.html#backhand">Backhand</a> works on a moving orb, and
+        <a href="cards.html#orbitmode">Mirror Ball</a> shards finally scale; see their notes.` },
   { h: "The September 25 fixes",
     p: `<b>Later the same day.</b> A big crimson <b>boss arrow</b> is always showing: at the screen
         edge, labelled with the boss's name, while it is off screen, and bobbing over its head while
@@ -713,8 +771,10 @@ export const AUDIO_NOTE = `<b>What a kill sounds like.</b> Every orb kill fires 
   streak is: one instrument, and every rung a clear step higher and a little bigger than the one
   before. Each is a quick run up to its note, from C5 at the first tier to C7 at the last, and the
   last one is an event of its own, with a chord that blooms underneath and sparkle off the top.
-  There are six rungs because seven tiers give six promotions; the set they replaced had seven
-  sounds, and its top one could never play.
+  There are six rungs and, since 27 September, ten tiers: the first five promotions climb the
+  first five rungs, BRUTAL, UNREAL and LEGENDARY replay the fifth pitched up to G6, A6 and B6 so
+  the climb keeps rising, and GODLIKE keeps the last rung to itself. (The set before these had
+  seven sounds for six promotions, and its top one could never play.)
   <br><br>
   <b>Fixed on 23 September.</b> Crescendo asked for a sound that was never loaded, and was
   silent. Aegis played Glass Cannon's shatter on every deflect. Twin Orbs doubled the throw, and
@@ -747,14 +807,18 @@ export const AUDIO_NOTE = `<b>What a kill sounds like.</b> Every orb kill fires 
   Core, Rupture, Aegis's parry, the Owl's strike and Slingshot's arming click. One bought sound
   was kept: the orb recall.`;
 
+// Ten tiers since 27 September 2026 (GODLIKE was at 60, now 500).
 export const KILL_TIERS = [
-  { t: 1, at: 1,   name: "COMBO" },
-  { t: 2, at: 5,   name: "NICE" },
-  { t: 3, at: 10,  name: "SLICK" },
-  { t: 4, at: 18,  name: "WICKED" },
-  { t: 5, at: 28,  name: "SAVAGE" },
-  { t: 6, at: 40,  name: "RUTHLESS" },
-  { t: 7, at: 60,  name: "GODLIKE" },
+  { t: 1,  at: 1,   name: "COMBO" },
+  { t: 2,  at: 5,   name: "NICE" },
+  { t: 3,  at: 12,  name: "SLICK" },
+  { t: 4,  at: 25,  name: "WICKED" },
+  { t: 5,  at: 45,  name: "SAVAGE" },
+  { t: 6,  at: 75,  name: "RUTHLESS" },
+  { t: 7,  at: 120, name: "BRUTAL" },
+  { t: 8,  at: 190, name: "UNREAL" },
+  { t: 9,  at: 300, name: "LEGENDARY" },
+  { t: 10, at: 500, name: "GODLIKE" },
 ];
 
 /* ── Modifier field labels ─────────────────────────────────────────────── */

@@ -155,7 +155,8 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         bug, an orb flying through trees. It collides again: it comes home round the scenery,
         bouncing and sliding off it, and if a tree catches it you can step aside, since the pull
         comes from wherever you stand. A pull that cannot arrive gives up after five seconds and
-        the orb brakes to a stop. The escape above stands down while the orb is being recalled.
+        the orb flies on at the speed the pull gave it (until 27 September it braked to a dead
+        stop wherever the pull gave up). The escape above stands down while the orb is being recalled.
         <br><br>
         <b>Confinement is what marks a trap, not speed.</b> The first version also required the orb
         to still be moving, on the reasoning that a stationary orb is one waiting to be collected --
@@ -165,6 +166,53 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         instead. A flat wall the orb has rolled up against blocks at most half of it and is
         reachable on foot; a gap or an inside corner blocks more. An orb already at rest is nudged
         toward you as well, since phasing alone does nothing for something with no momentum.</p>
+    <h3 id="the-september-28-pass">The September 28 pass</h3>
+    <p><b>Nerfs.</b> <a href="cards.html#tether">Tether</a>, <a href="cards.html#quickening">Quickening</a>
+        and <a href="cards.html#seeker">Seeker</a> are weaker and now epic. Seeker is the first card
+        with a separate rarity for further stacks: an epic to find, a rare to stack. See their notes.
+        <br><br>
+        <b>Faster enemies.</b> Everything walks 15% faster from wave 1, and speed now ramps +2% a
+        wave (was +1%), up to ×2. The fast events are much faster: <b>Blood Moon</b> ×1.7 (was ×1.3),
+        <b>Frenzy</b> ×1.5 (was ×1.1), and <b>The Hunt</b>, whose description always promised
+        "faster than you", has a real ×1.6 for the first time. Bosses keep the old gentle speed
+        ramp. See <a href="waves.html#shape">how enemies scale</a>.
+        <br><br>
+        <b>Screen shake</b> now fades under rapid hits the way the hit freeze already did (below),
+        so a crowd being carved up no longer rattles the camera nonstop. An
+        <b>Overloaded</b> orb is drawn above every tree, enemy and blast, so the thing you are
+        steering never disappears behind the scenery.</p>
+    <h3 id="the-september-27-pass">The September 27 pass</h3>
+    <p><b>Hitstop no longer stutters.</b> Each hit on an enemy freezes the game for a few
+        hundredths of a second so it lands with weight. Late in a run the orb hits several things a
+        second, and the freezes, each up to 0.12s, piled into what looked exactly like lag. Every
+        freeze now adds heat that drains over time and scales the next one down: a lone hit, or hits
+        a second or more apart, get the full freeze; a rally goes 0.12, 0.06, 0.03, 0.01s and then
+        nothing, and the punch comes back after a short breather. Hitting a tree freezes and shakes
+        nothing at all (Thunderclap was the one card that did).
+        <br><br>
+        <b>Bosses compound</b> (×1.75 health and ×1.15 damage per boss reached) and enemy damage
+        ramps +8% a wave (was +5%). The <b>combo ladder</b> has ten tiers, with GODLIKE at a 500
+        combo (was 60) and BRUTAL, UNREAL and LEGENDARY in between; the score multiplier still tops
+        out at ×3, spread over the ten. The <b>Sovereign's slam</b> winds up in 0.9s (was 1.15s).
+        <br><br>
+        <b>Fixes.</b> An orb shoved out of an enemy and into a tree used to stop dead at full speed
+        — the code that freed it from the trunk zeroed its velocity — and that was the "ball just
+        stops in a crowd" report; it now keeps its speed. A recall that times out leaves the orb
+        moving instead of braking it to a halt. An <b>Overloaded</b> orb can be swung from its rim:
+        swing reach grows with how much bigger the orb is than normal (Heavy Orb and Rampage
+        extend it a little too). The <b>My Upgrades</b> panel scrolls one row per wheel notch; it
+        moved about 7px.</p>
+    <h3 id="the-september-26-changes">The September 26 changes</h3>
+    <p><b>Ability bar.</b> Pressing F now drains the ability's bar over the effect's duration, so
+        you can see how long it lasts, and the cooldown only starts once the effect has ended (it
+        used to run underneath the effect). With Reserve Charge, a refill in progress waits too.
+        <br><br>
+        <b>Recall spam fixed.</b> Holding recall, swinging the orb out of the pull and releasing
+        used to skip the recall cooldown entirely, so you could recall again at once. Ending a
+        recall with a swing now spends the cooldown like any other ending.
+        <br><br>
+        <a href="cards.html#backhand">Backhand</a> works on a moving orb, and
+        <a href="cards.html#orbitmode">Mirror Ball</a> shards finally scale; see their notes.</p>
     <h3 id="the-september-25-fixes">The September 25 fixes</h3>
     <p><b>Later the same day.</b> A big crimson <b>boss arrow</b> is always showing: at the screen
         edge, labelled with the boss's name, while it is off screen, and bobbing over its head while
@@ -265,11 +313,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <tbody>
         <tr><td>COMBO</td><td><code>×1</code></td><td>where every combo starts — nothing is promoted into it</td></tr>
         <tr><td>NICE</td><td><code>×5</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
-        <tr><td>SLICK</td><td><code>×10</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
-        <tr><td>WICKED</td><td><code>×18</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
-        <tr><td>SAVAGE</td><td><code>×28</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
-        <tr><td>RUTHLESS</td><td><code>×40</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
-        <tr><td>GODLIKE</td><td><code>×60</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
+        <tr><td>SLICK</td><td><code>×12</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
+        <tr><td>WICKED</td><td><code>×25</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
+        <tr><td>SAVAGE</td><td><code>×45</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
+        <tr><td>RUTHLESS</td><td><code>×75</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
+        <tr><td>BRUTAL</td><td><code>×120</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
+        <tr><td>UNREAL</td><td><code>×190</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
+        <tr><td>LEGENDARY</td><td><code>×300</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
+        <tr><td>GODLIKE</td><td><code>×500</code></td><td>promotes here: a banner, and the next rung of the streak</td></tr>
       </tbody>
     </table>
 
@@ -290,8 +341,10 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   streak is: one instrument, and every rung a clear step higher and a little bigger than the one
   before. Each is a quick run up to its note, from C5 at the first tier to C7 at the last, and the
   last one is an event of its own, with a chord that blooms underneath and sparkle off the top.
-  There are six rungs because seven tiers give six promotions; the set they replaced had seven
-  sounds, and its top one could never play.
+  There are six rungs and, since 27 September, ten tiers: the first five promotions climb the
+  first five rungs, BRUTAL, UNREAL and LEGENDARY replay the fifth pitched up to G6, A6 and B6 so
+  the climb keeps rising, and GODLIKE keeps the last rung to itself. (The set before these had
+  seven sounds for six promotions, and its top one could never play.)
   <br><br>
   <b>Fixed on 23 September.</b> Crescendo asked for a sound that was never loaded, and was
   silent. Aegis played Glass Cannon's shatter on every deflect. Twin Orbs doubled the throw, and

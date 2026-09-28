@@ -242,6 +242,9 @@ local function build()
         if type(u) == "table" and u.name then
             local row = obj(
                 "k", k, "n", u.name, "r", u.rarity,
+                -- The rarity further stacks are drawn at, when it differs
+                -- (UpgradeList stack_rarity, Sept 28 2026).
+                "sr", u.stack_rarity,
                 "t", TPNAME[u.type] or tostring(u.type),
                 "v", (type(u.variable) == "string") and u.variable or nil,
                 "val", (type(u.value) == "number") and u.value or nil,
@@ -427,7 +430,8 @@ local function build()
                                 "minWave", c.minWave, "pool", pool,
                                 "countMult", c.countMult,
                                 "maxAliveMult", c.maxAliveMult,
-                                "scoreMult", c.scoreMult)
+                                "scoreMult", c.scoreMult,
+                                "speedMult", c.speedMult)
     end
 
     -- ── Difficulty ───────────────────────────────────────────────────────────
@@ -468,6 +472,19 @@ local function build()
     put(consts, "composition", scalarMap({
         FIRST_WAVE = need(wcLocals, "FIRST_WAVE", "WaveComposition"),
         CHANCE     = need(wcLocals, "CHANCE",     "WaveComposition"),
+    }))
+    -- How every spawn scales with the wave, and the boss-only compounding.
+    -- All WaveManager file-locals read by :_scaleEnemy (Sept 28 2026).
+    put(consts, "scaling", scalarMap({
+        HEALTH_SCALE       = need(wmLocals, "HEALTH_SCALE",       "WaveManager"),
+        DAMAGE_SCALE       = need(wmLocals, "DAMAGE_SCALE",       "WaveManager"),
+        SPEED_BASE         = need(wmLocals, "SPEED_BASE",         "WaveManager"),
+        SPEED_SCALE        = need(wmLocals, "SPEED_SCALE",        "WaveManager"),
+        SPEED_RAMP_MAX     = need(wmLocals, "SPEED_RAMP_MAX",     "WaveManager"),
+        BOSS_SPEED_SCALE   = need(wmLocals, "BOSS_SPEED_SCALE",   "WaveManager"),
+        BOSS_HEALTH_GROWTH = need(wmLocals, "BOSS_HEALTH_GROWTH", "WaveManager"),
+        BOSS_DAMAGE_GROWTH = need(wmLocals, "BOSS_DAMAGE_GROWTH", "WaveManager"),
+        BOSS_EVERY         = need(wmLocals, "BOSS_EVERY",         "WaveManager"),
     }))
 
 

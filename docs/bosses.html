@@ -58,7 +58,13 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   handler, before the orb wrote its shove, so it never took effect, and every other push in the
   game bypassed it entirely. It now sits where every push goes through. A boss is also never
   pulled back toward you as a straggler, and neither boss counts toward Full Bestiary — they
-  have achievements of their own.</div>
+  have achievements of their own.
+  <br><br>
+  <b>Every boss is tougher than the last.</b> Since 27 September the Nth boss of a run carries
+  ×1.75<sup>N</sup> health and ×1.15<sup>N</sup> damage on top of the ordinary wave ramp — see
+  <a href="waves.html#shape">how enemies scale</a>. A wave-30 Sovereign has about 56,000 health
+  on medium, where it used to have about 10,500. Their speed deliberately stays on a gentler
+  ramp than everything else, so the Revenant can always be outrun.</div>
 
     <h2 id="rotation">The rotation</h2>
     <p>
@@ -92,7 +98,9 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <tbody>
         <tr><td>Slam</td><td>A wide ground telegraph, then a shockwave. The radius and the wind-up are
                        tuned together against one rule: running must work. From the edge of its
-                       own trigger range you can clear the circle on foot, without blink.</td></tr>
+                       own trigger range you can clear the circle on foot, without blink. The
+                       wind-up is 0.9s since 27 September (was 1.15s); 0.8s was tried and failed
+                       that rule, so 0.9 is as fast as it goes.</td></tr>
         <tr><td>Bolt ring</td><td>A full ring of oversized bolts, one aimed at you — 8, 11 then 15 as
                             phases fall. Big enough to walk between: a movement puzzle, not a
                             damage check. Since 24 September the bolts fly at 495px/s (was 360),
@@ -116,7 +124,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
                          things at once.</td></tr>
       </tbody>
     </table>
-    <p>The telegraph lengths are the design. At over a second of wind-up, the Sovereign is
+    <p>The telegraph lengths are the design. At nearly a second of wind-up, the Sovereign is
             asking you to read it. Compare the Revenant, which asks you to already be moving.
             The ranged patterns come in a <b>fixed order per phase</b> — ring, wall, volley,
             summon, alternating rings in phase one — so the fight can be learned, and each new

@@ -70,6 +70,21 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       A wave can also carry <b>one</b> event: a modifier, or a designed roster. Never both — two
       banners at once is two things to read and no time to read either.
     </p>
+    <p>
+      <b>How enemies scale.</b> Each wave adds <b>+13%</b> health and
+      <b>+8%</b> damage to every spawn, of its wave-1 figures. Speed starts
+      <b>+15%</b> above an enemy's listed speed and adds
+      <b>+2%</b> a wave, stopping at <b>×2</b> of the ramp
+      (wave 51 on medium). The difficulty's scaling rate stretches all three ramps, and
+      a wave's event multiplies on top: Blood Moon, Frenzy and The Hunt are the fast ones.
+    </p>
+    <p>
+      <b>Bosses compound.</b> The Nth boss of a run (wave 10×N) also gets
+      ×1.75<sup>N</sup> health and ×1.15<sup>N</sup>
+      damage on top of the ramp — a player two cards a wave richer is compounding too, and a boss
+      that only kept pace with a Mushroom was a smaller speed bump every time. Bosses keep a
+      gentler speed ramp (+1% a wave) so the Revenant can always be outrun.
+    </p>
 
     <h2 id="unlocks">When each enemy appears</h2>
     <p>
@@ -101,7 +116,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="bloodmoon" style="--stripe:var(--epic)" data-hay="bloodmoon blood moon the horde is faster and hits harder. kills are worth more.">
         <div class="r-name" data-anchor><span>BLOOD MOON</span><span class="r-key">bloodmoon</span></div>
         <div class="r-desc">The horde is faster and hits harder. Kills are worth more.</div>
-        <div class="r-meta"><div class="per">enemy damage <span class="tot">+15%</span></div><div class="per">score per kill <span class="tot">+50%</span></div><div class="per">enemy speed <span class="tot">+30%</span></div></div>
+        <div class="r-meta"><div class="per">enemy damage <span class="tot">+15%</span></div><div class="per">score per kill <span class="tot">+50%</span></div><div class="per">enemy speed <span class="tot">+70%</span></div></div>
       </div>
       <div class="row" id="swarm" style="--stripe:var(--epic)" data-hay="swarm swarm far more of them, far more fragile, and they arrive fast.">
         <div class="r-name" data-anchor><span>SWARM</span><span class="r-key">swarm</span></div>
@@ -136,7 +151,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="frenzy" style="--stripe:var(--epic)" data-hay="frenzy frenzy they come in a constant stream and never stop arriving.">
         <div class="r-name" data-anchor><span>FRENZY</span><span class="r-key">frenzy</span></div>
         <div class="r-desc">They come in a constant stream and never stop arriving.</div>
-        <div class="r-meta"><div class="per">enemy health <span class="tot">-25%</span></div><div class="per">concurrent cap <span class="tot">+80%</span></div><div class="per">score per kill <span class="tot">+35%</span></div><div class="per">spawn interval <span class="tot">-70%</span></div><div class="per">enemy speed <span class="tot">+10%</span></div></div>
+        <div class="r-meta"><div class="per">enemy health <span class="tot">-25%</span></div><div class="per">concurrent cap <span class="tot">+80%</span></div><div class="per">score per kill <span class="tot">+35%</span></div><div class="per">spawn interval <span class="tot">-70%</span></div><div class="per">enemy speed <span class="tot">+50%</span></div></div>
       </div>
     </div>
 
@@ -159,6 +174,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="per">wave size <span class="tot">-60%</span></div>
           <div class="per">concurrent cap <span class="tot">-45%</span></div>
           <div class="per">score <span class="tot">+35%</span></div>
+          
           <div class="dep">from <b>wave 9</b></div>
         </div>
       </div>
@@ -174,6 +190,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="per">wave size <span class="tot">+25%</span></div>
           <div class="per">concurrent cap <span class="tot">+15%</span></div>
           <div class="per">score <span class="tot">+25%</span></div>
+          
           <div class="dep">from <b>wave 12</b></div>
         </div>
       </div>
@@ -189,6 +206,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="per">wave size <span class="tot">-15%</span></div>
           <div class="per">concurrent cap <span class="tot">0%</span></div>
           <div class="per">score <span class="tot">+30%</span></div>
+          <div class="per">speed <span class="tot">+60%</span></div>
           <div class="dep">from <b>wave 6</b></div>
         </div>
       </div>
@@ -204,6 +222,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="per">wave size <span class="tot">-10%</span></div>
           <div class="per">concurrent cap <span class="tot">0%</span></div>
           <div class="per">score <span class="tot">+40%</span></div>
+          
           <div class="dep">from <b>wave 14</b></div>
         </div>
       </div>
@@ -219,6 +238,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="per">wave size <span class="tot">-20%</span></div>
           <div class="per">concurrent cap <span class="tot">-10%</span></div>
           <div class="per">score <span class="tot">+30%</span></div>
+          
           <div class="dep">from <b>wave 7</b></div>
         </div>
       </div>
@@ -234,6 +254,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="per">wave size <span class="tot">-55%</span></div>
           <div class="per">concurrent cap <span class="tot">-45%</span></div>
           <div class="per">score <span class="tot">+45%</span></div>
+          
           <div class="dep">from <b>wave 13</b></div>
         </div>
       </div>

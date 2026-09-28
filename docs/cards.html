@@ -99,12 +99,12 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Explosive launch power. Orb launch force +100.</div>
           <div class="r-meta"><div class="per">stackable · <b>cap 5</b></div><div class="tot"><code>force</code> +100</div></div>
         </div>
-      <div class="group-label" id="uncommon">uncommon <span style="opacity:.6">· 21 cards · draw weight 28</span></div>
+      <div class="group-label" id="uncommon">uncommon <span style="opacity:.6">· 20 cards · draw weight 28</span></div>
       <div class="row" id="backhand" style="--stripe:var(--uncommon)"
-          data-hay="backhand backhand no wind-up. swing within a second of catching the orb and it leaves +60% faster and +35% harder. backhand uncommon"
+          data-hay="backhand backhand no wind-up. slap the orb back as it comes at you, or swing within a second of catching it, and it leaves +60% faster and +35% harder. backhand uncommon since 26 september a swing that meets the orb while it is still flying at you (faster than 60px/s) counts too, judged per orb, so you can rally it: slap it back, it returns, slap it again. an orb already heading away does not count, so swinging twice cannot bank a second bonus. before, only the second after a catch counted, and a catch stops the orb dead — so it only ever worked on a standing ball."
           data-stackable="0" data-req="0" data-con="0">
           <div class="r-name" data-anchor><span>Backhand</span><span class="r-key">Backhand</span></div>
-          <div class="r-desc">No wind-up. Swing within a second of catching the orb and it leaves +60% faster and +35% harder.</div>
+          <div class="r-desc">No wind-up. Slap the orb back as it comes at you, or swing within a second of catching it, and it leaves +60% faster and +35% harder.<div class="tot">Since 26 September a swing that meets the orb while it is still flying at you (faster than 60px/s) counts too, judged per orb, so you can rally it: slap it back, it returns, slap it again. An orb already heading away does not count, so swinging twice cannot bank a second bonus. Before, only the second after a catch counted, and a catch stops the orb dead — so it only ever worked on a standing ball.</div></div>
           <div class="r-meta"><div class="tot"><code>backhand</code></div></div>
         </div>
       <div class="row" id="orbfire" style="--stripe:var(--uncommon)"
@@ -233,13 +233,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Practised hands. Catching the orb makes you invulnerable for 1 second.</div>
           <div class="r-meta"><div class="tot"><code>safe_hands</code></div></div>
         </div>
-      <div class="row" id="tether" style="--stripe:var(--uncommon)"
-          data-hay="tether tether live wire. while recalling, the cord between you and the orb cuts and slows everything it crosses. tether uncommon until 25 september the cord went invisible once the orb was more than a screen away, while still cutting everything it crossed: it was drawn as part of the orb, which is culled when far off screen. it now draws on its own."
-          data-stackable="0" data-req="0" data-con="0">
-          <div class="r-name" data-anchor><span>Tether</span><span class="r-key">Tether</span></div>
-          <div class="r-desc">Live wire. While recalling, the cord between you and the orb cuts and slows everything it crosses.<div class="tot">Until 25 September the cord went invisible once the orb was more than a screen away, while still cutting everything it crossed: it was drawn as part of the orb, which is culled when far off screen. It now draws on its own.</div></div>
-          <div class="r-meta"><div class="tot"><code>tether</code></div></div>
-        </div>
       <div class="row" id="vampiricaura" style="--stripe:var(--uncommon)"
           data-hay="vampiricaura vampiric aura close feeding. anything that dies near you gives back 2 hp. vampiric_aura uncommon"
           data-stackable="0" data-req="0" data-con="0">
@@ -247,7 +240,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Close feeding. Anything that dies near you gives back 2 HP.</div>
           <div class="r-meta"><div class="tot"><code>vampiric_aura</code></div></div>
         </div>
-      <div class="group-label" id="rare">rare <span style="opacity:.6">· 40 cards · draw weight 16</span></div>
+      <div class="group-label" id="rare">rare <span style="opacity:.6">· 38 cards · draw weight 16</span></div>
       <div class="row" id="adrenaline" style="--stripe:var(--rare)"
           data-hay="adrenaline adrenaline cornered animal. orb damage climbs as your health falls, up to +80% at death's door. adrenaline rare"
           data-stackable="0" data-req="0" data-con="0">
@@ -382,10 +375,10 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#demoncompanion"><b>Demon Companion</b></a></div></div>
         </div>
       <div class="row" id="orbitmode" style="--stripe:var(--rare)"
-          data-hay="orbitmode mirror ball a shard circles you forever, striking anything it sweeps through. weaker than your orb, but never stops. orbit_mode rare until 24 september the ring could vanish for no visible reason. the shards orbit you but were drawn as part of the main orb, so flinging the orb more than a screen away culled them with it, and a nuke hiding the orb hid them too. each shard now draws on its own."
+          data-hay="orbitmode mirror ball a shard circles you forever, striking anything it sweeps through. weaker than your orb, but never stops. orbit_mode rare until 24 september the ring could vanish for no visible reason. the shards orbit you but were drawn as part of the main orb, so flinging the orb more than a screen away culled them with it, and a nuke hiding the orb hid them too. each shard now draws on its own. until 26 september every shard hit for a flat 8 all run, whatever you built. a hit now carries the orb's standing bonuses — berserker, blood pact, momentum, adrenaline, rampage, last stand — can crit through critical mass, and grows with the square root of the enemy health curve (about ×1.9 by wave 20). per-throw bonuses like charged shot and comet do not apply: the ring is not a throw."
           data-stackable="0" data-req="0" data-con="0">
           <div class="r-name" data-anchor><span>Mirror Ball</span><span class="r-key">OrbitMode</span></div>
-          <div class="r-desc">A shard circles you forever, striking anything it sweeps through. Weaker than your orb, but never stops.<div class="tot">Until 24 September the ring could vanish for no visible reason. The shards orbit you but were drawn as part of the main orb, so flinging the orb more than a screen away culled them with it, and a Nuke hiding the orb hid them too. Each shard now draws on its own.</div></div>
+          <div class="r-desc">A shard circles you forever, striking anything it sweeps through. Weaker than your orb, but never stops.<div class="tot">Until 24 September the ring could vanish for no visible reason. The shards orbit you but were drawn as part of the main orb, so flinging the orb more than a screen away culled them with it, and a Nuke hiding the orb hid them too. Each shard now draws on its own. Until 26 September every shard hit for a flat 8 all run, whatever you built. A hit now carries the orb's standing bonuses — Berserker, Blood Pact, Momentum, Adrenaline, Rampage, Last Stand — can crit through Critical Mass, and grows with the square root of the enemy health curve (about ×1.9 by wave 20). Per-throw bonuses like Charged Shot and Comet do not apply: the ring is not a throw.</div></div>
           <div class="r-meta"><div class="tot"><code>orbit_mode</code></div></div>
         </div>
       <div class="row" id="overclock" style="--stripe:var(--rare)"
@@ -423,13 +416,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Keen eyes. Owl detects and attacks from 110 further away.</div>
           <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#owlcompanion"><b>Owl Companion</b></a></div></div>
         </div>
-      <div class="row" id="quickening" style="--stripe:var(--rare)"
-          data-hay="quickening quickening blood in the air. each kill makes you faster, stacking up to 10. every hit you take costs 3 stacks. quickening rare the chevrons at your feet point one way, as a fast-forward row. until 24 september they flipped whenever you turned."
-          data-stackable="0" data-req="0" data-con="0">
-          <div class="r-name" data-anchor><span>Quickening</span><span class="r-key">Quickening</span></div>
-          <div class="r-desc">Blood in the air. Each kill makes you faster, stacking up to 10. Every hit you take costs 3 stacks.<div class="tot">The chevrons at your feet point one way, as a fast-forward row. Until 24 September they flipped whenever you turned.</div></div>
-          <div class="r-meta"><div class="tot"><code>quickening</code></div></div>
-        </div>
       <div class="row" id="regrowth" style="--stripe:var(--rare)"
           data-hay="regrowth regrowth slow mending. recover 1 hp every 2.5 seconds, always, even mid-fight. regrowth rare"
           data-stackable="0" data-req="0" data-con="0">
@@ -450,13 +436,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-name" data-anchor><span>Second Heart</span><span class="r-key">SecondHeart</span></div>
           <div class="r-desc">A second heart, beating out of time. Max HP +40, healed immediately.</div>
           <div class="r-meta"><div class="per">stackable · <b>cap 3</b></div><div class="tot"><code>max_health</code> +40</div></div>
-        </div>
-      <div class="row" id="seeker" style="--stripe:var(--rare)"
-          data-hay="seeker seeker predatory arc. after a direct hit the orb turns and flies at the next nearest enemy. +1 redirect per stack, up to 5. rare"
-          data-stackable="1" data-req="0" data-con="0">
-          <div class="r-name" data-anchor><span>Seeker</span><span class="r-key">Seeker</span></div>
-          <div class="r-desc">Predatory arc. After a direct hit the orb turns and flies at the next nearest enemy. +1 redirect per stack, up to 5.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 5</b></div></div>
         </div>
       <div class="row" id="shatter" style="--stripe:var(--rare)"
           data-hay="shatter shatter break the ice. hitting a frozen enemy deals 3x damage. shatter rare"
@@ -508,10 +487,10 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"><div class="tot"><code>thornmail</code></div></div>
         </div>
       <div class="row" id="thunderclap" style="--stripe:var(--rare)"
-          data-hay="thunderclap thunderclap sonic impact. wall bounces release a shockwave that stuns nearby enemies for 1.2s. thunderclap rare needs a real bounce: a wall touched slower than the orb's damage speed does nothing, as with carom and fracture. until 23 september any touch set it off."
+          data-hay="thunderclap thunderclap sonic impact. wall bounces release a shockwave that stuns nearby enemies for 1.2s. thunderclap rare needs a real bounce: a wall touched slower than the orb's damage speed does nothing, as with carom and fracture. until 23 september any touch set it off. since 27 september it no longer shakes the screen or freezes the game: it fires on every fast wall bounce, which on a wooded map is constantly, and was the only thing that made hitting a tree jolt the camera."
           data-stackable="0" data-req="0" data-con="0">
           <div class="r-name" data-anchor><span>Thunderclap</span><span class="r-key">Thunderclap</span></div>
-          <div class="r-desc">Sonic impact. Wall bounces release a shockwave that stuns nearby enemies for 1.2s.<div class="tot">Needs a real bounce: a wall touched slower than the orb's damage speed does nothing, as with Carom and Fracture. Until 23 September any touch set it off.</div></div>
+          <div class="r-desc">Sonic impact. Wall bounces release a shockwave that stuns nearby enemies for 1.2s.<div class="tot">Needs a real bounce: a wall touched slower than the orb's damage speed does nothing, as with Carom and Fracture. Until 23 September any touch set it off. Since 27 September it no longer shakes the screen or freezes the game: it fires on every fast wall bounce, which on a wooded map is constantly, and was the only thing that made hitting a tree jolt the camera.</div></div>
           <div class="r-meta"><div class="tot"><code>thunderclap</code></div></div>
         </div>
       <div class="row" id="tithe" style="--stripe:var(--rare)"
@@ -528,7 +507,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Wider circle. Mirror Ball radius +30, covers more ground.</div>
           <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#orbitmode"><b>Mirror Ball</b></a></div></div>
         </div>
-      <div class="group-label" id="epic">epic <span style="opacity:.6">· 33 cards · draw weight 8</span></div>
+      <div class="group-label" id="epic">epic <span style="opacity:.6">· 36 cards · draw weight 8</span></div>
       <div class="row" id="aftershock" style="--stripe:var(--epic)"
           data-hay="aftershock aftershock the ground remembers. half a second after each direct hit, the spot detonates for 40% of the damage. aftershock epic"
           data-stackable="0" data-req="0" data-con="0">
@@ -676,6 +655,13 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Spectral edge. The first enemy you hit each throw does not stop the orb -- it takes the hit and the orb carries straight on.</div>
           <div class="r-meta"><div class="tot"><code>phase_shot</code></div></div>
         </div>
+      <div class="row" id="quickening" style="--stripe:var(--epic)"
+          data-hay="quickening quickening blood in the air. each kill makes you faster, stacking up to 10. every hit you take costs 4 stacks. quickening epic nerfed on 28 september and made an epic: +9 move speed a stack, so ten stacks is +90 (+45%); it was +14 (+70%). a hit now costs 4 stacks (was 3). the chevrons at your feet point one way, as a fast-forward row; until 24 september they flipped whenever you turned."
+          data-stackable="0" data-req="0" data-con="0">
+          <div class="r-name" data-anchor><span>Quickening</span><span class="r-key">Quickening</span></div>
+          <div class="r-desc">Blood in the air. Each kill makes you faster, stacking up to 10. Every hit you take costs 4 stacks.<div class="tot">Nerfed on 28 September and made an epic: +9 move speed a stack, so ten stacks is +90 (+45%); it was +14 (+70%). A hit now costs 4 stacks (was 3). The chevrons at your feet point one way, as a fast-forward row; until 24 September they flipped whenever you turned.</div></div>
+          <div class="r-meta"><div class="tot"><code>quickening</code></div></div>
+        </div>
       <div class="row" id="rampage" style="--stripe:var(--epic)"
           data-hay="rampage rampage feeding frenzy. each kill makes the orb 5% bigger and 4% stronger, up to 10. shrinks back between kills. rampage epic"
           data-stackable="0" data-req="0" data-con="0">
@@ -697,6 +683,13 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Torn space. Blinking detonates for 30 damage at both the place you left and the place you arrive.</div>
           <div class="r-meta"><div class="tot"><code>rupture</code></div></div>
         </div>
+      <div class="row" id="seeker" style="--stripe:var(--epic)"
+          data-hay="seeker seeker predatory arc. after a direct hit the orb turns and flies at the next nearest enemy. +1 redirect per stack, up to 5. epic an epic to find, a rare to stack: once you own one, further copies are drawn at rare odds and in a rare frame. nerfed on 28 september: a redirect relaunches the orb at no less than 400px/s (was 520, most of a fresh throw, so a chain never lost pace) and looks 460px for its next target (was 620, nearly anywhere on screen). the five-redirect cap is unchanged."
+          data-stackable="1" data-req="0" data-con="0">
+          <div class="r-name" data-anchor><span>Seeker</span><span class="r-key">Seeker</span></div>
+          <div class="r-desc">Predatory arc. After a direct hit the orb turns and flies at the next nearest enemy. +1 redirect per stack, up to 5.<div class="tot">An epic to find, a rare to stack: once you own one, further copies are drawn at rare odds and in a rare frame. Nerfed on 28 September: a redirect relaunches the orb at no less than 400px/s (was 520, most of a fresh throw, so a chain never lost pace) and looks 460px for its next target (was 620, nearly anywhere on screen). The five-redirect cap is unchanged.</div></div>
+          <div class="r-meta"><div class="per">stackable · <b>cap 5</b></div><div class="per">further stacks drawn as <b style="color:var(--rare)">rare</b></div></div>
+        </div>
       <div class="row" id="slingshot" style="--stripe:var(--epic)"
           data-hay="slingshot slingshot every second orb that returns to you fires straight back out at the nearest enemy with 50% more force. slingshot epic"
           data-stackable="0" data-req="0" data-con="0">
@@ -717,6 +710,13 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-name" data-anchor><span>Stoneskin</span><span class="r-key">Stoneskin</span></div>
           <div class="r-desc">Skin like the old rocks. All damage you take is reduced by 20%.</div>
           <div class="r-meta"><div class="tot"><code>stoneskin</code></div></div>
+        </div>
+      <div class="row" id="tether" style="--stripe:var(--epic)"
+          data-hay="tether tether live wire. while recalling, the cord between you and the orb cuts and slows everything it crosses. tether epic nerfed on 28 september and made an epic (it was an uncommon): 24 damage every 0.36s to everything on the cord, 67 a second (it was 34 every 0.28s, 121 a second, several times the orb's own rate across a whole crowd), and the slow is ×0.70 for 0.8s (was ×0.55 for 1.2s). until 25 september the cord went invisible once the orb was more than a screen away, while still cutting everything it crossed; it now draws on its own."
+          data-stackable="0" data-req="0" data-con="0">
+          <div class="r-name" data-anchor><span>Tether</span><span class="r-key">Tether</span></div>
+          <div class="r-desc">Live wire. While recalling, the cord between you and the orb cuts and slows everything it crosses.<div class="tot">Nerfed on 28 September and made an epic (it was an uncommon): 24 damage every 0.36s to everything on the cord, 67 a second (it was 34 every 0.28s, 121 a second, several times the orb's own rate across a whole crowd), and the slow is ×0.70 for 0.8s (was ×0.55 for 1.2s). Until 25 September the cord went invisible once the orb was more than a screen away, while still cutting everything it crossed; it now draws on its own.</div></div>
+          <div class="r-meta"><div class="tot"><code>tether</code></div></div>
         </div>
       <div class="row" id="vampireorb" style="--stripe:var(--epic)"
           data-hay="vampireorb vampire orb insatiable hunger. life steal heals +1 extra hp per hit per stack. epic the card said +2 extra hp per stack until 23 september. the code has always given +1, so the text was corrected rather than the number."
