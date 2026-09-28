@@ -168,7 +168,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <tr><td>After wave 15</td><td><code>×½</code> every band above</td><td>Since 29 September. By then a build is strong enough that a steady trickle of hearts made it unkillable. The recap's healing average restarts here.</td></tr>
         <tr><td>Elite kill</td><td><code>×2</code> capped at 85%</td><td>A fight you chose to take should pay for itself — ×5 until 29 September, which was nearly a heart per crown.</td></tr>
         <tr><td>Boss kill</td><td><code>2 drops</code> guaranteed</td><td>Four until 29 September.</td></tr>
-        <tr><td>Nightmare</td><td><code>×0.7</code> on top of everything</td><td>And no heal between waves at all.</td></tr>
+        <tr><td>Nightmare</td><td><code>×0.7</code> on top of everything</td><td>Fewer hearts, but the same third-of-max heal between waves as every difficulty.</td></tr>
       </tbody>
     </table>
     <p class="tot">
@@ -191,7 +191,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   hit is <b>0.3s</b> (was 0.6s), so a crowd can land a second hit. Shields are capped at
   <b>30% of max health</b> and <b>drain after 8 seconds</b> without being hit. Life Steal heals on
   kills rather than hits, Overflow converts half, Second Wind is 3 seconds, Ward rebuilds in 25,
-  and the heal between waves is smaller. Every heal now runs through one function, so a
+  and every difficulty heals a third of your max health between waves (Easy 40%). Every heal now runs through one function, so a
   <a href="bestiary.html#plaguepriest">Plague Priest</a>'s aura, the Withered curse and Blood
   Price all scale it the same way — and the death recap can count it.</div>
 
@@ -206,7 +206,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-name" data-anchor><span>EASY</span><span class="r-key">easy</span></div>
         <div class="r-desc"><div>Weaker foes, room to breathe, and a deeper bag of rerolls.</div><div class="tot">For learning the orb.</div></div>
         <div class="r-meta"><div class="per">enemy health <span class="tot">-25%</span></div><div class="per">enemy damage <span class="tot">-30%</span></div><div class="per">enemy speed <span class="tot">-5%</span></div><div class="per">scaling rate <span class="tot">-30%</span></div><div class="per">spawn interval <span class="tot">+30%</span></div><div class="per">concurrent cap <span class="tot">-25%</span></div>
-          <div class="dep">heals 40% + 4 between waves</div>
+          <div class="dep">heals 40% of max health between waves</div>
           <div class="dep">5 rerolls · 5 banishes</div>
         </div>
       </div>
@@ -214,7 +214,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-name" data-anchor><span>MEDIUM</span><span class="r-key">medium</span></div>
         <div class="r-desc"><div>The ritual as it was written. The intended fight.</div><div class="tot">Recommended.</div></div>
         <div class="r-meta"><div class="per">enemy health <span class="tot">0%</span></div><div class="per">enemy damage <span class="tot">0%</span></div><div class="per">enemy speed <span class="tot">0%</span></div><div class="per">scaling rate <span class="tot">0%</span></div><div class="per">spawn interval <span class="tot">0%</span></div><div class="per">concurrent cap <span class="tot">0%</span></div>
-          <div class="dep">heals 25% between waves</div>
+          <div class="dep">heals 33% of max health between waves</div>
           <div class="dep">3 rerolls · 3 banishes</div>
         </div>
       </div>
@@ -222,15 +222,15 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-name" data-anchor><span>HARD</span><span class="r-key">hard</span></div>
         <div class="r-desc"><div>They come faster, hit harder, and the wave's respite is thin.</div><div class="tot">Some achievements only unlock here.</div></div>
         <div class="r-meta"><div class="per">enemy health <span class="tot">+45%</span></div><div class="per">enemy damage <span class="tot">+35%</span></div><div class="per">enemy speed <span class="tot">+8%</span></div><div class="per">scaling rate <span class="tot">+30%</span></div><div class="per">spawn interval <span class="tot">-22%</span></div><div class="per">concurrent cap <span class="tot">+35%</span></div>
-          <div class="dep">heals 10% between waves</div>
+          <div class="dep">heals 33% of max health between waves</div>
           <div class="dep">2 rerolls · 2 banishes</div>
         </div>
       </div>
-      <div class="row" id="diff-nightmare" style="--stripe:var(--epic)" data-hay="nightmare nightmare no rest between waves, bosses sooner, and the good cards hide. for a build that has to be earned.">
+      <div class="row" id="diff-nightmare" style="--stripe:var(--epic)" data-hay="nightmare nightmare deadlier foes, bosses sooner, and the good cards hide. for a build that has to be earned.">
         <div class="r-name" data-anchor><span>NIGHTMARE</span><span class="r-key">nightmare</span></div>
-        <div class="r-desc"><div>No rest between waves, bosses sooner, and the good cards hide.</div><div class="tot">For a build that has to be earned.</div></div>
+        <div class="r-desc"><div>Deadlier foes, bosses sooner, and the good cards hide.</div><div class="tot">For a build that has to be earned.</div></div>
         <div class="r-meta"><div class="per">enemy health <span class="tot">+90%</span></div><div class="per">enemy damage <span class="tot">+70%</span></div><div class="per">enemy speed <span class="tot">+15%</span></div><div class="per">scaling rate <span class="tot">+60%</span></div><div class="per">spawn interval <span class="tot">-38%</span></div><div class="per">concurrent cap <span class="tot">+60%</span></div>
-          <div class="dep">heals 0% between waves</div>
+          <div class="dep">heals 33% of max health between waves</div>
           <div class="dep">1 rerolls · 1 banishes</div>
           <div class="dep">hearts ×0.7</div>
           <div class="dep">a boss every 7th wave</div>

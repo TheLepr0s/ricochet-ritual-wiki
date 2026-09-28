@@ -577,7 +577,7 @@ export const DROPS = [
   { n: "Boss kill",        rate: "2 drops", per: "guaranteed",
     d: "Four until 29 September." },
   { n: "Nightmare",        rate: "×0.7",   per: "on top of everything",
-    d: "And no heal between waves at all." },
+    d: "Fewer hearts, but the same third-of-max heal between waves as every difficulty." },
 ];
 
 export const DROP_NOTE = `The drop rate reads your health <b>fraction</b>, so it is a rubber band
@@ -594,7 +594,7 @@ export const DROP_NOTE = `The drop rate reads your health <b>fraction</b>, so it
   hit is <b>0.3s</b> (was 0.6s), so a crowd can land a second hit. Shields are capped at
   <b>30% of max health</b> and <b>drain after 8 seconds</b> without being hit. Life Steal heals on
   kills rather than hits, Overflow converts half, Second Wind is 3 seconds, Ward rebuilds in 25,
-  and the heal between waves is smaller. Every heal now runs through one function, so a
+  and every difficulty heals a third of your max health between waves (Easy 40%). Every heal now runs through one function, so a
   <a href="bestiary.html#plaguepriest">Plague Priest</a>'s aura, the Withered curse and Blood
   Price all scale it the same way — and the death recap can count it.`;
 
@@ -736,7 +736,7 @@ export const COMBAT = [
         <br><br>
         <b>Survival.</b> Invulnerability 0.3s, shields capped and draining, Life Steal on kills,
         fewer hearts after wave 15, and the rest — see <a href="guide.html#drops">Staying alive</a>.
-        <b>Nightmare</b> is a fourth difficulty: harder enemies, no heal between waves, worse odds
+        <b>Nightmare</b> is a fourth difficulty: harder enemies, worse odds
         on rare cards, fewer hearts, and a boss every seventh wave.
         <br><br>
         <b>New enemies.</b> The <a href="bestiary.html#plaguepriest">Plague Priest</a> halves your
@@ -746,7 +746,13 @@ export const COMBAT = [
         <br><br>
         <b>The death screen</b> explains the death: killer, biggest hit, who hurt you, what did your
         damage, and healing per wave since your healing last changed. Enemy shots now name their
-        shooter there ("Bat's shot") rather than "Enemy shot".` },
+        shooter there ("Bat's shot") rather than "Enemy shot".
+        <br><br>
+        <b>Later the same day.</b> Enemies speed up more gently: <b>+8%</b> from wave 1 (was +15%),
+        <b>+1.4%</b> a wave (was +2%), capped at <b>×1.8</b> (was ×2). Wave 20 is now ×1.37 on
+        Medium (was ×1.59) and ×1.77 on Nightmare (was ×2.13). And every difficulty heals
+        <b>a third of your max health</b> after each wave — Easy 40% — where it used to heal a
+        share of what you were missing, and Nightmare healed nothing.` },
   { h: "The September 28 pass",
     p: `<b>Nerfs.</b> <a href="cards.html#tether">Tether</a>, <a href="cards.html#quickening">Quickening</a>
         and <a href="cards.html#seeker">Seeker</a> are weaker and now epic. Seeker is the first card

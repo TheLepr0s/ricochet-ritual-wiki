@@ -239,7 +239,7 @@ function guidePage() {
         <div class="r-meta">${cells}
           <div class="dep">heals ${Math.round(d.healFrac * 100)}%${
         d.healFlat ? ` + ${d.healFlat}` : ""
-      } between waves</div>
+      } of max health between waves</div>
           <div class="dep">${d.rerolls} rerolls · ${d.banishes} banishes</div>${
         d.dropMult != null ? `\n          <div class="dep">hearts ×${d.dropMult}</div>` : ""
       }${d.bossEvery ? `\n          <div class="dep">a boss every ${d.bossEvery}th wave</div>` : ""}${
@@ -562,7 +562,7 @@ ${sections}`;
    (consts.scaling), so the numbers here cannot drift from the game. */
 function scalingPara() {
   const s = D.consts.scaling || {};
-  const p = (x) => `+${Math.round(x * 100)}%`;
+  const p = (x) => `+${Math.round(x * 1000) / 10}%`;
   const capWave = Math.round((s.SPEED_RAMP_MAX - 1) / s.SPEED_SCALE + 1);
   return `<p>
       <b>How enemies scale.</b> Each wave adds <b>${p(s.HEALTH_SCALE)}</b> health and
@@ -646,6 +646,26 @@ function cardsPage() {
       ${rows}`;
   }).join("\n      ");
 
+  // Every family and the cards in it, one row each (player, Sept 29 2026: "make a list of
+  // families and what upgrades are in which family"). Builds & shop has the pull mechanics.
+  const famTable = (D.families || [])
+    .map((f) => {
+      const cards = D.upgrades
+        .filter((u) => u.fam === f.id)
+        .sort((a, b) => RARITY_ORDER.indexOf(a.r) - RARITY_ORDER.indexOf(b.r) || a.n.localeCompare(b.n));
+      const list = cards
+        .map(
+          (u) =>
+            `<a href="#${slug(u.k)}" style="color:var(--${u.r})">${esc(u.n)}</a>${
+              u.cls ? ` <span class="tot">(${esc((ARCH_BY_ID[u.cls] || {}).n || u.cls)} only)</span>` : ""
+            }`
+        )
+        .join(" · ");
+      return `<tr id="family-${slug(f.id)}"><td><a href="builds.html#fam-${slug(f.id)}"><b style="color:${rgb(f.col)}">${esc(f.n)}</b></a><div class="tot">${esc(f.d)}</div></td><td>${cards.length}</td><td>${list}</td></tr>`;
+    })
+    .join("\n        ");
+  const unfamilied = D.upgrades.filter((u) => !FAMILY_BY_ID[u.fam]);
+
   const stackable = D.upgrades.filter((u) => u.s).length;
   const capped = D.upgrades.filter((u) => u.cap).length;
   const gated = D.upgrades.filter((u) => u.req).length;
@@ -678,13 +698,35 @@ function cardsPage() {
     <div class="rows">
       ${groups}
     </div>
-    ${EMPTY}`;
+    ${EMPTY}
+
+    <h2 id="families">By family</h2>
+    <p>
+      Every card belongs to one of <b>${(D.families || []).length}</b> families. Owning cards in a
+      family makes its other cards turn up more often, and your two biggest families name your
+      build — see <a href="builds.html#families">Builds &amp; shop</a>. Cards are listed rarest last,
+      in their rarity's colour.
+    </p>
+    <div class="scroll"><table>
+      <thead><tr><th>Family</th><th>Cards</th><th>Which</th></tr></thead>
+      <tbody>
+        ${famTable}
+      </tbody>
+    </table></div>${
+      unfamilied.length
+        ? `
+    <p class="tot">No family: ${unfamilied.map((u) => `<a href="#${slug(u.k)}">${esc(u.n)}</a>`).join(", ")}</p>`
+        : ""
+    }`;
 
   return page({
     file: "cards.html",
     title: "Upgrade cards",
-    lead: `All ${D.upgrades.length} of them, grouped by rarity. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.`,
-    toc: RARITY_ORDER.filter((r) => byRarity[r]).map((r) => ({ id: slug(r), label: r })),
+    lead: `All ${D.upgrades.length} of them, grouped by rarity, then listed by family at the end. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.`,
+    toc: [
+      ...RARITY_ORDER.filter((r) => byRarity[r]).map((r) => ({ id: slug(r), label: r })),
+      { id: "families", label: "by family" },
+    ],
     body,
   });
 }
