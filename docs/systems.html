@@ -424,7 +424,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       reference kept those tables by hand, and three of them had already gone stale.
     </p>
     <p>
-      Enemy portraits are not copied out of the sprite folder. 18
+      Enemy portraits are not copied out of the sprite folder. 17
       of the 23 types borrow another one's art, so <code>tools/portraits_main.lua</code> renders each frame through
       the same recolour shader the game uses at draw time — a hue rotation in YIQ, or a multiply
       tint for the sprites with no chroma to rotate. Copying the PNGs would produce a bestiary in
