@@ -313,7 +313,7 @@ export const CARD_NOTE = {
   ReserveCharge: "Added 25 September. Your F ability holds two charges, and the cooldown refills one at a time whenever you are below two, so while one charge sits ready the other is already coming back. Spending the spare mid-refill does not restart the clock. Only offered once an ability is in the slot, and a newly swapped-in ability arrives with both charges. The ability bar shows the count after its name.",
   SecondWind:    "It puts you back on 30 HP (since 25 September; it used to leave you at 1) and makes you invulnerable for 3 seconds (since 29 September; 5 seconds from the 25th, and 1.6s of ordinary iframes before that): no damage and no roots, shown as a golden shell that flickers in its last second. The window is its own timer, so the Evil Wizard's hand, which wipes your ordinary iframes when it grabs you, cannot cut it short.",
   LifeSteal:     "Since 29 September it heals on the KILL — 2 HP for every enemy the orb kills — rather than on every hit. On a crowd it used to heal more than anything could hurt you, and a run with it was very hard to lose.",
-  Overflow:      "Since 29 September only half of any overheal becomes shield (it was all of it). Shields are also capped at 30% of your max health and drain once you go 3 seconds without being hit — see Staying alive on How to play.",
+  Overflow:      "Since 29 September only half of any overheal becomes shield (it was all of it). Shields are also capped at 30% of your max health and drain once you go 8 seconds without being hit (3 until the player's retune) — see Staying alive on How to play.",
   Ward:          "Rebuilds 25 seconds after it breaks since 29 September (it was 14).",
   IronSkin:      "+0.06s of invulnerability a stack since 29 September, when the base window halved from 0.6s to 0.3s — three stacks of the old +0.12s would have more than doubled it.",
   SafeHands:     "0.6s of invulnerability since 29 September, to sit above the halved 0.3s base.",
@@ -592,7 +592,7 @@ export const DROP_NOTE = `The drop rate reads your health <b>fraction</b>, so it
   <br><br>
   <b>The 29 September survivability pass</b> made dying possible again. Invulnerability after a
   hit is <b>0.3s</b> (was 0.6s), so a crowd can land a second hit. Shields are capped at
-  <b>30% of max health</b> and <b>drain after 3 seconds</b> without being hit. Life Steal heals on
+  <b>30% of max health</b> and <b>drain after 8 seconds</b> without being hit. Life Steal heals on
   kills rather than hits, Overflow converts half, Second Wind is 3 seconds, Ward rebuilds in 25,
   and the heal between waves is smaller. Every heal now runs through one function, so a
   <a href="bestiary.html#plaguepriest">Plague Priest</a>'s aura, the Withered curse and Blood
