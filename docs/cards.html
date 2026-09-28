@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Upgrade cards · Ricochet Ritual</title>
-<meta name="description" content="All 105 of them, grouped by rarity. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.">
+<meta name="description" content="All 143 of them, grouped by rarity. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
 <link rel="stylesheet" href="assets/wiki.css">
 <script>
@@ -32,6 +32,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <a href="bestiary.html"><em>☠</em>Bestiary</a>
         <a href="bosses.html"><em>♛</em>Bosses</a>
         <a href="cards.html" aria-current="page"><em>🂠</em>Upgrade cards</a>
+        <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
         <a href="abilities.html"><em>✦</em>Abilities</a>
         <a href="classes.html"><em>⚑</em>Classes</a>
         <a href="waves.html"><em>≋</em>Waves</a>
@@ -45,19 +46,20 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   <main>
     <div class="page-head">
       <h1>Upgrade cards</h1>
-      <p>All 105 of them, grouped by rarity. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.</p>
+      <p>All 143 of them, grouped by rarity. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.</p>
     </div>
     <div class="counts">
-      <div class="count"><b>105</b><span>cards</span></div>
-      <div class="count"><b>30</b><span>stackable</span></div>
-      <div class="count"><b>30</b><span>with a cap</span></div>
-      <div class="count"><b>21</b><span>need a prereq</span></div>
-      <div class="count"><b>8</b><span>mutually exclusive</span></div>
+      <div class="count"><b>143</b><span>cards</span></div>
+      <div class="count"><b>33</b><span>stackable</span></div>
+      <div class="count"><b>33</b><span>with a cap</span></div>
+      <div class="count"><b>29</b><span>need a prereq</span></div>
+      <div class="count"><b>12</b><span>mutually exclusive</span></div>
+      <div class="count"><b>12</b><span>class-only</span></div>
     </div>
 
     <div class="toolbar">
       <input class="filter" id="page-filter" type="search" placeholder="Filter cards by name, effect or stat key…" autocomplete="off" aria-label="Filter this page">
-      <div id="page-chips"><button type="button" class="chip" data-attr="stackable" aria-pressed="false">stackable</button><button type="button" class="chip" data-attr="req" aria-pressed="false">has prereq</button><button type="button" class="chip" data-attr="con" aria-pressed="false">exclusive</button></div>
+      <div id="page-chips"><button type="button" class="chip" data-attr="stackable" aria-pressed="false">stackable</button><button type="button" class="chip" data-attr="req" aria-pressed="false">has prereq</button><button type="button" class="chip" data-attr="con" aria-pressed="false">exclusive</button><button type="button" class="chip" data-attr="cls" aria-pressed="false">class cards</button></div>
       <span class="hits" id="page-hits"></span>
     </div>
 
@@ -72,743 +74,1152 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <div class="rows">
       <div class="group-label" id="common">common <span style="opacity:.6">· 4 cards · draw weight 40</span></div>
       <div class="row" id="orbdamage" style="--stripe:var(--common)"
-          data-hay="orbdamage striking force sharpen your orb's impact. orb damage +5 per hit. damage common"
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="orbdamage striking force sharpen your orb's impact. orb damage +5 per hit. damage common kinetic"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Striking Force</span><span class="r-key">OrbDamage</span></div>
           <div class="r-desc">Sharpen your orb's impact. Orb damage +5 per hit.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 10</b></div><div class="tot"><code>damage</code> +5</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="per">stackable · <b>cap 10</b></div><div class="tot"><code>damage</code> +5</div></div>
         </div>
       <div class="row" id="wizardspeed" style="--stripe:var(--common)"
-          data-hay="wizardspeed swift steps light-footed magic. move speed +20, dodge faster. speed common"
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="wizardspeed swift steps light-footed magic. move speed +20, dodge faster. speed common wild"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Swift Steps</span><span class="r-key">WizardSpeed</span></div>
           <div class="r-desc">Light-footed magic. Move speed +20, dodge faster.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 5</b></div><div class="tot"><code>speed</code> +20</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-wild"><b style="color:rgb(204,204,179)">Wild</b></a></div><div class="per">stackable · <b>cap 5</b></div><div class="tot"><code>speed</code> +20</div></div>
         </div>
       <div class="row" id="wizardhealth" style="--stripe:var(--common)"
-          data-hay="wizardhealth vitality fortify your body. max hp +10, healed immediately. max_health common"
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="wizardhealth vitality fortify your body. max hp +10, healed immediately. max_health common guardian"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Vitality</span><span class="r-key">WizardHealth</span></div>
           <div class="r-desc">Fortify your body. Max HP +10, healed immediately.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 10</b></div><div class="tot"><code>max_health</code> +10</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="per">stackable · <b>cap 10</b></div><div class="tot"><code>max_health</code> +10</div></div>
         </div>
       <div class="row" id="orbspeed" style="--stripe:var(--common)"
-          data-hay="orbspeed whiplash explosive launch power. orb launch force +100. force common"
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="orbspeed whiplash explosive launch power. orb launch force +100. force common kinetic"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Whiplash</span><span class="r-key">OrbSpeed</span></div>
           <div class="r-desc">Explosive launch power. Orb launch force +100.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 5</b></div><div class="tot"><code>force</code> +100</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="per">stackable · <b>cap 5</b></div><div class="tot"><code>force</code> +100</div></div>
         </div>
-      <div class="group-label" id="uncommon">uncommon <span style="opacity:.6">· 20 cards · draw weight 28</span></div>
+      <div class="group-label" id="uncommon">uncommon <span style="opacity:.6">· 23 cards · draw weight 28</span></div>
       <div class="row" id="backhand" style="--stripe:var(--uncommon)"
-          data-hay="backhand backhand no wind-up. slap the orb back as it comes at you, or swing within a second of catching it, and it leaves +60% faster and +35% harder. backhand uncommon since 26 september a swing that meets the orb while it is still flying at you (faster than 60px/s) counts too, judged per orb, so you can rally it: slap it back, it returns, slap it again. an orb already heading away does not count, so swinging twice cannot bank a second bonus. before, only the second after a catch counted, and a catch stops the orb dead — so it only ever worked on a standing ball."
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="backhand backhand no wind-up. slap the orb back as it comes at you, or swing within a second of catching it, and it leaves +60% faster and +35% harder. backhand uncommon since 26 september a swing that meets the orb while it is still flying at you (faster than 60px/s) counts too, judged per orb, so you can rally it: slap it back, it returns, slap it again. an orb already heading away does not count, so swinging twice cannot bank a second bonus. before, only the second after a catch counted, and a catch stops the orb dead — so it only ever worked on a standing ball. kinetic"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Backhand</span><span class="r-key">Backhand</span></div>
           <div class="r-desc">No wind-up. Slap the orb back as it comes at you, or swing within a second of catching it, and it leaves +60% faster and +35% harder.<div class="tot">Since 26 September a swing that meets the orb while it is still flying at you (faster than 60px/s) counts too, judged per orb, so you can rally it: slap it back, it returns, slap it again. An orb already heading away does not count, so swinging twice cannot bank a second bonus. Before, only the second after a catch counted, and a catch stops the orb dead — so it only ever worked on a standing ball.</div></div>
-          <div class="r-meta"><div class="tot"><code>backhand</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>backhand</code></div></div>
         </div>
       <div class="row" id="orbfire" style="--stripe:var(--uncommon)"
-          data-hay="orbfire blazing trail scorched earth. orb leaves burning fire that deals 20 damage per second. fire_trail uncommon"
-          data-stackable="0" data-req="0" data-con="1">
+          data-hay="orbfire blazing trail scorched earth. orb leaves burning fire that deals 20 damage per second. fire_trail uncommon fire"
+          data-stackable="0" data-req="0" data-con="1"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Blazing Trail</span><span class="r-key">OrbFire</span></div>
           <div class="r-desc">Scorched earth. Orb leaves burning fire that deals 20 damage per second.</div>
-          <div class="r-meta"><div class="tot"><code>fire_trail</code></div><div class="dep flag">excludes <a href="#freezingshot"><b>Freezing Shot</b></a>, <a href="#frozencourt"><b>Frozen Court</b></a>, <a href="#leechfield"><b>Leech Field</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-fire"><b style="color:rgb(255,115,51)">Fire</b></a></div><div class="tot"><code>fire_trail</code></div><div class="dep flag">excludes <a href="#freezingshot"><b>Freezing Shot</b></a>, <a href="#frozencourt"><b>Frozen Court</b></a>, <a href="#leechfield"><b>Leech Field</b></a></div></div>
         </div>
       <div class="row" id="blinkstrike" style="--stripe:var(--uncommon)"
-          data-hay="blinkstrike blink strike slippery magic. blink dash cooldown reduced by 0.5s. uncommon"
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="blinkstrike blink strike slippery magic. blink dash cooldown reduced by 0.5s. uncommon void"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Blink Strike</span><span class="r-key">BlinkStrike</span></div>
           <div class="r-desc">Slippery magic. Blink dash cooldown reduced by 0.5s.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><b style="color:rgb(179,102,255)">Void</b></a></div><div class="per">stackable · <b>cap 4</b></div></div>
         </div>
       <div class="row" id="bloodrush" style="--stripe:var(--uncommon)"
-          data-hay="bloodrush bloodrush hunter's high. each kill boosts your movement speed by 120 for 2 seconds. bloodrush uncommon"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="bloodrush bloodrush hunter's high. each kill boosts your movement speed by 120 for 2 seconds. bloodrush uncommon blood"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Bloodrush</span><span class="r-key">Bloodrush</span></div>
           <div class="r-desc">Hunter's high. Each kill boosts your movement speed by 120 for 2 seconds.</div>
-          <div class="r-meta"><div class="tot"><code>bloodrush</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>bloodrush</code></div></div>
         </div>
       <div class="row" id="carom" style="--stripe:var(--uncommon)"
-          data-hay="carom carom trick shot. every wall bounce charges the orb +15% damage, up to 5, spent on the next enemy hit. carom uncommon"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="carom carom trick shot. every wall bounce charges the orb +15% damage, up to 5, spent on the next enemy hit. carom uncommon kinetic"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Carom</span><span class="r-key">Carom</span></div>
           <div class="r-desc">Trick shot. Every wall bounce charges the orb +15% damage, up to 5, spent on the next enemy hit.</div>
-          <div class="r-meta"><div class="tot"><code>carom</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>carom</code></div></div>
+        </div>
+      <div class="row" id="coldsnap" style="--stripe:var(--uncommon)"
+          data-hay="coldsnap cold snap numbing chill. chilled and frozen enemies deal 25% less damage to you. cold_snap uncommon frost"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Cold Snap</span><span class="r-key">ColdSnap</span></div>
+          <div class="r-desc">Numbing chill. Chilled and frozen enemies deal 25% less damage to you.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-frost"><b style="color:rgb(140,217,255)">Frost</b></a></div><div class="tot"><code>cold_snap</code></div></div>
         </div>
       <div class="row" id="featherweight" style="--stripe:var(--uncommon)"
-          data-hay="featherweight featherweight nothing to carry. move speed +40%, but max hp -15%. uncommon"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="featherweight featherweight nothing to carry. move speed +40%, but max hp -15%. uncommon wild"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Featherweight</span><span class="r-key">Featherweight</span></div>
           <div class="r-desc">Nothing to carry. Move speed +40%, but max HP -15%.</div>
-          <div class="r-meta"></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-wild"><b style="color:rgb(204,204,179)">Wild</b></a></div></div>
         </div>
       <div class="row" id="fortune" style="--stripe:var(--uncommon)"
-          data-hay="fortune fortune a better hand. gain 2 more rerolls right now. uncommon"
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="fortune fortune a better hand. gain 2 more rerolls right now. uncommon wild"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Fortune</span><span class="r-key">Fortune</span></div>
           <div class="r-desc">A better hand. Gain 2 more rerolls right now.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 5</b></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-wild"><b style="color:rgb(204,204,179)">Wild</b></a></div><div class="per">stackable · <b>cap 5</b></div></div>
         </div>
       <div class="row" id="freezingshot" style="--stripe:var(--uncommon)"
-          data-hay="freezingshot freezing shot chill to the bone. hit an enemy twice in 3s to freeze them solid for 2s. freezing_shot uncommon"
-          data-stackable="0" data-req="0" data-con="1">
+          data-hay="freezingshot freezing shot chill to the bone. hit an enemy twice in 3s to freeze them solid for 2s. freezing_shot uncommon frost"
+          data-stackable="0" data-req="0" data-con="1"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Freezing Shot</span><span class="r-key">FreezingShot</span></div>
           <div class="r-desc">Chill to the bone. Hit an enemy twice in 3s to freeze them solid for 2s.</div>
-          <div class="r-meta"><div class="tot"><code>freezing_shot</code></div><div class="dep flag">excludes <a href="#orbfire"><b>Blazing Trail</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-frost"><b style="color:rgb(140,217,255)">Frost</b></a></div><div class="tot"><code>freezing_shot</code></div><div class="dep flag">excludes <a href="#orbfire"><b>Blazing Trail</b></a></div></div>
         </div>
       <div class="row" id="frozencourt" style="--stripe:var(--uncommon)"
-          data-hay="frozencourt frozen court icy wake. orb trail slows enemies by 65% while they stand in it. frozen_court uncommon"
-          data-stackable="0" data-req="0" data-con="1">
+          data-hay="frozencourt frozen court icy wake. orb trail slows enemies by 65% while they stand in it. frozen_court uncommon frost"
+          data-stackable="0" data-req="0" data-con="1"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Frozen Court</span><span class="r-key">FrozenCourt</span></div>
           <div class="r-desc">Icy wake. Orb trail slows enemies by 65% while they stand in it.</div>
-          <div class="r-meta"><div class="tot"><code>frozen_court</code></div><div class="dep flag">excludes <a href="#orbfire"><b>Blazing Trail</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-frost"><b style="color:rgb(140,217,255)">Frost</b></a></div><div class="tot"><code>frozen_court</code></div><div class="dep flag">excludes <a href="#orbfire"><b>Blazing Trail</b></a></div></div>
         </div>
       <div class="row" id="orbsize" style="--stripe:var(--uncommon)"
-          data-hay="orbsize heavy orb grow the orb's mass. size +20%, wider hitbox. scale uncommon"
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="orbsize heavy orb grow the orb's mass. size +20%, wider hitbox. scale uncommon kinetic"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Heavy Orb</span><span class="r-key">OrbSize</span></div>
           <div class="r-desc">Grow the orb's mass. Size +20%, wider hitbox.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 6</b></div><div class="tot"><code>scale</code> +0.03</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="per">stackable · <b>cap 6</b></div><div class="tot"><code>scale</code> +0.03</div></div>
         </div>
       <div class="row" id="hoarfrost" style="--stripe:var(--uncommon)"
-          data-hay="hoarfrost hoarfrost cold touch. every direct hit slows the enemy by 40% for 1.5 seconds. hoarfrost uncommon"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="hoarfrost hoarfrost cold touch. every direct hit slows the enemy by 40% for 1.5 seconds. hoarfrost uncommon frost"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Hoarfrost</span><span class="r-key">Hoarfrost</span></div>
           <div class="r-desc">Cold touch. Every direct hit slows the enemy by 40% for 1.5 seconds.</div>
-          <div class="r-meta"><div class="tot"><code>hoarfrost</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-frost"><b style="color:rgb(140,217,255)">Frost</b></a></div><div class="tot"><code>hoarfrost</code></div></div>
+        </div>
+      <div class="row" id="ignition" style="--stripe:var(--uncommon)"
+          data-hay="ignition ignition set it alight. direct hits set enemies burning for 3 seconds, and so does your blazing trail. ignition uncommon fire"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Ignition</span><span class="r-key">Ignition</span></div>
+          <div class="r-desc">Set it alight. Direct hits set enemies burning for 3 seconds, and so does your Blazing Trail.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-fire"><b style="color:rgb(255,115,51)">Fire</b></a></div><div class="tot"><code>ignition</code></div></div>
         </div>
       <div class="row" id="ironskin" style="--stripe:var(--uncommon)"
-          data-hay="ironskin iron skin hardened body. invincibility frames after being hit +0.12s. uncommon"
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="ironskin iron skin hardened body. invincibility frames after being hit +0.06s. uncommon +0.06s of invulnerability a stack since 29 september, when the base window halved from 0.6s to 0.3s — three stacks of the old +0.12s would have more than doubled it. guardian"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Iron Skin</span><span class="r-key">IronSkin</span></div>
-          <div class="r-desc">Hardened body. Invincibility frames after being hit +0.12s.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 3</b></div></div>
+          <div class="r-desc">Hardened body. Invincibility frames after being hit +0.06s.<div class="tot">+0.06s of invulnerability a stack since 29 September, when the base window halved from 0.6s to 0.3s — three stacks of the old +0.12s would have more than doubled it.</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="per">stackable · <b>cap 3</b></div></div>
         </div>
       <div class="row" id="lifesteal" style="--stripe:var(--uncommon)"
-          data-hay="lifesteal life steal vampiric orb. each enemy hit restores 1 hp. life_steal uncommon"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="lifesteal life steal vampiric orb. every enemy the orb kills restores 2 hp. life_steal uncommon since 29 september it heals on the kill — 2 hp for every enemy the orb kills — rather than on every hit. on a crowd it used to heal more than anything could hurt you, and a run with it was very hard to lose. blood"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Life Steal</span><span class="r-key">LifeSteal</span></div>
-          <div class="r-desc">Vampiric orb. Each enemy hit restores 1 HP.</div>
-          <div class="r-meta"><div class="tot"><code>life_steal</code></div></div>
+          <div class="r-desc">Vampiric orb. Every enemy the orb kills restores 2 HP.<div class="tot">Since 29 September it heals on the KILL — 2 HP for every enemy the orb kills — rather than on every hit. On a crowd it used to heal more than anything could hurt you, and a run with it was very hard to lose.</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>life_steal</code></div></div>
         </div>
       <div class="row" id="lightcore" style="--stripe:var(--uncommon)"
-          data-hay="lightcore light core hollow crystal core. higher top speed and much faster acceleration. uncommon"
-          data-stackable="0" data-req="0" data-con="1">
+          data-hay="lightcore light core hollow crystal core. higher top speed and much faster acceleration. uncommon kinetic"
+          data-stackable="0" data-req="0" data-con="1"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Light Core</span><span class="r-key">LightCore</span></div>
           <div class="r-desc">Hollow crystal core. Higher top speed and much faster acceleration.</div>
-          <div class="r-meta"><div class="dep flag">excludes <a href="#heavycore"><b>Heavy Core</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="dep flag">excludes <a href="#heavycore"><b>Heavy Core</b></a></div></div>
         </div>
       <div class="row" id="magneticgrip" style="--stripe:var(--uncommon)"
-          data-hay="magneticgrip magnetic grip invisible tether. orb slowly drifts back toward you when idle. magnetic_grip uncommon pulls the orb home until it is within 40px of you (inside swing reach), then brakes it to rest there. until 25 september it never stopped pulling: the orb reached you, was caught, was nudged into you again and caught again, every frame — a loud buzz of catch sounds, and a dead stop blast each time if you held that card."
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="magneticgrip magnetic grip invisible tether. orb slowly drifts back toward you when idle. magnetic_grip uncommon pulls the orb home until it is within 40px of you (inside swing reach), then brakes it to rest there. until 25 september it never stopped pulling: the orb reached you, was caught, was nudged into you again and caught again, every frame — a loud buzz of catch sounds, and a dead stop blast each time if you held that card. kinetic"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Magnetic Grip</span><span class="r-key">MagneticGrip</span></div>
           <div class="r-desc">Invisible tether. Orb slowly drifts back toward you when idle.<div class="tot">Pulls the orb home until it is within 40px of you (inside swing reach), then brakes it to rest there. Until 25 September it never stopped pulling: the orb reached you, was caught, was nudged into you again and caught again, every frame — a loud buzz of catch sounds, and a Dead Stop blast each time if you held that card.</div></div>
-          <div class="r-meta"><div class="tot"><code>magnetic_grip</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>magnetic_grip</code></div></div>
         </div>
       <div class="row" id="marksman" style="--stripe:var(--uncommon)"
-          data-hay="marksman marksman distance is damage. hits landed far from you deal +12% more per stack. uncommon"
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="marksman marksman distance is damage. hits landed far from you deal +12% more per stack. uncommon precision"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Marksman</span><span class="r-key">Marksman</span></div>
           <div class="r-desc">Distance is damage. Hits landed far from you deal +12% more per stack.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 5</b></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-precision"><b style="color:rgb(255,235,140)">Precision</b></a></div><div class="per">stackable · <b>cap 5</b></div></div>
         </div>
       <div class="row" id="metronome" style="--stripe:var(--uncommon)"
-          data-hay="metronome metronome keep the beat. you get 1.6s longer to land the next hit before the combo drops. uncommon"
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="metronome metronome keep the beat. you get 1.6s longer to land the next hit before the combo drops. uncommon combo"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Metronome</span><span class="r-key">Metronome</span></div>
           <div class="r-desc">Keep the beat. You get 1.6s longer to land the next hit before the combo drops.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 5</b></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-combo"><b style="color:rgb(255,140,217)">Combo</b></a></div><div class="per">stackable · <b>cap 5</b></div></div>
         </div>
       <div class="row" id="pushback" style="--stripe:var(--uncommon)"
-          data-hay="pushback pushback brute force. everything you hit is knocked back 25% harder and takes 10% more damage, per stack. uncommon"
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="pushback pushback brute force. everything you hit is knocked back 25% harder and takes 10% more damage, per stack. uncommon kinetic"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Pushback</span><span class="r-key">Pushback</span></div>
           <div class="r-desc">Brute force. Everything you hit is knocked back 25% harder and takes 10% more damage, per stack.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="per">stackable · <b>cap 4</b></div></div>
         </div>
       <div class="row" id="safehands" style="--stripe:var(--uncommon)"
-          data-hay="safehands safe hands practised hands. catching the orb makes you invulnerable for 1 second. safe_hands uncommon"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="safehands safe hands practised hands. catching the orb makes you invulnerable for 0.6 seconds. safe_hands uncommon 0.6s of invulnerability since 29 september, to sit above the halved 0.3s base. guardian"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Safe Hands</span><span class="r-key">SafeHands</span></div>
-          <div class="r-desc">Practised hands. Catching the orb makes you invulnerable for 1 second.</div>
-          <div class="r-meta"><div class="tot"><code>safe_hands</code></div></div>
+          <div class="r-desc">Practised hands. Catching the orb makes you invulnerable for 0.6 seconds.<div class="tot">0.6s of invulnerability since 29 September, to sit above the halved 0.3s base.</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>safe_hands</code></div></div>
+        </div>
+      <div class="row" id="showboat" style="--stripe:var(--uncommon)"
+          data-hay="showboat showboat play to the crowd. the orb flies 5% faster for every combo tier you reach. showboat uncommon combo"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Showboat</span><span class="r-key">Showboat</span></div>
+          <div class="r-desc">Play to the crowd. The orb flies 5% faster for every combo tier you reach.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-combo"><b style="color:rgb(255,140,217)">Combo</b></a></div><div class="tot"><code>showboat</code></div></div>
         </div>
       <div class="row" id="vampiricaura" style="--stripe:var(--uncommon)"
-          data-hay="vampiricaura vampiric aura close feeding. anything that dies near you gives back 2 hp. vampiric_aura uncommon"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="vampiricaura vampiric aura close feeding. anything that dies near you gives back 2 hp. vampiric_aura uncommon blood"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Vampiric Aura</span><span class="r-key">VampiricAura</span></div>
           <div class="r-desc">Close feeding. Anything that dies near you gives back 2 HP.</div>
-          <div class="r-meta"><div class="tot"><code>vampiric_aura</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>vampiric_aura</code></div></div>
         </div>
-      <div class="group-label" id="rare">rare <span style="opacity:.6">· 38 cards · draw weight 16</span></div>
+      <div class="group-label" id="rare">rare <span style="opacity:.6">· 52 cards · draw weight 16</span></div>
       <div class="row" id="adrenaline" style="--stripe:var(--rare)"
-          data-hay="adrenaline adrenaline cornered animal. orb damage climbs as your health falls, up to +80% at death's door. adrenaline rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="adrenaline adrenaline cornered animal. orb damage climbs as your health falls, up to +80% at death's door. adrenaline rare blood"
+          data-stackable="0" data-req="0" data-con="1"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Adrenaline</span><span class="r-key">Adrenaline</span></div>
           <div class="r-desc">Cornered animal. Orb damage climbs as your health falls, up to +80% at death's door.</div>
-          <div class="r-meta"><div class="tot"><code>adrenaline</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>adrenaline</code></div><div class="dep flag">excludes <a href="#bloodprice"><b>Blood Price</b></a></div></div>
         </div>
       <div class="row" id="aegis" style="--stripe:var(--rare)"
-          data-hay="aegis aegis guarded. your orb swats enemy projectiles out of the air, even at a standstill. aegis rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="aegis aegis guarded. your orb swats enemy projectiles out of the air, even at a standstill. aegis rare guardian"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Aegis</span><span class="r-key">Aegis</span></div>
           <div class="r-desc">Guarded. Your orb swats enemy projectiles out of the air, even at a standstill.</div>
-          <div class="r-meta"><div class="tot"><code>aegis</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>aegis</code></div></div>
+        </div>
+      <div class="row" id="afterimage" style="--stripe:var(--rare)"
+          data-hay="afterimage afterimage left behind. blinking leaves an afterimage that explodes after 0.6s for twice your orb's damage. afterimage rare void stalker"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="1">
+          <div class="r-name" data-anchor><span>Afterimage</span><span class="r-key">Afterimage</span></div>
+          <div class="r-desc">Left behind. Blinking leaves an afterimage that explodes after 0.6s for twice your orb's damage.</div>
+          <div class="r-meta"><div class="dep flag"><b style="color:rgb(191,153,255)">STALKER</b> only</div><div class="per">family <a href="builds.html#fam-void"><b style="color:rgb(179,102,255)">Void</b></a></div><div class="tot"><code>afterimage</code></div></div>
+        </div>
+      <div class="row" id="angeldamage" style="--stripe:var(--rare)"
+          data-hay="angeldamage angel's wrath brighter light. angel lance damage +7. rare beast"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Angel's Wrath</span><span class="r-key">AngelDamage</span></div>
+          <div class="r-desc">Brighter light. Angel lance damage +7.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="per">stackable · <b>cap 5</b></div><div class="dep">needs <a href="#angelcompanion"><b>Angel Companion</b></a></div></div>
         </div>
       <div class="row" id="berserkercore" style="--stripe:var(--rare)"
-          data-hay="berserkercore berserker core blood frenzy. each kill adds speed &amp; damage. stacks up to 8, lost on hit. berserker_core rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="berserkercore berserker core blood frenzy. each kill adds speed &amp; damage. stacks up to 8, lost on hit. berserker_core rare blood"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Berserker Core</span><span class="r-key">BerserkerCore</span></div>
           <div class="r-desc">Blood frenzy. Each kill adds speed &amp; damage. Stacks up to 8, lost on hit.</div>
-          <div class="r-meta"><div class="tot"><code>berserker_core</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>berserker_core</code></div></div>
         </div>
       <div class="row" id="blastradius" style="--stripe:var(--rare)"
-          data-hay="blastradius blast radius wider ruin. every explosion, pulse and shockwave your orb makes reaches 30% further. rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="blastradius blast radius wider ruin. every explosion, pulse and shockwave your orb makes reaches 30% further. rare fire"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Blast Radius</span><span class="r-key">BlastRadius</span></div>
           <div class="r-desc">Wider ruin. Every explosion, pulse and shockwave your orb makes reaches 30% further.</div>
-          <div class="r-meta"></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-fire"><b style="color:rgb(255,115,51)">Fire</b></a></div></div>
         </div>
       <div class="row" id="bloodfeast" style="--stripe:var(--rare)"
-          data-hay="bloodfeast blood feast trade up. killing anything within 3s of being hurt restores 4 hp. blood_feast rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="bloodfeast blood feast trade up. killing anything within 3s of being hurt restores 4 hp. blood_feast rare blood"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Blood Feast</span><span class="r-key">BloodFeast</span></div>
           <div class="r-desc">Trade up. Killing anything within 3s of being hurt restores 4 HP.</div>
-          <div class="r-meta"><div class="tot"><code>blood_feast</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>blood_feast</code></div></div>
+        </div>
+      <div class="row" id="boomerang" style="--stripe:var(--rare)"
+          data-hay="boomerang boomerang comes back to you. every throw returns on its own after 0.8s -- but you can no longer recall. boomerang rare kinetic"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Boomerang</span><span class="r-key">Boomerang</span></div>
+          <div class="r-desc">Comes back to you. Every throw returns on its own after 0.8s -- but you can no longer recall.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>boomerang</code></div></div>
+        </div>
+      <div class="row" id="bowling" style="--stripe:var(--rare)"
+          data-hay="bowling bowling strike. enemies your orb knocks back become projectiles: anything they slam into takes half the hit. bowling rare kinetic breaker"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="1">
+          <div class="r-name" data-anchor><span>Bowling</span><span class="r-key">Bowling</span></div>
+          <div class="r-desc">Strike. Enemies your orb knocks back become projectiles: anything they slam into takes half the hit.</div>
+          <div class="r-meta"><div class="dep flag"><b style="color:rgb(255,158,77)">BREAKER</b> only</div><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>bowling</code></div></div>
         </div>
       <div class="row" id="chainlightning" style="--stripe:var(--rare)"
-          data-hay="chainlightning chain lightning arc discharge. every hit chains lightning to up to 3 nearby foes. chain_lightning rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="chainlightning chain lightning arc discharge. every hit chains lightning to up to 3 nearby foes. chain_lightning rare storm"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Chain Lightning</span><span class="r-key">ChainLightning</span></div>
           <div class="r-desc">Arc discharge. Every hit chains lightning to up to 3 nearby foes.</div>
-          <div class="r-meta"><div class="tot"><code>chain_lightning</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-storm"><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="tot"><code>chain_lightning</code></div></div>
         </div>
       <div class="row" id="chargedshot" style="--stripe:var(--rare)"
-          data-hay="chargedshot charged shot wind it up. hold the throw to charge it through three levels, release to let it fly -- up to 2.1x launch force and 2.2x damage on the first thing it hits. it never fires on its own. charged_shot rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="chargedshot charged shot wind it up. hold the throw to charge it through three levels, release to let it fly -- up to 2.1x launch force and 2.2x damage on the first thing it hits. it never fires on its own. charged_shot rare precision"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Charged Shot</span><span class="r-key">ChargedShot</span></div>
           <div class="r-desc">Wind it up. Hold the throw to charge it through three levels, release to let it fly -- up to 2.1x launch force and 2.2x damage on the first thing it hits. It never fires on its own.</div>
-          <div class="r-meta"><div class="tot"><code>charged_shot</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-precision"><b style="color:rgb(255,235,140)">Precision</b></a></div><div class="tot"><code>charged_shot</code></div></div>
+        </div>
+      <div class="row" id="combobreaker" style="--stripe:var(--rare)"
+          data-hay="combobreaker combo breaker go out with a bang. when a combo of 10 or more drops, it detonates around you -- harder the bigger it was. combo_breaker rare combo"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Combo Breaker</span><span class="r-key">ComboBreaker</span></div>
+          <div class="r-desc">Go out with a bang. When a combo of 10 or more drops, it detonates around you -- harder the bigger it was.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-combo"><b style="color:rgb(255,140,217)">Combo</b></a></div><div class="tot"><code>combo_breaker</code></div></div>
         </div>
       <div class="row" id="crescendo" style="--stripe:var(--rare)"
-          data-hay="crescendo crescendo build it up. every 10th hit of a combo detonates a free void ring around the orb. crescendo rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="crescendo crescendo build it up. every 10th hit of a combo detonates a free void ring around the orb. crescendo rare combo"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Crescendo</span><span class="r-key">Crescendo</span></div>
           <div class="r-desc">Build it up. Every 10th hit of a combo detonates a free void ring around the orb.</div>
-          <div class="r-meta"><div class="tot"><code>crescendo</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-combo"><b style="color:rgb(255,140,217)">Combo</b></a></div><div class="tot"><code>crescendo</code></div></div>
         </div>
       <div class="row" id="criticalmass" style="--stripe:var(--rare)"
-          data-hay="criticalmass critical mass volatile energy. orb critical hit chance +10% per stack. crit_chance rare"
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="criticalmass critical mass volatile energy. orb critical hit chance +10% per stack. crit_chance rare precision"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Critical Mass</span><span class="r-key">CriticalMass</span></div>
           <div class="r-desc">Volatile energy. Orb critical hit chance +10% per stack.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 5</b></div><div class="tot"><code>crit_chance</code> +0.1</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-precision"><b style="color:rgb(255,235,140)">Precision</b></a></div><div class="per">stackable · <b>cap 5</b></div><div class="tot"><code>crit_chance</code> +0.1</div></div>
         </div>
       <div class="row" id="curator" style="--stripe:var(--rare)"
-          data-hay="curator curator refined taste. banished cards are replaced by an epic or legendary. rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="curator curator refined taste. banished cards are replaced by an epic or legendary. rare wild"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Curator</span><span class="r-key">Curator</span></div>
           <div class="r-desc">Refined taste. Banished cards are replaced by an epic or legendary.</div>
-          <div class="r-meta"></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-wild"><b style="color:rgb(204,204,179)">Wild</b></a></div></div>
         </div>
       <div class="row" id="deadstop" style="--stripe:var(--rare)"
-          data-hay="deadstop dead stop bone-jarring catch. stopping the orb with your body blasts nearby enemies, harder the faster it was going. dead_stop rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="deadstop dead stop bone-jarring catch. stopping the orb with your body blasts nearby enemies, harder the faster it was going. dead_stop rare kinetic"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Dead Stop</span><span class="r-key">DeadStop</span></div>
           <div class="r-desc">Bone-jarring catch. Stopping the orb with your body blasts nearby enemies, harder the faster it was going.</div>
-          <div class="r-meta"><div class="tot"><code>dead_stop</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>dead_stop</code></div></div>
         </div>
       <div class="row" id="demondamage" style="--stripe:var(--rare)"
-          data-hay="demondamage demon claws serrated demonic claws. demon hit damage +8. rare"
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="demondamage demon claws serrated demonic claws. demon hit damage +8. rare beast"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Demon Claws</span><span class="r-key">DemonDamage</span></div>
           <div class="r-desc">Serrated demonic claws. Demon hit damage +8.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 5</b></div><div class="dep">needs <a href="#demoncompanion"><b>Demon Companion</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="per">stackable · <b>cap 5</b></div><div class="dep">needs <a href="#demoncompanion"><b>Demon Companion</b></a></div></div>
         </div>
       <div class="row" id="fracture" style="--stripe:var(--rare)"
-          data-hay="fracture fracture spalling. wall bounces shed two cutting shards that fly off and carve anything they meet. fracture rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="fracture fracture spalling. wall bounces shed two cutting shards that fly off and carve anything they meet. fracture rare kinetic"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Fracture</span><span class="r-key">Fracture</span></div>
           <div class="r-desc">Spalling. Wall bounces shed two cutting shards that fly off and carve anything they meet.</div>
-          <div class="r-meta"><div class="tot"><code>fracture</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>fracture</code></div></div>
         </div>
       <div class="row" id="frostbite" style="--stripe:var(--rare)"
-          data-hay="frostbite frostbite cold shatter. a frozen enemy that dies bursts into an ice nova, damaging and chilling the rest. frostbite rare"
-          data-stackable="0" data-req="1" data-con="0">
+          data-hay="frostbite frostbite cold shatter. a frozen enemy that dies bursts into an ice nova, damaging and chilling the rest. frostbite rare frost"
+          data-stackable="0" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Frostbite</span><span class="r-key">Frostbite</span></div>
           <div class="r-desc">Cold shatter. A frozen enemy that dies bursts into an ice nova, damaging and chilling the rest.</div>
-          <div class="r-meta"><div class="tot"><code>frostbite</code></div><div class="dep">needs <a href="#freezingshot"><b>Freezing Shot</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-frost"><b style="color:rgb(140,217,255)">Frost</b></a></div><div class="tot"><code>frostbite</code></div><div class="dep">needs <a href="#freezingshot"><b>Freezing Shot</b></a></div></div>
         </div>
       <div class="row" id="gravitysnap" style="--stripe:var(--rare)"
-          data-hay="gravitysnap gravity snap dragnet. a recalled orb hauls every enemy it passes along behind it. gravity_snap rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="gravitysnap gravity snap dragnet. a recalled orb hauls every enemy it passes along behind it. gravity_snap rare void"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Gravity Snap</span><span class="r-key">GravitySnap</span></div>
           <div class="r-desc">Dragnet. A recalled orb hauls every enemy it passes along behind it.</div>
-          <div class="r-meta"><div class="tot"><code>gravity_snap</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><b style="color:rgb(179,102,255)">Void</b></a></div><div class="tot"><code>gravity_snap</code></div></div>
+        </div>
+      <div class="row" id="hemorrhage" style="--stripe:var(--rare)"
+          data-hay="hemorrhage hemorrhage deep cuts. each bleed stack on an enemy makes it take 2% more damage from everything, up to 10 stacks. hemorrhage rare blood"
+          data-stackable="0" data-req="1" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Hemorrhage</span><span class="r-key">Hemorrhage</span></div>
+          <div class="r-desc">Deep cuts. Each bleed stack on an enemy makes it take 2% more damage from everything, up to 10 stacks.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>hemorrhage</code></div><div class="dep">needs <a href="#bleed"><b>Open Wound</b></a></div></div>
         </div>
       <div class="row" id="hominginstinct" style="--stripe:var(--rare)"
-          data-hay="hominginstinct homing instinct seeks warm flesh. orb gently steers toward the nearest enemy. homing_instinct rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="hominginstinct homing instinct seeks warm flesh. orb gently steers toward the nearest enemy. homing_instinct rare precision"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Homing Instinct</span><span class="r-key">HomingInstinct</span></div>
           <div class="r-desc">Seeks warm flesh. Orb gently steers toward the nearest enemy.</div>
-          <div class="r-meta"><div class="tot"><code>homing_instinct</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-precision"><b style="color:rgb(255,235,140)">Precision</b></a></div><div class="tot"><code>homing_instinct</code></div></div>
+        </div>
+      <div class="row" id="kindling" style="--stripe:var(--rare)"
+          data-hay="kindling kindling fuel for the fire. burning enemies take 25% more damage from the orb. kindling rare fire"
+          data-stackable="0" data-req="1" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Kindling</span><span class="r-key">Kindling</span></div>
+          <div class="r-desc">Fuel for the fire. Burning enemies take 25% more damage from the orb.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-fire"><b style="color:rgb(255,115,51)">Fire</b></a></div><div class="tot"><code>kindling</code></div><div class="dep">needs <a href="#ignition"><b>Ignition</b></a></div></div>
         </div>
       <div class="row" id="kineticplating" style="--stripe:var(--rare)"
-          data-hay="kineticplating kinetic plating force into armour. every 6 orb hits you land build 8 points of shield. rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="kineticplating kinetic plating force into armour. every 6 orb hits you land build 8 points of shield. rare guardian"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Kinetic Plating</span><span class="r-key">KineticPlating</span></div>
           <div class="r-desc">Force into armour. Every 6 orb hits you land build 8 points of shield.</div>
-          <div class="r-meta"></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div></div>
+        </div>
+      <div class="row" id="angeljudgement" style="--stripe:var(--rare)"
+          data-hay="angeljudgement lasting judgement the verdict holds. judgement lasts 1.5s longer. rare beast"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Lasting Judgement</span><span class="r-key">AngelJudgement</span></div>
+          <div class="r-desc">The verdict holds. Judgement lasts 1.5s longer.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#angelcompanion"><b>Angel Companion</b></a></div></div>
         </div>
       <div class="row" id="leechfield" style="--stripe:var(--rare)"
-          data-hay="leechfield leech field draining chill. enemies standing in your frost trail slowly heal you for 0.5 hp/s. leech_field rare"
-          data-stackable="0" data-req="1" data-con="1">
+          data-hay="leechfield leech field draining chill. enemies standing in your frost trail slowly heal you for 0.5 hp/s. leech_field rare frost"
+          data-stackable="0" data-req="1" data-con="1"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Leech Field</span><span class="r-key">LeechField</span></div>
           <div class="r-desc">Draining chill. Enemies standing in your frost trail slowly heal you for 0.5 HP/s.</div>
-          <div class="r-meta"><div class="tot"><code>leech_field</code></div><div class="dep">needs <a href="#frozencourt"><b>Frozen Court</b></a></div><div class="dep flag">excludes <a href="#orbfire"><b>Blazing Trail</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-frost"><b style="color:rgb(140,217,255)">Frost</b></a></div><div class="tot"><code>leech_field</code></div><div class="dep">needs <a href="#frozencourt"><b>Frozen Court</b></a></div><div class="dep flag">excludes <a href="#orbfire"><b>Blazing Trail</b></a></div></div>
         </div>
       <div class="row" id="demoncurse" style="--stripe:var(--rare)"
-          data-hay="demoncurse lingering curse the mark festers longer. curse duration +1.5s. rare"
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="demoncurse lingering curse the mark festers longer. curse duration +1.5s. rare beast"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Lingering Curse</span><span class="r-key">DemonCurse</span></div>
           <div class="r-desc">The mark festers longer. Curse duration +1.5s.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#demoncompanion"><b>Demon Companion</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#demoncompanion"><b>Demon Companion</b></a></div></div>
         </div>
       <div class="row" id="orbitmode" style="--stripe:var(--rare)"
-          data-hay="orbitmode mirror ball a shard circles you forever, striking anything it sweeps through. weaker than your orb, but never stops. orbit_mode rare until 24 september the ring could vanish for no visible reason. the shards orbit you but were drawn as part of the main orb, so flinging the orb more than a screen away culled them with it, and a nuke hiding the orb hid them too. each shard now draws on its own. until 26 september every shard hit for a flat 8 all run, whatever you built. a hit now carries the orb's standing bonuses — berserker, blood pact, momentum, adrenaline, rampage, last stand — can crit through critical mass, and grows with the square root of the enemy health curve (about ×1.9 by wave 20). per-throw bonuses like charged shot and comet do not apply: the ring is not a throw."
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="orbitmode mirror ball a shard circles you forever, striking anything it sweeps through. weaker than your orb, but never stops. orbit_mode rare until 24 september the ring could vanish for no visible reason. the shards orbit you but were drawn as part of the main orb, so flinging the orb more than a screen away culled them with it, and a nuke hiding the orb hid them too. each shard now draws on its own. until 26 september every shard hit for a flat 8 all run, whatever you built. a hit now carries the orb's standing bonuses — berserker, blood pact, momentum, adrenaline, rampage, last stand — can crit through critical mass, and grows with the square root of the enemy health curve (about ×1.9 by wave 20). per-throw bonuses like charged shot and comet do not apply: the ring is not a throw. arcane"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Mirror Ball</span><span class="r-key">OrbitMode</span></div>
           <div class="r-desc">A shard circles you forever, striking anything it sweeps through. Weaker than your orb, but never stops.<div class="tot">Until 24 September the ring could vanish for no visible reason. The shards orbit you but were drawn as part of the main orb, so flinging the orb more than a screen away culled them with it, and a Nuke hiding the orb hid them too. Each shard now draws on its own. Until 26 September every shard hit for a flat 8 all run, whatever you built. A hit now carries the orb's standing bonuses — Berserker, Blood Pact, Momentum, Adrenaline, Rampage, Last Stand — can crit through Critical Mass, and grows with the square root of the enemy health curve (about ×1.9 by wave 20). Per-throw bonuses like Charged Shot and Comet do not apply: the ring is not a throw.</div></div>
-          <div class="r-meta"><div class="tot"><code>orbit_mode</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-arcane"><b style="color:rgb(140,242,242)">Arcane</b></a></div><div class="tot"><code>orbit_mode</code></div></div>
         </div>
       <div class="row" id="overclock" style="--stripe:var(--rare)"
-          data-hay="overclock overclock build the charge. every 5th consecutive enemy hit (no wall bounces) deals double damage. overclock rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="overclock overclock build the charge. every 5th consecutive enemy hit (no wall bounces) deals double damage. overclock rare combo"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Overclock</span><span class="r-key">Overclock</span></div>
           <div class="r-desc">Build the charge. Every 5th consecutive enemy hit (no wall bounces) deals double damage.</div>
-          <div class="r-meta"><div class="tot"><code>overclock</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-combo"><b style="color:rgb(255,140,217)">Combo</b></a></div><div class="tot"><code>overclock</code></div></div>
         </div>
       <div class="row" id="overflow" style="--stripe:var(--rare)"
-          data-hay="overflow overflow nothing wasted. healing above full hp becomes a shield instead of vanishing. rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="overflow overflow nothing wasted. half of any healing above full hp becomes a shield instead of vanishing. rare since 29 september only half of any overheal becomes shield (it was all of it). shields are also capped at 30% of your max health and drain once you go 3 seconds without being hit — see staying alive on how to play. guardian"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Overflow</span><span class="r-key">Overflow</span></div>
-          <div class="r-desc">Nothing wasted. Healing above full HP becomes a shield instead of vanishing.</div>
-          <div class="r-meta"></div>
+          <div class="r-desc">Nothing wasted. Half of any healing above full HP becomes a shield instead of vanishing.<div class="tot">Since 29 September only half of any overheal becomes shield (it was all of it). Shields are also capped at 30% of your max health and drain once you go 3 seconds without being hit — see Staying alive on How to play.</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div></div>
         </div>
       <div class="row" id="owlfrequency" style="--stripe:var(--rare)"
-          data-hay="owlfrequency owl swiftness relentless diver. owl strikes 25% more often. rare"
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="owlfrequency owl swiftness relentless diver. owl strikes 25% more often. rare beast"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Owl Swiftness</span><span class="r-key">OwlFrequency</span></div>
           <div class="r-desc">Relentless diver. Owl strikes 25% more often.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 3</b></div><div class="dep">needs <a href="#owlcompanion"><b>Owl Companion</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="per">stackable · <b>cap 3</b></div><div class="dep">needs <a href="#owlcompanion"><b>Owl Companion</b></a></div></div>
         </div>
       <div class="row" id="owldamage" style="--stripe:var(--rare)"
-          data-hay="owldamage owl talons razor-sharp claws. owl attack damage +16. rare"
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="owldamage owl talons razor-sharp claws. owl attack damage +16. rare beast"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Owl Talons</span><span class="r-key">OwlDamage</span></div>
           <div class="r-desc">Razor-sharp claws. Owl attack damage +16.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 6</b></div><div class="dep">needs <a href="#owlcompanion"><b>Owl Companion</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="per">stackable · <b>cap 6</b></div><div class="dep">needs <a href="#owlcompanion"><b>Owl Companion</b></a></div></div>
         </div>
       <div class="row" id="owlrange" style="--stripe:var(--rare)"
-          data-hay="owlrange owl vision keen eyes. owl detects and attacks from 110 further away. rare"
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="owlrange owl vision keen eyes. owl detects and attacks from 110 further away. rare beast"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Owl Vision</span><span class="r-key">OwlRange</span></div>
           <div class="r-desc">Keen eyes. Owl detects and attacks from 110 further away.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#owlcompanion"><b>Owl Companion</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#owlcompanion"><b>Owl Companion</b></a></div></div>
+        </div>
+      <div class="row" id="packleader" style="--stripe:var(--rare)"
+          data-hay="packleader pack leader alpha. every companion deals 20% more damage for each companion you have. pack_leader rare beast"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Pack Leader</span><span class="r-key">PackLeader</span></div>
+          <div class="r-desc">Alpha. Every companion deals 20% more damage for each companion you have.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="tot"><code>pack_leader</code></div></div>
+        </div>
+      <div class="row" id="permafrost" style="--stripe:var(--rare)"
+          data-hay="permafrost permafrost brittle cold. enemies that die frozen shatter into 4 cutting ice shards. permafrost rare frost"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Permafrost</span><span class="r-key">Permafrost</span></div>
+          <div class="r-desc">Brittle cold. Enemies that die frozen shatter into 4 cutting ice shards.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-frost"><b style="color:rgb(140,217,255)">Frost</b></a></div><div class="tot"><code>permafrost</code></div></div>
         </div>
       <div class="row" id="regrowth" style="--stripe:var(--rare)"
-          data-hay="regrowth regrowth slow mending. recover 1 hp every 2.5 seconds, always, even mid-fight. regrowth rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="regrowth regrowth slow mending. recover 1 hp every 2.5 seconds, always, even mid-fight. regrowth rare guardian"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Regrowth</span><span class="r-key">Regrowth</span></div>
           <div class="r-desc">Slow mending. Recover 1 HP every 2.5 seconds, always, even mid-fight.</div>
-          <div class="r-meta"><div class="tot"><code>regrowth</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>regrowth</code></div></div>
+        </div>
+      <div class="row" id="resonantfield" style="--stripe:var(--rare)"
+          data-hay="resonantfield resonant field charged ground. enemies struck by lightning or a void pulse are charged for 3s: your orb deals 25% more damage to them. resonant_field rare storm stormcaller"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="1">
+          <div class="r-name" data-anchor><span>Resonant Field</span><span class="r-key">ResonantField</span></div>
+          <div class="r-desc">Charged ground. Enemies struck by lightning or a void pulse are charged for 3s: your orb deals 25% more damage to them.</div>
+          <div class="r-meta"><div class="dep flag"><b style="color:rgb(140,217,255)">STORMCALLER</b> only</div><div class="per">family <a href="builds.html#fam-storm"><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="tot"><code>resonant_field</code></div></div>
+        </div>
+      <div class="row" id="retribution" style="--stripe:var(--rare)"
+          data-hay="retribution retribution pain returned. each hit you take stores a charge (up to 3); your next throw deals +40% per charge to the first enemy it hits. retribution rare guardian warden"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="1">
+          <div class="r-name" data-anchor><span>Retribution</span><span class="r-key">Retribution</span></div>
+          <div class="r-desc">Pain returned. Each hit you take stores a charge (up to 3); your next throw deals +40% per charge to the first enemy it hits.</div>
+          <div class="r-meta"><div class="dep flag"><b style="color:rgb(115,204,255)">WARDEN</b> only</div><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>retribution</code></div></div>
         </div>
       <div class="row" id="riftstep" style="--stripe:var(--rare)"
-          data-hay="riftstep rift step cut through the veil. enemies you pass through mid-blink take 25 damage. rift_step rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="riftstep rift step cut through the veil. enemies you pass through mid-blink take 25 damage. rift_step rare void"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Rift Step</span><span class="r-key">RiftStep</span></div>
           <div class="r-desc">Cut through the veil. Enemies you pass through mid-blink take 25 damage.</div>
-          <div class="r-meta"><div class="tot"><code>rift_step</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><b style="color:rgb(179,102,255)">Void</b></a></div><div class="tot"><code>rift_step</code></div></div>
         </div>
       <div class="row" id="secondheart" style="--stripe:var(--rare)"
-          data-hay="secondheart second heart a second heart, beating out of time. max hp +40, healed immediately. max_health rare"
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="secondheart second heart a second heart, beating out of time. max hp +40, healed immediately. max_health rare guardian"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Second Heart</span><span class="r-key">SecondHeart</span></div>
           <div class="r-desc">A second heart, beating out of time. Max HP +40, healed immediately.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 3</b></div><div class="tot"><code>max_health</code> +40</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="per">stackable · <b>cap 3</b></div><div class="tot"><code>max_health</code> +40</div></div>
         </div>
       <div class="row" id="shatter" style="--stripe:var(--rare)"
-          data-hay="shatter shatter break the ice. hitting a frozen enemy deals 3x damage. shatter rare"
-          data-stackable="0" data-req="1" data-con="0">
+          data-hay="shatter shatter break the ice. hitting a frozen enemy deals 3x damage. shatter rare frost"
+          data-stackable="0" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Shatter</span><span class="r-key">Shatter</span></div>
           <div class="r-desc">Break the ice. Hitting a frozen enemy deals 3x damage.</div>
-          <div class="r-meta"><div class="tot"><code>shatter</code></div><div class="dep">needs <a href="#freezingshot"><b>Freezing Shot</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-frost"><b style="color:rgb(140,217,255)">Frost</b></a></div><div class="tot"><code>shatter</code></div><div class="dep">needs <a href="#freezingshot"><b>Freezing Shot</b></a></div></div>
         </div>
       <div class="row" id="sniperseye" style="--stripe:var(--rare)"
-          data-hay="sniperseye sniper's eye find the seam. critical hits deal an extra 60% of the orb's damage, per stack. rare"
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="sniperseye sniper's eye find the seam. critical hits deal an extra 60% of the orb's damage, per stack. rare precision"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Sniper's Eye</span><span class="r-key">SnipersEye</span></div>
           <div class="r-desc">Find the seam. Critical hits deal an extra 60% of the orb's damage, per stack.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 3</b></div><div class="dep">needs <a href="#criticalmass"><b>Critical Mass</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-precision"><b style="color:rgb(255,235,140)">Precision</b></a></div><div class="per">stackable · <b>cap 3</b></div><div class="dep">needs <a href="#criticalmass"><b>Critical Mass</b></a></div></div>
         </div>
       <div class="row" id="soulharvest" style="--stripe:var(--rare)"
-          data-hay="soulharvest soul harvest reaping. every 8th enemy that dies leaves a soul that restores 6 hp. soul_harvest rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="soulharvest soul harvest reaping. every 8th enemy that dies leaves a soul that restores 6 hp. soul_harvest rare blood"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Soul Harvest</span><span class="r-key">SoulHarvest</span></div>
           <div class="r-desc">Reaping. Every 8th enemy that dies leaves a soul that restores 6 HP.</div>
-          <div class="r-meta"><div class="tot"><code>soul_harvest</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>soul_harvest</code></div></div>
+        </div>
+      <div class="row" id="staticcharge" style="--stripe:var(--rare)"
+          data-hay="staticcharge static charge stored current. each throw banks a charge, up to 5. recalling releases one lightning bolt per charge at enemies near the orb. static_charge rare storm"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Static Charge</span><span class="r-key">StaticCharge</span></div>
+          <div class="r-desc">Stored current. Each throw banks a charge, up to 5. Recalling releases one lightning bolt per charge at enemies near the orb.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-storm"><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="tot"><code>static_charge</code></div></div>
         </div>
       <div class="row" id="staticfield" style="--stripe:var(--rare)"
-          data-hay="staticfield static field live wire. enemies standing close to you take 6 damage twice a second. static_field rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="staticfield static field live wire. enemies standing close to you take 6 damage twice a second. static_field rare storm"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Static Field</span><span class="r-key">StaticField</span></div>
           <div class="r-desc">Live wire. Enemies standing close to you take 6 damage twice a second.</div>
-          <div class="r-meta"><div class="tot"><code>static_field</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-storm"><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="tot"><code>static_field</code></div></div>
         </div>
       <div class="row" id="superconductor" style="--stripe:var(--rare)"
-          data-hay="superconductor superconductor live current. chain lightning arcs now stun everything they touch for 0.6s. superconductor rare"
-          data-stackable="0" data-req="1" data-con="0">
+          data-hay="superconductor superconductor live current. chain lightning arcs now stun everything they touch for 0.6s. superconductor rare storm"
+          data-stackable="0" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Superconductor</span><span class="r-key">Superconductor</span></div>
           <div class="r-desc">Live current. Chain Lightning arcs now stun everything they touch for 0.6s.</div>
-          <div class="r-meta"><div class="tot"><code>superconductor</code></div><div class="dep">needs <a href="#chainlightning"><b>Chain Lightning</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-storm"><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="tot"><code>superconductor</code></div><div class="dep">needs <a href="#chainlightning"><b>Chain Lightning</b></a></div></div>
         </div>
       <div class="row" id="temporalrift" style="--stripe:var(--rare)"
-          data-hay="temporalrift temporal rift time distortion. a fast-moving orb crawls nearby enemies to 15% speed and bleeds them while they are stuck. temporal_rift rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="temporalrift temporal rift time distortion. a fast-moving orb crawls nearby enemies to 15% speed and bleeds them while they are stuck. temporal_rift rare void"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Temporal Rift</span><span class="r-key">TemporalRift</span></div>
           <div class="r-desc">Time distortion. A fast-moving orb crawls nearby enemies to 15% speed and bleeds them while they are stuck.</div>
-          <div class="r-meta"><div class="tot"><code>temporal_rift</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><b style="color:rgb(179,102,255)">Void</b></a></div><div class="tot"><code>temporal_rift</code></div></div>
         </div>
       <div class="row" id="thornmail" style="--stripe:var(--rare)"
-          data-hay="thornmail thornmail spite. anything that lands a hit on you takes 22 damage and is thrown off. thornmail rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="thornmail thornmail spite. anything that lands a hit on you takes 22 damage and is thrown off. thornmail rare guardian"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Thornmail</span><span class="r-key">Thornmail</span></div>
           <div class="r-desc">Spite. Anything that lands a hit on you takes 22 damage and is thrown off.</div>
-          <div class="r-meta"><div class="tot"><code>thornmail</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>thornmail</code></div></div>
         </div>
       <div class="row" id="thunderclap" style="--stripe:var(--rare)"
-          data-hay="thunderclap thunderclap sonic impact. wall bounces release a shockwave that stuns nearby enemies for 1.2s. thunderclap rare needs a real bounce: a wall touched slower than the orb's damage speed does nothing, as with carom and fracture. until 23 september any touch set it off. since 27 september it no longer shakes the screen or freezes the game: it fires on every fast wall bounce, which on a wooded map is constantly, and was the only thing that made hitting a tree jolt the camera."
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="thunderclap thunderclap sonic impact. wall bounces release a shockwave that stuns nearby enemies for 1.2s. thunderclap rare needs a real bounce: a wall touched slower than the orb's damage speed does nothing, as with carom and fracture. until 23 september any touch set it off. since 27 september it no longer shakes the screen or freezes the game: it fires on every fast wall bounce, which on a wooded map is constantly, and was the only thing that made hitting a tree jolt the camera. storm"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Thunderclap</span><span class="r-key">Thunderclap</span></div>
           <div class="r-desc">Sonic impact. Wall bounces release a shockwave that stuns nearby enemies for 1.2s.<div class="tot">Needs a real bounce: a wall touched slower than the orb's damage speed does nothing, as with Carom and Fracture. Until 23 September any touch set it off. Since 27 September it no longer shakes the screen or freezes the game: it fires on every fast wall bounce, which on a wooded map is constantly, and was the only thing that made hitting a tree jolt the camera.</div></div>
-          <div class="r-meta"><div class="tot"><code>thunderclap</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-storm"><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="tot"><code>thunderclap</code></div></div>
         </div>
       <div class="row" id="tithe" style="--stripe:var(--rare)"
-          data-hay="tithe tithe a cut of the ritual. every third wave hands you one extra card choice. tithe rare"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="tithe tithe a cut of the ritual. every third wave hands you one extra card choice. tithe rare wild"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Tithe</span><span class="r-key">Tithe</span></div>
           <div class="r-desc">A cut of the ritual. Every third wave hands you one extra card choice.</div>
-          <div class="r-meta"><div class="tot"><code>tithe</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-wild"><b style="color:rgb(204,204,179)">Wild</b></a></div><div class="tot"><code>tithe</code></div></div>
         </div>
       <div class="row" id="orbitrange" style="--stripe:var(--rare)"
-          data-hay="orbitrange wide orbit wider circle. mirror ball radius +30, covers more ground. rare"
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="orbitrange wide orbit wider circle. mirror ball radius +30, covers more ground. rare arcane"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Wide Orbit</span><span class="r-key">OrbitRange</span></div>
           <div class="r-desc">Wider circle. Mirror Ball radius +30, covers more ground.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#orbitmode"><b>Mirror Ball</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-arcane"><b style="color:rgb(140,242,242)">Arcane</b></a></div><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#orbitmode"><b>Mirror Ball</b></a></div></div>
         </div>
-      <div class="group-label" id="epic">epic <span style="opacity:.6">· 36 cards · draw weight 8</span></div>
+      <div class="row" id="wildfire" style="--stripe:var(--rare)"
+          data-hay="wildfire wildfire it spreads. when a burning enemy dies, the fire leaps to the 2 nearest enemies. wildfire rare fire"
+          data-stackable="0" data-req="1" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Wildfire</span><span class="r-key">Wildfire</span></div>
+          <div class="r-desc">It spreads. When a burning enemy dies, the fire leaps to the 2 nearest enemies.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-fire"><b style="color:rgb(255,115,51)">Fire</b></a></div><div class="tot"><code>wildfire</code></div><div class="dep">needs <a href="#ignition"><b>Ignition</b></a></div></div>
+        </div>
+      <div class="group-label" id="epic">epic <span style="opacity:.6">· 54 cards · draw weight 8</span></div>
+      <div class="row" id="absolutezero" style="--stripe:var(--epic)"
+          data-hay="absolutezero absolute zero flash freeze. every 15th hit you land freezes every enemy within 150px of the orb for 1.5 seconds. absolute_zero epic frost"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Absolute Zero</span><span class="r-key">AbsoluteZero</span></div>
+          <div class="r-desc">Flash freeze. Every 15th hit you land freezes every enemy within 150px of the orb for 1.5 seconds.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-frost"><b style="color:rgb(140,217,255)">Frost</b></a></div><div class="tot"><code>absolute_zero</code></div></div>
+        </div>
       <div class="row" id="aftershock" style="--stripe:var(--epic)"
-          data-hay="aftershock aftershock the ground remembers. half a second after each direct hit, the spot detonates for 40% of the damage. aftershock epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="aftershock aftershock the ground remembers. half a second after each direct hit, the spot detonates for 40% of the damage. aftershock epic fire"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Aftershock</span><span class="r-key">Aftershock</span></div>
           <div class="r-desc">The ground remembers. Half a second after each direct hit, the spot detonates for 40% of the damage.</div>
-          <div class="r-meta"><div class="tot"><code>aftershock</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-fire"><b style="color:rgb(255,115,51)">Fire</b></a></div><div class="tot"><code>aftershock</code></div></div>
+        </div>
+      <div class="row" id="ambush" style="--stripe:var(--epic)"
+          data-hay="ambush ambush from the shadows. the first hit after you blink is a guaranteed critical hit that deals 50% more. ambush epic precision stalker"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="1">
+          <div class="r-name" data-anchor><span>Ambush</span><span class="r-key">Ambush</span></div>
+          <div class="r-desc">From the shadows. The first hit after you blink is a guaranteed critical hit that deals 50% more.</div>
+          <div class="r-meta"><div class="dep flag"><b style="color:rgb(191,153,255)">STALKER</b> only</div><div class="per">family <a href="builds.html#fam-precision"><b style="color:rgb(255,235,140)">Precision</b></a></div><div class="tot"><code>ambush</code></div></div>
         </div>
       <div class="row" id="chaindamage" style="--stripe:var(--epic)"
-          data-hay="chaindamage arc damage supercharged bolts. lightning arc damage +5 per jump. epic"
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="chaindamage arc damage supercharged bolts. lightning arc damage +5 per jump. epic storm"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Arc Damage</span><span class="r-key">ChainDamage</span></div>
           <div class="r-desc">Supercharged bolts. Lightning arc damage +5 per jump.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#chainlightning"><b>Chain Lightning</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-storm"><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#chainlightning"><b>Chain Lightning</b></a></div></div>
         </div>
       <div class="row" id="chainrange" style="--stripe:var(--epic)"
-          data-hay="chainrange arc range longer sparks. lightning arc jumps 50 further to reach more enemies. epic"
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="chainrange arc range longer sparks. lightning arc jumps 50 further to reach more enemies. epic storm"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Arc Range</span><span class="r-key">ChainRange</span></div>
           <div class="r-desc">Longer sparks. Lightning arc jumps 50 further to reach more enemies.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#chainlightning"><b>Chain Lightning</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-storm"><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#chainlightning"><b>Chain Lightning</b></a></div></div>
+        </div>
+      <div class="row" id="balllightning" style="--stripe:var(--epic)"
+          data-hay="balllightning ball lightning living spark. while the orb flies fast, it zaps the nearest enemy in reach every 0.3s for 40% of its damage. ball_lightning epic storm stormcaller"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="1">
+          <div class="r-name" data-anchor><span>Ball Lightning</span><span class="r-key">BallLightning</span></div>
+          <div class="r-desc">Living spark. While the orb flies fast, it zaps the nearest enemy in reach every 0.3s for 40% of its damage.</div>
+          <div class="r-meta"><div class="dep flag"><b style="color:rgb(140,217,255)">STORMCALLER</b> only</div><div class="per">family <a href="builds.html#fam-storm"><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="tot"><code>ball_lightning</code></div></div>
+        </div>
+      <div class="row" id="bastion" style="--stripe:var(--epic)"
+          data-hay="bastion bastion hold the line. after standing still for half a second, you take 40% less damage until you move. bastion epic guardian warden"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="1">
+          <div class="r-name" data-anchor><span>Bastion</span><span class="r-key">Bastion</span></div>
+          <div class="r-desc">Hold the line. After standing still for half a second, you take 40% less damage until you move.</div>
+          <div class="r-meta"><div class="dep flag"><b style="color:rgb(115,204,255)">WARDEN</b> only</div><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>bastion</code></div></div>
         </div>
       <div class="row" id="bloodpact" style="--stripe:var(--epic)"
-          data-hay="bloodpact blood pact signed in blood. orb damage +50%, but you no longer heal between waves. blood_pact epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="bloodpact blood pact signed in blood. orb damage +50%, but you no longer heal between waves. blood_pact epic blood"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Blood Pact</span><span class="r-key">BloodPact</span></div>
           <div class="r-desc">Signed in blood. Orb damage +50%, but you no longer heal between waves.</div>
-          <div class="r-meta"><div class="tot"><code>blood_pact</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>blood_pact</code></div></div>
+        </div>
+      <div class="row" id="bloodprice" style="--stripe:var(--epic)"
+          data-hay="bloodprice blood price paid in full. orb damage +1% for every 1% of health you are missing, but all healing is halved. blood_price epic blood"
+          data-stackable="0" data-req="0" data-con="1"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Blood Price</span><span class="r-key">BloodPrice</span></div>
+          <div class="r-desc">Paid in full. Orb damage +1% for every 1% of health you are missing, but all healing is halved.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>blood_price</code></div><div class="dep flag">excludes <a href="#adrenaline"><b>Adrenaline</b></a></div></div>
         </div>
       <div class="row" id="comet" style="--stripe:var(--epic)"
-          data-hay="comet comet every 6th throw leaves burning: 2.5x damage and a crater where it lands. comet epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="comet comet every 6th throw leaves burning: 2.5x damage and a crater where it lands. comet epic fire"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Comet</span><span class="r-key">Comet</span></div>
           <div class="r-desc">Every 6th throw leaves burning: 2.5x damage and a crater where it lands.</div>
-          <div class="r-meta"><div class="tot"><code>comet</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-fire"><b style="color:rgb(255,115,51)">Fire</b></a></div><div class="tot"><code>comet</code></div></div>
+        </div>
+      <div class="row" id="contract" style="--stripe:var(--epic)"
+          data-hay="contract contract sign here. the next 3 waves come 30% tougher -- survive them and you are handed a free legendary. epic wild"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Contract</span><span class="r-key">Contract</span></div>
+          <div class="r-desc">Sign here. The next 3 waves come 30% tougher -- survive them and you are handed a free legendary.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-wild"><b style="color:rgb(204,204,179)">Wild</b></a></div></div>
+        </div>
+      <div class="row" id="cremation" style="--stripe:var(--epic)"
+          data-hay="cremation cremation nothing left behind. burning deals 50% more damage, but burning enemies never drop health. cremation epic fire"
+          data-stackable="0" data-req="1" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Cremation</span><span class="r-key">Cremation</span></div>
+          <div class="r-desc">Nothing left behind. Burning deals 50% more damage, but burning enemies never drop health.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-fire"><b style="color:rgb(255,115,51)">Fire</b></a></div><div class="tot"><code>cremation</code></div><div class="dep">needs <a href="#ignition"><b>Ignition</b></a></div></div>
         </div>
       <div class="row" id="demonpotency" style="--stripe:var(--epic)"
-          data-hay="demonpotency curse potency amplified hex. cursed enemies take 10% more damage from all sources. epic"
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="demonpotency curse potency amplified hex. cursed enemies take 10% more damage from all sources. epic beast"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Curse Potency</span><span class="r-key">DemonPotency</span></div>
           <div class="r-desc">Amplified hex. Cursed enemies take 10% more damage from all sources.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#demoncompanion"><b>Demon Companion</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#demoncompanion"><b>Demon Companion</b></a></div></div>
         </div>
       <div class="row" id="cursedglass" style="--stripe:var(--epic)"
-          data-hay="cursedglass cursed glass shards of spite. enemy kills shatter into 3 homing fragments each dealing 8 damage. cursed_glass epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="cursedglass cursed glass shards of spite. enemy kills shatter into 3 homing fragments each dealing 8 damage. cursed_glass epic arcane"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Cursed Glass</span><span class="r-key">CursedGlass</span></div>
           <div class="r-desc">Shards of spite. Enemy kills shatter into 3 homing fragments each dealing 8 damage.</div>
-          <div class="r-meta"><div class="tot"><code>cursed_glass</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-arcane"><b style="color:rgb(140,242,242)">Arcane</b></a></div><div class="tot"><code>cursed_glass</code></div></div>
+        </div>
+      <div class="row" id="deadeye" style="--stripe:var(--epic)"
+          data-hay="deadeye deadeye one perfect shot. the first enemy each throw hits takes a guaranteed critical hit at double damage. after that, the throw cannot crit. deadeye epic kinetic"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Deadeye</span><span class="r-key">Deadeye</span></div>
+          <div class="r-desc">One perfect shot. The first enemy each throw hits takes a guaranteed critical hit at double damage. After that, the throw cannot crit.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>deadeye</code></div></div>
         </div>
       <div class="row" id="deathnova" style="--stripe:var(--epic)"
-          data-hay="deathnova death nova soul explosion. each kill bursts into a wide void ring dealing 18 damage. death_nova epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="deathnova death nova soul explosion. each kill bursts into a wide void ring dealing 18 damage. death_nova epic void"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Death Nova</span><span class="r-key">DeathNova</span></div>
           <div class="r-desc">Soul explosion. Each kill bursts into a wide void ring dealing 18 damage.</div>
-          <div class="r-meta"><div class="tot"><code>death_nova</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><b style="color:rgb(179,102,255)">Void</b></a></div><div class="tot"><code>death_nova</code></div></div>
+        </div>
+      <div class="row" id="angelpotency" style="--stripe:var(--epic)"
+          data-hay="angelpotency divine potency heavier sentence. judged enemies take 10% more damage from all sources. epic beast"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Divine Potency</span><span class="r-key">AngelPotency</span></div>
+          <div class="r-desc">Heavier sentence. Judged enemies take 10% more damage from all sources.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#angelcompanion"><b>Angel Companion</b></a></div></div>
         </div>
       <div class="row" id="executioner" style="--stripe:var(--epic)"
-          data-hay="executioner executioner no mercy. a direct hit on an enemy under 15% health kills it outright. execute epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="executioner executioner no mercy. a direct hit on an enemy under 15% health kills it outright. execute epic precision"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Executioner</span><span class="r-key">Executioner</span></div>
           <div class="r-desc">No mercy. A direct hit on an enemy under 15% health kills it outright.</div>
-          <div class="r-meta"><div class="tot"><code>execute</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-precision"><b style="color:rgb(255,235,140)">Precision</b></a></div><div class="tot"><code>execute</code></div></div>
         </div>
       <div class="row" id="explosivetouch" style="--stripe:var(--epic)"
-          data-hay="explosivetouch explosive touch shockwave on impact. each hit blasts nearby enemies for 12 damage. explosive_touch epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="explosivetouch explosive touch shockwave on impact. each hit blasts nearby enemies for 12 damage. explosive_touch epic fire"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Explosive Touch</span><span class="r-key">ExplosiveTouch</span></div>
           <div class="r-desc">Shockwave on impact. Each hit blasts nearby enemies for 12 damage.</div>
-          <div class="r-meta"><div class="tot"><code>explosive_touch</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-fire"><b style="color:rgb(255,115,51)">Fire</b></a></div><div class="tot"><code>explosive_touch</code></div></div>
         </div>
       <div class="row" id="orbitorbs" style="--stripe:var(--epic)"
-          data-hay="orbitorbs extra orbiter more firepower. another shard joins the ring. epic"
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="orbitorbs extra orbiter more firepower. another shard joins the ring. epic arcane"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Extra Orbiter</span><span class="r-key">OrbitOrbs</span></div>
           <div class="r-desc">More firepower. Another shard joins the ring.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 3</b></div><div class="dep">needs <a href="#orbitmode"><b>Mirror Ball</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-arcane"><b style="color:rgb(140,242,242)">Arcane</b></a></div><div class="per">stackable · <b>cap 3</b></div><div class="dep">needs <a href="#orbitmode"><b>Mirror Ball</b></a></div></div>
         </div>
       <div class="row" id="orbitspeed" style="--stripe:var(--epic)"
-          data-hay="orbitspeed faster orbit dizzying spin. mirror ball rotation speed increases. epic"
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="orbitspeed faster orbit dizzying spin. mirror ball rotation speed increases. epic arcane"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Faster Orbit</span><span class="r-key">OrbitSpeed</span></div>
           <div class="r-desc">Dizzying spin. Mirror Ball rotation speed increases.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#orbitmode"><b>Mirror Ball</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-arcane"><b style="color:rgb(140,242,242)">Arcane</b></a></div><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#orbitmode"><b>Mirror Ball</b></a></div></div>
         </div>
       <div class="row" id="heavycore" style="--stripe:var(--epic)"
-          data-hay="heavycore heavy core dense iron core. bleeds speed faster, but +20 bonus damage on every hit. epic"
-          data-stackable="0" data-req="0" data-con="1">
+          data-hay="heavycore heavy core dense iron core. bleeds speed faster, but +20 bonus damage on every hit. epic kinetic"
+          data-stackable="0" data-req="0" data-con="1"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Heavy Core</span><span class="r-key">HeavyCore</span></div>
           <div class="r-desc">Dense iron core. Bleeds speed faster, but +20 bonus damage on every hit.</div>
-          <div class="r-meta"><div class="dep flag">excludes <a href="#lightcore"><b>Light Core</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="dep flag">excludes <a href="#lightcore"><b>Light Core</b></a></div></div>
         </div>
       <div class="row" id="inertiabattery" style="--stripe:var(--epic)"
-          data-hay="inertiabattery inertia battery speed becomes power. a moving orb hits harder the faster it travels, with no upper limit -- every point of launch force you own finally counts. inertia_battery epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="inertiabattery inertia battery speed becomes power. a moving orb hits harder the faster it travels, with no upper limit -- every point of launch force you own finally counts. inertia_battery epic kinetic"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Inertia Battery</span><span class="r-key">InertiaBattery</span></div>
           <div class="r-desc">Speed becomes power. A moving orb hits harder the faster it travels, with no upper limit -- every point of launch force you own finally counts.</div>
-          <div class="r-meta"><div class="tot"><code>inertia_battery</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>inertia_battery</code></div></div>
         </div>
       <div class="row" id="juggernaut" style="--stripe:var(--epic)"
-          data-hay="juggernaut juggernaut unstoppable. the orb no longer bounces off enemies -- it ploughs straight through them. juggernaut epic"
-          data-stackable="0" data-req="0" data-con="1">
+          data-hay="juggernaut juggernaut unstoppable. the orb no longer bounces off enemies -- it ploughs straight through them. juggernaut epic kinetic"
+          data-stackable="0" data-req="0" data-con="1"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Juggernaut</span><span class="r-key">Juggernaut</span></div>
           <div class="r-desc">Unstoppable. The orb no longer bounces off enemies -- it ploughs straight through them.</div>
-          <div class="r-meta"><div class="tot"><code>juggernaut</code></div><div class="dep flag">excludes <a href="#ricochet"><b>Ricochet</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>juggernaut</code></div><div class="dep flag">excludes <a href="#ricochet"><b>Ricochet</b></a></div></div>
         </div>
       <div class="row" id="laststand" style="--stripe:var(--epic)"
-          data-hay="laststand last stand cornered. below 30% health you take 35% less damage and deal 30% more. last_stand epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="laststand last stand cornered. below 30% health you take 35% less damage and deal 30% more. last_stand epic guardian"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Last Stand</span><span class="r-key">LastStand</span></div>
           <div class="r-desc">Cornered. Below 30% health you take 35% less damage and deal 30% more.</div>
-          <div class="r-meta"><div class="tot"><code>last_stand</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>last_stand</code></div></div>
         </div>
       <div class="row" id="lightningrod" style="--stripe:var(--epic)"
-          data-hay="lightningrod lightning rod conductive. chain lightning jumps to 2 more enemies and reaches 60 further. epic"
-          data-stackable="0" data-req="1" data-con="0">
+          data-hay="lightningrod lightning rod conductive. chain lightning jumps to 2 more enemies and reaches 60 further. epic storm"
+          data-stackable="0" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Lightning Rod</span><span class="r-key">LightningRod</span></div>
           <div class="r-desc">Conductive. Chain Lightning jumps to 2 more enemies and reaches 60 further.</div>
-          <div class="r-meta"><div class="dep">needs <a href="#chainlightning"><b>Chain Lightning</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-storm"><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="dep">needs <a href="#chainlightning"><b>Chain Lightning</b></a></div></div>
         </div>
       <div class="row" id="momentum" style="--stripe:var(--epic)"
-          data-hay="momentum momentum rolling thunder. orb damage +3% per point of combo, lost when the combo drops. momentum epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="momentum momentum rolling thunder. orb damage +3% per point of combo, lost when the combo drops. momentum epic combo"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Momentum</span><span class="r-key">Momentum</span></div>
           <div class="r-desc">Rolling thunder. Orb damage +3% per point of combo, lost when the combo drops.</div>
-          <div class="r-meta"><div class="tot"><code>momentum</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-combo"><b style="color:rgb(255,140,217)">Combo</b></a></div><div class="tot"><code>momentum</code></div></div>
         </div>
       <div class="row" id="bleed" style="--stripe:var(--epic)"
-          data-hay="bleed open wound cuts that linger. direct hits apply a bleed dealing 5 damage per second for 3s. bleed epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="bleed open wound cuts that linger. direct hits apply a bleed dealing 5 damage per second for 3s. bleed epic blood"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Open Wound</span><span class="r-key">Bleed</span></div>
           <div class="r-desc">Cuts that linger. Direct hits apply a bleed dealing 5 damage per second for 3s.</div>
-          <div class="r-meta"><div class="tot"><code>bleed</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>bleed</code></div></div>
         </div>
       <div class="row" id="phantomcopies" style="--stripe:var(--epic)"
-          data-hay="phantomcopies phantom copies mirror images. two ghost orbs flank and mimic the main orb's path. phantom_copies epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="phantomcopies phantom copies mirror images. two ghost orbs flank and mimic the main orb's path. phantom_copies epic arcane"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Phantom Copies</span><span class="r-key">PhantomCopies</span></div>
           <div class="r-desc">Mirror images. Two ghost orbs flank and mimic the main orb's path.</div>
-          <div class="r-meta"><div class="tot"><code>phantom_copies</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-arcane"><b style="color:rgb(140,242,242)">Arcane</b></a></div><div class="tot"><code>phantom_copies</code></div></div>
         </div>
       <div class="row" id="phaseshot" style="--stripe:var(--epic)"
-          data-hay="phaseshot phase shot spectral edge. the first enemy you hit each throw does not stop the orb -- it takes the hit and the orb carries straight on. phase_shot epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="phaseshot phase shot spectral edge. the first enemy you hit each throw does not stop the orb -- it takes the hit and the orb carries straight on. phase_shot epic kinetic"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Phase Shot</span><span class="r-key">PhaseShot</span></div>
           <div class="r-desc">Spectral edge. The first enemy you hit each throw does not stop the orb -- it takes the hit and the orb carries straight on.</div>
-          <div class="r-meta"><div class="tot"><code>phase_shot</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>phase_shot</code></div></div>
         </div>
       <div class="row" id="quickening" style="--stripe:var(--epic)"
-          data-hay="quickening quickening blood in the air. each kill makes you faster, stacking up to 10. every hit you take costs 4 stacks. quickening epic nerfed on 28 september and made an epic: +9 move speed a stack, so ten stacks is +90 (+45%); it was +14 (+70%). a hit now costs 4 stacks (was 3). the chevrons at your feet point one way, as a fast-forward row; until 24 september they flipped whenever you turned."
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="quickening quickening blood in the air. each kill makes you faster, stacking up to 10. every hit you take costs 4 stacks. quickening epic nerfed on 28 september and made an epic: +9 move speed a stack, so ten stacks is +90 (+45%); it was +14 (+70%). a hit now costs 4 stacks (was 3). the chevrons at your feet point one way, as a fast-forward row; until 24 september they flipped whenever you turned. blood"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Quickening</span><span class="r-key">Quickening</span></div>
           <div class="r-desc">Blood in the air. Each kill makes you faster, stacking up to 10. Every hit you take costs 4 stacks.<div class="tot">Nerfed on 28 September and made an epic: +9 move speed a stack, so ten stacks is +90 (+45%); it was +14 (+70%). A hit now costs 4 stacks (was 3). The chevrons at your feet point one way, as a fast-forward row; until 24 September they flipped whenever you turned.</div></div>
-          <div class="r-meta"><div class="tot"><code>quickening</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>quickening</code></div></div>
+        </div>
+      <div class="row" id="raisedead" style="--stripe:var(--epic)"
+          data-hay="raisedead raise dead they serve you now. 4% of the enemies you kill rise as allies and fight for you for 8 seconds. raise_dead epic beast"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Raise Dead</span><span class="r-key">RaiseDead</span></div>
+          <div class="r-desc">They serve you now. 4% of the enemies you kill rise as allies and fight for you for 8 seconds.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="tot"><code>raise_dead</code></div></div>
         </div>
       <div class="row" id="rampage" style="--stripe:var(--epic)"
-          data-hay="rampage rampage feeding frenzy. each kill makes the orb 5% bigger and 4% stronger, up to 10. shrinks back between kills. rampage epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="rampage rampage feeding frenzy. each kill makes the orb 5% bigger and 4% stronger, up to 10. shrinks back between kills. rampage epic blood"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Rampage</span><span class="r-key">Rampage</span></div>
           <div class="r-desc">Feeding frenzy. Each kill makes the orb 5% bigger and 4% stronger, up to 10. Shrinks back between kills.</div>
-          <div class="r-meta"><div class="tot"><code>rampage</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>rampage</code></div></div>
+        </div>
+      <div class="row" id="rampart" style="--stripe:var(--epic)"
+          data-hay="rampart rampart shield bash. every 8 seconds, your next throw also sends out a shockwave that hurls nearby enemies back and stuns them for 1 second. rampart epic guardian warden"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="1">
+          <div class="r-name" data-anchor><span>Rampart</span><span class="r-key">Rampart</span></div>
+          <div class="r-desc">Shield bash. Every 8 seconds, your next throw also sends out a shockwave that hurls nearby enemies back and stuns them for 1 second.</div>
+          <div class="r-meta"><div class="dep flag"><b style="color:rgb(115,204,255)">WARDEN</b> only</div><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>rampart</code></div></div>
         </div>
       <div class="row" id="ricochet" style="--stripe:var(--epic)"
-          data-hay="ricochet ricochet elastic bounce. orb gains +100 speed every time it bounces off an enemy. ricochet epic"
-          data-stackable="0" data-req="0" data-con="1">
+          data-hay="ricochet ricochet elastic bounce. orb gains +100 speed every time it bounces off an enemy. ricochet epic kinetic"
+          data-stackable="0" data-req="0" data-con="1"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Ricochet</span><span class="r-key">Ricochet</span></div>
           <div class="r-desc">Elastic bounce. Orb gains +100 speed every time it bounces off an enemy.</div>
-          <div class="r-meta"><div class="tot"><code>ricochet</code></div><div class="dep flag">excludes <a href="#juggernaut"><b>Juggernaut</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>ricochet</code></div><div class="dep flag">excludes <a href="#juggernaut"><b>Juggernaut</b></a></div></div>
         </div>
       <div class="row" id="rupture" style="--stripe:var(--epic)"
-          data-hay="rupture rupture torn space. blinking detonates for 30 damage at both the place you left and the place you arrive. rupture epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="rupture rupture torn space. blinking detonates for 30 damage at both the place you left and the place you arrive. rupture epic void"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Rupture</span><span class="r-key">Rupture</span></div>
           <div class="r-desc">Torn space. Blinking detonates for 30 damage at both the place you left and the place you arrive.</div>
-          <div class="r-meta"><div class="tot"><code>rupture</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><b style="color:rgb(179,102,255)">Void</b></a></div><div class="tot"><code>rupture</code></div></div>
         </div>
       <div class="row" id="seeker" style="--stripe:var(--epic)"
-          data-hay="seeker seeker predatory arc. after a direct hit the orb turns and flies at the next nearest enemy. +1 redirect per stack, up to 5. epic an epic to find, a rare to stack: once you own one, further copies are drawn at rare odds and in a rare frame. nerfed on 28 september: a redirect relaunches the orb at no less than 400px/s (was 520, most of a fresh throw, so a chain never lost pace) and looks 460px for its next target (was 620, nearly anywhere on screen). the five-redirect cap is unchanged."
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="seeker seeker predatory arc. after a direct hit the orb turns and flies at the next nearest enemy. +1 redirect per stack, up to 5. epic an epic to find, a rare to stack: once you own one, further copies are drawn at rare odds and in a rare frame. nerfed on 28 september: a redirect relaunches the orb at no less than 400px/s (was 520, most of a fresh throw, so a chain never lost pace) and looks 460px for its next target (was 620, nearly anywhere on screen). the five-redirect cap is unchanged. precision"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Seeker</span><span class="r-key">Seeker</span></div>
           <div class="r-desc">Predatory arc. After a direct hit the orb turns and flies at the next nearest enemy. +1 redirect per stack, up to 5.<div class="tot">An epic to find, a rare to stack: once you own one, further copies are drawn at rare odds and in a rare frame. Nerfed on 28 September: a redirect relaunches the orb at no less than 400px/s (was 520, most of a fresh throw, so a chain never lost pace) and looks 460px for its next target (was 620, nearly anywhere on screen). The five-redirect cap is unchanged.</div></div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 5</b></div><div class="per">further stacks drawn as <b style="color:var(--rare)">rare</b></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-precision"><b style="color:rgb(255,235,140)">Precision</b></a></div><div class="per">stackable · <b>cap 5</b></div><div class="per">further stacks drawn as <b style="color:var(--rare)">rare</b></div></div>
+        </div>
+      <div class="row" id="seismicimpact" style="--stripe:var(--epic)"
+          data-hay="seismicimpact seismic impact heavy landing. hits faster than 600px/s send out a shockwave that deals 60% of the hit to everything nearby. seismic epic kinetic breaker"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="1">
+          <div class="r-name" data-anchor><span>Seismic Impact</span><span class="r-key">SeismicImpact</span></div>
+          <div class="r-desc">Heavy landing. Hits faster than 600px/s send out a shockwave that deals 60% of the hit to everything nearby.</div>
+          <div class="r-meta"><div class="dep flag"><b style="color:rgb(255,158,77)">BREAKER</b> only</div><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>seismic</code></div></div>
+        </div>
+      <div class="row" id="shadowstep" style="--stripe:var(--epic)"
+          data-hay="shadowstep shadowstep gone again. killing an enemy within 1.5s of blinking refunds the blink. shadowstep epic void stalker"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="1">
+          <div class="r-name" data-anchor><span>Shadowstep</span><span class="r-key">Shadowstep</span></div>
+          <div class="r-desc">Gone again. Killing an enemy within 1.5s of blinking refunds the blink.</div>
+          <div class="r-meta"><div class="dep flag"><b style="color:rgb(191,153,255)">STALKER</b> only</div><div class="per">family <a href="builds.html#fam-void"><b style="color:rgb(179,102,255)">Void</b></a></div><div class="tot"><code>shadowstep</code></div></div>
         </div>
       <div class="row" id="slingshot" style="--stripe:var(--epic)"
-          data-hay="slingshot slingshot every second orb that returns to you fires straight back out at the nearest enemy with 50% more force. slingshot epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="slingshot slingshot every second orb that returns to you fires straight back out at the nearest enemy with 50% more force. slingshot epic kinetic"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Slingshot</span><span class="r-key">Slingshot</span></div>
           <div class="r-desc">Every second orb that returns to you fires straight back out at the nearest enemy with 50% more force.</div>
-          <div class="r-meta"><div class="tot"><code>slingshot</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>slingshot</code></div></div>
         </div>
       <div class="row" id="soullink" style="--stripe:var(--epic)"
-          data-hay="soullink soul link bound together. 35% of every hit echoes onto the nearest other enemy. soul_link epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="soullink soul link bound together. 35% of every hit echoes onto the nearest other enemy. soul_link epic arcane"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Soul Link</span><span class="r-key">SoulLink</span></div>
           <div class="r-desc">Bound together. 35% of every hit echoes onto the nearest other enemy.</div>
-          <div class="r-meta"><div class="tot"><code>soul_link</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-arcane"><b style="color:rgb(140,242,242)">Arcane</b></a></div><div class="tot"><code>soul_link</code></div></div>
+        </div>
+      <div class="row" id="splitshot" style="--stripe:var(--epic)"
+          data-hay="splitshot split shot twin trajectory. every throw splits in two; each half deals 60% damage, and they merge back when you catch or recall the orb. split_shot epic kinetic"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Split Shot</span><span class="r-key">SplitShot</span></div>
+          <div class="r-desc">Twin trajectory. Every throw splits in two; each half deals 60% damage, and they merge back when you catch or recall the orb.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>split_shot</code></div></div>
         </div>
       <div class="row" id="stoneskin" style="--stripe:var(--epic)"
-          data-hay="stoneskin stoneskin skin like the old rocks. all damage you take is reduced by 20%. stoneskin epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="stoneskin stoneskin skin like the old rocks. all damage you take is reduced by 20%. stoneskin epic guardian"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Stoneskin</span><span class="r-key">Stoneskin</span></div>
           <div class="r-desc">Skin like the old rocks. All damage you take is reduced by 20%.</div>
-          <div class="r-meta"><div class="tot"><code>stoneskin</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>stoneskin</code></div></div>
+        </div>
+      <div class="row" id="stormfront" style="--stripe:var(--epic)"
+          data-hay="stormfront storm front thunder follows. the orb sheds a lightning bolt every 200px it travels, striking the nearest enemy. storm_front epic storm"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Storm Front</span><span class="r-key">StormFront</span></div>
+          <div class="r-desc">Thunder follows. The orb sheds a lightning bolt every 200px it travels, striking the nearest enemy.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-storm"><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="tot"><code>storm_front</code></div></div>
+        </div>
+      <div class="row" id="tempestheart" style="--stripe:var(--epic)"
+          data-hay="tempestheart tempest heart eye of the storm. every 4th hit calls lightning down on the target, arcing to 3 more enemies for 80% of the hit. tempest_heart epic storm stormcaller"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="1">
+          <div class="r-name" data-anchor><span>Tempest Heart</span><span class="r-key">TempestHeart</span></div>
+          <div class="r-desc">Eye of the storm. Every 4th hit calls lightning down on the target, arcing to 3 more enemies for 80% of the hit.</div>
+          <div class="r-meta"><div class="dep flag"><b style="color:rgb(140,217,255)">STORMCALLER</b> only</div><div class="per">family <a href="builds.html#fam-storm"><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="tot"><code>tempest_heart</code></div></div>
         </div>
       <div class="row" id="tether" style="--stripe:var(--epic)"
-          data-hay="tether tether live wire. while recalling, the cord between you and the orb cuts and slows everything it crosses. tether epic nerfed on 28 september and made an epic (it was an uncommon): 24 damage every 0.36s to everything on the cord, 67 a second (it was 34 every 0.28s, 121 a second, several times the orb's own rate across a whole crowd), and the slow is ×0.70 for 0.8s (was ×0.55 for 1.2s). until 25 september the cord went invisible once the orb was more than a screen away, while still cutting everything it crossed; it now draws on its own."
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="tether tether live wire. while recalling, the cord between you and the orb cuts and slows everything it crosses. tether epic nerfed on 28 september and made an epic (it was an uncommon): 24 damage every 0.36s to everything on the cord, 67 a second (it was 34 every 0.28s, 121 a second, several times the orb's own rate across a whole crowd), and the slow is ×0.70 for 0.8s (was ×0.55 for 1.2s). until 25 september the cord went invisible once the orb was more than a screen away, while still cutting everything it crossed; it now draws on its own. storm"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Tether</span><span class="r-key">Tether</span></div>
           <div class="r-desc">Live wire. While recalling, the cord between you and the orb cuts and slows everything it crosses.<div class="tot">Nerfed on 28 September and made an epic (it was an uncommon): 24 damage every 0.36s to everything on the cord, 67 a second (it was 34 every 0.28s, 121 a second, several times the orb's own rate across a whole crowd), and the slow is ×0.70 for 0.8s (was ×0.55 for 1.2s). Until 25 September the cord went invisible once the orb was more than a screen away, while still cutting everything it crossed; it now draws on its own.</div></div>
-          <div class="r-meta"><div class="tot"><code>tether</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-storm"><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="tot"><code>tether</code></div></div>
         </div>
       <div class="row" id="vampireorb" style="--stripe:var(--epic)"
-          data-hay="vampireorb vampire orb insatiable hunger. life steal heals +1 extra hp per hit per stack. epic the card said +2 extra hp per stack until 23 september. the code has always given +1, so the text was corrected rather than the number."
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="vampireorb vampire orb insatiable hunger. life steal heals +1 extra hp per kill per stack. epic the card said +2 extra hp per stack until 23 september. the code has always given +1, so the text was corrected rather than the number. blood"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Vampire Orb</span><span class="r-key">VampireOrb</span></div>
-          <div class="r-desc">Insatiable hunger. Life Steal heals +1 extra HP per hit per stack.<div class="tot">The card said +2 extra HP per stack until 23 September. The code has always given +1, so the text was corrected rather than the number.</div></div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 2</b></div><div class="dep">needs <a href="#lifesteal"><b>Life Steal</b></a></div></div>
+          <div class="r-desc">Insatiable hunger. Life Steal heals +1 extra HP per kill per stack.<div class="tot">The card said +2 extra HP per stack until 23 September. The code has always given +1, so the text was corrected rather than the number.</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="per">stackable · <b>cap 2</b></div><div class="dep">needs <a href="#lifesteal"><b>Life Steal</b></a></div></div>
         </div>
       <div class="row" id="voidpulse" style="--stripe:var(--epic)"
-          data-hay="voidpulse void pulse rhythmic void energy. orb releases a damage ring every 1.2s. void_pulse epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="voidpulse void pulse rhythmic void energy. orb releases a damage ring every 1.2s. void_pulse epic void"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Void Pulse</span><span class="r-key">VoidPulse</span></div>
           <div class="r-desc">Rhythmic void energy. Orb releases a damage ring every 1.2s.</div>
-          <div class="r-meta"><div class="tot"><code>void_pulse</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><b style="color:rgb(179,102,255)">Void</b></a></div><div class="tot"><code>void_pulse</code></div></div>
         </div>
       <div class="row" id="voidrange" style="--stripe:var(--epic)"
-          data-hay="voidrange void reach expanding void. pulse ring radius +20 on each release. epic"
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="voidrange void reach expanding void. pulse ring radius +20 on each release. epic void"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Void Reach</span><span class="r-key">VoidRange</span></div>
           <div class="r-desc">Expanding void. Pulse ring radius +20 on each release.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#voidpulse"><b>Void Pulse</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><b style="color:rgb(179,102,255)">Void</b></a></div><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#voidpulse"><b>Void Pulse</b></a></div></div>
         </div>
       <div class="row" id="voidfrequency" style="--stripe:var(--epic)"
-          data-hay="voidfrequency void tempo faster pulsing. void ring fires 0.2s sooner each stack. epic"
-          data-stackable="1" data-req="1" data-con="0">
+          data-hay="voidfrequency void tempo faster pulsing. void ring fires 0.2s sooner each stack. epic void"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Void Tempo</span><span class="r-key">VoidFrequency</span></div>
           <div class="r-desc">Faster pulsing. Void ring fires 0.2s sooner each stack.</div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 3</b></div><div class="dep">needs <a href="#voidpulse"><b>Void Pulse</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><b style="color:rgb(179,102,255)">Void</b></a></div><div class="per">stackable · <b>cap 3</b></div><div class="dep">needs <a href="#voidpulse"><b>Void Pulse</b></a></div></div>
         </div>
       <div class="row" id="volatilecore" style="--stripe:var(--epic)"
-          data-hay="volatilecore volatile core delayed charge. when recalled, the orb detonates for 20 damage in a burst around itself. volatile_core epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="volatilecore volatile core delayed charge. when recalled, the orb detonates for 20 damage in a burst around itself. volatile_core epic fire"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Volatile Core</span><span class="r-key">VolatileCore</span></div>
           <div class="r-desc">Delayed charge. When recalled, the orb detonates for 20 damage in a burst around itself.</div>
-          <div class="r-meta"><div class="tot"><code>volatile_core</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-fire"><b style="color:rgb(255,115,51)">Fire</b></a></div><div class="tot"><code>volatile_core</code></div></div>
+        </div>
+      <div class="row" id="wallcrush" style="--stripe:var(--epic)"
+          data-hay="wallcrush wall crush pinned. enemies your orb knocks into scenery take the hit's full damage again. wall_crush epic kinetic breaker"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="1">
+          <div class="r-name" data-anchor><span>Wall Crush</span><span class="r-key">WallCrush</span></div>
+          <div class="r-desc">Pinned. Enemies your orb knocks into scenery take the hit's full damage again.</div>
+          <div class="r-meta"><div class="dep flag"><b style="color:rgb(255,158,77)">BREAKER</b> only</div><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>wall_crush</code></div></div>
         </div>
       <div class="row" id="ward" style="--stripe:var(--epic)"
-          data-hay="ward ward a shell of old magic. absorbs one hit completely, then rebuilds itself over 14 seconds. ward epic"
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="ward ward a shell of old magic. absorbs one hit completely, then rebuilds itself over 25 seconds. ward epic rebuilds 25 seconds after it breaks since 29 september (it was 14). guardian"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Ward</span><span class="r-key">Ward</span></div>
-          <div class="r-desc">A shell of old magic. Absorbs one hit completely, then rebuilds itself over 14 seconds.</div>
-          <div class="r-meta"><div class="tot"><code>ward</code></div></div>
+          <div class="r-desc">A shell of old magic. Absorbs one hit completely, then rebuilds itself over 25 seconds.<div class="tot">Rebuilds 25 seconds after it breaks since 29 September (it was 14).</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>ward</code></div></div>
         </div>
-      <div class="group-label" id="legendary">legendary <span style="opacity:.6">· 7 cards · draw weight 3</span></div>
+      <div class="row" id="wreckingball" style="--stripe:var(--epic)"
+          data-hay="wreckingball wrecking ball demolition. the orb doubles in size and damage, but flies 40% slower. epic kinetic"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Wrecking Ball</span><span class="r-key">WreckingBall</span></div>
+          <div class="r-desc">Demolition. The orb doubles in size and damage, but flies 40% slower.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div></div>
+        </div>
+      <div class="group-label" id="legendary">legendary <span style="opacity:.6">· 10 cards · draw weight 3</span></div>
+      <div class="row" id="angelcompanion" style="--stripe:var(--legendary)"
+          data-hay="angelcompanion angel companion a guardian angel joins you. its lances of light pierce every enemy in a line and judge them to take 60% more damage from everything. grows with the waves. legendary beast"
+          data-stackable="0" data-req="0" data-con="1"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Angel Companion</span><span class="r-key">AngelCompanion</span></div>
+          <div class="r-desc">A guardian angel joins you. Its lances of light pierce every enemy in a line and judge them to take 60% more damage from everything. Grows with the waves.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="dep flag">excludes <a href="#demoncompanion"><b>Demon Companion</b></a></div></div>
+        </div>
       <div class="row" id="blackholecore" style="--stripe:var(--legendary)"
-          data-hay="blackholecore black hole event horizon. the orb drags everything within 150px into itself and grinds what it catches. each stack widens the pull by 55px. legendary stackable since 24 september: 150px at one card, 205 at two, 260 at three. it used to be a single card with a flat 240px well. the pull and the grind are as strong at the centre at every size and fade to nothing at the rim, so a wider well also pulls harder at any given distance, not just further."
-          data-stackable="1" data-req="0" data-con="0">
+          data-hay="blackholecore black hole event horizon. the orb drags everything within 150px into itself and grinds what it catches. each stack widens the pull by 55px. legendary stackable since 24 september: 150px at one card, 205 at two, 260 at three. it used to be a single card with a flat 240px well. the pull and the grind are as strong at the centre at every size and fade to nothing at the rim, so a wider well also pulls harder at any given distance, not just further. void"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Black Hole</span><span class="r-key">BlackHoleCore</span></div>
           <div class="r-desc">Event horizon. The orb drags everything within 150px into itself and grinds what it catches. Each stack widens the pull by 55px.<div class="tot">Stackable since 24 September: 150px at one card, 205 at two, 260 at three. It used to be a single card with a flat 240px well. The pull and the grind are as strong at the centre at every size and fade to nothing at the rim, so a wider well also pulls harder at any given distance, not just further.</div></div>
-          <div class="r-meta"><div class="per">stackable · <b>cap 3</b></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><b style="color:rgb(179,102,255)">Void</b></a></div><div class="per">stackable · <b>cap 3</b></div></div>
         </div>
       <div class="row" id="demoncompanion" style="--stripe:var(--legendary)"
-          data-hay="demoncompanion demon companion a cursed imp binds to you. its claws rip through whole groups and mark them to take 75% more damage from everything. grows with the waves. legendary rebuilt on 25 september to stand level with black hole: 20 claw damage at wave 1, riding the enemy health curve (about 38 at wave 8), every 0.6s, and every swipe rakes everything within 90px of its target for 60% and curses it. the curse is ×1.75 for 10s (5s until later on 25 september), up from ×1.6, and multiplies every source, including the orb; curse potency now tops out at ×2.15. it always goes for the nearest enemy that is not cursed yet, changing target the moment its swipe marks one; only when everything in reach is cursed does it renew the curse closest to running out. benchmark: from +81% to about +110–300% depending on how tightly packed the crowd is (black hole +42–170%)."
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="demoncompanion demon companion a cursed imp binds to you. its claws rip through whole groups and mark them to take 75% more damage from everything. grows with the waves. legendary rebuilt on 25 september to stand level with black hole: 20 claw damage at wave 1, riding the enemy health curve (about 38 at wave 8), every 0.6s, and every swipe rakes everything within 90px of its target for 60% and curses it. the curse is ×1.75 for 10s (5s until later on 25 september), up from ×1.6, and multiplies every source, including the orb; curse potency now tops out at ×2.15. it always goes for the nearest enemy that is not cursed yet, changing target the moment its swipe marks one; only when everything in reach is cursed does it renew the curse closest to running out. benchmark: from +81% to about +110–300% depending on how tightly packed the crowd is (black hole +42–170%). beast"
+          data-stackable="0" data-req="0" data-con="1"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Demon Companion</span><span class="r-key">DemonCompanion</span></div>
           <div class="r-desc">A cursed imp binds to you. Its claws rip through whole groups and mark them to take 75% more damage from everything. Grows with the waves.<div class="tot">Rebuilt on 25 September to stand level with Black Hole: 20 claw damage at wave 1, riding the enemy health curve (about 38 at wave 8), every 0.6s, and every swipe rakes everything within 90px of its target for 60% and curses it. The curse is ×1.75 for 10s (5s until later on 25 September), up from ×1.6, and multiplies every source, including the orb; Curse Potency now tops out at ×2.15. It always goes for the nearest enemy that is NOT cursed yet, changing target the moment its swipe marks one; only when everything in reach is cursed does it renew the curse closest to running out. Benchmark: from +81% to about +110–300% depending on how tightly packed the crowd is (Black Hole +42–170%).</div></div>
-          <div class="r-meta"></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="dep flag">excludes <a href="#angelcompanion"><b>Angel Companion</b></a></div></div>
+        </div>
+      <div class="row" id="eventhorizon" style="--stripe:var(--legendary)"
+          data-hay="eventhorizon event horizon nothing escapes. your black hole also drags enemy shots into itself and swallows them. event_horizon legendary void"
+          data-stackable="0" data-req="1" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Event Horizon</span><span class="r-key">EventHorizon</span></div>
+          <div class="r-desc">Nothing escapes. Your Black Hole also drags enemy shots into itself and swallows them.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><b style="color:rgb(179,102,255)">Void</b></a></div><div class="tot"><code>event_horizon</code></div><div class="dep">needs <a href="#blackholecore"><b>Black Hole</b></a></div></div>
         </div>
       <div class="row" id="owlcompanion" style="--stripe:var(--legendary)"
-          data-hay="owlcompanion owl companion a storm familiar joins you. calls down lightning every second, and each bolt leaps on through three more foes. grows with the waves. legendary rebuilt on 25 september to stand level with black hole: a bolt every 1.0s at 420px range, and each one leaps on through up to three more enemies within 220px, each taking 60% of the first bolt, never the same enemy twice. its damage rides the enemy health curve, 48 at wave 1 (about 92 at wave 8, 166 at wave 20), so it no longer fades as the run goes on. owl swiftness is now 25% more strikes per stack rather than a flat −0.6s. measured against the damage benchmark, the owl went from +46% (a rare's worth) to about +195%; black hole measures +170%."
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="owlcompanion owl companion a storm familiar joins you. calls down lightning every second, and each bolt leaps on through three more foes. grows with the waves. legendary rebuilt on 25 september to stand level with black hole: a bolt every 1.0s at 420px range, and each one leaps on through up to three more enemies within 220px, each taking 60% of the first bolt, never the same enemy twice. its damage rides the enemy health curve, 48 at wave 1 (about 92 at wave 8, 166 at wave 20), so it no longer fades as the run goes on. owl swiftness is now 25% more strikes per stack rather than a flat −0.6s. measured against the damage benchmark, the owl went from +46% (a rare's worth) to about +195%; black hole measures +170%. beast"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Owl Companion</span><span class="r-key">OwlCompanion</span></div>
           <div class="r-desc">A storm familiar joins you. Calls down lightning every second, and each bolt leaps on through three more foes. Grows with the waves.<div class="tot">Rebuilt on 25 September to stand level with Black Hole: a bolt every 1.0s at 420px range, and each one leaps on through up to three more enemies within 220px, each taking 60% of the first bolt, never the same enemy twice. Its damage rides the enemy health curve, 48 at wave 1 (about 92 at wave 8, 166 at wave 20), so it no longer fades as the run goes on. Owl Swiftness is now 25% more strikes per stack rather than a flat −0.6s. Measured against the damage benchmark, the owl went from +46% (a rare's worth) to about +195%; Black Hole measures +170%.</div></div>
-          <div class="r-meta"></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div></div>
         </div>
       <div class="row" id="reservecharge" style="--stripe:var(--legendary)"
-          data-hay="reservecharge reserve charge held in reserve. your f ability holds 2 charges, and the cooldown keeps refilling the second while the first is still ready. legendary added 25 september. your f ability holds two charges, and the cooldown refills one at a time whenever you are below two, so while one charge sits ready the other is already coming back. spending the spare mid-refill does not restart the clock. only offered once an ability is in the slot, and a newly swapped-in ability arrives with both charges. the ability bar shows the count after its name."
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="reservecharge reserve charge held in reserve. your f ability holds 2 charges, and the cooldown keeps refilling the second while the first is still ready. legendary added 25 september. your f ability holds two charges, and the cooldown refills one at a time whenever you are below two, so while one charge sits ready the other is already coming back. spending the spare mid-refill does not restart the clock. only offered once an ability is in the slot, and a newly swapped-in ability arrives with both charges. the ability bar shows the count after its name. wild"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Reserve Charge</span><span class="r-key">ReserveCharge</span></div>
           <div class="r-desc">Held in reserve. Your F ability holds 2 charges, and the cooldown keeps refilling the second while the first is still ready.<div class="tot">Added 25 September. Your F ability holds two charges, and the cooldown refills one at a time whenever you are below two, so while one charge sits ready the other is already coming back. Spending the spare mid-refill does not restart the clock. Only offered once an ability is in the slot, and a newly swapped-in ability arrives with both charges. The ability bar shows the count after its name.</div></div>
-          <div class="r-meta"></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-wild"><b style="color:rgb(204,204,179)">Wild</b></a></div></div>
         </div>
       <div class="row" id="resonance" style="--stripe:var(--legendary)"
-          data-hay="resonance resonance two notes, one chord. when both orbs strike the same enemy within 2s, the pair detonates for heavy damage. resonance legendary"
-          data-stackable="0" data-req="1" data-con="0">
+          data-hay="resonance resonance two notes, one chord. when both orbs strike the same enemy within 2s, the pair detonates for heavy damage. resonance legendary arcane"
+          data-stackable="0" data-req="1" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Resonance</span><span class="r-key">Resonance</span></div>
           <div class="r-desc">Two notes, one chord. When both orbs strike the same enemy within 2s, the pair detonates for heavy damage.</div>
-          <div class="r-meta"><div class="tot"><code>resonance</code></div><div class="dep">needs <a href="#twinorbs"><b>Twin Orbs</b></a></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-arcane"><b style="color:rgb(140,242,242)">Arcane</b></a></div><div class="tot"><code>resonance</code></div><div class="dep">needs <a href="#twinorbs"><b>Twin Orbs</b></a></div></div>
         </div>
       <div class="row" id="secondwind" style="--stripe:var(--legendary)"
-          data-hay="secondwind second wind refuse to fall. a killing blow instead puts you back on 30 hp, untouchable for 5 seconds, and blasts the field. recharges every 3 waves. second_wind legendary since 25 september it puts you back on 30 hp (it used to leave you at 1) and makes you invulnerable for 5 seconds (it used to be 1.6s of ordinary iframes): no damage and no roots, shown as a golden shell that flickers in its last second. the window is its own timer, so the evil wizard's hand, which wipes your ordinary iframes when it grabs you, cannot cut it short."
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="secondwind second wind refuse to fall. a killing blow instead puts you back on 30 hp, untouchable for 3 seconds, and blasts the field. recharges every 3 waves. second_wind legendary it puts you back on 30 hp (since 25 september; it used to leave you at 1) and makes you invulnerable for 3 seconds (since 29 september; 5 seconds from the 25th, and 1.6s of ordinary iframes before that): no damage and no roots, shown as a golden shell that flickers in its last second. the window is its own timer, so the evil wizard's hand, which wipes your ordinary iframes when it grabs you, cannot cut it short. guardian"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Second Wind</span><span class="r-key">SecondWind</span></div>
-          <div class="r-desc">Refuse to fall. A killing blow instead puts you back on 30 HP, untouchable for 5 seconds, and blasts the field. Recharges every 3 waves.<div class="tot">Since 25 September it puts you back on 30 HP (it used to leave you at 1) and makes you invulnerable for 5 seconds (it used to be 1.6s of ordinary iframes): no damage and no roots, shown as a golden shell that flickers in its last second. The window is its own timer, so the Evil Wizard's hand, which wipes your ordinary iframes when it grabs you, cannot cut it short.</div></div>
-          <div class="r-meta"><div class="tot"><code>second_wind</code></div></div>
+          <div class="r-desc">Refuse to fall. A killing blow instead puts you back on 30 HP, untouchable for 3 seconds, and blasts the field. Recharges every 3 waves.<div class="tot">It puts you back on 30 HP (since 25 September; it used to leave you at 1) and makes you invulnerable for 3 seconds (since 29 September; 5 seconds from the 25th, and 1.6s of ordinary iframes before that): no damage and no roots, shown as a golden shell that flickers in its last second. The window is its own timer, so the Evil Wizard's hand, which wipes your ordinary iframes when it grabs you, cannot cut it short.</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>second_wind</code></div></div>
         </div>
       <div class="row" id="twinorbs" style="--stripe:var(--legendary)"
-          data-hay="twinorbs twin orbs two of everything. a second orb joins you, and a single swing throws both. legendary the second orb matches the first's size, heavy orb included, and drops overload when it ends. until 23 september it collided at its old size and kept overload's boost forever."
-          data-stackable="0" data-req="0" data-con="0">
+          data-hay="twinorbs twin orbs two of everything. a second orb joins you, and a single swing throws both. legendary the second orb matches the first's size, heavy orb included, and drops overload when it ends. until 23 september it collided at its old size and kept overload's boost forever. kinetic"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
           <div class="r-name" data-anchor><span>Twin Orbs</span><span class="r-key">TwinOrbs</span></div>
           <div class="r-desc">Two of everything. A second orb joins you, and a single swing throws both.<div class="tot">The second orb matches the first's size, Heavy Orb included, and drops Overload when it ends. Until 23 September it collided at its old size and kept Overload's boost forever.</div></div>
-          <div class="r-meta"></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><b style="color:rgb(242,199,89)">Kinetic</b></a></div></div>
+        </div>
+      <div class="row" id="wolfcompanion" style="--stripe:var(--legendary)"
+          data-hay="wolfcompanion wolf companion a spirit wolf runs with you. it bites whatever is nearest your orb's path and hurls it into the orb. grows with the waves. legendary beast"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Wolf Companion</span><span class="r-key">WolfCompanion</span></div>
+          <div class="r-desc">A spirit wolf runs with you. It bites whatever is nearest your orb's path and hurls it into the orb. Grows with the waves.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><b style="color:rgb(153,230,115)">Beast</b></a></div></div>
         </div>
     </div>
     <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>

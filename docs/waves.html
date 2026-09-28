@@ -32,6 +32,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <a href="bestiary.html"><em>☠</em>Bestiary</a>
         <a href="bosses.html"><em>♛</em>Bosses</a>
         <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
         <a href="abilities.html"><em>✦</em>Abilities</a>
         <a href="classes.html"><em>⚑</em>Classes</a>
         <a href="waves.html" aria-current="page"><em>≋</em>Waves</a>
@@ -81,7 +82,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <p>
       <b>Bosses compound.</b> The Nth boss of a run (wave 10×N) also gets
       ×1.75<sup>N</sup> health and ×1.15<sup>N</sup>
-      damage on top of the ramp — a player two cards a wave richer is compounding too, and a boss
+      damage on top of the ramp — a player a card a wave richer is compounding too, and a boss
       that only kept pace with a Mushroom was a smaller speed bump every time. Bosses keep a
       gentler speed ramp (+1% a wave) so the Revenant can always be outrun.
     </p>
@@ -107,6 +108,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <tr><td>Wave 11</td><td><a href="bestiary.html#archmage">Archmage</a> <span class="tot">(weight 1)</span>, <a href="bestiary.html#bonecaller">Bonecaller</a> <span class="tot">(weight 2)</span></td></tr>
         <tr><td>Wave 12</td><td><a href="bestiary.html#hivemind">Hivemind</a> <span class="tot">(weight 2)</span></td></tr>
         <tr><td>Wave 13</td><td><a href="bestiary.html#broodmother">Broodmother</a> <span class="tot">(weight 2)</span></td></tr>
+        <tr><td>Wave 14</td><td><a href="bestiary.html#plaguepriest">PlaguePriest</a> <span class="tot">(weight 2)</span></td></tr>
       </tbody>
     </table>
 
@@ -211,12 +213,12 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         </div>
       </div>
       <div class="row" id="congregation" style="--stripe:var(--epic)"
-        data-hay="congregation the congregation they are keeping each other alive. decide what dies first. bonecaller mushroom vampire witchdoctor">
+        data-hay="congregation the congregation they are keeping each other alive. decide what dies first. bonecaller mushroom plaguepriest vampire witchdoctor">
         <div class="r-name" data-anchor><span>THE CONGREGATION</span><span class="r-key">congregation</span></div>
         <div class="r-desc">
           <div>They are keeping each other alive. Decide what dies first.</div>
           <div class="tot"><b>Answer:</b> Target priority. Kill the supports or the wave refills faster than it empties.</div>
-          <div class="per"><a href="bestiary.html#bonecaller">Bonecaller</a> <span class="tot">3</span> · <a href="bestiary.html#mushroom">Mushroom</a> <span class="tot">4</span> · <a href="bestiary.html#vampire">Vampire</a> <span class="tot">3</span> · <a href="bestiary.html#witchdoctor">Witchdoctor</a> <span class="tot">3</span></div>
+          <div class="per"><a href="bestiary.html#bonecaller">Bonecaller</a> <span class="tot">3</span> · <a href="bestiary.html#mushroom">Mushroom</a> <span class="tot">4</span> · <a href="bestiary.html#plaguepriest">PlaguePriest</a> <span class="tot">2</span> · <a href="bestiary.html#vampire">Vampire</a> <span class="tot">3</span> · <a href="bestiary.html#witchdoctor">Witchdoctor</a> <span class="tot">3</span></div>
         </div>
         <div class="r-meta">
           <div class="per">wave size <span class="tot">-10%</span></div>
@@ -296,7 +298,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
 
     <h2 id="bossrot">Boss waves</h2>
     <p>
-      Every tenth wave, in a fixed order: <b>wave 10</b> is <a href="bosses.html#dreadsovereign">DREAD SOVEREIGN</a>, <b>wave 20</b> is <a href="bosses.html#palerevenant">PALE REVENANT</a>, then it cycles.
+      Every tenth wave, in a fixed order: <b>wave 10</b> is <a href="bosses.html#dreadsovereign">DREAD SOVEREIGN</a>, <b>wave 20</b> is <a href="bosses.html#palerevenant">PALE REVENANT</a>, <b>wave 30</b> is <a href="bosses.html#collector">THE COLLECTOR</a>, then it cycles.
     </p>
     <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
     <footer>

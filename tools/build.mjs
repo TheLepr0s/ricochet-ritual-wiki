@@ -38,6 +38,10 @@ const pct = (v, base = 1) => {
 const RARITY_ORDER = ["common", "uncommon", "rare", "epic", "legendary"];
 const NAME_BY_KEY = Object.fromEntries(D.upgrades.map((u) => [u.k, u.n]));
 const ENEMY_BY_KEY = Object.fromEntries(D.enemies.map((e) => [e.k, e]));
+const FAMILY_BY_ID = Object.fromEntries((D.families || []).map((f) => [f.id, f]));
+const ARCH_BY_ID = Object.fromEntries((D.archetypes || []).map((a) => [a.id, a]));
+// A family or class colour, as CSS.
+const rgb = (c) => `rgb(${(c || [1, 1, 1]).map((v) => Math.round(v * 255)).join(",")})`;
 
 // Everything a reader might type, lowercased, per row.
 const hay = (...parts) => esc(parts.filter(Boolean).join(" ").toLowerCase());
@@ -149,7 +153,8 @@ function homePage() {
       const blurb = {
         "guide.html": "Controls, the run loop, and what the orb actually does.",
         "bestiary.html": "Every enemy, what drives it, and when it starts appearing.",
-        "bosses.html": "The two boss fights, attack by attack.",
+        "bosses.html": "The three boss fights, attack by attack.",
+        "builds.html": "Families, build names, curses, class cards, and the Ember Shop.",
         "cards.html": `All ${D.upgrades.length} upgrade cards, with stack caps, prerequisites and exclusions.`,
         "abilities.html": "The twelve F-key abilities, and how they measured against each other.",
         "classes.html": "The four starting classes, and the benchmark that set them.",
@@ -227,7 +232,7 @@ function guidePage() {
         .map(([l, v]) => `<div class="per">${esc(l)} <span class="tot">${v}</span></div>`)
         .join("");
       return `<div class="row" id="diff-${slug(d.id)}" style="--stripe:var(--${
-        d.id === "easy" ? "uncommon" : d.id === "hard" ? "warn" : "rare"
+        d.id === "easy" ? "uncommon" : d.id === "hard" ? "warn" : d.id === "nightmare" ? "epic" : "rare"
       })" data-hay="${hay(d.id, d.n, d.d, d.tag)}">
         <div class="r-name" data-anchor><span>${esc(d.n)}</span><span class="r-key">${esc(d.id)}</span></div>
         <div class="r-desc"><div>${esc(d.d)}</div><div class="tot">${esc(d.tag)}</div></div>
@@ -235,7 +240,13 @@ function guidePage() {
           <div class="dep">heals ${Math.round(d.healFrac * 100)}%${
         d.healFlat ? ` + ${d.healFlat}` : ""
       } between waves</div>
-          <div class="dep">${d.rerolls} rerolls · ${d.banishes} banishes</div>
+          <div class="dep">${d.rerolls} rerolls · ${d.banishes} banishes</div>${
+        d.dropMult != null ? `\n          <div class="dep">hearts ×${d.dropMult}</div>` : ""
+      }${d.bossEvery ? `\n          <div class="dep">a boss every ${d.bossEvery}th wave</div>` : ""}${
+        d.rarityMult
+          ? `\n          <div class="dep">odds: ${RARITY_ORDER.map((r) => `${r} ×${d.rarityMult[r]}`).join(", ")}</div>`
+          : ""
+      }
         </div>
       </div>`;
     })
@@ -256,10 +267,14 @@ function guidePage() {
 
     <h2 id="upgrades">The upgrade screen</h2>
     <p>
-      Clearing a wave opens it. You are offered two cards, and on every
-      <b>${u.UTILITY_EVERY}${u.UTILITY_EVERY === 3 ? "rd" : "th"}</b> screen a further card that is
+      Clearing a wave opens it. You are dealt three cards and take <b>one</b> — two a wave until
+      29 September — and on every
+      <b>${u.UTILITY_EVERY}${u.UTILITY_EVERY === 3 ? "rd" : "th"}</b> wave a further card that is
       a <a href="abilities.html">utility ability</a> rather than a passive — you carry one of those
-      at a time, so taking a second replaces the first.
+      at a time, so taking a second replaces the first. After every
+      <b>${D.consts.shop.every}th</b> wave the free card is replaced by the
+      <a href="builds.html#shop">Ember Shop</a> instead. Which cards you are dealt leans toward the
+      <a href="builds.html">families</a> you already own, and every legendary carries a curse.
     </p>
     <p>
       <b>Rerolls</b> redraw the screen; <b>banishes</b> remove a card from the pool for the rest of
@@ -532,7 +547,7 @@ ${sections}`;
   return page({
     file: "bosses.html",
     title: "Bosses",
-    lead: "Two fights, deliberately opposite. One asks you to read it; the other asks you to already be moving.",
+    lead: "Three fights, each asking something different. The first asks you to read it, the second to already be moving, and the third takes your best cards away for the length of the fight.",
     toc: [{ id: "rotation", label: "The rotation" }].concat(
       rot.map((k) => ({ id: slug(k), label: ENEMY_BY_KEY[k]?.x.boss_name || k }))
     ),
@@ -560,7 +575,7 @@ function scalingPara() {
     <p>
       <b>Bosses compound.</b> The Nth boss of a run (wave ${s.BOSS_EVERY}×N) also gets
       ×${s.BOSS_HEALTH_GROWTH}<sup>N</sup> health and ×${s.BOSS_DAMAGE_GROWTH}<sup>N</sup>
-      damage on top of the ramp — a player two cards a wave richer is compounding too, and a boss
+      damage on top of the ramp — a player a card a wave richer is compounding too, and a boss
       that only kept pace with a Mushroom was a smaller speed bump every time. Bosses keep a
       gentler speed ramp (${p(s.BOSS_SPEED_SCALE)} a wave) so the Revenant can always be outrun.
     </p>`;
@@ -604,10 +619,23 @@ function cardsPage() {
               .join(", ")}</div>`
           );
         }
+        const fam = FAMILY_BY_ID[u.fam];
+        if (fam) {
+          meta.unshift(
+            `<div class="per">family <a href="builds.html#fam-${slug(fam.id)}"><b style="color:${rgb(fam.col)}">${esc(fam.n)}</b></a></div>`
+          );
+        }
+        const cls = ARCH_BY_ID[u.cls];
+        if (u.cls) {
+          meta.unshift(
+            `<div class="dep flag"><b style="color:${rgb(cls && cls.col)}">${esc((cls && cls.n) || u.cls)}</b> only</div>`
+          );
+        }
         const note = C.CARD_NOTE[u.k];
         return `<div class="row" id="${slug(u.k)}" style="--stripe:var(--${r})"
-          data-hay="${hay(u.k, u.n, u.d, u.v, r, note)}"
-          data-stackable="${u.s ? 1 : 0}" data-req="${u.req ? 1 : 0}" data-con="${u.con ? 1 : 0}">
+          data-hay="${hay(u.k, u.n, u.d, u.v, r, note, fam && fam.n, u.cls)}"
+          data-stackable="${u.s ? 1 : 0}" data-req="${u.req ? 1 : 0}" data-con="${u.con ? 1 : 0}"
+          data-cls="${u.cls ? 1 : 0}">
           <div class="r-name" data-anchor><span>${esc(u.n)}</span><span class="r-key">${esc(u.k)}</span></div>
           <div class="r-desc">${esc(u.d)}${note ? `<div class="tot">${esc(note)}</div>` : ""}</div>
           <div class="r-meta">${meta.join("")}</div>
@@ -629,12 +657,14 @@ function cardsPage() {
       <div class="count"><b>${capped}</b><span>with a cap</span></div>
       <div class="count"><b>${gated}</b><span>need a prereq</span></div>
       <div class="count"><b>${exclusive}</b><span>mutually exclusive</span></div>
+      <div class="count"><b>${D.upgrades.filter((u) => u.cls).length}</b><span>class-only</span></div>
     </div>
 
     ${toolbar("Filter cards by name, effect or stat key…", [
       { attr: "stackable", label: "stackable" },
       { attr: "req", label: "has prereq" },
       { attr: "con", label: "exclusive" },
+      { attr: "cls", label: "class cards" },
     ])}
 
     <div class="note">
@@ -655,6 +685,170 @@ function cardsPage() {
     title: "Upgrade cards",
     lead: `All ${D.upgrades.length} of them, grouped by rarity. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.`,
     toc: RARITY_ORDER.filter((r) => byRarity[r]).map((r) => ({ id: slug(r), label: r })),
+    body,
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Builds & shop (Sept 29 2026)
+   ═══════════════════════════════════════════════════════════════════ */
+function buildsPage() {
+  const fams = D.families || [];
+  const fc = D.consts.family || {};
+  const shop = D.consts.shop || {};
+
+  // ── Families, each with every card in it ──
+  const famRows = fams
+    .map((f) => {
+      idx(f.n + " family", "Builds", "builds.html", `fam-${slug(f.id)}`, f.id, f.d);
+      const cards = D.upgrades
+        .filter((u) => u.fam === f.id)
+        .sort((a, b) => RARITY_ORDER.indexOf(a.r) - RARITY_ORDER.indexOf(b.r) || a.n.localeCompare(b.n));
+      const list = cards
+        .map(
+          (u) =>
+            `<a href="cards.html#${slug(u.k)}" style="color:var(--${u.r})">${esc(u.n)}</a>${u.cls ? ` <span class="tot">(${esc((ARCH_BY_ID[u.cls] || {}).n || u.cls)})</span>` : ""}`
+        )
+        .join(", ");
+      return `<div class="row" id="fam-${slug(f.id)}" style="--stripe:${rgb(f.col)}" data-hay="${hay(f.id, f.n, f.d, f.adj, f.noun, cards.map((u) => u.n).join(" "))}">
+        <div class="r-name" data-anchor><span style="color:${rgb(f.col)}">${esc(f.n)}</span><span class="r-key">${cards.length} cards</span></div>
+        <div class="r-desc"><div>${esc(f.d)}</div><div class="tot">${list}</div></div>
+        <div class="r-meta"><div class="per">names a build <b>${esc(f.adj)} …</b> or <b>… ${esc(f.noun)}</b></div></div>
+      </div>`;
+    })
+    .join("\n      ");
+
+  // ── Build names: every pairing ──
+  const nameHead = fams.map((f) => `<th style="color:${rgb(f.col)}">${esc(f.noun)}</th>`).join("");
+  const nameRows = fams
+    .map(
+      (a) =>
+        `<tr><td style="color:${rgb(a.col)}"><b>${esc(a.adj)}</b></td>${fams
+          .map((b) => (a.id === b.id ? `<td class="tot">${esc(a.adj)} Adept</td>` : `<td>${esc(a.adj)} ${esc(b.noun)}</td>`))
+          .join("")}</tr>`
+    )
+    .join("\n        ");
+
+  // ── Curses ──
+  const curseRows = (D.curses || [])
+    .map((c) => {
+      idx(c.n + " (curse)", "Builds", "builds.html", `curse-${slug(c.id)}`, c.id, c.d);
+      return `<tr id="curse-${slug(c.id)}"><td><b>${esc(c.n)}</b></td><td>${esc(c.d)}</td></tr>`;
+    })
+    .join("\n        ");
+
+  // ── Class cards ──
+  const classRows = (D.archetypes || [])
+    .map((a) => {
+      const cards = D.upgrades.filter((u) => u.cls === a.id);
+      if (!cards.length) return "";
+      return `<tr><td style="color:${rgb(a.col)}"><b>${esc(a.n)}</b></td><td>${cards
+        .map((u) => `<a href="cards.html#${slug(u.k)}" style="color:var(--${u.r})">${esc(u.n)}</a> <span class="tot">${esc(u.r)}</span>`)
+        .join(" · ")}</td></tr>`;
+    })
+    .join("\n        ");
+
+  // ── Shop prices, visit by visit ──
+  const units = shop.units || {};
+  const priceRows = (shop.waves || [])
+    .map(
+      (w) =>
+        `<tr><td>after wave <b>${w.wave}</b></td>${RARITY_ORDER.map(
+          (r) => `<td>${Math.max(1, Math.floor((units[r] || 1) * w.unit + 0.5))}</td>`
+        ).join("")}<td>${Math.max(1, Math.floor(shop.restockUnits * w.unit + 0.5))}</td></tr>`
+    )
+    .join("\n        ");
+  const transRows = (shop.transmute || [])
+    .map(
+      (t) =>
+        `<tr><td><b style="color:var(--${t.from})">${t.need} ${esc(t.from)}</b></td><td>→</td><td>a choice of one of three <b style="color:var(--${t.into})">${esc(t.into)}</b></td></tr>`
+    )
+    .join("\n        ");
+  const emb = shop.embers || {};
+  idx("Ember Shop", "Builds", "builds.html", "shop", "shop", C.SHOP_NOTE.replace(/<[^>]+>/g, ""));
+  idx("Transmute", "Builds", "builds.html", "transmute", "transmute", C.TRANSMUTE_NOTE.replace(/<[^>]+>/g, ""));
+
+  const body = `    <div class="note">${C.BUILDS_NOTE}</div>
+
+    <h2 id="families">Families</h2>
+    <p>
+      Each card you own in a family multiplies the draw weight of that family's other cards by
+      <b>+${Math.round((fc.PULL || 0) * 100)}%</b>, up to <b>${fc.CAP}</b> cards' worth
+      (×${(1 + (fc.PULL || 0) * (fc.CAP || 0)).toFixed(1)} at most). Rarity, class and family all
+      multiply together, so a family you lean into still keeps its legendaries rare.
+    </p>
+    ${toolbar("Filter families or cards…")}
+    <div class="rows">
+      ${famRows}
+    </div>
+    ${EMPTY}
+
+    <h2 id="names">Build names</h2>
+    <p>${C.BUILD_NAME_NOTE}</p>
+    <div class="scroll"><table>
+      <thead><tr><th>leading ↓ / runner-up →</th>${nameHead}</tr></thead>
+      <tbody>
+        ${nameRows}
+      </tbody>
+    </table></div>
+
+    <h2 id="curses">Curses</h2>
+    <p>${C.CURSE_NOTE}</p>
+    <table>
+      <thead><tr><th>Curse</th><th>Effect</th></tr></thead>
+      <tbody>
+        ${curseRows}
+      </tbody>
+    </table>
+
+    <h2 id="class-cards">Class cards</h2>
+    <p>${C.CLASS_CARD_NOTE}</p>
+    <table>
+      <thead><tr><th>Class</th><th>Its three cards</th></tr></thead>
+      <tbody>
+        ${classRows}
+      </tbody>
+    </table>
+
+    <h2 id="shop">The Ember Shop</h2>
+    <p>${C.SHOP_NOTE}</p>
+    <p>
+      Embers: <b>${emb.normal}</b> a kill, <b>${emb.elite}</b> an elite, <b>${emb.boss}</b> a boss
+      (the Taxed curse pays 70% of that). The shelf holds <b>${shop.stock}</b> cards, six when an
+      ability card is due. A price is a number of <b>units</b> by rarity —
+      ${RARITY_ORDER.map((r) => `<code>${r} ${units[r]}</code>`).join(" · ")}, an ability
+      <code>${shop.utilityUnits}</code> — times the size of the wave you just cleared: income is
+      kills and the kill count grows with the wave, so one curve keeps a visit worth about the same
+      at wave 5 and at wave 40. Restocking costs <code>${shop.restockUnits}</code> units, and
+      <code>${shop.restockStep}</code> more each time in the same visit.
+    </p>
+    <table>
+      <thead><tr><th>Visit</th>${RARITY_ORDER.map((r) => `<th style="color:var(--${r})">${r}</th>`).join("")}<th>restock</th></tr></thead>
+      <tbody>
+        ${priceRows}
+      </tbody>
+    </table>
+
+    <h3 id="transmute">Transmute</h3>
+    <p>${C.TRANSMUTE_NOTE}</p>
+    <table>
+      <tbody>
+        ${transRows}
+      </tbody>
+    </table>`;
+
+  return page({
+    file: "builds.html",
+    title: "Builds & shop",
+    lead: `Twelve families, ${(D.curses || []).length} curses, ${D.upgrades.filter((u) => u.cls).length} class cards and the Ember Shop: how a run turns into a build rather than a pile.`,
+    toc: [
+      { id: "families", label: "Families" },
+      { id: "names", label: "Build names" },
+      { id: "curses", label: "Curses" },
+      { id: "class-cards", label: "Class cards" },
+      { id: "shop", label: "The Ember Shop" },
+      { id: "transmute", label: "Transmute" },
+    ],
     body,
   });
 }
@@ -1108,6 +1302,7 @@ const PAGES = {
   "bestiary.html": bestiaryPage,
   "bosses.html": bossesPage,
   "cards.html": cardsPage,
+  "builds.html": buildsPage,
   "abilities.html": abilitiesPage,
   "classes.html": classesPage,
   "waves.html": wavesPage,

@@ -31,6 +31,7 @@ export const NAV = [
   { file: "bestiary.html",     label: "Bestiary",      icon: "☠" },
   { file: "bosses.html",       label: "Bosses",        icon: "♛" },
   { file: "cards.html",        label: "Upgrade cards", icon: "🂠" },
+  { file: "builds.html",       label: "Builds & shop", icon: "✧" },
   { file: "abilities.html",    label: "Abilities",     icon: "✦" },
   { file: "classes.html",      label: "Classes",       icon: "⚑" },
   { file: "waves.html",        label: "Waves",         icon: "≋" },
@@ -80,11 +81,36 @@ export const LOOP = [
         catches it — you do not have to wait for it to come to rest.`,
   },
   {
-    h: "A wave, then two cards",
-    p: `Clear the field and the upgrade screen opens with two choices, a third of the time a
-        third, and on every third WAVE a fourth card that is a utility ability rather than a
+    h: "A wave, then one card",
+    p: `Clear the field and the upgrade screen deals three cards, and you take <b>one</b> (two a
+        wave until 29 September, which by wave 20 meant owning nearly every good card — a pile,
+        not a build). On every third wave a fourth card is a utility ability rather than a
         passive. Rerolls and banishes accumulate on a timer rather than being spent currency,
         so a bad screen late in a run is a smaller disaster than a bad screen early.`,
+  },
+  {
+    h: "A build, not a pile",
+    p: `Every card belongs to one of twelve <a href="builds.html">families</a>, and every card you
+        own in a family makes that family's other cards likelier to turn up — so an early lean
+        compounds into an identity. Each class has three cards only it is ever offered. Every
+        legendary comes with a <b>curse</b>, printed on the card before you take it. The run ends
+        with your build's name — the leading family's adjective and the runner-up's noun, a
+        <i>Frost Juggernaut</i> — and each build name keeps its own records.`,
+  },
+  {
+    h: "Every fifth wave, the Ember Shop",
+    p: `Kills earn embers — one each, five for an elite, twenty-five for a boss — and after every
+        fifth wave the free card is replaced by a <a href="builds.html#shop">shop</a>: a priced
+        shelf, a restock, and <b>Transmute</b>, which sacrifices random cards you own for a choice
+        of one a rarity higher. Unspent embers carry over.`,
+  },
+  {
+    h: "Why you died",
+    p: `The death screen has a recap down its left side: what killed you and how hard, which
+        three enemies hurt you most, which three of your cards did the most damage, your biggest
+        single hit, and how much you were healing per wave — averaged only since your healing
+        last changed (a healing card, a curse, the drop rate halving), so it describes the build
+        you died with rather than the one you had ten waves ago.`,
   },
   {
     h: "It gets specific, not just bigger",
@@ -182,7 +208,9 @@ export const AI = {
     label: "Support", tone: "uncommon",
     p: `Never closes. It kites to a mid-range band, strafing at reduced speed, and spends a short
         cast pose on the thing it is actually for: mending the most wounded allies in range, or
-        calling fresh bodies out of the ground. Both wear a role badge above the health bar,
+        calling fresh bodies out of the ground. The Plague Priest (29 September) has no cast at
+        all: its ring is a standing aura that halves your healing while you are inside it, and it
+        keeps close enough to hold you there. Each wears a role badge above the health bar,
         because at range the silhouette is identical.`,
   },
   BlightsporeEnemy: {
@@ -215,6 +243,12 @@ export const AI = {
         projectile whatsoever, and every move a commitment you answer by moving. Nothing it does
         is stopped by trees or rocks.`,
   },
+  CollectorBoss: {
+    label: "Boss", tone: "legendary",
+    p: `The thief. It takes your three best cards when it arrives and keeps its distance for the
+        whole fight — coin fans that trees stop, a grab lane that yanks you in, chests that burst
+        around you, a blink away. Killing it gives every card back.`,
+  },
 };
 
 /* ── One line each on what a type is FOR ────────────────────────────────── */
@@ -238,8 +272,10 @@ export const ENEMY_NOTE = {
   Blightspore:"Barely fights, but lobs poison: from range it stops, swings, and throws a ball that lands where you stood and leaves a pool. It also leaves a small pool of rot every 35px it walkh it walks, laying a continuous trail, and the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.",
   Siphon:     "Hangs at range and drains you through a beam, healing off what it takes. The beam needs line of sight, so a tree is a real answer to it — the first time scenery has been anything but an obstacle.",
   Broodmother:"The Bonecaller inverted. She calls faster, and every Toadstool she makes is tethered to her: kill the mother and the whole swarm drops at once. The swarm is a decoy, and walking past it is the correct play.",
+  PlaguePriest: "Halves your healing while you stand in its ring, and keeps close enough to hold you in it — walking away does not work for long, so the answer is to kill it. Frozen or stunned, the aura switches off. Healing had become the answer to everything, and nothing on the roster argued with it; the HUD says HEALING HALVED beside your health bar while it does.",
   DreadSovereign: "A siege engine. It walks, and the fight is read from a distance.",
-  PaleRevenant:   "The opposite fight, and the reason there are two.",
+  PaleRevenant:   "The opposite fight: it runs, and you have to be moving already.",
+  Collector:      "The third fight, and a test of the build rather than the footwork: it takes your three best cards for as long as it lives.",
 };
 
 /* Facts about a type that live in its AI file rather than its data row, and so
@@ -251,6 +287,8 @@ export const ENEMY_EXTRA = {
   Siphon:       "Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well. Its self-heal never actually fired until 23 September: the drain waited for a result that a landed hit never returns, so a Siphon left alone was not getting any harder to kill.",
   Blightspore:  "Drops are keyed to DISTANCE WALKED (every 35px since 25 September, with 40px pools; before that 70px and 58px, and originally 130px and 86px on a body a third slower), not to a timer. The pool a THROWN ball leaves is the big one, 90px. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.",
   Broodmother:  "Shares SupportEnemy with the Witchdoctor and the Bonecaller; <code>summon_bound</code> in her row is the single flag that makes her brood die with her. Her summons are killed rather than deleted, so each one still scores, drops loot and triggers every on-kill upgrade you own.",
+  PlaguePriest: "The fourth SupportEnemy, told apart by <code>plague_range</code> in its row, and it carries <code>keep_min</code>/<code>keep_max</code> of its own so it stands inside its ring rather than at a healer's distance. It never attacks. The skeleton sheet is achromatic, so it is TINTED a bile yellow-green, clear of the Ravager's orange and the Revenant's mint.",
+  Collector:    "On the vampire sheet, TINTED gold: the cloak is too dark for a hue rotation to reach gold (a rotation keeps luminance, and the rendered sweep only ever found brown), while a multiply turns the face and hands gold and leaves the cloak a royal purple.",
 };
 
 /* ── Cards: facts that live in code rather than on the card ────────────────
@@ -269,14 +307,19 @@ export const CARD_NOTE = {
   Backhand:      "Since 26 September a swing that meets the orb while it is still flying at you (faster than 60px/s) counts too, judged per orb, so you can rally it: slap it back, it returns, slap it again. An orb already heading away does not count, so swinging twice cannot bank a second bonus. Before, only the second after a catch counted, and a catch stops the orb dead — so it only ever worked on a standing ball.",
   MagneticGrip:  "Pulls the orb home until it is within 40px of you (inside swing reach), then brakes it to rest there. Until 25 September it never stopped pulling: the orb reached you, was caught, was nudged into you again and caught again, every frame — a loud buzz of catch sounds, and a Dead Stop blast each time if you held that card.",
   ReserveCharge: "Added 25 September. Your F ability holds two charges, and the cooldown refills one at a time whenever you are below two, so while one charge sits ready the other is already coming back. Spending the spare mid-refill does not restart the clock. Only offered once an ability is in the slot, and a newly swapped-in ability arrives with both charges. The ability bar shows the count after its name.",
-  SecondWind:    "Since 25 September it puts you back on 30 HP (it used to leave you at 1) and makes you invulnerable for 5 seconds (it used to be 1.6s of ordinary iframes): no damage and no roots, shown as a golden shell that flickers in its last second. The window is its own timer, so the Evil Wizard's hand, which wipes your ordinary iframes when it grabs you, cannot cut it short.",
+  SecondWind:    "It puts you back on 30 HP (since 25 September; it used to leave you at 1) and makes you invulnerable for 3 seconds (since 29 September; 5 seconds from the 25th, and 1.6s of ordinary iframes before that): no damage and no roots, shown as a golden shell that flickers in its last second. The window is its own timer, so the Evil Wizard's hand, which wipes your ordinary iframes when it grabs you, cannot cut it short.",
+  LifeSteal:     "Since 29 September it heals on the KILL — 2 HP for every enemy the orb kills — rather than on every hit. On a crowd it used to heal more than anything could hurt you, and a run with it was very hard to lose.",
+  Overflow:      "Since 29 September only half of any overheal becomes shield (it was all of it). Shields are also capped at 30% of your max health and drain once you go 3 seconds without being hit — see Staying alive on How to play.",
+  Ward:          "Rebuilds 25 seconds after it breaks since 29 September (it was 14).",
+  IronSkin:      "+0.06s of invulnerability a stack since 29 September, when the base window halved from 0.6s to 0.3s — three stacks of the old +0.12s would have more than doubled it.",
+  SafeHands:     "0.6s of invulnerability since 29 September, to sit above the halved 0.3s base.",
   Tether:        "Nerfed on 28 September and made an epic (it was an uncommon): 24 damage every 0.36s to everything on the cord, 67 a second (it was 34 every 0.28s, 121 a second, several times the orb's own rate across a whole crowd), and the slow is ×0.70 for 0.8s (was ×0.55 for 1.2s). Until 25 September the cord went invisible once the orb was more than a screen away, while still cutting everything it crossed; it now draws on its own.",
 };
 
 /* ── Bosses ─────────────────────────────────────────────────────────────── */
 export const BOSSES = {
   DreadSovereign: {
-    sub: "Wave 10, and every 20th after",
+    sub: "Wave 10, and every 30th after",
     lead: `A siege engine. It moves at a walking pace and the whole fight is read from a
            distance — every attack announces itself long before it lands, and every one of them
            is survivable by moving.`,
@@ -316,7 +359,7 @@ export const BOSSES = {
             attack and a summon, and from range the whole fight was one ring and a wait.`,
   },
   PaleRevenant: {
-    sub: "Wave 20, and every 20th after",
+    sub: "Wave 20, and every 30th after",
     lead: `The opposite fight, and the reason there are two. Nearly three times the Sovereign's
            speed, not one projectile, and every move a commitment you beat by moving rather than
            by standing somewhere clever.`,
@@ -358,26 +401,59 @@ export const BOSSES = {
             has to stay an answer, or the fight stops being about reading it and becomes a
             question about whether blink is up.`,
   },
+  Collector: {
+    sub: "Wave 30, and every 30th after",
+    lead: `Added 29 September, and the one that tests your build rather than your footwork. It
+           arrives and <b>takes your three best cards</b> — highest rarity first, then whichever
+           has done the most damage this run — and holds them, circling its head and named under
+           its health bar, until it dies. Then every one comes back.`,
+    moves: [
+      { n: "The theft", d: `On arrival. It takes anything the shop's Transmute could take back
+                            exactly, and companions, which it holds rather than kills (the pet
+                            simply stops until it is returned). Never Twin Orbs or a Contract, and
+                            never a card that something else you own depends on. A stackable card
+                            goes with all its stacks.` },
+      { n: "Coin fan", d: `Aimed fans of gold coins — 5, 7 then 9 wide, two or three rounds, each
+                           round shifted half a gap. Unlike the Sovereign's patterns these die on
+                           trees: cover is a real answer here.` },
+      { n: "Snatch", d: `A grab lane locked on you, drawn for 0.7s. Still inside it when it closes
+                         and you are hit and yanked across the floor to its feet. Measured from the
+                         same point and at the same width the lane is drawn.` },
+      { n: "Vault", d: `Three, four then five chests dropped around you — one always on you —
+                        each bursting in a drawn circle after about a second.` },
+      { n: "Hoard", d: `If you are within 200px when its next attack comes up, a ring of coins
+                        outward instead. It does not want you near.` },
+      { n: "Blink", d: `It steps away to somewhere at range and clear of scenery, and the next
+                        attack follows quickly. It also blinks out if it is stuck against
+                        something.` },
+      { n: "Summon", d: `Hired help, more each phase.` },
+    ],
+    close: `It keeps its distance and strafes, like a merchant behind a counter: the Sovereign
+            walks at you and the Revenant runs at you, so the third one makes you do the chasing.
+            A gold-faced noble in a royal purple cloak, so it cannot be mistaken for either.`,
+  },
 };
 
 export const BOSS_SHARED = `Which boss arrives is <b>fixed rather than rolled</b>. A coin flip
   would take away the one thing about a boss wave worth knowing in advance, and fixing the order
-  also guarantees that the first two bosses anyone meets are one of each. Both pay the same on
-  death: a large flat heal on the spot, plus one extra card banked for the next time the upgrade
-  screen opens — banked rather than granted, because that screen is not showing mid-wave.
+  also guarantees that the first three bosses anyone meets are one of each. All three pay the
+  same on death: a large flat heal on the spot, plus one extra card banked for the next time the
+  upgrade screen opens — banked rather than granted, because that screen is not showing mid-wave.
+  On <b>Nightmare</b> a boss comes every seventh wave instead of every tenth.
   <br><br>
-  <b>Both shrug off most knockback</b> — 85% for the Sovereign, 88% for the Revenant. Until
-  23 September they only claimed to: the resistance was applied inside the boss's own damage
-  handler, before the orb wrote its shove, so it never took effect, and every other push in the
-  game bypassed it entirely. It now sits where every push goes through. A boss is also never
-  pulled back toward you as a straggler, and neither boss counts toward Full Bestiary — they
-  have achievements of their own.
+  <b>All three shrug off most knockback</b> — 85% for the Sovereign and the Collector, 88% for the
+  Revenant. Until 23 September they only claimed to: the resistance was applied inside the boss's
+  own damage handler, before the orb wrote its shove, so it never took effect, and every other push
+  in the game bypassed it entirely. It now sits where every push goes through. A boss is also never
+  pulled back toward you as a straggler, and no boss counts toward Full Bestiary — they have
+  achievements of their own.
   <br><br>
   <b>Every boss is tougher than the last.</b> Since 27 September the Nth boss of a run carries
   ×1.75<sup>N</sup> health and ×1.15<sup>N</sup> damage on top of the ordinary wave ramp — see
-  <a href="waves.html#shape">how enemies scale</a>. A wave-30 Sovereign has about 56,000 health
-  on medium, where it used to have about 10,500. Their speed deliberately stays on a gentler
-  ramp than everything else, so the Revenant can always be outrun.`;
+  <a href="waves.html#shape">how enemies scale</a>. A wave-40 Sovereign (its second visit, since
+  the rotation is three long) is far past the 10,500 health a wave-30 one had before the change.
+  Their speed deliberately stays on a gentler ramp than everything else, so the Revenant can
+  always be outrun.`;
 
 /* ── Classes ────────────────────────────────────────────────────────────────
    Measured, not asserted. bench_main.lua with ARCHETYPE_ONLY=1, ten trials,
@@ -485,10 +561,14 @@ export const DROPS = [
     d: "In trouble. The wave starts paying you back for clearing it." },
   { n: "Below 35%",        rate: "20%",    per: "per body",
     d: "One in five. The band is deliberately steep at the bottom, because this is where a run is decided." },
-  { n: "Elite kill",       rate: "×5",     per: "capped at 85%",
-    d: "A fight you chose to take should pay for itself." },
-  { n: "Boss kill",        rate: "4 drops", per: "guaranteed",
-    d: "One heart for two minutes of work would read as an insult." },
+  { n: "After wave 15",    rate: "×½",     per: "every band above",
+    d: "Since 29 September. By then a build is strong enough that a steady trickle of hearts made it unkillable. The recap's healing average restarts here." },
+  { n: "Elite kill",       rate: "×2",     per: "capped at 85%",
+    d: "A fight you chose to take should pay for itself — ×5 until 29 September, which was nearly a heart per crown." },
+  { n: "Boss kill",        rate: "2 drops", per: "guaranteed",
+    d: "Four until 29 September." },
+  { n: "Nightmare",        rate: "×0.7",   per: "on top of everything",
+    d: "And no heal between waves at all." },
 ];
 
 export const DROP_NOTE = `The drop rate reads your health <b>fraction</b>, so it is a rubber band
@@ -499,7 +579,15 @@ export const DROP_NOTE = `The drop rate reads your health <b>fraction</b>, so it
   <b>Healing goes somewhere.</b> <code>Player:heal</code> banks the excess so Overflow can turn it
   into shield instead of letting it evaporate at the cap. Shield absorbs before health, and draws
   as plates over the bar. Mitigation — Stoneskin, Last Stand — runs through a single
-  <code>mitigate()</code> funnel, so two sources cannot silently multiply into immunity.`;
+  <code>mitigate()</code> funnel, so two sources cannot silently multiply into immunity.
+  <br><br>
+  <b>The 29 September survivability pass</b> made dying possible again. Invulnerability after a
+  hit is <b>0.3s</b> (was 0.6s), so a crowd can land a second hit. Shields are capped at
+  <b>30% of max health</b> and <b>drain after 3 seconds</b> without being hit. Life Steal heals on
+  kills rather than hits, Overflow converts half, Second Wind is 3 seconds, Ward rebuilds in 25,
+  and the heal between waves is smaller. Every heal now runs through one function, so a
+  <a href="bestiary.html#plaguepriest">Plague Priest</a>'s aura, the Withered curse and Blood
+  Price all scale it the same way — and the death recap can count it.`;
 
 /* ── Combat model ───────────────────────────────────────────────────────── */
 export const COMBAT = [
@@ -621,6 +709,35 @@ export const COMBAT = [
         instead. A flat wall the orb has rolled up against blocks at most half of it and is
         reachable on foot; a gap or an inside corner blocks more. An orb already at rest is nudged
         toward you as well, since phasing alone does nothing for something with no momentum.` },
+  { h: "The September 29 overhaul",
+    p: `The biggest pass yet, aimed at two complaints: runs where you ended up owning every good
+        card, and late runs where healing and shields meant you could not die.
+        <br><br>
+        <b>Builds.</b> One card a wave (was two). Every card now belongs to one of twelve
+        <a href="builds.html">families</a> that pull their own cards up the draw; each class has
+        three exclusive cards; every legendary carries a curse; and the run ends with a build name
+        that keeps its own records. <b>38 new cards</b> — Boomerang, Split Shot, Deadeye, Wrecking
+        Ball, a burn status (Ignition, Kindling, Wildfire, Cremation), Permafrost, Cold Snap,
+        Absolute Zero, Static Charge, Storm Front, Blood Price, Hemorrhage, Event Horizon, Pack
+        Leader, Raise Dead, a Wolf and an Angel companion (the Angel excludes the Demon), Combo
+        Breaker, Showboat, Contract, and the twelve class cards.
+        <br><br>
+        <b>The Ember Shop</b> replaces the free card every fifth wave: embers from kills, a priced
+        shelf, restocks, and Transmute. See <a href="builds.html#shop">Builds &amp; shop</a>.
+        <br><br>
+        <b>Survival.</b> Invulnerability 0.3s, shields capped and draining, Life Steal on kills,
+        fewer hearts after wave 15, and the rest — see <a href="guide.html#drops">Staying alive</a>.
+        <b>Nightmare</b> is a fourth difficulty: harder enemies, no heal between waves, worse odds
+        on rare cards, fewer hearts, and a boss every seventh wave.
+        <br><br>
+        <b>New enemies.</b> The <a href="bestiary.html#plaguepriest">Plague Priest</a> halves your
+        healing near it, and <a href="bosses.html#collector">The Collector</a>, the third boss,
+        steals your three best cards for the fight. The Sovereign's pattern bolts now fly through
+        scenery and draw above everything; its aimed volley still dies on trees.
+        <br><br>
+        <b>The death screen</b> explains the death: killer, biggest hit, who hurt you, what did your
+        damage, and healing per wave since your healing last changed. Enemy shots now name their
+        shooter there ("Bat's shot") rather than "Enemy shot".` },
   { h: "The September 28 pass",
     p: `<b>Nerfs.</b> <a href="cards.html#tether">Tether</a>, <a href="cards.html#quickening">Quickening</a>
         and <a href="cards.html#seeker">Seeker</a> are weaker and now epic. Seeker is the first card
@@ -854,6 +971,46 @@ export const ELITES = `Any ordinary spawn can arrive <b>crowned</b>: more health
   multiplier, which means <b>elite trash is untouched</b> — that was the case that was already
   working.`;
 
+/* ── Builds & shop (Sept 29 2026) ──────────────────────────────────────────
+   The numbers on that page come from data.json (families, curses,
+   consts.family, consts.shop); this is only what they mean. */
+export const BUILDS_NOTE = `A run used to end with nearly every good card in the pool, so every
+  run ended the same way. Now you take one card a wave, and <b>families</b> are what turn those
+  picks into a build: every card belongs to exactly one, and every card you own in a family makes
+  that family's other cards likelier to be dealt. An early lean compounds into an identity instead
+  of being washed out by the shuffler — but nothing is ever locked out, so an off-family card is
+  still a real decision.`;
+
+export const BUILD_NAME_NOTE = `The game-over screen names your build from its two leading
+  families: the top family's adjective and the runner-up's noun, so three Frost cards and two
+  Kinetic ones is a <i>Frost Juggernaut</i>. A single family is an <i>Adept</i>; no cards at all is
+  an <i>Empty Hand</i>. A tie goes to the family listed first below. Each build name keeps its
+  own furthest wave, best score and number of runs, so "my best Blazing Pyromancer" is a record
+  you can chase.`;
+
+export const CURSE_NOTE = `<b>Every legendary is dealt with a curse</b>, rolled when the card is
+  dealt and printed on its face in red, so taking one is a trade you can read before you make it.
+  The curse lasts the rest of the run, and two of the same kind compound. Each is a multiplier on
+  something the game already reads — sized to sting, never to make a legendary not worth taking.`;
+
+export const CLASS_CARD_NOTE = `Each class has three cards only it is ever offered, marked with the
+  class's name on the card. They are strong on purpose — a reason to pick the class — but sized
+  against the ordinary cards of their rarity rather than above them.`;
+
+export const SHOP_NOTE = `After every fifth wave the free card is replaced by the <b>Ember
+  Shop</b>. Embers come from every death, whoever or whatever landed it: pets, burns and a
+  bomber's own blast all pay. Unspent embers carry over, so saving through one shop for a
+  legendary at the next is a real plan. Extra cards the wave owes you — Tithe, a boss kill's bonus
+  — are still dealt as ordinary hands once you leave, and the ability card a third wave would have
+  offered goes on the shelf instead of being lost.`;
+
+export const TRANSMUTE_NOTE = `<b>Transmute</b> sacrifices <b>random</b> cards you own of one
+  rarity for a choice of one card a rarity higher. Random on purpose: the cost is not knowing which
+  ones go — and it takes two clicks, so it is never an accident. It never takes Twin Orbs or a
+  Contract, or a card something else you own depends on (Ignition while you hold Kindling); a
+  stack goes one copy at a time. The same undo is what lets The Collector hold your cards and give
+  them back.`;
+
 /* ── Glossary ──────────────────────────────────────────────────────────── */
 export const GLOSSARY = [
   { t: "Direct hit", d: "The orb striking an enemy body, as opposed to an explosion, arc or aura. Most on-hit cards read direct hits only." },
@@ -867,4 +1024,8 @@ export const GLOSSARY = [
   { t: "Stack cap", d: "How many times a repeatable card can be taken. At the cap it stops being offered." },
   { t: "Banish", d: "Removing a card from the pool for the rest of the run, rather than rerolling the screen." },
   { t: "Cover", d: "A tree between you and a ranged enemy. Its shots die on the first tree they cross (rocks and stumps they fly over), and it will not fire without a clear line." },
+  { t: "Family", d: "One of twelve groups every card belongs to. Owning a family's cards makes its other cards likelier, and your two leading families name the build." },
+  { t: "Curse", d: "The downside every legendary is dealt with, printed on the card. It lasts the rest of the run." },
+  { t: "Embers", d: "The Ember Shop's currency: one a kill, five an elite, twenty-five a boss. Carried over between shops." },
+  { t: "Transmute", d: "Sacrificing random cards you own of one rarity, in the Ember Shop, for a choice of one card a rarity higher." },
 ];

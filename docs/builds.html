@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-page="builds-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Builds &amp; shop · Ricochet Ritual</title>
+<meta name="description" content="Twelve families, 10 curses, 12 class cards and the Ember Shop: how a run turns into a build rather than a pile.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="builds-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="builds.html" aria-current="page"><em>✧</em>Builds &amp; shop</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="classes.html"><em>⚑</em>Classes</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#families">Families</a><a href="#names">Build names</a><a href="#curses">Curses</a><a href="#class-cards">Class cards</a><a href="#shop">The Ember Shop</a><a href="#transmute">Transmute</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <h1>Builds &amp; shop</h1>
+      <p>Twelve families, 10 curses, 12 class cards and the Ember Shop: how a run turns into a build rather than a pile.</p>
+    </div>
+    <div class="note">A run used to end with nearly every good card in the pool, so every
+  run ended the same way. Now you take one card a wave, and <b>families</b> are what turn those
+  picks into a build: every card belongs to exactly one, and every card you own in a family makes
+  that family's other cards likelier to be dealt. An early lean compounds into an identity instead
+  of being washed out by the shuffler — but nothing is ever locked out, so an off-family card is
+  still a real decision.</div>
+
+    <h2 id="families">Families</h2>
+    <p>
+      Each card you own in a family multiplies the draw weight of that family's other cards by
+      <b>+30%</b>, up to <b>5</b> cards' worth
+      (×2.5 at most). Rarity, class and family all
+      multiply together, so a family you lean into still keeps its legendaries rare.
+    </p>
+    <div class="toolbar">
+      <input class="filter" id="page-filter" type="search" placeholder="Filter families or cards…" autocomplete="off" aria-label="Filter this page">
+      <div id="page-chips"></div>
+      <span class="hits" id="page-hits"></span>
+    </div>
+    <div class="rows">
+      <div class="row" id="fam-kinetic" style="--stripe:rgb(242,199,89)" data-hay="kinetic kinetic the orb itself: its speed, size, bounces, throws and catches. kinetic juggernaut striking force whiplash backhand carom heavy orb light core magnetic grip pushback boomerang bowling dead stop fracture deadeye heavy core inertia battery juggernaut phase shot ricochet seismic impact slingshot split shot wall crush wrecking ball twin orbs">
+        <div class="r-name" data-anchor><span style="color:rgb(242,199,89)">Kinetic</span><span class="r-key">24 cards</span></div>
+        <div class="r-desc"><div>The orb itself: its speed, size, bounces, throws and catches.</div><div class="tot"><a href="cards.html#orbdamage" style="color:var(--common)">Striking Force</a>, <a href="cards.html#orbspeed" style="color:var(--common)">Whiplash</a>, <a href="cards.html#backhand" style="color:var(--uncommon)">Backhand</a>, <a href="cards.html#carom" style="color:var(--uncommon)">Carom</a>, <a href="cards.html#orbsize" style="color:var(--uncommon)">Heavy Orb</a>, <a href="cards.html#lightcore" style="color:var(--uncommon)">Light Core</a>, <a href="cards.html#magneticgrip" style="color:var(--uncommon)">Magnetic Grip</a>, <a href="cards.html#pushback" style="color:var(--uncommon)">Pushback</a>, <a href="cards.html#boomerang" style="color:var(--rare)">Boomerang</a>, <a href="cards.html#bowling" style="color:var(--rare)">Bowling</a> <span class="tot">(BREAKER)</span>, <a href="cards.html#deadstop" style="color:var(--rare)">Dead Stop</a>, <a href="cards.html#fracture" style="color:var(--rare)">Fracture</a>, <a href="cards.html#deadeye" style="color:var(--epic)">Deadeye</a>, <a href="cards.html#heavycore" style="color:var(--epic)">Heavy Core</a>, <a href="cards.html#inertiabattery" style="color:var(--epic)">Inertia Battery</a>, <a href="cards.html#juggernaut" style="color:var(--epic)">Juggernaut</a>, <a href="cards.html#phaseshot" style="color:var(--epic)">Phase Shot</a>, <a href="cards.html#ricochet" style="color:var(--epic)">Ricochet</a>, <a href="cards.html#seismicimpact" style="color:var(--epic)">Seismic Impact</a> <span class="tot">(BREAKER)</span>, <a href="cards.html#slingshot" style="color:var(--epic)">Slingshot</a>, <a href="cards.html#splitshot" style="color:var(--epic)">Split Shot</a>, <a href="cards.html#wallcrush" style="color:var(--epic)">Wall Crush</a> <span class="tot">(BREAKER)</span>, <a href="cards.html#wreckingball" style="color:var(--epic)">Wrecking Ball</a>, <a href="cards.html#twinorbs" style="color:var(--legendary)">Twin Orbs</a></div></div>
+        <div class="r-meta"><div class="per">names a build <b>Kinetic …</b> or <b>… Juggernaut</b></div></div>
+      </div>
+      <div class="row" id="fam-precision" style="--stripe:rgb(255,235,140)" data-hay="precision precision crits, long shots and executions: every hit chosen. deadeye marksman marksman charged shot critical mass homing instinct sniper's eye ambush executioner seeker">
+        <div class="r-name" data-anchor><span style="color:rgb(255,235,140)">Precision</span><span class="r-key">8 cards</span></div>
+        <div class="r-desc"><div>Crits, long shots and executions: every hit chosen.</div><div class="tot"><a href="cards.html#marksman" style="color:var(--uncommon)">Marksman</a>, <a href="cards.html#chargedshot" style="color:var(--rare)">Charged Shot</a>, <a href="cards.html#criticalmass" style="color:var(--rare)">Critical Mass</a>, <a href="cards.html#hominginstinct" style="color:var(--rare)">Homing Instinct</a>, <a href="cards.html#sniperseye" style="color:var(--rare)">Sniper's Eye</a>, <a href="cards.html#ambush" style="color:var(--epic)">Ambush</a> <span class="tot">(STALKER)</span>, <a href="cards.html#executioner" style="color:var(--epic)">Executioner</a>, <a href="cards.html#seeker" style="color:var(--epic)">Seeker</a></div></div>
+        <div class="r-meta"><div class="per">names a build <b>Deadeye …</b> or <b>… Marksman</b></div></div>
+      </div>
+      <div class="row" id="fam-fire" style="--stripe:rgb(255,115,51)" data-hay="fire fire burning, explosions and craters. blazing pyromancer blazing trail ignition blast radius kindling wildfire aftershock comet cremation explosive touch volatile core">
+        <div class="r-name" data-anchor><span style="color:rgb(255,115,51)">Fire</span><span class="r-key">10 cards</span></div>
+        <div class="r-desc"><div>Burning, explosions and craters.</div><div class="tot"><a href="cards.html#orbfire" style="color:var(--uncommon)">Blazing Trail</a>, <a href="cards.html#ignition" style="color:var(--uncommon)">Ignition</a>, <a href="cards.html#blastradius" style="color:var(--rare)">Blast Radius</a>, <a href="cards.html#kindling" style="color:var(--rare)">Kindling</a>, <a href="cards.html#wildfire" style="color:var(--rare)">Wildfire</a>, <a href="cards.html#aftershock" style="color:var(--epic)">Aftershock</a>, <a href="cards.html#comet" style="color:var(--epic)">Comet</a>, <a href="cards.html#cremation" style="color:var(--epic)">Cremation</a>, <a href="cards.html#explosivetouch" style="color:var(--epic)">Explosive Touch</a>, <a href="cards.html#volatilecore" style="color:var(--epic)">Volatile Core</a></div></div>
+        <div class="r-meta"><div class="per">names a build <b>Blazing …</b> or <b>… Pyromancer</b></div></div>
+      </div>
+      <div class="row" id="fam-frost" style="--stripe:rgb(140,217,255)" data-hay="frost frost chills, freezes, and what shatters afterwards. frost glacier cold snap freezing shot frozen court hoarfrost frostbite leech field permafrost shatter absolute zero">
+        <div class="r-name" data-anchor><span style="color:rgb(140,217,255)">Frost</span><span class="r-key">9 cards</span></div>
+        <div class="r-desc"><div>Chills, freezes, and what shatters afterwards.</div><div class="tot"><a href="cards.html#coldsnap" style="color:var(--uncommon)">Cold Snap</a>, <a href="cards.html#freezingshot" style="color:var(--uncommon)">Freezing Shot</a>, <a href="cards.html#frozencourt" style="color:var(--uncommon)">Frozen Court</a>, <a href="cards.html#hoarfrost" style="color:var(--uncommon)">Hoarfrost</a>, <a href="cards.html#frostbite" style="color:var(--rare)">Frostbite</a>, <a href="cards.html#leechfield" style="color:var(--rare)">Leech Field</a>, <a href="cards.html#permafrost" style="color:var(--rare)">Permafrost</a>, <a href="cards.html#shatter" style="color:var(--rare)">Shatter</a>, <a href="cards.html#absolutezero" style="color:var(--epic)">Absolute Zero</a></div></div>
+        <div class="r-meta"><div class="per">names a build <b>Frost …</b> or <b>… Glacier</b></div></div>
+      </div>
+      <div class="row" id="fam-storm" style="--stripe:rgb(153,179,255)" data-hay="storm storm lightning that arcs from one body to the next. storm tempest chain lightning resonant field static charge static field superconductor thunderclap arc damage arc range ball lightning lightning rod storm front tempest heart tether">
+        <div class="r-name" data-anchor><span style="color:rgb(153,179,255)">Storm</span><span class="r-key">13 cards</span></div>
+        <div class="r-desc"><div>Lightning that arcs from one body to the next.</div><div class="tot"><a href="cards.html#chainlightning" style="color:var(--rare)">Chain Lightning</a>, <a href="cards.html#resonantfield" style="color:var(--rare)">Resonant Field</a> <span class="tot">(STORMCALLER)</span>, <a href="cards.html#staticcharge" style="color:var(--rare)">Static Charge</a>, <a href="cards.html#staticfield" style="color:var(--rare)">Static Field</a>, <a href="cards.html#superconductor" style="color:var(--rare)">Superconductor</a>, <a href="cards.html#thunderclap" style="color:var(--rare)">Thunderclap</a>, <a href="cards.html#chaindamage" style="color:var(--epic)">Arc Damage</a>, <a href="cards.html#chainrange" style="color:var(--epic)">Arc Range</a>, <a href="cards.html#balllightning" style="color:var(--epic)">Ball Lightning</a> <span class="tot">(STORMCALLER)</span>, <a href="cards.html#lightningrod" style="color:var(--epic)">Lightning Rod</a>, <a href="cards.html#stormfront" style="color:var(--epic)">Storm Front</a>, <a href="cards.html#tempestheart" style="color:var(--epic)">Tempest Heart</a> <span class="tot">(STORMCALLER)</span>, <a href="cards.html#tether" style="color:var(--epic)">Tether</a></div></div>
+        <div class="r-meta"><div class="per">names a build <b>Storm …</b> or <b>… Tempest</b></div></div>
+      </div>
+      <div class="row" id="fam-void" style="--stripe:rgb(179,102,255)" data-hay="void void gravity, time, pulses, and stepping through space. void walker blink strike afterimage gravity snap rift step temporal rift death nova rupture shadowstep void pulse void reach void tempo black hole event horizon">
+        <div class="r-name" data-anchor><span style="color:rgb(179,102,255)">Void</span><span class="r-key">13 cards</span></div>
+        <div class="r-desc"><div>Gravity, time, pulses, and stepping through space.</div><div class="tot"><a href="cards.html#blinkstrike" style="color:var(--uncommon)">Blink Strike</a>, <a href="cards.html#afterimage" style="color:var(--rare)">Afterimage</a> <span class="tot">(STALKER)</span>, <a href="cards.html#gravitysnap" style="color:var(--rare)">Gravity Snap</a>, <a href="cards.html#riftstep" style="color:var(--rare)">Rift Step</a>, <a href="cards.html#temporalrift" style="color:var(--rare)">Temporal Rift</a>, <a href="cards.html#deathnova" style="color:var(--epic)">Death Nova</a>, <a href="cards.html#rupture" style="color:var(--epic)">Rupture</a>, <a href="cards.html#shadowstep" style="color:var(--epic)">Shadowstep</a> <span class="tot">(STALKER)</span>, <a href="cards.html#voidpulse" style="color:var(--epic)">Void Pulse</a>, <a href="cards.html#voidrange" style="color:var(--epic)">Void Reach</a>, <a href="cards.html#voidfrequency" style="color:var(--epic)">Void Tempo</a>, <a href="cards.html#blackholecore" style="color:var(--legendary)">Black Hole</a>, <a href="cards.html#eventhorizon" style="color:var(--legendary)">Event Horizon</a></div></div>
+        <div class="r-meta"><div class="per">names a build <b>Void …</b> or <b>… Walker</b></div></div>
+      </div>
+      <div class="row" id="fam-arcane" style="--stripe:rgb(140,242,242)" data-hay="arcane arcane echoes and copies: mirror shards, phantoms, links. arcane prism mirror ball wide orbit cursed glass extra orbiter faster orbit phantom copies soul link resonance">
+        <div class="r-name" data-anchor><span style="color:rgb(140,242,242)">Arcane</span><span class="r-key">8 cards</span></div>
+        <div class="r-desc"><div>Echoes and copies: mirror shards, phantoms, links.</div><div class="tot"><a href="cards.html#orbitmode" style="color:var(--rare)">Mirror Ball</a>, <a href="cards.html#orbitrange" style="color:var(--rare)">Wide Orbit</a>, <a href="cards.html#cursedglass" style="color:var(--epic)">Cursed Glass</a>, <a href="cards.html#orbitorbs" style="color:var(--epic)">Extra Orbiter</a>, <a href="cards.html#orbitspeed" style="color:var(--epic)">Faster Orbit</a>, <a href="cards.html#phantomcopies" style="color:var(--epic)">Phantom Copies</a>, <a href="cards.html#soullink" style="color:var(--epic)">Soul Link</a>, <a href="cards.html#resonance" style="color:var(--legendary)">Resonance</a></div></div>
+        <div class="r-meta"><div class="per">names a build <b>Arcane …</b> or <b>… Prism</b></div></div>
+      </div>
+      <div class="row" id="fam-blood" style="--stripe:rgb(242,64,77)" data-hay="blood blood kills, bleeding, and power drawn from your own wounds. blood reaper bloodrush life steal vampiric aura adrenaline berserker core blood feast hemorrhage soul harvest blood pact blood price open wound quickening rampage vampire orb">
+        <div class="r-name" data-anchor><span style="color:rgb(242,64,77)">Blood</span><span class="r-key">14 cards</span></div>
+        <div class="r-desc"><div>Kills, bleeding, and power drawn from your own wounds.</div><div class="tot"><a href="cards.html#bloodrush" style="color:var(--uncommon)">Bloodrush</a>, <a href="cards.html#lifesteal" style="color:var(--uncommon)">Life Steal</a>, <a href="cards.html#vampiricaura" style="color:var(--uncommon)">Vampiric Aura</a>, <a href="cards.html#adrenaline" style="color:var(--rare)">Adrenaline</a>, <a href="cards.html#berserkercore" style="color:var(--rare)">Berserker Core</a>, <a href="cards.html#bloodfeast" style="color:var(--rare)">Blood Feast</a>, <a href="cards.html#hemorrhage" style="color:var(--rare)">Hemorrhage</a>, <a href="cards.html#soulharvest" style="color:var(--rare)">Soul Harvest</a>, <a href="cards.html#bloodpact" style="color:var(--epic)">Blood Pact</a>, <a href="cards.html#bloodprice" style="color:var(--epic)">Blood Price</a>, <a href="cards.html#bleed" style="color:var(--epic)">Open Wound</a>, <a href="cards.html#quickening" style="color:var(--epic)">Quickening</a>, <a href="cards.html#rampage" style="color:var(--epic)">Rampage</a>, <a href="cards.html#vampireorb" style="color:var(--epic)">Vampire Orb</a></div></div>
+        <div class="r-meta"><div class="per">names a build <b>Blood …</b> or <b>… Reaper</b></div></div>
+      </div>
+      <div class="row" id="fam-beast" style="--stripe:rgb(153,230,115)" data-hay="beast beast companions that fight beside you. feral packmaster angel's wrath demon claws lasting judgement lingering curse owl swiftness owl talons owl vision pack leader curse potency divine potency raise dead angel companion demon companion owl companion wolf companion">
+        <div class="r-name" data-anchor><span style="color:rgb(153,230,115)">Beast</span><span class="r-key">15 cards</span></div>
+        <div class="r-desc"><div>Companions that fight beside you.</div><div class="tot"><a href="cards.html#angeldamage" style="color:var(--rare)">Angel's Wrath</a>, <a href="cards.html#demondamage" style="color:var(--rare)">Demon Claws</a>, <a href="cards.html#angeljudgement" style="color:var(--rare)">Lasting Judgement</a>, <a href="cards.html#demoncurse" style="color:var(--rare)">Lingering Curse</a>, <a href="cards.html#owlfrequency" style="color:var(--rare)">Owl Swiftness</a>, <a href="cards.html#owldamage" style="color:var(--rare)">Owl Talons</a>, <a href="cards.html#owlrange" style="color:var(--rare)">Owl Vision</a>, <a href="cards.html#packleader" style="color:var(--rare)">Pack Leader</a>, <a href="cards.html#demonpotency" style="color:var(--epic)">Curse Potency</a>, <a href="cards.html#angelpotency" style="color:var(--epic)">Divine Potency</a>, <a href="cards.html#raisedead" style="color:var(--epic)">Raise Dead</a>, <a href="cards.html#angelcompanion" style="color:var(--legendary)">Angel Companion</a>, <a href="cards.html#demoncompanion" style="color:var(--legendary)">Demon Companion</a>, <a href="cards.html#owlcompanion" style="color:var(--legendary)">Owl Companion</a>, <a href="cards.html#wolfcompanion" style="color:var(--legendary)">Wolf Companion</a></div></div>
+        <div class="r-meta"><div class="per">names a build <b>Feral …</b> or <b>… Packmaster</b></div></div>
+      </div>
+      <div class="row" id="fam-guardian" style="--stripe:rgb(191,204,230)" data-hay="guardian guardian health, armour, shields and retaliation. iron sentinel vitality iron skin safe hands aegis kinetic plating overflow regrowth retribution second heart thornmail bastion last stand rampart stoneskin ward second wind">
+        <div class="r-name" data-anchor><span style="color:rgb(191,204,230)">Guardian</span><span class="r-key">16 cards</span></div>
+        <div class="r-desc"><div>Health, armour, shields and retaliation.</div><div class="tot"><a href="cards.html#wizardhealth" style="color:var(--common)">Vitality</a>, <a href="cards.html#ironskin" style="color:var(--uncommon)">Iron Skin</a>, <a href="cards.html#safehands" style="color:var(--uncommon)">Safe Hands</a>, <a href="cards.html#aegis" style="color:var(--rare)">Aegis</a>, <a href="cards.html#kineticplating" style="color:var(--rare)">Kinetic Plating</a>, <a href="cards.html#overflow" style="color:var(--rare)">Overflow</a>, <a href="cards.html#regrowth" style="color:var(--rare)">Regrowth</a>, <a href="cards.html#retribution" style="color:var(--rare)">Retribution</a> <span class="tot">(WARDEN)</span>, <a href="cards.html#secondheart" style="color:var(--rare)">Second Heart</a>, <a href="cards.html#thornmail" style="color:var(--rare)">Thornmail</a>, <a href="cards.html#bastion" style="color:var(--epic)">Bastion</a> <span class="tot">(WARDEN)</span>, <a href="cards.html#laststand" style="color:var(--epic)">Last Stand</a>, <a href="cards.html#rampart" style="color:var(--epic)">Rampart</a> <span class="tot">(WARDEN)</span>, <a href="cards.html#stoneskin" style="color:var(--epic)">Stoneskin</a>, <a href="cards.html#ward" style="color:var(--epic)">Ward</a>, <a href="cards.html#secondwind" style="color:var(--legendary)">Second Wind</a></div></div>
+        <div class="r-meta"><div class="per">names a build <b>Iron …</b> or <b>… Sentinel</b></div></div>
+      </div>
+      <div class="row" id="fam-combo" style="--stripe:rgb(255,140,217)" data-hay="combo combo cards that feed on, or pay out, the combo meter. rhythm virtuoso metronome showboat combo breaker crescendo overclock momentum">
+        <div class="r-name" data-anchor><span style="color:rgb(255,140,217)">Combo</span><span class="r-key">6 cards</span></div>
+        <div class="r-desc"><div>Cards that feed on, or pay out, the combo meter.</div><div class="tot"><a href="cards.html#metronome" style="color:var(--uncommon)">Metronome</a>, <a href="cards.html#showboat" style="color:var(--uncommon)">Showboat</a>, <a href="cards.html#combobreaker" style="color:var(--rare)">Combo Breaker</a>, <a href="cards.html#crescendo" style="color:var(--rare)">Crescendo</a>, <a href="cards.html#overclock" style="color:var(--rare)">Overclock</a>, <a href="cards.html#momentum" style="color:var(--epic)">Momentum</a></div></div>
+        <div class="r-meta"><div class="per">names a build <b>Rhythm …</b> or <b>… Virtuoso</b></div></div>
+      </div>
+      <div class="row" id="fam-wild" style="--stripe:rgb(204,204,179)" data-hay="wild wild the unaligned: speed, economy, and deals with a catch. wild gambler swift steps featherweight fortune curator tithe contract reserve charge">
+        <div class="r-name" data-anchor><span style="color:rgb(204,204,179)">Wild</span><span class="r-key">7 cards</span></div>
+        <div class="r-desc"><div>The unaligned: speed, economy, and deals with a catch.</div><div class="tot"><a href="cards.html#wizardspeed" style="color:var(--common)">Swift Steps</a>, <a href="cards.html#featherweight" style="color:var(--uncommon)">Featherweight</a>, <a href="cards.html#fortune" style="color:var(--uncommon)">Fortune</a>, <a href="cards.html#curator" style="color:var(--rare)">Curator</a>, <a href="cards.html#tithe" style="color:var(--rare)">Tithe</a>, <a href="cards.html#contract" style="color:var(--epic)">Contract</a>, <a href="cards.html#reservecharge" style="color:var(--legendary)">Reserve Charge</a></div></div>
+        <div class="r-meta"><div class="per">names a build <b>Wild …</b> or <b>… Gambler</b></div></div>
+      </div>
+    </div>
+    <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
+
+    <h2 id="names">Build names</h2>
+    <p>The game-over screen names your build from its two leading
+  families: the top family's adjective and the runner-up's noun, so three Frost cards and two
+  Kinetic ones is a <i>Frost Juggernaut</i>. A single family is an <i>Adept</i>; no cards at all is
+  an <i>Empty Hand</i>. A tie goes to the family listed first below. Each build name keeps its
+  own furthest wave, best score and number of runs, so "my best Blazing Pyromancer" is a record
+  you can chase.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>leading ↓ / runner-up →</th><th style="color:rgb(242,199,89)">Juggernaut</th><th style="color:rgb(255,235,140)">Marksman</th><th style="color:rgb(255,115,51)">Pyromancer</th><th style="color:rgb(140,217,255)">Glacier</th><th style="color:rgb(153,179,255)">Tempest</th><th style="color:rgb(179,102,255)">Walker</th><th style="color:rgb(140,242,242)">Prism</th><th style="color:rgb(242,64,77)">Reaper</th><th style="color:rgb(153,230,115)">Packmaster</th><th style="color:rgb(191,204,230)">Sentinel</th><th style="color:rgb(255,140,217)">Virtuoso</th><th style="color:rgb(204,204,179)">Gambler</th></tr></thead>
+      <tbody>
+        <tr><td style="color:rgb(242,199,89)"><b>Kinetic</b></td><td class="tot">Kinetic Adept</td><td>Kinetic Marksman</td><td>Kinetic Pyromancer</td><td>Kinetic Glacier</td><td>Kinetic Tempest</td><td>Kinetic Walker</td><td>Kinetic Prism</td><td>Kinetic Reaper</td><td>Kinetic Packmaster</td><td>Kinetic Sentinel</td><td>Kinetic Virtuoso</td><td>Kinetic Gambler</td></tr>
+        <tr><td style="color:rgb(255,235,140)"><b>Deadeye</b></td><td>Deadeye Juggernaut</td><td class="tot">Deadeye Adept</td><td>Deadeye Pyromancer</td><td>Deadeye Glacier</td><td>Deadeye Tempest</td><td>Deadeye Walker</td><td>Deadeye Prism</td><td>Deadeye Reaper</td><td>Deadeye Packmaster</td><td>Deadeye Sentinel</td><td>Deadeye Virtuoso</td><td>Deadeye Gambler</td></tr>
+        <tr><td style="color:rgb(255,115,51)"><b>Blazing</b></td><td>Blazing Juggernaut</td><td>Blazing Marksman</td><td class="tot">Blazing Adept</td><td>Blazing Glacier</td><td>Blazing Tempest</td><td>Blazing Walker</td><td>Blazing Prism</td><td>Blazing Reaper</td><td>Blazing Packmaster</td><td>Blazing Sentinel</td><td>Blazing Virtuoso</td><td>Blazing Gambler</td></tr>
+        <tr><td style="color:rgb(140,217,255)"><b>Frost</b></td><td>Frost Juggernaut</td><td>Frost Marksman</td><td>Frost Pyromancer</td><td class="tot">Frost Adept</td><td>Frost Tempest</td><td>Frost Walker</td><td>Frost Prism</td><td>Frost Reaper</td><td>Frost Packmaster</td><td>Frost Sentinel</td><td>Frost Virtuoso</td><td>Frost Gambler</td></tr>
+        <tr><td style="color:rgb(153,179,255)"><b>Storm</b></td><td>Storm Juggernaut</td><td>Storm Marksman</td><td>Storm Pyromancer</td><td>Storm Glacier</td><td class="tot">Storm Adept</td><td>Storm Walker</td><td>Storm Prism</td><td>Storm Reaper</td><td>Storm Packmaster</td><td>Storm Sentinel</td><td>Storm Virtuoso</td><td>Storm Gambler</td></tr>
+        <tr><td style="color:rgb(179,102,255)"><b>Void</b></td><td>Void Juggernaut</td><td>Void Marksman</td><td>Void Pyromancer</td><td>Void Glacier</td><td>Void Tempest</td><td class="tot">Void Adept</td><td>Void Prism</td><td>Void Reaper</td><td>Void Packmaster</td><td>Void Sentinel</td><td>Void Virtuoso</td><td>Void Gambler</td></tr>
+        <tr><td style="color:rgb(140,242,242)"><b>Arcane</b></td><td>Arcane Juggernaut</td><td>Arcane Marksman</td><td>Arcane Pyromancer</td><td>Arcane Glacier</td><td>Arcane Tempest</td><td>Arcane Walker</td><td class="tot">Arcane Adept</td><td>Arcane Reaper</td><td>Arcane Packmaster</td><td>Arcane Sentinel</td><td>Arcane Virtuoso</td><td>Arcane Gambler</td></tr>
+        <tr><td style="color:rgb(242,64,77)"><b>Blood</b></td><td>Blood Juggernaut</td><td>Blood Marksman</td><td>Blood Pyromancer</td><td>Blood Glacier</td><td>Blood Tempest</td><td>Blood Walker</td><td>Blood Prism</td><td class="tot">Blood Adept</td><td>Blood Packmaster</td><td>Blood Sentinel</td><td>Blood Virtuoso</td><td>Blood Gambler</td></tr>
+        <tr><td style="color:rgb(153,230,115)"><b>Feral</b></td><td>Feral Juggernaut</td><td>Feral Marksman</td><td>Feral Pyromancer</td><td>Feral Glacier</td><td>Feral Tempest</td><td>Feral Walker</td><td>Feral Prism</td><td>Feral Reaper</td><td class="tot">Feral Adept</td><td>Feral Sentinel</td><td>Feral Virtuoso</td><td>Feral Gambler</td></tr>
+        <tr><td style="color:rgb(191,204,230)"><b>Iron</b></td><td>Iron Juggernaut</td><td>Iron Marksman</td><td>Iron Pyromancer</td><td>Iron Glacier</td><td>Iron Tempest</td><td>Iron Walker</td><td>Iron Prism</td><td>Iron Reaper</td><td>Iron Packmaster</td><td class="tot">Iron Adept</td><td>Iron Virtuoso</td><td>Iron Gambler</td></tr>
+        <tr><td style="color:rgb(255,140,217)"><b>Rhythm</b></td><td>Rhythm Juggernaut</td><td>Rhythm Marksman</td><td>Rhythm Pyromancer</td><td>Rhythm Glacier</td><td>Rhythm Tempest</td><td>Rhythm Walker</td><td>Rhythm Prism</td><td>Rhythm Reaper</td><td>Rhythm Packmaster</td><td>Rhythm Sentinel</td><td class="tot">Rhythm Adept</td><td>Rhythm Gambler</td></tr>
+        <tr><td style="color:rgb(204,204,179)"><b>Wild</b></td><td>Wild Juggernaut</td><td>Wild Marksman</td><td>Wild Pyromancer</td><td>Wild Glacier</td><td>Wild Tempest</td><td>Wild Walker</td><td>Wild Prism</td><td>Wild Reaper</td><td>Wild Packmaster</td><td>Wild Sentinel</td><td>Wild Virtuoso</td><td class="tot">Wild Adept</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="curses">Curses</h2>
+    <p><b>Every legendary is dealt with a curse</b>, rolled when the card is
+  dealt and printed on its face in red, so taking one is a trade you can read before you make it.
+  The curse lasts the rest of the run, and two of the same kind compound. Each is a multiplier on
+  something the game already reads — sized to sting, never to make a legendary not worth taking.</p>
+    <table>
+      <thead><tr><th>Curse</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr id="curse-frail"><td><b>Frail</b></td><td>Max HP -15%</td></tr>
+        <tr id="curse-sluggish"><td><b>Sluggish</b></td><td>Move speed -12%</td></tr>
+        <tr id="curse-blunted"><td><b>Blunted</b></td><td>Orb damage -12%</td></tr>
+        <tr id="curse-hunted"><td><b>Hunted</b></td><td>Enemies 10% faster</td></tr>
+        <tr id="curse-brittle"><td><b>Brittle</b></td><td>Take 12% more damage</td></tr>
+        <tr id="curse-withered"><td><b>Withered</b></td><td>Healing -30%</td></tr>
+        <tr id="curse-leaden"><td><b>Leaden</b></td><td>Blink cooldown +1s</td></tr>
+        <tr id="curse-sticky"><td><b>Sticky Fingers</b></td><td>Recall cooldown +0.6s</td></tr>
+        <tr id="curse-marked"><td><b>Marked</b></td><td>Elites twice as common</td></tr>
+        <tr id="curse-taxed"><td><b>Taxed</b></td><td>Embers from kills -30%</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="class-cards">Class cards</h2>
+    <p>Each class has three cards only it is ever offered, marked with the
+  class's name on the card. They are strong on purpose — a reason to pick the class — but sized
+  against the ordinary cards of their rarity rather than above them.</p>
+    <table>
+      <thead><tr><th>Class</th><th>Its three cards</th></tr></thead>
+      <tbody>
+        <tr><td style="color:rgb(115,204,255)"><b>WARDEN</b></td><td><a href="cards.html#bastion" style="color:var(--epic)">Bastion</a> <span class="tot">epic</span> · <a href="cards.html#rampart" style="color:var(--epic)">Rampart</a> <span class="tot">epic</span> · <a href="cards.html#retribution" style="color:var(--rare)">Retribution</a> <span class="tot">rare</span></td></tr>
+        <tr><td style="color:rgb(140,217,255)"><b>STORMCALLER</b></td><td><a href="cards.html#balllightning" style="color:var(--epic)">Ball Lightning</a> <span class="tot">epic</span> · <a href="cards.html#resonantfield" style="color:var(--rare)">Resonant Field</a> <span class="tot">rare</span> · <a href="cards.html#tempestheart" style="color:var(--epic)">Tempest Heart</a> <span class="tot">epic</span></td></tr>
+        <tr><td style="color:rgb(191,153,255)"><b>STALKER</b></td><td><a href="cards.html#afterimage" style="color:var(--rare)">Afterimage</a> <span class="tot">rare</span> · <a href="cards.html#ambush" style="color:var(--epic)">Ambush</a> <span class="tot">epic</span> · <a href="cards.html#shadowstep" style="color:var(--epic)">Shadowstep</a> <span class="tot">epic</span></td></tr>
+        <tr><td style="color:rgb(255,158,77)"><b>BREAKER</b></td><td><a href="cards.html#bowling" style="color:var(--rare)">Bowling</a> <span class="tot">rare</span> · <a href="cards.html#seismicimpact" style="color:var(--epic)">Seismic Impact</a> <span class="tot">epic</span> · <a href="cards.html#wallcrush" style="color:var(--epic)">Wall Crush</a> <span class="tot">epic</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="shop">The Ember Shop</h2>
+    <p>After every fifth wave the free card is replaced by the <b>Ember
+  Shop</b>. Embers come from every death, whoever or whatever landed it: pets, burns and a
+  bomber's own blast all pay. Unspent embers carry over, so saving through one shop for a
+  legendary at the next is a real plan. Extra cards the wave owes you — Tithe, a boss kill's bonus
+  — are still dealt as ordinary hands once you leave, and the ability card a third wave would have
+  offered goes on the shelf instead of being lost.</p>
+    <p>
+      Embers: <b>1</b> a kill, <b>5</b> an elite, <b>25</b> a boss
+      (the Taxed curse pays 70% of that). The shelf holds <b>5</b> cards, six when an
+      ability card is due. A price is a number of <b>units</b> by rarity —
+      <code>common 1.2</code> · <code>uncommon 1.8</code> · <code>rare 2.6</code> · <code>epic 3.8</code> · <code>legendary 5.5</code>, an ability
+      <code>2.6</code> — times the size of the wave you just cleared: income is
+      kills and the kill count grows with the wave, so one curve keeps a visit worth about the same
+      at wave 5 and at wave 40. Restocking costs <code>0.6</code> units, and
+      <code>0.3</code> more each time in the same visit.
+    </p>
+    <table>
+      <thead><tr><th>Visit</th><th style="color:var(--common)">common</th><th style="color:var(--uncommon)">uncommon</th><th style="color:var(--rare)">rare</th><th style="color:var(--epic)">epic</th><th style="color:var(--legendary)">legendary</th><th>restock</th></tr></thead>
+      <tbody>
+        <tr><td>after wave <b>5</b></td><td>26</td><td>40</td><td>57</td><td>84</td><td>121</td><td>13</td></tr>
+        <tr><td>after wave <b>10</b></td><td>68</td><td>103</td><td>148</td><td>217</td><td>314</td><td>34</td></tr>
+        <tr><td>after wave <b>15</b></td><td>127</td><td>191</td><td>276</td><td>403</td><td>583</td><td>64</td></tr>
+        <tr><td>after wave <b>20</b></td><td>205</td><td>308</td><td>445</td><td>650</td><td>941</td><td>103</td></tr>
+        <tr><td>after wave <b>25</b></td><td>302</td><td>454</td><td>655</td><td>958</td><td>1386</td><td>151</td></tr>
+        <tr><td>after wave <b>30</b></td><td>418</td><td>626</td><td>905</td><td>1322</td><td>1914</td><td>209</td></tr>
+        <tr><td>after wave <b>35</b></td><td>551</td><td>826</td><td>1193</td><td>1744</td><td>2525</td><td>275</td></tr>
+        <tr><td>after wave <b>40</b></td><td>703</td><td>1055</td><td>1524</td><td>2227</td><td>3223</td><td>352</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="transmute">Transmute</h3>
+    <p><b>Transmute</b> sacrifices <b>random</b> cards you own of one
+  rarity for a choice of one card a rarity higher. Random on purpose: the cost is not knowing which
+  ones go — and it takes two clicks, so it is never an accident. It never takes Twin Orbs or a
+  Contract, or a card something else you own depends on (Ignition while you hold Kindling); a
+  stack goes one copy at a time. The same undo is what lets The Collector hold your cards and give
+  them back.</p>
+    <table>
+      <tbody>
+        <tr><td><b style="color:var(--common)">3 common</b></td><td>→</td><td>a choice of one of three <b style="color:var(--uncommon)">uncommon</b></td></tr>
+        <tr><td><b style="color:var(--uncommon)">3 uncommon</b></td><td>→</td><td>a choice of one of three <b style="color:var(--rare)">rare</b></td></tr>
+        <tr><td><b style="color:var(--rare)">3 rare</b></td><td>→</td><td>a choice of one of three <b style="color:var(--epic)">epic</b></td></tr>
+        <tr><td><b style="color:var(--epic)">5 epic</b></td><td>→</td><td>a choice of one of three <b style="color:var(--legendary)">legendary</b></td></tr>
+      </tbody>
+    </table>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

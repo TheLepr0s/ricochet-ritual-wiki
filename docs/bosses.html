@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bosses · Ricochet Ritual</title>
-<meta name="description" content="Two fights, deliberately opposite. One asks you to read it; the other asks you to already be moving.">
+<meta name="description" content="Three fights, each asking something different. The first asks you to read it, the second to already be moving, and the third takes your best cards away for the length of the fight.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
 <link rel="stylesheet" href="assets/wiki.css">
 <script>
@@ -32,6 +32,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <a href="bestiary.html"><em>☠</em>Bestiary</a>
         <a href="bosses.html" aria-current="page"><em>♛</em>Bosses</a>
         <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
         <a href="abilities.html"><em>✦</em>Abilities</a>
         <a href="classes.html"><em>⚑</em>Classes</a>
         <a href="waves.html"><em>≋</em>Waves</a>
@@ -39,43 +40,46 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <a href="systems.html"><em>⚙</em>Systems</a>
     </nav>
     <div class="side-head">On this page</div>
-        <div class="toc"><a href="#rotation">The rotation</a><a href="#dreadsovereign">DREAD SOVEREIGN</a><a href="#palerevenant">PALE REVENANT</a></div>
+        <div class="toc"><a href="#rotation">The rotation</a><a href="#dreadsovereign">DREAD SOVEREIGN</a><a href="#palerevenant">PALE REVENANT</a><a href="#collector">THE COLLECTOR</a></div>
   </aside>
 
   <main>
     <div class="page-head">
       <h1>Bosses</h1>
-      <p>Two fights, deliberately opposite. One asks you to read it; the other asks you to already be moving.</p>
+      <p>Three fights, each asking something different. The first asks you to read it, the second to already be moving, and the third takes your best cards away for the length of the fight.</p>
     </div>
     <div class="note">Which boss arrives is <b>fixed rather than rolled</b>. A coin flip
   would take away the one thing about a boss wave worth knowing in advance, and fixing the order
-  also guarantees that the first two bosses anyone meets are one of each. Both pay the same on
-  death: a large flat heal on the spot, plus one extra card banked for the next time the upgrade
-  screen opens — banked rather than granted, because that screen is not showing mid-wave.
+  also guarantees that the first three bosses anyone meets are one of each. All three pay the
+  same on death: a large flat heal on the spot, plus one extra card banked for the next time the
+  upgrade screen opens — banked rather than granted, because that screen is not showing mid-wave.
+  On <b>Nightmare</b> a boss comes every seventh wave instead of every tenth.
   <br><br>
-  <b>Both shrug off most knockback</b> — 85% for the Sovereign, 88% for the Revenant. Until
-  23 September they only claimed to: the resistance was applied inside the boss's own damage
-  handler, before the orb wrote its shove, so it never took effect, and every other push in the
-  game bypassed it entirely. It now sits where every push goes through. A boss is also never
-  pulled back toward you as a straggler, and neither boss counts toward Full Bestiary — they
-  have achievements of their own.
+  <b>All three shrug off most knockback</b> — 85% for the Sovereign and the Collector, 88% for the
+  Revenant. Until 23 September they only claimed to: the resistance was applied inside the boss's
+  own damage handler, before the orb wrote its shove, so it never took effect, and every other push
+  in the game bypassed it entirely. It now sits where every push goes through. A boss is also never
+  pulled back toward you as a straggler, and no boss counts toward Full Bestiary — they have
+  achievements of their own.
   <br><br>
   <b>Every boss is tougher than the last.</b> Since 27 September the Nth boss of a run carries
   ×1.75<sup>N</sup> health and ×1.15<sup>N</sup> damage on top of the ordinary wave ramp — see
-  <a href="waves.html#shape">how enemies scale</a>. A wave-30 Sovereign has about 56,000 health
-  on medium, where it used to have about 10,500. Their speed deliberately stays on a gentler
-  ramp than everything else, so the Revenant can always be outrun.</div>
+  <a href="waves.html#shape">how enemies scale</a>. A wave-40 Sovereign (its second visit, since
+  the rotation is three long) is far past the 10,500 health a wave-30 one had before the change.
+  Their speed deliberately stays on a gentler ramp than everything else, so the Revenant can
+  always be outrun.</div>
 
     <h2 id="rotation">The rotation</h2>
     <p>
       A boss arrives every tenth wave and the order is fixed, cycling through
-      2 of them:
+      3 of them:
     </p>
     <table>
       <thead><tr><th>Wave</th><th>Boss</th><th></th></tr></thead>
       <tbody>
-        <tr><td>10, 30, …</td><td><a href="#dreadsovereign">DREAD SOVEREIGN</a></td><td>A siege engine. It walks, and the fight is read from a distance.</td></tr>
-        <tr><td>20, 40, …</td><td><a href="#palerevenant">PALE REVENANT</a></td><td>The opposite fight, and the reason there are two.</td></tr>
+        <tr><td>10, 40, …</td><td><a href="#dreadsovereign">DREAD SOVEREIGN</a></td><td>A siege engine. It walks, and the fight is read from a distance.</td></tr>
+        <tr><td>20, 50, …</td><td><a href="#palerevenant">PALE REVENANT</a></td><td>The opposite fight: it runs, and you have to be moving already.</td></tr>
+        <tr><td>30, 60, …</td><td><a href="#collector">THE COLLECTOR</a></td><td>The third fight, and a test of the build rather than the footwork: it takes your three best cards for as long as it lives.</td></tr>
       </tbody>
     </table>
 
@@ -84,7 +88,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="portrait"><img src="assets/img/DreadSovereign.png" alt="DreadSovereign" loading="lazy" width="82"></div>
       <div class="beast-body">
         <div class="beast-head">
-          <h3>Wave 10, and every 20th after</h3>
+          <h3>Wave 10, and every 30th after</h3>
           <span class="badge">Boss</span>
         </div>
         <p>A siege engine. It moves at a walking pace and the whole fight is read from a
@@ -136,7 +140,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="portrait"><img src="assets/img/PaleRevenant.png" alt="PaleRevenant" loading="lazy" width="82"></div>
       <div class="beast-body">
         <div class="beast-head">
-          <h3>Wave 20, and every 20th after</h3>
+          <h3>Wave 20, and every 30th after</h3>
           <span class="badge">Boss</span>
         </div>
         <p>The opposite fight, and the reason there are two. Nearly three times the Sovereign's
@@ -185,6 +189,49 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <p>Its speed is capped below the wizard's own, even at phase three, on purpose: kiting
             has to stay an answer, or the fight stops being about reading it and becomes a
             question about whether blink is up.</p>
+
+    <h2 id="collector">THE COLLECTOR</h2>
+    <div class="beast" style="--stripe:var(--legendary)">
+      <div class="portrait"><img src="assets/img/Collector.png" alt="Collector" loading="lazy" width="82"></div>
+      <div class="beast-body">
+        <div class="beast-head">
+          <h3>Wave 30, and every 30th after</h3>
+          <span class="badge">Boss</span>
+        </div>
+        <p>Added 29 September, and the one that tests your build rather than your footwork. It
+           arrives and <b>takes your three best cards</b> — highest rarity first, then whichever
+           has done the most damage this run — and holds them, circling its head and named under
+           its health bar, until it dies. Then every one comes back.</p>
+        <div class="statline"><span class="stat">base HP <b>2000</b></span><span class="stat">speed <b>70</b></span><span class="stat">contact <b>20</b></span><span class="stat">hitbox <b>70×66</b></span><span class="stat">scale <b>×2.3</b></span></div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>Move</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td>The theft</td><td>On arrival. It takes anything the shop's Transmute could take back
+                            exactly, and companions, which it holds rather than kills (the pet
+                            simply stops until it is returned). Never Twin Orbs or a Contract, and
+                            never a card that something else you own depends on. A stackable card
+                            goes with all its stacks.</td></tr>
+        <tr><td>Coin fan</td><td>Aimed fans of gold coins — 5, 7 then 9 wide, two or three rounds, each
+                           round shifted half a gap. Unlike the Sovereign's patterns these die on
+                           trees: cover is a real answer here.</td></tr>
+        <tr><td>Snatch</td><td>A grab lane locked on you, drawn for 0.7s. Still inside it when it closes
+                         and you are hit and yanked across the floor to its feet. Measured from the
+                         same point and at the same width the lane is drawn.</td></tr>
+        <tr><td>Vault</td><td>Three, four then five chests dropped around you — one always on you —
+                        each bursting in a drawn circle after about a second.</td></tr>
+        <tr><td>Hoard</td><td>If you are within 200px when its next attack comes up, a ring of coins
+                        outward instead. It does not want you near.</td></tr>
+        <tr><td>Blink</td><td>It steps away to somewhere at range and clear of scenery, and the next
+                        attack follows quickly. It also blinks out if it is stuck against
+                        something.</td></tr>
+        <tr><td>Summon</td><td>Hired help, more each phase.</td></tr>
+      </tbody>
+    </table>
+    <p>It keeps its distance and strafes, like a merchant behind a counter: the Sovereign
+            walks at you and the Revenant runs at you, so the third one makes you do the chasing.
+            A gold-faced noble in a royal purple cloak, so it cannot be mistaken for either.</p>
     <footer>
       Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
       number on this page is dumped out of the source — nothing here is typed by hand twice.

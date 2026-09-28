@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Achievements · Ricochet Ritual</title>
-<meta name="description" content="All 119, hidden ones included, with the counter behind each.">
+<meta name="description" content="All 120, hidden ones included, with the counter behind each.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
 <link rel="stylesheet" href="assets/wiki.css">
 <script>
@@ -32,6 +32,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <a href="bestiary.html"><em>☠</em>Bestiary</a>
         <a href="bosses.html"><em>♛</em>Bosses</a>
         <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
         <a href="abilities.html"><em>✦</em>Abilities</a>
         <a href="classes.html"><em>⚑</em>Classes</a>
         <a href="waves.html"><em>≋</em>Waves</a>
@@ -44,12 +45,12 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   <main>
     <div class="page-head">
       <h1>Achievements</h1>
-      <p>All 119, hidden ones included, with the counter behind each.</p>
+      <p>All 120, hidden ones included, with the counter behind each.</p>
     </div>
     <div class="counts">
-      <div class="count"><b>119</b><span>total</span></div>
+      <div class="count"><b>120</b><span>total</span></div>
       <div class="count"><b>34</b><span>single run</span></div>
-      <div class="count"><b>85</b><span>lifetime</span></div>
+      <div class="count"><b>86</b><span>lifetime</span></div>
       <div class="count"><b>4</b><span>HARD only</span></div>
       <div class="count"><b>26</b><span>hidden</span></div>
     </div>
@@ -68,7 +69,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       Every one is backed by a counter with a stable id, so progress survives a rename and nothing
       is ever revoked once earned — a reconcile pass grants retroactively but never takes back.
       <br><br>
-      <b>Full Bestiary</b> counts 19 lines: one for every ordinary
+      <b>Full Bestiary</b> counts 20 lines: one for every ordinary
       enemy type, the Witchdoctor and the Bonecaller separately, and neither boss — they have
       achievements of their own. A test kills one of each type and checks the target against the
       roster, because twice now new enemies shipped without a line of their own.
@@ -486,7 +487,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         data-hidden="0" data-run="0" data-hard="0">
         <div class="r-name" data-anchor><span>Full Bestiary</span><span class="r-key">ACH_BESTIARY</span></div>
         <div class="r-desc">Kill at least one of every enemy type, bosses aside.</div>
-        <div class="r-meta"><div class="per">target <b>19</b></div><div class="tot">lifetime</div><div class="tot"><code>bestiary</code></div></div>
+        <div class="r-meta"><div class="per">target <b>20</b></div><div class="tot">lifetime</div><div class="tot"><code>bestiary</code></div></div>
       </div>
       <div class="row" id="ach-seeker-chain" style="--stripe:var(--rare)"
         data-hay="ach_seeker_chain chain reaction redirect a single throw through 5 enemies. seekchain"
@@ -831,11 +832,18 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-desc">Kill your first Pale Revenant.</div>
         <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>kills_revenant</code></div></div>
       </div>
+      <div class="row" id="ach-boss-collector" style="--stripe:var(--uncommon)"
+        data-hay="ach_boss_collector repossession kill the collector and take your cards back. kills_collector"
+        data-hidden="0" data-run="0" data-hard="0">
+        <div class="r-name" data-anchor><span>Repossession</span><span class="r-key">ACH_BOSS_COLLECTOR</span></div>
+        <div class="r-desc">Kill The Collector and take your cards back.</div>
+        <div class="r-meta"><div class="tot">lifetime</div><div class="tot"><code>kills_collector</code></div></div>
+      </div>
       <div class="row" id="ach-boss-both" style="--stripe:var(--rare)"
-        data-hay="ach_boss_both both crowns kill both bosses in a single run. bossbrace"
+        data-hay="ach_boss_both both crowns kill two different bosses in a single run. bossbrace"
         data-hidden="0" data-run="1" data-hard="0">
         <div class="r-name" data-anchor><span>Both Crowns</span><span class="r-key">ACH_BOSS_BOTH</span></div>
-        <div class="r-desc">Kill both bosses in a single run.</div>
+        <div class="r-desc">Kill two different bosses in a single run.</div>
         <div class="r-meta"><div class="per">target <b>2</b></div><div class="tot">single run</div><div class="tot"><code>bossbrace</code></div></div>
       </div>
       <div class="row" id="ach-comp-first" style="--stripe:var(--uncommon)"

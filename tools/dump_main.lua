@@ -206,6 +206,9 @@ local function build()
     local Archetype      = require("Utilities/systems/Archetype")
     local Difficulty     = require("Utilities/systems/Difficulty")
     local Pickup         = require("Objects/Pickups/Pickup")
+    local Families       = require("Utilities/systems/Families")
+    local Curses         = require("Utilities/systems/Curses")
+    local Shop           = require("Utilities/systems/Shop")
     require("Objects/Entities/Enemies/EnemyTypes")
 
     local TPNAME = {}
@@ -215,6 +218,7 @@ local function build()
     local wmLocals = fileLocals(WaveManager)
     local pkLocals = fileLocals(Pickup)
     local wcLocals = fileLocals(WaveComposition)
+    local shLocals = fileLocals(Shop)
 
     -- ── Upgrade cards ────────────────────────────────────────────────────────
     local STACK_CAPS = need(umLocals, "STACK_CAPS", "UpgradeManager") or {}
@@ -251,6 +255,10 @@ local function build()
                 "s", u.stackable and true or false,
                 "cap", STACK_CAPS[k],
                 "req", REQUIRES[k],
+                -- Sept 29 2026: the family a card belongs to (Families.lua),
+                -- and the class it is exclusive to, if any.
+                "fam", u.family,
+                "cls", u.class,
                 "d", u.description)
             if conflictOf[k] then
                 local c = arr({})
@@ -315,7 +323,7 @@ local function build()
         "MeleeEnemy", "RangedEnemy", "BomberEnemy", "VampireEnemy", "CasterEnemy",
         "ChargerEnemy", "SplitterEnemy", "ShieldEnemy", "SupportEnemy",
         "EvilWizardEnemy", "BossEnemy", "RevenantBoss", "BlightsporeEnemy",
-        "SiphonEnemy", "BaseEnemy",
+        "SiphonEnemy", "CollectorBoss", "BaseEnemy",
     }
     local aiName = {}
     for _, f in ipairs(AI_FILES) do
@@ -440,9 +448,11 @@ local function build()
         local row = obj("id", p.id, "n", p.label, "d", p.blurb, "tag", p.tag)
         for _, fk in ipairs({ "healthMult", "damageMult", "speedMult", "rampMult",
                               "spawnIntervalMult", "maxAliveMult",
-                              "healFrac", "healFlat", "rerolls", "banishes" }) do
+                              "healFrac", "healFlat", "rerolls", "banishes",
+                              "dropMult", "bossEvery" }) do
             put(row, fk, p[fk])
         end
+        if type(p.rarityMult) == "table" then put(row, "rarityMult", scalarMap(p.rarityMult)) end
         diffs[#diffs + 1] = row
     end
 
@@ -488,11 +498,53 @@ local function build()
     }))
 
 
+    -- ── Families, curses, the Ember Shop (Sept 29 2026) ─────────────────────
+    local fams = arr({})
+    for _, d in ipairs(Families.DEFS or {}) do
+        local col = d.color or {}
+        fams[#fams + 1] = obj("id", d.id, "n", d.name, "adj", d.adj, "noun", d.noun,
+                              "d", d.blurb,
+                              "col", arr({ col[1] or 1, col[2] or 1, col[3] or 1 }))
+    end
+    put(consts, "family", scalarMap({ PULL = Families.PULL, CAP = Families.CAP }))
+
+    local curses = arr({})
+    for _, c in ipairs(Curses.DEFS or {}) do
+        curses[#curses + 1] = obj("id", c.id, "n", c.name, "d", c.text)
+    end
+
+    -- Shop prices are units x the size of the wave just cleared, so the dump
+    -- carries both halves and the page multiplies: the wave sizes come from
+    -- WaveManager's own formula rather than a retyped copy of it.
+    local units = need(shLocals, "PRICE_UNITS", "Shop") or {}
+    local shopWaves = arr({})
+    for w = Shop.EVERY, Shop.EVERY * 8, Shop.EVERY do
+        shopWaves[#shopWaves + 1] = obj("wave", w, "unit", Shop.unit and Shop.unit(w)
+                                        or WaveManager._enemyCountForWave(w))
+    end
+    local trans = arr({})
+    for _, r in ipairs({ "common", "uncommon", "rare", "epic" }) do
+        local t = (Shop.TRANSMUTE or {})[r]
+        if t then trans[#trans + 1] = obj("from", r, "need", t.need, "into", t.into) end
+    end
+    local EMB = UpgradeManager.EMBERS or {}
+    put(consts, "shop", obj(
+        "every", Shop.EVERY,
+        "units", scalarMap(units),
+        "utilityUnits", need(shLocals, "UTILITY_UNITS", "Shop"),
+        "restockUnits", need(shLocals, "RESTOCK_UNITS", "Shop"),
+        "restockStep", need(shLocals, "RESTOCK_STEP", "Shop"),
+        "stock", need(shLocals, "STOCK", "Shop"),
+        "waves", shopWaves,
+        "transmute", trans,
+        "embers", scalarMap(EMB)))
+
     -- ── Out ──────────────────────────────────────────────────────────────────
     local root = obj("upgrades", ups, "achievements", achs,
                      "abilities", abis, "modifiers", mods, "enemies", ens,
                      "archetypes", arcs, "compositions", comps,
-                     "difficulties", diffs, "consts", consts)
+                     "difficulties", diffs, "families", fams, "curses", curses,
+                     "consts", consts)
 
     local fh = assert(io.open(OUT, "wb"))
     fh:write(enc(root))

@@ -32,6 +32,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <a href="bestiary.html"><em>☠</em>Bestiary</a>
         <a href="bosses.html"><em>♛</em>Bosses</a>
         <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
         <a href="abilities.html"><em>✦</em>Abilities</a>
         <a href="classes.html"><em>⚑</em>Classes</a>
         <a href="waves.html"><em>≋</em>Waves</a>
@@ -48,25 +49,26 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <p>A wave-survival game about one orb, thrown and recalled. You get one orb. Everything else is a consequence of that.</p>
     </div>
     <div class="counts">
-      <div class="count"><b>21</b><span>enemies</span></div>
-      <div class="count"><b>105</b><span>cards</span></div>
+      <div class="count"><b>23</b><span>enemies</span></div>
+      <div class="count"><b>143</b><span>cards</span></div>
       <div class="count"><b>12</b><span>abilities</span></div>
       <div class="count"><b>4</b><span>classes</span></div>
       <div class="count"><b>8</b><span>modifiers</span></div>
       <div class="count"><b>6</b><span>designed waves</span></div>
-      <div class="count"><b>119</b><span>achievements</span></div>
-      <div class="count"><b>2</b><span>bosses</span></div>
+      <div class="count"><b>120</b><span>achievements</span></div>
+      <div class="count"><b>3</b><span>bosses</span></div>
     </div>
 
     <div class="tiles">
       <a class="tile" href="guide.html"><b>▶ How to play</b><span>Controls, the run loop, and what the orb actually does.</span></a>
       <a class="tile" href="bestiary.html"><b>☠ Bestiary</b><span>Every enemy, what drives it, and when it starts appearing.</span></a>
-      <a class="tile" href="bosses.html"><b>♛ Bosses</b><span>The two boss fights, attack by attack.</span></a>
-      <a class="tile" href="cards.html"><b>🂠 Upgrade cards</b><span>All 105 upgrade cards, with stack caps, prerequisites and exclusions.</span></a>
+      <a class="tile" href="bosses.html"><b>♛ Bosses</b><span>The three boss fights, attack by attack.</span></a>
+      <a class="tile" href="cards.html"><b>🂠 Upgrade cards</b><span>All 143 upgrade cards, with stack caps, prerequisites and exclusions.</span></a>
+      <a class="tile" href="builds.html"><b>✧ Builds &amp; shop</b><span>Families, build names, curses, class cards, and the Ember Shop.</span></a>
       <a class="tile" href="abilities.html"><b>✦ Abilities</b><span>The twelve F-key abilities, and how they measured against each other.</span></a>
       <a class="tile" href="classes.html"><b>⚑ Classes</b><span>The four starting classes, and the benchmark that set them.</span></a>
       <a class="tile" href="waves.html"><b>≋ Waves</b><span>Difficulty, modifiers, designed waves, elites and the boss rotation.</span></a>
-      <a class="tile" href="achievements.html"><b>★ Achievements</b><span>All 119, including the hidden ones.</span></a>
+      <a class="tile" href="achievements.html"><b>★ Achievements</b><span>All 120, including the hidden ones.</span></a>
       <a class="tile" href="systems.html"><b>⚙ Systems</b><span>Damage, drops, score and sound — how the machinery fits together.</span></a>
     </div>
 
@@ -82,11 +84,30 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         way stops it until you step aside. Releasing early keeps the speed it gathered, so
         a recall is also how you re-aim without picking the orb up. Walking into a moving orb
         catches it — you do not have to wait for it to come to rest.</p>
-    <h3>A wave, then two cards</h3>
-    <p>Clear the field and the upgrade screen opens with two choices, a third of the time a
-        third, and on every third WAVE a fourth card that is a utility ability rather than a
+    <h3>A wave, then one card</h3>
+    <p>Clear the field and the upgrade screen deals three cards, and you take <b>one</b> (two a
+        wave until 29 September, which by wave 20 meant owning nearly every good card — a pile,
+        not a build). On every third wave a fourth card is a utility ability rather than a
         passive. Rerolls and banishes accumulate on a timer rather than being spent currency,
         so a bad screen late in a run is a smaller disaster than a bad screen early.</p>
+    <h3>A build, not a pile</h3>
+    <p>Every card belongs to one of twelve <a href="builds.html">families</a>, and every card you
+        own in a family makes that family's other cards likelier to turn up — so an early lean
+        compounds into an identity. Each class has three cards only it is ever offered. Every
+        legendary comes with a <b>curse</b>, printed on the card before you take it. The run ends
+        with your build's name — the leading family's adjective and the runner-up's noun, a
+        <i>Frost Juggernaut</i> — and each build name keeps its own records.</p>
+    <h3>Every fifth wave, the Ember Shop</h3>
+    <p>Kills earn embers — one each, five for an elite, twenty-five for a boss — and after every
+        fifth wave the free card is replaced by a <a href="builds.html#shop">shop</a>: a priced
+        shelf, a restock, and <b>Transmute</b>, which sacrifices random cards you own for a choice
+        of one a rarity higher. Unspent embers carry over.</p>
+    <h3>Why you died</h3>
+    <p>The death screen has a recap down its left side: what killed you and how hard, which
+        three enemies hurt you most, which three of your cards did the most damage, your biggest
+        single hit, and how much you were healing per wave — averaged only since your healing
+        last changed (a healing card, a curse, the drop rate halving), so it describes the build
+        you died with rather than the one you had ten waves ago.</p>
     <h3>It gets specific, not just bigger</h3>
     <p>Waves ramp, but the interesting pressure comes from named events: a modifier that
         changes the rules of one wave, a designed wave built from one kind of enemy, and a
@@ -129,6 +150,10 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <tr><td>Stack cap</td><td>How many times a repeatable card can be taken. At the cap it stops being offered.</td></tr>
         <tr><td>Banish</td><td>Removing a card from the pool for the rest of the run, rather than rerolling the screen.</td></tr>
         <tr><td>Cover</td><td>A tree between you and a ranged enemy. Its shots die on the first tree they cross (rocks and stumps they fly over), and it will not fire without a clear line.</td></tr>
+        <tr><td>Family</td><td>One of twelve groups every card belongs to. Owning a family's cards makes its other cards likelier, and your two leading families name the build.</td></tr>
+        <tr><td>Curse</td><td>The downside every legendary is dealt with, printed on the card. It lasts the rest of the run.</td></tr>
+        <tr><td>Embers</td><td>The Ember Shop's currency: one a kill, five an elite, twenty-five a boss. Carried over between shops.</td></tr>
+        <tr><td>Transmute</td><td>Sacrificing random cards you own of one rarity, in the Ember Shop, for a choice of one card a rarity higher.</td></tr>
       </tbody>
     </table>
     <footer>

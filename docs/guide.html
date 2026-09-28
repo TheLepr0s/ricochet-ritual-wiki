@@ -32,6 +32,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <a href="bestiary.html"><em>☠</em>Bestiary</a>
         <a href="bosses.html"><em>♛</em>Bosses</a>
         <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
         <a href="abilities.html"><em>✦</em>Abilities</a>
         <a href="classes.html"><em>⚑</em>Classes</a>
         <a href="waves.html"><em>≋</em>Waves</a>
@@ -76,11 +77,30 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         way stops it until you step aside. Releasing early keeps the speed it gathered, so
         a recall is also how you re-aim without picking the orb up. Walking into a moving orb
         catches it — you do not have to wait for it to come to rest.</p>
-    <h3>A wave, then two cards</h3>
-    <p>Clear the field and the upgrade screen opens with two choices, a third of the time a
-        third, and on every third WAVE a fourth card that is a utility ability rather than a
+    <h3>A wave, then one card</h3>
+    <p>Clear the field and the upgrade screen deals three cards, and you take <b>one</b> (two a
+        wave until 29 September, which by wave 20 meant owning nearly every good card — a pile,
+        not a build). On every third wave a fourth card is a utility ability rather than a
         passive. Rerolls and banishes accumulate on a timer rather than being spent currency,
         so a bad screen late in a run is a smaller disaster than a bad screen early.</p>
+    <h3>A build, not a pile</h3>
+    <p>Every card belongs to one of twelve <a href="builds.html">families</a>, and every card you
+        own in a family makes that family's other cards likelier to turn up — so an early lean
+        compounds into an identity. Each class has three cards only it is ever offered. Every
+        legendary comes with a <b>curse</b>, printed on the card before you take it. The run ends
+        with your build's name — the leading family's adjective and the runner-up's noun, a
+        <i>Frost Juggernaut</i> — and each build name keeps its own records.</p>
+    <h3>Every fifth wave, the Ember Shop</h3>
+    <p>Kills earn embers — one each, five for an elite, twenty-five for a boss — and after every
+        fifth wave the free card is replaced by a <a href="builds.html#shop">shop</a>: a priced
+        shelf, a restock, and <b>Transmute</b>, which sacrifices random cards you own for a choice
+        of one a rarity higher. Unspent embers carry over.</p>
+    <h3>Why you died</h3>
+    <p>The death screen has a recap down its left side: what killed you and how hard, which
+        three enemies hurt you most, which three of your cards did the most damage, your biggest
+        single hit, and how much you were healing per wave — averaged only since your healing
+        last changed (a healing card, a curse, the drop rate halving), so it describes the build
+        you died with rather than the one you had ten waves ago.</p>
     <h3>It gets specific, not just bigger</h3>
     <p>Waves ramp, but the interesting pressure comes from named events: a modifier that
         changes the rules of one wave, a designed wave built from one kind of enemy, and a
@@ -103,10 +123,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
 
     <h2 id="upgrades">The upgrade screen</h2>
     <p>
-      Clearing a wave opens it. You are offered two cards, and on every
-      <b>3rd</b> screen a further card that is
+      Clearing a wave opens it. You are dealt three cards and take <b>one</b> — two a wave until
+      29 September — and on every
+      <b>3rd</b> wave a further card that is
       a <a href="abilities.html">utility ability</a> rather than a passive — you carry one of those
-      at a time, so taking a second replaces the first.
+      at a time, so taking a second replaces the first. After every
+      <b>5th</b> wave the free card is replaced by the
+      <a href="builds.html#shop">Ember Shop</a> instead. Which cards you are dealt leans toward the
+      <a href="builds.html">families</a> you already own, and every legendary carries a curse.
     </p>
     <p>
       <b>Rerolls</b> redraw the screen; <b>banishes</b> remove a card from the pool for the rest of
@@ -137,8 +161,10 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <tr><td>60 – 85%</td><td><code>4.5%</code> per body</td><td>Chipped. Just often enough to notice that bodies are worth walking to.</td></tr>
         <tr><td>35 – 60%</td><td><code>10%</code> per body</td><td>In trouble. The wave starts paying you back for clearing it.</td></tr>
         <tr><td>Below 35%</td><td><code>20%</code> per body</td><td>One in five. The band is deliberately steep at the bottom, because this is where a run is decided.</td></tr>
-        <tr><td>Elite kill</td><td><code>×5</code> capped at 85%</td><td>A fight you chose to take should pay for itself.</td></tr>
-        <tr><td>Boss kill</td><td><code>4 drops</code> guaranteed</td><td>One heart for two minutes of work would read as an insult.</td></tr>
+        <tr><td>After wave 15</td><td><code>×½</code> every band above</td><td>Since 29 September. By then a build is strong enough that a steady trickle of hearts made it unkillable. The recap's healing average restarts here.</td></tr>
+        <tr><td>Elite kill</td><td><code>×2</code> capped at 85%</td><td>A fight you chose to take should pay for itself — ×5 until 29 September, which was nearly a heart per crown.</td></tr>
+        <tr><td>Boss kill</td><td><code>2 drops</code> guaranteed</td><td>Four until 29 September.</td></tr>
+        <tr><td>Nightmare</td><td><code>×0.7</code> on top of everything</td><td>And no heal between waves at all.</td></tr>
       </tbody>
     </table>
     <p class="tot">
@@ -155,7 +181,15 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   <b>Healing goes somewhere.</b> <code>Player:heal</code> banks the excess so Overflow can turn it
   into shield instead of letting it evaporate at the cap. Shield absorbs before health, and draws
   as plates over the bar. Mitigation — Stoneskin, Last Stand — runs through a single
-  <code>mitigate()</code> funnel, so two sources cannot silently multiply into immunity.</div>
+  <code>mitigate()</code> funnel, so two sources cannot silently multiply into immunity.
+  <br><br>
+  <b>The 29 September survivability pass</b> made dying possible again. Invulnerability after a
+  hit is <b>0.3s</b> (was 0.6s), so a crowd can land a second hit. Shields are capped at
+  <b>30% of max health</b> and <b>drain after 3 seconds</b> without being hit. Life Steal heals on
+  kills rather than hits, Overflow converts half, Second Wind is 3 seconds, Ward rebuilds in 25,
+  and the heal between waves is smaller. Every heal now runs through one function, so a
+  <a href="bestiary.html#plaguepriest">Plague Priest</a>'s aura, the Withered curse and Blood
+  Price all scale it the same way — and the death recap can count it.</div>
 
     <h2 id="difficulty">Difficulty</h2>
     <p>
@@ -168,7 +202,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-name" data-anchor><span>EASY</span><span class="r-key">easy</span></div>
         <div class="r-desc"><div>Weaker foes, room to breathe, and a deeper bag of rerolls.</div><div class="tot">For learning the orb.</div></div>
         <div class="r-meta"><div class="per">enemy health <span class="tot">-25%</span></div><div class="per">enemy damage <span class="tot">-30%</span></div><div class="per">enemy speed <span class="tot">-5%</span></div><div class="per">scaling rate <span class="tot">-30%</span></div><div class="per">spawn interval <span class="tot">+30%</span></div><div class="per">concurrent cap <span class="tot">-25%</span></div>
-          <div class="dep">heals 50% + 6 between waves</div>
+          <div class="dep">heals 40% + 4 between waves</div>
           <div class="dep">5 rerolls · 5 banishes</div>
         </div>
       </div>
@@ -176,7 +210,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-name" data-anchor><span>MEDIUM</span><span class="r-key">medium</span></div>
         <div class="r-desc"><div>The ritual as it was written. The intended fight.</div><div class="tot">Recommended.</div></div>
         <div class="r-meta"><div class="per">enemy health <span class="tot">0%</span></div><div class="per">enemy damage <span class="tot">0%</span></div><div class="per">enemy speed <span class="tot">0%</span></div><div class="per">scaling rate <span class="tot">0%</span></div><div class="per">spawn interval <span class="tot">0%</span></div><div class="per">concurrent cap <span class="tot">0%</span></div>
-          <div class="dep">heals 33% + 3 between waves</div>
+          <div class="dep">heals 25% between waves</div>
           <div class="dep">3 rerolls · 3 banishes</div>
         </div>
       </div>
@@ -184,8 +218,19 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-name" data-anchor><span>HARD</span><span class="r-key">hard</span></div>
         <div class="r-desc"><div>They come faster, hit harder, and the wave's respite is thin.</div><div class="tot">Some achievements only unlock here.</div></div>
         <div class="r-meta"><div class="per">enemy health <span class="tot">+45%</span></div><div class="per">enemy damage <span class="tot">+35%</span></div><div class="per">enemy speed <span class="tot">+8%</span></div><div class="per">scaling rate <span class="tot">+30%</span></div><div class="per">spawn interval <span class="tot">-22%</span></div><div class="per">concurrent cap <span class="tot">+35%</span></div>
-          <div class="dep">heals 18% between waves</div>
+          <div class="dep">heals 10% between waves</div>
           <div class="dep">2 rerolls · 2 banishes</div>
+        </div>
+      </div>
+      <div class="row" id="diff-nightmare" style="--stripe:var(--epic)" data-hay="nightmare nightmare no rest between waves, bosses sooner, and the good cards hide. for a build that has to be earned.">
+        <div class="r-name" data-anchor><span>NIGHTMARE</span><span class="r-key">nightmare</span></div>
+        <div class="r-desc"><div>No rest between waves, bosses sooner, and the good cards hide.</div><div class="tot">For a build that has to be earned.</div></div>
+        <div class="r-meta"><div class="per">enemy health <span class="tot">+90%</span></div><div class="per">enemy damage <span class="tot">+70%</span></div><div class="per">enemy speed <span class="tot">+15%</span></div><div class="per">scaling rate <span class="tot">+60%</span></div><div class="per">spawn interval <span class="tot">-38%</span></div><div class="per">concurrent cap <span class="tot">+60%</span></div>
+          <div class="dep">heals 0% between waves</div>
+          <div class="dep">1 rerolls · 1 banishes</div>
+          <div class="dep">hearts ×0.7</div>
+          <div class="dep">a boss every 7th wave</div>
+          <div class="dep">odds: common ×1.3, uncommon ×1.1, rare ×0.8, epic ×0.55, legendary ×0.4</div>
         </div>
       </div>
     </div>

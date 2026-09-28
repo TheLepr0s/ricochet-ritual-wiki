@@ -316,6 +316,11 @@ th {
 td { color: var(--ink-dim); }
 td:first-child { color: var(--ink); font-weight: 550; white-space: nowrap; }
 tbody tr:hover td { background: var(--panel); }
+/* A table too wide for the column (the 12x12 build-name grid) scrolls inside
+   itself rather than pushing the whole page sideways on a phone. */
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 14px 0; }
+.scroll table { margin: 0; min-width: 980px; font-size: 0.78rem; }
+.scroll td, .scroll th { padding: 5px 8px; white-space: nowrap; }
 
 /* ── Stat strip ──────────────────────────────────────────────────────── */
 .counts { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 4px; }
