@@ -111,7 +111,10 @@ export const LOOP = [
         three enemies hurt you most, which three of your cards did the most damage, your biggest
         single hit, and how much you were healing per wave — averaged only since your healing
         last changed (a healing card, a curse, the drop rate halving), so it describes the build
-        you died with rather than the one you had ten waves ago.`,
+        you died with rather than the one you had ten waves ago. <b>See Upgrades</b> opens every
+        card you ended the run with, and the screen waits for <b>Continue</b> (or Space) rather
+        than closing on the first click. Kills made through the F3 developer menu never count
+        toward the recap.`,
   },
   {
     h: "It gets specific, not just bigger",
