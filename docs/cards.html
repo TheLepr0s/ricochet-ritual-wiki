@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Upgrade cards · Ricochet Ritual</title>
-<meta name="description" content="All 146 of them, grouped by rarity, then listed by family at the end. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.">
+<meta name="description" content="All 152 of them, grouped by rarity, then listed by family at the end. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
 <link rel="stylesheet" href="assets/wiki.css">
 <script>
@@ -46,12 +46,12 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   <main>
     <div class="page-head">
       <h1>Upgrade cards</h1>
-      <p>All 146 of them, grouped by rarity, then listed by family at the end. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.</p>
+      <p>All 152 of them, grouped by rarity, then listed by family at the end. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.</p>
     </div>
     <div class="counts">
-      <div class="count"><b>146</b><span>cards</span></div>
-      <div class="count"><b>36</b><span>stackable</span></div>
-      <div class="count"><b>36</b><span>with a cap</span></div>
+      <div class="count"><b>152</b><span>cards</span></div>
+      <div class="count"><b>37</b><span>stackable</span></div>
+      <div class="count"><b>37</b><span>with a cap</span></div>
       <div class="count"><b>32</b><span>need a prereq</span></div>
       <div class="count"><b>12</b><span>mutually exclusive</span></div>
       <div class="count"><b>12</b><span>class-only</span></div>
@@ -72,7 +72,15 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </div>
 
     <div class="rows">
-      <div class="group-label" id="common">common <span style="opacity:.6">· 4 cards · draw weight 40</span></div>
+      <div class="group-label" id="common">common <span style="opacity:.6">· 5 cards · draw weight 40</span></div>
+      <div class="row" id="deeppockets" style="--stripe:var(--common)"
+          data-hay="deeppockets deep pockets room for more. kills drop 20% more essence per stack. essence_bonus common wild"
+          data-stackable="1" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Deep Pockets</span><span class="r-key">DeepPockets</span></div>
+          <div class="r-desc">Room for more. Kills drop 20% more essence per stack.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-wild"><img class="fam-ic" src="assets/img/family/wild.png" alt=""><b style="color:rgb(204,204,179)">Wild</b></a></div><div class="per">stackable · <b>cap 3</b></div><div class="tot"><code>essence_bonus</code> +0.2</div></div>
+        </div>
       <div class="row" id="orbdamage" style="--stripe:var(--common)"
           data-hay="orbdamage striking force sharpen your orb's impact. orb damage +5 per hit. damage common kinetic"
           data-stackable="1" data-req="0" data-con="0"
@@ -105,7 +113,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Explosive launch power. Orb launch force +100.</div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><img class="fam-ic" src="assets/img/family/kinetic.png" alt=""><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="per">stackable · <b>cap 5</b></div><div class="tot"><code>force</code> +100</div></div>
         </div>
-      <div class="group-label" id="uncommon">uncommon <span style="opacity:.6">· 23 cards · draw weight 28</span></div>
+      <div class="group-label" id="uncommon">uncommon <span style="opacity:.6">· 26 cards · draw weight 28</span></div>
       <div class="row" id="backhand" style="--stripe:var(--uncommon)"
           data-hay="backhand backhand no wind-up. slap the orb back as it comes at you, or swing within a second of catching it, and it leaves +60% faster and +35% harder. backhand uncommon since 26 september a swing that meets the orb while it is still flying at you (faster than 60px/s) counts too, judged per orb, so you can rally it: slap it back, it returns, slap it again. an orb already heading away does not count, so swinging twice cannot bank a second bonus. before, only the second after a catch counted, and a catch stops the orb dead — so it only ever worked on a standing ball. kinetic"
           data-stackable="0" data-req="0" data-con="0"
@@ -137,6 +145,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-name" data-anchor><span>Bloodrush</span><span class="r-key">Bloodrush</span></div>
           <div class="r-desc">Hunter's high. Each kill boosts your movement speed by 120 for 2 seconds.</div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><img class="fam-ic" src="assets/img/family/blood.png" alt=""><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>bloodrush</code></div></div>
+        </div>
+      <div class="row" id="bountyhunter" style="--stripe:var(--uncommon)"
+          data-hay="bountyhunter bounty hunter wanted, alive or dead. elites drop double essence, and bosses half as much again. bounty uncommon wild"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Bounty Hunter</span><span class="r-key">BountyHunter</span></div>
+          <div class="r-desc">Wanted, alive or dead. Elites drop double essence, and bosses half as much again.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-wild"><img class="fam-ic" src="assets/img/family/wild.png" alt=""><b style="color:rgb(204,204,179)">Wild</b></a></div><div class="tot"><code>bounty</code></div></div>
         </div>
       <div class="row" id="carom" style="--stripe:var(--uncommon)"
           data-hay="carom carom trick shot. every wall bounce charges the orb +15% damage, up to 5, spent on the next enemy hit. carom uncommon kinetic"
@@ -218,6 +234,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Hardened body. Invincibility frames after being hit +0.06s.<div class="tot">+0.06s of invulnerability a stack since 29 September, when the base window halved from 0.6s to 0.3s — three stacks of the old +0.12s would have more than doubled it.</div></div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><img class="fam-ic" src="assets/img/family/guardian.png" alt=""><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="per">stackable · <b>cap 3</b></div></div>
         </div>
+      <div class="row" id="jackpot" style="--stripe:var(--uncommon)"
+          data-hay="jackpot jackpot lucky strike. one kill in twenty pays its essence six times over. jackpot uncommon wild"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Jackpot</span><span class="r-key">Jackpot</span></div>
+          <div class="r-desc">Lucky strike. One kill in twenty pays its essence six times over.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-wild"><img class="fam-ic" src="assets/img/family/wild.png" alt=""><b style="color:rgb(204,204,179)">Wild</b></a></div><div class="tot"><code>jackpot</code></div></div>
+        </div>
       <div class="row" id="lifesteal" style="--stripe:var(--uncommon)"
           data-hay="lifesteal life steal vampiric orb. every enemy the orb kills restores 2 hp. life_steal uncommon since 29 september it heals on the kill — 2 hp for every enemy the orb kills — rather than on every hit. on a crowd it used to heal more than anything could hurt you, and a run with it was very hard to lose. blood"
           data-stackable="0" data-req="0" data-con="0"
@@ -282,6 +306,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Play to the crowd. The orb flies 5% faster for every combo tier you reach.</div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-combo"><img class="fam-ic" src="assets/img/family/combo.png" alt=""><b style="color:rgb(255,140,217)">Combo</b></a></div><div class="tot"><code>showboat</code></div></div>
         </div>
+      <div class="row" id="tipjar" style="--stripe:var(--uncommon)"
+          data-hay="tipjar tip jar the crowd pays up. every combo tier you reach pays 2 essence for each tier you are on. tip_jar uncommon combo"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Tip Jar</span><span class="r-key">TipJar</span></div>
+          <div class="r-desc">The crowd pays up. Every combo tier you reach pays 2 essence for each tier you are on.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-combo"><img class="fam-ic" src="assets/img/family/combo.png" alt=""><b style="color:rgb(255,140,217)">Combo</b></a></div><div class="tot"><code>tip_jar</code></div></div>
+        </div>
       <div class="row" id="vampiricaura" style="--stripe:var(--uncommon)"
           data-hay="vampiricaura vampiric aura close feeding. anything that dies near you gives back 2 hp. vampiric_aura uncommon blood"
           data-stackable="0" data-req="0" data-con="0"
@@ -290,7 +322,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Close feeding. Anything that dies near you gives back 2 HP.</div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><img class="fam-ic" src="assets/img/family/blood.png" alt=""><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>vampiric_aura</code></div></div>
         </div>
-      <div class="group-label" id="rare">rare <span style="opacity:.6">· 54 cards · draw weight 16</span></div>
+      <div class="group-label" id="rare">rare <span style="opacity:.6">· 56 cards · draw weight 16</span></div>
       <div class="row" id="adrenaline" style="--stripe:var(--rare)"
           data-hay="adrenaline adrenaline cornered animal. orb damage climbs as your health falls, up to +80% at death's door. adrenaline rare blood"
           data-stackable="0" data-req="0" data-con="1"
@@ -346,6 +378,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-name" data-anchor><span>Blood Feast</span><span class="r-key">BloodFeast</span></div>
           <div class="r-desc">Trade up. Killing anything within 3s of being hurt restores 4 HP.</div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><img class="fam-ic" src="assets/img/family/blood.png" alt=""><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>blood_feast</code></div></div>
+        </div>
+      <div class="row" id="bloodmoney" style="--stripe:var(--rare)"
+          data-hay="bloodmoney blood money paid in red. kills drop double essence while you are below half health. blood_money rare blood"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Blood Money</span><span class="r-key">BloodMoney</span></div>
+          <div class="r-desc">Paid in red. Kills drop double essence while you are below half health.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><img class="fam-ic" src="assets/img/family/blood.png" alt=""><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>blood_money</code></div></div>
         </div>
       <div class="row" id="boomerang" style="--stripe:var(--rare)"
           data-hay="boomerang boomerang comes back to you. every throw returns on its own after 0.8s -- but you can no longer recall. boomerang rare turns the recall button off, since every throw comes back by itself. until the player's report on 29 september a right-click while the orb was flying home cancelled the return, and a return blocked by scenery for five seconds gave up — either way the orb lay stranded until you walked over and hit it. the return can no longer be cancelled, and a throw that has not come home sets off again by itself. kinetic"
@@ -474,6 +514,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-name" data-anchor><span>Homing Instinct</span><span class="r-key">HomingInstinct</span></div>
           <div class="r-desc">Seeks warm flesh. Orb gently steers toward the nearest enemy.</div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-precision"><img class="fam-ic" src="assets/img/family/precision.png" alt=""><b style="color:rgb(255,235,140)">Precision</b></a></div><div class="tot"><code>homing_instinct</code></div></div>
+        </div>
+      <div class="row" id="interest" style="--stripe:var(--rare)"
+          data-hay="interest interest savings grow. every shop you open pays 15% interest on the essence you walked in with. interest rare wild"
+          data-stackable="0" data-req="0" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Interest</span><span class="r-key">Interest</span></div>
+          <div class="r-desc">Savings grow. Every shop you open pays 15% interest on the essence you walked in with.</div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-wild"><img class="fam-ic" src="assets/img/family/wild.png" alt=""><b style="color:rgb(204,204,179)">Wild</b></a></div><div class="tot"><code>interest</code></div></div>
         </div>
       <div class="row" id="kindling" style="--stripe:var(--rare)"
           data-hay="kindling kindling fuel for the fire. burning enemies take 25% more damage from the orb. kindling rare fire"
@@ -1265,11 +1313,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <tr id="family-storm"><td><a href="builds.html#fam-storm"><img class="fam-ic big" src="assets/img/family/storm.png" alt=""><b style="color:rgb(153,179,255)">Storm</b></a><div class="tot">Lightning that arcs from one body to the next.</div></td><td>13</td><td><a href="#chainlightning" style="color:var(--rare)">Chain Lightning</a> · <a href="#resonantfield" style="color:var(--rare)">Resonant Field</a> <span class="tot">(STORMCALLER only)</span> · <a href="#staticcharge" style="color:var(--rare)">Static Charge</a> · <a href="#staticfield" style="color:var(--rare)">Static Field</a> · <a href="#superconductor" style="color:var(--rare)">Superconductor</a> · <a href="#thunderclap" style="color:var(--rare)">Thunderclap</a> · <a href="#chaindamage" style="color:var(--epic)">Arc Damage</a> · <a href="#chainrange" style="color:var(--epic)">Arc Range</a> · <a href="#balllightning" style="color:var(--epic)">Ball Lightning</a> <span class="tot">(STORMCALLER only)</span> · <a href="#lightningrod" style="color:var(--epic)">Lightning Rod</a> · <a href="#stormfront" style="color:var(--epic)">Storm Front</a> · <a href="#tempestheart" style="color:var(--epic)">Tempest Heart</a> <span class="tot">(STORMCALLER only)</span> · <a href="#tether" style="color:var(--epic)">Tether</a></td></tr>
         <tr id="family-void"><td><a href="builds.html#fam-void"><img class="fam-ic big" src="assets/img/family/void.png" alt=""><b style="color:rgb(179,102,255)">Void</b></a><div class="tot">Gravity, time, pulses, and stepping through space.</div></td><td>13</td><td><a href="#blinkstrike" style="color:var(--uncommon)">Blink Strike</a> · <a href="#afterimage" style="color:var(--rare)">Afterimage</a> <span class="tot">(STALKER only)</span> · <a href="#gravitysnap" style="color:var(--rare)">Gravity Snap</a> · <a href="#riftstep" style="color:var(--rare)">Rift Step</a> · <a href="#temporalrift" style="color:var(--rare)">Temporal Rift</a> · <a href="#deathnova" style="color:var(--epic)">Death Nova</a> · <a href="#rupture" style="color:var(--epic)">Rupture</a> · <a href="#shadowstep" style="color:var(--epic)">Shadowstep</a> <span class="tot">(STALKER only)</span> · <a href="#voidpulse" style="color:var(--epic)">Void Pulse</a> · <a href="#voidrange" style="color:var(--epic)">Void Reach</a> · <a href="#voidfrequency" style="color:var(--epic)">Void Tempo</a> · <a href="#blackholecore" style="color:var(--legendary)">Black Hole</a> · <a href="#eventhorizon" style="color:var(--legendary)">Event Horizon</a></td></tr>
         <tr id="family-arcane"><td><a href="builds.html#fam-arcane"><img class="fam-ic big" src="assets/img/family/arcane.png" alt=""><b style="color:rgb(140,242,242)">Arcane</b></a><div class="tot">Echoes and copies: mirror shards, phantoms, links.</div></td><td>8</td><td><a href="#orbitmode" style="color:var(--rare)">Mirror Ball</a> · <a href="#orbitrange" style="color:var(--rare)">Wide Orbit</a> · <a href="#cursedglass" style="color:var(--epic)">Cursed Glass</a> · <a href="#orbitorbs" style="color:var(--epic)">Extra Orbiter</a> · <a href="#orbitspeed" style="color:var(--epic)">Faster Orbit</a> · <a href="#phantomcopies" style="color:var(--epic)">Phantom Copies</a> · <a href="#soullink" style="color:var(--epic)">Soul Link</a> · <a href="#resonance" style="color:var(--legendary)">Resonance</a></td></tr>
-        <tr id="family-blood"><td><a href="builds.html#fam-blood"><img class="fam-ic big" src="assets/img/family/blood.png" alt=""><b style="color:rgb(242,64,77)">Blood</b></a><div class="tot">Kills, bleeding, and power drawn from your own wounds.</div></td><td>14</td><td><a href="#bloodrush" style="color:var(--uncommon)">Bloodrush</a> · <a href="#lifesteal" style="color:var(--uncommon)">Life Steal</a> · <a href="#vampiricaura" style="color:var(--uncommon)">Vampiric Aura</a> · <a href="#adrenaline" style="color:var(--rare)">Adrenaline</a> · <a href="#berserkercore" style="color:var(--rare)">Berserker Core</a> · <a href="#bloodfeast" style="color:var(--rare)">Blood Feast</a> · <a href="#hemorrhage" style="color:var(--rare)">Hemorrhage</a> · <a href="#soulharvest" style="color:var(--rare)">Soul Harvest</a> · <a href="#bloodpact" style="color:var(--epic)">Blood Pact</a> · <a href="#bloodprice" style="color:var(--epic)">Blood Price</a> · <a href="#bleed" style="color:var(--epic)">Open Wound</a> · <a href="#quickening" style="color:var(--epic)">Quickening</a> · <a href="#rampage" style="color:var(--epic)">Rampage</a> · <a href="#vampireorb" style="color:var(--epic)">Vampire Orb</a></td></tr>
+        <tr id="family-blood"><td><a href="builds.html#fam-blood"><img class="fam-ic big" src="assets/img/family/blood.png" alt=""><b style="color:rgb(242,64,77)">Blood</b></a><div class="tot">Kills, bleeding, and power drawn from your own wounds.</div></td><td>15</td><td><a href="#bloodrush" style="color:var(--uncommon)">Bloodrush</a> · <a href="#lifesteal" style="color:var(--uncommon)">Life Steal</a> · <a href="#vampiricaura" style="color:var(--uncommon)">Vampiric Aura</a> · <a href="#adrenaline" style="color:var(--rare)">Adrenaline</a> · <a href="#berserkercore" style="color:var(--rare)">Berserker Core</a> · <a href="#bloodfeast" style="color:var(--rare)">Blood Feast</a> · <a href="#bloodmoney" style="color:var(--rare)">Blood Money</a> · <a href="#hemorrhage" style="color:var(--rare)">Hemorrhage</a> · <a href="#soulharvest" style="color:var(--rare)">Soul Harvest</a> · <a href="#bloodpact" style="color:var(--epic)">Blood Pact</a> · <a href="#bloodprice" style="color:var(--epic)">Blood Price</a> · <a href="#bleed" style="color:var(--epic)">Open Wound</a> · <a href="#quickening" style="color:var(--epic)">Quickening</a> · <a href="#rampage" style="color:var(--epic)">Rampage</a> · <a href="#vampireorb" style="color:var(--epic)">Vampire Orb</a></td></tr>
         <tr id="family-beast"><td><a href="builds.html#fam-beast"><img class="fam-ic big" src="assets/img/family/beast.png" alt=""><b style="color:rgb(153,230,115)">Beast</b></a><div class="tot">Companions that fight beside you.</div></td><td>18</td><td><a href="#angeldamage" style="color:var(--rare)">Angel's Wrath</a> · <a href="#demondamage" style="color:var(--rare)">Demon Claws</a> · <a href="#goatfrequency" style="color:var(--rare)">Headstrong</a> · <a href="#angeljudgement" style="color:var(--rare)">Lasting Judgement</a> · <a href="#demoncurse" style="color:var(--rare)">Lingering Curse</a> · <a href="#owlfrequency" style="color:var(--rare)">Owl Swiftness</a> · <a href="#owldamage" style="color:var(--rare)">Owl Talons</a> · <a href="#owlrange" style="color:var(--rare)">Owl Vision</a> · <a href="#packleader" style="color:var(--rare)">Pack Leader</a> · <a href="#goatdamage" style="color:var(--rare)">Sharpened Horns</a> · <a href="#goatdaze" style="color:var(--epic)">Concussion</a> · <a href="#demonpotency" style="color:var(--epic)">Curse Potency</a> · <a href="#angelpotency" style="color:var(--epic)">Divine Potency</a> · <a href="#raisedead" style="color:var(--epic)">Raise Dead</a> · <a href="#angelcompanion" style="color:var(--legendary)">Angel Companion</a> · <a href="#demoncompanion" style="color:var(--legendary)">Demon Companion</a> · <a href="#goatcompanion" style="color:var(--legendary)">Goat Companion</a> · <a href="#owlcompanion" style="color:var(--legendary)">Owl Companion</a></td></tr>
         <tr id="family-guardian"><td><a href="builds.html#fam-guardian"><img class="fam-ic big" src="assets/img/family/guardian.png" alt=""><b style="color:rgb(191,204,230)">Guardian</b></a><div class="tot">Health, armour, shields and retaliation.</div></td><td>16</td><td><a href="#wizardhealth" style="color:var(--common)">Vitality</a> · <a href="#ironskin" style="color:var(--uncommon)">Iron Skin</a> · <a href="#safehands" style="color:var(--uncommon)">Safe Hands</a> · <a href="#aegis" style="color:var(--rare)">Aegis</a> · <a href="#kineticplating" style="color:var(--rare)">Kinetic Plating</a> · <a href="#overflow" style="color:var(--rare)">Overflow</a> · <a href="#regrowth" style="color:var(--rare)">Regrowth</a> · <a href="#retribution" style="color:var(--rare)">Retribution</a> <span class="tot">(WARDEN only)</span> · <a href="#secondheart" style="color:var(--rare)">Second Heart</a> · <a href="#thornmail" style="color:var(--rare)">Thornmail</a> · <a href="#bastion" style="color:var(--epic)">Bastion</a> <span class="tot">(WARDEN only)</span> · <a href="#laststand" style="color:var(--epic)">Last Stand</a> · <a href="#rampart" style="color:var(--epic)">Rampart</a> <span class="tot">(WARDEN only)</span> · <a href="#stoneskin" style="color:var(--epic)">Stoneskin</a> · <a href="#ward" style="color:var(--epic)">Ward</a> · <a href="#secondwind" style="color:var(--legendary)">Second Wind</a></td></tr>
-        <tr id="family-combo"><td><a href="builds.html#fam-combo"><img class="fam-ic big" src="assets/img/family/combo.png" alt=""><b style="color:rgb(255,140,217)">Combo</b></a><div class="tot">Cards that feed on, or pay out, the combo meter.</div></td><td>6</td><td><a href="#metronome" style="color:var(--uncommon)">Metronome</a> · <a href="#showboat" style="color:var(--uncommon)">Showboat</a> · <a href="#combobreaker" style="color:var(--rare)">Combo Breaker</a> · <a href="#crescendo" style="color:var(--rare)">Crescendo</a> · <a href="#overclock" style="color:var(--rare)">Overclock</a> · <a href="#momentum" style="color:var(--epic)">Momentum</a></td></tr>
-        <tr id="family-wild"><td><a href="builds.html#fam-wild"><img class="fam-ic big" src="assets/img/family/wild.png" alt=""><b style="color:rgb(204,204,179)">Wild</b></a><div class="tot">The unaligned: speed, economy, and deals with a catch.</div></td><td>7</td><td><a href="#wizardspeed" style="color:var(--common)">Swift Steps</a> · <a href="#featherweight" style="color:var(--uncommon)">Featherweight</a> · <a href="#fortune" style="color:var(--uncommon)">Fortune</a> · <a href="#curator" style="color:var(--rare)">Curator</a> · <a href="#tithe" style="color:var(--rare)">Tithe</a> · <a href="#contract" style="color:var(--epic)">Contract</a> · <a href="#reservecharge" style="color:var(--legendary)">Reserve Charge</a></td></tr>
+        <tr id="family-combo"><td><a href="builds.html#fam-combo"><img class="fam-ic big" src="assets/img/family/combo.png" alt=""><b style="color:rgb(255,140,217)">Combo</b></a><div class="tot">Cards that feed on, or pay out, the combo meter.</div></td><td>7</td><td><a href="#metronome" style="color:var(--uncommon)">Metronome</a> · <a href="#showboat" style="color:var(--uncommon)">Showboat</a> · <a href="#tipjar" style="color:var(--uncommon)">Tip Jar</a> · <a href="#combobreaker" style="color:var(--rare)">Combo Breaker</a> · <a href="#crescendo" style="color:var(--rare)">Crescendo</a> · <a href="#overclock" style="color:var(--rare)">Overclock</a> · <a href="#momentum" style="color:var(--epic)">Momentum</a></td></tr>
+        <tr id="family-wild"><td><a href="builds.html#fam-wild"><img class="fam-ic big" src="assets/img/family/wild.png" alt=""><b style="color:rgb(204,204,179)">Wild</b></a><div class="tot">The unaligned: speed, economy, and deals with a catch.</div></td><td>11</td><td><a href="#deeppockets" style="color:var(--common)">Deep Pockets</a> · <a href="#wizardspeed" style="color:var(--common)">Swift Steps</a> · <a href="#bountyhunter" style="color:var(--uncommon)">Bounty Hunter</a> · <a href="#featherweight" style="color:var(--uncommon)">Featherweight</a> · <a href="#fortune" style="color:var(--uncommon)">Fortune</a> · <a href="#jackpot" style="color:var(--uncommon)">Jackpot</a> · <a href="#curator" style="color:var(--rare)">Curator</a> · <a href="#interest" style="color:var(--rare)">Interest</a> · <a href="#tithe" style="color:var(--rare)">Tithe</a> · <a href="#contract" style="color:var(--epic)">Contract</a> · <a href="#reservecharge" style="color:var(--legendary)">Reserve Charge</a></td></tr>
       </tbody>
     </table></div>
     <footer>

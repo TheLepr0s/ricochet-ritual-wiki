@@ -779,6 +779,13 @@ export const COMBAT = [
         bonuses, bought once each), a <b>pack</b> that shows three of that family's cards and lets
         you keep one, and sometimes the Recombobulator.
         <br><br>
+        <b>Essence by strength.</b> A kill no longer pays a flat one: every enemy has a range, rolled
+        when it dies — 0–2 for a Mushroom, 1–3 for a Vampire, up to 3–6 for a Brute (listed in the
+        <a href="bestiary.html">bestiary</a>) — an elite rolls three times and a boss pays 30–45.
+        Small purple motes fly from the body to the counter as you are paid. Six new cards deal in it:
+        Deep Pockets, Bounty Hunter, Jackpot, Tip Jar, Interest and Blood Money. Shop prices follow
+        the new drops, so a visit buys what it did before.
+        <br><br>
         <b>Companions.</b> The <a href="cards.html#goatcompanion">Goat</a> watches further (460px),
         rams harder, and its ram now splashes, shoves the whole group away from you and dazes it — it
         was far behind the other three — and it has three cards of its own like they do. The
@@ -1049,7 +1056,8 @@ export const CLASS_CARD_NOTE = `Each class has three cards only it is ever offer
 
 export const SHOP_NOTE = `After every fifth wave the free card is replaced by the <b>Essence
   Shop</b>. Essence comes from every death, whoever or whatever landed it: pets, burns and a
-  bomber's own blast all pay. Unspent essence carries over, so saving through one shop for a
+  bomber's own blast all pay — and since 29 September how much depends on how strong the enemy
+  was. Unspent essence carries over, so saving through one shop for a
   legendary at the next is a real plan. Extra cards the wave owes you — Tithe, a boss kill's bonus
   — are still dealt as ordinary hands once you leave.`;
 

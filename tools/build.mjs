@@ -355,6 +355,7 @@ function bestiaryPage() {
     const ai = C.AI[e.ai] || { label: e.ai || "—", tone: "common", p: "" };
     const stats = [];
     stats.push(`<span class="stat">HP <b>${e.hp}</b></span>`);
+    if (e.ess) stats.push(`<span class="stat">essence <b>${e.ess[0]}–${e.ess[1]}</b></span>`);
     stats.push(`<span class="stat">speed <b>${e.spd}</b></span>`);
     if (e.dmg) stats.push(`<span class="stat">damage <b>${e.dmg}</b></span>`);
     if (e.range) stats.push(`<span class="stat">range <b>${e.range}</b></span>`);
@@ -492,6 +493,7 @@ function bossesPage() {
       idx(e.x.boss_name || key, "Bosses", "bosses.html", slug(key), key, b.lead);
       const stats = [
         `<span class="stat">base HP <b>${e.hp}</b></span>`,
+        e.ess ? `<span class="stat">essence <b>${e.ess[0]}–${e.ess[1]}</b></span>` : "",
         `<span class="stat">speed <b>${e.spd}</b></span>`,
         `<span class="stat">contact <b>${e.dmg}</b></span>`,
         `<span class="stat">hitbox <b>${e.rx}×${e.ry}</b></span>`,
@@ -864,8 +866,12 @@ function buildsPage() {
     <h2 id="shop">The Essence Shop</h2>
     <p>${C.SHOP_NOTE}</p>
     <p>
-      Essence: <b>${ess.normal}</b> a kill, <b>${ess.elite}</b> an elite, <b>${ess.boss}</b> a boss
-      (the Taxed curse pays 70% of that). The shelf holds <b>${shop.stock}</b> cards, an
+      Essence: a kill pays by how strong the enemy was — a range rolled on each kill, from
+      <b>0–2</b> for a Mushroom to <b>3–6</b> for a Brute (every enemy's is in the
+      <a href="bestiary.html">bestiary</a>) — an elite rolls its range <b>${ess.eliteRolls}</b> times,
+      and a boss pays <b>${(ess.boss || []).join("–")}</b>. Small purple motes fly from the body to the
+      counter in the top-right as it is paid. The Taxed curse pays 70% of it, and six
+      <a href="#essence-cards">cards</a> change it. The shelf holds <b>${shop.stock}</b> cards, an
       <a href="abilities.html">ability</a> (the only place one is sold) and a
       <a href="#family-items">panel for each of your two biggest families</a>.
       A price is a number of <b>units</b> by rarity —
@@ -881,6 +887,12 @@ function buildsPage() {
         ${priceRows}
       </tbody>
     </table>
+
+    <h3 id="essence-cards">Essence cards</h3>
+    <p>${D.upgrades
+      .filter((u) => ["DeepPockets", "BountyHunter", "Jackpot", "TipJar", "Interest", "BloodMoney"].includes(u.k))
+      .map((u) => `<a href="cards.html#${slug(u.k)}" style="color:var(--${u.r})">${esc(u.n)}</a> — ${esc(u.d)}`)
+      .join("<br>")}</p>
 
     <h3 id="family-items">Family items</h3>
     <p>${C.FAMILY_SHOP_NOTE}</p>

@@ -370,8 +370,14 @@ local function build()
             REQUIRED_MISSING[#REQUIRED_MISSING + 1] = "AI module for " .. k .. " (add it to AI_FILES)"
             say("!! unresolved AI module for " .. k)
         end
+        -- What it pays into the Essence Shop's purse (Essence.lua, Sept 29 2026).
+        local Essence = require("Utilities/systems/Essence")
+        local eLo, eHi
+        if e.is_boss then eLo, eHi = Essence.BOSS[1], Essence.BOSS[2]
+        else eLo, eHi = Essence.range(k) end
         local row = obj(
             "k", k,
+            "ess", arr({ eLo, eHi }),
             "hp", e.health, "spd", e.speed, "dmg", e.damage,
             "range", e.attackRange,
             "rx", hb.rx, "ry", hb.ry,
@@ -536,7 +542,9 @@ local function build()
         local t = (Shop.TRANSMUTE or {})[r]
         if t then trans[#trans + 1] = obj("from", r, "need", t.need, "into", t.into) end
     end
-    local ESS = UpgradeManager.ESSENCE or {}
+    local Essence = require("Utilities/systems/Essence")
+    local ESS = obj("eliteRolls", Essence.ELITE_ROLLS, "boss", arr({ Essence.BOSS[1], Essence.BOSS[2] }),
+                    "cards", scalarMap(UpgradeManager.ESSENCE_CARDS or {}))
     put(consts, "shop", obj(
         "every", Shop.EVERY,
         "units", scalarMap(units),
@@ -550,7 +558,7 @@ local function build()
         "recombChance", Shop.RECOMB_CHANCE,
         "waves", shopWaves,
         "transmute", trans,
-        "essence", scalarMap(ESS)))
+        "essence", ESS))
 
     -- ── Out ──────────────────────────────────────────────────────────────────
     local root = obj("upgrades", ups, "achievements", achs,
