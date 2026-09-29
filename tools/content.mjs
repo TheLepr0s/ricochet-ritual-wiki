@@ -760,7 +760,13 @@ export const COMBAT = [
         <b>a third of your max health</b> after each wave — Easy 40% — where it used to heal a
         share of what you were missing, and Nightmare healed nothing.
         <br><br>
-        The Blightspore is now simply the <a href="bestiary.html#slug">Slug</a>, in name as well as art.` },
+        The Blightspore is now simply the <a href="bestiary.html#slug">Slug</a>, in name as well as art.
+        <br><br>
+        <b>Family icons and family items.</b> Every card carries its family's icon, and the
+        <a href="builds.html#shop">Essence Shop</a> now sells three cards and two family items: a
+        <b>Family Boon</b> (a themed bonus, levels I to III), a <b>Family Pack</b> (a random card of
+        that family), or <b>the Recombobulator</b>, which swaps every card of one family for the same
+        rarities of another.` },
   { h: "The September 28 pass",
     p: `<b>Nerfs.</b> <a href="cards.html#tether">Tether</a>, <a href="cards.html#quickening">Quickening</a>
         and <a href="cards.html#seeker">Seeker</a> are weaker and now epic. Seeker is the first card
@@ -1026,6 +1032,17 @@ export const SHOP_NOTE = `After every fifth wave the free card is replaced by th
   legendary at the next is a real plan. Extra cards the wave owes you — Tithe, a boss kill's bonus
   — are still dealt as ordinary hands once you leave, and the ability card a third wave would have
   offered goes on the shelf instead of being lost.`;
+
+export const FAMILY_SHOP_NOTE = `Since 29 September the shelf is <b>three cards and two family
+  items</b>. A family item is sold under its family's icon — the same icon every card of that
+  family carries in its header — and is one of three things.`;
+
+export const RECOMB_NOTE = `every card you own in one family is given up, one copy at a time, and
+  replaced by a random card of the <b>same rarity</b> from one other random family (the nearest
+  rarity it has, if it has none left at that one). Your boon levels in the old family move to the
+  new one. A card nothing can take back — Twin Orbs, a Contract, or one something else depends
+  on — stays. A legendary swapped in comes without a new curse: the one the old legendary brought
+  stays with you. What it gave is shown before you go back to the shelf.`;
 
 export const TRANSMUTE_NOTE = `<b>Transmute</b> sacrifices <b>random</b> cards you own of one
   rarity for a choice of one card a rarity higher. Random on purpose: the cost is not knowing which

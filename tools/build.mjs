@@ -581,6 +581,11 @@ function scalingPara() {
     </p>`;
 }
 
+/* A family's icon, copied from the game's Sprites/Icons/Family. */
+const famIcon = (id, big) =>
+  `<img class="fam-ic${big ? " big" : ""}" src="assets/img/family/${id}.png" alt="">`;
+const ROMAN = ["I", "II", "III"];
+
 function cardsPage() {
   const byRarity = {};
   for (const u of D.upgrades) (byRarity[u.rarity || u.r] ||= []).push(u);
@@ -622,7 +627,7 @@ function cardsPage() {
         const fam = FAMILY_BY_ID[u.fam];
         if (fam) {
           meta.unshift(
-            `<div class="per">family <a href="builds.html#fam-${slug(fam.id)}"><b style="color:${rgb(fam.col)}">${esc(fam.n)}</b></a></div>`
+            `<div class="per">family <a href="builds.html#fam-${slug(fam.id)}">${famIcon(fam.id)}<b style="color:${rgb(fam.col)}">${esc(fam.n)}</b></a></div>`
           );
         }
         const cls = ARCH_BY_ID[u.cls];
@@ -661,7 +666,7 @@ function cardsPage() {
             }`
         )
         .join(" · ");
-      return `<tr id="family-${slug(f.id)}"><td><a href="builds.html#fam-${slug(f.id)}"><b style="color:${rgb(f.col)}">${esc(f.n)}</b></a><div class="tot">${esc(f.d)}</div></td><td>${cards.length}</td><td>${list}</td></tr>`;
+      return `<tr id="family-${slug(f.id)}"><td><a href="builds.html#fam-${slug(f.id)}">${famIcon(f.id, true)}<b style="color:${rgb(f.col)}">${esc(f.n)}</b></a><div class="tot">${esc(f.d)}</div></td><td>${cards.length}</td><td>${list}</td></tr>`;
     })
     .join("\n        ");
   const unfamilied = D.upgrades.filter((u) => !FAMILY_BY_ID[u.fam]);
@@ -753,8 +758,14 @@ function buildsPage() {
         )
         .join(", ");
       return `<div class="row" id="fam-${slug(f.id)}" style="--stripe:${rgb(f.col)}" data-hay="${hay(f.id, f.n, f.d, f.adj, f.noun, cards.map((u) => u.n).join(" "))}">
-        <div class="r-name" data-anchor><span style="color:${rgb(f.col)}">${esc(f.n)}</span><span class="r-key">${cards.length} cards</span></div>
-        <div class="r-desc"><div>${esc(f.d)}</div><div class="tot">${list}</div></div>
+        <div class="r-name" data-anchor><span style="color:${rgb(f.col)}">${famIcon(f.id, true)}${esc(f.n)}</span><span class="r-key">${cards.length} cards</span></div>
+        <div class="r-desc"><div>${esc(f.d)}</div><div class="tot">${list}</div>${
+          f.boon
+            ? `<div class="tot">Boon, <b style="color:${rgb(f.col)}">${esc(f.boon.title)}</b>: ${f.boon.levels
+                .map((l, i) => `<b>${ROMAN[i]}</b> ${esc(l)}`)
+                .join(" ")}</div>`
+            : ""
+        }</div>
         <div class="r-meta"><div class="per">names a build <b>${esc(f.adj)} …</b> or <b>… ${esc(f.noun)}</b></div></div>
       </div>`;
     })
@@ -856,8 +867,9 @@ function buildsPage() {
     <p>${C.SHOP_NOTE}</p>
     <p>
       Essence: <b>${ess.normal}</b> a kill, <b>${ess.elite}</b> an elite, <b>${ess.boss}</b> a boss
-      (the Taxed curse pays 70% of that). The shelf holds <b>${shop.stock}</b> cards, six when an
-      ability card is due. A price is a number of <b>units</b> by rarity —
+      (the Taxed curse pays 70% of that). The shelf holds <b>${shop.stock}</b> cards (one more when
+      an ability card is due) and <b>${shop.familyStock}</b> <a href="#family-items">family items</a>.
+      A price is a number of <b>units</b> by rarity —
       ${RARITY_ORDER.map((r) => `<code>${r} ${units[r]}</code>`).join(" · ")}, an ability
       <code>${shop.utilityUnits}</code> — times the size of the wave you just cleared: income is
       kills and the kill count grows with the wave, so one curve keeps a visit worth about the same
@@ -868,6 +880,37 @@ function buildsPage() {
       <thead><tr><th>Visit</th>${RARITY_ORDER.map((r) => `<th style="color:var(--${r})">${r}</th>`).join("")}<th>restock</th></tr></thead>
       <tbody>
         ${priceRows}
+      </tbody>
+    </table>
+
+    <h3 id="family-items">Family items</h3>
+    <p>${C.FAMILY_SHOP_NOTE}</p>
+    <ul>
+      <li><b>Family Boon</b> — the family's own bonus, levelled I to III (every boon is listed with
+        <a href="#families">its family</a> above). Costs <code>${(shop.boonUnits || []).join(" / ")}</code>
+        units for levels I / II / III.</li>
+      <li><b>Family Pack</b> — a random card of that family you can still take, rolled like a normal
+        draw (a legendary comes cursed). <code>${shop.packUnits}</code> units.</li>
+      <li><b>The Recombobulator</b> — ${C.RECOMB_NOTE} <code>${shop.recombUnits}</code> units.</li>
+    </ul>
+    <p>A family slot is the Recombobulator ${Math.round((shop.recombChance || 0) * 100)}% of the
+      time (never twice on one shelf), a pack ${Math.round((shop.packChance || 0) * 100)}%, and
+      otherwise a boon. The family is weighted toward the ones you own — (1 + cards)<sup>1.5</sup>, so
+      a five-card family turns up about fifteen times as often as one you have none of.</p>
+    <table>
+      <thead><tr><th>Visit</th>${(shop.boonUnits || []).map((_, i) => `<th>Boon ${ROMAN[i]}</th>`).join("")}<th>Pack</th><th>Recombobulator</th></tr></thead>
+      <tbody>
+        ${(shop.waves || [])
+          .map(
+            (w) =>
+              `<tr><td>after wave <b>${w.wave}</b></td>${(shop.boonUnits || [])
+                .map((u) => `<td>${Math.max(1, Math.floor(u * w.unit + 0.5))}</td>`)
+                .join("")}<td>${Math.max(1, Math.floor(shop.packUnits * w.unit + 0.5))}</td><td>${Math.max(
+                1,
+                Math.floor(shop.recombUnits * w.unit + 0.5)
+              )}</td></tr>`
+          )
+          .join("\n        ")}
       </tbody>
     </table>
 

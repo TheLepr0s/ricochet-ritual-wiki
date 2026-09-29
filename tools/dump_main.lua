@@ -499,12 +499,18 @@ local function build()
 
 
     -- ── Families, curses, the Essence Shop (Sept 29 2026) ───────────────────
+    -- Each family's shop boon (FamilyBoons.lua), described at every level by
+    -- the game's own sentence builder, so the page cannot drift from the card.
+    local FamilyBoons = require("Utilities/systems/FamilyBoons")
     local fams = arr({})
     for _, d in ipairs(Families.DEFS or {}) do
         local col = d.color or {}
+        local lv = arr({})
+        for l = 1, FamilyBoons.MAX do lv[#lv + 1] = FamilyBoons.describe(d.id, l) end
         fams[#fams + 1] = obj("id", d.id, "n", d.name, "adj", d.adj, "noun", d.noun,
                               "d", d.blurb,
-                              "col", arr({ col[1] or 1, col[2] or 1, col[3] or 1 }))
+                              "col", arr({ col[1] or 1, col[2] or 1, col[3] or 1 }),
+                              "boon", obj("title", FamilyBoons.title(d.id), "levels", lv))
     end
     put(consts, "family", scalarMap({ PULL = Families.PULL, CAP = Families.CAP }))
 
@@ -535,6 +541,12 @@ local function build()
         "restockUnits", need(shLocals, "RESTOCK_UNITS", "Shop"),
         "restockStep", need(shLocals, "RESTOCK_STEP", "Shop"),
         "stock", need(shLocals, "STOCK", "Shop"),
+        "familyStock", Shop.FAMILY_STOCK,
+        "boonUnits", arr({ unpack(Shop.BOON_UNITS or {}) }),
+        "packUnits", Shop.PACK_UNITS,
+        "recombUnits", Shop.RECOMB_UNITS,
+        "recombChance", need(shLocals, "RECOMB_CHANCE", "Shop"),
+        "packChance", need(shLocals, "PACK_CHANCE", "Shop"),
         "waves", shopWaves,
         "transmute", trans,
         "essence", scalarMap(ESS)))

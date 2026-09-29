@@ -409,3 +409,7 @@ footer a { color: var(--ink-dim); }
   main { max-width: none; padding: 0; }
   .row, .beast, .note { break-inside: avoid; }
 }
+
+/* Family icons (the game's own 32px pixel art) */
+.fam-ic { width: 20px; height: 20px; image-rendering: pixelated; vertical-align: -4px; margin-right: 5px; }
+.fam-ic.big { width: 32px; height: 32px; vertical-align: middle; margin-right: 8px; }
