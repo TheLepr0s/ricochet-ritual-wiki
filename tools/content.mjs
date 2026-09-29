@@ -317,8 +317,12 @@ export const CARD_NOTE = {
   Ward:          "Rebuilds 25 seconds after it breaks since 29 September (it was 14).",
   IronSkin:      "+0.06s of invulnerability a stack since 29 September, when the base window halved from 0.6s to 0.3s — three stacks of the old +0.12s would have more than doubled it.",
   SafeHands:     "0.6s of invulnerability since 29 September, to sit above the halved 0.3s base.",
-  GoatCompanion: "It was a spirit Wolf that hurled enemies into your orb's path until the player asked for something that kept them off instead: the goat charges whatever comes within 300px of you and rams it straight away from you.",
-  AngelCompanion: "Hovers over your right shoulder whichever way you face; it used to sit behind you and swap sides every time you turned.",
+  GoatCompanion: "It was a spirit Wolf that hurled enemies into your orb's path until the player asked for something that kept them off instead. It watches 460px around you (300 until the player asked for longer sight) and rams whatever comes inside: the target takes the full ram, everything within 90px of it takes 70%, and all of them are shoved straight away from you (harder since 29 September) and dazed for 0.6s — bosses for 0.2s. 44 damage at wave 1, riding the wave, every 0.75s. Measured on 29 September it added +25% damage where the other three companions added +193 to +262%, so it was rebuilt: now +124% damage against an immortal crowd, +126% against one that dies, and +175% time survived — a little less damage than the Demon or the Owl, and far more safety, which is what a bodyguard is for.",
+  AngelCompanion: "Hovers over your right shoulder whichever way you face; it used to sit behind you and swap sides every time you turned. Until 29 September its judgement was the Demon's curse in gold (judged enemies took 60% more damage), and the player asked for the Angel to have something of its own. Judgement now HUMBLES — a judged enemy hits you 20% softer, its shots included — and SMITES: when a judged enemy dies, a pillar of light hits everything within 95px of it and judges them too, so a kill in a judged crowd carries on through it. Measured: +158% damage against an immortal crowd (lance only — nothing dies there to smite), +160% against one that dies, +216% time survived. The Demon is now the damage pick of the pair and the Angel the one that keeps you alive.",
+  AngelPotency:  "Grows the smite since 29 September. It used to add +10% to the damage judged enemies took, back when judgement was a multiplier.",
+  GoatDamage:    "One of the three cards the Goat gained on 29 September, when it was brought up to the other companions. +9 is a wave-1 figure and rides the wave like the ram itself.",
+  GoatFrequency: "x0.8 on the time between rams a stack, down to a 0.4s floor.",
+  GoatDaze:      "Everything a ram reaches is dazed — the target and the splash. Bosses stay capped at 0.2s whatever the stacks.",
   Boomerang:     "Turns the recall button off, since every throw comes back by itself. Until the player's report on 29 September a right-click while the orb was flying home cancelled the return, and a return blocked by scenery for five seconds gave up — either way the orb lay stranded until you walked over and hit it. The return can no longer be cancelled, and a throw that has not come home sets off again by itself.",
   RaiseDead:     "A risen enemy with nothing to fight within 320px walks back to you rather than standing where it rose.",
   WreckingBall:  "The slow was 40% when the card arrived, which made the orb feel stuck in mud, and the recall ignored it altogether: the heavy orb came home at full speed. It is now 20%, on the throw and the recall alike (a recall tops out at 304px/s instead of 380).",
@@ -767,7 +771,14 @@ export const COMBAT = [
         <b>Family Boon</b> (a themed bonus, levels I to III), a <b>Family Pack</b> (a random card of
         that family), or <b>the Recombobulator</b>, which swaps every card of one family for the same
         rarities of another. Curses now come only with legendaries bought in the shop; a
-        legendary in an ordinary hand is clean.` },
+        legendary in an ordinary hand is clean.
+        <br><br>
+        <b>Companions.</b> The <a href="cards.html#goatcompanion">Goat</a> watches further (460px),
+        rams harder, and its ram now splashes, shoves the whole group away from you and dazes it — it
+        was far behind the other three — and it has three cards of its own like they do. The
+        <a href="cards.html#angelcompanion">Angel</a>'s judgement is no longer the Demon's curse in
+        gold: judged enemies hit you 20% softer, and when one dies a pillar of light smites everything
+        around it.` },
   { h: "The September 28 pass",
     p: `<b>Nerfs.</b> <a href="cards.html#tether">Tether</a>, <a href="cards.html#quickening">Quickening</a>
         and <a href="cards.html#seeker">Seeker</a> are weaker and now epic. Seeker is the first card

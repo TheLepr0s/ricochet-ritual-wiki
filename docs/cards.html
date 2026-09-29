@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Upgrade cards · Ricochet Ritual</title>
-<meta name="description" content="All 143 of them, grouped by rarity, then listed by family at the end. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.">
+<meta name="description" content="All 146 of them, grouped by rarity, then listed by family at the end. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
 <link rel="stylesheet" href="assets/wiki.css">
 <script>
@@ -46,13 +46,13 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   <main>
     <div class="page-head">
       <h1>Upgrade cards</h1>
-      <p>All 143 of them, grouped by rarity, then listed by family at the end. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.</p>
+      <p>All 146 of them, grouped by rarity, then listed by family at the end. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.</p>
     </div>
     <div class="counts">
-      <div class="count"><b>143</b><span>cards</span></div>
-      <div class="count"><b>33</b><span>stackable</span></div>
-      <div class="count"><b>33</b><span>with a cap</span></div>
-      <div class="count"><b>29</b><span>need a prereq</span></div>
+      <div class="count"><b>146</b><span>cards</span></div>
+      <div class="count"><b>36</b><span>stackable</span></div>
+      <div class="count"><b>36</b><span>with a cap</span></div>
+      <div class="count"><b>32</b><span>need a prereq</span></div>
       <div class="count"><b>12</b><span>mutually exclusive</span></div>
       <div class="count"><b>12</b><span>class-only</span></div>
     </div>
@@ -290,7 +290,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Close feeding. Anything that dies near you gives back 2 HP.</div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><img class="fam-ic" src="assets/img/family/blood.png" alt=""><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>vampiric_aura</code></div></div>
         </div>
-      <div class="group-label" id="rare">rare <span style="opacity:.6">· 52 cards · draw weight 16</span></div>
+      <div class="group-label" id="rare">rare <span style="opacity:.6">· 54 cards · draw weight 16</span></div>
       <div class="row" id="adrenaline" style="--stripe:var(--rare)"
           data-hay="adrenaline adrenaline cornered animal. orb damage climbs as your health falls, up to +80% at death's door. adrenaline rare blood"
           data-stackable="0" data-req="0" data-con="1"
@@ -450,6 +450,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-name" data-anchor><span>Gravity Snap</span><span class="r-key">GravitySnap</span></div>
           <div class="r-desc">Dragnet. A recalled orb hauls every enemy it passes along behind it.</div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><img class="fam-ic" src="assets/img/family/void.png" alt=""><b style="color:rgb(179,102,255)">Void</b></a></div><div class="tot"><code>gravity_snap</code></div></div>
+        </div>
+      <div class="row" id="goatfrequency" style="--stripe:var(--rare)"
+          data-hay="goatfrequency headstrong never tires. the goat rams 25% more often. rare x0.8 on the time between rams a stack, down to a 0.4s floor. beast"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Headstrong</span><span class="r-key">GoatFrequency</span></div>
+          <div class="r-desc">Never tires. The goat rams 25% more often.<div class="tot">x0.8 on the time between rams a stack, down to a 0.4s floor.</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><img class="fam-ic" src="assets/img/family/beast.png" alt=""><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="per">stackable · <b>cap 3</b></div><div class="dep">needs <a href="#goatcompanion"><b>Goat Companion</b></a></div></div>
         </div>
       <div class="row" id="hemorrhage" style="--stripe:var(--rare)"
           data-hay="hemorrhage hemorrhage deep cuts. each bleed stack on an enemy makes it take 2% more damage from everything, up to 10 stacks. hemorrhage rare blood"
@@ -611,6 +619,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">A second heart, beating out of time. Max HP +40, healed immediately.</div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><img class="fam-ic" src="assets/img/family/guardian.png" alt=""><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="per">stackable · <b>cap 3</b></div><div class="tot"><code>max_health</code> +40</div></div>
         </div>
+      <div class="row" id="goatdamage" style="--stripe:var(--rare)"
+          data-hay="goatdamage sharpened horns filed to a point. goat ram damage +9. rare one of the three cards the goat gained on 29 september, when it was brought up to the other companions. +9 is a wave-1 figure and rides the wave like the ram itself. beast"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Sharpened Horns</span><span class="r-key">GoatDamage</span></div>
+          <div class="r-desc">Filed to a point. Goat ram damage +9.<div class="tot">One of the three cards the Goat gained on 29 September, when it was brought up to the other companions. +9 is a wave-1 figure and rides the wave like the ram itself.</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><img class="fam-ic" src="assets/img/family/beast.png" alt=""><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="per">stackable · <b>cap 5</b></div><div class="dep">needs <a href="#goatcompanion"><b>Goat Companion</b></a></div></div>
+        </div>
       <div class="row" id="shatter" style="--stripe:var(--rare)"
           data-hay="shatter shatter break the ice. hitting a frozen enemy deals 3x damage. shatter rare frost"
           data-stackable="0" data-req="1" data-con="0"
@@ -707,7 +723,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">It spreads. When a burning enemy dies, the fire leaps to the 2 nearest enemies.</div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-fire"><img class="fam-ic" src="assets/img/family/fire.png" alt=""><b style="color:rgb(255,115,51)">Fire</b></a></div><div class="tot"><code>wildfire</code></div><div class="dep">needs <a href="#ignition"><b>Ignition</b></a></div></div>
         </div>
-      <div class="group-label" id="epic">epic <span style="opacity:.6">· 54 cards · draw weight 8</span></div>
+      <div class="group-label" id="epic">epic <span style="opacity:.6">· 55 cards · draw weight 8</span></div>
       <div class="row" id="absolutezero" style="--stripe:var(--epic)"
           data-hay="absolutezero absolute zero flash freeze. every 15th hit you land freezes every enemy within 150px of the orb for 1.5 seconds. absolute_zero epic frost"
           data-stackable="0" data-req="0" data-con="0"
@@ -788,6 +804,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-desc">Every 6th throw leaves burning: 2.5x damage and a crater where it lands.</div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-fire"><img class="fam-ic" src="assets/img/family/fire.png" alt=""><b style="color:rgb(255,115,51)">Fire</b></a></div><div class="tot"><code>comet</code></div></div>
         </div>
+      <div class="row" id="goatdaze" style="--stripe:var(--epic)"
+          data-hay="goatdaze concussion seeing stars. everything the goat rams stays dazed 0.4s longer. epic everything a ram reaches is dazed — the target and the splash. bosses stay capped at 0.2s whatever the stacks. beast"
+          data-stackable="1" data-req="1" data-con="0"
+          data-cls="0">
+          <div class="r-name" data-anchor><span>Concussion</span><span class="r-key">GoatDaze</span></div>
+          <div class="r-desc">Seeing stars. Everything the goat rams stays dazed 0.4s longer.<div class="tot">Everything a ram reaches is dazed — the target and the splash. Bosses stay capped at 0.2s whatever the stacks.</div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><img class="fam-ic" src="assets/img/family/beast.png" alt=""><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#goatcompanion"><b>Goat Companion</b></a></div></div>
+        </div>
       <div class="row" id="contract" style="--stripe:var(--epic)"
           data-hay="contract contract sign here. the next 3 waves come 30% tougher -- survive them and you are handed a free legendary. epic wild"
           data-stackable="0" data-req="0" data-con="0"
@@ -837,11 +861,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><img class="fam-ic" src="assets/img/family/void.png" alt=""><b style="color:rgb(179,102,255)">Void</b></a></div><div class="tot"><code>death_nova</code></div></div>
         </div>
       <div class="row" id="angelpotency" style="--stripe:var(--epic)"
-          data-hay="angelpotency divine potency heavier sentence. judged enemies take 10% more damage from all sources. epic beast"
+          data-hay="angelpotency divine potency wrath from above. the angel's smite hits +8 harder and reaches 15 further. epic grows the smite since 29 september. it used to add +10% to the damage judged enemies took, back when judgement was a multiplier. beast"
           data-stackable="1" data-req="1" data-con="0"
           data-cls="0">
           <div class="r-name" data-anchor><span>Divine Potency</span><span class="r-key">AngelPotency</span></div>
-          <div class="r-desc">Heavier sentence. Judged enemies take 10% more damage from all sources.</div>
+          <div class="r-desc">Wrath from above. The Angel's smite hits +8 harder and reaches 15 further.<div class="tot">Grows the smite since 29 September. It used to add +10% to the damage judged enemies took, back when judgement was a multiplier.</div></div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><img class="fam-ic" src="assets/img/family/beast.png" alt=""><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="per">stackable · <b>cap 4</b></div><div class="dep">needs <a href="#angelcompanion"><b>Angel Companion</b></a></div></div>
         </div>
       <div class="row" id="executioner" style="--stripe:var(--epic)"
@@ -1142,11 +1166,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         </div>
       <div class="group-label" id="legendary">legendary <span style="opacity:.6">· 10 cards · draw weight 3</span></div>
       <div class="row" id="angelcompanion" style="--stripe:var(--legendary)"
-          data-hay="angelcompanion angel companion a guardian angel joins you. its lances of light pierce every enemy in a line and judge them to take 60% more damage from everything. grows with the waves. legendary hovers over your right shoulder whichever way you face; it used to sit behind you and swap sides every time you turned. beast"
+          data-hay="angelcompanion angel companion a guardian angel joins you. its lances of light pierce every enemy in a line and judge them: judged enemies hit you 20% softer, and when one dies, a pillar of light smites everything around it. grows with the waves. legendary hovers over your right shoulder whichever way you face; it used to sit behind you and swap sides every time you turned. until 29 september its judgement was the demon's curse in gold (judged enemies took 60% more damage), and the player asked for the angel to have something of its own. judgement now humbles — a judged enemy hits you 20% softer, its shots included — and smites: when a judged enemy dies, a pillar of light hits everything within 95px of it and judges them too, so a kill in a judged crowd carries on through it. measured: +158% damage against an immortal crowd (lance only — nothing dies there to smite), +160% against one that dies, +216% time survived. the demon is now the damage pick of the pair and the angel the one that keeps you alive. beast"
           data-stackable="0" data-req="0" data-con="1"
           data-cls="0">
           <div class="r-name" data-anchor><span>Angel Companion</span><span class="r-key">AngelCompanion</span></div>
-          <div class="r-desc">A guardian angel joins you. Its lances of light pierce every enemy in a line and judge them to take 60% more damage from everything. Grows with the waves.<div class="tot">Hovers over your right shoulder whichever way you face; it used to sit behind you and swap sides every time you turned.</div></div>
+          <div class="r-desc">A guardian angel joins you. Its lances of light pierce every enemy in a line and judge them: judged enemies hit you 20% softer, and when one dies, a pillar of light smites everything around it. Grows with the waves.<div class="tot">Hovers over your right shoulder whichever way you face; it used to sit behind you and swap sides every time you turned. Until 29 September its judgement was the Demon's curse in gold (judged enemies took 60% more damage), and the player asked for the Angel to have something of its own. Judgement now HUMBLES — a judged enemy hits you 20% softer, its shots included — and SMITES: when a judged enemy dies, a pillar of light hits everything within 95px of it and judges them too, so a kill in a judged crowd carries on through it. Measured: +158% damage against an immortal crowd (lance only — nothing dies there to smite), +160% against one that dies, +216% time survived. The Demon is now the damage pick of the pair and the Angel the one that keeps you alive.</div></div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><img class="fam-ic" src="assets/img/family/beast.png" alt=""><b style="color:rgb(153,230,115)">Beast</b></a></div><div class="dep flag">excludes <a href="#demoncompanion"><b>Demon Companion</b></a></div></div>
         </div>
       <div class="row" id="blackholecore" style="--stripe:var(--legendary)"
@@ -1174,11 +1198,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><img class="fam-ic" src="assets/img/family/void.png" alt=""><b style="color:rgb(179,102,255)">Void</b></a></div><div class="tot"><code>event_horizon</code></div><div class="dep">needs <a href="#blackholecore"><b>Black Hole</b></a></div></div>
         </div>
       <div class="row" id="goatcompanion" style="--stripe:var(--legendary)"
-          data-hay="goatcompanion goat companion a mountain goat guards you. it rams anything that gets close to you and sends it flying away. grows with the waves. legendary it was a spirit wolf that hurled enemies into your orb's path until the player asked for something that kept them off instead: the goat charges whatever comes within 300px of you and rams it straight away from you. beast"
+          data-hay="goatcompanion goat companion a mountain goat guards you. it charges anything that comes near you and rams it -- and everything beside it -- flying away, dazed. grows with the waves. legendary it was a spirit wolf that hurled enemies into your orb's path until the player asked for something that kept them off instead. it watches 460px around you (300 until the player asked for longer sight) and rams whatever comes inside: the target takes the full ram, everything within 90px of it takes 70%, and all of them are shoved straight away from you (harder since 29 september) and dazed for 0.6s — bosses for 0.2s. 44 damage at wave 1, riding the wave, every 0.75s. measured on 29 september it added +25% damage where the other three companions added +193 to +262%, so it was rebuilt: now +124% damage against an immortal crowd, +126% against one that dies, and +175% time survived — a little less damage than the demon or the owl, and far more safety, which is what a bodyguard is for. beast"
           data-stackable="0" data-req="0" data-con="0"
           data-cls="0">
           <div class="r-name" data-anchor><span>Goat Companion</span><span class="r-key">GoatCompanion</span></div>
-          <div class="r-desc">A mountain goat guards you. It rams anything that gets close to you and sends it flying away. Grows with the waves.<div class="tot">It was a spirit Wolf that hurled enemies into your orb's path until the player asked for something that kept them off instead: the goat charges whatever comes within 300px of you and rams it straight away from you.</div></div>
+          <div class="r-desc">A mountain goat guards you. It charges anything that comes near you and rams it -- and everything beside it -- flying away, dazed. Grows with the waves.<div class="tot">It was a spirit Wolf that hurled enemies into your orb's path until the player asked for something that kept them off instead. It watches 460px around you (300 until the player asked for longer sight) and rams whatever comes inside: the target takes the full ram, everything within 90px of it takes 70%, and all of them are shoved straight away from you (harder since 29 September) and dazed for 0.6s — bosses for 0.2s. 44 damage at wave 1, riding the wave, every 0.75s. Measured on 29 September it added +25% damage where the other three companions added +193 to +262%, so it was rebuilt: now +124% damage against an immortal crowd, +126% against one that dies, and +175% time survived — a little less damage than the Demon or the Owl, and far more safety, which is what a bodyguard is for.</div></div>
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-beast"><img class="fam-ic" src="assets/img/family/beast.png" alt=""><b style="color:rgb(153,230,115)">Beast</b></a></div></div>
         </div>
       <div class="row" id="owlcompanion" style="--stripe:var(--legendary)"
@@ -1242,7 +1266,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <tr id="family-void"><td><a href="builds.html#fam-void"><img class="fam-ic big" src="assets/img/family/void.png" alt=""><b style="color:rgb(179,102,255)">Void</b></a><div class="tot">Gravity, time, pulses, and stepping through space.</div></td><td>13</td><td><a href="#blinkstrike" style="color:var(--uncommon)">Blink Strike</a> · <a href="#afterimage" style="color:var(--rare)">Afterimage</a> <span class="tot">(STALKER only)</span> · <a href="#gravitysnap" style="color:var(--rare)">Gravity Snap</a> · <a href="#riftstep" style="color:var(--rare)">Rift Step</a> · <a href="#temporalrift" style="color:var(--rare)">Temporal Rift</a> · <a href="#deathnova" style="color:var(--epic)">Death Nova</a> · <a href="#rupture" style="color:var(--epic)">Rupture</a> · <a href="#shadowstep" style="color:var(--epic)">Shadowstep</a> <span class="tot">(STALKER only)</span> · <a href="#voidpulse" style="color:var(--epic)">Void Pulse</a> · <a href="#voidrange" style="color:var(--epic)">Void Reach</a> · <a href="#voidfrequency" style="color:var(--epic)">Void Tempo</a> · <a href="#blackholecore" style="color:var(--legendary)">Black Hole</a> · <a href="#eventhorizon" style="color:var(--legendary)">Event Horizon</a></td></tr>
         <tr id="family-arcane"><td><a href="builds.html#fam-arcane"><img class="fam-ic big" src="assets/img/family/arcane.png" alt=""><b style="color:rgb(140,242,242)">Arcane</b></a><div class="tot">Echoes and copies: mirror shards, phantoms, links.</div></td><td>8</td><td><a href="#orbitmode" style="color:var(--rare)">Mirror Ball</a> · <a href="#orbitrange" style="color:var(--rare)">Wide Orbit</a> · <a href="#cursedglass" style="color:var(--epic)">Cursed Glass</a> · <a href="#orbitorbs" style="color:var(--epic)">Extra Orbiter</a> · <a href="#orbitspeed" style="color:var(--epic)">Faster Orbit</a> · <a href="#phantomcopies" style="color:var(--epic)">Phantom Copies</a> · <a href="#soullink" style="color:var(--epic)">Soul Link</a> · <a href="#resonance" style="color:var(--legendary)">Resonance</a></td></tr>
         <tr id="family-blood"><td><a href="builds.html#fam-blood"><img class="fam-ic big" src="assets/img/family/blood.png" alt=""><b style="color:rgb(242,64,77)">Blood</b></a><div class="tot">Kills, bleeding, and power drawn from your own wounds.</div></td><td>14</td><td><a href="#bloodrush" style="color:var(--uncommon)">Bloodrush</a> · <a href="#lifesteal" style="color:var(--uncommon)">Life Steal</a> · <a href="#vampiricaura" style="color:var(--uncommon)">Vampiric Aura</a> · <a href="#adrenaline" style="color:var(--rare)">Adrenaline</a> · <a href="#berserkercore" style="color:var(--rare)">Berserker Core</a> · <a href="#bloodfeast" style="color:var(--rare)">Blood Feast</a> · <a href="#hemorrhage" style="color:var(--rare)">Hemorrhage</a> · <a href="#soulharvest" style="color:var(--rare)">Soul Harvest</a> · <a href="#bloodpact" style="color:var(--epic)">Blood Pact</a> · <a href="#bloodprice" style="color:var(--epic)">Blood Price</a> · <a href="#bleed" style="color:var(--epic)">Open Wound</a> · <a href="#quickening" style="color:var(--epic)">Quickening</a> · <a href="#rampage" style="color:var(--epic)">Rampage</a> · <a href="#vampireorb" style="color:var(--epic)">Vampire Orb</a></td></tr>
-        <tr id="family-beast"><td><a href="builds.html#fam-beast"><img class="fam-ic big" src="assets/img/family/beast.png" alt=""><b style="color:rgb(153,230,115)">Beast</b></a><div class="tot">Companions that fight beside you.</div></td><td>15</td><td><a href="#angeldamage" style="color:var(--rare)">Angel's Wrath</a> · <a href="#demondamage" style="color:var(--rare)">Demon Claws</a> · <a href="#angeljudgement" style="color:var(--rare)">Lasting Judgement</a> · <a href="#demoncurse" style="color:var(--rare)">Lingering Curse</a> · <a href="#owlfrequency" style="color:var(--rare)">Owl Swiftness</a> · <a href="#owldamage" style="color:var(--rare)">Owl Talons</a> · <a href="#owlrange" style="color:var(--rare)">Owl Vision</a> · <a href="#packleader" style="color:var(--rare)">Pack Leader</a> · <a href="#demonpotency" style="color:var(--epic)">Curse Potency</a> · <a href="#angelpotency" style="color:var(--epic)">Divine Potency</a> · <a href="#raisedead" style="color:var(--epic)">Raise Dead</a> · <a href="#angelcompanion" style="color:var(--legendary)">Angel Companion</a> · <a href="#demoncompanion" style="color:var(--legendary)">Demon Companion</a> · <a href="#goatcompanion" style="color:var(--legendary)">Goat Companion</a> · <a href="#owlcompanion" style="color:var(--legendary)">Owl Companion</a></td></tr>
+        <tr id="family-beast"><td><a href="builds.html#fam-beast"><img class="fam-ic big" src="assets/img/family/beast.png" alt=""><b style="color:rgb(153,230,115)">Beast</b></a><div class="tot">Companions that fight beside you.</div></td><td>18</td><td><a href="#angeldamage" style="color:var(--rare)">Angel's Wrath</a> · <a href="#demondamage" style="color:var(--rare)">Demon Claws</a> · <a href="#goatfrequency" style="color:var(--rare)">Headstrong</a> · <a href="#angeljudgement" style="color:var(--rare)">Lasting Judgement</a> · <a href="#demoncurse" style="color:var(--rare)">Lingering Curse</a> · <a href="#owlfrequency" style="color:var(--rare)">Owl Swiftness</a> · <a href="#owldamage" style="color:var(--rare)">Owl Talons</a> · <a href="#owlrange" style="color:var(--rare)">Owl Vision</a> · <a href="#packleader" style="color:var(--rare)">Pack Leader</a> · <a href="#goatdamage" style="color:var(--rare)">Sharpened Horns</a> · <a href="#goatdaze" style="color:var(--epic)">Concussion</a> · <a href="#demonpotency" style="color:var(--epic)">Curse Potency</a> · <a href="#angelpotency" style="color:var(--epic)">Divine Potency</a> · <a href="#raisedead" style="color:var(--epic)">Raise Dead</a> · <a href="#angelcompanion" style="color:var(--legendary)">Angel Companion</a> · <a href="#demoncompanion" style="color:var(--legendary)">Demon Companion</a> · <a href="#goatcompanion" style="color:var(--legendary)">Goat Companion</a> · <a href="#owlcompanion" style="color:var(--legendary)">Owl Companion</a></td></tr>
         <tr id="family-guardian"><td><a href="builds.html#fam-guardian"><img class="fam-ic big" src="assets/img/family/guardian.png" alt=""><b style="color:rgb(191,204,230)">Guardian</b></a><div class="tot">Health, armour, shields and retaliation.</div></td><td>16</td><td><a href="#wizardhealth" style="color:var(--common)">Vitality</a> · <a href="#ironskin" style="color:var(--uncommon)">Iron Skin</a> · <a href="#safehands" style="color:var(--uncommon)">Safe Hands</a> · <a href="#aegis" style="color:var(--rare)">Aegis</a> · <a href="#kineticplating" style="color:var(--rare)">Kinetic Plating</a> · <a href="#overflow" style="color:var(--rare)">Overflow</a> · <a href="#regrowth" style="color:var(--rare)">Regrowth</a> · <a href="#retribution" style="color:var(--rare)">Retribution</a> <span class="tot">(WARDEN only)</span> · <a href="#secondheart" style="color:var(--rare)">Second Heart</a> · <a href="#thornmail" style="color:var(--rare)">Thornmail</a> · <a href="#bastion" style="color:var(--epic)">Bastion</a> <span class="tot">(WARDEN only)</span> · <a href="#laststand" style="color:var(--epic)">Last Stand</a> · <a href="#rampart" style="color:var(--epic)">Rampart</a> <span class="tot">(WARDEN only)</span> · <a href="#stoneskin" style="color:var(--epic)">Stoneskin</a> · <a href="#ward" style="color:var(--epic)">Ward</a> · <a href="#secondwind" style="color:var(--legendary)">Second Wind</a></td></tr>
         <tr id="family-combo"><td><a href="builds.html#fam-combo"><img class="fam-ic big" src="assets/img/family/combo.png" alt=""><b style="color:rgb(255,140,217)">Combo</b></a><div class="tot">Cards that feed on, or pay out, the combo meter.</div></td><td>6</td><td><a href="#metronome" style="color:var(--uncommon)">Metronome</a> · <a href="#showboat" style="color:var(--uncommon)">Showboat</a> · <a href="#combobreaker" style="color:var(--rare)">Combo Breaker</a> · <a href="#crescendo" style="color:var(--rare)">Crescendo</a> · <a href="#overclock" style="color:var(--rare)">Overclock</a> · <a href="#momentum" style="color:var(--epic)">Momentum</a></td></tr>
         <tr id="family-wild"><td><a href="builds.html#fam-wild"><img class="fam-ic big" src="assets/img/family/wild.png" alt=""><b style="color:rgb(204,204,179)">Wild</b></a><div class="tot">The unaligned: speed, economy, and deals with a catch.</div></td><td>7</td><td><a href="#wizardspeed" style="color:var(--common)">Swift Steps</a> · <a href="#featherweight" style="color:var(--uncommon)">Featherweight</a> · <a href="#fortune" style="color:var(--uncommon)">Fortune</a> · <a href="#curator" style="color:var(--rare)">Curator</a> · <a href="#tithe" style="color:var(--rare)">Tithe</a> · <a href="#contract" style="color:var(--epic)">Contract</a> · <a href="#reservecharge" style="color:var(--legendary)">Reserve Charge</a></td></tr>
