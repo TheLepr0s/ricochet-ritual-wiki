@@ -274,7 +274,7 @@ function guidePage() {
       at a time, so taking a second replaces the first. After every
       <b>${D.consts.shop.every}th</b> wave the free card is replaced by the
       <a href="builds.html#shop">Essence Shop</a> instead. Which cards you are dealt leans toward the
-      <a href="builds.html">families</a> you already own, and every legendary carries a curse.
+      <a href="builds.html">families</a> you already own, and a legendary bought in the shop carries a curse.
     </p>
     <p>
       <b>Rerolls</b> redraw the screen; <b>banishes</b> remove a card from the pool for the rest of

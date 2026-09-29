@@ -92,8 +92,8 @@ export const LOOP = [
     h: "A build, not a pile",
     p: `Every card belongs to one of twelve <a href="builds.html">families</a>, and every card you
         own in a family makes that family's other cards likelier to turn up — so an early lean
-        compounds into an identity. Each class has three cards only it is ever offered. Every
-        legendary comes with a <b>curse</b>, printed on the card before you take it. The run ends
+        compounds into an identity. Each class has three cards only it is ever offered. A
+        legendary bought in the shop comes with a <b>curse</b>, printed on the card before you take it. The run ends
         with your build's name — the leading family's adjective and the runner-up's noun, a
         <i>Frost Juggernaut</i> — and each build name keeps its own records.`,
   },
@@ -730,7 +730,7 @@ export const COMBAT = [
         <br><br>
         <b>Builds.</b> One card a wave (was two). Every card now belongs to one of twelve
         <a href="builds.html">families</a> that pull their own cards up the draw; each class has
-        three exclusive cards; every legendary carries a curse; and the run ends with a build name
+        three exclusive cards; a legendary bought in the shop carries a curse; and the run ends with a build name
         that keeps its own records. <b>38 new cards</b> — Boomerang, Split Shot, Deadeye, Wrecking
         Ball, a burn status (Ignition, Kindling, Wildfire, Cremation), Permafrost, Cold Snap,
         Absolute Zero, Static Charge, Storm Front, Blood Price, Hemorrhage, Event Horizon, Pack
@@ -766,7 +766,8 @@ export const COMBAT = [
         <a href="builds.html#shop">Essence Shop</a> now sells three cards and two family items: a
         <b>Family Boon</b> (a themed bonus, levels I to III), a <b>Family Pack</b> (a random card of
         that family), or <b>the Recombobulator</b>, which swaps every card of one family for the same
-        rarities of another.` },
+        rarities of another. Curses now come only with legendaries bought in the shop; a
+        legendary in an ordinary hand is clean.` },
   { h: "The September 28 pass",
     p: `<b>Nerfs.</b> <a href="cards.html#tether">Tether</a>, <a href="cards.html#quickening">Quickening</a>
         and <a href="cards.html#seeker">Seeker</a> are weaker and now epic. Seeker is the first card
@@ -1017,8 +1018,11 @@ export const BUILD_NAME_NOTE = `The game-over screen names your build from its t
   own furthest wave, best score and number of runs, so "my best Blazing Pyromancer" is a record
   you can chase.`;
 
-export const CURSE_NOTE = `<b>Every legendary is dealt with a curse</b>, rolled when the card is
-  dealt and printed on its face in red, so taking one is a trade you can read before you make it.
+export const CURSE_NOTE = `<b>A legendary from the Essence Shop comes with a curse</b> — off its
+  shelf, out of a Family Pack, or from Transmute. A legendary in an ordinary wave's hand is clean
+  (every legendary was cursed until the player asked for shops only). The curse is rolled when the
+  card is dealt and printed on its face in red, so buying one is a trade you can read before you
+  make it.
   The curse lasts the rest of the run, and two of the same kind compound. Each is a multiplier on
   something the game already reads — sized to sting, never to make a legendary not worth taking.`;
 
@@ -1065,7 +1069,7 @@ export const GLOSSARY = [
   { t: "Banish", d: "Removing a card from the pool for the rest of the run, rather than rerolling the screen." },
   { t: "Cover", d: "A tree between you and a ranged enemy. Its shots die on the first tree they cross (rocks and stumps they fly over), and it will not fire without a clear line." },
   { t: "Family", d: "One of twelve groups every card belongs to. Owning a family's cards makes its other cards likelier, and your two leading families name the build." },
-  { t: "Curse", d: "The downside every legendary is dealt with, printed on the card. It lasts the rest of the run." },
+  { t: "Curse", d: "The downside a legendary bought in the Essence Shop comes with, printed on the card. It lasts the rest of the run." },
   { t: "Essence", d: "The Essence Shop's currency, shown top-right with a purple orb: one a kill, five an elite, twenty-five a boss. Carried over between shops." },
   { t: "Transmute", d: "Sacrificing random cards you own of one rarity, in the Essence Shop, for a choice of one card a rarity higher." },
 ];
