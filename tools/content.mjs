@@ -60,7 +60,7 @@ export const CONTROLS = [
     note: "Opens settings without leaving the run. Everything freezes and goes silent: sound effects are held and the music stops (it used to only get quieter). The music also stops whenever the game window is in the background, and comes back when you return — unless the game is still paused." },
   { key: "F11",       act: "Fullscreen" },
   { key: "F3",        act: "Developer overlay",
-    note: "Spawns anything, grants any card or ability, forces a wave modifier, class or designed wave." },
+    note: "Spawns anything, grants any card or ability, forces a wave modifier, class or special wave." },
 ];
 
 /* ── The run, in one page ───────────────────────────────────────────────── */
@@ -317,12 +317,12 @@ export const CARD_NOTE = {
   Ward:          "Rebuilds 25 seconds after it breaks since 29 September (it was 14).",
   IronSkin:      "+0.06s of invulnerability a stack since 29 September, when the base window halved from 0.6s to 0.3s — three stacks of the old +0.12s would have more than doubled it.",
   SafeHands:     "0.6s of invulnerability since 29 September, to sit above the halved 0.3s base.",
-  GoatCompanion: "It was a spirit Wolf that hurled enemies into your orb's path until the player asked for something that kept them off instead. It watches 460px around you (300 until the player asked for longer sight) and rams whatever comes inside: the target takes the full ram, everything within 90px of it takes 70%, and all of them are shoved straight away from you (harder since 29 September) and dazed for 0.6s — bosses for 0.2s. 44 damage at wave 1, riding the wave, every 0.75s. Measured on 29 September it added +25% damage where the other three companions added +193 to +262%, so it was rebuilt: now +124% damage against an immortal crowd, +126% against one that dies, and +175% time survived — a little less damage than the Demon or the Owl, and far more safety, which is what a bodyguard is for.",
+  GoatCompanion: "It was a spirit Wolf that hurled enemies into your orb's path until the player asked for something that kept them off instead. It watches 460px around you (300 until the player asked for longer sight) and rams whatever comes inside: the target takes the full ram, everything within 90px of it takes 70%, and all of them are shoved straight away from you (harder since 29 September). 44 damage at wave 1, riding the wave, every 1.2s. Later on 29 September the player found it too strong early, especially its daze: the daze became Concussion's alone, and the goat rams every 1.2s (was 0.75s), dashes at 620 (900) and trots at 270 (320). The shove now plays under a daze too — it used to wait for the daze to wear off. Measured on 29 September it added +25% damage where the other three companions added +193 to +262%, so it was rebuilt: now +124% damage against an immortal crowd, +126% against one that dies, and +175% time survived — a little less damage than the Demon or the Owl, and far more safety, which is what a bodyguard is for.",
   AngelCompanion: "Hovers over your right shoulder whichever way you face; it used to sit behind you and swap sides every time you turned. Until 29 September its judgement was the Demon's curse in gold (judged enemies took 60% more damage), and the player asked for the Angel to have something of its own. Judgement now HUMBLES — a judged enemy hits you 20% softer, its shots included — and SMITES: when a judged enemy dies, a pillar of light hits everything within 95px of it and judges them too, so a kill in a judged crowd carries on through it. Measured: +158% damage against an immortal crowd (lance only — nothing dies there to smite), +160% against one that dies, +216% time survived. The Demon is now the damage pick of the pair and the Angel the one that keeps you alive.",
   AngelPotency:  "Grows the smite since 29 September. It used to add +10% to the damage judged enemies took, back when judgement was a multiplier.",
   GoatDamage:    "One of the three cards the Goat gained on 29 September, when it was brought up to the other companions. +9 is a wave-1 figure and rides the wave like the ram itself.",
   GoatFrequency: "x0.8 on the time between rams a stack, down to a 0.4s floor.",
-  GoatDaze:      "Everything a ram reaches is dazed — the target and the splash. Bosses stay capped at 0.2s whatever the stacks.",
+  GoatDaze:      "Since 29 September the goat's ONLY daze — it had 0.6s of its own until the player found it too strong early. Everything a ram reaches is dazed, the target and the splash, 0.5s a stack up to 1.5s; bosses stay capped at 0.2s.",
   Boomerang:     "Turns the recall button off, since every throw comes back by itself. Until the player's report on 29 September a right-click while the orb was flying home cancelled the return, and a return blocked by scenery for five seconds gave up — either way the orb lay stranded until you walked over and hit it. The return can no longer be cancelled, and a throw that has not come home sets off again by itself.",
   RaiseDead:     "A risen enemy with nothing to fight within 320px walks back to you rather than standing where it rose.",
   WreckingBall:  "The slow was 40% when the card arrived, which made the orb feel stuck in mud, and the recall ignored it altogether: the heavy orb came home at full speed. It is now 20%, on the throw and the recall alike (a recall tops out at 304px/s instead of 380).",
@@ -786,6 +786,19 @@ export const COMBAT = [
         Deep Pockets, Bounty Hunter, Jackpot, Tip Jar, Interest and Blood Money. Shop prices follow
         the new drops, so a visit buys what it did before.
         <br><br>
+        <b>Later still.</b> The <a href="builds.html#shop">shop</a> pops in piece by piece, and the
+        pick screen more slowly; the top-right essence counter stays lit over the shop instead of a
+        second small one under its title. Each family panel shows <b>one</b> of its three boosts,
+        drawn from those you do not own, and one visit in ten the Recombobulator stands in for one of
+        them. Card text that ran off the bottom of a card (a cursed Angel Companion, Rewind) now
+        fits. Three essence cards above rare: <a href="cards.html#dragonshoard">Dragon's Hoard</a>
+        (legendary, damage from the essence you hold, weighed against prices so it cannot run away),
+        <a href="cards.html#spendthrift">Spendthrift</a> and
+        <a href="cards.html#essencenova">Essence Nova</a>. The Goat is weaker early — slower, and
+        its daze is now only Concussion's — and a shove plays under a stun instead of after it. A
+        stunned Bomber's fuse no longer pauses. Swift Steps is Kinetic. The achievements' scrollbar
+        can be dragged.
+        <br><br>
         <b>Companions.</b> The <a href="cards.html#goatcompanion">Goat</a> watches further (460px),
         rams harder, and its ram now splashes, shoves the whole group away from you and dazes it — it
         was far behind the other three — and it has three cards of its own like they do. The
@@ -1064,7 +1077,21 @@ export const SHOP_NOTE = `After every fifth wave the free card is replaced by th
 export const FAMILY_SHOP_NOTE = `Under the cards, the shop shows a panel for each of your <b>two
   most prominent families</b> — the two you own the most cards in (a fresh run with fewer than two
   is shown a random one). Each panel is sold under its family's icon, the same icon every card of
-  that family carries in its header, and holds three things.`;
+  that family carries in its header, and holds two things: a boost (or, now and then, the
+  Recombobulator in its place) and a pack.`;
+
+// The epic and legendary essence cards: what the damage ones are measured in.
+export const ESSENCE_POWER_NOTE = (c) => `Above rare, essence becomes power, and none of these cards
+  counts raw essence — a late run holds thousands, and anything paid per essence would run away with
+  it. <b>Dragon's Hoard</b> weighs what you hold against shop prices, in <b>price units</b> (a
+  common costs 1.2 of them): +${Math.round((c.HOARD_MAX || 0) * 100)}% × (1 − e<sup>−units/${c.HOARD_K}</sup>),
+  so holding four units is +25% and forty is the full +${Math.round((c.HOARD_MAX || 0) * 100)}%, at wave 5 or
+  wave 50 alike. <b>Spendthrift</b> is the opposite build — +${Math.round((c.SPEND_PER || 0) * 100)}% a
+  purchase, up to +${Math.round((c.SPEND_CAP || 0) * 100)}% — and the two cannot be held together.
+  <b>Essence Nova</b> bursts every ${c.NOVA_KILLS} kills' worth of essence you collect (at that
+  wave's average payout), for ${c.NOVA_DAMAGE} damage (wave-scaled) within ${c.NOVA_RADIUS}px; an arc
+  round the counter shows the charge. The damage bonus shows under the counter while you hold
+  either damage card.`;
 
 export const RECOMB_NOTE = `every card you own in one family is given up, one copy at a time, and
   replaced by a random card of the <b>same rarity</b> from one other random family (the nearest
@@ -1087,7 +1114,7 @@ export const GLOSSARY = [
   { t: "Combo", d: "Consecutive hits inside a time window. Drops to zero if the window lapses; several cards scale off it." },
   { t: "Elite", d: "A crowned ordinary enemy with boosted stats and a far better drop." },
   { t: "Modifier", d: "A named rule change applied to a single wave, announced by a banner." },
-  { t: "Designed wave", d: "A wave built from a hand-picked roster instead of the usual weighted table." },
+  { t: "Special wave", d: "A wave built from a hand-picked roster instead of the usual weighted table." },
   { t: "Class", d: "Picked once at the start of a run. Biases which cards you are offered, and opens with one signature card." },
   { t: "Utility", d: "The F-key ability. Sold only in the Essence Shop, one a visit; you hold one at a time." },
   { t: "Stack cap", d: "How many times a repeatable card can be taken. At the cap it stops being offered." },

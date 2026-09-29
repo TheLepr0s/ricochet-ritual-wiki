@@ -143,7 +143,7 @@ function homePage() {
     [D.abilities.length, "abilities"],
     [D.archetypes.length, "classes"],
     [D.modifiers.length, "modifiers"],
-    [D.compositions.length, "designed waves"],
+    [D.compositions.length, "special waves"],
     [D.achievements.length, "achievements"],
     [D.consts.bossRotation.length, "bosses"],
   ];
@@ -158,7 +158,7 @@ function homePage() {
         "cards.html": `All ${D.upgrades.length} upgrade cards, with stack caps, prerequisites and exclusions.`,
         "abilities.html": "The twelve F-key abilities, and how they measured against each other.",
         "classes.html": "The four starting classes, and the benchmark that set them.",
-        "waves.html": "Difficulty, modifiers, designed waves, elites and the boss rotation.",
+        "waves.html": "Difficulty, modifiers, special waves, elites and the boss rotation.",
         "achievements.html": `All ${D.achievements.length}, including the hidden ones.`,
         "systems.html": "Damage, drops, score and sound — how the machinery fits together.",
       }[n.file];
@@ -870,8 +870,8 @@ function buildsPage() {
       <b>0–2</b> for a Mushroom to <b>3–6</b> for a Brute (every enemy's is in the
       <a href="bestiary.html">bestiary</a>) — an elite rolls its range <b>${ess.eliteRolls}</b> times,
       and a boss pays <b>${(ess.boss || []).join("–")}</b>. Small purple motes fly from the body to the
-      counter in the top-right as it is paid. The Taxed curse pays 70% of it, and six
-      <a href="#essence-cards">cards</a> change it. The shelf holds <b>${shop.stock}</b> cards, an
+      counter in the top-right as it is paid (the same counter stays lit over the shop). The Taxed
+      curse pays 70% of it, and nine <a href="#essence-cards">cards</a> deal in it. The shelf holds <b>${shop.stock}</b> cards, an
       <a href="abilities.html">ability</a> (the only place one is sold) and a
       <a href="#family-items">panel for each of your two biggest families</a>.
       A price is a number of <b>units</b> by rarity —
@@ -890,21 +890,25 @@ function buildsPage() {
 
     <h3 id="essence-cards">Essence cards</h3>
     <p>${D.upgrades
-      .filter((u) => ["DeepPockets", "BountyHunter", "Jackpot", "TipJar", "Interest", "BloodMoney"].includes(u.k))
+      .filter((u) => ["DeepPockets", "BountyHunter", "Jackpot", "TipJar", "Interest", "BloodMoney",
+                      "EssenceNova", "Spendthrift", "DragonsHoard"].includes(u.k))
       .map((u) => `<a href="cards.html#${slug(u.k)}" style="color:var(--${u.r})">${esc(u.n)}</a> — ${esc(u.d)}`)
       .join("<br>")}</p>
+    <p>${C.ESSENCE_POWER_NOTE(ess.cards || {})}</p>
 
     <h3 id="family-items">Family items</h3>
     <p>${C.FAMILY_SHOP_NOTE}</p>
     <ul>
-      <li><b>Three boosts</b> — each family's own three, listed with <a href="#families">the family</a>
-        above, each bought once, in any order. They cost <code>${(shop.boostUnits || []).join(" / ")}</code>
-        units, cheapest first.</li>
+      <li><b>One boost</b> — one of the family's own three (listed with <a href="#families">the
+        family</a> above), drawn at random from those you do not own yet; a restock draws again.
+        Each is bought once. They cost <code>${(shop.boostUnits || []).join(" / ")}</code> units by
+        their place, I to III.</li>
       <li><b>A pack</b> — three cards of that family you can still take, and you keep <b>one</b>
         (a legendary among them comes cursed). One a visit per family; a restock puts it back.
         <code>${shop.packUnits}</code> units.</li>
-      <li><b>The Recombobulator</b>, on ${Math.round((shop.recombChance || 0) * 100)}% of visits per
-        panel — ${C.RECOMB_NOTE} <code>${shop.recombUnits}</code> units.</li>
+      <li><b>The Recombobulator</b>, on ${Math.round((shop.recombChance || 0) * 100)}% of visits (and
+        of restocks), standing in place of <b>one</b> panel's boost — ${C.RECOMB_NOTE}
+        <code>${shop.recombUnits}</code> units.</li>
     </ul>
     <table>
       <thead><tr><th>Visit</th>${(shop.boostUnits || []).map((_, i) => `<th>Boost ${ROMAN[i]}</th>`).join("")}<th>Pack</th><th>Recombobulator</th></tr></thead>
@@ -1122,7 +1126,7 @@ function wavesPage() {
 
   const comps = D.compositions
     .map((c) => {
-      idx(c.n, "Designed waves", "waves.html", slug(c.id), c.id, c.d);
+      idx(c.n, "Special waves", "waves.html", slug(c.id), c.id, c.d);
       const pool = c.pool
         .map((p) => `<a href="bestiary.html#${slug(p.k)}">${esc(p.k)}</a> <span class="tot">${p.w}</span>`)
         .join(" · ");
@@ -1166,7 +1170,7 @@ function wavesPage() {
     )
     .join("\n        ");
 
-  const body = `    ${toolbar("Filter modifiers and designed waves…")}
+  const body = `    ${toolbar("Filter modifiers and special waves…")}
 
     <h2 id="shape">The shape of a wave</h2>
     <p>
@@ -1205,7 +1209,7 @@ function wavesPage() {
       ${mods}
     </div>
 
-    <h2 id="compositions">Designed waves</h2>
+    <h2 id="compositions">Special waves</h2>
     <p>
       A hand-picked roster instead of the usual weighted table. They start from
       <b>wave ${cc.FIRST_WAVE}</b> and roll at about <b>${Math.round(cc.CHANCE * 100)}%</b> on an
@@ -1235,7 +1239,7 @@ function wavesPage() {
       { id: "shape", label: "The shape of a wave" },
       { id: "unlocks", label: "When each enemy appears" },
       { id: "modifiers", label: "Wave modifiers" },
-      { id: "compositions", label: "Designed waves" },
+      { id: "compositions", label: "Special waves" },
       { id: "elites", label: "Elites" },
       { id: "bossrot", label: "Boss waves" },
     ],
