@@ -53,7 +53,7 @@ export const CONTROLS = [
   { key: "Space",     act: "Blink",
     note: "Instant, passes through walls and enemies, and cannot land you inside geometry." },
   { key: "F",         act: "Utility ability",
-    note: "Only bound once you have taken one — an ability is offered as a fourth card once on every third wave." },
+    note: "Only bound once you have bought one — abilities are sold only in the Essence Shop, one on every visit." },
   { key: "U",         act: "My Upgrades",
     note: "Lists every card you hold, coloured by rarity. Escape (or U again) closes it; it was on I until 24 September." },
   { key: "Escape",    act: "Pause",
@@ -84,8 +84,8 @@ export const LOOP = [
     h: "A wave, then one card",
     p: `Clear the field and the upgrade screen deals three cards, and you take <b>one</b> (two a
         wave until 29 September, which by wave 20 meant owning nearly every good card — a pile,
-        not a build). On every third wave a fourth card is a utility ability rather than a
-        passive. Rerolls and banishes accumulate on a timer rather than being spent currency,
+        not a build). Utility abilities are not dealt here: they are sold only in the Essence
+        Shop. Rerolls and banishes accumulate on a timer rather than being spent currency,
         so a bad screen late in a run is a smaller disaster than a bad screen early.`,
   },
   {
@@ -773,6 +773,12 @@ export const COMBAT = [
         rarities of another. Curses now come only with legendaries bought in the shop; a
         legendary in an ordinary hand is clean.
         <br><br>
+        <b>The shop, reworked again.</b> Abilities are sold <b>only</b> in the shop now — one on
+        every visit, on a card of their own design, and a restock deals a new one. The family items
+        became a panel for each of your two biggest families, each with <b>three boosts</b> (distinct
+        bonuses, bought once each), a <b>pack</b> that shows three of that family's cards and lets
+        you keep one, and sometimes the Recombobulator.
+        <br><br>
         <b>Companions.</b> The <a href="cards.html#goatcompanion">Goat</a> watches further (460px),
         rams harder, and its ram now splashes, shoves the whole group away from you and dazes it — it
         was far behind the other three — and it has three cards of its own like they do. The
@@ -1045,17 +1051,17 @@ export const SHOP_NOTE = `After every fifth wave the free card is replaced by th
   Shop</b>. Essence comes from every death, whoever or whatever landed it: pets, burns and a
   bomber's own blast all pay. Unspent essence carries over, so saving through one shop for a
   legendary at the next is a real plan. Extra cards the wave owes you — Tithe, a boss kill's bonus
-  — are still dealt as ordinary hands once you leave, and the ability card a third wave would have
-  offered goes on the shelf instead of being lost.`;
+  — are still dealt as ordinary hands once you leave.`;
 
-export const FAMILY_SHOP_NOTE = `Since 29 September the shelf is <b>three cards and two family
-  items</b>. A family item is sold under its family's icon — the same icon every card of that
-  family carries in its header — and is one of three things.`;
+export const FAMILY_SHOP_NOTE = `Under the cards, the shop shows a panel for each of your <b>two
+  most prominent families</b> — the two you own the most cards in (a fresh run with fewer than two
+  is shown a random one). Each panel is sold under its family's icon, the same icon every card of
+  that family carries in its header, and holds three things.`;
 
 export const RECOMB_NOTE = `every card you own in one family is given up, one copy at a time, and
   replaced by a random card of the <b>same rarity</b> from one other random family (the nearest
-  rarity it has, if it has none left at that one). Your boon levels in the old family move to the
-  new one. A card nothing can take back — Twin Orbs, a Contract, or one something else depends
+  rarity it has, if it has none left at that one). The boosts you bought for the old family move to
+  the new one, first to first, second to second. A card nothing can take back — Twin Orbs, a Contract, or one something else depends
   on — stays. A legendary swapped in comes without a new curse: the one the old legendary brought
   stays with you. What it gave is shown before you go back to the shelf.`;
 
@@ -1075,7 +1081,7 @@ export const GLOSSARY = [
   { t: "Modifier", d: "A named rule change applied to a single wave, announced by a banner." },
   { t: "Designed wave", d: "A wave built from a hand-picked roster instead of the usual weighted table." },
   { t: "Class", d: "Picked once at the start of a run. Biases which cards you are offered, and opens with one signature card." },
-  { t: "Utility", d: "The F-key ability. Offered as a fourth card on every third upgrade screen; you hold one at a time." },
+  { t: "Utility", d: "The F-key ability. Sold only in the Essence Shop, one a visit; you hold one at a time." },
   { t: "Stack cap", d: "How many times a repeatable card can be taken. At the cap it stops being offered." },
   { t: "Banish", d: "Removing a card from the pool for the rest of the run, rather than rerolling the screen." },
   { t: "Cover", d: "A tree between you and a ranged enemy. Its shots die on the first tree they cross (rocks and stumps they fly over), and it will not fire without a clear line." },

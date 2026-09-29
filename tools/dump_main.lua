@@ -464,7 +464,6 @@ local function build()
         return a
     end)())
     put(consts, "upgrade", scalarMap({
-        UTILITY_EVERY      = need(umLocals, "UTILITY_EVERY",      "UpgradeManager"),
         REROLL_EVERY_WAVES = need(umLocals, "REROLL_EVERY_WAVES", "UpgradeManager"),
         BANISH_EVERY_WAVES = need(umLocals, "BANISH_EVERY_WAVES", "UpgradeManager"),
         REROLL_CAP         = need(umLocals, "REROLL_CAP",         "UpgradeManager"),
@@ -499,18 +498,22 @@ local function build()
 
 
     -- ── Families, curses, the Essence Shop (Sept 29 2026) ───────────────────
-    -- Each family's shop boon (FamilyBoons.lua), described at every level by
-    -- the game's own sentence builder, so the page cannot drift from the card.
+    -- Each family's three shop boosts (FamilyBoons.lua), in the shop's order,
+    -- with the game's own names and descriptions, so the page cannot drift
+    -- from the shelf.
     local FamilyBoons = require("Utilities/systems/FamilyBoons")
     local fams = arr({})
     for _, d in ipairs(Families.DEFS or {}) do
         local col = d.color or {}
-        local lv = arr({})
-        for l = 1, FamilyBoons.MAX do lv[#lv + 1] = FamilyBoons.describe(d.id, l) end
+        local bs = arr({})
+        for k = 1, FamilyBoons.MAX do
+            local b = FamilyBoons.boost(d.id, k)
+            bs[#bs + 1] = obj("n", b.name, "d", b.desc)
+        end
         fams[#fams + 1] = obj("id", d.id, "n", d.name, "adj", d.adj, "noun", d.noun,
                               "d", d.blurb,
                               "col", arr({ col[1] or 1, col[2] or 1, col[3] or 1 }),
-                              "boon", obj("title", FamilyBoons.title(d.id), "levels", lv))
+                              "boosts", bs)
     end
     put(consts, "family", scalarMap({ PULL = Families.PULL, CAP = Families.CAP }))
 
@@ -541,12 +544,10 @@ local function build()
         "restockUnits", need(shLocals, "RESTOCK_UNITS", "Shop"),
         "restockStep", need(shLocals, "RESTOCK_STEP", "Shop"),
         "stock", need(shLocals, "STOCK", "Shop"),
-        "familyStock", Shop.FAMILY_STOCK,
-        "boonUnits", arr({ unpack(Shop.BOON_UNITS or {}) }),
+        "boostUnits", arr({ unpack(Shop.BOOST_UNITS or {}) }),
         "packUnits", Shop.PACK_UNITS,
         "recombUnits", Shop.RECOMB_UNITS,
-        "recombChance", need(shLocals, "RECOMB_CHANCE", "Shop"),
-        "packChance", need(shLocals, "PACK_CHANCE", "Shop"),
+        "recombChance", Shop.RECOMB_CHANCE,
         "waves", shopWaves,
         "transmute", trans,
         "essence", scalarMap(ESS)))

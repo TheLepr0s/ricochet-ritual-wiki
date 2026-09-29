@@ -268,10 +268,8 @@ function guidePage() {
     <h2 id="upgrades">The upgrade screen</h2>
     <p>
       Clearing a wave opens it. You are dealt three cards and take <b>one</b> — two a wave until
-      29 September — and on every
-      <b>${u.UTILITY_EVERY}${u.UTILITY_EVERY === 3 ? "rd" : "th"}</b> wave a further card that is
-      a <a href="abilities.html">utility ability</a> rather than a passive — you carry one of those
-      at a time, so taking a second replaces the first. After every
+      29 September. <a href="abilities.html">Utility abilities</a> are never in it: since 29
+      September they are sold only in the Essence Shop. After every
       <b>${D.consts.shop.every}th</b> wave the free card is replaced by the
       <a href="builds.html#shop">Essence Shop</a> instead. Which cards you are dealt leans toward the
       <a href="builds.html">families</a> you already own, and a legendary bought in the shop carries a curse.
@@ -760,10 +758,10 @@ function buildsPage() {
       return `<div class="row" id="fam-${slug(f.id)}" style="--stripe:${rgb(f.col)}" data-hay="${hay(f.id, f.n, f.d, f.adj, f.noun, cards.map((u) => u.n).join(" "))}">
         <div class="r-name" data-anchor><span style="color:${rgb(f.col)}">${famIcon(f.id, true)}${esc(f.n)}</span><span class="r-key">${cards.length} cards</span></div>
         <div class="r-desc"><div>${esc(f.d)}</div><div class="tot">${list}</div>${
-          f.boon
-            ? `<div class="tot">Boon, <b style="color:${rgb(f.col)}">${esc(f.boon.title)}</b>: ${f.boon.levels
-                .map((l, i) => `<b>${ROMAN[i]}</b> ${esc(l)}`)
-                .join(" ")}</div>`
+          f.boosts
+            ? `<div class="tot">Boosts: ${f.boosts
+                .map((b, i) => `<b>${ROMAN[i]}</b> <b style="color:${rgb(f.col)}">${esc(b.n)}</b> — ${esc(b.d)}`)
+                .join(" · ")}</div>`
             : ""
         }</div>
         <div class="r-meta"><div class="per">names a build <b>${esc(f.adj)} …</b> or <b>… ${esc(f.noun)}</b></div></div>
@@ -867,8 +865,9 @@ function buildsPage() {
     <p>${C.SHOP_NOTE}</p>
     <p>
       Essence: <b>${ess.normal}</b> a kill, <b>${ess.elite}</b> an elite, <b>${ess.boss}</b> a boss
-      (the Taxed curse pays 70% of that). The shelf holds <b>${shop.stock}</b> cards (one more when
-      an ability card is due) and <b>${shop.familyStock}</b> <a href="#family-items">family items</a>.
+      (the Taxed curse pays 70% of that). The shelf holds <b>${shop.stock}</b> cards, an
+      <a href="abilities.html">ability</a> (the only place one is sold) and a
+      <a href="#family-items">panel for each of your two biggest families</a>.
       A price is a number of <b>units</b> by rarity —
       ${RARITY_ORDER.map((r) => `<code>${r} ${units[r]}</code>`).join(" · ")}, an ability
       <code>${shop.utilityUnits}</code> — times the size of the wave you just cleared: income is
@@ -886,24 +885,22 @@ function buildsPage() {
     <h3 id="family-items">Family items</h3>
     <p>${C.FAMILY_SHOP_NOTE}</p>
     <ul>
-      <li><b>Family Boon</b> — the family's own bonus, levelled I to III (every boon is listed with
-        <a href="#families">its family</a> above). Costs <code>${(shop.boonUnits || []).join(" / ")}</code>
-        units for levels I / II / III.</li>
-      <li><b>Family Pack</b> — a random card of that family you can still take, rolled like a normal
-        draw (a legendary comes cursed). <code>${shop.packUnits}</code> units.</li>
-      <li><b>The Recombobulator</b> — ${C.RECOMB_NOTE} <code>${shop.recombUnits}</code> units.</li>
+      <li><b>Three boosts</b> — each family's own three, listed with <a href="#families">the family</a>
+        above, each bought once, in any order. They cost <code>${(shop.boostUnits || []).join(" / ")}</code>
+        units, cheapest first.</li>
+      <li><b>A pack</b> — three cards of that family you can still take, and you keep <b>one</b>
+        (a legendary among them comes cursed). One a visit per family; a restock puts it back.
+        <code>${shop.packUnits}</code> units.</li>
+      <li><b>The Recombobulator</b>, on ${Math.round((shop.recombChance || 0) * 100)}% of visits per
+        panel — ${C.RECOMB_NOTE} <code>${shop.recombUnits}</code> units.</li>
     </ul>
-    <p>A family slot is the Recombobulator ${Math.round((shop.recombChance || 0) * 100)}% of the
-      time (never twice on one shelf), a pack ${Math.round((shop.packChance || 0) * 100)}%, and
-      otherwise a boon. The family is weighted toward the ones you own — (1 + cards)<sup>1.5</sup>, so
-      a five-card family turns up about fifteen times as often as one you have none of.</p>
     <table>
-      <thead><tr><th>Visit</th>${(shop.boonUnits || []).map((_, i) => `<th>Boon ${ROMAN[i]}</th>`).join("")}<th>Pack</th><th>Recombobulator</th></tr></thead>
+      <thead><tr><th>Visit</th>${(shop.boostUnits || []).map((_, i) => `<th>Boost ${ROMAN[i]}</th>`).join("")}<th>Pack</th><th>Recombobulator</th></tr></thead>
       <tbody>
         ${(shop.waves || [])
           .map(
             (w) =>
-              `<tr><td>after wave <b>${w.wave}</b></td>${(shop.boonUnits || [])
+              `<tr><td>after wave <b>${w.wave}</b></td>${(shop.boostUnits || [])
                 .map((u) => `<td>${Math.max(1, Math.floor(u * w.unit + 0.5))}</td>`)
                 .join("")}<td>${Math.max(1, Math.floor(shop.packUnits * w.unit + 0.5))}</td><td>${Math.max(
                 1,
@@ -970,9 +967,11 @@ function abilitiesPage() {
   const body = `    ${toolbar("Filter abilities…", [{ attr: "damaging", label: "damaging" }])}
 
     <p>
-      Bound to <code>F</code>. You carry exactly one, and one is offered as an extra card on every
-      <b>${u.UTILITY_EVERY}${u.UTILITY_EVERY === 3 ? "rd" : "th"}</b> upgrade screen — taking a new
-      one replaces what you had.
+      Bound to <code>F</code>. You carry exactly one, and they are sold <b>only in the
+      <a href="builds.html#shop">Essence Shop</a></b>: every visit has one on the shelf, on a card of
+      its own (cut corners, lit in the ability's colour, the cooldown in its footer) so it is never
+      taken for an upgrade, and a restock deals a different one. Buying one replaces what you had.
+      Until 29 September one was dealt as a fourth card on every third upgrade screen.
     </p>
 
     <div class="rows">
