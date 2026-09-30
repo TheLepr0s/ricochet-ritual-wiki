@@ -214,6 +214,31 @@ for (const p of pages) {
     }
   }
 
+  // Grouping (the cards page, Sept 29 2026): by family shows only family
+  // headings, each over rows of its own family; back to rarity restores them.
+  const famBtn = byId.get("group-family");
+  const rarBtn = byId.get("group-rarity");
+  if (famBtn && rarBtn) {
+    const labels = all.filter((e) => e.classList.contains("group-label") && e.dataset.mode);
+    famBtn.fire("click");
+    const fam = labels.filter((l) => !l.hidden);
+    if (!fam.length) fail(`${p}: grouping by family showed no family headings`);
+    if (fam.some((l) => l.dataset.mode !== "family")) fail(`${p}: grouping by family left a rarity heading up`);
+    for (const l of fam) {
+      if (!rows.some((r) => !r.hidden && r.dataset.grpFamily === l.dataset.grp)) {
+        fail(`${p}: family heading "${l.dataset.grp}" has no rows under it`);
+      }
+    }
+    if (famBtn.getAttribute("aria-pressed") !== "true") fail(`${p}: the family button did not press`);
+    if (win.localStorage.getItem("rr-card-group") !== "family") fail(`${p}: the grouping was not remembered`);
+    rarBtn.fire("click");
+    const rar = labels.filter((l) => !l.hidden);
+    if (!rar.length || rar.some((l) => l.dataset.mode !== "rarity")) {
+      fail(`${p}: grouping back by rarity did not restore the rarity headings`);
+    }
+    ok(`${p} — grouped by family (${fam.length} headings) and back`);
+  }
+
   // Theme toggle: three states, and the explicit ones must persist.
   const btn = byId.get("theme-btn");
   if (btn) {

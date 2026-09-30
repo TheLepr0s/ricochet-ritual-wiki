@@ -590,11 +590,25 @@ function cardsPage() {
   const byRarity = {};
   for (const u of D.upgrades) (byRarity[u.rarity || u.r] ||= []).push(u);
 
-  const groups = RARITY_ORDER.map((r) => {
+  // Grouping by family as well as by rarity (the player, Sept 29 2026: "make
+  // sorting by families in Upgrade cards"). Every row carries its place in
+  // both orders -- group, then position in the group -- and wiki.js lays the
+  // list out in whichever the reader picks. A family is listed rarest last,
+  // then by name, the same order as the By family table.
+  const FAM_ORDER = Object.fromEntries((D.families || []).map((f, i) => [f.id, i]));
+  const famRank = {};
+  for (const fam of D.families || []) {
+    D.upgrades
+      .filter((u) => u.fam === fam.id)
+      .sort((a, b) => RARITY_ORDER.indexOf(a.r) - RARITY_ORDER.indexOf(b.r) || a.n.localeCompare(b.n))
+      .forEach((u, i) => (famRank[u.k] = i));
+  }
+
+  const groups = RARITY_ORDER.map((r, ri) => {
     const list = (byRarity[r] || []).sort((a, b) => a.n.localeCompare(b.n));
     if (!list.length) return "";
     const rows = list
-      .map((u) => {
+      .map((u, ui) => {
         idx(u.n, "Cards", "cards.html", slug(u.k), u.k, u.d);
         const meta = [];
         if (u.s) {
@@ -640,16 +654,27 @@ function cardsPage() {
         return `<div class="row" id="${slug(u.k)}" style="--stripe:var(--${r})"
           data-hay="${hay(u.k, u.n, u.d, u.v, r, note, fam && fam.n, u.cls)}"
           data-stackable="${u.s ? 1 : 0}" data-req="${u.req ? 1 : 0}" data-con="${u.con ? 1 : 0}"
-          data-cls="${u.cls ? 1 : 0}">
+          data-cls="${u.cls ? 1 : 0}"
+          data-grp-rarity="${r}" data-gord-rarity="${ri}" data-ord-rarity="${ui}"
+          data-grp-family="${esc(u.fam || "none")}" data-gord-family="${FAM_ORDER[u.fam] ?? 99}" data-ord-family="${famRank[u.k] ?? 999}">
           <div class="r-name" data-anchor><span>${esc(u.n)}</span><span class="r-key">${esc(u.k)}</span></div>
           <div class="r-desc">${esc(u.d)}${note ? `<div class="tot">${esc(note)}</div>` : ""}</div>
           <div class="r-meta">${meta.join("")}</div>
         </div>`;
       })
       .join("\n      ");
-    return `<div class="group-label" id="${slug(r)}">${r} <span style="opacity:.6">· ${list.length} cards · draw weight ${D.consts.rarityWeight[r]}</span></div>
+    return `<div class="group-label" id="${slug(r)}" data-mode="rarity" data-grp="${r}" data-gord="${ri}">${r} <span style="opacity:.6">· ${list.length} cards · draw weight ${D.consts.rarityWeight[r]}</span></div>
       ${rows}`;
   }).join("\n      ");
+
+  // The family headings, hidden until the reader groups by family.
+  const famLabels = (D.families || [])
+    .map((fam, i) => {
+      const n = D.upgrades.filter((u) => u.fam === fam.id).length;
+      if (!n) return "";
+      return `<div class="group-label" id="group-${slug(fam.id)}" data-mode="family" data-grp="${esc(fam.id)}" data-gord="${i}" hidden>${famIcon(fam.id)}<span style="color:${rgb(fam.col)}">${esc(fam.n)}</span> <span style="opacity:.6">· ${n} cards · ${esc(fam.d)}</span></div>`;
+    })
+    .join("\n      ");
 
   // Every family and the cards in it, one row each (player, Sept 29 2026: "make a list of
   // families and what upgrades are in which family"). Builds & shop has the pull mechanics.
@@ -691,6 +716,11 @@ function cardsPage() {
       { attr: "con", label: "exclusive" },
       { attr: "cls", label: "class cards" },
     ])}
+    <div class="groupbar" role="group" aria-label="Group the cards by">
+      <span class="gb-label">Group by</span>
+      <button type="button" class="chip" id="group-rarity" data-group="rarity" aria-pressed="true">rarity</button>
+      <button type="button" class="chip" id="group-family" data-group="family" aria-pressed="false">family</button>
+    </div>
 
     <div class="note">
       <b>Rarity is a draw weight, not a power ranking.</b> A legendary is not strictly better than a
@@ -700,8 +730,9 @@ function cardsPage() {
       offered a card that does nothing is worse than being offered nothing.
     </div>
 
-    <div class="rows">
+    <div class="rows" id="card-list">
       ${groups}
+      ${famLabels}
     </div>
     ${EMPTY}
 
@@ -727,7 +758,7 @@ function cardsPage() {
   return page({
     file: "cards.html",
     title: "Upgrade cards",
-    lead: `All ${D.upgrades.length} of them, grouped by rarity, then listed by family at the end. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.`,
+    lead: `All ${D.upgrades.length} of them, grouped by rarity or, with the switch above the list, by family — and listed by family again at the end. Stack caps, prerequisites and exclusions are read out of the upgrade manager rather than transcribed.`,
     toc: [
       ...RARITY_ORDER.filter((r) => byRarity[r]).map((r) => ({ id: slug(r), label: r })),
       { id: "families", label: "by family" },

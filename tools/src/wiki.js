@@ -151,6 +151,33 @@
   const hitsEl = document.getElementById("page-hits");
   const rows = [...document.querySelectorAll("[data-hay]")];
 
+  /* ── Grouping (the cards page: by rarity or by family) ───────────────
+     A heading that says which mode it belongs to (data-mode) is shown only
+     in that mode, and only while a row of its group (data-grp-<mode>) is
+     showing. The rows are laid out in the chosen order by moving them:
+     each carries its group's place (data-gord-<mode>) and its own place in
+     the group (data-ord-<mode>), so nothing is re-sorted by text. */
+  const groupList = document.getElementById("card-list");
+  const groupBtns = ["rarity", "family"]
+    .map((m) => document.getElementById("group-" + m))
+    .filter(Boolean);
+  let groupMode = "rarity";
+  const cap = (m) => m.charAt(0).toUpperCase() + m.slice(1);
+
+  function layOut() {
+    if (!groupList || typeof groupList.appendChild !== "function") return;
+    const items = [];
+    for (const g of document.querySelectorAll(".group-label")) {
+      if (!g.dataset.mode) continue;
+      items.push([g.dataset.mode === groupMode ? +g.dataset.gord : 1e6, -1, g]);
+    }
+    for (const r of rows) {
+      items.push([+(r.dataset["gord" + cap(groupMode)] || 0), +(r.dataset["ord" + cap(groupMode)] || 0), r]);
+    }
+    items.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    for (const it of items) groupList.appendChild(it[2]);
+  }
+
   if (rows.length && (filterBox || chipBox)) {
     const active = new Set();
     const chips = chipBox ? [...chipBox.querySelectorAll(".chip")] : [];
@@ -167,6 +194,7 @@
     function apply() {
       const q = filterBox ? filterBox.value.trim().toLowerCase() : "";
       let shown = 0;
+      const live = new Set();   // groups with a row showing, in the current mode
       for (const r of rows) {
         let ok = !q || r.dataset.hay.includes(q);
         if (ok) {
@@ -176,10 +204,18 @@
           }
         }
         r.hidden = !ok;
-        if (ok) shown++;
+        if (ok) {
+          shown++;
+          const grp = r.dataset["grp" + cap(groupMode)];
+          if (grp) live.add(grp);
+        }
       }
       // A heading whose whole group filtered out is noise.
       for (const g of document.querySelectorAll(".group-label")) {
+        if (g.dataset.mode) {
+          g.hidden = g.dataset.mode !== groupMode || !live.has(g.dataset.grp);
+          continue;
+        }
         let n = g.nextElementSibling, any = false;
         while (n && !n.classList.contains("group-label")) {
           if (n.dataset && "hay" in n.dataset && !n.hidden) { any = true; break; }
@@ -196,6 +232,15 @@
       }
     }
 
+    function regroup(mode) {
+      groupMode = mode;
+      for (const b of groupBtns) b.setAttribute("aria-pressed", b.dataset.group === mode ? "true" : "false");
+      layOut();
+      apply();
+      try { localStorage.setItem("rr-card-group", mode); } catch (e) {}
+    }
+    for (const b of groupBtns) b.addEventListener("click", () => regroup(b.dataset.group));
+
     if (filterBox) {
       filterBox.addEventListener("input", apply);
       // Remember the filter per page, so a back-button return lands where the
@@ -209,7 +254,13 @@
         });
       } catch (e) {}
     }
-    apply();
+    // The grouping is remembered across visits, like the theme.
+    let savedGroup = null;
+    if (groupBtns.length) {
+      try { savedGroup = localStorage.getItem("rr-card-group"); } catch (e) {}
+    }
+    if (savedGroup === "family") regroup("family");
+    else apply();
   }
 
   /* ── Anchor affordance ───────────────────────────────────────────────

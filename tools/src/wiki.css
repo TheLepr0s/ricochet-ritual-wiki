@@ -369,6 +369,10 @@ tbody tr:hover td { background: var(--panel); }
   background: var(--accent); border-color: var(--accent); color: #12101a; font-weight: 600;
 }
 .hits { font-size: 0.78rem; color: var(--ink-faint); margin-left: auto; white-space: nowrap; }
+/* The cards page groups by rarity or by family (Sept 29 2026). */
+.groupbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: -4px 0 14px; }
+.groupbar .gb-label { font-size: 0.78rem; color: var(--ink-faint); }
+.group-label .fam-ic { vertical-align: -5px; }
 .empty { padding: 26px; text-align: center; color: var(--ink-faint); font-size: 0.9rem; }
 .empty[hidden] { display: none; }
 
