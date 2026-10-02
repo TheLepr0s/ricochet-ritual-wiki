@@ -290,9 +290,9 @@ export const ENEMY_EXTRA = {
   PaleRevenant: "No projectile at all — even the Phantom Cross is aimed at your feet, not fired. It goes straight through trees and rocks, so scenery is no cover from it. Its speed is capped below the wizard's own, on purpose, even at phase three.",
   Bomber:       "Shares the skeleton sheet with the Revenant (and with the Ravager, before it became the Frog), which is why they read as bone rather than flesh.",
   Siphon:       "Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well. Its self-heal never actually fired until 23 September: the drain waited for a result that a landed hit never returns, so a Siphon left alone was not getting any harder to kill.",
-  Slug:  "Drops are keyed to DISTANCE WALKED (every 35px since 25 September, with 40px pools; before that 70px and 58px, and originally 130px and 86px on a body a third slower), not to a timer. The pool a THROWN ball leaves is the big one, 90px. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.",
+  Slug:  "Drops are keyed to DISTANCE WALKED (every 35px since 25 September, with 40px pools; before that 70px and 58px, and originally 130px and 86px on a body a third slower), not to a timer. The player halved it on 30 September: speed 46 to 26 and health 210 to 105, so it now lays its line slowly and dies quickly. The pool a THROWN ball leaves is the big one, 90px. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.",
   Broodmother:  "Shares SupportEnemy with the Witchdoctor and the Bonecaller; <code>summon_bound</code> in her row is the single flag that makes her brood die with her. Her summons are killed rather than deleted, so each one still scores, drops loot and triggers every on-kill upgrade you own.",
-  PlaguePriest: "The fourth SupportEnemy, told apart by <code>plague_range</code> in its row, and it carries <code>keep_min</code>/<code>keep_max</code> of its own so it stands inside its ring rather than at a healer's distance. It never attacks. The skeleton sheet is achromatic, so it is TINTED a bile yellow-green, clear of the Ravager's orange and the Revenant's mint.",
+  PlaguePriest: "The fourth SupportEnemy, told apart by <code>plague_range</code> in its row, and it carries <code>keep_min</code>/<code>keep_max</code> of its own so it stands inside its ring rather than at a healer's distance. It never attacks. The skeleton sheet is achromatic, so it is TINTED a bile yellow-green, clear of the Revenant's mint (and of the orange the Ravager wore before it became the Frog).",
   Collector:    "On the vampire sheet, TINTED gold: the cloak is too dark for a hue rotation to reach gold (a rotation keeps luminance, and the rendered sweep only ever found brown), while a multiply turns the face and hands gold and leaves the cloak a royal purple.",
 };
 
@@ -318,8 +318,8 @@ export const CARD_NOTE = {
   Ward:          "Rebuilds 25 seconds after it breaks since 29 September (it was 14).",
   IronSkin:      "+0.06s of invulnerability a stack since 29 September, when the base window halved from 0.6s to 0.3s — three stacks of the old +0.12s would have more than doubled it.",
   SafeHands:     "0.6s of invulnerability since 29 September, to sit above the halved 0.3s base.",
-  GoatCompanion: "It was a spirit Wolf that hurled enemies into your orb's path until the player asked for something that kept them off instead. It watches 9.2 m around you (6 m until the player asked for longer sight) and rams whatever comes inside: the target takes the full ram, everything within 1.8 m of it takes 70%, and all of them are shoved straight away from you (harder since 29 September). 44 damage at wave 1, riding the wave, every 1.2s. Later on 29 September the player found it too strong early, especially its daze: the daze became Concussion's alone, and the goat rams every 1.2s (was 0.75s), dashes at 12.4 m/s (18) and trots at 5.4 m/s (6.4). The shove now plays under a daze too — it used to wait for the daze to wear off. Measured on 29 September it added +25% damage where the other three companions added +193 to +262%, so it was rebuilt: now +124% damage against an immortal crowd, +126% against one that dies, and +175% time survived — a little less damage than the Demon or the Owl, and far more safety, which is what a bodyguard is for.",
-  AngelCompanion: "Hovers over your right shoulder whichever way you face; it used to sit behind you and swap sides every time you turned. Until 29 September its judgement was the Demon's curse in gold (judged enemies took 60% more damage), and the player asked for the Angel to have something of its own. Judgement now HUMBLES — a judged enemy hits you 20% softer, its shots included — and SMITES: when a judged enemy dies, a pillar of light hits everything within 1.9 m of it and judges them too, so a kill in a judged crowd carries on through it. Measured: +158% damage against an immortal crowd (lance only — nothing dies there to smite), +160% against one that dies, +216% time survived. The Demon is now the damage pick of the pair and the Angel the one that keeps you alive.",
+  GoatCompanion: "It was a spirit Wolf that hurled enemies into your orb's path until the player asked for something that kept them off instead. It watches 9.2 m around you and rams whatever comes inside — always whatever is closest to you, switching mid-charge if something else gets nearer: the target takes the full ram, everything within 1 m of it takes 40%, and all of them are shoved hard, straight away from you. 24 damage at wave 1, riding the wave, every 2.2s. Between rams it never stands still: it ambles from spot to spot 1–2.2 m around you, trotting to catch up if you outrun it, and its charge is only a little quicker than that (4.6 m/s). All of that is from the player's retune of 1–2 October; on 29 September it rammed for 44 every 1.2s, splashed 1.8 m for 70% and charged at 12.4 m/s. The daze is Concussion's alone, and the shove plays under a daze rather than after it. The benchmark figures from 29 September (+124% damage, +175% time survived) predate the retune.",
+  AngelCompanion: "Hovers over your right shoulder whichever way you face; it used to sit behind you and swap sides every time you turned. Its lance hits for 20 at wave 1 (26 until the new sprite on 1 October), riding the wave. Until 29 September its judgement was the Demon's curse in gold (judged enemies took 60% more damage), and the player asked for the Angel to have something of its own. Judgement now HUMBLES — a judged enemy hits you 20% softer, its shots included — and SMITES: when a judged enemy dies, a pillar of light hits everything within 1.9 m of it and judges them too, so a kill in a judged crowd carries on through it. Measured on 29 September, before the lance came down: +158% damage against an immortal crowd (lance only — nothing dies there to smite), +160% against one that dies, +216% time survived. The Demon is the damage pick of the pair and the Angel the one that keeps you alive.",
   AngelPotency:  "Grows the smite since 29 September. It used to add +10% to the damage judged enemies took, back when judgement was a multiplier.",
   GoatDamage:    "One of the three cards the Goat gained on 29 September, when it was brought up to the other companions. +9 is a wave-1 figure and rides the wave like the ram itself.",
   GoatFrequency: "x0.8 on the time between rams a stack, down to a 0.4s floor.",
@@ -746,6 +746,26 @@ export const COMBAT = [
         instead. A flat wall the orb has rolled up against blocks at most half of it and is
         reachable on foot; a gap or an inside corner blocks more. An orb already at rest is nudged
         toward you as well, since phasing alone does nothing for something with no momentum.` },
+  { h: "September 30 to October 3",
+    p: `<b>The Frog.</b> The skeletal Ravager is now the <a href="bestiary.html#frog">Frog</a>, with new
+        art: it closes in small hops (longer ones since 3 October), crouches, shows its lane and
+        leaps. The <b>Slug</b> was halved (speed 46 to 26, health 210 to 105). The Owl, the Goat and
+        the Angel have new sprites; the <a href="cards.html#goatcompanion">Goat</a> was retuned to ram
+        less often for less, wander around you between rams and always go for whatever is closest to
+        you; the <a href="cards.html#angelcompanion">Angel</a>'s lance hits for 20 (26). Health drops
+        last 20 seconds (13).
+        <br><br>
+        <b>Cards.</b> <a href="cards.html#staticcharge">Static Charge</a> spends only the charges it
+        fires and keeps the rest when nothing is in reach. Arc Range is gone and
+        <a href="cards.html#lightningrod">Lightning Rod</a> reaches 3 m further (1.2 m).
+        <a href="cards.html#volatilecore">Volatile Core</a> goes off on the first enemy a recalled orb
+        hits, not when it lands in your hand. <a href="cards.html#boomerang">Boomerang</a> gives the
+        recall button back on a 30-second cooldown.
+        <br><br>
+        <b>The shop</b> sells no loose cards: an ability down the left, a boost and a pack for each
+        of your two biggest families, Transmute, then Reroll and Leave. Packs cost 4 units (2.6).
+        The card screen and the shop are mouse only — R, D and Enter do nothing there now. See
+        <a href="builds.html#shop">Builds &amp; shop</a>.` },
   { h: "The September 29 overhaul",
     p: `The biggest pass yet, aimed at two complaints: runs where you ended up owning every good
         card, and late runs where healing and shields meant you could not die.
