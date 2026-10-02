@@ -58,7 +58,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <p>
       Ordered by the wave they start appearing on. <b>Weight</b> is how often a type is drawn once
       it has unlocked, relative to everything else eligible — the behaviour enemies are deliberately
-      rare, because a wave that is half Ravagers is not six times as interesting as a wave with one
+      rare, because a wave that is half Frogs is not six times as interesting as a wave with one
       in it.
     </p>
     <div class="rows">
@@ -110,7 +110,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           </div>
           <p>The clock in a wave. It forces you to deal with it now rather than later, which is the only thing on the field that does.</p>
           <div class="statline"><span class="stat">HP <b>30</b></span><span class="stat">essence <b>0–2</b></span><span class="stat">speed <b>80</b></span><span class="stat">blast <b>90</b> for <b>15</b></span><span class="stat">from wave <b>3</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>38×34</b></span></div>
-          <p class="tot">The original art. <a href="#palerevenant">PaleRevenant</a>, <a href="#plaguepriest">PlaguePriest</a>, <a href="#ravager">Ravager</a> are recolours of it.</p><p class="tot">Shares the skeleton sheet with the Ravager and the Revenant, which is why all three read as bone rather than flesh.</p>
+          <p class="tot">The original art. <a href="#palerevenant">PaleRevenant</a>, <a href="#plaguepriest">PlaguePriest</a> are recolours of it.</p><p class="tot">Shares the skeleton sheet with the Revenant (and with the Ravager, before it became the Frog), which is why they read as bone rather than flesh.</p>
         </div>
       </div>
       <div class="beast" id="toadstool" style="--stripe:var(--common)"
@@ -164,21 +164,21 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <p class="tot">The original art. <a href="#archmage">Archmage</a>, <a href="#bonecaller">Bonecaller</a>, <a href="#dreadsovereign">DreadSovereign</a>, <a href="#witchdoctor">Witchdoctor</a> are recolours of it.</p>
         </div>
       </div>
-      <div class="beast" id="ravager" style="--stripe:var(--warn)"
-        data-hay="ravager charger the first enemy you beat by reading it rather than out-damaging it. low health, so the lane is the whole threat — and the time it spends winded afterwards is the damage window the fight pays you back with. wave 5"
+      <div class="beast" id="frog" style="--stripe:var(--warn)"
+        data-hay="frog leaper the first enemy you beat by reading it rather than out-damaging it. low health, so the lane is the whole threat — and the time it spends winded afterwards is the damage window the fight pays you back with. wave 5"
         data-boss="0" data-ranged="1"
-        data-variant="1">
-        <div class="portrait"><img src="assets/img/Ravager.png" alt="Ravager" loading="lazy" width="82"></div>
+        data-variant="0">
+        <div class="portrait"><img src="assets/img/Frog.png" alt="Frog" loading="lazy" width="82"></div>
         <div class="beast-body">
           <div class="beast-head" data-anchor>
-            <h3>Ravager</h3>
-            <span class="badge">Charger</span>
+            <h3>Frog</h3>
+            <span class="badge">Leaper</span>
             
             
           </div>
           <p>The first enemy you beat by reading it rather than out-damaging it. Low health, so the lane is the whole threat — and the time it spends winded afterwards is the damage window the fight pays you back with.</p>
-          <div class="statline"><span class="stat">HP <b>75</b></span><span class="stat">essence <b>1–3</b></span><span class="stat">speed <b>52</b></span><span class="stat">damage <b>14</b></span><span class="stat">range <b>300</b></span><span class="stat">from wave <b>5</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>34×34</b></span></div>
-          <p class="tot">A recolour of <a href="#bomber">Bomber</a>'s art, told apart by a colour tint.</p><p class="tot">Its row's <code>attackRange</code> is dead data — ChargerEnemy replaces the melee update entirely and uses its own trigger range, so the row value looks authoritative and governs nothing.</p>
+          <div class="statline"><span class="stat">HP <b>75</b></span><span class="stat">essence <b>1–3</b></span><span class="stat">speed <b>52</b></span><span class="stat">damage <b>14</b></span><span class="stat">range <b>300</b></span><span class="stat">from wave <b>5</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>28×24</b></span></div>
+          <p class="tot">Was the skeletal Ravager until 2 October, when it became a frog. Its row's <code>attackRange</code> is dead data — FrogEnemy replaces the melee update entirely and uses its own trigger range, so the row value looks authoritative and governs nothing.</p>
         </div>
       </div>
       <div class="beast" id="sporeling" style="--stripe:var(--uncommon)"
@@ -573,6 +573,19 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         different movement of you.</div>
         <div class="r-meta"><div class="per"><a href="#dreadsovereign">DreadSovereign</a></div></div>
       </div>
+      <div class="row" id="ai-frogenemy" style="--stripe:var(--warn)" data-hay="frogenemy leaper chase → windup → dash → recover. it closes in small hops (moving only while airborne),
+        crouches at range, flashes a ground lane, then leaps.
+        the direction locks when the wind-up starts, so the telegraph is the entire fight: step
+        out of the lane and it charges anyway, then stands winded and takes damage like anything
+        else.">
+        <div class="r-name" data-anchor><span>Leaper</span><span class="r-key">FrogEnemy</span></div>
+        <div class="r-desc">CHASE → WINDUP → DASH → RECOVER. It closes in small hops (moving only while airborne),
+        crouches at range, flashes a ground lane, then leaps.
+        The direction locks when the wind-up starts, so the telegraph is the entire fight: step
+        out of the lane and it charges anyway, then stands winded and takes damage like anything
+        else.</div>
+        <div class="r-meta"><div class="per"><a href="#frog">Frog</a></div></div>
+      </div>
       <div class="row" id="ai-vampireenemy" style="--stripe:var(--epic)" data-hay="vampireenemy vampire bites for contact damage, heals itself, and &lt;b&gt;roots you&lt;/b&gt; while it drinks. killing it
         mid-bite frees you immediately, which makes it the one enemy where burst damage is
         worth more than its health bar suggests.">
@@ -590,17 +603,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         projectile whatsoever, and every move a commitment you answer by moving. Nothing it does
         is stopped by trees or rocks.</div>
         <div class="r-meta"><div class="per"><a href="#palerevenant">PaleRevenant</a></div></div>
-      </div>
-      <div class="row" id="ai-chargerenemy" style="--stripe:var(--warn)" data-hay="chargerenemy charger chase → windup → dash → recover. it plants at range, flashes a ground lane, then commits.
-        the direction locks when the wind-up starts, so the telegraph is the entire fight: step
-        out of the lane and it charges anyway, then stands winded and takes damage like anything
-        else.">
-        <div class="r-name" data-anchor><span>Charger</span><span class="r-key">ChargerEnemy</span></div>
-        <div class="r-desc">CHASE → WINDUP → DASH → RECOVER. It plants at range, flashes a ground lane, then commits.
-        The direction locks when the wind-up starts, so the telegraph is the entire fight: step
-        out of the lane and it charges anyway, then stands winded and takes damage like anything
-        else.</div>
-        <div class="r-meta"><div class="per"><a href="#ravager">Ravager</a></div></div>
       </div>
       <div class="row" id="ai-siphonenemy" style="--stripe:var(--epic)" data-hay="siphonenemy drain no attack of its own. it holds a band at range, winds up for a moment, then latches a beam
         onto you and sends a bead of drain down it every second or so, healing itself on most of

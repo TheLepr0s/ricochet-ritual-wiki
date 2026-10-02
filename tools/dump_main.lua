@@ -321,7 +321,7 @@ local function build()
     -- recorded as MISSING below and fails the dump, the same as a renamed local.
     local AI_FILES = {
         "MeleeEnemy", "RangedEnemy", "BomberEnemy", "VampireEnemy", "CasterEnemy",
-        "ChargerEnemy", "SplitterEnemy", "ShieldEnemy", "SupportEnemy",
+        "FrogEnemy", "SplitterEnemy", "ShieldEnemy", "SupportEnemy",
         "EvilWizardEnemy", "BossEnemy", "RevenantBoss", "SlugEnemy",
         "SiphonEnemy", "CollectorBoss", "BaseEnemy",
     }

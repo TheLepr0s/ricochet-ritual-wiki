@@ -187,9 +187,10 @@ export const AI = {
         its own range, giving ground if you press it and circling if you do not, so it never
         walks itself into Backlash range: you have to go in after it.`,
   },
-  ChargerEnemy: {
-    label: "Charger", tone: "warn",
-    p: `CHASE → WINDUP → DASH → RECOVER. It plants at range, flashes a ground lane, then commits.
+  FrogEnemy: {
+    label: "Leaper", tone: "warn",
+    p: `CHASE → WINDUP → DASH → RECOVER. It closes in small hops (moving only while airborne),
+        crouches at range, flashes a ground lane, then leaps.
         The direction locks when the wind-up starts, so the telegraph is the entire fight: step
         out of the lane and it charges anyway, then stands winded and takes damage like anything
         else.`,
@@ -268,7 +269,7 @@ export const ENEMY_NOTE = {
   Nosferatu:  "More than twice a Vampire's health and faster. It roots for the same time, so the danger is purely how long it survives to keep doing it.",
   EvilWizard: "Casts from range and has no melee swing, but it is not safe to stand on any more — Backlash punishes anything inside 100px, including a player who walked into a cast.",
   Archmage:   "The late-game priority target. Longer range, far more health, every cast another root somewhere on the map, and the hardest Backlash in the game.",
-  Ravager:    "The first enemy you beat by reading it rather than out-damaging it. Low health, so the lane is the whole threat — and the time it spends winded afterwards is the damage window the fight pays you back with.",
+  Frog:       "The first enemy you beat by reading it rather than out-damaging it. Low health, so the lane is the whole threat — and the time it spends winded afterwards is the damage window the fight pays you back with.",
   Sporeling:  "Health that becomes two Toadstools, which are faster than the thing that made them. Kill it with room around you, or inside an explosion big enough to catch what comes out.",
   Bulwark:    "The card check. An orb that only goes forwards bounces off it all day; anything that flanks, pierces, arcs or simply arrives fast walks through. Its health is a long time to spend doing the wrong thing.",
   Witchdoctor:"Heals the most wounded allies around it often enough to outpace chip damage across a crowd. Capped at two alive at once, because three means nothing dies.",
@@ -285,9 +286,9 @@ export const ENEMY_NOTE = {
 /* Facts about a type that live in its AI file rather than its data row, and so
    would otherwise be invisible. Only where there is something to say. */
 export const ENEMY_EXTRA = {
-  Ravager:      "Its row's <code>attackRange</code> is dead data — ChargerEnemy replaces the melee update entirely and uses its own trigger range, so the row value looks authoritative and governs nothing.",
+  Frog:         "Was the skeletal Ravager until 2 October, when it became a frog. Its row's <code>attackRange</code> is dead data — FrogEnemy replaces the melee update entirely and uses its own trigger range, so the row value looks authoritative and governs nothing.",
   PaleRevenant: "No projectile at all — even the Phantom Cross is aimed at your feet, not fired. It goes straight through trees and rocks, so scenery is no cover from it. Its speed is capped below the wizard's own, on purpose, even at phase three.",
-  Bomber:       "Shares the skeleton sheet with the Ravager and the Revenant, which is why all three read as bone rather than flesh.",
+  Bomber:       "Shares the skeleton sheet with the Revenant (and with the Ravager, before it became the Frog), which is why they read as bone rather than flesh.",
   Siphon:       "Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well. Its self-heal never actually fired until 23 September: the drain waited for a result that a landed hit never returns, so a Siphon left alone was not getting any harder to kill.",
   Slug:  "Drops are keyed to DISTANCE WALKED (every 35px since 25 September, with 40px pools; before that 70px and 58px, and originally 130px and 86px on a body a third slower), not to a timer. The pool a THROWN ball leaves is the big one, 90px. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.",
   Broodmother:  "Shares SupportEnemy with the Witchdoctor and the Bonecaller; <code>summon_bound</code> in her row is the single flag that makes her brood die with her. Her summons are killed rather than deleted, so each one still scores, drops loot and triggers every on-kill upgrade you own.",
@@ -323,14 +324,16 @@ export const CARD_NOTE = {
   GoatDamage:    "One of the three cards the Goat gained on 29 September, when it was brought up to the other companions. +9 is a wave-1 figure and rides the wave like the ram itself.",
   GoatFrequency: "x0.8 on the time between rams a stack, down to a 0.4s floor.",
   GoatDaze:      "Since 29 September the goat's ONLY daze — it had 0.6s of its own until the player found it too strong early. Everything a ram reaches is dazed, the target and the splash, 0.5s a stack up to 1.5s; bosses stay capped at 0.2s.",
-  Boomerang:     "Turns the recall button off, since every throw comes back by itself. Until the player's report on 29 September a right-click while the orb was flying home cancelled the return, and a return blocked by scenery for five seconds gave up — either way the orb lay stranded until you walked over and hit it. The return can no longer be cancelled, and a throw that has not come home sets off again by itself. The return IS a recall — Static Charge lets go when it starts, Tether and Gravity Snap work on the way, Volatile Core goes off when it lands — and since the second list of 29 September it no longer spends the recall cooldown.",
+  Boomerang:     "Every throw comes back by itself, so recalling by hand costs 30 seconds of cooldown (it switched the button off entirely until 3 October). Until the player's report on 29 September a right-click while the orb was flying home cancelled the return, and a return blocked by scenery for five seconds gave up — either way the orb lay stranded until you walked over and hit it. The return can no longer be cancelled, and a throw that has not come home sets off again by itself. The return IS a recall — Static Charge lets go when it starts, Tether and Gravity Snap work on the way, Volatile Core goes off on its first hit — and since the second list of 29 September it no longer spends the recall cooldown.",
   RaiseDead:     "A risen enemy with nothing to fight within 6.4 m walks back to you rather than standing where it rose.",
   WreckingBall:  "The slow was 40% when the card arrived, which made the orb feel stuck in mud, and the recall ignored it altogether: the heavy orb came home at full speed. It is now 20%, on the throw and the recall alike (a recall tops out at 6.1 m/s instead of 7.6).",
   Shatter:       "Triple damage until 29 September; +30% since. A freeze is not the rare state it sounds: Freezing Shot re-freezes on every second hit, so a body you keep hitting stays frozen, and Shatter measured +191% on a pinned target where Kindling, the Fire equivalent, adds about +21%.",
   Momentum:      "It always stopped at 40 combo (+120%) but never said so; the player read it as uncapped. Since 29 September it stops at 20 (+60%) and the card says so — an epic's ceiling, not a legendary's.",
   Bowling:       "Wall Crush was folded into it on 29 September (the player: only enemy-against-scenery differed) and it became an epic. What a thrown body strikes takes the full hit (it was half), and the thrown body hurts itself once: the hit again off scenery, the hit and half again off another enemy.",
   DeathNova:     "18 is a wave-1 figure: since 29 September it grows with the waves like enemy health, as the companions and abilities do. A flat 18 was a fifth as much at wave 20.",
-  VolatileCore:  "20 is a wave-1 figure, grown with the waves since 29 September. A Boomerang return sets it off too.",
+  VolatileCore:  "20 is a wave-1 figure, grown with the waves since 29 September. Since 3 October it goes off on the first enemy the returning orb hits, once a recall; it used to go off when the orb landed in your hand, and a recall that hits nothing now does nothing. A Boomerang return sets it off too.",
+  StaticCharge:  "Since 3 October a recall spends only the charges it actually fires — one per enemy within 6.4 m of the orb — and keeps the rest; it used to empty the bank even with nothing in reach.",
+  LightningRod:  "Reach +3 m since 3 October, when Arc Range (+1 m a stack) was removed; it was +1.2 m before.",
   CursedGlass:   "8 a shard is a wave-1 figure, grown with the waves since 29 September.",
   RiftStep:      "25 is a wave-1 figure, grown with the waves since 29 September.",
   Rupture:       "30 is a wave-1 figure, grown with the waves since 29 September.",

@@ -442,7 +442,7 @@ function bestiaryPage() {
     <p>
       Ordered by the wave they start appearing on. <b>Weight</b> is how often a type is drawn once
       it has unlocked, relative to everything else eligible — the behaviour enemies are deliberately
-      rare, because a wave that is half Ravagers is not six times as interesting as a wave with one
+      rare, because a wave that is half Frogs is not six times as interesting as a wave with one
       in it.
     </p>
     <div class="rows">
