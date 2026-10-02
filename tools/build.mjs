@@ -833,13 +833,10 @@ function buildsPage() {
     .join("\n        ");
 
   // ── Shop prices, visit by visit ──
-  const units = shop.units || {};
   const priceRows = (shop.waves || [])
     .map(
       (w) =>
-        `<tr><td>after wave <b>${w.wave}</b></td>${RARITY_ORDER.map(
-          (r) => `<td>${Math.max(1, Math.floor((units[r] || 1) * w.unit + 0.5))}</td>`
-        ).join("")}<td>${Math.max(1, Math.floor(shop.restockUnits * w.unit + 0.5))}</td></tr>`
+        `<tr><td>after wave <b>${w.wave}</b></td><td>${Math.max(1, Math.floor(shop.utilityUnits * w.unit + 0.5))}</td><td>${Math.max(1, Math.floor(shop.restockUnits * w.unit + 0.5))}</td></tr>`
     )
     .join("\n        ");
   const transRows = (shop.transmute || [])
@@ -902,18 +899,19 @@ function buildsPage() {
       <a href="bestiary.html">bestiary</a>) — an elite rolls its range <b>${ess.eliteRolls}</b> times,
       and a boss pays <b>${(ess.boss || []).join("–")}</b>. Small purple motes fly from the body to the
       counter in the top-right as it is paid (the same counter stays lit over the shop). The Taxed
-      curse pays 70% of it, and nine <a href="#essence-cards">cards</a> deal in it. The shelf holds <b>${shop.stock}</b> cards, an
-      <a href="abilities.html">ability</a> (the only place one is sold) and a
-      <a href="#family-items">panel for each of your two biggest families</a>.
-      A price is a number of <b>units</b> by rarity —
-      ${RARITY_ORDER.map((r) => `<code>${r} ${units[r]}</code>`).join(" · ")}, an ability
-      <code>${shop.utilityUnits}</code> — times the size of the wave you just cleared: income is
-      kills and the kill count grows with the wave, so one curve keeps a visit worth about the same
-      at wave 5 and at wave 40. Restocking costs <code>${shop.restockUnits}</code> units, and
-      <code>${shop.restockStep}</code> more each time in the same visit.
+      curse pays 70% of it, and nine <a href="#essence-cards">cards</a> deal in it. The shop is an
+      <a href="abilities.html">ability</a> down the left (the only place one is sold), a
+      <a href="#family-items">row for each of your two biggest families</a> beside it — a boost and a
+      pack — then Transmute, then Reroll and Leave. It has sold no loose cards since 3 October: packs
+      are its only cards. It is mouse only, like the card screen (no R, D or Enter since the same day).
+      A price is a number of <b>units</b> — an ability <code>${shop.utilityUnits}</code> — times the
+      size of the wave you just cleared: income is kills and the kill count grows with the wave, so
+      one curve keeps a visit worth about the same at wave 5 and at wave 40. A reroll costs
+      <code>${shop.restockUnits}</code> units, and <code>${shop.restockStep}</code> more each time in
+      the same visit.
     </p>
     <table>
-      <thead><tr><th>Visit</th>${RARITY_ORDER.map((r) => `<th style="color:var(--${r})">${r}</th>`).join("")}<th>restock</th></tr></thead>
+      <thead><tr><th>Visit</th><th>Ability</th><th>Reroll</th></tr></thead>
       <tbody>
         ${priceRows}
       </tbody>
@@ -931,14 +929,14 @@ function buildsPage() {
     <p>${C.FAMILY_SHOP_NOTE}</p>
     <ul>
       <li><b>One boost</b> — one of the family's own three (listed with <a href="#families">the
-        family</a> above), drawn at random from those you do not own yet; a restock draws again.
+        family</a> above), drawn at random from those you do not own yet; a reroll draws again.
         Each is bought once. They cost <code>${(shop.boostUnits || []).join(" / ")}</code> units by
         their place, I to III.</li>
       <li><b>A pack</b> — three cards of that family you can still take, and you keep <b>one</b>
-        (a legendary among them comes cursed). One a visit per family; a restock puts it back.
-        <code>${shop.packUnits}</code> units.</li>
+        (a legendary among them comes cursed). One a visit per family; a reroll puts it back.
+        <code>${shop.packUnits}</code> units (2.6 until 3 October, when the loose cards went).</li>
       <li><b>The Recombobulator</b>, on ${Math.round((shop.recombChance || 0) * 100)}% of visits (and
-        of restocks), standing in place of <b>one</b> panel's boost — ${C.RECOMB_NOTE}
+        of rerolls), standing in place of <b>one</b> panel's boost — ${C.RECOMB_NOTE}
         <code>${shop.recombUnits}</code> units.</li>
     </ul>
     <table>
@@ -1017,7 +1015,7 @@ function abilitiesPage() {
       Bound to <code>F</code>. You carry exactly one, and they are sold <b>only in the
       <a href="builds.html#shop">Essence Shop</a></b>: every visit has one on the shelf, on a card of
       its own (cut corners, lit in the ability's colour, the cooldown in its footer) so it is never
-      taken for an upgrade, and a restock deals a different one. Buying one replaces what you had.
+      taken for an upgrade, and a reroll deals a different one. Buying one replaces what you had.
       Until 29 September one was dealt as a fourth card on every third upgrade screen.
     </p>
 

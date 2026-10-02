@@ -100,8 +100,8 @@ export const LOOP = [
   {
     h: "Every fifth wave, the Essence Shop",
     p: `Kills earn essence — one each, five for an elite, twenty-five for a boss — and after every
-        fifth wave the free card is replaced by a <a href="builds.html#shop">shop</a>: a priced
-        shelf, a restock, and <b>Transmute</b>, which sacrifices random cards you own for a choice
+        fifth wave the free card is replaced by a <a href="builds.html#shop">shop</a>: an ability,
+        a boost and a card pack for each of your two biggest families, a reroll, and <b>Transmute</b>, which sacrifices random cards you own for a choice
         of one a rarity higher. Unspent essence carries over, and your total sits in the top-right
         corner beside a purple orb.`,
   },
@@ -1086,8 +1086,8 @@ export const BUILD_NAME_NOTE = `The game-over screen names your build from its t
   own furthest wave, best score and number of runs, so "my best Blazing Pyromancer" is a record
   you can chase.`;
 
-export const CURSE_NOTE = `<b>A legendary from the Essence Shop comes with a curse</b> — off its
-  shelf, out of a Family Pack, or from Transmute. A legendary in an ordinary wave's hand is clean
+export const CURSE_NOTE = `<b>A legendary from the Essence Shop comes with a curse</b> — out of a
+  Family Pack or from Transmute. A legendary in an ordinary wave's hand is clean
   (every legendary was cursed until the player asked for shops only). The curse is rolled when the
   card is dealt and printed on its face in red, so buying one is a trade you can read before you
   make it.
@@ -1107,7 +1107,7 @@ export const SHOP_NOTE = `After every fifth wave the free card is replaced by th
   legendary at the next is a real plan. Extra cards the wave owes you — Tithe, a boss kill's bonus
   — are still dealt as ordinary hands once you leave.`;
 
-export const FAMILY_SHOP_NOTE = `Under the cards, the shop shows a panel for each of your <b>two
+export const FAMILY_SHOP_NOTE = `Beside the ability, the shop shows a row for each of your <b>two
   most prominent families</b> — the two you own the most cards in (a fresh run with fewer than two
   is shown a random one). Each panel is sold under its family's icon, the same icon every card of
   that family carries in its header, and holds two things: a boost (or, now and then, the
@@ -1116,8 +1116,8 @@ export const FAMILY_SHOP_NOTE = `Under the cards, the shop shows a panel for eac
 // The epic and legendary essence cards: what the damage ones are measured in.
 export const ESSENCE_POWER_NOTE = (c) => `Above rare, essence becomes power, and none of these cards
   counts raw essence — a late run holds thousands, and anything paid per essence would run away with
-  it. <b>Dragon's Hoard</b> weighs what you hold against shop prices, in <b>price units</b> (a
-  common costs 1.2 of them): +${Math.round((c.HOARD_MAX || 0) * 100)}% × (1 − e<sup>−units/${c.HOARD_K}</sup>),
+  it. <b>Dragon's Hoard</b> weighs what you hold against shop prices, in <b>price units</b> (an
+  ability costs 2.6 of them): +${Math.round((c.HOARD_MAX || 0) * 100)}% × (1 − e<sup>−units/${c.HOARD_K}</sup>),
   so holding four units is +25% and forty is the full +${Math.round((c.HOARD_MAX || 0) * 100)}%, at wave 5 or
   wave 50 alike. <b>Spendthrift</b> is the opposite build — +${Math.round((c.SPEND_PER || 0) * 100)}% a
   purchase, up to +${Math.round((c.SPEND_CAP || 0) * 100)}% — and the two cannot be held together.

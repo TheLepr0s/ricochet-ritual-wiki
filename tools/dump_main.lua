@@ -531,7 +531,6 @@ local function build()
     -- Shop prices are units x the size of the wave just cleared, so the dump
     -- carries both halves and the page multiplies: the wave sizes come from
     -- WaveManager's own formula rather than a retyped copy of it.
-    local units = need(shLocals, "PRICE_UNITS", "Shop") or {}
     local shopWaves = arr({})
     for w = Shop.EVERY, Shop.EVERY * 8, Shop.EVERY do
         shopWaves[#shopWaves + 1] = obj("wave", w, "unit", Shop.unit and Shop.unit(w)
@@ -547,11 +546,9 @@ local function build()
                     "cards", scalarMap(UpgradeManager.ESSENCE_CARDS or {}))
     put(consts, "shop", obj(
         "every", Shop.EVERY,
-        "units", scalarMap(units),
         "utilityUnits", need(shLocals, "UTILITY_UNITS", "Shop"),
         "restockUnits", need(shLocals, "RESTOCK_UNITS", "Shop"),
         "restockStep", need(shLocals, "RESTOCK_STEP", "Shop"),
-        "stock", need(shLocals, "STOCK", "Shop"),
         "boostUnits", arr({ unpack(Shop.BOOST_UNITS or {}) }),
         "packUnits", Shop.PACK_UNITS,
         "recombUnits", Shop.RECOMB_UNITS,

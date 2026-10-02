@@ -157,8 +157,8 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </table></div>
 
     <h2 id="curses">Curses</h2>
-    <p><b>A legendary from the Essence Shop comes with a curse</b> — off its
-  shelf, out of a Family Pack, or from Transmute. A legendary in an ordinary wave's hand is clean
+    <p><b>A legendary from the Essence Shop comes with a curse</b> — out of a
+  Family Pack or from Transmute. A legendary in an ordinary wave's hand is clean
   (every legendary was cursed until the player asked for shops only). The curse is rolled when the
   card is dealt and printed on its face in red, so buying one is a trade you can read before you
   make it.
@@ -209,27 +209,28 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <a href="bestiary.html">bestiary</a>) — an elite rolls its range <b>3</b> times,
       and a boss pays <b>30–45</b>. Small purple motes fly from the body to the
       counter in the top-right as it is paid (the same counter stays lit over the shop). The Taxed
-      curse pays 70% of it, and nine <a href="#essence-cards">cards</a> deal in it. The shelf holds <b>3</b> cards, an
-      <a href="abilities.html">ability</a> (the only place one is sold) and a
-      <a href="#family-items">panel for each of your two biggest families</a>.
-      A price is a number of <b>units</b> by rarity —
-      <code>common 1.2</code> · <code>uncommon 1.8</code> · <code>rare 2.6</code> · <code>epic 3.8</code> · <code>legendary 5.5</code>, an ability
-      <code>2.6</code> — times the size of the wave you just cleared: income is
-      kills and the kill count grows with the wave, so one curve keeps a visit worth about the same
-      at wave 5 and at wave 40. Restocking costs <code>0.6</code> units, and
-      <code>0.3</code> more each time in the same visit.
+      curse pays 70% of it, and nine <a href="#essence-cards">cards</a> deal in it. The shop is an
+      <a href="abilities.html">ability</a> down the left (the only place one is sold), a
+      <a href="#family-items">row for each of your two biggest families</a> beside it — a boost and a
+      pack — then Transmute, then Reroll and Leave. It has sold no loose cards since 3 October: packs
+      are its only cards. It is mouse only, like the card screen (no R, D or Enter since the same day).
+      A price is a number of <b>units</b> — an ability <code>2.6</code> — times the
+      size of the wave you just cleared: income is kills and the kill count grows with the wave, so
+      one curve keeps a visit worth about the same at wave 5 and at wave 40. A reroll costs
+      <code>0.6</code> units, and <code>0.3</code> more each time in
+      the same visit.
     </p>
     <table>
-      <thead><tr><th>Visit</th><th style="color:var(--common)">common</th><th style="color:var(--uncommon)">uncommon</th><th style="color:var(--rare)">rare</th><th style="color:var(--epic)">epic</th><th style="color:var(--legendary)">legendary</th><th>restock</th></tr></thead>
+      <thead><tr><th>Visit</th><th>Ability</th><th>Reroll</th></tr></thead>
       <tbody>
-        <tr><td>after wave <b>5</b></td><td>31</td><td>47</td><td>68</td><td>99</td><td>143</td><td>16</td></tr>
-        <tr><td>after wave <b>10</b></td><td>158</td><td>238</td><td>343</td><td>502</td><td>726</td><td>79</td></tr>
-        <tr><td>after wave <b>15</b></td><td>382</td><td>572</td><td>827</td><td>1208</td><td>1749</td><td>191</td></tr>
-        <tr><td>after wave <b>20</b></td><td>683</td><td>1024</td><td>1479</td><td>2162</td><td>3130</td><td>341</td></tr>
-        <tr><td>after wave <b>25</b></td><td>1024</td><td>1535</td><td>2218</td><td>3241</td><td>4692</td><td>512</td></tr>
-        <tr><td>after wave <b>30</b></td><td>1414</td><td>2120</td><td>3063</td><td>4476</td><td>6479</td><td>707</td></tr>
-        <tr><td>after wave <b>35</b></td><td>1864</td><td>2795</td><td>4038</td><td>5901</td><td>8542</td><td>932</td></tr>
-        <tr><td>after wave <b>40</b></td><td>2380</td><td>3569</td><td>5156</td><td>7535</td><td>10907</td><td>1190</td></tr>
+        <tr><td>after wave <b>5</b></td><td>68</td><td>16</td></tr>
+        <tr><td>after wave <b>10</b></td><td>343</td><td>79</td></tr>
+        <tr><td>after wave <b>15</b></td><td>827</td><td>191</td></tr>
+        <tr><td>after wave <b>20</b></td><td>1479</td><td>341</td></tr>
+        <tr><td>after wave <b>25</b></td><td>2218</td><td>512</td></tr>
+        <tr><td>after wave <b>30</b></td><td>3063</td><td>707</td></tr>
+        <tr><td>after wave <b>35</b></td><td>4038</td><td>932</td></tr>
+        <tr><td>after wave <b>40</b></td><td>5156</td><td>1190</td></tr>
       </tbody>
     </table>
 
@@ -237,8 +238,8 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <p><a href="cards.html#bloodmoney" style="color:var(--rare)">Blood Money</a> — Paid in red. Kills drop double essence while you are below half health.<br><a href="cards.html#bountyhunter" style="color:var(--uncommon)">Bounty Hunter</a> — Wanted, alive or dead. Elites drop double essence, and bosses half as much again.<br><a href="cards.html#deeppockets" style="color:var(--common)">Deep Pockets</a> — Room for more. Kills drop 20% more essence per stack.<br><a href="cards.html#dragonshoard" style="color:var(--legendary)">Dragon's Hoard</a> — Sleep on it. The more essence you hold, the harder you hit -- up to +40% damage. Weighed against shop prices, so late-game riches count no more than early savings.<br><a href="cards.html#essencenova" style="color:var(--epic)">Essence Nova</a> — Brimming over. Every 12 kills' worth of essence you collect bursts out of you, hitting everything nearby for 45 damage. Grows with the waves.<br><a href="cards.html#interest" style="color:var(--rare)">Interest</a> — Savings grow. Every shop you open pays 15% interest on the essence you walked in with.<br><a href="cards.html#jackpot" style="color:var(--uncommon)">Jackpot</a> — Lucky strike. One kill in twenty pays its essence six times over.<br><a href="cards.html#spendthrift" style="color:var(--epic)">Spendthrift</a> — Money well spent. Everything you buy in the shop makes you stronger for the rest of the run: +2% damage a purchase, up to +24%.<br><a href="cards.html#tipjar" style="color:var(--uncommon)">Tip Jar</a> — The crowd pays up. Every combo tier you reach pays 2 essence for each tier you are on.</p>
     <p>Above rare, essence becomes power, and none of these cards
   counts raw essence — a late run holds thousands, and anything paid per essence would run away with
-  it. <b>Dragon's Hoard</b> weighs what you hold against shop prices, in <b>price units</b> (a
-  common costs 1.2 of them): +40% × (1 − e<sup>−units/4</sup>),
+  it. <b>Dragon's Hoard</b> weighs what you hold against shop prices, in <b>price units</b> (an
+  ability costs 2.6 of them): +40% × (1 − e<sup>−units/4</sup>),
   so holding four units is +25% and forty is the full +40%, at wave 5 or
   wave 50 alike. <b>Spendthrift</b> is the opposite build — +2% a
   purchase, up to +24% — and the two cannot be held together.
@@ -248,21 +249,21 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   either damage card.</p>
 
     <h3 id="family-items">Family items</h3>
-    <p>Under the cards, the shop shows a panel for each of your <b>two
+    <p>Beside the ability, the shop shows a row for each of your <b>two
   most prominent families</b> — the two you own the most cards in (a fresh run with fewer than two
   is shown a random one). Each panel is sold under its family's icon, the same icon every card of
   that family carries in its header, and holds two things: a boost (or, now and then, the
   Recombobulator in its place) and a pack.</p>
     <ul>
       <li><b>One boost</b> — one of the family's own three (listed with <a href="#families">the
-        family</a> above), drawn at random from those you do not own yet; a restock draws again.
+        family</a> above), drawn at random from those you do not own yet; a reroll draws again.
         Each is bought once. They cost <code>2.2 / 3.2 / 4.4</code> units by
         their place, I to III.</li>
       <li><b>A pack</b> — three cards of that family you can still take, and you keep <b>one</b>
-        (a legendary among them comes cursed). One a visit per family; a restock puts it back.
-        <code>2.6</code> units.</li>
+        (a legendary among them comes cursed). One a visit per family; a reroll puts it back.
+        <code>4</code> units (2.6 until 3 October, when the loose cards went).</li>
       <li><b>The Recombobulator</b>, on 10% of visits (and
-        of restocks), standing in place of <b>one</b> panel's boost — every card you own in one family is given up, one copy at a time, and
+        of rerolls), standing in place of <b>one</b> panel's boost — every card you own in one family is given up, one copy at a time, and
   replaced by a random card of the <b>same rarity</b> from one other random family (the nearest
   rarity it has, if it has none left at that one). The boosts you bought for the old family move to
   the new one, first to first, second to second. A card nothing can take back — Twin Orbs, a Contract, or one something else depends
@@ -273,14 +274,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <table>
       <thead><tr><th>Visit</th><th>Boost I</th><th>Boost II</th><th>Boost III</th><th>Pack</th><th>Recombobulator</th></tr></thead>
       <tbody>
-        <tr><td>after wave <b>5</b></td><td>57</td><td>83</td><td>114</td><td>68</td><td>52</td></tr>
-        <tr><td>after wave <b>10</b></td><td>290</td><td>422</td><td>581</td><td>343</td><td>264</td></tr>
-        <tr><td>after wave <b>15</b></td><td>700</td><td>1018</td><td>1399</td><td>827</td><td>636</td></tr>
-        <tr><td>after wave <b>20</b></td><td>1252</td><td>1821</td><td>2504</td><td>1479</td><td>1138</td></tr>
-        <tr><td>after wave <b>25</b></td><td>1877</td><td>2730</td><td>3753</td><td>2218</td><td>1706</td></tr>
-        <tr><td>after wave <b>30</b></td><td>2592</td><td>3770</td><td>5183</td><td>3063</td><td>2356</td></tr>
-        <tr><td>after wave <b>35</b></td><td>3417</td><td>4970</td><td>6833</td><td>4038</td><td>3106</td></tr>
-        <tr><td>after wave <b>40</b></td><td>4363</td><td>6346</td><td>8725</td><td>5156</td><td>3966</td></tr>
+        <tr><td>after wave <b>5</b></td><td>57</td><td>83</td><td>114</td><td>104</td><td>52</td></tr>
+        <tr><td>after wave <b>10</b></td><td>290</td><td>422</td><td>581</td><td>528</td><td>264</td></tr>
+        <tr><td>after wave <b>15</b></td><td>700</td><td>1018</td><td>1399</td><td>1272</td><td>636</td></tr>
+        <tr><td>after wave <b>20</b></td><td>1252</td><td>1821</td><td>2504</td><td>2276</td><td>1138</td></tr>
+        <tr><td>after wave <b>25</b></td><td>1877</td><td>2730</td><td>3753</td><td>3412</td><td>1706</td></tr>
+        <tr><td>after wave <b>30</b></td><td>2592</td><td>3770</td><td>5183</td><td>4712</td><td>2356</td></tr>
+        <tr><td>after wave <b>35</b></td><td>3417</td><td>4970</td><td>6833</td><td>6212</td><td>3106</td></tr>
+        <tr><td>after wave <b>40</b></td><td>4363</td><td>6346</td><td>8725</td><td>7932</td><td>3966</td></tr>
       </tbody>
     </table>
 
