@@ -37,6 +37,30 @@ const pct = (v, base = 1) => {
 
 const RARITY_ORDER = ["common", "uncommon", "rare", "epic", "legendary"];
 const NAME_BY_KEY = Object.fromEntries(D.upgrades.map((u) => [u.k, u.n]));
+
+// ── Companions: their numbers, read from the game (D.pets) ──
+// Pet stats are not on the card, and the hand-written notes that used to carry
+// them went stale when the Goat was retuned. These lines are generated from
+// each pet's constructor and file locals, so they cannot. Distances in metres
+// (50 px = 1 m), like the cards.
+const metres = (px) => String(Math.round((px / 50) * 10) / 10);
+const share = (f) => `${Math.round(f * 100)}%`;
+const PET_LINE = {
+  OwlCompanion: (s, c) =>
+    `${s.damage} damage a bolt at wave 1, one every ${s.cooldown}s at up to ${metres(s.attack_range)} m; each bolt leaps on through up to ${c.CHAIN_JUMPS} more enemies within ${metres(c.CHAIN_RANGE)} m, each taking ${share(c.CHAIN_MULT)} of it.`,
+  DemonCompanion: (s, c) =>
+    `${s.damage} claw damage at wave 1 every ${s.attack_cooldown}s, on enemies within ${metres(c.CHASE_RANGE)} m of you; every swipe rakes everything within ${metres(c.CLEAVE_RADIUS)} m of its target for ${share(c.CLEAVE_MULT)} and curses it: ×${s.curse_mult} damage taken for ${s.curse_duration}s.`,
+  AngelCompanion: (s, c) =>
+    `A lance of ${s.damage} at wave 1 every ${s.attack_cooldown}s at enemies within ${metres(c.RANGE)} m, running ${metres(c.LANCE_LEN)} m; judgement lasts ${s.judge_duration}s and a judged enemy hits you ${share(1 - s.humble)} softer; a smite deals ${s.smite_damage} at wave 1 to everything within ${metres(s.smite_radius)} m.`,
+  GoatCompanion: (s, c) =>
+    `A ram of ${s.damage} at wave 1 every ${s.cooldown}s on whatever comes within ${metres(c.GUARD)} m of you; everything within ${metres(c.SPLASH)} m of the target takes ${share(c.SPLASH_MULT)}. It charges at ${metres(c.DASH_SPEED)} m/s, trots at ${metres(c.TROT_SPEED)} m/s, and between rams ambles at ${metres(c.WANDER_SPEED)} m/s, ${metres(c.WANDER_MIN)}–${metres(c.WANDER_MAX)} m from you.`,
+};
+function petLine(k) {
+  const p = (D.pets || {})[k];
+  const f = PET_LINE[k];
+  if (!p || !f) return "";
+  return `<div class="tot" data-pet="${esc(k)}"><b>Now:</b> ${esc(f(p.stats, p.consts))} Damage grows with the waves.</div>`;
+}
 const ENEMY_BY_KEY = Object.fromEntries(D.enemies.map((e) => [e.k, e]));
 const FAMILY_BY_ID = Object.fromEntries((D.families || []).map((f) => [f.id, f]));
 const ARCH_BY_ID = Object.fromEntries((D.archetypes || []).map((a) => [a.id, a]));
@@ -651,6 +675,7 @@ function cardsPage() {
           );
         }
         const note = C.CARD_NOTE[u.k];
+        const pet = petLine(u.k);
         return `<div class="row" id="${slug(u.k)}" style="--stripe:var(--${r})"
           data-hay="${hay(u.k, u.n, u.d, u.v, r, note, fam && fam.n, u.cls)}"
           data-stackable="${u.s ? 1 : 0}" data-req="${u.req ? 1 : 0}" data-con="${u.con ? 1 : 0}"
@@ -658,7 +683,7 @@ function cardsPage() {
           data-grp-rarity="${r}" data-gord-rarity="${ri}" data-ord-rarity="${ui}"
           data-grp-family="${esc(u.fam || "none")}" data-gord-family="${FAM_ORDER[u.fam] ?? 99}" data-ord-family="${famRank[u.k] ?? 999}">
           <div class="r-name" data-anchor><span>${esc(u.n)}</span><span class="r-key">${esc(u.k)}</span></div>
-          <div class="r-desc">${esc(u.d)}${note ? `<div class="tot">${esc(note)}</div>` : ""}</div>
+          <div class="r-desc">${esc(u.d)}${pet}${note ? `<div class="tot">${esc(note)}</div>` : ""}</div>
           <div class="r-meta">${meta.join("")}</div>
         </div>`;
       })

@@ -129,6 +129,21 @@ cover(D.enemies, "enemies", (e) => e.x.boss_name || e.k);
   else ok(`every hand-written note names a real card or enemy`);
 }
 
+// Companions: their numbers come from the dump (D.pets), not from prose. A new
+// companion card with no pet entry would be back to hand-typed numbers.
+{
+  const cardsHtml = html["cards.html"] || "";
+  const pets = Object.keys(D.pets || {});
+  const companions = D.upgrades.filter((u) => /Companion$/.test(u.k)).map((u) => u.k);
+  const noPet = companions.filter((k) => !pets.includes(k));
+  const unshown = pets.filter((k) => !cardsHtml.includes(`data-pet="${k}"`));
+  const nan = pets.filter((k) => /NaN|undefined/.test((cardsHtml.split(`data-pet="${k}"`)[1] || "").split("</div>")[0]));
+  if (noPet.length) fail(`companion cards with no dumped pet: ${noPet.join(", ")}`);
+  if (unshown.length) fail(`pets with no stats line on the cards page: ${unshown.join(", ")}`);
+  if (nan.length) fail(`pet stats lines with a missing number: ${nan.join(", ")}`);
+  if (!noPet.length && !unshown.length && !nan.length) ok(`all ${pets.length} companions show their numbers from the game`);
+}
+
 /* ── Portraits ───────────────────────────────────────────────────────── */
 const imgDir = join(DOCS, "assets", "img");
 const imgs = existsSync(imgDir) ? readdirSync(imgDir) : [];

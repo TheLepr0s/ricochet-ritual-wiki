@@ -557,12 +557,54 @@ local function build()
         "transmute", trans,
         "essence", ESS))
 
+    -- ── Companions ───────────────────────────────────────────────────────────
+    -- A pet's numbers live in its constructor (self.stats) and its file locals,
+    -- nowhere else, so the wiki used to carry them as hand-typed prose -- and
+    -- went stale the day the player retuned the Goat (Oct 2026). Each pet is
+    -- built for real here, with a stub standing in for Animation so no sprite
+    -- has to load; the locals the page prints go through need(), so a rename
+    -- breaks the dump rather than blanking a number.
+    local PET_FILES = {
+        { "OwlCompanion",   "Owl",   { "CHAIN_RANGE", "CHAIN_MULT", "CHAIN_JUMPS" } },
+        { "DemonCompanion", "Demon", { "CHASE_RANGE", "CLEAVE_RADIUS", "CLEAVE_MULT" } },
+        { "AngelCompanion", "Angel", { "RANGE", "LANCE_LEN", "LANCE_WIDTH" } },
+        { "GoatCompanion",  "Goat",  { "GUARD", "SPLASH", "SPLASH_MULT", "DASH_SPEED", "TROT_SPEED",
+                                       "WANDER_SPEED", "WANDER_MIN", "WANDER_MAX" } },
+    }
+    local ANIM = "Utilities/core/Animation"
+    local realAnim = cache[ANIM]
+    cache[ANIM] = { new = function()
+        return setmetatable({}, { __index = function() return function() end end })
+    end }
+    local hadObjects = PhysicalObjects
+    PhysicalObjects = {}            -- BaseObject.new registers into it
+    local pets = obj()
+    for _, p in ipairs(PET_FILES) do
+        local card, file, wanted = p[1], p[2], p[3]
+        local chunk, why = loadfile(ROOT .. "Objects/Entities/Pets/" .. file .. ".lua")
+        local ok, mod = false, why
+        if chunk then ok, mod = pcall(chunk) end
+        local built, inst = false, nil
+        if ok and type(mod) == "table" and mod.new then built, inst = pcall(mod.new, 0) end
+        if not (built and type(inst) == "table" and inst.stats) then
+            REQUIRED_MISSING[#REQUIRED_MISSING + 1] = "pet " .. file .. " (" .. tostring(inst or mod) .. ")"
+            say("!! could not build pet " .. file .. ": " .. tostring(inst or mod))
+        else
+            local L = fileLocals(mod)
+            local c = obj()
+            for _, name in ipairs(wanted) do put(c, name, need(L, name, file)) end
+            put(pets, card, obj("file", file, "stats", scalarMap(inst.stats), "consts", c))
+        end
+    end
+    cache[ANIM] = realAnim
+    PhysicalObjects = hadObjects
+
     -- ── Out ──────────────────────────────────────────────────────────────────
     local root = obj("upgrades", ups, "achievements", achs,
                      "abilities", abis, "modifiers", mods, "enemies", ens,
                      "archetypes", arcs, "compositions", comps,
                      "difficulties", diffs, "families", fams, "curses", curses,
-                     "consts", consts)
+                     "consts", consts, "pets", pets)
 
     local fh = assert(io.open(OUT, "wb"))
     fh:write(enc(root))
