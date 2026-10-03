@@ -336,6 +336,7 @@ export const CARD_NOTE = {
   LightningRod:  "Reach +3 m since 3 October, when Arc Range (+1 m a stack) was removed; it was +1.2 m before.",
   CursedGlass:   "8 a shard is a wave-1 figure, grown with the waves since 29 September.",
   RiftStep:      "25 is a wave-1 figure, grown with the waves since 29 September.",
+  Executioner:   "Since 3 October it is judged on what a direct hit LEAVES: a hit that would drop an enemy under 10% of its max health kills it instead, after curses and every other multiplier. It used to need the enemy under 15% before the hit, which made it a finisher for enemies already nearly dead rather than a threshold your hits cross.",
   Rupture:       "30 is a wave-1 figure, grown with the waves since 29 September.",
   Thornmail:     "22 is a wave-1 figure, grown with the waves since 29 September.",
   EventHorizon:  "A legendary until 29 September. It adds to Black Hole what Aegis already does at rare, so it is an epic now.",
