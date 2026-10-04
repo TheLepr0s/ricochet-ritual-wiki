@@ -817,8 +817,8 @@ function buildsPage() {
         <div class="r-name" data-anchor><span style="color:${rgb(f.col)}">${famIcon(f.id, true)}${esc(f.n)}</span><span class="r-key">${cards.length} cards</span></div>
         <div class="r-desc"><div>${esc(f.d)}</div><div class="tot">${list}</div>${
           f.traits && f.traits.length
-            ? `<div class="tot">Traits: ${f.traits
-                .map((t, i) => `<b>${ROMAN[i]}</b> (${t.at} cards) <b style="color:${rgb(f.col)}">${esc(t.n)}</b> — ${esc(t.d)}`)
+            ? `<div class="tot"><a href="#trait-${slug(f.id)}">Traits</a>: ${f.traits
+                .map((t, i) => (i === 2 ? `<b class="metal-gold">${esc(t.n)}</b>` : esc(t.n)))
                 .join(" · ")}</div>`
             : ""
         }${
@@ -830,6 +830,35 @@ function buildsPage() {
         }</div>
         <div class="r-meta"><div class="per">names a build <b>${esc(f.adj)} …</b> or <b>… ${esc(f.noun)}</b></div></div>
       </div>`;
+    })
+    .join("\n      ");
+
+  // ── Traits, TFT-style: one panel per family, bronze / silver / gold ──
+  const METAL = ["bronze", "silver", "gold"];
+  const traitPanels = fams
+    .filter((f) => f.traits && f.traits.length)
+    .map((f) => {
+      const tiers = f.traits
+        .map((t, i) => {
+          idx(`${t.n} (${f.n} ${ROMAN[i]})`, "Builds", "builds.html", `trait-${slug(f.id)}`, f.id, t.d);
+          const cap = i === 2;
+          return `<li class="tier ${METAL[i]}${cap ? " cap" : ""}">
+            <span class="hex" title="${t.at} ${esc(f.n)} cards">${t.at}</span>
+            <div class="tier-body">
+              <div class="tier-name">${cap ? `<span class="cap-tag">Capstone</span>` : `<span class="tier-num">${ROMAN[i]}</span>`}<b>${esc(t.n)}</b></div>
+              <div class="tier-desc">${esc(t.d)}</div>
+            </div>
+          </li>`;
+        })
+        .join("");
+      return `<article class="trait" id="trait-${slug(f.id)}" style="--fam:${rgb(f.col)}" data-hay="${hay(f.id, f.n, ...f.traits.map((t) => t.n + " " + t.d))}">
+        <header class="trait-head">
+          <span class="emblem">${famIcon(f.id, true)}</span>
+          <h3>${esc(f.n)}</h3>
+          <span class="steps">${f.traits.map((t) => t.at).join(" · ")}</span>
+        </header>
+        <ol class="tiers">${tiers}</ol>
+      </article>`;
     })
     .join("\n      ");
 
@@ -882,6 +911,23 @@ function buildsPage() {
 
   const body = `    <div class="note">${C.BUILDS_NOTE}</div>
 
+    ${toolbar("Filter traits, families or cards…")}
+
+    <h2 id="traits">Traits</h2>
+    <p>
+      Hold <b>3</b>, <b>5</b> and <b>7</b> cards of one family — stacks count — and its three
+      tiers switch on: <span class="metal-bronze">bronze</span>, <span class="metal-silver">silver</span>,
+      and the <span class="metal-gold">gold capstone</span>. They are never bought or picked: they
+      follow your cards, and a card given up (Transmute, the Collector) takes its tier with it. In a
+      run, the column on the right of the screen shows every family you hold and how far it is to the
+      next tier, and hovering a row shows all three. A card that would complete a tier says so above
+      it on the card screen. Wild's silver tier lends your Wild cards to your leading family, and
+      Beast's capstone lets you choose one companion to empower, as an extra pick.
+    </p>
+    <div class="traits">
+      ${traitPanels}
+    </div>
+
     <h2 id="families">Families</h2>
     <p>
       Each card you own in a family multiplies the draw weight of that family's other cards by
@@ -889,16 +935,6 @@ function buildsPage() {
       (×${(1 + (fc.PULL || 0) * (fc.CAP || 0)).toFixed(1)} at most). Rarity, class and family all
       multiply together, so a family you lean into still keeps its legendaries rare.
     </p>
-    <p>
-      <b>Traits.</b> Owning <b>3, 5 and 7</b> cards of a family (stacks count) switches on its
-      three tiers, I, II and III, each listed under the family below. They are never bought or
-      picked: they follow your cards, and a card given up (Transmute, the Collector) takes its tier
-      with it. The column on the right of the screen shows every family you hold, how far it is
-      to the next tier, and — hovered — what each tier does. A card that would complete a tier says
-      so above it on the card screen. Wild's second tier lends your Wild cards to your leading
-      family; Beast's third lets you choose one companion to empower, as an extra pick.
-    </p>
-    ${toolbar("Filter families or cards…")}
     <div class="rows">
       ${famRows}
     </div>
@@ -1009,6 +1045,7 @@ function buildsPage() {
     title: "Builds & shop",
     lead: `Twelve families, ${(D.curses || []).length} curses, ${D.upgrades.filter((u) => u.cls).length} class cards and the Essence Shop: how a run turns into a build rather than a pile.`,
     toc: [
+      { id: "traits", label: "Traits" },
       { id: "families", label: "Families" },
       { id: "names", label: "Build names" },
       { id: "curses", label: "Curses" },

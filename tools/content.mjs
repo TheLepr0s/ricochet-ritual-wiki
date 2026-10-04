@@ -93,7 +93,7 @@ export const LOOP = [
     p: `Every card belongs to one of twelve <a href="builds.html">families</a>, and every card you
         own in a family makes that family's other cards likelier to turn up — so an early lean
         compounds into an identity. Hold <b>3, 5 and 7</b> cards of one family and its three
-        <a href="builds.html#families">traits</a> switch on, tracked in a column on the right of the
+        <a href="builds.html#traits">traits</a> switch on, tracked in a column on the right of the
         screen; a card that would complete one says so above it. Each class has a few cards only
         it is ever offered. A
         legendary bought in the shop comes with a <b>curse</b>, printed on the card before you take it. The run ends
@@ -760,7 +760,7 @@ export const COMBAT = [
         toward you as well, since phasing alone does nothing for something with no momentum.` },
   { h: "October 4: family traits",
     p: `<b>Traits.</b> Every family has three tiers, switched on by owning 3, 5 and 7 of its cards —
-        see <a href="builds.html#families">Families</a>. The player picked Beast III (empower a
+        see <a href="builds.html#traits">Traits</a>. The player picked Beast III (empower a
         companion of your choosing), Storm III (chains go for the weakest within 6 m), Fire III
         (Wildfire) and Arcane III (a ghost orb replaying the orb's path 5 seconds behind); the rest are
         first drafts to be changed. A column on the right of the screen tracks them.
