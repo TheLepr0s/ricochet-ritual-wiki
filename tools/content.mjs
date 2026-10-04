@@ -92,7 +92,10 @@ export const LOOP = [
     h: "A build, not a pile",
     p: `Every card belongs to one of twelve <a href="builds.html">families</a>, and every card you
         own in a family makes that family's other cards likelier to turn up — so an early lean
-        compounds into an identity. Each class has three cards only it is ever offered. A
+        compounds into an identity. Hold <b>3, 5 and 7</b> cards of one family and its three
+        <a href="builds.html#families">traits</a> switch on, tracked in a column on the right of the
+        screen; a card that would complete one says so above it. Each class has a few cards only
+        it is ever offered. A
         legendary bought in the shop comes with a <b>curse</b>, printed on the card before you take it. The run ends
         with your build's name — the leading family's adjective and the runner-up's noun, a
         <i>Frost Juggernaut</i> — and each build name keeps its own records.`,
@@ -1143,9 +1146,10 @@ export const CURSE_NOTE = `<b>A legendary from the Essence Shop comes with a cur
   something the game already reads — sized to sting, never to make a legendary not worth taking.`;
 
 export const CLASS_CARD_NOTE = `Each class has cards only it is ever offered, marked with the
-  class's name on the card (three for the Warden; since 29 September two for the Stormcaller and
-  the Breaker and one for the Stalker, after Ball Lightning, Ambush and Afterimage were removed
-  and Wall Crush was folded into Bowling). They are strong on purpose — a reason to pick the class — but sized
+  class's name on the card (three for the Warden, two for the Breaker, one each for the Stalker
+  and the Stormcaller: Ball Lightning, Ambush and Afterimage were removed and Wall Crush folded
+  into Bowling on 29 September, and the Stormcaller's Resonant Field became a Storm boost on
+  4 October). They are strong on purpose — a reason to pick the class — but sized
   against the ordinary cards of their rarity rather than above them.`;
 
 export const SHOP_NOTE = `After every fifth wave the free card is replaced by the <b>Essence
@@ -1192,7 +1196,7 @@ export const TRANSMUTE_NOTE = `<b>Transmute</b> sacrifices <b>random</b> cards y
 export const GLOSSARY = [
   { t: "Direct hit", d: "The orb striking an enemy body, as opposed to an explosion, arc or aura. Most on-hit cards read direct hits only." },
   { t: "Recall", d: "Holding right click to drag the orb back. A returning orb does full damage." },
-  { t: "Combo", d: "Consecutive hits inside a time window. Drops to zero if the window lapses; several cards scale off it." },
+  { t: "Combo", d: "Consecutive hits inside a time window. Drops to zero if the window lapses (to half, once a streak, with Combo's third trait); several cards scale off it." },
   { t: "Elite", d: "A crowned ordinary enemy with boosted stats and a far better drop." },
   { t: "Modifier", d: "A named rule change applied to a single wave, announced by a banner." },
   { t: "Special wave", d: "A wave built from a hand-picked roster instead of the usual weighted table." },
@@ -1202,6 +1206,7 @@ export const GLOSSARY = [
   { t: "Banish", d: "Removing a card from the pool for the rest of the run, rather than rerolling the screen." },
   { t: "Cover", d: "A tree between you and a ranged enemy. Its shots die on the first tree they cross (rocks and stumps they fly over), and it will not fire without a clear line." },
   { t: "Family", d: "One of twelve groups every card belongs to. Owning a family's cards makes its other cards likelier, and your two leading families name the build." },
+  { t: "Trait", d: "A family's tiers, I, II and III, switched on by owning 3, 5 and 7 of its cards (stacks count). Never bought or picked; a card given up takes its tier with it. Shown in a column on the right of the screen." },
   { t: "Curse", d: "The downside a legendary bought in the Essence Shop comes with, printed on the card. It lasts the rest of the run." },
   { t: "Essence", d: "The Essence Shop's currency, shown top-right with a purple orb: one a kill, five an elite, twenty-five a boss. Carried over between shops." },
   { t: "Transmute", d: "Sacrificing random cards you own of one rarity, in the Essence Shop, for a choice of one card a rarity higher." },
