@@ -333,7 +333,15 @@ export const CARD_NOTE = {
   DeathNova:     "18 is a wave-1 figure: since 29 September it grows with the waves like enemy health, as the companions and abilities do. A flat 18 was a fifth as much at wave 20.",
   VolatileCore:  "20 is a wave-1 figure, grown with the waves since 29 September. Since 3 October it goes off on the first enemy the returning orb hits, once a recall; it used to go off when the orb landed in your hand, and a recall that hits nothing now does nothing. A Boomerang return sets it off too.",
   StaticCharge:  "Since 3 October a recall spends only the charges it actually fires — one per enemy within 6.4 m of the orb — and keeps the rest; it used to empty the bank even with nothing in reach.",
-  LightningRod:  "Reach +3 m since 3 October, when Arc Range (+1 m a stack) was removed; it was +1.2 m before.",
+  ChainLightning: "Stackable since 4 October: Lightning Rod (+2 jumps, +3 m) and Arc Damage (+5 a jump) were folded into it, so each copy after the first is one jump, 1.5 m and 5 damage more.",
+  Backhand:      "Kinetic until 4 October; a Combo card since (it is about timing).",
+  Fracture:      "Kinetic until 4 October; an Arcane card since (shards are Arcane's).",
+  SplitShot:     "Kinetic until 4 October; an Arcane card since (copies are Arcane's).",
+  WizardSpeed:   "Kinetic until 4 October; a Wild card since (walk speed is not the orb).",
+  EssenceNova:   "Arcane until 4 October; a Wild card since (it is about essence).",
+  Kindling:      "Needed Ignition until 4 October, when every Fire card started igniting.",
+  Cremation:     "Needed Ignition until 4 October, when every Fire card started igniting.",
+  Permafrost:    "The name came back on 4 October as a different card. The Permafrost removed on 30 September made frozen deaths shatter into shards.",
   CursedGlass:   "8 a shard is a wave-1 figure, grown with the waves since 29 September.",
   RiftStep:      "25 is a wave-1 figure, grown with the waves since 29 September.",
   Executioner:   "Since 3 October it is judged on what a direct hit LEAVES: a hit that would drop an enemy under 10% of its max health kills it instead, after curses and every other multiplier. It used to need the enemy under 15% before the hit, which made it a finisher for enemies already nearly dead rather than a threshold your hits cross.",
@@ -747,6 +755,23 @@ export const COMBAT = [
         instead. A flat wall the orb has rolled up against blocks at most half of it and is
         reachable on foot; a gap or an inside corner blocks more. An orb already at rest is nudged
         toward you as well, since phasing alone does nothing for something with no momentum.` },
+  { h: "October 4: family traits",
+    p: `<b>Traits.</b> Every family has three tiers, switched on by owning 3, 5 and 7 of its cards —
+        see <a href="builds.html#families">Families</a>. The player picked Beast III (empower a
+        companion of your choosing), Storm III (chains go for the weakest within 6 m), Fire III
+        (Wildfire) and Arcane III (a ghost orb replaying the orb's path 5 seconds behind); the rest are
+        first drafts to be changed. A column on the right of the screen tracks them.
+        <br><br>
+        <b>Cards moved.</b> Backhand to Combo; Fracture and Split Shot to Arcane; Swift Steps and
+        Essence Nova to Wild. <b>Folded or cut:</b> Ignition (every Fire card ignites now),
+        Wildfire (Fire's third tier), Lightning Rod and Arc Damage (Chain Lightning's repeat picks),
+        Blink Strike (the Phase Step boost already did it). Resonant Field and Gravity Snap became
+        boosts, replacing Overcharge and Event Pull.
+        <br><br>
+        <b>Nineteen new cards</b>, and every family now has at least two uncommons: Running Throw,
+        Trick Shot, Pin, Pyre, Firewalk, Permafrost, Whiteout, Capacitor, Thunderhead, Pocket,
+        Wormhole, Imprint, Glint, Whistle, Bonded, Cash Out, On the Beat, Stage Fright and Multiplier.
+        Event Horizon is offered after a Black Hole again: a stacked prerequisite was never seen.` },
   { h: "September 30 to October 3",
     p: `<b>The Frog.</b> The skeletal Ravager is now the <a href="bestiary.html#frog">Frog</a>, with new
         art: it closes in small hops (longer ones since 3 October), crouches, shows its lane and
@@ -759,7 +784,8 @@ export const COMBAT = [
         <br><br>
         <b>Cards.</b> <a href="cards.html#staticcharge">Static Charge</a> spends only the charges it
         fires and keeps the rest when nothing is in reach. Arc Range is gone and
-        <a href="cards.html#lightningrod">Lightning Rod</a> reaches 3 m further (1.2 m).
+        Lightning Rod reaches 3 m further (1.2 m) — it was folded into
+        <a href="cards.html#chainlightning">Chain Lightning</a> the next day.
         <a href="cards.html#volatilecore">Volatile Core</a> goes off on the first enemy a recalled orb
         hits, not when it lands in your hand. <a href="cards.html#boomerang">Boomerang</a> gives the
         recall button back on a 30-second cooldown.
@@ -1158,7 +1184,7 @@ export const RECOMB_NOTE = `every card you own in one family is given up, one co
 export const TRANSMUTE_NOTE = `<b>Transmute</b> sacrifices <b>random</b> cards you own of one
   rarity for a choice of one card a rarity higher. Random on purpose: the cost is not knowing which
   ones go — and it takes two clicks, so it is never an accident. It never takes Twin Orbs or a
-  Contract, or a card something else you own depends on (Ignition while you hold Kindling); a
+  Contract, or a card something else you own depends on (Freezing Shot while you hold Shatter); a
   stack goes one copy at a time. The same undo is what lets The Collector hold your cards and give
   them back.`;
 

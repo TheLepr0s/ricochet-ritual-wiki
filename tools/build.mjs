@@ -816,6 +816,12 @@ function buildsPage() {
       return `<div class="row" id="fam-${slug(f.id)}" style="--stripe:${rgb(f.col)}" data-hay="${hay(f.id, f.n, f.d, f.adj, f.noun, cards.map((u) => u.n).join(" "))}">
         <div class="r-name" data-anchor><span style="color:${rgb(f.col)}">${famIcon(f.id, true)}${esc(f.n)}</span><span class="r-key">${cards.length} cards</span></div>
         <div class="r-desc"><div>${esc(f.d)}</div><div class="tot">${list}</div>${
+          f.traits && f.traits.length
+            ? `<div class="tot">Traits: ${f.traits
+                .map((t, i) => `<b>${ROMAN[i]}</b> (${t.at} cards) <b style="color:${rgb(f.col)}">${esc(t.n)}</b> — ${esc(t.d)}`)
+                .join(" · ")}</div>`
+            : ""
+        }${
           f.boosts
             ? `<div class="tot">Boosts: ${f.boosts
                 .map((b, i) => `<b>${ROMAN[i]}</b> <b style="color:${rgb(f.col)}">${esc(b.n)}</b> — ${esc(b.d)}`)
@@ -882,6 +888,15 @@ function buildsPage() {
       <b>+${Math.round((fc.PULL || 0) * 100)}%</b>, up to <b>${fc.CAP}</b> cards' worth
       (×${(1 + (fc.PULL || 0) * (fc.CAP || 0)).toFixed(1)} at most). Rarity, class and family all
       multiply together, so a family you lean into still keeps its legendaries rare.
+    </p>
+    <p>
+      <b>Traits.</b> Owning <b>3, 5 and 7</b> cards of a family (stacks count) switches on its
+      three tiers, I, II and III, each listed under the family below. They are never bought or
+      picked: they follow your cards, and a card given up (Transmute, the Collector) takes its tier
+      with it. The column on the right of the screen shows every family you hold, how far it is
+      to the next tier, and — hovered — what each tier does. A card that would complete a tier says
+      so above it on the card screen. Wild's second tier lends your Wild cards to your leading
+      family; Beast's third lets you choose one companion to empower, as an extra pick.
     </p>
     ${toolbar("Filter families or cards…")}
     <div class="rows">

@@ -508,6 +508,10 @@ local function build()
     -- with the game's own names and descriptions, so the page cannot drift
     -- from the shelf.
     local FamilyBoons = require("Utilities/systems/FamilyBoons")
+    -- The family traits (Oct 4 2026): three tiers at 3/5/7 cards, each named
+    -- and described by the game. Older checkouts have no FamilyTraits.
+    local okT, FamilyTraits = pcall(require, "Utilities/systems/FamilyTraits")
+    if not okT then FamilyTraits = nil end
     local fams = arr({})
     for _, d in ipairs(Families.DEFS or {}) do
         local col = d.color or {}
@@ -516,10 +520,17 @@ local function build()
             local b = FamilyBoons.boost(d.id, k)
             bs[#bs + 1] = obj("n", b.name, "d", b.desc)
         end
+        local ts = arr({})
+        if FamilyTraits then
+            for t = 1, 3 do
+                ts[#ts + 1] = obj("n", FamilyTraits.name(d.id, t), "d", FamilyTraits.describe(d.id, t),
+                                  "at", FamilyTraits.TIERS[t])
+            end
+        end
         fams[#fams + 1] = obj("id", d.id, "n", d.name, "adj", d.adj, "noun", d.noun,
                               "d", d.blurb,
                               "col", arr({ col[1] or 1, col[2] or 1, col[3] or 1 }),
-                              "boosts", bs)
+                              "boosts", bs, "traits", ts)
     end
     put(consts, "family", scalarMap({ PULL = Families.PULL, CAP = Families.CAP }))
 
