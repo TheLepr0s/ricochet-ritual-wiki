@@ -92,7 +92,7 @@ export const LOOP = [
     h: "A build, not a pile",
     p: `Every card belongs to one of twelve <a href="builds.html">families</a>, and every card you
         own in a family makes that family's other cards likelier to turn up — so an early lean
-        compounds into an identity. Hold <b>3, 5 and 7</b> cards of one family and its three
+        compounds into an identity. Hold <b>3, 5 and 7</b> different cards of one family and its three
         <a href="builds.html#traits">traits</a> switch on, tracked in a column on the right of the
         screen; a card that would complete one says so above it. Each class has a few cards only
         it is ever offered. A
@@ -758,6 +758,27 @@ export const COMBAT = [
         instead. A flat wall the orb has rolled up against blocks at most half of it and is
         reachable on foot; a gap or an inside corner blocks more. An orb already at rest is nudged
         toward you as well, since phasing alone does nothing for something with no momentum.` },
+  { h: "October 5: traits retuned",
+    p: `<b>Only different cards count</b> toward a trait now; a second copy of a card adds nothing.
+        Kinetic's tiers come at 2, 4 and 6 cards, and Frost's and Void's second at 4.
+        <br><br>
+        <b>Changed tiers.</b> Kinetic I: throws 20% faster (was 10%). Precision II, Exit Wound: a crit
+        sprays into everything in a 3 m cone behind the target for half the hit (a crit used to pass
+        through). Precision III: marked hits deal 2.5× (was 3×). Fire I, Long Burn: every burn lasts
+        2 s longer (burning enemies used to be slowed). Fire II, Flashpoint: an orb hit on a burning
+        enemy sets off the rest of its burn and lights it again (it used to be the recalled orb, in
+        a blast). Frost I: chills 2 s longer (was 1 s). Storm I reaches Capacitor's chain too.
+        Storm III also kills anything an arc leaves under 10% health. Blood II spreads to the 4
+        nearest only. Guardian I, Small Shield: a 15-point shield that comes back after 4 s unhit
+        (it used to slow attackers). Combo III, Encore: the lost half now flies as a combo bomb at
+        the biggest crowd on screen, and bosses take a quarter of it.
+        <br><br>
+        <b>Beast III, Apex Pack</b>, replaces choosing one companion to empower: every companion
+        gains a power. The Owl's bolts hit everything within 1.5 m for half, and every 4th bolt
+        stuns. An enemy dying within 4 s of the Demon's claws bursts into flame and sets everything
+        within 2 m alight. The Angel heals you 1 HP every 3 s. The Goat stampedes: rams 30% harder
+        and 30% more often, shove 50% further, and carry on in a 2.5 m cone behind the target for
+        half.` },
   { h: "October 4: family traits",
     p: `<b>Traits.</b> Every family has three tiers, switched on by owning 3, 5 and 7 of its cards —
         see <a href="builds.html#traits">Traits</a>. The player picked Beast III (empower a
@@ -1206,7 +1227,7 @@ export const GLOSSARY = [
   { t: "Banish", d: "Removing a card from the pool for the rest of the run, rather than rerolling the screen." },
   { t: "Cover", d: "A tree between you and a ranged enemy. Its shots die on the first tree they cross (rocks and stumps they fly over), and it will not fire without a clear line." },
   { t: "Family", d: "One of twelve groups every card belongs to. Owning a family's cards makes its other cards likelier, and your two leading families name the build." },
-  { t: "Trait", d: "A family's tiers, I, II and III, switched on by owning 3, 5 and 7 of its cards (stacks count). Never bought or picked; a card given up takes its tier with it. Shown in a column on the right of the screen." },
+  { t: "Trait", d: "A family's tiers, I, II and III, switched on by owning 3, 5 and 7 different cards of it (2, 4 and 6 for Kinetic; 3, 4 and 7 for Frost and Void). Never bought or picked; a card given up takes its tier with it. Shown in a column on the right of the screen." },
   { t: "Curse", d: "The downside a legendary bought in the Essence Shop comes with, printed on the card. It lasts the rest of the run." },
   { t: "Essence", d: "The Essence Shop's currency, shown top-right with a purple orb: one a kill, five an elite, twenty-five a boss. Carried over between shops." },
   { t: "Transmute", d: "Sacrificing random cards you own of one rarity, in the Essence Shop, for a choice of one card a rarity higher." },

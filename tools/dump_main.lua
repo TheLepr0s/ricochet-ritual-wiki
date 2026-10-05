@@ -524,7 +524,7 @@ local function build()
         if FamilyTraits then
             for t = 1, 3 do
                 ts[#ts + 1] = obj("n", FamilyTraits.name(d.id, t), "d", FamilyTraits.describe(d.id, t),
-                                  "at", FamilyTraits.TIERS[t])
+                                  "at", (FamilyTraits.steps and FamilyTraits.steps(d.id) or FamilyTraits.TIERS)[t])
             end
         end
         fams[#fams + 1] = obj("id", d.id, "n", d.name, "adj", d.adj, "noun", d.noun,

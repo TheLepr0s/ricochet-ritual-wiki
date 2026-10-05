@@ -915,14 +915,14 @@ function buildsPage() {
 
     <h2 id="traits">Traits</h2>
     <p>
-      Hold <b>3</b>, <b>5</b> and <b>7</b> cards of one family — stacks count — and its three
-      tiers switch on: <span class="metal-bronze">bronze</span>, <span class="metal-silver">silver</span>,
+      Hold <b>3</b>, <b>5</b> and <b>7</b> different cards of one family (Kinetic 2, 4 and 6; Frost and
+      Void 3, 4 and 7) and its three tiers switch on — a second copy of a card does not count: <span class="metal-bronze">bronze</span>, <span class="metal-silver">silver</span>,
       and the <span class="metal-gold">gold capstone</span>. They are never bought or picked: they
       follow your cards, and a card given up (Transmute, the Collector) takes its tier with it. In a
       run, the column on the right of the screen shows every family you hold and how far it is to the
       next tier, and hovering a row shows all three. A card that would complete a tier says so above
       it on the card screen. Wild's silver tier lends your Wild cards to your leading family, and
-      Beast's capstone lets you choose one companion to empower, as an extra pick.
+      Beast's capstone gives every companion a power of its own.
     </p>
     <div class="traits">
       ${traitPanels}
