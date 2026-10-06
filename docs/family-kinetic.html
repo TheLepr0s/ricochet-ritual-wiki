@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" data-page="family-kinetic-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kinetic · Ricochet Ritual</title>
+<meta name="description" content="The orb itself: its speed, size, bounces, throws and catches.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="family-kinetic-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="families.html" aria-current="page"><em>❂</em>Families</a>
+        <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#start">Starting with Kinetic</a><a href="#traits">Traits</a><a href="#boosts">Shop boosts</a><a href="#cards">Cards</a><a href="#names">Build names</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head" id="top">
+      <h1>Kinetic</h1>
+      <p>The orb itself: its speed, size, bounces, throws and catches.</p>
+    </div>
+    <nav class="fam-strip" aria-label="Every family"><a href="family-kinetic.html" title="Kinetic" aria-current="page" style="--fam:rgb(242,199,89)"><img class="fam-ic big" src="assets/img/family/kinetic.png" alt=""></a><a href="family-precision.html" title="Precision" style="--fam:rgb(255,235,140)"><img class="fam-ic big" src="assets/img/family/precision.png" alt=""></a><a href="family-fire.html" title="Fire" style="--fam:rgb(255,115,51)"><img class="fam-ic big" src="assets/img/family/fire.png" alt=""></a><a href="family-frost.html" title="Frost" style="--fam:rgb(140,217,255)"><img class="fam-ic big" src="assets/img/family/frost.png" alt=""></a><a href="family-storm.html" title="Storm" style="--fam:rgb(153,179,255)"><img class="fam-ic big" src="assets/img/family/storm.png" alt=""></a><a href="family-void.html" title="Void" style="--fam:rgb(179,102,255)"><img class="fam-ic big" src="assets/img/family/void.png" alt=""></a><a href="family-arcane.html" title="Arcane" style="--fam:rgb(140,242,242)"><img class="fam-ic big" src="assets/img/family/arcane.png" alt=""></a><a href="family-blood.html" title="Blood" style="--fam:rgb(242,64,77)"><img class="fam-ic big" src="assets/img/family/blood.png" alt=""></a><a href="family-beast.html" title="Beast" style="--fam:rgb(153,230,115)"><img class="fam-ic big" src="assets/img/family/beast.png" alt=""></a><a href="family-guardian.html" title="Guardian" style="--fam:rgb(191,204,230)"><img class="fam-ic big" src="assets/img/family/guardian.png" alt=""></a><a href="family-combo.html" title="Combo" style="--fam:rgb(255,140,217)"><img class="fam-ic big" src="assets/img/family/combo.png" alt=""></a><a href="family-wild.html" title="Wild" style="--fam:rgb(204,204,179)"><img class="fam-ic big" src="assets/img/family/wild.png" alt=""></a></nav>
+
+    <h2 id="start">Starting with Kinetic</h2>
+    <p>
+      Pick Kinetic on the circle before a run and the run starts with one of these 2, at random — Kinetic's weakest cards that a fresh run can be dealt.
+      See <a href="families.html#start">choosing a family</a>.
+    </p>
+    <div class="rows">
+      <div class="row" id="start-orbdamage" style="--stripe:var(--common)" data-hay="striking force orbdamage sharpen your orb's impact. orb damage +5 per hit. common">
+        <div class="r-name" data-anchor><a href="cards.html#orbdamage" style="color:var(--common)">Striking Force</a><span class="r-key">OrbDamage</span></div>
+        <div class="r-desc">Sharpen your orb's impact. Orb damage +5 per hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--common)">common</div><div class="tot">stacks (up to 10)</div></div>
+      </div>
+      <div class="row" id="start-orbspeed" style="--stripe:var(--common)" data-hay="whiplash orbspeed explosive launch power. orb launch force +100. common">
+        <div class="r-name" data-anchor><a href="cards.html#orbspeed" style="color:var(--common)">Whiplash</a><span class="r-key">OrbSpeed</span></div>
+        <div class="r-desc">Explosive launch power. Orb launch force +100.</div>
+        <div class="r-meta"><div class="per" style="color:var(--common)">common</div><div class="tot">stacks (up to 5)</div></div>
+      </div>
+    </div>
+
+    <h2 id="traits">Traits</h2>
+    <p>Hold 2, 4 and 6 different Kinetic cards for its three tiers. See <a href="families.html#traits">how traits work</a>.</p>
+    <div class="traits">
+      <article class="trait" id="trait-kinetic" style="--fam:rgb(242,199,89)" data-hay="kinetic kinetic quick release throws leave 20% faster. slipcatch a blink that ends within 3 m of the orb catches it. perpetual motion the orb loses speed half as fast in flight, and an orb that slows to a crawl away from you glides back on its own.">
+        <header class="trait-head">
+          <a class="emblem" href="family-kinetic.html"><img class="fam-ic big" src="assets/img/family/kinetic.png" alt=""></a>
+          <h3><a href="family-kinetic.html">Kinetic</a></h3>
+          <span class="steps">2 · 4 · 6</span>
+        </header>
+        <ol class="tiers"><li class="tier bronze">
+            <span class="hex" title="2 Kinetic cards">2</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="tier-num">I</span><b>Quick Release</b></div>
+              <div class="tier-desc">Throws leave 20% faster.</div>
+            </div>
+          </li><li class="tier silver">
+            <span class="hex" title="4 Kinetic cards">4</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="tier-num">II</span><b>Slipcatch</b></div>
+              <div class="tier-desc">A blink that ends within 3 m of the orb catches it.</div>
+            </div>
+          </li><li class="tier gold cap">
+            <span class="hex" title="6 Kinetic cards">6</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="cap-tag">Capstone</span><b>Perpetual Motion</b></div>
+              <div class="tier-desc">The orb loses speed half as fast in flight, and an orb that slows to a crawl away from you glides back on its own.</div>
+            </div>
+          </li></ol>
+      </article>
+    </div>
+
+    <h2 id="boosts">Shop boosts</h2>
+    <p>Bought on Kinetic's panel in the <a href="builds.html#shop">Essence Shop</a>, which shows your two most prominent families.</p>
+    <table>
+      <thead><tr><th></th><th>Boost</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td><b>I</b></td><td><b style="color:rgb(242,199,89)">Long Arm</b></td><td>Your recall pulls the orb home 25% faster.</td></tr>
+        <tr><td><b>II</b></td><td><b style="color:rgb(242,199,89)">Battering</b></td><td>Your orb knocks enemies back 30% further.</td></tr>
+        <tr><td><b>III</b></td><td><b style="color:rgb(242,199,89)">Heavy Hands</b></td><td>Orb hits and Kinetic cards deal +20% damage.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="cards">Cards</h2>
+    <p>All 20 Kinetic cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <div class="toolbar">
+      <input class="filter" id="page-filter" type="search" placeholder="Filter Kinetic cards…" autocomplete="off" aria-label="Filter this page">
+      <div id="page-chips"></div>
+      <span class="hits" id="page-hits"></span>
+    </div>
+    <div class="rows">
+      <div class="row" id="orbdamage" style="--stripe:var(--common)" data-hay="striking force orbdamage sharpen your orb's impact. orb damage +5 per hit. common">
+        <div class="r-name" data-anchor><a href="cards.html#orbdamage" style="color:var(--common)">Striking Force</a><span class="r-key">OrbDamage</span></div>
+        <div class="r-desc">Sharpen your orb's impact. Orb damage +5 per hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--common)">common</div><div class="tot">stacks (up to 10)</div></div>
+      </div>
+      <div class="row" id="orbspeed" style="--stripe:var(--common)" data-hay="whiplash orbspeed explosive launch power. orb launch force +100. common">
+        <div class="r-name" data-anchor><a href="cards.html#orbspeed" style="color:var(--common)">Whiplash</a><span class="r-key">OrbSpeed</span></div>
+        <div class="r-desc">Explosive launch power. Orb launch force +100.</div>
+        <div class="r-meta"><div class="per" style="color:var(--common)">common</div><div class="tot">stacks (up to 5)</div></div>
+      </div>
+      <div class="row" id="carom" style="--stripe:var(--uncommon)" data-hay="carom carom trick shot. every wall bounce charges the orb +15% damage, up to 5, spent on the next enemy hit. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#carom" style="color:var(--uncommon)">Carom</a><span class="r-key">Carom</span></div>
+        <div class="r-desc">Trick shot. Every wall bounce charges the orb +15% damage, up to 5, spent on the next enemy hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="orbsize" style="--stripe:var(--uncommon)" data-hay="heavy orb orbsize grow the orb's mass. size +20%, wider hitbox. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#orbsize" style="color:var(--uncommon)">Heavy Orb</a><span class="r-key">OrbSize</span></div>
+        <div class="r-desc">Grow the orb's mass. Size +20%, wider hitbox.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div><div class="tot">stacks (up to 6)</div></div>
+      </div>
+      <div class="row" id="lightcore" style="--stripe:var(--uncommon)" data-hay="light core lightcore hollow crystal core. higher top speed and much faster acceleration. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#lightcore" style="color:var(--uncommon)">Light Core</a><span class="r-key">LightCore</span></div>
+        <div class="r-desc">Hollow crystal core. Higher top speed and much faster acceleration.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="magneticgrip" style="--stripe:var(--uncommon)" data-hay="magnetic grip magneticgrip invisible tether. orb slowly drifts back toward you when idle. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#magneticgrip" style="color:var(--uncommon)">Magnetic Grip</a><span class="r-key">MagneticGrip</span></div>
+        <div class="r-desc">Invisible tether. Orb slowly drifts back toward you when idle.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="pushback" style="--stripe:var(--uncommon)" data-hay="pushback pushback brute force. everything you hit is knocked back 25% harder and takes 10% more damage, per stack. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#pushback" style="color:var(--uncommon)">Pushback</a><span class="r-key">Pushback</span></div>
+        <div class="r-desc">Brute force. Everything you hit is knocked back 25% harder and takes 10% more damage, per stack.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div><div class="tot">stacks (up to 4)</div></div>
+      </div>
+      <div class="row" id="runningthrow" style="--stripe:var(--uncommon)" data-hay="running throw runningthrow on the run. throwing while you run adds twice your running speed to the throw. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#runningthrow" style="color:var(--uncommon)">Running Throw</a><span class="r-key">RunningThrow</span></div>
+        <div class="r-desc">On the run. Throwing while you run adds twice your running speed to the throw.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="boomerang" style="--stripe:var(--rare)" data-hay="boomerang boomerang comes back to you. every throw returns on its own after 0.8s, and that counts as a recall -- but recalling by hand has a 30s cooldown. rare">
+        <div class="r-name" data-anchor><a href="cards.html#boomerang" style="color:var(--rare)">Boomerang</a><span class="r-key">Boomerang</span></div>
+        <div class="r-desc">Comes back to you. Every throw returns on its own after 0.8s, and that counts as a recall -- but recalling by hand has a 30s cooldown.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="deadstop" style="--stripe:var(--rare)" data-hay="dead stop deadstop bone-jarring catch. stopping the orb with your body blasts nearby enemies, harder the faster it was going. rare">
+        <div class="r-name" data-anchor><a href="cards.html#deadstop" style="color:var(--rare)">Dead Stop</a><span class="r-key">DeadStop</span></div>
+        <div class="r-desc">Bone-jarring catch. Stopping the orb with your body blasts nearby enemies, harder the faster it was going.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="bowling" style="--stripe:var(--epic)" data-hay="bowling bowling strike. enemies your orb knocks back become projectiles. slammed into scenery, one takes the hit again; slammed into another enemy, it deals that enemy the hit and takes it back with 50% more. epic">
+        <div class="r-name" data-anchor><a href="cards.html#bowling" style="color:var(--epic)">Bowling</a><span class="r-key">Bowling</span></div>
+        <div class="r-desc">Strike. Enemies your orb knocks back become projectiles. Slammed into scenery, one takes the hit again; slammed into another enemy, it deals that enemy the hit and takes it back with 50% more.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="heavycore" style="--stripe:var(--epic)" data-hay="heavy core heavycore dense iron core. bleeds speed faster, but +20 bonus damage on every hit. epic">
+        <div class="r-name" data-anchor><a href="cards.html#heavycore" style="color:var(--epic)">Heavy Core</a><span class="r-key">HeavyCore</span></div>
+        <div class="r-desc">Dense iron core. Bleeds speed faster, but +20 bonus damage on every hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="inertiabattery" style="--stripe:var(--epic)" data-hay="inertia battery inertiabattery speed becomes power. a moving orb hits harder the faster it travels, with no upper limit -- every point of launch force you own finally counts. epic">
+        <div class="r-name" data-anchor><a href="cards.html#inertiabattery" style="color:var(--epic)">Inertia Battery</a><span class="r-key">InertiaBattery</span></div>
+        <div class="r-desc">Speed becomes power. A moving orb hits harder the faster it travels, with no upper limit -- every point of launch force you own finally counts.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="juggernaut" style="--stripe:var(--epic)" data-hay="juggernaut juggernaut unstoppable. the orb no longer bounces off enemies -- it ploughs straight through them. epic">
+        <div class="r-name" data-anchor><a href="cards.html#juggernaut" style="color:var(--epic)">Juggernaut</a><span class="r-key">Juggernaut</span></div>
+        <div class="r-desc">Unstoppable. The orb no longer bounces off enemies -- it ploughs straight through them.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="phaseshot" style="--stripe:var(--epic)" data-hay="phase shot phaseshot spectral edge. the first enemy you hit each throw does not stop the orb -- it takes the hit and the orb carries straight on. epic">
+        <div class="r-name" data-anchor><a href="cards.html#phaseshot" style="color:var(--epic)">Phase Shot</a><span class="r-key">PhaseShot</span></div>
+        <div class="r-desc">Spectral edge. The first enemy you hit each throw does not stop the orb -- it takes the hit and the orb carries straight on.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="ricochet" style="--stripe:var(--epic)" data-hay="ricochet ricochet elastic bounce. orb gains +100 speed every time it bounces off an enemy. epic">
+        <div class="r-name" data-anchor><a href="cards.html#ricochet" style="color:var(--epic)">Ricochet</a><span class="r-key">Ricochet</span></div>
+        <div class="r-desc">Elastic bounce. Orb gains +100 speed every time it bounces off an enemy.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="seismicimpact" style="--stripe:var(--epic)" data-hay="seismic impact seismicimpact heavy landing. hits faster than 12 m/s send out a shockwave that deals 60% of the hit to everything nearby. epic">
+        <div class="r-name" data-anchor><a href="cards.html#seismicimpact" style="color:var(--epic)">Seismic Impact</a><span class="r-key">SeismicImpact</span></div>
+        <div class="r-desc">Heavy landing. Hits faster than 12 m/s send out a shockwave that deals 60% of the hit to everything nearby.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="slingshot" style="--stripe:var(--epic)" data-hay="slingshot slingshot every second orb that returns to you fires straight back out at the nearest enemy with 50% more force. epic">
+        <div class="r-name" data-anchor><a href="cards.html#slingshot" style="color:var(--epic)">Slingshot</a><span class="r-key">Slingshot</span></div>
+        <div class="r-desc">Every second orb that returns to you fires straight back out at the nearest enemy with 50% more force.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="wreckingball" style="--stripe:var(--epic)" data-hay="wrecking ball wreckingball demolition. the orb doubles in size and damage, but flies and comes back 20% slower. epic">
+        <div class="r-name" data-anchor><a href="cards.html#wreckingball" style="color:var(--epic)">Wrecking Ball</a><span class="r-key">WreckingBall</span></div>
+        <div class="r-desc">Demolition. The orb doubles in size and damage, but flies and comes back 20% slower.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="twinorbs" style="--stripe:var(--legendary)" data-hay="twin orbs twinorbs two of everything. a second orb joins you, and a single swing throws both. legendary">
+        <div class="r-name" data-anchor><a href="cards.html#twinorbs" style="color:var(--legendary)">Twin Orbs</a><span class="r-key">TwinOrbs</span></div>
+        <div class="r-desc">Two of everything. A second orb joins you, and a single swing throws both.</div>
+        <div class="r-meta"><div class="per" style="color:var(--legendary)">legendary</div></div>
+      </div>
+    </div>
+    <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
+
+    <h2 id="names">Build names</h2>
+    <p>Leading with Kinetic: Kinetic Marksman, Kinetic Pyromancer, Kinetic Glacier, Kinetic Tempest, Kinetic Walker, Kinetic Prism, Kinetic Reaper, Kinetic Packmaster, Kinetic Sentinel, Kinetic Virtuoso, Kinetic Gambler; alone, a <i>Kinetic Adept</i>.</p>
+    <p>Kinetic as the runner-up: Deadeye Juggernaut, Blazing Juggernaut, Frost Juggernaut, Storm Juggernaut, Void Juggernaut, Arcane Juggernaut, Blood Juggernaut, Feral Juggernaut, Iron Juggernaut, Rhythm Juggernaut, Wild Juggernaut.</p>
+
+    <p class="fam-nav">
+      <a href="family-wild.html">← <img class="fam-ic" src="assets/img/family/wild.png" alt="">Wild</a>
+      <a href="families.html">All families</a>
+      <a href="family-precision.html"><img class="fam-ic" src="assets/img/family/precision.png" alt="">Precision →</a>
+    </p>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

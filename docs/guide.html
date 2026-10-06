@@ -32,6 +32,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <a href="bestiary.html"><em>☠</em>Bestiary</a>
         <a href="bosses.html"><em>♛</em>Bosses</a>
         <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="families.html"><em>❂</em>Families</a>
         <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
         <a href="abilities.html"><em>✦</em>Abilities</a>
         <a href="waves.html"><em>≋</em>Waves</a>
@@ -43,7 +44,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   </aside>
 
   <main>
-    <div class="page-head">
+    <div class="page-head" id="top">
       <h1>How to play</h1>
       <p>One orb, thrown and recalled. Everything below follows from that.</p>
     </div>
@@ -82,12 +83,12 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         and banishes accumulate on a timer rather than being spent currency, so a bad screen
         late in a run is a smaller disaster than a bad screen early.</p>
     <h3>A build, not a pile</h3>
-    <p>Every card belongs to one of twelve <a href="builds.html">families</a>, and every card you
+    <p>Every card belongs to one of twelve <a href="families.html">families</a>, and every card you
         own in a family makes that family's other cards likelier to turn up — so an early lean
         compounds into an identity. Hold <b>3, 5 and 7</b> different cards of one family and its three
-        <a href="builds.html#traits">traits</a> switch on, tracked in a column on the right of the
+        <a href="families.html#traits">traits</a> switch on, tracked in a column on the right of the
         screen; a card that would complete one says so above it. A run starts with one card from
-        the family you <a href="builds.html#start">pick on the menu</a>. A
+        the family you <a href="families.html#start">pick on the menu</a>. A
         legendary bought in the shop comes with a <b>curse</b>, printed on the card before you take it. The run ends
         with your build's name — the leading family's adjective and the runner-up's noun, a
         <i>Frost Juggernaut</i> — and each build name keeps its own records.</p>
@@ -133,7 +134,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       Essence Shop. After every
       <b>5th</b> wave the free card is replaced by the
       <a href="builds.html#shop">Essence Shop</a> instead. Which cards you are dealt leans toward the
-      <a href="builds.html">families</a> you already own, and a legendary bought in the shop carries a curse.
+      <a href="families.html">families</a> you already own, and a legendary bought in the shop carries a curse.
     </p>
     <p>
       <b>Rerolls</b> redraw the screen; <b>banishes</b> remove a card from the pool for the rest of

@@ -27,6 +27,7 @@ export const NAV = [
   { file: "bestiary.html",     label: "Bestiary",      icon: "☠" },
   { file: "bosses.html",       label: "Bosses",        icon: "♛" },
   { file: "cards.html",        label: "Upgrade cards", icon: "🂠" },
+  { file: "families.html",     label: "Families",      icon: "❂" },
   { file: "builds.html",       label: "Builds & shop", icon: "✧" },
   { file: "abilities.html",    label: "Abilities",     icon: "✦" },
   { file: "waves.html",        label: "Waves",         icon: "≋" },
@@ -84,12 +85,12 @@ export const LOOP = [
   },
   {
     h: "A build, not a pile",
-    p: `Every card belongs to one of twelve <a href="builds.html">families</a>, and every card you
+    p: `Every card belongs to one of twelve <a href="families.html">families</a>, and every card you
         own in a family makes that family's other cards likelier to turn up — so an early lean
         compounds into an identity. Hold <b>3, 5 and 7</b> different cards of one family and its three
-        <a href="builds.html#traits">traits</a> switch on, tracked in a column on the right of the
+        <a href="families.html#traits">traits</a> switch on, tracked in a column on the right of the
         screen; a card that would complete one says so above it. A run starts with one card from
-        the family you <a href="builds.html#start">pick on the menu</a>. A
+        the family you <a href="families.html#start">pick on the menu</a>. A
         legendary bought in the shop comes with a <b>curse</b>, printed on the card before you take it. The run ends
         with your build's name — the leading family's adjective and the runner-up's noun, a
         <i>Frost Juggernaut</i> — and each build name keeps its own records.`,
@@ -719,7 +720,7 @@ export const ELITES = `Any ordinary spawn can arrive <b>crowned</b>: more health
 /* ── Builds & shop ─────────────────────────────────────────────────────────
    The numbers on that page come from data.json (families, curses,
    consts.family, consts.shop); this is only what they mean. */
-export const BUILDS_NOTE = `You take one card a wave, and <b>families</b> are what turn those picks
+export const BUILDS_NOTE = `You take one card a wave, and <a href="families.html"><b>families</b></a> are what turn those picks
   into a build: every card belongs to exactly one, and every card you own in a family makes that
   family's other cards likelier to be dealt. An early lean compounds into an identity instead of
   being washed out by the shuffler — but nothing is ever locked out, so an off-family card is
@@ -739,7 +740,7 @@ export const CURSE_NOTE = `<b>A legendary from the Essence Shop comes with a cur
   The curse lasts the rest of the run, and two of the same kind compound. Each is a multiplier on
   something the game already reads — sized to sting, never to make a legendary not worth taking.`;
 
-export const START_NOTE = `The last step before a run is a circle of the twelve families. The
+export const START_NOTE = `The last step before a run is a circle of the twelve families, like the one below. The
   run starts with one card from the family you pick — one of its weakest: the lowest rarity it has
   among the cards a fresh run can be dealt, so nothing that needs another card, a companion or an
   ability first. Where several share that rarity, one of them is picked at random.`;

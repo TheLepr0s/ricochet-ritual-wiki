@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-page="family-blood-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blood · Ricochet Ritual</title>
+<meta name="description" content="Kills, bleeding, and power drawn from your own wounds.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="family-blood-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="families.html" aria-current="page"><em>❂</em>Families</a>
+        <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#start">Starting with Blood</a><a href="#traits">Traits</a><a href="#boosts">Shop boosts</a><a href="#cards">Cards</a><a href="#names">Build names</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head" id="top">
+      <h1>Blood</h1>
+      <p>Kills, bleeding, and power drawn from your own wounds.</p>
+    </div>
+    <nav class="fam-strip" aria-label="Every family"><a href="family-kinetic.html" title="Kinetic" style="--fam:rgb(242,199,89)"><img class="fam-ic big" src="assets/img/family/kinetic.png" alt=""></a><a href="family-precision.html" title="Precision" style="--fam:rgb(255,235,140)"><img class="fam-ic big" src="assets/img/family/precision.png" alt=""></a><a href="family-fire.html" title="Fire" style="--fam:rgb(255,115,51)"><img class="fam-ic big" src="assets/img/family/fire.png" alt=""></a><a href="family-frost.html" title="Frost" style="--fam:rgb(140,217,255)"><img class="fam-ic big" src="assets/img/family/frost.png" alt=""></a><a href="family-storm.html" title="Storm" style="--fam:rgb(153,179,255)"><img class="fam-ic big" src="assets/img/family/storm.png" alt=""></a><a href="family-void.html" title="Void" style="--fam:rgb(179,102,255)"><img class="fam-ic big" src="assets/img/family/void.png" alt=""></a><a href="family-arcane.html" title="Arcane" style="--fam:rgb(140,242,242)"><img class="fam-ic big" src="assets/img/family/arcane.png" alt=""></a><a href="family-blood.html" title="Blood" aria-current="page" style="--fam:rgb(242,64,77)"><img class="fam-ic big" src="assets/img/family/blood.png" alt=""></a><a href="family-beast.html" title="Beast" style="--fam:rgb(153,230,115)"><img class="fam-ic big" src="assets/img/family/beast.png" alt=""></a><a href="family-guardian.html" title="Guardian" style="--fam:rgb(191,204,230)"><img class="fam-ic big" src="assets/img/family/guardian.png" alt=""></a><a href="family-combo.html" title="Combo" style="--fam:rgb(255,140,217)"><img class="fam-ic big" src="assets/img/family/combo.png" alt=""></a><a href="family-wild.html" title="Wild" style="--fam:rgb(204,204,179)"><img class="fam-ic big" src="assets/img/family/wild.png" alt=""></a></nav>
+
+    <h2 id="start">Starting with Blood</h2>
+    <p>
+      Pick Blood on the circle before a run and the run starts with one of these 3, at random — Blood's weakest cards that a fresh run can be dealt.
+      See <a href="families.html#start">choosing a family</a>.
+    </p>
+    <div class="rows">
+      <div class="row" id="start-bloodrush" style="--stripe:var(--uncommon)" data-hay="bloodrush bloodrush hunter's high. each kill boosts your movement speed by 120 for 2 seconds. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#bloodrush" style="color:var(--uncommon)">Bloodrush</a><span class="r-key">Bloodrush</span></div>
+        <div class="r-desc">Hunter's high. Each kill boosts your movement speed by 120 for 2 seconds.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="start-lifesteal" style="--stripe:var(--uncommon)" data-hay="life steal lifesteal vampiric orb. every enemy the orb kills restores 2 hp. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#lifesteal" style="color:var(--uncommon)">Life Steal</a><span class="r-key">LifeSteal</span></div>
+        <div class="r-desc">Vampiric orb. Every enemy the orb kills restores 2 HP.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="start-vampiricaura" style="--stripe:var(--uncommon)" data-hay="vampiric aura vampiricaura close feeding. anything that dies near you gives back 2 hp. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#vampiricaura" style="color:var(--uncommon)">Vampiric Aura</a><span class="r-key">VampiricAura</span></div>
+        <div class="r-desc">Close feeding. Anything that dies near you gives back 2 HP.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+    </div>
+
+    <h2 id="traits">Traits</h2>
+    <p>Hold 3, 5 and 7 different Blood cards for its three tiers. See <a href="families.html#traits">how traits work</a>.</p>
+    <div class="traits">
+      <article class="trait" id="trait-blood" style="--fam:rgb(242,64,77)" data-hay="blood blood bloodrush every kill gives you a burst of speed for 2s. contagion enemies that die bleeding spread their bleed to the 4 nearest within 2 m. tap the vein an orb hit on a bleeding enemy deals its remaining bleed three times over at once, then bleeds the 2 nearest enemies within 4 m.">
+        <header class="trait-head">
+          <a class="emblem" href="family-blood.html"><img class="fam-ic big" src="assets/img/family/blood.png" alt=""></a>
+          <h3><a href="family-blood.html">Blood</a></h3>
+          <span class="steps">3 · 5 · 7</span>
+        </header>
+        <ol class="tiers"><li class="tier bronze">
+            <span class="hex" title="3 Blood cards">3</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="tier-num">I</span><b>Bloodrush</b></div>
+              <div class="tier-desc">Every kill gives you a burst of speed for 2s.</div>
+            </div>
+          </li><li class="tier silver">
+            <span class="hex" title="5 Blood cards">5</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="tier-num">II</span><b>Contagion</b></div>
+              <div class="tier-desc">Enemies that die bleeding spread their bleed to the 4 nearest within 2 m.</div>
+            </div>
+          </li><li class="tier gold cap">
+            <span class="hex" title="7 Blood cards">7</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="cap-tag">Capstone</span><b>Tap the Vein</b></div>
+              <div class="tier-desc">An orb hit on a bleeding enemy deals its remaining bleed three times over at once, then bleeds the 2 nearest enemies within 4 m.</div>
+            </div>
+          </li></ol>
+      </article>
+    </div>
+
+    <h2 id="boosts">Shop boosts</h2>
+    <p>Bought on Blood's panel in the <a href="builds.html#shop">Essence Shop</a>, which shows your two most prominent families.</p>
+    <table>
+      <thead><tr><th></th><th>Boost</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td><b>I</b></td><td><b style="color:rgb(242,64,77)">Transfusion</b></td><td>Healing from Blood cards is 50% stronger.</td></tr>
+        <tr><td><b>II</b></td><td><b style="color:rgb(242,64,77)">Go for the Throat</b></td><td>Hits on enemies below half health deal +20% damage.</td></tr>
+        <tr><td><b>III</b></td><td><b style="color:rgb(242,64,77)">Blood Pools</b></td><td>Kills leave a pool of blood for 3 seconds. Enemies in it are slowed by 40%.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="cards">Cards</h2>
+    <p>All 15 Blood cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <div class="toolbar">
+      <input class="filter" id="page-filter" type="search" placeholder="Filter Blood cards…" autocomplete="off" aria-label="Filter this page">
+      <div id="page-chips"></div>
+      <span class="hits" id="page-hits"></span>
+    </div>
+    <div class="rows">
+      <div class="row" id="bloodrush" style="--stripe:var(--uncommon)" data-hay="bloodrush bloodrush hunter's high. each kill boosts your movement speed by 120 for 2 seconds. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#bloodrush" style="color:var(--uncommon)">Bloodrush</a><span class="r-key">Bloodrush</span></div>
+        <div class="r-desc">Hunter's high. Each kill boosts your movement speed by 120 for 2 seconds.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="lifesteal" style="--stripe:var(--uncommon)" data-hay="life steal lifesteal vampiric orb. every enemy the orb kills restores 2 hp. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#lifesteal" style="color:var(--uncommon)">Life Steal</a><span class="r-key">LifeSteal</span></div>
+        <div class="r-desc">Vampiric orb. Every enemy the orb kills restores 2 HP.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="vampiricaura" style="--stripe:var(--uncommon)" data-hay="vampiric aura vampiricaura close feeding. anything that dies near you gives back 2 hp. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#vampiricaura" style="color:var(--uncommon)">Vampiric Aura</a><span class="r-key">VampiricAura</span></div>
+        <div class="r-desc">Close feeding. Anything that dies near you gives back 2 HP.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="adrenaline" style="--stripe:var(--rare)" data-hay="adrenaline adrenaline cornered animal. orb damage climbs as your health falls, up to +80% at death's door. rare">
+        <div class="r-name" data-anchor><a href="cards.html#adrenaline" style="color:var(--rare)">Adrenaline</a><span class="r-key">Adrenaline</span></div>
+        <div class="r-desc">Cornered animal. Orb damage climbs as your health falls, up to +80% at death's door.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="berserkercore" style="--stripe:var(--rare)" data-hay="berserker core berserkercore blood frenzy. each kill adds speed &amp; damage. stacks up to 8, lost on hit. rare">
+        <div class="r-name" data-anchor><a href="cards.html#berserkercore" style="color:var(--rare)">Berserker Core</a><span class="r-key">BerserkerCore</span></div>
+        <div class="r-desc">Blood frenzy. Each kill adds speed &amp; damage. Stacks up to 8, lost on hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="bloodfeast" style="--stripe:var(--rare)" data-hay="blood feast bloodfeast trade up. killing anything within 3s of being hurt restores 4 hp. rare">
+        <div class="r-name" data-anchor><a href="cards.html#bloodfeast" style="color:var(--rare)">Blood Feast</a><span class="r-key">BloodFeast</span></div>
+        <div class="r-desc">Trade up. Killing anything within 3s of being hurt restores 4 HP.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="bloodmoney" style="--stripe:var(--rare)" data-hay="blood money bloodmoney paid in red. kills drop double essence while you are below half health. rare">
+        <div class="r-name" data-anchor><a href="cards.html#bloodmoney" style="color:var(--rare)">Blood Money</a><span class="r-key">BloodMoney</span></div>
+        <div class="r-desc">Paid in red. Kills drop double essence while you are below half health.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="hemorrhage" style="--stripe:var(--rare)" data-hay="hemorrhage hemorrhage deep cuts. each bleed stack on an enemy makes it take 2% more damage from everything, up to 10 stacks. rare">
+        <div class="r-name" data-anchor><a href="cards.html#hemorrhage" style="color:var(--rare)">Hemorrhage</a><span class="r-key">Hemorrhage</span></div>
+        <div class="r-desc">Deep cuts. Each bleed stack on an enemy makes it take 2% more damage from everything, up to 10 stacks.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="dep">needs <a href="cards.html#bleed" style="color:var(--epic)">Open Wound</a></div></div>
+      </div>
+      <div class="row" id="soulharvest" style="--stripe:var(--rare)" data-hay="soul harvest soulharvest reaping. every 8th enemy that dies leaves a soul that restores 6 hp. rare">
+        <div class="r-name" data-anchor><a href="cards.html#soulharvest" style="color:var(--rare)">Soul Harvest</a><span class="r-key">SoulHarvest</span></div>
+        <div class="r-desc">Reaping. Every 8th enemy that dies leaves a soul that restores 6 HP.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="bloodpact" style="--stripe:var(--epic)" data-hay="blood pact bloodpact signed in blood. orb damage +50%, but you no longer heal between waves. epic">
+        <div class="r-name" data-anchor><a href="cards.html#bloodpact" style="color:var(--epic)">Blood Pact</a><span class="r-key">BloodPact</span></div>
+        <div class="r-desc">Signed in blood. Orb damage +50%, but you no longer heal between waves.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="bloodprice" style="--stripe:var(--epic)" data-hay="blood price bloodprice paid in full. orb damage +1% for every 1% of health you are missing, but all healing is halved. epic">
+        <div class="r-name" data-anchor><a href="cards.html#bloodprice" style="color:var(--epic)">Blood Price</a><span class="r-key">BloodPrice</span></div>
+        <div class="r-desc">Paid in full. Orb damage +1% for every 1% of health you are missing, but all healing is halved.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="bleed" style="--stripe:var(--epic)" data-hay="open wound bleed cuts that linger. direct hits apply a bleed dealing 5 damage per second for 3s. epic">
+        <div class="r-name" data-anchor><a href="cards.html#bleed" style="color:var(--epic)">Open Wound</a><span class="r-key">Bleed</span></div>
+        <div class="r-desc">Cuts that linger. Direct hits apply a bleed dealing 5 damage per second for 3s.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="quickening" style="--stripe:var(--epic)" data-hay="quickening quickening blood in the air. each kill makes you faster, stacking up to 10. every hit you take costs 4 stacks. epic">
+        <div class="r-name" data-anchor><a href="cards.html#quickening" style="color:var(--epic)">Quickening</a><span class="r-key">Quickening</span></div>
+        <div class="r-desc">Blood in the air. Each kill makes you faster, stacking up to 10. Every hit you take costs 4 stacks.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="rampage" style="--stripe:var(--epic)" data-hay="rampage rampage feeding frenzy. each kill makes the orb 5% bigger and 4% stronger, up to 10. shrinks back between kills. epic">
+        <div class="r-name" data-anchor><a href="cards.html#rampage" style="color:var(--epic)">Rampage</a><span class="r-key">Rampage</span></div>
+        <div class="r-desc">Feeding frenzy. Each kill makes the orb 5% bigger and 4% stronger, up to 10. Shrinks back between kills.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="vampireorb" style="--stripe:var(--epic)" data-hay="vampire orb vampireorb insatiable hunger. life steal heals +1 extra hp per kill per stack. epic">
+        <div class="r-name" data-anchor><a href="cards.html#vampireorb" style="color:var(--epic)">Vampire Orb</a><span class="r-key">VampireOrb</span></div>
+        <div class="r-desc">Insatiable hunger. Life Steal heals +1 extra HP per kill per stack.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="tot">stacks (up to 2)</div><div class="dep">needs <a href="cards.html#lifesteal" style="color:var(--uncommon)">Life Steal</a></div></div>
+      </div>
+    </div>
+    <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
+
+    <h2 id="names">Build names</h2>
+    <p>Leading with Blood: Blood Juggernaut, Blood Marksman, Blood Pyromancer, Blood Glacier, Blood Tempest, Blood Walker, Blood Prism, Blood Packmaster, Blood Sentinel, Blood Virtuoso, Blood Gambler; alone, a <i>Blood Adept</i>.</p>
+    <p>Blood as the runner-up: Kinetic Reaper, Deadeye Reaper, Blazing Reaper, Frost Reaper, Storm Reaper, Void Reaper, Arcane Reaper, Feral Reaper, Iron Reaper, Rhythm Reaper, Wild Reaper.</p>
+
+    <p class="fam-nav">
+      <a href="family-arcane.html">← <img class="fam-ic" src="assets/img/family/arcane.png" alt="">Arcane</a>
+      <a href="families.html">All families</a>
+      <a href="family-beast.html"><img class="fam-ic" src="assets/img/family/beast.png" alt="">Beast →</a>
+    </p>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

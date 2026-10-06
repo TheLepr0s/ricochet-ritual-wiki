@@ -32,6 +32,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <a href="bestiary.html"><em>☠</em>Bestiary</a>
         <a href="bosses.html"><em>♛</em>Bosses</a>
         <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="families.html"><em>❂</em>Families</a>
         <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
         <a href="abilities.html"><em>✦</em>Abilities</a>
         <a href="waves.html"><em>≋</em>Waves</a>
@@ -43,7 +44,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   </aside>
 
   <main>
-    <div class="page-head">
+    <div class="page-head" id="top">
       <h1>Ricochet Ritual</h1>
       <p>A wave-survival game about one orb, thrown and recalled. You get one orb. Everything else is a consequence of that.</p>
     </div>
@@ -62,7 +63,8 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <a class="tile" href="bestiary.html"><b>☠ Bestiary</b><span>Every enemy, what drives it, and when it starts appearing.</span></a>
       <a class="tile" href="bosses.html"><b>♛ Bosses</b><span>The three boss fights, attack by attack.</span></a>
       <a class="tile" href="cards.html"><b>🂠 Upgrade cards</b><span>All 160 upgrade cards, with stack caps, prerequisites and exclusions.</span></a>
-      <a class="tile" href="builds.html"><b>✧ Builds &amp; shop</b><span>The family you start with, traits, build names, curses, and the Essence Shop.</span></a>
+      <a class="tile" href="families.html"><b>❂ Families</b><span>The twelve families: the one you start with, their traits, and every card in each.</span></a>
+      <a class="tile" href="builds.html"><b>✧ Builds &amp; shop</b><span>Build names, curses, and the Essence Shop.</span></a>
       <a class="tile" href="abilities.html"><b>✦ Abilities</b><span>The twelve F-key abilities, and how they measured against each other.</span></a>
       <a class="tile" href="waves.html"><b>≋ Waves</b><span>Difficulty, modifiers, special waves, elites and the boss rotation.</span></a>
       <a class="tile" href="achievements.html"><b>★ Achievements</b><span>All 120, including the hidden ones.</span></a>
@@ -87,12 +89,12 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         and banishes accumulate on a timer rather than being spent currency, so a bad screen
         late in a run is a smaller disaster than a bad screen early.</p>
     <h3>A build, not a pile</h3>
-    <p>Every card belongs to one of twelve <a href="builds.html">families</a>, and every card you
+    <p>Every card belongs to one of twelve <a href="families.html">families</a>, and every card you
         own in a family makes that family's other cards likelier to turn up — so an early lean
         compounds into an identity. Hold <b>3, 5 and 7</b> different cards of one family and its three
-        <a href="builds.html#traits">traits</a> switch on, tracked in a column on the right of the
+        <a href="families.html#traits">traits</a> switch on, tracked in a column on the right of the
         screen; a card that would complete one says so above it. A run starts with one card from
-        the family you <a href="builds.html#start">pick on the menu</a>. A
+        the family you <a href="families.html#start">pick on the menu</a>. A
         legendary bought in the shop comes with a <b>curse</b>, printed on the card before you take it. The run ends
         with your build's name — the leading family's adjective and the runner-up's noun, a
         <i>Frost Juggernaut</i> — and each build name keeps its own records.</p>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" data-page="family-beast-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beast · Ricochet Ritual</title>
+<meta name="description" content="Companions that fight beside you.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="family-beast-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="families.html" aria-current="page"><em>❂</em>Families</a>
+        <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#start">Starting with Beast</a><a href="#traits">Traits</a><a href="#boosts">Shop boosts</a><a href="#cards">Cards</a><a href="#names">Build names</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head" id="top">
+      <h1>Beast</h1>
+      <p>Companions that fight beside you.</p>
+    </div>
+    <nav class="fam-strip" aria-label="Every family"><a href="family-kinetic.html" title="Kinetic" style="--fam:rgb(242,199,89)"><img class="fam-ic big" src="assets/img/family/kinetic.png" alt=""></a><a href="family-precision.html" title="Precision" style="--fam:rgb(255,235,140)"><img class="fam-ic big" src="assets/img/family/precision.png" alt=""></a><a href="family-fire.html" title="Fire" style="--fam:rgb(255,115,51)"><img class="fam-ic big" src="assets/img/family/fire.png" alt=""></a><a href="family-frost.html" title="Frost" style="--fam:rgb(140,217,255)"><img class="fam-ic big" src="assets/img/family/frost.png" alt=""></a><a href="family-storm.html" title="Storm" style="--fam:rgb(153,179,255)"><img class="fam-ic big" src="assets/img/family/storm.png" alt=""></a><a href="family-void.html" title="Void" style="--fam:rgb(179,102,255)"><img class="fam-ic big" src="assets/img/family/void.png" alt=""></a><a href="family-arcane.html" title="Arcane" style="--fam:rgb(140,242,242)"><img class="fam-ic big" src="assets/img/family/arcane.png" alt=""></a><a href="family-blood.html" title="Blood" style="--fam:rgb(242,64,77)"><img class="fam-ic big" src="assets/img/family/blood.png" alt=""></a><a href="family-beast.html" title="Beast" aria-current="page" style="--fam:rgb(153,230,115)"><img class="fam-ic big" src="assets/img/family/beast.png" alt=""></a><a href="family-guardian.html" title="Guardian" style="--fam:rgb(191,204,230)"><img class="fam-ic big" src="assets/img/family/guardian.png" alt=""></a><a href="family-combo.html" title="Combo" style="--fam:rgb(255,140,217)"><img class="fam-ic big" src="assets/img/family/combo.png" alt=""></a><a href="family-wild.html" title="Wild" style="--fam:rgb(204,204,179)"><img class="fam-ic big" src="assets/img/family/wild.png" alt=""></a></nav>
+
+    <h2 id="start">Starting with Beast</h2>
+    <p>
+      Pick Beast on the circle before a run and the run starts with this card — Beast's weakest card that a fresh run can be dealt.
+      See <a href="families.html#start">choosing a family</a>.
+    </p>
+    <div class="rows">
+      <div class="row" id="start-goatcompanion" style="--stripe:var(--rare)" data-hay="goat companion goatcompanion a mountain goat guards you. it charges anything that comes near you and rams it -- and everything beside it -- flying away. grows with the waves. rare">
+        <div class="r-name" data-anchor><a href="cards.html#goatcompanion" style="color:var(--rare)">Goat Companion</a><span class="r-key">GoatCompanion</span></div>
+        <div class="r-desc">A mountain goat guards you. It charges anything that comes near you and rams it -- and everything beside it -- flying away. Grows with the waves.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+    </div>
+
+    <h2 id="traits">Traits</h2>
+    <p>Hold 3, 5 and 7 different Beast cards for its three tiers. See <a href="families.html#traits">how traits work</a>.</p>
+    <div class="traits">
+      <article class="trait" id="trait-beast" style="--fam:rgb(153,230,115)" data-hay="beast beast eager companions move 15% faster. pack tactics companions go for whatever your orb hit last. apex pack every companion gains a power. owl: its bolts hit everything within 1.5 m, and every 4th stuns. demon: an enemy dying within 4s of its claws bursts into flame. angel: heals you 1 hp every 3s. goat: stampede, 30% faster and harder rams that shove further and carry on in a cone behind the target.">
+        <header class="trait-head">
+          <a class="emblem" href="family-beast.html"><img class="fam-ic big" src="assets/img/family/beast.png" alt=""></a>
+          <h3><a href="family-beast.html">Beast</a></h3>
+          <span class="steps">3 · 5 · 7</span>
+        </header>
+        <ol class="tiers"><li class="tier bronze">
+            <span class="hex" title="3 Beast cards">3</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="tier-num">I</span><b>Eager</b></div>
+              <div class="tier-desc">Companions move 15% faster.</div>
+            </div>
+          </li><li class="tier silver">
+            <span class="hex" title="5 Beast cards">5</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="tier-num">II</span><b>Pack Tactics</b></div>
+              <div class="tier-desc">Companions go for whatever your orb hit last.</div>
+            </div>
+          </li><li class="tier gold cap">
+            <span class="hex" title="7 Beast cards">7</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="cap-tag">Capstone</span><b>Apex Pack</b></div>
+              <div class="tier-desc">Every companion gains a power. Owl: its bolts hit everything within 1.5 m, and every 4th stuns. Demon: an enemy dying within 4s of its claws bursts into flame. Angel: heals you 1 HP every 3s. Goat: Stampede, 30% faster and harder rams that shove further and carry on in a cone behind the target.</div>
+            </div>
+          </li></ol>
+      </article>
+    </div>
+
+    <h2 id="boosts">Shop boosts</h2>
+    <p>Bought on Beast's panel in the <a href="builds.html#shop">Essence Shop</a>, which shows your two most prominent families.</p>
+    <table>
+      <thead><tr><th></th><th>Boost</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td><b>I</b></td><td><b style="color:rgb(153,230,115)">Loyal</b></td><td>Companions attack 20% faster.</td></tr>
+        <tr><td><b>II</b></td><td><b style="color:rgb(153,230,115)">Alpha</b></td><td>Companions deal 25% more damage.</td></tr>
+        <tr><td><b>III</b></td><td><b style="color:rgb(153,230,115)">Keen Senses</b></td><td>Companions see and reach 25% further.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="cards">Cards</h2>
+    <p>All 20 Beast cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <div class="toolbar">
+      <input class="filter" id="page-filter" type="search" placeholder="Filter Beast cards…" autocomplete="off" aria-label="Filter this page">
+      <div id="page-chips"></div>
+      <span class="hits" id="page-hits"></span>
+    </div>
+    <div class="rows">
+      <div class="row" id="bonded" style="--stripe:var(--uncommon)" data-hay="bonded bonded close company. while a companion is within 3 m of you, you take 10% less damage. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#bonded" style="color:var(--uncommon)">Bonded</a><span class="r-key">Bonded</span></div>
+        <div class="r-desc">Close company. While a companion is within 3 m of you, you take 10% less damage.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="whistle" style="--stripe:var(--uncommon)" data-hay="whistle whistle sic 'em. recalling sends every companion at the orb's last target at once. once every 8s. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#whistle" style="color:var(--uncommon)">Whistle</a><span class="r-key">Whistle</span></div>
+        <div class="r-desc">Sic 'em. Recalling sends every companion at the orb's last target at once. Once every 8s.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="angeldamage" style="--stripe:var(--rare)" data-hay="angel's wrath angeldamage brighter light. angel lance damage +7. rare">
+        <div class="r-name" data-anchor><a href="cards.html#angeldamage" style="color:var(--rare)">Angel's Wrath</a><span class="r-key">AngelDamage</span></div>
+        <div class="r-desc">Brighter light. Angel lance damage +7.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 5)</div><div class="dep">needs <a href="cards.html#angelcompanion" style="color:var(--legendary)">Angel Companion</a></div></div>
+      </div>
+      <div class="row" id="demondamage" style="--stripe:var(--rare)" data-hay="demon claws demondamage serrated demonic claws. demon hit damage +8. rare">
+        <div class="r-name" data-anchor><a href="cards.html#demondamage" style="color:var(--rare)">Demon Claws</a><span class="r-key">DemonDamage</span></div>
+        <div class="r-desc">Serrated demonic claws. Demon hit damage +8.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 5)</div><div class="dep">needs <a href="cards.html#demoncompanion" style="color:var(--legendary)">Demon Companion</a></div></div>
+      </div>
+      <div class="row" id="goatcompanion" style="--stripe:var(--rare)" data-hay="goat companion goatcompanion a mountain goat guards you. it charges anything that comes near you and rams it -- and everything beside it -- flying away. grows with the waves. rare">
+        <div class="r-name" data-anchor><a href="cards.html#goatcompanion" style="color:var(--rare)">Goat Companion</a><span class="r-key">GoatCompanion</span></div>
+        <div class="r-desc">A mountain goat guards you. It charges anything that comes near you and rams it -- and everything beside it -- flying away. Grows with the waves.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="goatfrequency" style="--stripe:var(--rare)" data-hay="headstrong goatfrequency never tires. the goat rams 25% more often. rare">
+        <div class="r-name" data-anchor><a href="cards.html#goatfrequency" style="color:var(--rare)">Headstrong</a><span class="r-key">GoatFrequency</span></div>
+        <div class="r-desc">Never tires. The goat rams 25% more often.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 3)</div><div class="dep">needs <a href="cards.html#goatcompanion" style="color:var(--rare)">Goat Companion</a></div></div>
+      </div>
+      <div class="row" id="angeljudgement" style="--stripe:var(--rare)" data-hay="lasting judgement angeljudgement the verdict holds. judgement lasts 1.5s longer. rare">
+        <div class="r-name" data-anchor><a href="cards.html#angeljudgement" style="color:var(--rare)">Lasting Judgement</a><span class="r-key">AngelJudgement</span></div>
+        <div class="r-desc">The verdict holds. Judgement lasts 1.5s longer.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#angelcompanion" style="color:var(--legendary)">Angel Companion</a></div></div>
+      </div>
+      <div class="row" id="demoncurse" style="--stripe:var(--rare)" data-hay="lingering curse demoncurse the mark festers longer. curse duration +1.5s. rare">
+        <div class="r-name" data-anchor><a href="cards.html#demoncurse" style="color:var(--rare)">Lingering Curse</a><span class="r-key">DemonCurse</span></div>
+        <div class="r-desc">The mark festers longer. Curse duration +1.5s.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#demoncompanion" style="color:var(--legendary)">Demon Companion</a></div></div>
+      </div>
+      <div class="row" id="owlfrequency" style="--stripe:var(--rare)" data-hay="owl swiftness owlfrequency relentless diver. owl strikes 25% more often. rare">
+        <div class="r-name" data-anchor><a href="cards.html#owlfrequency" style="color:var(--rare)">Owl Swiftness</a><span class="r-key">OwlFrequency</span></div>
+        <div class="r-desc">Relentless diver. Owl strikes 25% more often.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 3)</div><div class="dep">needs <a href="cards.html#owlcompanion" style="color:var(--epic)">Owl Companion</a></div></div>
+      </div>
+      <div class="row" id="owldamage" style="--stripe:var(--rare)" data-hay="owl talons owldamage razor-sharp claws. owl attack damage +11. rare">
+        <div class="r-name" data-anchor><a href="cards.html#owldamage" style="color:var(--rare)">Owl Talons</a><span class="r-key">OwlDamage</span></div>
+        <div class="r-desc">Razor-sharp claws. Owl attack damage +11.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 6)</div><div class="dep">needs <a href="cards.html#owlcompanion" style="color:var(--epic)">Owl Companion</a></div></div>
+      </div>
+      <div class="row" id="owlrange" style="--stripe:var(--rare)" data-hay="owl vision owlrange keen eyes. owl detects and attacks from 2.2 m further away. rare">
+        <div class="r-name" data-anchor><a href="cards.html#owlrange" style="color:var(--rare)">Owl Vision</a><span class="r-key">OwlRange</span></div>
+        <div class="r-desc">Keen eyes. Owl detects and attacks from 2.2 m further away.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#owlcompanion" style="color:var(--epic)">Owl Companion</a></div></div>
+      </div>
+      <div class="row" id="packleader" style="--stripe:var(--rare)" data-hay="pack leader packleader alpha. every companion deals 20% more damage for each companion you have. rare">
+        <div class="r-name" data-anchor><a href="cards.html#packleader" style="color:var(--rare)">Pack Leader</a><span class="r-key">PackLeader</span></div>
+        <div class="r-desc">Alpha. Every companion deals 20% more damage for each companion you have.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="goatdamage" style="--stripe:var(--rare)" data-hay="sharpened horns goatdamage filed to a point. goat ram damage +9. rare">
+        <div class="r-name" data-anchor><a href="cards.html#goatdamage" style="color:var(--rare)">Sharpened Horns</a><span class="r-key">GoatDamage</span></div>
+        <div class="r-desc">Filed to a point. Goat ram damage +9.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 5)</div><div class="dep">needs <a href="cards.html#goatcompanion" style="color:var(--rare)">Goat Companion</a></div></div>
+      </div>
+      <div class="row" id="goatdaze" style="--stripe:var(--epic)" data-hay="concussion goatdaze seeing stars. the goat's rams daze everything they hit for 0.5s (+0.5s a stack). epic">
+        <div class="r-name" data-anchor><a href="cards.html#goatdaze" style="color:var(--epic)">Concussion</a><span class="r-key">GoatDaze</span></div>
+        <div class="r-desc">Seeing stars. The goat's rams daze everything they hit for 0.5s (+0.5s a stack).</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="tot">stacks (up to 3)</div><div class="dep">needs <a href="cards.html#goatcompanion" style="color:var(--rare)">Goat Companion</a></div></div>
+      </div>
+      <div class="row" id="demonpotency" style="--stripe:var(--epic)" data-hay="curse potency demonpotency amplified hex. cursed enemies take 10% more damage from all sources. epic">
+        <div class="r-name" data-anchor><a href="cards.html#demonpotency" style="color:var(--epic)">Curse Potency</a><span class="r-key">DemonPotency</span></div>
+        <div class="r-desc">Amplified hex. Cursed enemies take 10% more damage from all sources.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#demoncompanion" style="color:var(--legendary)">Demon Companion</a></div></div>
+      </div>
+      <div class="row" id="angelpotency" style="--stripe:var(--epic)" data-hay="divine potency angelpotency wrath from above. the angel's smite hits +8 harder and reaches 0.3 m further. epic">
+        <div class="r-name" data-anchor><a href="cards.html#angelpotency" style="color:var(--epic)">Divine Potency</a><span class="r-key">AngelPotency</span></div>
+        <div class="r-desc">Wrath from above. The Angel's smite hits +8 harder and reaches 0.3 m further.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#angelcompanion" style="color:var(--legendary)">Angel Companion</a></div></div>
+      </div>
+      <div class="row" id="owlcompanion" style="--stripe:var(--epic)" data-hay="owl companion owlcompanion a storm familiar joins you. calls down lightning every 1.3 seconds, and each bolt leaps on through two more foes. grows with the waves. epic">
+        <div class="r-name" data-anchor><a href="cards.html#owlcompanion" style="color:var(--epic)">Owl Companion</a><span class="r-key">OwlCompanion</span></div>
+        <div class="r-desc">A storm familiar joins you. Calls down lightning every 1.3 seconds, and each bolt leaps on through two more foes. Grows with the waves.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="raisedead" style="--stripe:var(--epic)" data-hay="raise dead raisedead they serve you now. 4% of the enemies you kill rise as allies and fight for you for 8 seconds. epic">
+        <div class="r-name" data-anchor><a href="cards.html#raisedead" style="color:var(--epic)">Raise Dead</a><span class="r-key">RaiseDead</span></div>
+        <div class="r-desc">They serve you now. 4% of the enemies you kill rise as allies and fight for you for 8 seconds.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="angelcompanion" style="--stripe:var(--legendary)" data-hay="angel companion angelcompanion a guardian angel joins you. its lances of light pierce every enemy in a line and judge them: judged enemies hit you 20% softer, and when one dies, a pillar of light smites everything around it. grows with the waves. legendary">
+        <div class="r-name" data-anchor><a href="cards.html#angelcompanion" style="color:var(--legendary)">Angel Companion</a><span class="r-key">AngelCompanion</span></div>
+        <div class="r-desc">A guardian angel joins you. Its lances of light pierce every enemy in a line and judge them: judged enemies hit you 20% softer, and when one dies, a pillar of light smites everything around it. Grows with the waves.</div>
+        <div class="r-meta"><div class="per" style="color:var(--legendary)">legendary</div></div>
+      </div>
+      <div class="row" id="demoncompanion" style="--stripe:var(--legendary)" data-hay="demon companion demoncompanion a cursed imp binds to you. its claws rip through whole groups and mark them to take 75% more damage from everything. grows with the waves. legendary">
+        <div class="r-name" data-anchor><a href="cards.html#demoncompanion" style="color:var(--legendary)">Demon Companion</a><span class="r-key">DemonCompanion</span></div>
+        <div class="r-desc">A cursed imp binds to you. Its claws rip through whole groups and mark them to take 75% more damage from everything. Grows with the waves.</div>
+        <div class="r-meta"><div class="per" style="color:var(--legendary)">legendary</div></div>
+      </div>
+    </div>
+    <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
+
+    <h2 id="names">Build names</h2>
+    <p>Leading with Beast: Feral Juggernaut, Feral Marksman, Feral Pyromancer, Feral Glacier, Feral Tempest, Feral Walker, Feral Prism, Feral Reaper, Feral Sentinel, Feral Virtuoso, Feral Gambler; alone, a <i>Feral Adept</i>.</p>
+    <p>Beast as the runner-up: Kinetic Packmaster, Deadeye Packmaster, Blazing Packmaster, Frost Packmaster, Storm Packmaster, Void Packmaster, Arcane Packmaster, Blood Packmaster, Iron Packmaster, Rhythm Packmaster, Wild Packmaster.</p>
+
+    <p class="fam-nav">
+      <a href="family-blood.html">← <img class="fam-ic" src="assets/img/family/blood.png" alt="">Blood</a>
+      <a href="families.html">All families</a>
+      <a href="family-guardian.html"><img class="fam-ic" src="assets/img/family/guardian.png" alt="">Guardian →</a>
+    </p>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" data-page="family-void-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Void · Ricochet Ritual</title>
+<meta name="description" content="Gravity, time, pulses, and stepping through space.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="family-void-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="families.html" aria-current="page"><em>❂</em>Families</a>
+        <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#start">Starting with Void</a><a href="#traits">Traits</a><a href="#boosts">Shop boosts</a><a href="#cards">Cards</a><a href="#names">Build names</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head" id="top">
+      <h1>Void</h1>
+      <p>Gravity, time, pulses, and stepping through space.</p>
+    </div>
+    <nav class="fam-strip" aria-label="Every family"><a href="family-kinetic.html" title="Kinetic" style="--fam:rgb(242,199,89)"><img class="fam-ic big" src="assets/img/family/kinetic.png" alt=""></a><a href="family-precision.html" title="Precision" style="--fam:rgb(255,235,140)"><img class="fam-ic big" src="assets/img/family/precision.png" alt=""></a><a href="family-fire.html" title="Fire" style="--fam:rgb(255,115,51)"><img class="fam-ic big" src="assets/img/family/fire.png" alt=""></a><a href="family-frost.html" title="Frost" style="--fam:rgb(140,217,255)"><img class="fam-ic big" src="assets/img/family/frost.png" alt=""></a><a href="family-storm.html" title="Storm" style="--fam:rgb(153,179,255)"><img class="fam-ic big" src="assets/img/family/storm.png" alt=""></a><a href="family-void.html" title="Void" aria-current="page" style="--fam:rgb(179,102,255)"><img class="fam-ic big" src="assets/img/family/void.png" alt=""></a><a href="family-arcane.html" title="Arcane" style="--fam:rgb(140,242,242)"><img class="fam-ic big" src="assets/img/family/arcane.png" alt=""></a><a href="family-blood.html" title="Blood" style="--fam:rgb(242,64,77)"><img class="fam-ic big" src="assets/img/family/blood.png" alt=""></a><a href="family-beast.html" title="Beast" style="--fam:rgb(153,230,115)"><img class="fam-ic big" src="assets/img/family/beast.png" alt=""></a><a href="family-guardian.html" title="Guardian" style="--fam:rgb(191,204,230)"><img class="fam-ic big" src="assets/img/family/guardian.png" alt=""></a><a href="family-combo.html" title="Combo" style="--fam:rgb(255,140,217)"><img class="fam-ic big" src="assets/img/family/combo.png" alt=""></a><a href="family-wild.html" title="Wild" style="--fam:rgb(204,204,179)"><img class="fam-ic big" src="assets/img/family/wild.png" alt=""></a></nav>
+
+    <h2 id="start">Starting with Void</h2>
+    <p>
+      Pick Void on the circle before a run and the run starts with one of these 2, at random — Void's weakest cards that a fresh run can be dealt.
+      See <a href="families.html#start">choosing a family</a>.
+    </p>
+    <div class="rows">
+      <div class="row" id="start-pocket" style="--stripe:var(--uncommon)" data-hay="pocket pocket pocketed. if the orb is within 2 m when you blink, it comes with you. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#pocket" style="color:var(--uncommon)">Pocket</a><span class="r-key">Pocket</span></div>
+        <div class="r-desc">Pocketed. If the orb is within 2 m when you blink, it comes with you.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="start-wormhole" style="--stripe:var(--uncommon)" data-hay="wormhole wormhole swap. blink while holding recall to trade places with the orb. once every 6s. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#wormhole" style="color:var(--uncommon)">Wormhole</a><span class="r-key">Wormhole</span></div>
+        <div class="r-desc">Swap. Blink while holding recall to trade places with the orb. Once every 6s.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+    </div>
+
+    <h2 id="traits">Traits</h2>
+    <p>Hold 3, 4 and 7 different Void cards for its three tiers. See <a href="families.html#traits">how traits work</a>.</p>
+    <div class="traits">
+      <article class="trait" id="trait-void" style="--fam:rgb(179,102,255)" data-hay="void void wake blinking tugs enemies within 2 m of where you left 1 m inward. undertow an orb at rest slowly pulls enemies within 3 m toward it. collapse point your blink leaves a rift where you started. blink back to it before it fades and everything within 5 m collapses into it for 200% orb damage.">
+        <header class="trait-head">
+          <a class="emblem" href="family-void.html"><img class="fam-ic big" src="assets/img/family/void.png" alt=""></a>
+          <h3><a href="family-void.html">Void</a></h3>
+          <span class="steps">3 · 4 · 7</span>
+        </header>
+        <ol class="tiers"><li class="tier bronze">
+            <span class="hex" title="3 Void cards">3</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="tier-num">I</span><b>Wake</b></div>
+              <div class="tier-desc">Blinking tugs enemies within 2 m of where you left 1 m inward.</div>
+            </div>
+          </li><li class="tier silver">
+            <span class="hex" title="4 Void cards">4</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="tier-num">II</span><b>Undertow</b></div>
+              <div class="tier-desc">An orb at rest slowly pulls enemies within 3 m toward it.</div>
+            </div>
+          </li><li class="tier gold cap">
+            <span class="hex" title="7 Void cards">7</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="cap-tag">Capstone</span><b>Collapse Point</b></div>
+              <div class="tier-desc">Your blink leaves a rift where you started. Blink back to it before it fades and everything within 5 m collapses into it for 200% orb damage.</div>
+            </div>
+          </li></ol>
+      </article>
+    </div>
+
+    <h2 id="boosts">Shop boosts</h2>
+    <p>Bought on Void's panel in the <a href="builds.html#shop">Essence Shop</a>, which shows your two most prominent families.</p>
+    <table>
+      <thead><tr><th></th><th>Boost</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td><b>I</b></td><td><b style="color:rgb(179,102,255)">Gravity Snap</b></td><td>A recalled orb hauls every enemy it passes along behind it.</td></tr>
+        <tr><td><b>II</b></td><td><b style="color:rgb(179,102,255)">Phase Step</b></td><td>Blink recharges 1 second sooner.</td></tr>
+        <tr><td><b>III</b></td><td><b style="color:rgb(179,102,255)">Grasping Dark</b></td><td>Void damage slows enemies by 40% for 1 second.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="cards">Cards</h2>
+    <p>All 12 Void cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <div class="toolbar">
+      <input class="filter" id="page-filter" type="search" placeholder="Filter Void cards…" autocomplete="off" aria-label="Filter this page">
+      <div id="page-chips"></div>
+      <span class="hits" id="page-hits"></span>
+    </div>
+    <div class="rows">
+      <div class="row" id="pocket" style="--stripe:var(--uncommon)" data-hay="pocket pocket pocketed. if the orb is within 2 m when you blink, it comes with you. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#pocket" style="color:var(--uncommon)">Pocket</a><span class="r-key">Pocket</span></div>
+        <div class="r-desc">Pocketed. If the orb is within 2 m when you blink, it comes with you.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="wormhole" style="--stripe:var(--uncommon)" data-hay="wormhole wormhole swap. blink while holding recall to trade places with the orb. once every 6s. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#wormhole" style="color:var(--uncommon)">Wormhole</a><span class="r-key">Wormhole</span></div>
+        <div class="r-desc">Swap. Blink while holding recall to trade places with the orb. Once every 6s.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="riftstep" style="--stripe:var(--rare)" data-hay="rift step riftstep cut through the veil. enemies you pass through mid-blink take 25 damage. grows with the waves. rare">
+        <div class="r-name" data-anchor><a href="cards.html#riftstep" style="color:var(--rare)">Rift Step</a><span class="r-key">RiftStep</span></div>
+        <div class="r-desc">Cut through the veil. Enemies you pass through mid-blink take 25 damage. Grows with the waves.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="temporalrift" style="--stripe:var(--rare)" data-hay="temporal rift temporalrift time distortion. a fast-moving orb crawls nearby enemies to 15% speed and bleeds them while they are stuck. rare">
+        <div class="r-name" data-anchor><a href="cards.html#temporalrift" style="color:var(--rare)">Temporal Rift</a><span class="r-key">TemporalRift</span></div>
+        <div class="r-desc">Time distortion. A fast-moving orb crawls nearby enemies to 15% speed and bleeds them while they are stuck.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="deathnova" style="--stripe:var(--epic)" data-hay="death nova deathnova soul explosion. each kill bursts into a wide void ring dealing 18 damage. grows with the waves. epic">
+        <div class="r-name" data-anchor><a href="cards.html#deathnova" style="color:var(--epic)">Death Nova</a><span class="r-key">DeathNova</span></div>
+        <div class="r-desc">Soul explosion. Each kill bursts into a wide void ring dealing 18 damage. Grows with the waves.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="eventhorizon" style="--stripe:var(--epic)" data-hay="event horizon eventhorizon nothing escapes. your black hole also drags enemy shots into itself and swallows them. epic">
+        <div class="r-name" data-anchor><a href="cards.html#eventhorizon" style="color:var(--epic)">Event Horizon</a><span class="r-key">EventHorizon</span></div>
+        <div class="r-desc">Nothing escapes. Your Black Hole also drags enemy shots into itself and swallows them.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="dep">needs <a href="cards.html#blackholecore" style="color:var(--legendary)">Black Hole</a></div></div>
+      </div>
+      <div class="row" id="rupture" style="--stripe:var(--epic)" data-hay="rupture rupture torn space. blinking detonates for 30 damage at both the place you left and the place you arrive. grows with the waves. epic">
+        <div class="r-name" data-anchor><a href="cards.html#rupture" style="color:var(--epic)">Rupture</a><span class="r-key">Rupture</span></div>
+        <div class="r-desc">Torn space. Blinking detonates for 30 damage at both the place you left and the place you arrive. Grows with the waves.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="shadowstep" style="--stripe:var(--epic)" data-hay="shadowstep shadowstep gone again. killing an enemy within 1.5s of blinking refunds the blink. epic">
+        <div class="r-name" data-anchor><a href="cards.html#shadowstep" style="color:var(--epic)">Shadowstep</a><span class="r-key">Shadowstep</span></div>
+        <div class="r-desc">Gone again. Killing an enemy within 1.5s of blinking refunds the blink.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="voidpulse" style="--stripe:var(--epic)" data-hay="void pulse voidpulse rhythmic void energy. orb releases a damage ring every 1.2s. epic">
+        <div class="r-name" data-anchor><a href="cards.html#voidpulse" style="color:var(--epic)">Void Pulse</a><span class="r-key">VoidPulse</span></div>
+        <div class="r-desc">Rhythmic void energy. Orb releases a damage ring every 1.2s.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="voidrange" style="--stripe:var(--epic)" data-hay="void reach voidrange expanding void. pulse ring radius +0.4 m on each release. epic">
+        <div class="r-name" data-anchor><a href="cards.html#voidrange" style="color:var(--epic)">Void Reach</a><span class="r-key">VoidRange</span></div>
+        <div class="r-desc">Expanding void. Pulse ring radius +0.4 m on each release.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#voidpulse" style="color:var(--epic)">Void Pulse</a></div></div>
+      </div>
+      <div class="row" id="voidfrequency" style="--stripe:var(--epic)" data-hay="void tempo voidfrequency faster pulsing. void ring fires 0.2s sooner each stack. epic">
+        <div class="r-name" data-anchor><a href="cards.html#voidfrequency" style="color:var(--epic)">Void Tempo</a><span class="r-key">VoidFrequency</span></div>
+        <div class="r-desc">Faster pulsing. Void ring fires 0.2s sooner each stack.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="tot">stacks (up to 3)</div><div class="dep">needs <a href="cards.html#voidpulse" style="color:var(--epic)">Void Pulse</a></div></div>
+      </div>
+      <div class="row" id="blackholecore" style="--stripe:var(--legendary)" data-hay="black hole blackholecore event horizon. the orb drags everything within 3 m into itself and grinds what it catches. each stack widens the pull by 1.1 m. legendary">
+        <div class="r-name" data-anchor><a href="cards.html#blackholecore" style="color:var(--legendary)">Black Hole</a><span class="r-key">BlackHoleCore</span></div>
+        <div class="r-desc">Event horizon. The orb drags everything within 3 m into itself and grinds what it catches. Each stack widens the pull by 1.1 m.</div>
+        <div class="r-meta"><div class="per" style="color:var(--legendary)">legendary</div><div class="tot">stacks (up to 3)</div></div>
+      </div>
+    </div>
+    <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
+
+    <h2 id="names">Build names</h2>
+    <p>Leading with Void: Void Juggernaut, Void Marksman, Void Pyromancer, Void Glacier, Void Tempest, Void Prism, Void Reaper, Void Packmaster, Void Sentinel, Void Virtuoso, Void Gambler; alone, a <i>Void Adept</i>.</p>
+    <p>Void as the runner-up: Kinetic Walker, Deadeye Walker, Blazing Walker, Frost Walker, Storm Walker, Arcane Walker, Blood Walker, Feral Walker, Iron Walker, Rhythm Walker, Wild Walker.</p>
+
+    <p class="fam-nav">
+      <a href="family-storm.html">← <img class="fam-ic" src="assets/img/family/storm.png" alt="">Storm</a>
+      <a href="families.html">All families</a>
+      <a href="family-arcane.html"><img class="fam-ic" src="assets/img/family/arcane.png" alt="">Arcane →</a>
+    </p>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

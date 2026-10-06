@@ -488,3 +488,87 @@ footer a { color: var(--ink-dim); }
 :root[data-theme="light"] .metal-silver { color: #6b7686; }
 :root[data-theme="light"] .metal-gold   { color: #a8780a; }
 :root[data-theme="light"] .metal-bronze { color: #9a5a22; }
+
+/* ── The family circle (families.html) ─────────────────────────────────────
+   The menu's transmutation circle. It carries its own dark backing, so it
+   looks the same on both themes. Hovering a family is CSS only: the page
+   writes one :has() rule per family that shows its middle and lights it. */
+.fcircle {
+  --chalk: #f2d18c;
+  position: relative; width: min(600px, 100%); aspect-ratio: 1; margin: 18px auto 26px;
+  container-type: inline-size;
+}
+.fc-art { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.fc-back { fill: #0c0a12; opacity: .94; }
+.fc-ink { fill: none; stroke: var(--chalk); stroke-opacity: .55; stroke-width: 1.5; }
+.fc-ink.fc-bold { stroke-width: 3; }
+.fc-ink.fc-faint { stroke-opacity: .25; }
+.fc-ticks line { stroke: var(--chalk); stroke-opacity: .45; stroke-width: 1.5; }
+.fc-star line { stroke: var(--chalk); stroke-opacity: .16; stroke-width: 1.2; }
+.fc-inner {
+  fill: #07050b; fill-opacity: .8;
+  stroke: var(--lit, var(--chalk)); stroke-opacity: .6; stroke-width: 2.5;
+  transition: stroke .2s;
+}
+.fc-tri { fill: none; stroke: var(--chalk); stroke-opacity: .12; stroke-width: 1.2; }
+.fc-spoke { stroke-width: 3; opacity: 0; transition: opacity .2s; }
+.fc-ticks, .fc-tri { transform-box: view-box; transform-origin: 0 0; }
+.fc-ticks { animation: fc-spin 110s linear infinite; }
+.fc-tri-0 { animation: fc-spin 130s linear infinite; }
+.fc-tri-1 { animation: fc-spin 130s linear infinite reverse; }
+@keyframes fc-spin { to { transform: rotate(360deg); } }
+
+.fc-node {
+  position: absolute; width: 12.7%; aspect-ratio: 1; border-radius: 50%;
+  transform: translate(-50%, -50%);
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--fam) 14%, #110e17);
+  border: 2px solid color-mix(in srgb, var(--fam) 70%, transparent);
+  transition: transform .38s cubic-bezier(.3, 1.9, .5, 1), box-shadow .2s, border-color .2s;
+  z-index: 1;
+}
+.fc-node img { width: 84%; height: 84%; image-rendering: pixelated; pointer-events: none; }
+.fc-node:hover, .fc-node:focus-visible {
+  transform: translate(-50%, -50%) translateY(-6%) scale(1.3);
+  border-color: var(--fam);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--fam) 30%, transparent), 0 0 26px var(--fam);
+  z-index: 2; outline: none;
+}
+/* The name shows only while its family is hovered: twelve do not fit. */
+.fc-name {
+  position: absolute; top: 100%; left: 50%; transform: translate(-50%, 3px);
+  font-weight: 800; font-size: max(.72rem, 2.6cqw); white-space: nowrap; color: var(--fam);
+  text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000, -1px -1px #000;
+  opacity: 0; transition: opacity .15s; pointer-events: none;
+}
+.fc-node:hover .fc-name, .fc-node:focus-visible .fc-name { opacity: 1; }
+
+.fc-mid {
+  position: absolute; left: 50%; top: 50%; width: 44%; transform: translate(-50%, -50%);
+  text-align: center; color: #e8e2d4; pointer-events: none;
+}
+.fc-info { display: none; flex-direction: column; gap: .35em; align-items: center; }
+.fc-default { display: flex; }
+.fcircle:has(.fc-node:is(:hover, :focus-visible)) .fc-default { display: none; }
+.fc-title { font-size: max(1rem, 4.4cqw); text-shadow: 0 2px 0 #000; }
+.fc-blurb { font-size: max(.7rem, 2.4cqw); line-height: 1.35; color: #d8d0c2; }
+.fc-lead { margin-top: .5em; font-size: max(.6rem, 1.9cqw); letter-spacing: .12em; text-transform: uppercase; color: #9a9287; }
+.fc-start { font-size: max(.7rem, 2.4cqw); font-weight: 700; line-height: 1.35; }
+.fc-start span { filter: brightness(1.25); }
+@media (prefers-reduced-motion: reduce) {
+  .fc-ticks, .fc-tri-0, .fc-tri-1 { animation: none; }
+  .fc-node { transition: none; }
+}
+
+/* A family's own page: every family as a strip of icons, and the way round. */
+.fam-strip { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 18px; }
+.fam-strip a {
+  display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--fam) 45%, transparent); background: var(--panel);
+  transition: transform .2s, border-color .2s;
+}
+.fam-strip a:hover { transform: translateY(-2px); border-color: var(--fam); }
+.fam-strip a[aria-current="page"] { border-color: var(--fam); box-shadow: 0 0 12px color-mix(in srgb, var(--fam) 60%, transparent); }
+.fam-strip .fam-ic.big { margin: 0; width: 28px; height: 28px; }
+.fam-nav { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.trait-head h3 a, .trait-head a.emblem { color: inherit; text-decoration: none; }

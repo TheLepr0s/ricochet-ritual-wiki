@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" data-page="family-arcane-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arcane · Ricochet Ritual</title>
+<meta name="description" content="Echoes and copies: mirror shards, phantoms, links.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="family-arcane-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="families.html" aria-current="page"><em>❂</em>Families</a>
+        <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#start">Starting with Arcane</a><a href="#traits">Traits</a><a href="#boosts">Shop boosts</a><a href="#cards">Cards</a><a href="#names">Build names</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head" id="top">
+      <h1>Arcane</h1>
+      <p>Echoes and copies: mirror shards, phantoms, links.</p>
+    </div>
+    <nav class="fam-strip" aria-label="Every family"><a href="family-kinetic.html" title="Kinetic" style="--fam:rgb(242,199,89)"><img class="fam-ic big" src="assets/img/family/kinetic.png" alt=""></a><a href="family-precision.html" title="Precision" style="--fam:rgb(255,235,140)"><img class="fam-ic big" src="assets/img/family/precision.png" alt=""></a><a href="family-fire.html" title="Fire" style="--fam:rgb(255,115,51)"><img class="fam-ic big" src="assets/img/family/fire.png" alt=""></a><a href="family-frost.html" title="Frost" style="--fam:rgb(140,217,255)"><img class="fam-ic big" src="assets/img/family/frost.png" alt=""></a><a href="family-storm.html" title="Storm" style="--fam:rgb(153,179,255)"><img class="fam-ic big" src="assets/img/family/storm.png" alt=""></a><a href="family-void.html" title="Void" style="--fam:rgb(179,102,255)"><img class="fam-ic big" src="assets/img/family/void.png" alt=""></a><a href="family-arcane.html" title="Arcane" aria-current="page" style="--fam:rgb(140,242,242)"><img class="fam-ic big" src="assets/img/family/arcane.png" alt=""></a><a href="family-blood.html" title="Blood" style="--fam:rgb(242,64,77)"><img class="fam-ic big" src="assets/img/family/blood.png" alt=""></a><a href="family-beast.html" title="Beast" style="--fam:rgb(153,230,115)"><img class="fam-ic big" src="assets/img/family/beast.png" alt=""></a><a href="family-guardian.html" title="Guardian" style="--fam:rgb(191,204,230)"><img class="fam-ic big" src="assets/img/family/guardian.png" alt=""></a><a href="family-combo.html" title="Combo" style="--fam:rgb(255,140,217)"><img class="fam-ic big" src="assets/img/family/combo.png" alt=""></a><a href="family-wild.html" title="Wild" style="--fam:rgb(204,204,179)"><img class="fam-ic big" src="assets/img/family/wild.png" alt=""></a></nav>
+
+    <h2 id="start">Starting with Arcane</h2>
+    <p>
+      Pick Arcane on the circle before a run and the run starts with one of these 2, at random — Arcane's weakest cards that a fresh run can be dealt.
+      See <a href="families.html#start">choosing a family</a>.
+    </p>
+    <div class="rows">
+      <div class="row" id="start-glint" style="--stripe:var(--uncommon)" data-hay="glint glint splinter. 10% of direct hits throw off a shard that strikes the nearest other enemy for 25% of the hit. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#glint" style="color:var(--uncommon)">Glint</a><span class="r-key">Glint</span></div>
+        <div class="r-desc">Splinter. 10% of direct hits throw off a shard that strikes the nearest other enemy for 25% of the hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="start-imprint" style="--stripe:var(--uncommon)" data-hay="imprint imprint left behind. each throw leaves a copy of the orb where you threw it for 2s, and anything that walks into it takes 30% of a hit. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#imprint" style="color:var(--uncommon)">Imprint</a><span class="r-key">Imprint</span></div>
+        <div class="r-desc">Left behind. Each throw leaves a copy of the orb where you threw it for 2s, and anything that walks into it takes 30% of a hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+    </div>
+
+    <h2 id="traits">Traits</h2>
+    <p>Hold 3, 5 and 7 different Arcane cards for its three tiers. See <a href="families.html#traits">how traits work</a>.</p>
+    <div class="traits">
+      <article class="trait" id="trait-arcane" style="--fam:rgb(140,242,242)" data-hay="arcane arcane resonant copies arcane cards (echoes, copies and shards) deal 15% more damage. phantom when the orb kills, a phantom of it leaps from the body to the nearest enemy for 40% of the hit. playback a ghost orb follows your orb's path 5s behind it, passing through enemies for half damage.">
+        <header class="trait-head">
+          <a class="emblem" href="family-arcane.html"><img class="fam-ic big" src="assets/img/family/arcane.png" alt=""></a>
+          <h3><a href="family-arcane.html">Arcane</a></h3>
+          <span class="steps">3 · 5 · 7</span>
+        </header>
+        <ol class="tiers"><li class="tier bronze">
+            <span class="hex" title="3 Arcane cards">3</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="tier-num">I</span><b>Resonant Copies</b></div>
+              <div class="tier-desc">Arcane cards (echoes, copies and shards) deal 15% more damage.</div>
+            </div>
+          </li><li class="tier silver">
+            <span class="hex" title="5 Arcane cards">5</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="tier-num">II</span><b>Phantom</b></div>
+              <div class="tier-desc">When the orb kills, a phantom of it leaps from the body to the nearest enemy for 40% of the hit.</div>
+            </div>
+          </li><li class="tier gold cap">
+            <span class="hex" title="7 Arcane cards">7</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="cap-tag">Capstone</span><b>Playback</b></div>
+              <div class="tier-desc">A ghost orb follows your orb's path 5s behind it, passing through enemies for half damage.</div>
+            </div>
+          </li></ol>
+      </article>
+    </div>
+
+    <h2 id="boosts">Shop boosts</h2>
+    <p>Bought on Arcane's panel in the <a href="builds.html#shop">Essence Shop</a>, which shows your two most prominent families.</p>
+    <table>
+      <thead><tr><th></th><th>Boost</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td><b>I</b></td><td><b style="color:rgb(140,242,242)">Mirror Polish</b></td><td>Arcane cards deal +15% damage.</td></tr>
+        <tr><td><b>II</b></td><td><b style="color:rgb(140,242,242)">Echo</b></td><td>Direct hits have a 10% chance to echo, striking every other enemy within 2 m for the same damage.</td></tr>
+        <tr><td><b>III</b></td><td><b style="color:rgb(140,242,242)">Double Take</b></td><td>Direct hits have a 10% chance to land twice.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="cards">Cards</h2>
+    <p>All 12 Arcane cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <div class="toolbar">
+      <input class="filter" id="page-filter" type="search" placeholder="Filter Arcane cards…" autocomplete="off" aria-label="Filter this page">
+      <div id="page-chips"></div>
+      <span class="hits" id="page-hits"></span>
+    </div>
+    <div class="rows">
+      <div class="row" id="glint" style="--stripe:var(--uncommon)" data-hay="glint glint splinter. 10% of direct hits throw off a shard that strikes the nearest other enemy for 25% of the hit. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#glint" style="color:var(--uncommon)">Glint</a><span class="r-key">Glint</span></div>
+        <div class="r-desc">Splinter. 10% of direct hits throw off a shard that strikes the nearest other enemy for 25% of the hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="imprint" style="--stripe:var(--uncommon)" data-hay="imprint imprint left behind. each throw leaves a copy of the orb where you threw it for 2s, and anything that walks into it takes 30% of a hit. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#imprint" style="color:var(--uncommon)">Imprint</a><span class="r-key">Imprint</span></div>
+        <div class="r-desc">Left behind. Each throw leaves a copy of the orb where you threw it for 2s, and anything that walks into it takes 30% of a hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="fracture" style="--stripe:var(--rare)" data-hay="fracture fracture spalling. wall bounces shed two cutting shards that fly off and carve anything they meet. rare">
+        <div class="r-name" data-anchor><a href="cards.html#fracture" style="color:var(--rare)">Fracture</a><span class="r-key">Fracture</span></div>
+        <div class="r-desc">Spalling. Wall bounces shed two cutting shards that fly off and carve anything they meet.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="orbitmode" style="--stripe:var(--rare)" data-hay="mirror ball orbitmode a shard circles you forever, striking anything it sweeps through. weaker than your orb, but never stops. rare">
+        <div class="r-name" data-anchor><a href="cards.html#orbitmode" style="color:var(--rare)">Mirror Ball</a><span class="r-key">OrbitMode</span></div>
+        <div class="r-desc">A shard circles you forever, striking anything it sweeps through. Weaker than your orb, but never stops.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="orbitrange" style="--stripe:var(--rare)" data-hay="wide orbit orbitrange wider circle. mirror ball radius +0.6 m, covers more ground. rare">
+        <div class="r-name" data-anchor><a href="cards.html#orbitrange" style="color:var(--rare)">Wide Orbit</a><span class="r-key">OrbitRange</span></div>
+        <div class="r-desc">Wider circle. Mirror Ball radius +0.6 m, covers more ground.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#orbitmode" style="color:var(--rare)">Mirror Ball</a></div></div>
+      </div>
+      <div class="row" id="cursedglass" style="--stripe:var(--epic)" data-hay="cursed glass cursedglass shards of spite. enemy kills shatter into 3 homing fragments each dealing 8 damage. grows with the waves. epic">
+        <div class="r-name" data-anchor><a href="cards.html#cursedglass" style="color:var(--epic)">Cursed Glass</a><span class="r-key">CursedGlass</span></div>
+        <div class="r-desc">Shards of spite. Enemy kills shatter into 3 homing fragments each dealing 8 damage. Grows with the waves.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="orbitorbs" style="--stripe:var(--epic)" data-hay="extra orbiter orbitorbs more firepower. another shard joins the ring. epic">
+        <div class="r-name" data-anchor><a href="cards.html#orbitorbs" style="color:var(--epic)">Extra Orbiter</a><span class="r-key">OrbitOrbs</span></div>
+        <div class="r-desc">More firepower. Another shard joins the ring.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="tot">stacks (up to 3)</div><div class="dep">needs <a href="cards.html#orbitmode" style="color:var(--rare)">Mirror Ball</a></div></div>
+      </div>
+      <div class="row" id="orbitspeed" style="--stripe:var(--epic)" data-hay="faster orbit orbitspeed dizzying spin. mirror ball rotation speed increases. epic">
+        <div class="r-name" data-anchor><a href="cards.html#orbitspeed" style="color:var(--epic)">Faster Orbit</a><span class="r-key">OrbitSpeed</span></div>
+        <div class="r-desc">Dizzying spin. Mirror Ball rotation speed increases.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#orbitmode" style="color:var(--rare)">Mirror Ball</a></div></div>
+      </div>
+      <div class="row" id="phantomcopies" style="--stripe:var(--epic)" data-hay="phantom copies phantomcopies mirror images. two ghost orbs flank and mimic the main orb's path. epic">
+        <div class="r-name" data-anchor><a href="cards.html#phantomcopies" style="color:var(--epic)">Phantom Copies</a><span class="r-key">PhantomCopies</span></div>
+        <div class="r-desc">Mirror images. Two ghost orbs flank and mimic the main orb's path.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="resonance" style="--stripe:var(--epic)" data-hay="resonance resonance two notes, one chord. when both orbs strike the same enemy within 2s, the pair detonates for heavy damage. epic">
+        <div class="r-name" data-anchor><a href="cards.html#resonance" style="color:var(--epic)">Resonance</a><span class="r-key">Resonance</span></div>
+        <div class="r-desc">Two notes, one chord. When both orbs strike the same enemy within 2s, the pair detonates for heavy damage.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="dep">needs <a href="cards.html#twinorbs" style="color:var(--legendary)">Twin Orbs</a></div></div>
+      </div>
+      <div class="row" id="soullink" style="--stripe:var(--epic)" data-hay="soul link soullink bound together. 35% of every hit echoes onto the nearest other enemy. epic">
+        <div class="r-name" data-anchor><a href="cards.html#soullink" style="color:var(--epic)">Soul Link</a><span class="r-key">SoulLink</span></div>
+        <div class="r-desc">Bound together. 35% of every hit echoes onto the nearest other enemy.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="splitshot" style="--stripe:var(--epic)" data-hay="split shot splitshot twin trajectory. every throw splits in two; each half deals 60% damage, and they merge back when you catch or recall the orb. epic">
+        <div class="r-name" data-anchor><a href="cards.html#splitshot" style="color:var(--epic)">Split Shot</a><span class="r-key">SplitShot</span></div>
+        <div class="r-desc">Twin trajectory. Every throw splits in two; each half deals 60% damage, and they merge back when you catch or recall the orb.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+    </div>
+    <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
+
+    <h2 id="names">Build names</h2>
+    <p>Leading with Arcane: Arcane Juggernaut, Arcane Marksman, Arcane Pyromancer, Arcane Glacier, Arcane Tempest, Arcane Walker, Arcane Reaper, Arcane Packmaster, Arcane Sentinel, Arcane Virtuoso, Arcane Gambler; alone, a <i>Arcane Adept</i>.</p>
+    <p>Arcane as the runner-up: Kinetic Prism, Deadeye Prism, Blazing Prism, Frost Prism, Storm Prism, Void Prism, Blood Prism, Feral Prism, Iron Prism, Rhythm Prism, Wild Prism.</p>
+
+    <p class="fam-nav">
+      <a href="family-void.html">← <img class="fam-ic" src="assets/img/family/void.png" alt="">Void</a>
+      <a href="families.html">All families</a>
+      <a href="family-blood.html"><img class="fam-ic" src="assets/img/family/blood.png" alt="">Blood →</a>
+    </p>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

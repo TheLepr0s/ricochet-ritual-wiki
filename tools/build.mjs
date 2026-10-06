@@ -73,10 +73,12 @@ const idx = (n, section, page, anchor, key, extra) =>
   INDEX.push({ n, s: section, u: `${page}#${anchor}`, k: key || "", h: [n, key, extra].filter(Boolean).join(" ").toLowerCase() });
 
 /* ── Page shell ──────────────────────────────────────────────────────── */
-function page({ file, title, lead, toc = [], body, wide = false }) {
+// `nav`: the sidebar entry to mark as current, when the page is not in the
+// sidebar itself (a family's page marks Families).
+function page({ file, title, lead, toc = [], body, wide = false, nav: navFile, head = "" }) {
   const nav = C.NAV.map(
     (n) =>
-      `<a href="${n.file}"${n.file === file ? ' aria-current="page"' : ""}><em>${n.icon}</em>${esc(n.label)}</a>`
+      `<a href="${n.file}"${n.file === (navFile || file) ? ' aria-current="page"' : ""}><em>${n.icon}</em>${esc(n.label)}</a>`
   ).join("\n        ");
 
   const tocHtml = toc.length
@@ -92,7 +94,7 @@ function page({ file, title, lead, toc = [], body, wide = false }) {
 <title>${esc(title)} · ${esc(C.SITE.title)}</title>
 <meta name="description" content="${esc(lead)}">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
-<link rel="stylesheet" href="assets/wiki.css">
+<link rel="stylesheet" href="assets/wiki.css">${head}
 <script>
 /* Applied before first paint so the page never flashes the wrong scheme. */
 try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
@@ -119,7 +121,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   </aside>
 
   <main>
-    <div class="page-head">
+    <div class="page-head" id="top">
       <h1>${esc(title)}</h1>
       <p>${lead}</p>
     </div>
@@ -174,7 +176,8 @@ function homePage() {
         "guide.html": "Controls, the run loop, and what the orb actually does.",
         "bestiary.html": "Every enemy, what drives it, and when it starts appearing.",
         "bosses.html": "The three boss fights, attack by attack.",
-        "builds.html": "The family you start with, traits, build names, curses, and the Essence Shop.",
+        "families.html": "The twelve families: the one you start with, their traits, and every card in each.",
+        "builds.html": "Build names, curses, and the Essence Shop.",
         "cards.html": `All ${D.upgrades.length} upgrade cards, with stack caps, prerequisites and exclusions.`,
         "abilities.html": "The twelve F-key abilities, and how they measured against each other.",
         "waves.html": "Difficulty, modifiers, special waves, elites and the boss rotation.",
@@ -291,7 +294,7 @@ function guidePage() {
       Essence Shop. After every
       <b>${D.consts.shop.every}th</b> wave the free card is replaced by the
       <a href="builds.html#shop">Essence Shop</a> instead. Which cards you are dealt leans toward the
-      <a href="builds.html">families</a> you already own, and a legendary bought in the shop carries a curse.
+      <a href="families.html">families</a> you already own, and a legendary bought in the shop carries a curse.
     </p>
     <p>
       <b>Rerolls</b> redraw the screen; <b>banishes</b> remove a card from the pool for the rest of
@@ -601,6 +604,345 @@ const famIcon = (id, big) =>
   `<img class="fam-ic${big ? " big" : ""}" src="assets/img/family/${id}.png" alt="">`;
 const ROMAN = ["I", "II", "III"];
 
+/* ═══════════════════════════════════════════════════════════════════════
+   Families: one overview page with the circle, and one page per family
+   ═══════════════════════════════════════════════════════════════════ */
+const famPage = (id) => `family-${slug(id)}.html`;
+const METAL = ["bronze", "silver", "gold"];
+const famCards = (f) =>
+  D.upgrades
+    .filter((u) => u.fam === f.id)
+    .sort((a, b) => RARITY_ORDER.indexOf(a.r) - RARITY_ORDER.indexOf(b.r) || a.n.localeCompare(b.n));
+const cardLink = (k) => {
+  const u = D.upgrades.find((x) => x.k === k);
+  return `<a href="cards.html#${slug(k)}" style="color:var(--${u ? u.r : "common"})">${esc(NAME_BY_KEY[k] || k)}</a>`;
+};
+// The cards a family starts a run with: one of these, at random.
+const starterLinks = (f) => (f.start || []).map(cardLink).join(" or ");
+
+// "3, 5 and 7 (Kinetic 2, 4 and 6; Frost and Void 3, 4 and 7)", from the data.
+function traitSteps() {
+  const by = {};
+  for (const f of D.families || []) {
+    const k = (f.traits || []).map((t) => t.at).join(",");
+    (by[k] ||= []).push(f.n);
+  }
+  const sorted = Object.entries(by).sort((a, b) => b[1].length - a[1].length);
+  const words = (k) => k.split(",").join(", ").replace(/, (\d+)$/, " and $1");
+  const [main, ...rest] = sorted;
+  if (!main) return "";
+  const others = rest.map(([k, names]) => `${names.join(" and ")} ${words(k)}`).join("; ");
+  return `<b>${words(main[0])}</b>${others ? ` (${others})` : ""}`;
+}
+
+// A family's three tiers, TFT-style: bronze, silver, and the gold capstone.
+// Searched on the family's own page; `index` false for the overview's copy.
+function traitPanel(f, onPage, index = true) {
+  const tiers = f.traits
+    .map((t, i) => {
+      if (index) idx(`${t.n} (${f.n} ${ROMAN[i]})`, "Families", onPage, `trait-${slug(f.id)}`, f.id, t.d);
+      const cap = i === 2;
+      return `<li class="tier ${METAL[i]}${cap ? " cap" : ""}">
+            <span class="hex" title="${t.at} ${esc(f.n)} cards">${t.at}</span>
+            <div class="tier-body">
+              <div class="tier-name">${cap ? `<span class="cap-tag">Capstone</span>` : `<span class="tier-num">${ROMAN[i]}</span>`}<b>${esc(t.n)}</b></div>
+              <div class="tier-desc">${esc(t.d)}</div>
+            </div>
+          </li>`;
+    })
+    .join("");
+  return `<article class="trait" id="trait-${slug(f.id)}" style="--fam:${rgb(f.col)}" data-hay="${hay(f.id, f.n, ...f.traits.map((t) => t.n + " " + t.d))}">
+        <header class="trait-head">
+          <a class="emblem" href="${famPage(f.id)}">${famIcon(f.id, true)}</a>
+          <h3><a href="${famPage(f.id)}">${esc(f.n)}</a></h3>
+          <span class="steps">${f.traits.map((t) => t.at).join(" · ")}</span>
+        </header>
+        <ol class="tiers">${tiers}</ol>
+      </article>`;
+}
+
+// The menu's transmutation circle, as a page element: the families on a ring,
+// clockwise from the top in the game's order. Hovering one pops it up, names
+// it, lights its spoke and the inner ring, and fills the middle with what it
+// is and what it starts with; clicking one opens its page. No JavaScript: the
+// hover is CSS (:has), so the circle works wherever the page does.
+//
+// Geometry in the SVG's units (a 600-wide viewBox centred on 0,0), in
+// proportion to the game's circle.
+const FC = { R: 230, OUT: 290, OUT2: 281, IN: 156, NODE: 38 };
+function familyCircle() {
+  const fams = D.families || [];
+  const n = fams.length;
+  const ang = (i) => -Math.PI / 2 + (i * 2 * Math.PI) / n;
+  const pt = (a, r) => [Math.cos(a) * r, Math.sin(a) * r].map((v) => +v.toFixed(2));
+  const pctOf = (v) => (50 + (v / 600) * 100).toFixed(3) + "%";
+
+  const ticks = [];
+  for (let k = 0; k < 72; k++) {
+    const a = (k * Math.PI) / 36;
+    const long = k % 6 === 0;
+    const [x1, y1] = pt(a, long ? FC.OUT2 : FC.OUT2 + 2);
+    const [x2, y2] = pt(a, long ? FC.OUT : FC.OUT - 2);
+    ticks.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`);
+  }
+  // The star's points sit BETWEEN the families, so no line joins two of them.
+  const star = [];
+  for (let i = 0; i < n; i++) {
+    const [x1, y1] = pt(ang(i) + Math.PI / n, FC.R);
+    const [x2, y2] = pt(ang((i + 5) % n) + Math.PI / n, FC.R);
+    star.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`);
+  }
+  const hexagram = [0, 1]
+    .map((s) => {
+      const pts = [0, 1, 2]
+        .map((k) => pt(-Math.PI / 2 + (s * Math.PI) / 3 + (k * 2 * Math.PI) / 3, FC.IN - 6).join(","))
+        .join(" ");
+      return `<polygon class="fc-tri fc-tri-${s}" points="${pts}"/>`;
+    })
+    .join("");
+  const spokes = fams
+    .map((f, i) => {
+      const [x1, y1] = pt(ang(i), FC.R - FC.NODE);
+      const [x2, y2] = pt(ang(i), FC.IN);
+      return `<line class="fc-spoke" data-f="${esc(f.id)}" style="stroke:${rgb(f.col)}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`;
+    })
+    .join("");
+
+  const nodes = fams
+    .map((f, i) => {
+      const [x, y] = pt(ang(i), FC.R);
+      return `<a class="fc-node" href="${famPage(f.id)}" data-f="${esc(f.id)}" style="left:${pctOf(x)};top:${pctOf(y)};--fam:${rgb(f.col)}" aria-label="${esc(f.n)}">
+          <img src="assets/img/family/${f.id}.png" alt=""><span class="fc-name">${esc(f.n)}</span>
+        </a>`;
+    })
+    .join("\n        ");
+
+  const infos = fams
+    .map((f) => {
+      const names = (f.start || []).map((k) => {
+        const u = D.upgrades.find((x) => x.k === k);
+        return `<span style="color:var(--${u ? u.r : "common"})">${esc(NAME_BY_KEY[k] || k)}</span>`;
+      });
+      const list = names.length > 1 ? names.slice(0, -1).join(", ") + " or " + names[names.length - 1] : names[0] || "";
+      return `<div class="fc-info" data-f="${esc(f.id)}">
+          <b class="fc-title" style="color:${rgb(f.col)}">${esc(f.n)}</b>
+          <span class="fc-blurb">${esc(f.d)}</span>
+          <span class="fc-lead">${names.length > 1 ? "Starts with one of" : "Starts with"}</span>
+          <span class="fc-start">${list}</span>
+        </div>`;
+    })
+    .join("\n        ");
+
+  // One rule per family: the hovered (or keyboard-focused) family shows its
+  // middle, lights its spoke, and colours the inner ring.
+  const on = (f) => `.fcircle:has(.fc-node[data-f="${f.id}"]:is(:hover,:focus-visible))`;
+  const css = fams
+    .map(
+      (f) =>
+        `${on(f)}{--lit:${rgb(f.col)}}${on(f)} .fc-info[data-f="${f.id}"]{display:flex}${on(f)} .fc-spoke[data-f="${f.id}"]{opacity:1}`
+    )
+    .join("\n");
+
+  return `<style>
+${css}
+</style>
+    <div class="fcircle">
+      <svg class="fc-art" viewBox="-300 -300 600 600" aria-hidden="true">
+        <circle class="fc-back" r="${FC.OUT}"/>
+        <circle class="fc-ink fc-bold" r="${FC.OUT}"/>
+        <circle class="fc-ink" r="${FC.OUT2}"/>
+        <g class="fc-ticks">${ticks.join("")}</g>
+        <circle class="fc-ink fc-faint" r="${FC.R}"/>
+        <g class="fc-star">${star.join("")}</g>
+        <circle class="fc-inner" r="${FC.IN}"/>
+        <g class="fc-hex">${hexagram}</g>
+        ${spokes}
+      </svg>
+      <div class="fc-mid">
+        <div class="fc-info fc-default"><span class="fc-blurb">Hover a family to see what it is and what it starts you with. Click it for its page.</span></div>
+        ${infos}
+      </div>
+        ${nodes}
+    </div>`;
+}
+
+function familiesPage() {
+  const fams = D.families || [];
+  const fc = D.consts.family || {};
+
+  const rows = fams
+    .map((f) => {
+      idx(f.n + " family", "Families", famPage(f.id), "top", f.id, f.d);
+      const cards = famCards(f);
+      return `<div class="row" id="fam-${slug(f.id)}" style="--stripe:${rgb(f.col)}" data-hay="${hay(f.id, f.n, f.d, f.adj, f.noun, cards.map((u) => u.n).join(" "))}">
+        <div class="r-name" data-anchor><a href="${famPage(f.id)}" style="color:${rgb(f.col)}">${famIcon(f.id, true)}${esc(f.n)}</a><span class="r-key">${cards.length} cards</span></div>
+        <div class="r-desc"><div>${esc(f.d)}</div>${
+          f.start && f.start.length ? `<div class="tot">Starts a run with ${starterLinks(f)}</div>` : ""
+        }${
+          f.traits && f.traits.length
+            ? `<div class="tot"><a href="#trait-${slug(f.id)}">Traits</a>: ${f.traits
+                .map((t, i) => (i === 2 ? `<b class="metal-gold">${esc(t.n)}</b>` : esc(t.n)))
+                .join(" · ")}</div>`
+            : ""
+        }</div>
+        <div class="r-meta"><div class="per"><a href="${famPage(f.id)}">its page →</a></div></div>
+      </div>`;
+    })
+    .join("\n      ");
+
+  const panels = fams.filter((f) => f.traits && f.traits.length).map((f) => traitPanel(f, "families.html", false)).join("\n      ");
+
+  const body = `    <h2 id="start">Choosing a family</h2>
+    <p>${C.START_NOTE}</p>
+    ${familyCircle()}
+
+    <h2 id="families">The twelve families</h2>
+    <p>
+      Every card belongs to exactly one family. Each card you own in a family multiplies the draw
+      weight of that family's other cards by <b>+${Math.round((fc.PULL || 0) * 100)}%</b>, up to
+      <b>${fc.CAP}</b> cards' worth (×${(1 + (fc.PULL || 0) * (fc.CAP || 0)).toFixed(1)} at most).
+      Rarity, the difficulty's odds and family all multiply together, so a family you lean into
+      still keeps its legendaries rare. Your two leading families also
+      <a href="builds.html#names">name the build</a>.
+    </p>
+    ${toolbar("Filter families, traits or cards…")}
+    <div class="rows">
+      ${rows}
+    </div>
+
+    <h2 id="traits">Traits</h2>
+    <p>
+      Hold ${traitSteps()} different cards of one family and its three tiers switch on — a second
+      copy of a card does not count: <span class="metal-bronze">bronze</span>,
+      <span class="metal-silver">silver</span>, and the <span class="metal-gold">gold capstone</span>.
+      They are never bought or picked: they follow your cards, and a card given up (Transmute, the
+      Collector) takes its tier with it. In a run, the column on the right of the screen shows every
+      family you hold and how far it is to the next tier, and hovering a row shows all three. A card
+      that would complete a tier says so above it on the card screen.
+    </p>
+    <div class="traits">
+      ${panels}
+    </div>
+    ${EMPTY}`;
+
+  return page({
+    file: "families.html",
+    title: "Families",
+    lead: `Twelve families. You pick one to start a run with, every card belongs to one, and holding enough of one switches its traits on.`,
+    toc: [
+      { id: "start", label: "Choosing a family" },
+      { id: "families", label: "The twelve families" },
+      { id: "traits", label: "Traits" },
+    ],
+    body,
+  });
+}
+
+function familyPage(f) {
+  const fams = D.families || [];
+  const i = fams.indexOf(f);
+  const prev = fams[(i - 1 + fams.length) % fams.length];
+  const next = fams[(i + 1) % fams.length];
+  const file = famPage(f.id);
+  const cards = famCards(f);
+
+  const strip = fams
+    .map(
+      (g) =>
+        `<a href="${famPage(g.id)}" title="${esc(g.n)}"${g.id === f.id ? ' aria-current="page"' : ""} style="--fam:${rgb(g.col)}">${famIcon(g.id, true)}</a>`
+    )
+    .join("");
+
+  const cardRow = (u) => {
+    const meta = [`<div class="per" style="color:var(--${u.r})">${esc(u.r)}</div>`];
+    if (u.s) meta.push(`<div class="tot">stacks${u.cap ? ` (up to ${u.cap})` : ""}</div>`);
+    if (u.req) meta.push(`<div class="dep">needs ${cardLink(u.req)}</div>`);
+    return `<div class="row" id="${slug(u.k)}" style="--stripe:var(--${u.r})" data-hay="${hay(u.n, u.k, u.d, u.r)}">
+        <div class="r-name" data-anchor><a href="cards.html#${slug(u.k)}" style="color:var(--${u.r})">${esc(u.n)}</a><span class="r-key">${esc(u.k)}</span></div>
+        <div class="r-desc">${esc(u.d)}</div>
+        <div class="r-meta">${meta.join("")}</div>
+      </div>`;
+  };
+  const starters = (f.start || []).map((k) => D.upgrades.find((u) => u.k === k)).filter(Boolean);
+
+  const boosts = (f.boosts || [])
+    .map((b, k) => `<tr><td><b>${ROMAN[k]}</b></td><td><b style="color:${rgb(f.col)}">${esc(b.n)}</b></td><td>${esc(b.d)}</td></tr>`)
+    .join("\n        ");
+
+  const others = fams.filter((g) => g.id !== f.id);
+  const leading = others.map((g) => `${esc(f.adj)} ${esc(g.noun)}`).join(", ");
+  const second = others.map((g) => `${esc(g.adj)} ${esc(f.noun)}`).join(", ");
+
+  const body = `    <nav class="fam-strip" aria-label="Every family">${strip}</nav>
+
+    <h2 id="start">Starting with ${esc(f.n)}</h2>
+    <p>
+      Pick ${esc(f.n)} on the circle before a run and the run starts with ${
+        starters.length > 1 ? `one of these ${starters.length}, at random` : "this card"
+      } — ${esc(f.n)}'s weakest card${starters.length > 1 ? "s" : ""} that a fresh run can be dealt.
+      See <a href="families.html#start">choosing a family</a>.
+    </p>
+    <div class="rows">
+      ${starters.map(cardRow).join("\n      ").replace(/id="([^"]+)"/g, 'id="start-$1"')}
+    </div>
+
+    ${
+      f.traits && f.traits.length
+        ? `<h2 id="traits">Traits</h2>
+    <p>Hold ${f.traits.map((t) => t.at).join(", ").replace(/, (\d+)$/, " and $1")} different ${esc(f.n)} cards for its three tiers. See <a href="families.html#traits">how traits work</a>.</p>
+    <div class="traits">
+      ${traitPanel(f, file)}
+    </div>`
+        : ""
+    }
+
+    ${
+      boosts
+        ? `<h2 id="boosts">Shop boosts</h2>
+    <p>Bought on ${esc(f.n)}'s panel in the <a href="builds.html#shop">Essence Shop</a>, which shows your two most prominent families.</p>
+    <table>
+      <thead><tr><th></th><th>Boost</th><th>Effect</th></tr></thead>
+      <tbody>
+        ${boosts}
+      </tbody>
+    </table>`
+        : ""
+    }
+
+    <h2 id="cards">Cards</h2>
+    <p>All ${cards.length} ${esc(f.n)} cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    ${toolbar(`Filter ${f.n} cards…`)}
+    <div class="rows">
+      ${cards.map(cardRow).join("\n      ")}
+    </div>
+    ${EMPTY}
+
+    <h2 id="names">Build names</h2>
+    <p>Leading with ${esc(f.n)}: ${leading}; alone, a <i>${esc(f.adj)} Adept</i>.</p>
+    <p>${esc(f.n)} as the runner-up: ${second}.</p>
+
+    <p class="fam-nav">
+      <a href="${famPage(prev.id)}">← ${famIcon(prev.id)}${esc(prev.n)}</a>
+      <a href="families.html">All families</a>
+      <a href="${famPage(next.id)}">${famIcon(next.id)}${esc(next.n)} →</a>
+    </p>`;
+
+  return page({
+    file,
+    nav: "families.html",
+    title: f.n,
+    lead: esc(f.d),
+    toc: [
+      { id: "start", label: `Starting with ${f.n}` },
+      ...(f.traits && f.traits.length ? [{ id: "traits", label: "Traits" }] : []),
+      ...(boosts ? [{ id: "boosts", label: "Shop boosts" }] : []),
+      { id: "cards", label: "Cards" },
+      { id: "names", label: "Build names" },
+    ],
+    body,
+  });
+}
+
 function cardsPage() {
   const byRarity = {};
   for (const u of D.upgrades) (byRarity[u.rarity || u.r] ||= []).push(u);
@@ -655,7 +997,7 @@ function cardsPage() {
         const fam = FAMILY_BY_ID[u.fam];
         if (fam) {
           meta.unshift(
-            `<div class="per">family <a href="builds.html#fam-${slug(fam.id)}">${famIcon(fam.id)}<b style="color:${rgb(fam.col)}">${esc(fam.n)}</b></a></div>`
+            `<div class="per">family <a href="${famPage(fam.id)}">${famIcon(fam.id)}<b style="color:${rgb(fam.col)}">${esc(fam.n)}</b></a></div>`
           );
         }
         const note = C.CARD_NOTE[u.k];
@@ -696,7 +1038,7 @@ function cardsPage() {
             `<a href="#${slug(u.k)}" style="color:var(--${u.r})">${esc(u.n)}</a>`
         )
         .join(" · ");
-      return `<tr id="family-${slug(f.id)}"><td><a href="builds.html#fam-${slug(f.id)}">${famIcon(f.id, true)}<b style="color:${rgb(f.col)}">${esc(f.n)}</b></a><div class="tot">${esc(f.d)}</div></td><td>${cards.length}</td><td>${list}</td></tr>`;
+      return `<tr id="family-${slug(f.id)}"><td><a href="${famPage(f.id)}">${famIcon(f.id, true)}<b style="color:${rgb(f.col)}">${esc(f.n)}</b></a><div class="tot">${esc(f.d)}</div></td><td>${cards.length}</td><td>${list}</td></tr>`;
     })
     .join("\n        ");
   const unfamilied = D.upgrades.filter((u) => !FAMILY_BY_ID[u.fam]);
@@ -743,7 +1085,7 @@ function cardsPage() {
     <p>
       Every card belongs to one of <b>${(D.families || []).length}</b> families. Owning cards in a
       family makes its other cards turn up more often, and your two biggest families name your
-      build — see <a href="builds.html#families">Builds &amp; shop</a>. Cards are listed rarest last,
+      build — see <a href="families.html">Families</a>. Cards are listed rarest last,
       in their rarity's colour.
     </p>
     <div class="scroll"><table>
@@ -775,87 +1117,7 @@ function cardsPage() {
    ═══════════════════════════════════════════════════════════════════ */
 function buildsPage() {
   const fams = D.families || [];
-  const fc = D.consts.family || {};
   const shop = D.consts.shop || {};
-
-  // ── Families, each with every card in it ──
-  // The card a family starts a run with: one of these, at random.
-  const starterLinks = (f) =>
-    (f.start || [])
-      .map((k) => {
-        const u = D.upgrades.find((x) => x.k === k);
-        return `<a href="cards.html#${slug(k)}" style="color:var(--${u ? u.r : "common"})">${esc(NAME_BY_KEY[k] || k)}</a>`;
-      })
-      .join(" or ");
-  const startRows = fams
-    .map(
-      (f) =>
-        `<tr><td><a href="#fam-${slug(f.id)}">${famIcon(f.id, true)}<b style="color:${rgb(f.col)}">${esc(f.n)}</b></a></td><td>${starterLinks(f)}</td></tr>`
-    )
-    .join("\n        ");
-
-  const famRows = fams
-    .map((f) => {
-      idx(f.n + " family", "Builds", "builds.html", `fam-${slug(f.id)}`, f.id, f.d);
-      const cards = D.upgrades
-        .filter((u) => u.fam === f.id)
-        .sort((a, b) => RARITY_ORDER.indexOf(a.r) - RARITY_ORDER.indexOf(b.r) || a.n.localeCompare(b.n));
-      const list = cards
-        .map(
-          (u) =>
-            `<a href="cards.html#${slug(u.k)}" style="color:var(--${u.r})">${esc(u.n)}</a>`
-        )
-        .join(", ");
-      return `<div class="row" id="fam-${slug(f.id)}" style="--stripe:${rgb(f.col)}" data-hay="${hay(f.id, f.n, f.d, f.adj, f.noun, cards.map((u) => u.n).join(" "))}">
-        <div class="r-name" data-anchor><span style="color:${rgb(f.col)}">${famIcon(f.id, true)}${esc(f.n)}</span><span class="r-key">${cards.length} cards</span></div>
-        <div class="r-desc"><div>${esc(f.d)}</div><div class="tot">${list}</div>${
-          f.start && f.start.length ? `<div class="tot">Starts a run with ${starterLinks(f)}</div>` : ""
-        }${
-          f.traits && f.traits.length
-            ? `<div class="tot"><a href="#trait-${slug(f.id)}">Traits</a>: ${f.traits
-                .map((t, i) => (i === 2 ? `<b class="metal-gold">${esc(t.n)}</b>` : esc(t.n)))
-                .join(" · ")}</div>`
-            : ""
-        }${
-          f.boosts
-            ? `<div class="tot">Boosts: ${f.boosts
-                .map((b, i) => `<b>${ROMAN[i]}</b> <b style="color:${rgb(f.col)}">${esc(b.n)}</b> — ${esc(b.d)}`)
-                .join(" · ")}</div>`
-            : ""
-        }</div>
-        <div class="r-meta"><div class="per">names a build <b>${esc(f.adj)} …</b> or <b>… ${esc(f.noun)}</b></div></div>
-      </div>`;
-    })
-    .join("\n      ");
-
-  // ── Traits, TFT-style: one panel per family, bronze / silver / gold ──
-  const METAL = ["bronze", "silver", "gold"];
-  const traitPanels = fams
-    .filter((f) => f.traits && f.traits.length)
-    .map((f) => {
-      const tiers = f.traits
-        .map((t, i) => {
-          idx(`${t.n} (${f.n} ${ROMAN[i]})`, "Builds", "builds.html", `trait-${slug(f.id)}`, f.id, t.d);
-          const cap = i === 2;
-          return `<li class="tier ${METAL[i]}${cap ? " cap" : ""}">
-            <span class="hex" title="${t.at} ${esc(f.n)} cards">${t.at}</span>
-            <div class="tier-body">
-              <div class="tier-name">${cap ? `<span class="cap-tag">Capstone</span>` : `<span class="tier-num">${ROMAN[i]}</span>`}<b>${esc(t.n)}</b></div>
-              <div class="tier-desc">${esc(t.d)}</div>
-            </div>
-          </li>`;
-        })
-        .join("");
-      return `<article class="trait" id="trait-${slug(f.id)}" style="--fam:${rgb(f.col)}" data-hay="${hay(f.id, f.n, ...f.traits.map((t) => t.n + " " + t.d))}">
-        <header class="trait-head">
-          <span class="emblem">${famIcon(f.id, true)}</span>
-          <h3>${esc(f.n)}</h3>
-          <span class="steps">${f.traits.map((t) => t.at).join(" · ")}</span>
-        </header>
-        <ol class="tiers">${tiers}</ol>
-      </article>`;
-    })
-    .join("\n      ");
 
   // ── Build names: every pairing ──
   const nameHead = fams.map((f) => `<th style="color:${rgb(f.col)}">${esc(f.noun)}</th>`).join("");
@@ -894,44 +1156,6 @@ function buildsPage() {
   idx("Transmute", "Builds", "builds.html", "transmute", "transmute", C.TRANSMUTE_NOTE.replace(/<[^>]+>/g, ""));
 
   const body = `    <div class="note">${C.BUILDS_NOTE}</div>
-
-    ${toolbar("Filter traits, families or cards…")}
-
-    <h2 id="start">Starting family</h2>
-    <p>${C.START_NOTE}</p>
-    <table>
-      <thead><tr><th>Family</th><th>Starts the run with</th></tr></thead>
-      <tbody>
-        ${startRows}
-      </tbody>
-    </table>
-
-    <h2 id="traits">Traits</h2>
-    <p>
-      Hold <b>3</b>, <b>5</b> and <b>7</b> different cards of one family (Kinetic 2, 4 and 6; Frost and
-      Void 3, 4 and 7) and its three tiers switch on — a second copy of a card does not count: <span class="metal-bronze">bronze</span>, <span class="metal-silver">silver</span>,
-      and the <span class="metal-gold">gold capstone</span>. They are never bought or picked: they
-      follow your cards, and a card given up (Transmute, the Collector) takes its tier with it. In a
-      run, the column on the right of the screen shows every family you hold and how far it is to the
-      next tier, and hovering a row shows all three. A card that would complete a tier says so above
-      it on the card screen. Wild's silver tier lends your Wild cards to your leading family, and
-      Beast's capstone gives every companion a power of its own.
-    </p>
-    <div class="traits">
-      ${traitPanels}
-    </div>
-
-    <h2 id="families">Families</h2>
-    <p>
-      Each card you own in a family multiplies the draw weight of that family's other cards by
-      <b>+${Math.round((fc.PULL || 0) * 100)}%</b>, up to <b>${fc.CAP}</b> cards' worth
-      (×${(1 + (fc.PULL || 0) * (fc.CAP || 0)).toFixed(1)} at most). Rarity, the difficulty's odds and family all
-      multiply together, so a family you lean into still keeps its legendaries rare.
-    </p>
-    <div class="rows">
-      ${famRows}
-    </div>
-    ${EMPTY}
 
     <h2 id="names">Build names</h2>
     <p>${C.BUILD_NAME_NOTE}</p>
@@ -988,8 +1212,8 @@ function buildsPage() {
     <h3 id="family-items">Family items</h3>
     <p>${C.FAMILY_SHOP_NOTE}</p>
     <ul>
-      <li><b>One boost</b> — one of the family's own three (listed with <a href="#families">the
-        family</a> above), drawn at random from those you do not own yet; a reroll draws again.
+      <li><b>One boost</b> — one of the family's own three (listed on each
+        <a href="families.html#families">family's page</a>), drawn at random from those you do not own yet; a reroll draws again.
         Each is bought once. They cost <code>${(shop.boostUnits || []).join(" / ")}</code> units by
         their place, I to III.</li>
       <li><b>A pack</b> — three cards of that family you can still take, and you keep <b>one</b>
@@ -1027,11 +1251,8 @@ function buildsPage() {
   return page({
     file: "builds.html",
     title: "Builds & shop",
-    lead: `Twelve families, ${(D.curses || []).length} curses and the Essence Shop: how a run turns into a build rather than a pile.`,
+    lead: `Build names, ${(D.curses || []).length} curses and the Essence Shop: how a run turns into a build rather than a pile.`,
     toc: [
-      { id: "start", label: "Starting family" },
-      { id: "traits", label: "Traits" },
-      { id: "families", label: "Families" },
       { id: "names", label: "Build names" },
       { id: "curses", label: "Curses" },
       { id: "shop", label: "The Essence Shop" },
@@ -1409,6 +1630,8 @@ const PAGES = {
   "bestiary.html": bestiaryPage,
   "bosses.html": bossesPage,
   "cards.html": cardsPage,
+  "families.html": familiesPage,
+  ...Object.fromEntries((D.families || []).map((f) => [famPage(f.id), () => familyPage(f)])),
   "builds.html": buildsPage,
   "abilities.html": abilitiesPage,
   "waves.html": wavesPage,

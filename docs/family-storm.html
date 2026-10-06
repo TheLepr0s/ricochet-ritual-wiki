@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-page="family-storm-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storm · Ricochet Ritual</title>
+<meta name="description" content="Lightning that arcs from one body to the next.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="family-storm-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="families.html" aria-current="page"><em>❂</em>Families</a>
+        <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#start">Starting with Storm</a><a href="#traits">Traits</a><a href="#boosts">Shop boosts</a><a href="#cards">Cards</a><a href="#names">Build names</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head" id="top">
+      <h1>Storm</h1>
+      <p>Lightning that arcs from one body to the next.</p>
+    </div>
+    <nav class="fam-strip" aria-label="Every family"><a href="family-kinetic.html" title="Kinetic" style="--fam:rgb(242,199,89)"><img class="fam-ic big" src="assets/img/family/kinetic.png" alt=""></a><a href="family-precision.html" title="Precision" style="--fam:rgb(255,235,140)"><img class="fam-ic big" src="assets/img/family/precision.png" alt=""></a><a href="family-fire.html" title="Fire" style="--fam:rgb(255,115,51)"><img class="fam-ic big" src="assets/img/family/fire.png" alt=""></a><a href="family-frost.html" title="Frost" style="--fam:rgb(140,217,255)"><img class="fam-ic big" src="assets/img/family/frost.png" alt=""></a><a href="family-storm.html" title="Storm" aria-current="page" style="--fam:rgb(153,179,255)"><img class="fam-ic big" src="assets/img/family/storm.png" alt=""></a><a href="family-void.html" title="Void" style="--fam:rgb(179,102,255)"><img class="fam-ic big" src="assets/img/family/void.png" alt=""></a><a href="family-arcane.html" title="Arcane" style="--fam:rgb(140,242,242)"><img class="fam-ic big" src="assets/img/family/arcane.png" alt=""></a><a href="family-blood.html" title="Blood" style="--fam:rgb(242,64,77)"><img class="fam-ic big" src="assets/img/family/blood.png" alt=""></a><a href="family-beast.html" title="Beast" style="--fam:rgb(153,230,115)"><img class="fam-ic big" src="assets/img/family/beast.png" alt=""></a><a href="family-guardian.html" title="Guardian" style="--fam:rgb(191,204,230)"><img class="fam-ic big" src="assets/img/family/guardian.png" alt=""></a><a href="family-combo.html" title="Combo" style="--fam:rgb(255,140,217)"><img class="fam-ic big" src="assets/img/family/combo.png" alt=""></a><a href="family-wild.html" title="Wild" style="--fam:rgb(204,204,179)"><img class="fam-ic big" src="assets/img/family/wild.png" alt=""></a></nav>
+
+    <h2 id="start">Starting with Storm</h2>
+    <p>
+      Pick Storm on the circle before a run and the run starts with one of these 2, at random — Storm's weakest cards that a fresh run can be dealt.
+      See <a href="families.html#start">choosing a family</a>.
+    </p>
+    <div class="rows">
+      <div class="row" id="start-capacitor" style="--stripe:var(--uncommon)" data-hay="capacitor capacitor stored spark. each wall bounce stores a charge, up to 3. the orb's next enemy hit chains lightning to one more enemy per charge, for half the hit. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#capacitor" style="color:var(--uncommon)">Capacitor</a><span class="r-key">Capacitor</span></div>
+        <div class="r-desc">Stored spark. Each wall bounce stores a charge, up to 3. The orb's next enemy hit chains lightning to one more enemy per charge, for half the hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="start-thunderhead" style="--stripe:var(--uncommon)" data-hay="thunderhead thunderhead eye of calm. stand still for 1s and lightning strikes the nearest enemy within 6 m every 1.5s. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#thunderhead" style="color:var(--uncommon)">Thunderhead</a><span class="r-key">Thunderhead</span></div>
+        <div class="r-desc">Eye of calm. Stand still for 1s and lightning strikes the nearest enemy within 6 m every 1.5s.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+    </div>
+
+    <h2 id="traits">Traits</h2>
+    <p>Hold 3, 5 and 7 different Storm cards for its three tiers. See <a href="families.html#traits">how traits work</a>.</p>
+    <div class="traits">
+      <article class="trait" id="trait-storm" style="--fam:rgb(153,179,255)" data-hay="storm storm long arc every lightning chain jumps 1 m farther. conductor an enemy killed by lightning passes it on: the chain jumps from the body to up to 3 more enemies. seek the weak chain lightning jumps to the lowest-health enemies within 6 m, and kills any it leaves under 10% health.">
+        <header class="trait-head">
+          <a class="emblem" href="family-storm.html"><img class="fam-ic big" src="assets/img/family/storm.png" alt=""></a>
+          <h3><a href="family-storm.html">Storm</a></h3>
+          <span class="steps">3 · 5 · 7</span>
+        </header>
+        <ol class="tiers"><li class="tier bronze">
+            <span class="hex" title="3 Storm cards">3</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="tier-num">I</span><b>Long Arc</b></div>
+              <div class="tier-desc">Every lightning chain jumps 1 m farther.</div>
+            </div>
+          </li><li class="tier silver">
+            <span class="hex" title="5 Storm cards">5</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="tier-num">II</span><b>Conductor</b></div>
+              <div class="tier-desc">An enemy killed by lightning passes it on: the chain jumps from the body to up to 3 more enemies.</div>
+            </div>
+          </li><li class="tier gold cap">
+            <span class="hex" title="7 Storm cards">7</span>
+            <div class="tier-body">
+              <div class="tier-name"><span class="cap-tag">Capstone</span><b>Seek the Weak</b></div>
+              <div class="tier-desc">Chain Lightning jumps to the lowest-health enemies within 6 m, and kills any it leaves under 10% health.</div>
+            </div>
+          </li></ol>
+      </article>
+    </div>
+
+    <h2 id="boosts">Shop boosts</h2>
+    <p>Bought on Storm's panel in the <a href="builds.html#shop">Essence Shop</a>, which shows your two most prominent families.</p>
+    <table>
+      <thead><tr><th></th><th>Boost</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td><b>I</b></td><td><b style="color:rgb(153,179,255)">Resonant Field</b></td><td>Lightning and void pulses charge what they hit for 3 seconds: your orb deals 25% more damage to a charged enemy.</td></tr>
+        <tr><td><b>II</b></td><td><b style="color:rgb(153,179,255)">Forked Bolt</b></td><td>Storm attacks chain to one more enemy: Chain Lightning jumps once more, and every other Storm hit arcs to the nearest enemy within 2.6 m for half its damage.</td></tr>
+        <tr><td><b>III</b></td><td><b style="color:rgb(153,179,255)">Thunderstruck</b></td><td>A hit that takes 15% of an enemy's health calls down a bolt that stuns it for 1 second. Once every 3 seconds per enemy.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="cards">Cards</h2>
+    <p>All 10 Storm cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <div class="toolbar">
+      <input class="filter" id="page-filter" type="search" placeholder="Filter Storm cards…" autocomplete="off" aria-label="Filter this page">
+      <div id="page-chips"></div>
+      <span class="hits" id="page-hits"></span>
+    </div>
+    <div class="rows">
+      <div class="row" id="capacitor" style="--stripe:var(--uncommon)" data-hay="capacitor capacitor stored spark. each wall bounce stores a charge, up to 3. the orb's next enemy hit chains lightning to one more enemy per charge, for half the hit. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#capacitor" style="color:var(--uncommon)">Capacitor</a><span class="r-key">Capacitor</span></div>
+        <div class="r-desc">Stored spark. Each wall bounce stores a charge, up to 3. The orb's next enemy hit chains lightning to one more enemy per charge, for half the hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="thunderhead" style="--stripe:var(--uncommon)" data-hay="thunderhead thunderhead eye of calm. stand still for 1s and lightning strikes the nearest enemy within 6 m every 1.5s. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#thunderhead" style="color:var(--uncommon)">Thunderhead</a><span class="r-key">Thunderhead</span></div>
+        <div class="r-desc">Eye of calm. Stand still for 1s and lightning strikes the nearest enemy within 6 m every 1.5s.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="chainlightning" style="--stripe:var(--rare)" data-hay="chain lightning chainlightning arc discharge. every hit chains lightning to up to 3 nearby foes. take it again: +1 jump, +1.5 m reach and +5 arc damage. rare">
+        <div class="r-name" data-anchor><a href="cards.html#chainlightning" style="color:var(--rare)">Chain Lightning</a><span class="r-key">ChainLightning</span></div>
+        <div class="r-desc">Arc discharge. Every hit chains lightning to up to 3 nearby foes. Take it again: +1 jump, +1.5 m reach and +5 arc damage.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 5)</div></div>
+      </div>
+      <div class="row" id="staticcharge" style="--stripe:var(--rare)" data-hay="static charge staticcharge stored current. each throw banks a charge, up to 5. recalling fires one lightning bolt per charge at enemies near the orb; charges with no enemy to strike are kept. rare">
+        <div class="r-name" data-anchor><a href="cards.html#staticcharge" style="color:var(--rare)">Static Charge</a><span class="r-key">StaticCharge</span></div>
+        <div class="r-desc">Stored current. Each throw banks a charge, up to 5. Recalling fires one lightning bolt per charge at enemies near the orb; charges with no enemy to strike are kept.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="staticfield" style="--stripe:var(--rare)" data-hay="static field staticfield live wire. enemies standing close to you take 6 damage twice a second. rare">
+        <div class="r-name" data-anchor><a href="cards.html#staticfield" style="color:var(--rare)">Static Field</a><span class="r-key">StaticField</span></div>
+        <div class="r-desc">Live wire. Enemies standing close to you take 6 damage twice a second.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="superconductor" style="--stripe:var(--rare)" data-hay="superconductor superconductor live current. chain lightning arcs now stun everything they touch for 0.6s. rare">
+        <div class="r-name" data-anchor><a href="cards.html#superconductor" style="color:var(--rare)">Superconductor</a><span class="r-key">Superconductor</span></div>
+        <div class="r-desc">Live current. Chain Lightning arcs now stun everything they touch for 0.6s.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="dep">needs <a href="cards.html#chainlightning" style="color:var(--rare)">Chain Lightning</a></div></div>
+      </div>
+      <div class="row" id="thunderclap" style="--stripe:var(--rare)" data-hay="thunderclap thunderclap sonic impact. wall bounces release a shockwave that stuns nearby enemies for 1.2s. rare">
+        <div class="r-name" data-anchor><a href="cards.html#thunderclap" style="color:var(--rare)">Thunderclap</a><span class="r-key">Thunderclap</span></div>
+        <div class="r-desc">Sonic impact. Wall bounces release a shockwave that stuns nearby enemies for 1.2s.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="stormfront" style="--stripe:var(--epic)" data-hay="storm front stormfront thunder follows. the orb sheds a lightning bolt every 4 m it travels, striking the nearest enemy. epic">
+        <div class="r-name" data-anchor><a href="cards.html#stormfront" style="color:var(--epic)">Storm Front</a><span class="r-key">StormFront</span></div>
+        <div class="r-desc">Thunder follows. The orb sheds a lightning bolt every 4 m it travels, striking the nearest enemy.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="tempestheart" style="--stripe:var(--epic)" data-hay="tempest heart tempestheart eye of the storm. every 4th hit calls lightning down on the target, arcing to 3 more enemies for 80% of the hit. epic">
+        <div class="r-name" data-anchor><a href="cards.html#tempestheart" style="color:var(--epic)">Tempest Heart</a><span class="r-key">TempestHeart</span></div>
+        <div class="r-desc">Eye of the storm. Every 4th hit calls lightning down on the target, arcing to 3 more enemies for 80% of the hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="tether" style="--stripe:var(--epic)" data-hay="tether tether live wire. while recalling, the cord between you and the orb cuts and slows everything it crosses. epic">
+        <div class="r-name" data-anchor><a href="cards.html#tether" style="color:var(--epic)">Tether</a><span class="r-key">Tether</span></div>
+        <div class="r-desc">Live wire. While recalling, the cord between you and the orb cuts and slows everything it crosses.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+    </div>
+    <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
+
+    <h2 id="names">Build names</h2>
+    <p>Leading with Storm: Storm Juggernaut, Storm Marksman, Storm Pyromancer, Storm Glacier, Storm Walker, Storm Prism, Storm Reaper, Storm Packmaster, Storm Sentinel, Storm Virtuoso, Storm Gambler; alone, a <i>Storm Adept</i>.</p>
+    <p>Storm as the runner-up: Kinetic Tempest, Deadeye Tempest, Blazing Tempest, Frost Tempest, Void Tempest, Arcane Tempest, Blood Tempest, Feral Tempest, Iron Tempest, Rhythm Tempest, Wild Tempest.</p>
+
+    <p class="fam-nav">
+      <a href="family-frost.html">← <img class="fam-ic" src="assets/img/family/frost.png" alt="">Frost</a>
+      <a href="families.html">All families</a>
+      <a href="family-void.html"><img class="fam-ic" src="assets/img/family/void.png" alt="">Void →</a>
+    </p>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>
