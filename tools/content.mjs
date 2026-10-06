@@ -29,7 +29,6 @@ export const NAV = [
   { file: "cards.html",        label: "Upgrade cards", icon: "🂠" },
   { file: "builds.html",       label: "Builds & shop", icon: "✧" },
   { file: "abilities.html",    label: "Abilities",     icon: "✦" },
-  { file: "classes.html",      label: "Classes",       icon: "⚑" },
   { file: "waves.html",        label: "Waves",         icon: "≋" },
   { file: "achievements.html", label: "Achievements",  icon: "★" },
   { file: "systems.html",      label: "Systems",       icon: "⚙" },
@@ -56,7 +55,7 @@ export const CONTROLS = [
     note: "Opens settings without leaving the run. Everything freezes and goes silent: sound effects are held and the music stops. The music also stops whenever the game window is in the background, and comes back when you return — unless the game is still paused." },
   { key: "F11",       act: "Fullscreen" },
   { key: "F3",        act: "Developer overlay",
-    note: "Spawns anything, grants any card or ability, forces a wave modifier, class or special wave." },
+    note: "Spawns anything, grants any card or ability, forces a wave modifier or special wave." },
 ];
 
 /* ── The run, in one page ───────────────────────────────────────────────── */
@@ -89,8 +88,8 @@ export const LOOP = [
         own in a family makes that family's other cards likelier to turn up — so an early lean
         compounds into an identity. Hold <b>3, 5 and 7</b> different cards of one family and its three
         <a href="builds.html#traits">traits</a> switch on, tracked in a column on the right of the
-        screen; a card that would complete one says so above it. Each class has a few cards only
-        it is ever offered. A
+        screen; a card that would complete one says so above it. A run starts with one card from
+        the family you <a href="builds.html#start">pick on the menu</a>. A
         legendary bought in the shop comes with a <b>curse</b>, printed on the card before you take it. The run ends
         with your build's name — the leading family's adjective and the runner-up's noun, a
         <i>Frost Juggernaut</i> — and each build name keeps its own records.`,
@@ -467,27 +466,6 @@ export const BOSS_SHARED = `Which boss arrives is <b>fixed rather than rolled</b
   <a href="waves.html#shape">how enemies scale</a>. Their speed stays on a gentler ramp than
   everything else, so the Revenant can always be outrun.`;
 
-/* ── Classes ────────────────────────────────────────────────────────────────
-   Measured, not asserted. bench_main.lua with ARCHETYPE_ONLY=1, ten trials,
-   paired against the same seeds. */
-export const ARCH_MEASURED = {
-  warden:      { dmg: "+0.0%",  live: "+33.0%" },
-  stormcaller: { dmg: "+36.5%", live: "+13.1%" },
-  stalker:     { dmg: "+8.8%",  live: "+5.4%", blind: true },
-  breaker:     { dmg: "+37.5%", live: "+21.6%" },
-};
-
-export const ARCH_NOTE = `<b>These were measured, because “balanced” is not something you can
-  assert.</b> Each class is run against a classless baseline on the same seeds, ten trials,
-  offence as damage dealt and defence as frames survived. <b>Breaker and Stormcaller come out
-  statistically identical</b> — well inside each other's error bars — and the Warden trades all
-  of its offence for the best survival of the four.
-  <br><br>
-  <b>The fixture is blind to the Stalker.</b> Both fixtures use a <b>stationary</b> wizard, so
-  extra move speed and a shorter blink — the whole of what the class is — contribute nothing, and
-  it reads as noise on both axes. The bias lists are all 12–13 cards, so no class finds its
-  pieces more reliably than another.`;
-
 /* ── Abilities ──────────────────────────────────────────────────────────── */
 export const ABI_MEASURED = {
   nuke:        { kills: "20.0", per: "0.40+", note: "ceiling — it clears the screen" },
@@ -761,10 +739,10 @@ export const CURSE_NOTE = `<b>A legendary from the Essence Shop comes with a cur
   The curse lasts the rest of the run, and two of the same kind compound. Each is a multiplier on
   something the game already reads — sized to sting, never to make a legendary not worth taking.`;
 
-export const CLASS_CARD_NOTE = `Each class has cards only it is ever offered, marked with the
-  class's name on the card (three for the Warden, two for the Breaker, one each for the Stalker
-  and the Stormcaller). They are strong on purpose — a reason to pick the class — but sized
-  against the ordinary cards of their rarity rather than above them.`;
+export const START_NOTE = `The last step before a run is a circle of the twelve families. The
+  run starts with one card from the family you pick — one of its weakest: the lowest rarity it has
+  among the cards a fresh run can be dealt, so nothing that needs another card, a companion or an
+  ability first. Where several share that rarity, one of them is picked at random.`;
 
 export const SHOP_NOTE = `After every fifth wave the free card is replaced by the <b>Essence
   Shop</b>. Essence comes from every death, whoever or whatever landed it: pets, burns and a
@@ -814,7 +792,7 @@ export const GLOSSARY = [
   { t: "Elite", d: "A crowned ordinary enemy with boosted stats and a far better drop." },
   { t: "Modifier", d: "A named rule change applied to a single wave, announced by a banner." },
   { t: "Special wave", d: "A wave built from a hand-picked roster instead of the usual weighted table." },
-  { t: "Class", d: "Picked once at the start of a run. Biases which cards you are offered, and opens with one signature card." },
+  { t: "Starting family", d: "Picked on the circle before a run. The run starts with one of that family's weakest cards." },
   { t: "Utility", d: "The F-key ability. Sold only in the Essence Shop, one a visit; you hold one at a time." },
   { t: "Stack cap", d: "How many times a repeatable card can be taken. At the cap it stops being offered." },
   { t: "Banish", d: "Removing a card from the pool for the rest of the run, rather than rerolling the screen." },

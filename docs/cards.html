@@ -34,7 +34,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <a href="cards.html" aria-current="page"><em>🂠</em>Upgrade cards</a>
         <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
         <a href="abilities.html"><em>✦</em>Abilities</a>
-        <a href="classes.html"><em>⚑</em>Classes</a>
         <a href="waves.html"><em>≋</em>Waves</a>
         <a href="achievements.html"><em>★</em>Achievements</a>
         <a href="systems.html"><em>⚙</em>Systems</a>
@@ -54,12 +53,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="count"><b>35</b><span>with a cap</span></div>
       <div class="count"><b>26</b><span>need a prereq</span></div>
       <div class="count"><b>15</b><span>mutually exclusive</span></div>
-      <div class="count"><b>7</b><span>class-only</span></div>
     </div>
 
     <div class="toolbar">
       <input class="filter" id="page-filter" type="search" placeholder="Filter cards by name, effect or stat key…" autocomplete="off" aria-label="Filter this page">
-      <div id="page-chips"><button type="button" class="chip" data-attr="stackable" aria-pressed="false">stackable</button><button type="button" class="chip" data-attr="req" aria-pressed="false">has prereq</button><button type="button" class="chip" data-attr="con" aria-pressed="false">exclusive</button><button type="button" class="chip" data-attr="cls" aria-pressed="false">class cards</button></div>
+      <div id="page-chips"><button type="button" class="chip" data-attr="stackable" aria-pressed="false">stackable</button><button type="button" class="chip" data-attr="req" aria-pressed="false">has prereq</button><button type="button" class="chip" data-attr="con" aria-pressed="false">exclusive</button></div>
       <span class="hits" id="page-hits"></span>
     </div>
     <div class="groupbar" role="group" aria-label="Group the cards by">
@@ -81,7 +79,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="deeppockets" style="--stripe:var(--common)"
           data-hay="deeppockets deep pockets room for more. kills drop 20% more essence per stack. essence_bonus common wild"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="common" data-gord-rarity="0" data-ord-rarity="0"
           data-grp-family="wild" data-gord-family="11" data-ord-family="0">
           <div class="r-name" data-anchor><span>Deep Pockets</span><span class="r-key">DeepPockets</span></div>
@@ -91,7 +88,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="orbdamage" style="--stripe:var(--common)"
           data-hay="orbdamage striking force sharpen your orb's impact. orb damage +5 per hit. damage common kinetic"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="common" data-gord-rarity="0" data-ord-rarity="1"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="0">
           <div class="r-name" data-anchor><span>Striking Force</span><span class="r-key">OrbDamage</span></div>
@@ -101,7 +97,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="wizardspeed" style="--stripe:var(--common)"
           data-hay="wizardspeed swift steps light-footed magic. move speed +20, dodge faster. speed common wild"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="common" data-gord-rarity="0" data-ord-rarity="2"
           data-grp-family="wild" data-gord-family="11" data-ord-family="1">
           <div class="r-name" data-anchor><span>Swift Steps</span><span class="r-key">WizardSpeed</span></div>
@@ -111,7 +106,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="wizardhealth" style="--stripe:var(--common)"
           data-hay="wizardhealth vitality fortify your body. max hp +10, healed immediately. max_health common guardian"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="common" data-gord-rarity="0" data-ord-rarity="3"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="0">
           <div class="r-name" data-anchor><span>Vitality</span><span class="r-key">WizardHealth</span></div>
@@ -121,7 +115,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="orbspeed" style="--stripe:var(--common)"
           data-hay="orbspeed whiplash explosive launch power. orb launch force +100. force common kinetic"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="common" data-gord-rarity="0" data-ord-rarity="4"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="1">
           <div class="r-name" data-anchor><span>Whiplash</span><span class="r-key">OrbSpeed</span></div>
@@ -132,7 +125,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="backhand" style="--stripe:var(--uncommon)"
           data-hay="backhand backhand no wind-up. slap the orb back as it comes at you, or swing within a second of catching it, and it leaves +60% faster and +35% harder. backhand uncommon a swing that meets the orb while it is still flying at you (faster than 1.2 m/s) counts too, judged per orb, so you can rally it: slap it back, it returns, slap it again. an orb already heading away does not count, so swinging twice cannot bank a second bonus. combo"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="0"
           data-grp-family="combo" data-gord-family="10" data-ord-family="0">
           <div class="r-name" data-anchor><span>Backhand</span><span class="r-key">Backhand</span></div>
@@ -142,7 +134,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="orbfire" style="--stripe:var(--uncommon)"
           data-hay="orbfire blazing trail scorched earth. orb leaves burning fire that deals 20 damage per second. fire_trail uncommon fire"
           data-stackable="0" data-req="0" data-con="1"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="1"
           data-grp-family="fire" data-gord-family="2" data-ord-family="0">
           <div class="r-name" data-anchor><span>Blazing Trail</span><span class="r-key">OrbFire</span></div>
@@ -152,7 +143,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="bloodrush" style="--stripe:var(--uncommon)"
           data-hay="bloodrush bloodrush hunter's high. each kill boosts your movement speed by 120 for 2 seconds. bloodrush uncommon blood"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="2"
           data-grp-family="blood" data-gord-family="7" data-ord-family="0">
           <div class="r-name" data-anchor><span>Bloodrush</span><span class="r-key">Bloodrush</span></div>
@@ -162,7 +152,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="bonded" style="--stripe:var(--uncommon)"
           data-hay="bonded bonded close company. while a companion is within 3 m of you, you take 10% less damage. bonded uncommon beast"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="3"
           data-grp-family="beast" data-gord-family="8" data-ord-family="0">
           <div class="r-name" data-anchor><span>Bonded</span><span class="r-key">Bonded</span></div>
@@ -172,7 +161,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="bountyhunter" style="--stripe:var(--uncommon)"
           data-hay="bountyhunter bounty hunter wanted, alive or dead. elites drop double essence, and bosses half as much again. bounty uncommon wild"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="4"
           data-grp-family="wild" data-gord-family="11" data-ord-family="2">
           <div class="r-name" data-anchor><span>Bounty Hunter</span><span class="r-key">BountyHunter</span></div>
@@ -182,7 +170,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="capacitor" style="--stripe:var(--uncommon)"
           data-hay="capacitor capacitor stored spark. each wall bounce stores a charge, up to 3. the orb's next enemy hit chains lightning to one more enemy per charge, for half the hit. capacitor uncommon storm"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="5"
           data-grp-family="storm" data-gord-family="4" data-ord-family="0">
           <div class="r-name" data-anchor><span>Capacitor</span><span class="r-key">Capacitor</span></div>
@@ -192,7 +179,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="carom" style="--stripe:var(--uncommon)"
           data-hay="carom carom trick shot. every wall bounce charges the orb +15% damage, up to 5, spent on the next enemy hit. carom uncommon kinetic"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="6"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="2">
           <div class="r-name" data-anchor><span>Carom</span><span class="r-key">Carom</span></div>
@@ -202,7 +188,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="coldsnap" style="--stripe:var(--uncommon)"
           data-hay="coldsnap cold snap numbing chill. chilled and frozen enemies deal 25% less damage to you. cold_snap uncommon offered only once you own something that chills or freezes (freezing shot, frozen court, hoarfrost, absolute zero, temporal rift or tether). frost"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="7"
           data-grp-family="frost" data-gord-family="3" data-ord-family="0">
           <div class="r-name" data-anchor><span>Cold Snap</span><span class="r-key">ColdSnap</span></div>
@@ -212,7 +197,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="featherweight" style="--stripe:var(--uncommon)"
           data-hay="featherweight featherweight nothing to carry. move speed +40%, but max hp -15%. uncommon wild"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="8"
           data-grp-family="wild" data-gord-family="11" data-ord-family="3">
           <div class="r-name" data-anchor><span>Featherweight</span><span class="r-key">Featherweight</span></div>
@@ -222,7 +206,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="firewalk" style="--stripe:var(--uncommon)"
           data-hay="firewalk firewalk trail of embers. you leave a line of fire where you walk for 2s, and enemies that step in it catch fire. firewalk uncommon fire"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="9"
           data-grp-family="fire" data-gord-family="2" data-ord-family="1">
           <div class="r-name" data-anchor><span>Firewalk</span><span class="r-key">Firewalk</span></div>
@@ -232,7 +215,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="fortune" style="--stripe:var(--uncommon)"
           data-hay="fortune fortune a better hand. gain 2 more rerolls right now. uncommon wild"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="10"
           data-grp-family="wild" data-gord-family="11" data-ord-family="4">
           <div class="r-name" data-anchor><span>Fortune</span><span class="r-key">Fortune</span></div>
@@ -242,7 +224,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="freezingshot" style="--stripe:var(--uncommon)"
           data-hay="freezingshot freezing shot chill to the bone. hit an enemy twice in 3s to freeze them solid for 2s. freezing_shot uncommon frost"
           data-stackable="0" data-req="0" data-con="1"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="11"
           data-grp-family="frost" data-gord-family="3" data-ord-family="1">
           <div class="r-name" data-anchor><span>Freezing Shot</span><span class="r-key">FreezingShot</span></div>
@@ -252,7 +233,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="frozencourt" style="--stripe:var(--uncommon)"
           data-hay="frozencourt frozen court icy wake. orb trail slows enemies by 65% while they stand in it. frozen_court uncommon frost"
           data-stackable="0" data-req="0" data-con="1"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="12"
           data-grp-family="frost" data-gord-family="3" data-ord-family="2">
           <div class="r-name" data-anchor><span>Frozen Court</span><span class="r-key">FrozenCourt</span></div>
@@ -262,7 +242,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="glint" style="--stripe:var(--uncommon)"
           data-hay="glint glint splinter. 10% of direct hits throw off a shard that strikes the nearest other enemy for 25% of the hit. glint uncommon arcane"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="13"
           data-grp-family="arcane" data-gord-family="6" data-ord-family="0">
           <div class="r-name" data-anchor><span>Glint</span><span class="r-key">Glint</span></div>
@@ -272,7 +251,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="orbsize" style="--stripe:var(--uncommon)"
           data-hay="orbsize heavy orb grow the orb's mass. size +20%, wider hitbox. scale uncommon kinetic"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="14"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="3">
           <div class="r-name" data-anchor><span>Heavy Orb</span><span class="r-key">OrbSize</span></div>
@@ -282,7 +260,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="hoarfrost" style="--stripe:var(--uncommon)"
           data-hay="hoarfrost hoarfrost cold touch. every direct hit slows the enemy by 40% for 1.5 seconds. hoarfrost uncommon frost"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="15"
           data-grp-family="frost" data-gord-family="3" data-ord-family="3">
           <div class="r-name" data-anchor><span>Hoarfrost</span><span class="r-key">Hoarfrost</span></div>
@@ -292,7 +269,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="imprint" style="--stripe:var(--uncommon)"
           data-hay="imprint imprint left behind. each throw leaves a copy of the orb where you threw it for 2s, and anything that walks into it takes 30% of a hit. imprint uncommon arcane"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="16"
           data-grp-family="arcane" data-gord-family="6" data-ord-family="1">
           <div class="r-name" data-anchor><span>Imprint</span><span class="r-key">Imprint</span></div>
@@ -302,7 +278,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="ironskin" style="--stripe:var(--uncommon)"
           data-hay="ironskin iron skin hardened body. invincibility frames after being hit +0.06s. uncommon +0.06s of invulnerability a stack, on top of the 0.3s base. guardian"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="17"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="1">
           <div class="r-name" data-anchor><span>Iron Skin</span><span class="r-key">IronSkin</span></div>
@@ -312,7 +287,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="jackpot" style="--stripe:var(--uncommon)"
           data-hay="jackpot jackpot lucky strike. one kill in twenty pays its essence six times over. jackpot uncommon wild"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="18"
           data-grp-family="wild" data-gord-family="11" data-ord-family="5">
           <div class="r-name" data-anchor><span>Jackpot</span><span class="r-key">Jackpot</span></div>
@@ -322,7 +296,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="lifesteal" style="--stripe:var(--uncommon)"
           data-hay="lifesteal life steal vampiric orb. every enemy the orb kills restores 2 hp. life_steal uncommon heals on the kill — 2 hp for every enemy the orb kills — not on every hit. blood"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="19"
           data-grp-family="blood" data-gord-family="7" data-ord-family="1">
           <div class="r-name" data-anchor><span>Life Steal</span><span class="r-key">LifeSteal</span></div>
@@ -332,7 +305,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="lightcore" style="--stripe:var(--uncommon)"
           data-hay="lightcore light core hollow crystal core. higher top speed and much faster acceleration. uncommon kinetic"
           data-stackable="0" data-req="0" data-con="1"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="20"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="4">
           <div class="r-name" data-anchor><span>Light Core</span><span class="r-key">LightCore</span></div>
@@ -342,7 +314,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="magneticgrip" style="--stripe:var(--uncommon)"
           data-hay="magneticgrip magnetic grip invisible tether. orb slowly drifts back toward you when idle. magnetic_grip uncommon pulls the orb home until it is within 0.8 m of you (inside swing reach), then brakes it to rest there. kinetic"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="21"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="5">
           <div class="r-name" data-anchor><span>Magnetic Grip</span><span class="r-key">MagneticGrip</span></div>
@@ -352,7 +323,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="marksman" style="--stripe:var(--uncommon)"
           data-hay="marksman marksman distance is damage. hits landed far from you deal +12% more per stack. uncommon precision"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="22"
           data-grp-family="precision" data-gord-family="1" data-ord-family="0">
           <div class="r-name" data-anchor><span>Marksman</span><span class="r-key">Marksman</span></div>
@@ -362,7 +332,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="metronome" style="--stripe:var(--uncommon)"
           data-hay="metronome metronome keep the beat. you get 1.6s longer to land the next hit before the combo drops. uncommon combo"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="23"
           data-grp-family="combo" data-gord-family="10" data-ord-family="1">
           <div class="r-name" data-anchor><span>Metronome</span><span class="r-key">Metronome</span></div>
@@ -372,7 +341,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="pocket" style="--stripe:var(--uncommon)"
           data-hay="pocket pocket pocketed. if the orb is within 2 m when you blink, it comes with you. pocket uncommon void"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="24"
           data-grp-family="void" data-gord-family="5" data-ord-family="0">
           <div class="r-name" data-anchor><span>Pocket</span><span class="r-key">Pocket</span></div>
@@ -382,7 +350,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="pushback" style="--stripe:var(--uncommon)"
           data-hay="pushback pushback brute force. everything you hit is knocked back 25% harder and takes 10% more damage, per stack. uncommon kinetic"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="25"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="6">
           <div class="r-name" data-anchor><span>Pushback</span><span class="r-key">Pushback</span></div>
@@ -392,7 +359,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="pyre" style="--stripe:var(--uncommon)"
           data-hay="pyre pyre funeral fire. a burning enemy that dies leaves a patch of fire for 2s that sets alight whatever walks in. pyre uncommon fire"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="26"
           data-grp-family="fire" data-gord-family="2" data-ord-family="2">
           <div class="r-name" data-anchor><span>Pyre</span><span class="r-key">Pyre</span></div>
@@ -402,7 +368,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="runningthrow" style="--stripe:var(--uncommon)"
           data-hay="runningthrow running throw on the run. throwing while you run adds twice your running speed to the throw. running_throw uncommon kinetic"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="27"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="7">
           <div class="r-name" data-anchor><span>Running Throw</span><span class="r-key">RunningThrow</span></div>
@@ -412,7 +377,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="safehands" style="--stripe:var(--uncommon)"
           data-hay="safehands safe hands practised hands. catching the orb makes you invulnerable for 0.6 seconds. safe_hands uncommon 0.6s of invulnerability, against the 0.3s base. guardian"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="28"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="2">
           <div class="r-name" data-anchor><span>Safe Hands</span><span class="r-key">SafeHands</span></div>
@@ -422,7 +386,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="showboat" style="--stripe:var(--uncommon)"
           data-hay="showboat showboat play to the crowd. the orb flies 5% faster for every combo tier you reach. showboat uncommon combo"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="29"
           data-grp-family="combo" data-gord-family="10" data-ord-family="2">
           <div class="r-name" data-anchor><span>Showboat</span><span class="r-key">Showboat</span></div>
@@ -432,7 +395,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="thunderhead" style="--stripe:var(--uncommon)"
           data-hay="thunderhead thunderhead eye of calm. stand still for 1s and lightning strikes the nearest enemy within 6 m every 1.5s. thunderhead uncommon storm"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="30"
           data-grp-family="storm" data-gord-family="4" data-ord-family="1">
           <div class="r-name" data-anchor><span>Thunderhead</span><span class="r-key">Thunderhead</span></div>
@@ -442,7 +404,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="tipjar" style="--stripe:var(--uncommon)"
           data-hay="tipjar tip jar the crowd pays up. every combo tier you reach pays 2 essence for each tier you are on. tip_jar uncommon combo"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="31"
           data-grp-family="combo" data-gord-family="10" data-ord-family="3">
           <div class="r-name" data-anchor><span>Tip Jar</span><span class="r-key">TipJar</span></div>
@@ -452,7 +413,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="trickshot" style="--stripe:var(--uncommon)"
           data-hay="trickshot trick shot bank it. each wall bounce before a throw's first enemy hit adds 10% crit chance to that hit, up to +50%. trick_shot uncommon precision"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="32"
           data-grp-family="precision" data-gord-family="1" data-ord-family="1">
           <div class="r-name" data-anchor><span>Trick Shot</span><span class="r-key">TrickShot</span></div>
@@ -462,7 +422,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="vampiricaura" style="--stripe:var(--uncommon)"
           data-hay="vampiricaura vampiric aura close feeding. anything that dies near you gives back 2 hp. vampiric_aura uncommon blood"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="33"
           data-grp-family="blood" data-gord-family="7" data-ord-family="2">
           <div class="r-name" data-anchor><span>Vampiric Aura</span><span class="r-key">VampiricAura</span></div>
@@ -472,7 +431,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="whistle" style="--stripe:var(--uncommon)"
           data-hay="whistle whistle sic 'em. recalling sends every companion at the orb's last target at once. once every 8s. whistle uncommon beast"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="34"
           data-grp-family="beast" data-gord-family="8" data-ord-family="1">
           <div class="r-name" data-anchor><span>Whistle</span><span class="r-key">Whistle</span></div>
@@ -482,7 +440,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="wormhole" style="--stripe:var(--uncommon)"
           data-hay="wormhole wormhole swap. blink while holding recall to trade places with the orb. once every 6s. wormhole uncommon void"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="uncommon" data-gord-rarity="1" data-ord-rarity="35"
           data-grp-family="void" data-gord-family="5" data-ord-family="1">
           <div class="r-name" data-anchor><span>Wormhole</span><span class="r-key">Wormhole</span></div>
@@ -493,7 +450,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="adrenaline" style="--stripe:var(--rare)"
           data-hay="adrenaline adrenaline cornered animal. orb damage climbs as your health falls, up to +80% at death's door. adrenaline rare blood"
           data-stackable="0" data-req="0" data-con="1"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="0"
           data-grp-family="blood" data-gord-family="7" data-ord-family="3">
           <div class="r-name" data-anchor><span>Adrenaline</span><span class="r-key">Adrenaline</span></div>
@@ -503,7 +459,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="aegis" style="--stripe:var(--rare)"
           data-hay="aegis aegis guarded. your orb swats enemy projectiles out of the air, even at a standstill. aegis rare guardian"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="1"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="3">
           <div class="r-name" data-anchor><span>Aegis</span><span class="r-key">Aegis</span></div>
@@ -513,7 +468,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="angeldamage" style="--stripe:var(--rare)"
           data-hay="angeldamage angel's wrath brighter light. angel lance damage +7. rare beast"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="2"
           data-grp-family="beast" data-gord-family="8" data-ord-family="2">
           <div class="r-name" data-anchor><span>Angel's Wrath</span><span class="r-key">AngelDamage</span></div>
@@ -523,7 +477,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="berserkercore" style="--stripe:var(--rare)"
           data-hay="berserkercore berserker core blood frenzy. each kill adds speed &amp; damage. stacks up to 8, lost on hit. berserker_core rare blood"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="3"
           data-grp-family="blood" data-gord-family="7" data-ord-family="4">
           <div class="r-name" data-anchor><span>Berserker Core</span><span class="r-key">BerserkerCore</span></div>
@@ -533,7 +486,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="blastradius" style="--stripe:var(--rare)"
           data-hay="blastradius blast radius wider ruin. every explosion, pulse and shockwave your orb makes reaches 30% further. rare fire"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="4"
           data-grp-family="fire" data-gord-family="2" data-ord-family="3">
           <div class="r-name" data-anchor><span>Blast Radius</span><span class="r-key">BlastRadius</span></div>
@@ -543,7 +495,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="bloodfeast" style="--stripe:var(--rare)"
           data-hay="bloodfeast blood feast trade up. killing anything within 3s of being hurt restores 4 hp. blood_feast rare blood"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="5"
           data-grp-family="blood" data-gord-family="7" data-ord-family="5">
           <div class="r-name" data-anchor><span>Blood Feast</span><span class="r-key">BloodFeast</span></div>
@@ -553,7 +504,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="bloodmoney" style="--stripe:var(--rare)"
           data-hay="bloodmoney blood money paid in red. kills drop double essence while you are below half health. blood_money rare blood"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="6"
           data-grp-family="blood" data-gord-family="7" data-ord-family="6">
           <div class="r-name" data-anchor><span>Blood Money</span><span class="r-key">BloodMoney</span></div>
@@ -563,7 +513,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="boomerang" style="--stripe:var(--rare)"
           data-hay="boomerang boomerang comes back to you. every throw returns on its own after 0.8s, and that counts as a recall -- but recalling by hand has a 30s cooldown. boomerang rare the return cannot be cancelled, and a throw that has not come home sets off again by itself. the return counts as a recall — static charge lets go when it starts, tether and gravity snap work on the way, volatile core goes off on its first hit — but it does not spend the recall cooldown. kinetic"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="7"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="8">
           <div class="r-name" data-anchor><span>Boomerang</span><span class="r-key">Boomerang</span></div>
@@ -573,7 +522,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="chainlightning" style="--stripe:var(--rare)"
           data-hay="chainlightning chain lightning arc discharge. every hit chains lightning to up to 3 nearby foes. take it again: +1 jump, +1.5 m reach and +5 arc damage. rare stackable: each copy after the first adds one jump, 1.5 m of reach and 5 damage a jump. storm"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="8"
           data-grp-family="storm" data-gord-family="4" data-ord-family="2">
           <div class="r-name" data-anchor><span>Chain Lightning</span><span class="r-key">ChainLightning</span></div>
@@ -583,7 +531,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="chargedshot" style="--stripe:var(--rare)"
           data-hay="chargedshot charged shot wind it up. hold the throw to charge it through three levels, release to let it fly -- up to 2.1x launch force and 2.2x damage on the first thing it hits. it never fires on its own. charged_shot rare precision"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="9"
           data-grp-family="precision" data-gord-family="1" data-ord-family="2">
           <div class="r-name" data-anchor><span>Charged Shot</span><span class="r-key">ChargedShot</span></div>
@@ -593,7 +540,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="combobreaker" style="--stripe:var(--rare)"
           data-hay="combobreaker combo breaker go out with a bang. when a combo of 10 or more drops, it detonates around you -- harder the bigger it was. combo_breaker rare combo"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="10"
           data-grp-family="combo" data-gord-family="10" data-ord-family="4">
           <div class="r-name" data-anchor><span>Combo Breaker</span><span class="r-key">ComboBreaker</span></div>
@@ -603,7 +549,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="crescendo" style="--stripe:var(--rare)"
           data-hay="crescendo crescendo build it up. every 10th hit of a combo detonates a free void ring around the orb. crescendo rare combo"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="11"
           data-grp-family="combo" data-gord-family="10" data-ord-family="5">
           <div class="r-name" data-anchor><span>Crescendo</span><span class="r-key">Crescendo</span></div>
@@ -613,7 +558,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="criticalmass" style="--stripe:var(--rare)"
           data-hay="criticalmass critical mass volatile energy. orb critical hit chance +10% per stack. crit_chance rare precision"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="12"
           data-grp-family="precision" data-gord-family="1" data-ord-family="3">
           <div class="r-name" data-anchor><span>Critical Mass</span><span class="r-key">CriticalMass</span></div>
@@ -623,7 +567,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="curator" style="--stripe:var(--rare)"
           data-hay="curator curator refined taste. banished cards are replaced by an epic or legendary. rare wild"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="13"
           data-grp-family="wild" data-gord-family="11" data-ord-family="6">
           <div class="r-name" data-anchor><span>Curator</span><span class="r-key">Curator</span></div>
@@ -633,7 +576,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="deadstop" style="--stripe:var(--rare)"
           data-hay="deadstop dead stop bone-jarring catch. stopping the orb with your body blasts nearby enemies, harder the faster it was going. dead_stop rare kinetic"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="14"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="9">
           <div class="r-name" data-anchor><span>Dead Stop</span><span class="r-key">DeadStop</span></div>
@@ -643,7 +585,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="demondamage" style="--stripe:var(--rare)"
           data-hay="demondamage demon claws serrated demonic claws. demon hit damage +8. rare beast"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="15"
           data-grp-family="beast" data-gord-family="8" data-ord-family="3">
           <div class="r-name" data-anchor><span>Demon Claws</span><span class="r-key">DemonDamage</span></div>
@@ -653,7 +594,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="fracture" style="--stripe:var(--rare)"
           data-hay="fracture fracture spalling. wall bounces shed two cutting shards that fly off and carve anything they meet. fracture rare arcane"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="16"
           data-grp-family="arcane" data-gord-family="6" data-ord-family="2">
           <div class="r-name" data-anchor><span>Fracture</span><span class="r-key">Fracture</span></div>
@@ -663,7 +603,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="frostbite" style="--stripe:var(--rare)"
           data-hay="frostbite frostbite cold shatter. a frozen enemy that dies bursts into an ice nova, damaging and chilling the rest. frostbite rare frost"
           data-stackable="0" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="17"
           data-grp-family="frost" data-gord-family="3" data-ord-family="4">
           <div class="r-name" data-anchor><span>Frostbite</span><span class="r-key">Frostbite</span></div>
@@ -673,7 +612,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="goatcompanion" style="--stripe:var(--rare)"
           data-hay="goatcompanion goat companion a mountain goat guards you. it charges anything that comes near you and rams it -- and everything beside it -- flying away. grows with the waves. rare its numbers above are read from the game. it rams whatever comes near you — always whatever is closest to you, switching mid-charge if something else gets nearer — and shoves the target and everything beside it hard, straight away from you. between rams it never stands still, ambling from spot to spot around you and trotting to catch up if you outrun it. it has no daze of its own: concussion adds one, and the shove plays under the daze rather than after it. it walks round trees, not through them. beast"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="18"
           data-grp-family="beast" data-gord-family="8" data-ord-family="4">
           <div class="r-name" data-anchor><span>Goat Companion</span><span class="r-key">GoatCompanion</span></div>
@@ -683,7 +621,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="goatfrequency" style="--stripe:var(--rare)"
           data-hay="goatfrequency headstrong never tires. the goat rams 25% more often. rare x0.8 on the time between rams a stack, down to a 0.4s floor. beast"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="19"
           data-grp-family="beast" data-gord-family="8" data-ord-family="5">
           <div class="r-name" data-anchor><span>Headstrong</span><span class="r-key">GoatFrequency</span></div>
@@ -693,7 +630,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="hemorrhage" style="--stripe:var(--rare)"
           data-hay="hemorrhage hemorrhage deep cuts. each bleed stack on an enemy makes it take 2% more damage from everything, up to 10 stacks. hemorrhage rare blood"
           data-stackable="0" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="20"
           data-grp-family="blood" data-gord-family="7" data-ord-family="7">
           <div class="r-name" data-anchor><span>Hemorrhage</span><span class="r-key">Hemorrhage</span></div>
@@ -703,7 +639,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="hominginstinct" style="--stripe:var(--rare)"
           data-hay="hominginstinct homing instinct seeks warm flesh. orb gently steers toward the nearest enemy. homing_instinct rare precision"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="21"
           data-grp-family="precision" data-gord-family="1" data-ord-family="4">
           <div class="r-name" data-anchor><span>Homing Instinct</span><span class="r-key">HomingInstinct</span></div>
@@ -713,7 +648,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="interest" style="--stripe:var(--rare)"
           data-hay="interest interest savings grow. every shop you open pays 15% interest on the essence you walked in with. interest rare wild"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="22"
           data-grp-family="wild" data-gord-family="11" data-ord-family="7">
           <div class="r-name" data-anchor><span>Interest</span><span class="r-key">Interest</span></div>
@@ -723,7 +657,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="kindling" style="--stripe:var(--rare)"
           data-hay="kindling kindling fuel for the fire. burning enemies take 25% more damage from the orb. kindling rare fire"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="23"
           data-grp-family="fire" data-gord-family="2" data-ord-family="4">
           <div class="r-name" data-anchor><span>Kindling</span><span class="r-key">Kindling</span></div>
@@ -733,7 +666,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="kineticplating" style="--stripe:var(--rare)"
           data-hay="kineticplating kinetic plating force into armour. every 6 orb hits you land build 8 points of shield. rare guardian"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="24"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="4">
           <div class="r-name" data-anchor><span>Kinetic Plating</span><span class="r-key">KineticPlating</span></div>
@@ -743,7 +675,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="angeljudgement" style="--stripe:var(--rare)"
           data-hay="angeljudgement lasting judgement the verdict holds. judgement lasts 1.5s longer. rare beast"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="25"
           data-grp-family="beast" data-gord-family="8" data-ord-family="6">
           <div class="r-name" data-anchor><span>Lasting Judgement</span><span class="r-key">AngelJudgement</span></div>
@@ -753,7 +684,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="leechfield" style="--stripe:var(--rare)"
           data-hay="leechfield leech field draining chill. enemies standing in your frost trail slowly heal you for 0.5 hp/s. leech_field rare frost"
           data-stackable="0" data-req="1" data-con="1"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="26"
           data-grp-family="frost" data-gord-family="3" data-ord-family="5">
           <div class="r-name" data-anchor><span>Leech Field</span><span class="r-key">LeechField</span></div>
@@ -763,7 +693,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="demoncurse" style="--stripe:var(--rare)"
           data-hay="demoncurse lingering curse the mark festers longer. curse duration +1.5s. rare beast"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="27"
           data-grp-family="beast" data-gord-family="8" data-ord-family="7">
           <div class="r-name" data-anchor><span>Lingering Curse</span><span class="r-key">DemonCurse</span></div>
@@ -773,7 +702,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="orbitmode" style="--stripe:var(--rare)"
           data-hay="orbitmode mirror ball a shard circles you forever, striking anything it sweeps through. weaker than your orb, but never stops. orbit_mode rare a shard's hit carries the orb's standing bonuses — berserker, blood pact, momentum, adrenaline, rampage, last stand — can crit through critical mass, and grows with the square root of the enemy health curve (about ×1.9 by wave 20). per-throw bonuses like charged shot and comet do not apply: the ring is not a throw. arcane"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="28"
           data-grp-family="arcane" data-gord-family="6" data-ord-family="3">
           <div class="r-name" data-anchor><span>Mirror Ball</span><span class="r-key">OrbitMode</span></div>
@@ -783,7 +711,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="multiplier" style="--stripe:var(--rare)"
           data-hay="multiplier multiplier double up. a hit that kills adds 2 to the combo instead of 1. multiplier rare combo"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="29"
           data-grp-family="combo" data-gord-family="10" data-ord-family="6">
           <div class="r-name" data-anchor><span>Multiplier</span><span class="r-key">Multiplier</span></div>
@@ -793,7 +720,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="onthebeat" style="--stripe:var(--rare)"
           data-hay="onthebeat on the beat keep time. a hit landed in the last quarter of the combo timer deals double damage. on_the_beat rare combo"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="30"
           data-grp-family="combo" data-gord-family="10" data-ord-family="7">
           <div class="r-name" data-anchor><span>On the Beat</span><span class="r-key">OnTheBeat</span></div>
@@ -803,7 +729,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="overclock" style="--stripe:var(--rare)"
           data-hay="overclock overclock build the charge. every 5th consecutive enemy hit (no wall bounces) deals double damage. overclock rare combo"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="31"
           data-grp-family="combo" data-gord-family="10" data-ord-family="8">
           <div class="r-name" data-anchor><span>Overclock</span><span class="r-key">Overclock</span></div>
@@ -813,7 +738,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="overflow" style="--stripe:var(--rare)"
           data-hay="overflow overflow nothing wasted. half of any healing above full hp becomes a shield instead of vanishing. rare only half of any overheal becomes shield. shields are capped at 30% of your max health and drain once you go 8 seconds without being hit — see staying alive on how to play. guardian"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="32"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="5">
           <div class="r-name" data-anchor><span>Overflow</span><span class="r-key">Overflow</span></div>
@@ -823,7 +747,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="owlfrequency" style="--stripe:var(--rare)"
           data-hay="owlfrequency owl swiftness relentless diver. owl strikes 25% more often. rare beast"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="33"
           data-grp-family="beast" data-gord-family="8" data-ord-family="8">
           <div class="r-name" data-anchor><span>Owl Swiftness</span><span class="r-key">OwlFrequency</span></div>
@@ -833,7 +756,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="owldamage" style="--stripe:var(--rare)"
           data-hay="owldamage owl talons razor-sharp claws. owl attack damage +11. rare beast"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="34"
           data-grp-family="beast" data-gord-family="8" data-ord-family="9">
           <div class="r-name" data-anchor><span>Owl Talons</span><span class="r-key">OwlDamage</span></div>
@@ -843,7 +765,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="owlrange" style="--stripe:var(--rare)"
           data-hay="owlrange owl vision keen eyes. owl detects and attacks from 2.2 m further away. rare beast"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="35"
           data-grp-family="beast" data-gord-family="8" data-ord-family="10">
           <div class="r-name" data-anchor><span>Owl Vision</span><span class="r-key">OwlRange</span></div>
@@ -853,7 +774,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="packleader" style="--stripe:var(--rare)"
           data-hay="packleader pack leader alpha. every companion deals 20% more damage for each companion you have. pack_leader rare beast"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="36"
           data-grp-family="beast" data-gord-family="8" data-ord-family="11">
           <div class="r-name" data-anchor><span>Pack Leader</span><span class="r-key">PackLeader</span></div>
@@ -863,7 +783,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="permafrost" style="--stripe:var(--rare)"
           data-hay="permafrost permafrost spreading cold. a frozen enemy chills every enemy that touches it. permafrost rare frost"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="37"
           data-grp-family="frost" data-gord-family="3" data-ord-family="6">
           <div class="r-name" data-anchor><span>Permafrost</span><span class="r-key">Permafrost</span></div>
@@ -873,7 +792,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="pin" style="--stripe:var(--rare)"
           data-hay="pin pin pinned. a critical hit pins a non-boss enemy in place for 0.8s. pin rare precision"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="38"
           data-grp-family="precision" data-gord-family="1" data-ord-family="5">
           <div class="r-name" data-anchor><span>Pin</span><span class="r-key">Pin</span></div>
@@ -883,7 +801,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="regrowth" style="--stripe:var(--rare)"
           data-hay="regrowth regrowth slow mending. recover 1 hp every 2.5 seconds, always, even mid-fight. regrowth rare guardian"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="39"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="6">
           <div class="r-name" data-anchor><span>Regrowth</span><span class="r-key">Regrowth</span></div>
@@ -891,19 +808,17 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><img class="fam-ic" src="assets/img/family/guardian.png" alt=""><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>regrowth</code></div></div>
         </div>
       <div class="row" id="retribution" style="--stripe:var(--rare)"
-          data-hay="retribution retribution pain returned. each hit you take stores a charge (up to 3); your next throw deals +40% per charge to the first enemy it hits. retribution rare guardian warden"
+          data-hay="retribution retribution pain returned. each hit you take stores a charge (up to 3); your next throw deals +40% per charge to the first enemy it hits. retribution rare guardian"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="1"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="40"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="7">
           <div class="r-name" data-anchor><span>Retribution</span><span class="r-key">Retribution</span></div>
           <div class="r-desc">Pain returned. Each hit you take stores a charge (up to 3); your next throw deals +40% per charge to the first enemy it hits.</div>
-          <div class="r-meta"><div class="dep flag"><b style="color:rgb(115,204,255)">WARDEN</b> only</div><div class="per">family <a href="builds.html#fam-guardian"><img class="fam-ic" src="assets/img/family/guardian.png" alt=""><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>retribution</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><img class="fam-ic" src="assets/img/family/guardian.png" alt=""><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>retribution</code></div></div>
         </div>
       <div class="row" id="riftstep" style="--stripe:var(--rare)"
           data-hay="riftstep rift step cut through the veil. enemies you pass through mid-blink take 25 damage. grows with the waves. rift_step rare 25 is a wave-1 figure that grows with the waves. void"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="41"
           data-grp-family="void" data-gord-family="5" data-ord-family="2">
           <div class="r-name" data-anchor><span>Rift Step</span><span class="r-key">RiftStep</span></div>
@@ -913,7 +828,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="secondheart" style="--stripe:var(--rare)"
           data-hay="secondheart second heart a second heart, beating out of time. max hp +40, healed immediately. max_health rare guardian"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="42"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="8">
           <div class="r-name" data-anchor><span>Second Heart</span><span class="r-key">SecondHeart</span></div>
@@ -923,7 +837,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="goatdamage" style="--stripe:var(--rare)"
           data-hay="goatdamage sharpened horns filed to a point. goat ram damage +9. rare +9 is a wave-1 figure and rides the wave like the ram itself. beast"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="43"
           data-grp-family="beast" data-gord-family="8" data-ord-family="12">
           <div class="r-name" data-anchor><span>Sharpened Horns</span><span class="r-key">GoatDamage</span></div>
@@ -933,7 +846,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="shatter" style="--stripe:var(--rare)"
           data-hay="shatter shatter break the ice. hitting a frozen enemy deals 30% more damage. shatter rare a freeze is not the rare state it sounds: freezing shot re-freezes on every second hit, so a body you keep hitting stays frozen. frost"
           data-stackable="0" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="44"
           data-grp-family="frost" data-gord-family="3" data-ord-family="7">
           <div class="r-name" data-anchor><span>Shatter</span><span class="r-key">Shatter</span></div>
@@ -943,7 +855,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="sniperseye" style="--stripe:var(--rare)"
           data-hay="sniperseye sniper's eye find the seam. critical hits deal an extra 60% of the orb's damage, per stack. rare precision"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="45"
           data-grp-family="precision" data-gord-family="1" data-ord-family="6">
           <div class="r-name" data-anchor><span>Sniper's Eye</span><span class="r-key">SnipersEye</span></div>
@@ -953,7 +864,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="soulharvest" style="--stripe:var(--rare)"
           data-hay="soulharvest soul harvest reaping. every 8th enemy that dies leaves a soul that restores 6 hp. soul_harvest rare blood"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="46"
           data-grp-family="blood" data-gord-family="7" data-ord-family="8">
           <div class="r-name" data-anchor><span>Soul Harvest</span><span class="r-key">SoulHarvest</span></div>
@@ -963,7 +873,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="stagefright" style="--stripe:var(--rare)"
           data-hay="stagefright stage fright showstopper. reaching a new combo tier stuns every enemy within 4 m of the orb for 0.6s. stage_fright rare combo"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="47"
           data-grp-family="combo" data-gord-family="10" data-ord-family="9">
           <div class="r-name" data-anchor><span>Stage Fright</span><span class="r-key">StageFright</span></div>
@@ -973,7 +882,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="staticcharge" style="--stripe:var(--rare)"
           data-hay="staticcharge static charge stored current. each throw banks a charge, up to 5. recalling fires one lightning bolt per charge at enemies near the orb; charges with no enemy to strike are kept. static_charge rare a recall spends only the charges it actually fires — one per enemy within 6.4 m of the orb — and keeps the rest. storm"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="48"
           data-grp-family="storm" data-gord-family="4" data-ord-family="3">
           <div class="r-name" data-anchor><span>Static Charge</span><span class="r-key">StaticCharge</span></div>
@@ -983,7 +891,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="staticfield" style="--stripe:var(--rare)"
           data-hay="staticfield static field live wire. enemies standing close to you take 6 damage twice a second. static_field rare storm"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="49"
           data-grp-family="storm" data-gord-family="4" data-ord-family="4">
           <div class="r-name" data-anchor><span>Static Field</span><span class="r-key">StaticField</span></div>
@@ -993,7 +900,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="superconductor" style="--stripe:var(--rare)"
           data-hay="superconductor superconductor live current. chain lightning arcs now stun everything they touch for 0.6s. superconductor rare storm"
           data-stackable="0" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="50"
           data-grp-family="storm" data-gord-family="4" data-ord-family="5">
           <div class="r-name" data-anchor><span>Superconductor</span><span class="r-key">Superconductor</span></div>
@@ -1003,7 +909,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="temporalrift" style="--stripe:var(--rare)"
           data-hay="temporalrift temporal rift time distortion. a fast-moving orb crawls nearby enemies to 15% speed and bleeds them while they are stuck. temporal_rift rare void"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="51"
           data-grp-family="void" data-gord-family="5" data-ord-family="3">
           <div class="r-name" data-anchor><span>Temporal Rift</span><span class="r-key">TemporalRift</span></div>
@@ -1013,7 +918,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="thornmail" style="--stripe:var(--rare)"
           data-hay="thornmail thornmail spite. anything that lands a hit on you takes 22 damage and is thrown off. grows with the waves. thornmail rare 22 is a wave-1 figure that grows with the waves. guardian"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="52"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="9">
           <div class="r-name" data-anchor><span>Thornmail</span><span class="r-key">Thornmail</span></div>
@@ -1023,7 +927,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="thunderclap" style="--stripe:var(--rare)"
           data-hay="thunderclap thunderclap sonic impact. wall bounces release a shockwave that stuns nearby enemies for 1.2s. thunderclap rare needs a real bounce: a wall touched slower than the orb's damage speed does nothing, as with carom and fracture. storm"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="53"
           data-grp-family="storm" data-gord-family="4" data-ord-family="6">
           <div class="r-name" data-anchor><span>Thunderclap</span><span class="r-key">Thunderclap</span></div>
@@ -1033,7 +936,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="tithe" style="--stripe:var(--rare)"
           data-hay="tithe tithe a cut of the ritual. every third wave hands you one extra card choice. tithe rare wild"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="54"
           data-grp-family="wild" data-gord-family="11" data-ord-family="8">
           <div class="r-name" data-anchor><span>Tithe</span><span class="r-key">Tithe</span></div>
@@ -1043,7 +945,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="orbitrange" style="--stripe:var(--rare)"
           data-hay="orbitrange wide orbit wider circle. mirror ball radius +0.6 m, covers more ground. rare arcane"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="rare" data-gord-rarity="2" data-ord-rarity="55"
           data-grp-family="arcane" data-gord-family="6" data-ord-family="4">
           <div class="r-name" data-anchor><span>Wide Orbit</span><span class="r-key">OrbitRange</span></div>
@@ -1054,7 +955,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="absolutezero" style="--stripe:var(--epic)"
           data-hay="absolutezero absolute zero flash freeze. every 15th hit you land freezes every enemy within 3 m of the orb for 1.5 seconds. absolute_zero epic frost"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="0"
           data-grp-family="frost" data-gord-family="3" data-ord-family="8">
           <div class="r-name" data-anchor><span>Absolute Zero</span><span class="r-key">AbsoluteZero</span></div>
@@ -1064,7 +964,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="aftershock" style="--stripe:var(--epic)"
           data-hay="aftershock aftershock the ground remembers. half a second after each direct hit, the spot detonates for 40% of the damage. aftershock epic fire"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="1"
           data-grp-family="fire" data-gord-family="2" data-ord-family="5">
           <div class="r-name" data-anchor><span>Aftershock</span><span class="r-key">Aftershock</span></div>
@@ -1072,19 +971,17 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-fire"><img class="fam-ic" src="assets/img/family/fire.png" alt=""><b style="color:rgb(255,115,51)">Fire</b></a></div><div class="tot"><code>aftershock</code></div></div>
         </div>
       <div class="row" id="bastion" style="--stripe:var(--epic)"
-          data-hay="bastion bastion hold the line. after standing still for half a second, you take 40% less damage until you move. bastion epic guardian warden"
+          data-hay="bastion bastion hold the line. after standing still for half a second, you take 40% less damage until you move. bastion epic guardian"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="1"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="2"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="10">
           <div class="r-name" data-anchor><span>Bastion</span><span class="r-key">Bastion</span></div>
           <div class="r-desc">Hold the line. After standing still for half a second, you take 40% less damage until you move.</div>
-          <div class="r-meta"><div class="dep flag"><b style="color:rgb(115,204,255)">WARDEN</b> only</div><div class="per">family <a href="builds.html#fam-guardian"><img class="fam-ic" src="assets/img/family/guardian.png" alt=""><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>bastion</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><img class="fam-ic" src="assets/img/family/guardian.png" alt=""><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>bastion</code></div></div>
         </div>
       <div class="row" id="bloodpact" style="--stripe:var(--epic)"
           data-hay="bloodpact blood pact signed in blood. orb damage +50%, but you no longer heal between waves. blood_pact epic blood"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="3"
           data-grp-family="blood" data-gord-family="7" data-ord-family="9">
           <div class="r-name" data-anchor><span>Blood Pact</span><span class="r-key">BloodPact</span></div>
@@ -1094,7 +991,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="bloodprice" style="--stripe:var(--epic)"
           data-hay="bloodprice blood price paid in full. orb damage +1% for every 1% of health you are missing, but all healing is halved. blood_price epic blood"
           data-stackable="0" data-req="0" data-con="1"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="4"
           data-grp-family="blood" data-gord-family="7" data-ord-family="10">
           <div class="r-name" data-anchor><span>Blood Price</span><span class="r-key">BloodPrice</span></div>
@@ -1102,19 +998,17 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><img class="fam-ic" src="assets/img/family/blood.png" alt=""><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>blood_price</code></div><div class="dep flag">excludes <a href="#adrenaline"><b>Adrenaline</b></a></div></div>
         </div>
       <div class="row" id="bowling" style="--stripe:var(--epic)"
-          data-hay="bowling bowling strike. enemies your orb knocks back become projectiles. slammed into scenery, one takes the hit again; slammed into another enemy, it deals that enemy the hit and takes it back with 50% more. bowling epic what a thrown body strikes takes the full hit, and the thrown body hurts itself once: the hit again off scenery, the hit and half again off another enemy. kinetic breaker"
+          data-hay="bowling bowling strike. enemies your orb knocks back become projectiles. slammed into scenery, one takes the hit again; slammed into another enemy, it deals that enemy the hit and takes it back with 50% more. bowling epic what a thrown body strikes takes the full hit, and the thrown body hurts itself once: the hit again off scenery, the hit and half again off another enemy. kinetic"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="1"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="5"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="10">
           <div class="r-name" data-anchor><span>Bowling</span><span class="r-key">Bowling</span></div>
           <div class="r-desc">Strike. Enemies your orb knocks back become projectiles. Slammed into scenery, one takes the hit again; slammed into another enemy, it deals that enemy the hit and takes it back with 50% more.<div class="tot">What a thrown body strikes takes the full hit, and the thrown body hurts itself once: the hit again off scenery, the hit and half again off another enemy.</div></div>
-          <div class="r-meta"><div class="dep flag"><b style="color:rgb(255,158,77)">BREAKER</b> only</div><div class="per">family <a href="builds.html#fam-kinetic"><img class="fam-ic" src="assets/img/family/kinetic.png" alt=""><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>bowling</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><img class="fam-ic" src="assets/img/family/kinetic.png" alt=""><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>bowling</code></div></div>
         </div>
       <div class="row" id="cashout" style="--stripe:var(--epic)"
           data-hay="cashout cash out spend it. recalling by hand cashes in your combo: the returning orb deals +2% for every point of combo, and the combo drops to half. cash_out epic combo"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="6"
           data-grp-family="combo" data-gord-family="10" data-ord-family="10">
           <div class="r-name" data-anchor><span>Cash Out</span><span class="r-key">CashOut</span></div>
@@ -1124,7 +1018,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="comet" style="--stripe:var(--epic)"
           data-hay="comet comet every 6th throw leaves burning: 2.5x damage and a crater where it lands. comet epic fire"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="7"
           data-grp-family="fire" data-gord-family="2" data-ord-family="6">
           <div class="r-name" data-anchor><span>Comet</span><span class="r-key">Comet</span></div>
@@ -1134,7 +1027,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="goatdaze" style="--stripe:var(--epic)"
           data-hay="goatdaze concussion seeing stars. the goat's rams daze everything they hit for 0.5s (+0.5s a stack). epic the goat's only daze. everything a ram reaches is dazed, the target and the splash, 0.5s a stack up to 1.5s; bosses stay capped at 0.2s. beast"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="8"
           data-grp-family="beast" data-gord-family="8" data-ord-family="13">
           <div class="r-name" data-anchor><span>Concussion</span><span class="r-key">GoatDaze</span></div>
@@ -1144,7 +1036,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="contract" style="--stripe:var(--epic)"
           data-hay="contract contract sign here. the next 3 waves come 30% tougher -- survive them and you are handed a free legendary. epic wild"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="9"
           data-grp-family="wild" data-gord-family="11" data-ord-family="9">
           <div class="r-name" data-anchor><span>Contract</span><span class="r-key">Contract</span></div>
@@ -1154,7 +1045,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="cremation" style="--stripe:var(--epic)"
           data-hay="cremation cremation nothing left behind. burning deals 50% more damage, but burning enemies never drop health. cremation epic fire"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="10"
           data-grp-family="fire" data-gord-family="2" data-ord-family="7">
           <div class="r-name" data-anchor><span>Cremation</span><span class="r-key">Cremation</span></div>
@@ -1164,7 +1054,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="demonpotency" style="--stripe:var(--epic)"
           data-hay="demonpotency curse potency amplified hex. cursed enemies take 10% more damage from all sources. epic beast"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="11"
           data-grp-family="beast" data-gord-family="8" data-ord-family="14">
           <div class="r-name" data-anchor><span>Curse Potency</span><span class="r-key">DemonPotency</span></div>
@@ -1174,7 +1063,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="cursedglass" style="--stripe:var(--epic)"
           data-hay="cursedglass cursed glass shards of spite. enemy kills shatter into 3 homing fragments each dealing 8 damage. grows with the waves. cursed_glass epic 8 a shard is a wave-1 figure that grows with the waves. arcane"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="12"
           data-grp-family="arcane" data-gord-family="6" data-ord-family="5">
           <div class="r-name" data-anchor><span>Cursed Glass</span><span class="r-key">CursedGlass</span></div>
@@ -1184,7 +1072,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="deadeye" style="--stripe:var(--epic)"
           data-hay="deadeye deadeye one perfect shot. the first enemy each throw hits takes a guaranteed critical hit at double damage. after that, the throw cannot crit. deadeye epic precision"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="13"
           data-grp-family="precision" data-gord-family="1" data-ord-family="7">
           <div class="r-name" data-anchor><span>Deadeye</span><span class="r-key">Deadeye</span></div>
@@ -1194,7 +1081,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="deathnova" style="--stripe:var(--epic)"
           data-hay="deathnova death nova soul explosion. each kill bursts into a wide void ring dealing 18 damage. grows with the waves. death_nova epic 18 is a wave-1 figure: it grows with the waves like enemy health, as the companions and abilities do. void"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="14"
           data-grp-family="void" data-gord-family="5" data-ord-family="4">
           <div class="r-name" data-anchor><span>Death Nova</span><span class="r-key">DeathNova</span></div>
@@ -1204,7 +1090,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="angelpotency" style="--stripe:var(--epic)"
           data-hay="angelpotency divine potency wrath from above. the angel's smite hits +8 harder and reaches 0.3 m further. epic beast"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="15"
           data-grp-family="beast" data-gord-family="8" data-ord-family="15">
           <div class="r-name" data-anchor><span>Divine Potency</span><span class="r-key">AngelPotency</span></div>
@@ -1214,7 +1099,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="essencenova" style="--stripe:var(--epic)"
           data-hay="essencenova essence nova brimming over. every 12 kills' worth of essence you collect bursts out of you, hitting everything nearby for 45 damage. grows with the waves. essence_nova epic wild"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="16"
           data-grp-family="wild" data-gord-family="11" data-ord-family="10">
           <div class="r-name" data-anchor><span>Essence Nova</span><span class="r-key">EssenceNova</span></div>
@@ -1224,7 +1108,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="eventhorizon" style="--stripe:var(--epic)"
           data-hay="eventhorizon event horizon nothing escapes. your black hole also drags enemy shots into itself and swallows them. event_horizon epic void"
           data-stackable="0" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="17"
           data-grp-family="void" data-gord-family="5" data-ord-family="5">
           <div class="r-name" data-anchor><span>Event Horizon</span><span class="r-key">EventHorizon</span></div>
@@ -1234,7 +1117,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="executioner" style="--stripe:var(--epic)"
           data-hay="executioner executioner no mercy. a direct hit that would leave an enemy under 10% health kills it outright. execute epic judged on what a direct hit leaves: a hit that would drop an enemy under 10% of its max health kills it instead, after curses and every other multiplier. precision"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="18"
           data-grp-family="precision" data-gord-family="1" data-ord-family="8">
           <div class="r-name" data-anchor><span>Executioner</span><span class="r-key">Executioner</span></div>
@@ -1244,7 +1126,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="orbitorbs" style="--stripe:var(--epic)"
           data-hay="orbitorbs extra orbiter more firepower. another shard joins the ring. epic arcane"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="19"
           data-grp-family="arcane" data-gord-family="6" data-ord-family="6">
           <div class="r-name" data-anchor><span>Extra Orbiter</span><span class="r-key">OrbitOrbs</span></div>
@@ -1254,7 +1135,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="orbitspeed" style="--stripe:var(--epic)"
           data-hay="orbitspeed faster orbit dizzying spin. mirror ball rotation speed increases. epic arcane"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="20"
           data-grp-family="arcane" data-gord-family="6" data-ord-family="7">
           <div class="r-name" data-anchor><span>Faster Orbit</span><span class="r-key">OrbitSpeed</span></div>
@@ -1264,7 +1144,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="heavycore" style="--stripe:var(--epic)"
           data-hay="heavycore heavy core dense iron core. bleeds speed faster, but +20 bonus damage on every hit. epic kinetic"
           data-stackable="0" data-req="0" data-con="1"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="21"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="11">
           <div class="r-name" data-anchor><span>Heavy Core</span><span class="r-key">HeavyCore</span></div>
@@ -1274,7 +1153,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="inertiabattery" style="--stripe:var(--epic)"
           data-hay="inertiabattery inertia battery speed becomes power. a moving orb hits harder the faster it travels, with no upper limit -- every point of launch force you own finally counts. inertia_battery epic kinetic"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="22"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="12">
           <div class="r-name" data-anchor><span>Inertia Battery</span><span class="r-key">InertiaBattery</span></div>
@@ -1284,7 +1162,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="juggernaut" style="--stripe:var(--epic)"
           data-hay="juggernaut juggernaut unstoppable. the orb no longer bounces off enemies -- it ploughs straight through them. juggernaut epic kinetic"
           data-stackable="0" data-req="0" data-con="1"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="23"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="13">
           <div class="r-name" data-anchor><span>Juggernaut</span><span class="r-key">Juggernaut</span></div>
@@ -1294,7 +1171,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="laststand" style="--stripe:var(--epic)"
           data-hay="laststand last stand cornered. below 30% health you take 35% less damage and deal 30% more. last_stand epic guardian"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="24"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="11">
           <div class="r-name" data-anchor><span>Last Stand</span><span class="r-key">LastStand</span></div>
@@ -1304,7 +1180,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="momentum" style="--stripe:var(--epic)"
           data-hay="momentum momentum rolling thunder. orb damage +3% per point of combo, up to +60% at 20, lost when the combo drops. momentum epic combo"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="25"
           data-grp-family="combo" data-gord-family="10" data-ord-family="11">
           <div class="r-name" data-anchor><span>Momentum</span><span class="r-key">Momentum</span></div>
@@ -1314,7 +1189,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="bleed" style="--stripe:var(--epic)"
           data-hay="bleed open wound cuts that linger. direct hits apply a bleed dealing 5 damage per second for 3s. bleed epic blood"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="26"
           data-grp-family="blood" data-gord-family="7" data-ord-family="11">
           <div class="r-name" data-anchor><span>Open Wound</span><span class="r-key">Bleed</span></div>
@@ -1324,7 +1198,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="owlcompanion" style="--stripe:var(--epic)"
           data-hay="owlcompanion owl companion a storm familiar joins you. calls down lightning every 1.3 seconds, and each bolt leaps on through two more foes. grows with the waves. epic its numbers above are read from the game. each bolt leaps on through more enemies, never the same one twice, and its damage rides the enemy health curve. owl swiftness gives 25% more strikes a stack. beast"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="27"
           data-grp-family="beast" data-gord-family="8" data-ord-family="16">
           <div class="r-name" data-anchor><span>Owl Companion</span><span class="r-key">OwlCompanion</span></div>
@@ -1334,7 +1207,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="phantomcopies" style="--stripe:var(--epic)"
           data-hay="phantomcopies phantom copies mirror images. two ghost orbs flank and mimic the main orb's path. phantom_copies epic arcane"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="28"
           data-grp-family="arcane" data-gord-family="6" data-ord-family="8">
           <div class="r-name" data-anchor><span>Phantom Copies</span><span class="r-key">PhantomCopies</span></div>
@@ -1344,7 +1216,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="phaseshot" style="--stripe:var(--epic)"
           data-hay="phaseshot phase shot spectral edge. the first enemy you hit each throw does not stop the orb -- it takes the hit and the orb carries straight on. phase_shot epic cannot be held with juggernaut: juggernaut already lets every enemy through. kinetic"
           data-stackable="0" data-req="0" data-con="1"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="29"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="14">
           <div class="r-name" data-anchor><span>Phase Shot</span><span class="r-key">PhaseShot</span></div>
@@ -1354,7 +1225,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="quickening" style="--stripe:var(--epic)"
           data-hay="quickening quickening blood in the air. each kill makes you faster, stacking up to 10. every hit you take costs 4 stacks. quickening epic +9 move speed a stack, so ten stacks is +90 (+45%). a hit costs 4 stacks. blood"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="30"
           data-grp-family="blood" data-gord-family="7" data-ord-family="12">
           <div class="r-name" data-anchor><span>Quickening</span><span class="r-key">Quickening</span></div>
@@ -1364,7 +1234,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="raisedead" style="--stripe:var(--epic)"
           data-hay="raisedead raise dead they serve you now. 4% of the enemies you kill rise as allies and fight for you for 8 seconds. raise_dead epic a risen enemy with nothing to fight within 6.4 m walks back to you rather than standing where it rose. beast"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="31"
           data-grp-family="beast" data-gord-family="8" data-ord-family="17">
           <div class="r-name" data-anchor><span>Raise Dead</span><span class="r-key">RaiseDead</span></div>
@@ -1374,7 +1243,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="rampage" style="--stripe:var(--epic)"
           data-hay="rampage rampage feeding frenzy. each kill makes the orb 5% bigger and 4% stronger, up to 10. shrinks back between kills. rampage epic blood"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="32"
           data-grp-family="blood" data-gord-family="7" data-ord-family="13">
           <div class="r-name" data-anchor><span>Rampage</span><span class="r-key">Rampage</span></div>
@@ -1382,19 +1250,17 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-blood"><img class="fam-ic" src="assets/img/family/blood.png" alt=""><b style="color:rgb(242,64,77)">Blood</b></a></div><div class="tot"><code>rampage</code></div></div>
         </div>
       <div class="row" id="rampart" style="--stripe:var(--epic)"
-          data-hay="rampart rampart shield bash. every 8 seconds, your next throw also sends out a shockwave that hurls nearby enemies back and stuns them for 1 second. rampart epic guardian warden"
+          data-hay="rampart rampart shield bash. every 8 seconds, your next throw also sends out a shockwave that hurls nearby enemies back and stuns them for 1 second. rampart epic guardian"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="1"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="33"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="12">
           <div class="r-name" data-anchor><span>Rampart</span><span class="r-key">Rampart</span></div>
           <div class="r-desc">Shield bash. Every 8 seconds, your next throw also sends out a shockwave that hurls nearby enemies back and stuns them for 1 second.</div>
-          <div class="r-meta"><div class="dep flag"><b style="color:rgb(115,204,255)">WARDEN</b> only</div><div class="per">family <a href="builds.html#fam-guardian"><img class="fam-ic" src="assets/img/family/guardian.png" alt=""><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>rampart</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-guardian"><img class="fam-ic" src="assets/img/family/guardian.png" alt=""><b style="color:rgb(191,204,230)">Guardian</b></a></div><div class="tot"><code>rampart</code></div></div>
         </div>
       <div class="row" id="reservecharge" style="--stripe:var(--epic)"
           data-hay="reservecharge reserve charge held in reserve. your f ability holds 2 charges, and the cooldown keeps refilling the second while the first is still ready. epic your f ability holds two charges, and the cooldown refills one at a time whenever you are below two, so while one charge sits ready the other is already coming back. spending the spare mid-refill does not restart the clock. only offered once an ability is in the slot, and a newly swapped-in ability arrives with both charges. the ability bar shows the count after its name. wild"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="34"
           data-grp-family="wild" data-gord-family="11" data-ord-family="11">
           <div class="r-name" data-anchor><span>Reserve Charge</span><span class="r-key">ReserveCharge</span></div>
@@ -1404,7 +1270,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="resonance" style="--stripe:var(--epic)"
           data-hay="resonance resonance two notes, one chord. when both orbs strike the same enemy within 2s, the pair detonates for heavy damage. resonance epic arcane"
           data-stackable="0" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="35"
           data-grp-family="arcane" data-gord-family="6" data-ord-family="9">
           <div class="r-name" data-anchor><span>Resonance</span><span class="r-key">Resonance</span></div>
@@ -1414,7 +1279,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="ricochet" style="--stripe:var(--epic)"
           data-hay="ricochet ricochet elastic bounce. orb gains +100 speed every time it bounces off an enemy. ricochet epic kinetic"
           data-stackable="0" data-req="0" data-con="1"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="36"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="15">
           <div class="r-name" data-anchor><span>Ricochet</span><span class="r-key">Ricochet</span></div>
@@ -1424,7 +1288,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="rupture" style="--stripe:var(--epic)"
           data-hay="rupture rupture torn space. blinking detonates for 30 damage at both the place you left and the place you arrive. grows with the waves. rupture epic 30 is a wave-1 figure that grows with the waves. void"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="37"
           data-grp-family="void" data-gord-family="5" data-ord-family="6">
           <div class="r-name" data-anchor><span>Rupture</span><span class="r-key">Rupture</span></div>
@@ -1434,7 +1297,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="seeker" style="--stripe:var(--epic)"
           data-hay="seeker seeker predatory arc. after a direct hit the orb turns and flies at the next nearest enemy. +1 redirect per stack, up to 5. epic an epic to find, a rare to stack: once you own one, further copies are drawn at rare odds and in a rare frame. a redirect relaunches the orb at no less than 8 m/s and looks 9.2 m for its next target, up to five redirects a throw. precision"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="38"
           data-grp-family="precision" data-gord-family="1" data-ord-family="9">
           <div class="r-name" data-anchor><span>Seeker</span><span class="r-key">Seeker</span></div>
@@ -1442,29 +1304,26 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-precision"><img class="fam-ic" src="assets/img/family/precision.png" alt=""><b style="color:rgb(255,235,140)">Precision</b></a></div><div class="per">stackable · <b>cap 5</b></div><div class="per">further stacks drawn as <b style="color:var(--rare)">rare</b></div></div>
         </div>
       <div class="row" id="seismicimpact" style="--stripe:var(--epic)"
-          data-hay="seismicimpact seismic impact heavy landing. hits faster than 12 m/s send out a shockwave that deals 60% of the hit to everything nearby. seismic epic kinetic breaker"
+          data-hay="seismicimpact seismic impact heavy landing. hits faster than 12 m/s send out a shockwave that deals 60% of the hit to everything nearby. seismic epic kinetic"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="1"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="39"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="16">
           <div class="r-name" data-anchor><span>Seismic Impact</span><span class="r-key">SeismicImpact</span></div>
           <div class="r-desc">Heavy landing. Hits faster than 12 m/s send out a shockwave that deals 60% of the hit to everything nearby.</div>
-          <div class="r-meta"><div class="dep flag"><b style="color:rgb(255,158,77)">BREAKER</b> only</div><div class="per">family <a href="builds.html#fam-kinetic"><img class="fam-ic" src="assets/img/family/kinetic.png" alt=""><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>seismic</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-kinetic"><img class="fam-ic" src="assets/img/family/kinetic.png" alt=""><b style="color:rgb(242,199,89)">Kinetic</b></a></div><div class="tot"><code>seismic</code></div></div>
         </div>
       <div class="row" id="shadowstep" style="--stripe:var(--epic)"
-          data-hay="shadowstep shadowstep gone again. killing an enemy within 1.5s of blinking refunds the blink. shadowstep epic void stalker"
+          data-hay="shadowstep shadowstep gone again. killing an enemy within 1.5s of blinking refunds the blink. shadowstep epic void"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="1"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="40"
           data-grp-family="void" data-gord-family="5" data-ord-family="7">
           <div class="r-name" data-anchor><span>Shadowstep</span><span class="r-key">Shadowstep</span></div>
           <div class="r-desc">Gone again. Killing an enemy within 1.5s of blinking refunds the blink.</div>
-          <div class="r-meta"><div class="dep flag"><b style="color:rgb(191,153,255)">STALKER</b> only</div><div class="per">family <a href="builds.html#fam-void"><img class="fam-ic" src="assets/img/family/void.png" alt=""><b style="color:rgb(179,102,255)">Void</b></a></div><div class="tot"><code>shadowstep</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-void"><img class="fam-ic" src="assets/img/family/void.png" alt=""><b style="color:rgb(179,102,255)">Void</b></a></div><div class="tot"><code>shadowstep</code></div></div>
         </div>
       <div class="row" id="slingshot" style="--stripe:var(--epic)"
           data-hay="slingshot slingshot every second orb that returns to you fires straight back out at the nearest enemy with 50% more force. slingshot epic kinetic"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="41"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="17">
           <div class="r-name" data-anchor><span>Slingshot</span><span class="r-key">Slingshot</span></div>
@@ -1474,7 +1333,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="soullink" style="--stripe:var(--epic)"
           data-hay="soullink soul link bound together. 35% of every hit echoes onto the nearest other enemy. soul_link epic arcane"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="42"
           data-grp-family="arcane" data-gord-family="6" data-ord-family="10">
           <div class="r-name" data-anchor><span>Soul Link</span><span class="r-key">SoulLink</span></div>
@@ -1484,7 +1342,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="spendthrift" style="--stripe:var(--epic)"
           data-hay="spendthrift spendthrift money well spent. everything you buy in the shop makes you stronger for the rest of the run: +2% damage a purchase, up to +24%. spendthrift epic wild"
           data-stackable="0" data-req="0" data-con="1"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="43"
           data-grp-family="wild" data-gord-family="11" data-ord-family="12">
           <div class="r-name" data-anchor><span>Spendthrift</span><span class="r-key">Spendthrift</span></div>
@@ -1494,7 +1351,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="splitshot" style="--stripe:var(--epic)"
           data-hay="splitshot split shot twin trajectory. every throw splits in two; each half deals 60% damage, and they merge back when you catch or recall the orb. split_shot epic arcane"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="44"
           data-grp-family="arcane" data-gord-family="6" data-ord-family="11">
           <div class="r-name" data-anchor><span>Split Shot</span><span class="r-key">SplitShot</span></div>
@@ -1504,7 +1360,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="stoneskin" style="--stripe:var(--epic)"
           data-hay="stoneskin stoneskin skin like the old rocks. all damage you take is reduced by 20%. stoneskin epic guardian"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="45"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="13">
           <div class="r-name" data-anchor><span>Stoneskin</span><span class="r-key">Stoneskin</span></div>
@@ -1514,7 +1369,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="stormfront" style="--stripe:var(--epic)"
           data-hay="stormfront storm front thunder follows. the orb sheds a lightning bolt every 4 m it travels, striking the nearest enemy. storm_front epic storm"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="46"
           data-grp-family="storm" data-gord-family="4" data-ord-family="7">
           <div class="r-name" data-anchor><span>Storm Front</span><span class="r-key">StormFront</span></div>
@@ -1522,19 +1376,17 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <div class="r-meta"><div class="per">family <a href="builds.html#fam-storm"><img class="fam-ic" src="assets/img/family/storm.png" alt=""><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="tot"><code>storm_front</code></div></div>
         </div>
       <div class="row" id="tempestheart" style="--stripe:var(--epic)"
-          data-hay="tempestheart tempest heart eye of the storm. every 4th hit calls lightning down on the target, arcing to 3 more enemies for 80% of the hit. tempest_heart epic storm stormcaller"
+          data-hay="tempestheart tempest heart eye of the storm. every 4th hit calls lightning down on the target, arcing to 3 more enemies for 80% of the hit. tempest_heart epic storm"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="1"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="47"
           data-grp-family="storm" data-gord-family="4" data-ord-family="8">
           <div class="r-name" data-anchor><span>Tempest Heart</span><span class="r-key">TempestHeart</span></div>
           <div class="r-desc">Eye of the storm. Every 4th hit calls lightning down on the target, arcing to 3 more enemies for 80% of the hit.</div>
-          <div class="r-meta"><div class="dep flag"><b style="color:rgb(140,217,255)">STORMCALLER</b> only</div><div class="per">family <a href="builds.html#fam-storm"><img class="fam-ic" src="assets/img/family/storm.png" alt=""><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="tot"><code>tempest_heart</code></div></div>
+          <div class="r-meta"><div class="per">family <a href="builds.html#fam-storm"><img class="fam-ic" src="assets/img/family/storm.png" alt=""><b style="color:rgb(153,179,255)">Storm</b></a></div><div class="tot"><code>tempest_heart</code></div></div>
         </div>
       <div class="row" id="tether" style="--stripe:var(--epic)"
           data-hay="tether tether live wire. while recalling, the cord between you and the orb cuts and slows everything it crosses. tether epic 24 damage every 0.36s to everything on the cord, 67 a second, and the slow is ×0.70 for 0.8s. storm"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="48"
           data-grp-family="storm" data-gord-family="4" data-ord-family="9">
           <div class="r-name" data-anchor><span>Tether</span><span class="r-key">Tether</span></div>
@@ -1544,7 +1396,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="vampireorb" style="--stripe:var(--epic)"
           data-hay="vampireorb vampire orb insatiable hunger. life steal heals +1 extra hp per kill per stack. epic blood"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="49"
           data-grp-family="blood" data-gord-family="7" data-ord-family="14">
           <div class="r-name" data-anchor><span>Vampire Orb</span><span class="r-key">VampireOrb</span></div>
@@ -1554,7 +1405,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="voidpulse" style="--stripe:var(--epic)"
           data-hay="voidpulse void pulse rhythmic void energy. orb releases a damage ring every 1.2s. void_pulse epic void"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="50"
           data-grp-family="void" data-gord-family="5" data-ord-family="8">
           <div class="r-name" data-anchor><span>Void Pulse</span><span class="r-key">VoidPulse</span></div>
@@ -1564,7 +1414,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="voidrange" style="--stripe:var(--epic)"
           data-hay="voidrange void reach expanding void. pulse ring radius +0.4 m on each release. epic void"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="51"
           data-grp-family="void" data-gord-family="5" data-ord-family="9">
           <div class="r-name" data-anchor><span>Void Reach</span><span class="r-key">VoidRange</span></div>
@@ -1574,7 +1423,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="voidfrequency" style="--stripe:var(--epic)"
           data-hay="voidfrequency void tempo faster pulsing. void ring fires 0.2s sooner each stack. epic void"
           data-stackable="1" data-req="1" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="52"
           data-grp-family="void" data-gord-family="5" data-ord-family="10">
           <div class="r-name" data-anchor><span>Void Tempo</span><span class="r-key">VoidFrequency</span></div>
@@ -1584,7 +1432,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="volatilecore" style="--stripe:var(--epic)"
           data-hay="volatilecore volatile core delayed charge. the first enemy a recalled orb hits on its way back sets it off: 20 damage in a burst around it. grows with the waves. volatile_core epic 20 is a wave-1 figure that grows with the waves. it goes off on the first enemy the returning orb hits, once a recall; a recall that hits nothing does nothing. a boomerang return sets it off too. fire"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="53"
           data-grp-family="fire" data-gord-family="2" data-ord-family="8">
           <div class="r-name" data-anchor><span>Volatile Core</span><span class="r-key">VolatileCore</span></div>
@@ -1594,7 +1441,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="ward" style="--stripe:var(--epic)"
           data-hay="ward ward a shell of old magic. absorbs one hit completely, then rebuilds itself over 25 seconds. ward epic guardian"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="54"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="14">
           <div class="r-name" data-anchor><span>Ward</span><span class="r-key">Ward</span></div>
@@ -1604,7 +1450,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="whiteout" style="--stripe:var(--epic)"
           data-hay="whiteout whiteout blizzard. every 10th enemy you freeze chills every enemy within 14 m for 2s. whiteout epic frost"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="55"
           data-grp-family="frost" data-gord-family="3" data-ord-family="9">
           <div class="r-name" data-anchor><span>Whiteout</span><span class="r-key">Whiteout</span></div>
@@ -1614,7 +1459,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="wreckingball" style="--stripe:var(--epic)"
           data-hay="wreckingball wrecking ball demolition. the orb doubles in size and damage, but flies and comes back 20% slower. epic the 20% slow applies to the throw and the recall alike (a recall tops out at 6.1 m/s instead of 7.6). kinetic"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="epic" data-gord-rarity="3" data-ord-rarity="56"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="18">
           <div class="r-name" data-anchor><span>Wrecking Ball</span><span class="r-key">WreckingBall</span></div>
@@ -1625,7 +1469,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="angelcompanion" style="--stripe:var(--legendary)"
           data-hay="angelcompanion angel companion a guardian angel joins you. its lances of light pierce every enemy in a line and judge them: judged enemies hit you 20% softer, and when one dies, a pillar of light smites everything around it. grows with the waves. legendary its numbers above are read from the game. hovers over your right shoulder whichever way you face. judgement humbles — a judged enemy hits you softer, its shots included — and smites: when a judged enemy dies, a pillar of light hits everything around it and judges them too, so a kill in a judged crowd carries on through it. the demon is the damage pick of the pair and the angel the one that keeps you alive. beast"
           data-stackable="0" data-req="0" data-con="1"
-          data-cls="0"
           data-grp-rarity="legendary" data-gord-rarity="4" data-ord-rarity="0"
           data-grp-family="beast" data-gord-family="8" data-ord-family="18">
           <div class="r-name" data-anchor><span>Angel Companion</span><span class="r-key">AngelCompanion</span></div>
@@ -1635,7 +1478,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="blackholecore" style="--stripe:var(--legendary)"
           data-hay="blackholecore black hole event horizon. the orb drags everything within 3 m into itself and grinds what it catches. each stack widens the pull by 1.1 m. legendary stacks up to three: 3 m at one card, 4.1 m at two, 5.2 m at three. the pull and the grind are as strong at the centre at every size and fade to nothing at the rim, so a wider well also pulls harder at any given distance, not just further. void"
           data-stackable="1" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="legendary" data-gord-rarity="4" data-ord-rarity="1"
           data-grp-family="void" data-gord-family="5" data-ord-family="11">
           <div class="r-name" data-anchor><span>Black Hole</span><span class="r-key">BlackHoleCore</span></div>
@@ -1645,7 +1487,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="demoncompanion" style="--stripe:var(--legendary)"
           data-hay="demoncompanion demon companion a cursed imp binds to you. its claws rip through whole groups and mark them to take 75% more damage from everything. grows with the waves. legendary its numbers above are read from the game. its damage rides the enemy health curve, every swipe rakes the enemies around its target as well, and the curse multiplies damage from every source, the orb included; curse potency tops out at ×2.15. it goes for the nearest enemy that is not cursed yet, changing target the moment its swipe marks one; only when everything in reach is cursed does it renew the curse closest to running out. it walks round trees, not through them. beast"
           data-stackable="0" data-req="0" data-con="1"
-          data-cls="0"
           data-grp-rarity="legendary" data-gord-rarity="4" data-ord-rarity="2"
           data-grp-family="beast" data-gord-family="8" data-ord-family="19">
           <div class="r-name" data-anchor><span>Demon Companion</span><span class="r-key">DemonCompanion</span></div>
@@ -1655,7 +1496,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="dragonshoard" style="--stripe:var(--legendary)"
           data-hay="dragonshoard dragon's hoard sleep on it. the more essence you hold, the harder you hit -- up to +40% damage. weighed against shop prices, so late-game riches count no more than early savings. dragons_hoard legendary wild"
           data-stackable="0" data-req="0" data-con="1"
-          data-cls="0"
           data-grp-rarity="legendary" data-gord-rarity="4" data-ord-rarity="3"
           data-grp-family="wild" data-gord-family="11" data-ord-family="13">
           <div class="r-name" data-anchor><span>Dragon's Hoard</span><span class="r-key">DragonsHoard</span></div>
@@ -1665,7 +1505,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="secondwind" style="--stripe:var(--legendary)"
           data-hay="secondwind second wind refuse to fall. a killing blow instead puts you back on 30 hp, untouchable for 3 seconds, and blasts the field. recharges every 3 waves. second_wind legendary it puts you back on 30 hp and makes you invulnerable for 3 seconds: no damage and no roots, shown as a golden shell that flickers in its last second. the window is its own timer, so the evil wizard's hand, which wipes your ordinary iframes when it grabs you, cannot cut it short. guardian"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="legendary" data-gord-rarity="4" data-ord-rarity="4"
           data-grp-family="guardian" data-gord-family="9" data-ord-family="15">
           <div class="r-name" data-anchor><span>Second Wind</span><span class="r-key">SecondWind</span></div>
@@ -1675,7 +1514,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="twinorbs" style="--stripe:var(--legendary)"
           data-hay="twinorbs twin orbs two of everything. a second orb joins you, and a single swing throws both. legendary the second orb matches the first's size, heavy orb included, and drops overload when it ends. kinetic"
           data-stackable="0" data-req="0" data-con="0"
-          data-cls="0"
           data-grp-rarity="legendary" data-gord-rarity="4" data-ord-rarity="5"
           data-grp-family="kinetic" data-gord-family="0" data-ord-family="19">
           <div class="r-name" data-anchor><span>Twin Orbs</span><span class="r-key">TwinOrbs</span></div>
@@ -1707,16 +1545,16 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <div class="scroll"><table>
       <thead><tr><th>Family</th><th>Cards</th><th>Which</th></tr></thead>
       <tbody>
-        <tr id="family-kinetic"><td><a href="builds.html#fam-kinetic"><img class="fam-ic big" src="assets/img/family/kinetic.png" alt=""><b style="color:rgb(242,199,89)">Kinetic</b></a><div class="tot">The orb itself: its speed, size, bounces, throws and catches.</div></td><td>20</td><td><a href="#orbdamage" style="color:var(--common)">Striking Force</a> · <a href="#orbspeed" style="color:var(--common)">Whiplash</a> · <a href="#carom" style="color:var(--uncommon)">Carom</a> · <a href="#orbsize" style="color:var(--uncommon)">Heavy Orb</a> · <a href="#lightcore" style="color:var(--uncommon)">Light Core</a> · <a href="#magneticgrip" style="color:var(--uncommon)">Magnetic Grip</a> · <a href="#pushback" style="color:var(--uncommon)">Pushback</a> · <a href="#runningthrow" style="color:var(--uncommon)">Running Throw</a> · <a href="#boomerang" style="color:var(--rare)">Boomerang</a> · <a href="#deadstop" style="color:var(--rare)">Dead Stop</a> · <a href="#bowling" style="color:var(--epic)">Bowling</a> <span class="tot">(BREAKER only)</span> · <a href="#heavycore" style="color:var(--epic)">Heavy Core</a> · <a href="#inertiabattery" style="color:var(--epic)">Inertia Battery</a> · <a href="#juggernaut" style="color:var(--epic)">Juggernaut</a> · <a href="#phaseshot" style="color:var(--epic)">Phase Shot</a> · <a href="#ricochet" style="color:var(--epic)">Ricochet</a> · <a href="#seismicimpact" style="color:var(--epic)">Seismic Impact</a> <span class="tot">(BREAKER only)</span> · <a href="#slingshot" style="color:var(--epic)">Slingshot</a> · <a href="#wreckingball" style="color:var(--epic)">Wrecking Ball</a> · <a href="#twinorbs" style="color:var(--legendary)">Twin Orbs</a></td></tr>
+        <tr id="family-kinetic"><td><a href="builds.html#fam-kinetic"><img class="fam-ic big" src="assets/img/family/kinetic.png" alt=""><b style="color:rgb(242,199,89)">Kinetic</b></a><div class="tot">The orb itself: its speed, size, bounces, throws and catches.</div></td><td>20</td><td><a href="#orbdamage" style="color:var(--common)">Striking Force</a> · <a href="#orbspeed" style="color:var(--common)">Whiplash</a> · <a href="#carom" style="color:var(--uncommon)">Carom</a> · <a href="#orbsize" style="color:var(--uncommon)">Heavy Orb</a> · <a href="#lightcore" style="color:var(--uncommon)">Light Core</a> · <a href="#magneticgrip" style="color:var(--uncommon)">Magnetic Grip</a> · <a href="#pushback" style="color:var(--uncommon)">Pushback</a> · <a href="#runningthrow" style="color:var(--uncommon)">Running Throw</a> · <a href="#boomerang" style="color:var(--rare)">Boomerang</a> · <a href="#deadstop" style="color:var(--rare)">Dead Stop</a> · <a href="#bowling" style="color:var(--epic)">Bowling</a> · <a href="#heavycore" style="color:var(--epic)">Heavy Core</a> · <a href="#inertiabattery" style="color:var(--epic)">Inertia Battery</a> · <a href="#juggernaut" style="color:var(--epic)">Juggernaut</a> · <a href="#phaseshot" style="color:var(--epic)">Phase Shot</a> · <a href="#ricochet" style="color:var(--epic)">Ricochet</a> · <a href="#seismicimpact" style="color:var(--epic)">Seismic Impact</a> · <a href="#slingshot" style="color:var(--epic)">Slingshot</a> · <a href="#wreckingball" style="color:var(--epic)">Wrecking Ball</a> · <a href="#twinorbs" style="color:var(--legendary)">Twin Orbs</a></td></tr>
         <tr id="family-precision"><td><a href="builds.html#fam-precision"><img class="fam-ic big" src="assets/img/family/precision.png" alt=""><b style="color:rgb(255,235,140)">Precision</b></a><div class="tot">Crits, long shots and executions: every hit chosen.</div></td><td>10</td><td><a href="#marksman" style="color:var(--uncommon)">Marksman</a> · <a href="#trickshot" style="color:var(--uncommon)">Trick Shot</a> · <a href="#chargedshot" style="color:var(--rare)">Charged Shot</a> · <a href="#criticalmass" style="color:var(--rare)">Critical Mass</a> · <a href="#hominginstinct" style="color:var(--rare)">Homing Instinct</a> · <a href="#pin" style="color:var(--rare)">Pin</a> · <a href="#sniperseye" style="color:var(--rare)">Sniper's Eye</a> · <a href="#deadeye" style="color:var(--epic)">Deadeye</a> · <a href="#executioner" style="color:var(--epic)">Executioner</a> · <a href="#seeker" style="color:var(--epic)">Seeker</a></td></tr>
         <tr id="family-fire"><td><a href="builds.html#fam-fire"><img class="fam-ic big" src="assets/img/family/fire.png" alt=""><b style="color:rgb(255,115,51)">Fire</b></a><div class="tot">Burning, explosions and craters.</div></td><td>9</td><td><a href="#orbfire" style="color:var(--uncommon)">Blazing Trail</a> · <a href="#firewalk" style="color:var(--uncommon)">Firewalk</a> · <a href="#pyre" style="color:var(--uncommon)">Pyre</a> · <a href="#blastradius" style="color:var(--rare)">Blast Radius</a> · <a href="#kindling" style="color:var(--rare)">Kindling</a> · <a href="#aftershock" style="color:var(--epic)">Aftershock</a> · <a href="#comet" style="color:var(--epic)">Comet</a> · <a href="#cremation" style="color:var(--epic)">Cremation</a> · <a href="#volatilecore" style="color:var(--epic)">Volatile Core</a></td></tr>
         <tr id="family-frost"><td><a href="builds.html#fam-frost"><img class="fam-ic big" src="assets/img/family/frost.png" alt=""><b style="color:rgb(140,217,255)">Frost</b></a><div class="tot">Chills, freezes, and what shatters afterwards.</div></td><td>10</td><td><a href="#coldsnap" style="color:var(--uncommon)">Cold Snap</a> · <a href="#freezingshot" style="color:var(--uncommon)">Freezing Shot</a> · <a href="#frozencourt" style="color:var(--uncommon)">Frozen Court</a> · <a href="#hoarfrost" style="color:var(--uncommon)">Hoarfrost</a> · <a href="#frostbite" style="color:var(--rare)">Frostbite</a> · <a href="#leechfield" style="color:var(--rare)">Leech Field</a> · <a href="#permafrost" style="color:var(--rare)">Permafrost</a> · <a href="#shatter" style="color:var(--rare)">Shatter</a> · <a href="#absolutezero" style="color:var(--epic)">Absolute Zero</a> · <a href="#whiteout" style="color:var(--epic)">Whiteout</a></td></tr>
-        <tr id="family-storm"><td><a href="builds.html#fam-storm"><img class="fam-ic big" src="assets/img/family/storm.png" alt=""><b style="color:rgb(153,179,255)">Storm</b></a><div class="tot">Lightning that arcs from one body to the next.</div></td><td>10</td><td><a href="#capacitor" style="color:var(--uncommon)">Capacitor</a> · <a href="#thunderhead" style="color:var(--uncommon)">Thunderhead</a> · <a href="#chainlightning" style="color:var(--rare)">Chain Lightning</a> · <a href="#staticcharge" style="color:var(--rare)">Static Charge</a> · <a href="#staticfield" style="color:var(--rare)">Static Field</a> · <a href="#superconductor" style="color:var(--rare)">Superconductor</a> · <a href="#thunderclap" style="color:var(--rare)">Thunderclap</a> · <a href="#stormfront" style="color:var(--epic)">Storm Front</a> · <a href="#tempestheart" style="color:var(--epic)">Tempest Heart</a> <span class="tot">(STORMCALLER only)</span> · <a href="#tether" style="color:var(--epic)">Tether</a></td></tr>
-        <tr id="family-void"><td><a href="builds.html#fam-void"><img class="fam-ic big" src="assets/img/family/void.png" alt=""><b style="color:rgb(179,102,255)">Void</b></a><div class="tot">Gravity, time, pulses, and stepping through space.</div></td><td>12</td><td><a href="#pocket" style="color:var(--uncommon)">Pocket</a> · <a href="#wormhole" style="color:var(--uncommon)">Wormhole</a> · <a href="#riftstep" style="color:var(--rare)">Rift Step</a> · <a href="#temporalrift" style="color:var(--rare)">Temporal Rift</a> · <a href="#deathnova" style="color:var(--epic)">Death Nova</a> · <a href="#eventhorizon" style="color:var(--epic)">Event Horizon</a> · <a href="#rupture" style="color:var(--epic)">Rupture</a> · <a href="#shadowstep" style="color:var(--epic)">Shadowstep</a> <span class="tot">(STALKER only)</span> · <a href="#voidpulse" style="color:var(--epic)">Void Pulse</a> · <a href="#voidrange" style="color:var(--epic)">Void Reach</a> · <a href="#voidfrequency" style="color:var(--epic)">Void Tempo</a> · <a href="#blackholecore" style="color:var(--legendary)">Black Hole</a></td></tr>
+        <tr id="family-storm"><td><a href="builds.html#fam-storm"><img class="fam-ic big" src="assets/img/family/storm.png" alt=""><b style="color:rgb(153,179,255)">Storm</b></a><div class="tot">Lightning that arcs from one body to the next.</div></td><td>10</td><td><a href="#capacitor" style="color:var(--uncommon)">Capacitor</a> · <a href="#thunderhead" style="color:var(--uncommon)">Thunderhead</a> · <a href="#chainlightning" style="color:var(--rare)">Chain Lightning</a> · <a href="#staticcharge" style="color:var(--rare)">Static Charge</a> · <a href="#staticfield" style="color:var(--rare)">Static Field</a> · <a href="#superconductor" style="color:var(--rare)">Superconductor</a> · <a href="#thunderclap" style="color:var(--rare)">Thunderclap</a> · <a href="#stormfront" style="color:var(--epic)">Storm Front</a> · <a href="#tempestheart" style="color:var(--epic)">Tempest Heart</a> · <a href="#tether" style="color:var(--epic)">Tether</a></td></tr>
+        <tr id="family-void"><td><a href="builds.html#fam-void"><img class="fam-ic big" src="assets/img/family/void.png" alt=""><b style="color:rgb(179,102,255)">Void</b></a><div class="tot">Gravity, time, pulses, and stepping through space.</div></td><td>12</td><td><a href="#pocket" style="color:var(--uncommon)">Pocket</a> · <a href="#wormhole" style="color:var(--uncommon)">Wormhole</a> · <a href="#riftstep" style="color:var(--rare)">Rift Step</a> · <a href="#temporalrift" style="color:var(--rare)">Temporal Rift</a> · <a href="#deathnova" style="color:var(--epic)">Death Nova</a> · <a href="#eventhorizon" style="color:var(--epic)">Event Horizon</a> · <a href="#rupture" style="color:var(--epic)">Rupture</a> · <a href="#shadowstep" style="color:var(--epic)">Shadowstep</a> · <a href="#voidpulse" style="color:var(--epic)">Void Pulse</a> · <a href="#voidrange" style="color:var(--epic)">Void Reach</a> · <a href="#voidfrequency" style="color:var(--epic)">Void Tempo</a> · <a href="#blackholecore" style="color:var(--legendary)">Black Hole</a></td></tr>
         <tr id="family-arcane"><td><a href="builds.html#fam-arcane"><img class="fam-ic big" src="assets/img/family/arcane.png" alt=""><b style="color:rgb(140,242,242)">Arcane</b></a><div class="tot">Echoes and copies: mirror shards, phantoms, links.</div></td><td>12</td><td><a href="#glint" style="color:var(--uncommon)">Glint</a> · <a href="#imprint" style="color:var(--uncommon)">Imprint</a> · <a href="#fracture" style="color:var(--rare)">Fracture</a> · <a href="#orbitmode" style="color:var(--rare)">Mirror Ball</a> · <a href="#orbitrange" style="color:var(--rare)">Wide Orbit</a> · <a href="#cursedglass" style="color:var(--epic)">Cursed Glass</a> · <a href="#orbitorbs" style="color:var(--epic)">Extra Orbiter</a> · <a href="#orbitspeed" style="color:var(--epic)">Faster Orbit</a> · <a href="#phantomcopies" style="color:var(--epic)">Phantom Copies</a> · <a href="#resonance" style="color:var(--epic)">Resonance</a> · <a href="#soullink" style="color:var(--epic)">Soul Link</a> · <a href="#splitshot" style="color:var(--epic)">Split Shot</a></td></tr>
         <tr id="family-blood"><td><a href="builds.html#fam-blood"><img class="fam-ic big" src="assets/img/family/blood.png" alt=""><b style="color:rgb(242,64,77)">Blood</b></a><div class="tot">Kills, bleeding, and power drawn from your own wounds.</div></td><td>15</td><td><a href="#bloodrush" style="color:var(--uncommon)">Bloodrush</a> · <a href="#lifesteal" style="color:var(--uncommon)">Life Steal</a> · <a href="#vampiricaura" style="color:var(--uncommon)">Vampiric Aura</a> · <a href="#adrenaline" style="color:var(--rare)">Adrenaline</a> · <a href="#berserkercore" style="color:var(--rare)">Berserker Core</a> · <a href="#bloodfeast" style="color:var(--rare)">Blood Feast</a> · <a href="#bloodmoney" style="color:var(--rare)">Blood Money</a> · <a href="#hemorrhage" style="color:var(--rare)">Hemorrhage</a> · <a href="#soulharvest" style="color:var(--rare)">Soul Harvest</a> · <a href="#bloodpact" style="color:var(--epic)">Blood Pact</a> · <a href="#bloodprice" style="color:var(--epic)">Blood Price</a> · <a href="#bleed" style="color:var(--epic)">Open Wound</a> · <a href="#quickening" style="color:var(--epic)">Quickening</a> · <a href="#rampage" style="color:var(--epic)">Rampage</a> · <a href="#vampireorb" style="color:var(--epic)">Vampire Orb</a></td></tr>
         <tr id="family-beast"><td><a href="builds.html#fam-beast"><img class="fam-ic big" src="assets/img/family/beast.png" alt=""><b style="color:rgb(153,230,115)">Beast</b></a><div class="tot">Companions that fight beside you.</div></td><td>20</td><td><a href="#bonded" style="color:var(--uncommon)">Bonded</a> · <a href="#whistle" style="color:var(--uncommon)">Whistle</a> · <a href="#angeldamage" style="color:var(--rare)">Angel's Wrath</a> · <a href="#demondamage" style="color:var(--rare)">Demon Claws</a> · <a href="#goatcompanion" style="color:var(--rare)">Goat Companion</a> · <a href="#goatfrequency" style="color:var(--rare)">Headstrong</a> · <a href="#angeljudgement" style="color:var(--rare)">Lasting Judgement</a> · <a href="#demoncurse" style="color:var(--rare)">Lingering Curse</a> · <a href="#owlfrequency" style="color:var(--rare)">Owl Swiftness</a> · <a href="#owldamage" style="color:var(--rare)">Owl Talons</a> · <a href="#owlrange" style="color:var(--rare)">Owl Vision</a> · <a href="#packleader" style="color:var(--rare)">Pack Leader</a> · <a href="#goatdamage" style="color:var(--rare)">Sharpened Horns</a> · <a href="#goatdaze" style="color:var(--epic)">Concussion</a> · <a href="#demonpotency" style="color:var(--epic)">Curse Potency</a> · <a href="#angelpotency" style="color:var(--epic)">Divine Potency</a> · <a href="#owlcompanion" style="color:var(--epic)">Owl Companion</a> · <a href="#raisedead" style="color:var(--epic)">Raise Dead</a> · <a href="#angelcompanion" style="color:var(--legendary)">Angel Companion</a> · <a href="#demoncompanion" style="color:var(--legendary)">Demon Companion</a></td></tr>
-        <tr id="family-guardian"><td><a href="builds.html#fam-guardian"><img class="fam-ic big" src="assets/img/family/guardian.png" alt=""><b style="color:rgb(191,204,230)">Guardian</b></a><div class="tot">Health, armour, shields and retaliation.</div></td><td>16</td><td><a href="#wizardhealth" style="color:var(--common)">Vitality</a> · <a href="#ironskin" style="color:var(--uncommon)">Iron Skin</a> · <a href="#safehands" style="color:var(--uncommon)">Safe Hands</a> · <a href="#aegis" style="color:var(--rare)">Aegis</a> · <a href="#kineticplating" style="color:var(--rare)">Kinetic Plating</a> · <a href="#overflow" style="color:var(--rare)">Overflow</a> · <a href="#regrowth" style="color:var(--rare)">Regrowth</a> · <a href="#retribution" style="color:var(--rare)">Retribution</a> <span class="tot">(WARDEN only)</span> · <a href="#secondheart" style="color:var(--rare)">Second Heart</a> · <a href="#thornmail" style="color:var(--rare)">Thornmail</a> · <a href="#bastion" style="color:var(--epic)">Bastion</a> <span class="tot">(WARDEN only)</span> · <a href="#laststand" style="color:var(--epic)">Last Stand</a> · <a href="#rampart" style="color:var(--epic)">Rampart</a> <span class="tot">(WARDEN only)</span> · <a href="#stoneskin" style="color:var(--epic)">Stoneskin</a> · <a href="#ward" style="color:var(--epic)">Ward</a> · <a href="#secondwind" style="color:var(--legendary)">Second Wind</a></td></tr>
+        <tr id="family-guardian"><td><a href="builds.html#fam-guardian"><img class="fam-ic big" src="assets/img/family/guardian.png" alt=""><b style="color:rgb(191,204,230)">Guardian</b></a><div class="tot">Health, armour, shields and retaliation.</div></td><td>16</td><td><a href="#wizardhealth" style="color:var(--common)">Vitality</a> · <a href="#ironskin" style="color:var(--uncommon)">Iron Skin</a> · <a href="#safehands" style="color:var(--uncommon)">Safe Hands</a> · <a href="#aegis" style="color:var(--rare)">Aegis</a> · <a href="#kineticplating" style="color:var(--rare)">Kinetic Plating</a> · <a href="#overflow" style="color:var(--rare)">Overflow</a> · <a href="#regrowth" style="color:var(--rare)">Regrowth</a> · <a href="#retribution" style="color:var(--rare)">Retribution</a> · <a href="#secondheart" style="color:var(--rare)">Second Heart</a> · <a href="#thornmail" style="color:var(--rare)">Thornmail</a> · <a href="#bastion" style="color:var(--epic)">Bastion</a> · <a href="#laststand" style="color:var(--epic)">Last Stand</a> · <a href="#rampart" style="color:var(--epic)">Rampart</a> · <a href="#stoneskin" style="color:var(--epic)">Stoneskin</a> · <a href="#ward" style="color:var(--epic)">Ward</a> · <a href="#secondwind" style="color:var(--legendary)">Second Wind</a></td></tr>
         <tr id="family-combo"><td><a href="builds.html#fam-combo"><img class="fam-ic big" src="assets/img/family/combo.png" alt=""><b style="color:rgb(255,140,217)">Combo</b></a><div class="tot">Cards that feed on, or pay out, the combo meter.</div></td><td>12</td><td><a href="#backhand" style="color:var(--uncommon)">Backhand</a> · <a href="#metronome" style="color:var(--uncommon)">Metronome</a> · <a href="#showboat" style="color:var(--uncommon)">Showboat</a> · <a href="#tipjar" style="color:var(--uncommon)">Tip Jar</a> · <a href="#combobreaker" style="color:var(--rare)">Combo Breaker</a> · <a href="#crescendo" style="color:var(--rare)">Crescendo</a> · <a href="#multiplier" style="color:var(--rare)">Multiplier</a> · <a href="#onthebeat" style="color:var(--rare)">On the Beat</a> · <a href="#overclock" style="color:var(--rare)">Overclock</a> · <a href="#stagefright" style="color:var(--rare)">Stage Fright</a> · <a href="#cashout" style="color:var(--epic)">Cash Out</a> · <a href="#momentum" style="color:var(--epic)">Momentum</a></td></tr>
         <tr id="family-wild"><td><a href="builds.html#fam-wild"><img class="fam-ic big" src="assets/img/family/wild.png" alt=""><b style="color:rgb(204,204,179)">Wild</b></a><div class="tot">The unaligned: speed, economy, and deals with a catch.</div></td><td>14</td><td><a href="#deeppockets" style="color:var(--common)">Deep Pockets</a> · <a href="#wizardspeed" style="color:var(--common)">Swift Steps</a> · <a href="#bountyhunter" style="color:var(--uncommon)">Bounty Hunter</a> · <a href="#featherweight" style="color:var(--uncommon)">Featherweight</a> · <a href="#fortune" style="color:var(--uncommon)">Fortune</a> · <a href="#jackpot" style="color:var(--uncommon)">Jackpot</a> · <a href="#curator" style="color:var(--rare)">Curator</a> · <a href="#interest" style="color:var(--rare)">Interest</a> · <a href="#tithe" style="color:var(--rare)">Tithe</a> · <a href="#contract" style="color:var(--epic)">Contract</a> · <a href="#essencenova" style="color:var(--epic)">Essence Nova</a> · <a href="#reservecharge" style="color:var(--epic)">Reserve Charge</a> · <a href="#spendthrift" style="color:var(--epic)">Spendthrift</a> · <a href="#dragonshoard" style="color:var(--legendary)">Dragon's Hoard</a></td></tr>
       </tbody>

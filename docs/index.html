@@ -34,7 +34,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <a href="cards.html"><em>🂠</em>Upgrade cards</a>
         <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
         <a href="abilities.html"><em>✦</em>Abilities</a>
-        <a href="classes.html"><em>⚑</em>Classes</a>
         <a href="waves.html"><em>≋</em>Waves</a>
         <a href="achievements.html"><em>★</em>Achievements</a>
         <a href="systems.html"><em>⚙</em>Systems</a>
@@ -52,7 +51,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="count"><b>23</b><span>enemies</span></div>
       <div class="count"><b>160</b><span>cards</span></div>
       <div class="count"><b>12</b><span>abilities</span></div>
-      <div class="count"><b>4</b><span>classes</span></div>
       <div class="count"><b>8</b><span>modifiers</span></div>
       <div class="count"><b>6</b><span>special waves</span></div>
       <div class="count"><b>120</b><span>achievements</span></div>
@@ -64,9 +62,8 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <a class="tile" href="bestiary.html"><b>☠ Bestiary</b><span>Every enemy, what drives it, and when it starts appearing.</span></a>
       <a class="tile" href="bosses.html"><b>♛ Bosses</b><span>The three boss fights, attack by attack.</span></a>
       <a class="tile" href="cards.html"><b>🂠 Upgrade cards</b><span>All 160 upgrade cards, with stack caps, prerequisites and exclusions.</span></a>
-      <a class="tile" href="builds.html"><b>✧ Builds &amp; shop</b><span>Families, build names, curses, class cards, and the Essence Shop.</span></a>
+      <a class="tile" href="builds.html"><b>✧ Builds &amp; shop</b><span>The family you start with, traits, build names, curses, and the Essence Shop.</span></a>
       <a class="tile" href="abilities.html"><b>✦ Abilities</b><span>The twelve F-key abilities, and how they measured against each other.</span></a>
-      <a class="tile" href="classes.html"><b>⚑ Classes</b><span>The four starting classes, and the benchmark that set them.</span></a>
       <a class="tile" href="waves.html"><b>≋ Waves</b><span>Difficulty, modifiers, special waves, elites and the boss rotation.</span></a>
       <a class="tile" href="achievements.html"><b>★ Achievements</b><span>All 120, including the hidden ones.</span></a>
       <a class="tile" href="systems.html"><b>⚙ Systems</b><span>Damage, drops, score and sound — how the machinery fits together.</span></a>
@@ -94,8 +91,8 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         own in a family makes that family's other cards likelier to turn up — so an early lean
         compounds into an identity. Hold <b>3, 5 and 7</b> different cards of one family and its three
         <a href="builds.html#traits">traits</a> switch on, tracked in a column on the right of the
-        screen; a card that would complete one says so above it. Each class has a few cards only
-        it is ever offered. A
+        screen; a card that would complete one says so above it. A run starts with one card from
+        the family you <a href="builds.html#start">pick on the menu</a>. A
         legendary bought in the shop comes with a <b>curse</b>, printed on the card before you take it. The run ends
         with your build's name — the leading family's adjective and the runner-up's noun, a
         <i>Frost Juggernaut</i> — and each build name keeps its own records.</p>
@@ -151,7 +148,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <tr><td>Elite</td><td>A crowned ordinary enemy with boosted stats and a far better drop.</td></tr>
         <tr><td>Modifier</td><td>A named rule change applied to a single wave, announced by a banner.</td></tr>
         <tr><td>Special wave</td><td>A wave built from a hand-picked roster instead of the usual weighted table.</td></tr>
-        <tr><td>Class</td><td>Picked once at the start of a run. Biases which cards you are offered, and opens with one signature card.</td></tr>
+        <tr><td>Starting family</td><td>Picked on the circle before a run. The run starts with one of that family's weakest cards.</td></tr>
         <tr><td>Utility</td><td>The F-key ability. Sold only in the Essence Shop, one a visit; you hold one at a time.</td></tr>
         <tr><td>Stack cap</td><td>How many times a repeatable card can be taken. At the cap it stops being offered.</td></tr>
         <tr><td>Banish</td><td>Removing a card from the pool for the rest of the run, rather than rerolling the screen.</td></tr>

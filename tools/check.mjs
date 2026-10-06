@@ -97,7 +97,6 @@ const cover = (list, label, nameOf) => {
 cover(D.upgrades, "cards", (u) => u.n);
 cover(D.achievements, "achievements", (a) => a.n);
 cover(D.abilities, "abilities", (a) => a.n);
-cover(D.archetypes, "classes", (a) => a.n);
 cover(D.compositions, "designed waves", (c) => c.n);
 cover(D.modifiers, "modifiers", (m) => m.n);
 cover(D.enemies, "enemies", (e) => e.x.boss_name || e.k);

@@ -203,7 +203,6 @@ local function build()
     local WaveModifier   = require("Utilities/systems/WaveModifier")
     local WaveComposition= require("Utilities/systems/WaveComposition")
     local WaveManager    = require("Utilities/systems/WaveManager")
-    local Archetype      = require("Utilities/systems/Archetype")
     local Difficulty     = require("Utilities/systems/Difficulty")
     local Pickup         = require("Objects/Pickups/Pickup")
     local Families       = require("Utilities/systems/Families")
@@ -255,10 +254,8 @@ local function build()
                 "s", u.stackable and true or false,
                 "cap", STACK_CAPS[k],
                 "req", REQUIRES[k],
-                -- The family a card belongs to (Families.lua), and the class
-                -- it is exclusive to, if any.
+                -- The family a card belongs to (Families.lua).
                 "fam", u.family,
-                "cls", u.class,
                 "d", u.description)
             if conflictOf[k] then
                 local c = arr({})
@@ -417,22 +414,6 @@ local function build()
         ens[#ens + 1] = row
     end
 
-    -- ── Archetypes ───────────────────────────────────────────────────────────
-    local arcs = arr({})
-    for i = 1, Archetype:count() do
-        local a = Archetype:get(i)
-        local bias = arr({})
-        for _, k in ipairs(sortedKeys(a.bias)) do
-            bias[#bias + 1] = obj("k", k, "w", a.bias[k])
-        end
-        local grants = arr({})
-        for _, g in ipairs(a.grant or {}) do grants[#grants + 1] = g end
-        local col = a.color or {}
-        arcs[#arcs + 1] = obj("id", a.id, "n", a.label, "d", a.blurb,
-                              "tag", a.tag, "grant", grants, "bias", bias,
-                              "col", arr({ col[1] or 1, col[2] or 1, col[3] or 1 }))
-    end
-
     -- ── Designed waves ───────────────────────────────────────────────────────
     local comps = arr({})
     for _, c in ipairs(WaveComposition.DEFS) do
@@ -530,7 +511,9 @@ local function build()
         fams[#fams + 1] = obj("id", d.id, "n", d.name, "adj", d.adj, "noun", d.noun,
                               "d", d.blurb,
                               "col", arr({ col[1] or 1, col[2] or 1, col[3] or 1 }),
-                              "boosts", bs, "traits", ts)
+                              "boosts", bs, "traits", ts,
+                              -- The opening card picked with the family on the menu: one of these.
+                              "start", arr(UpgradeManager.starterPool and UpgradeManager.starterPool(d.id) or {}))
     end
     put(consts, "family", scalarMap({ PULL = Families.PULL, CAP = Families.CAP }))
 
@@ -611,7 +594,7 @@ local function build()
     -- ── Out ──────────────────────────────────────────────────────────────────
     local root = obj("upgrades", ups, "achievements", achs,
                      "abilities", abis, "modifiers", mods, "enemies", ens,
-                     "archetypes", arcs, "compositions", comps,
+                     "compositions", comps,
                      "difficulties", diffs, "families", fams, "curses", curses,
                      "consts", consts, "pets", pets)
 
@@ -620,8 +603,8 @@ local function build()
     fh:close()
     say(string.format("wrote %s", OUT))
     say(string.format("%d upgrades, %d achievements, %d abilities, %d modifiers, " ..
-        "%d enemies, %d classes, %d compositions, %d difficulties",
-        #ups, #achs, #abis, #mods, #ens, #arcs, #comps, #diffs))
+        "%d enemies, %d compositions, %d difficulties",
+        #ups, #achs, #abis, #mods, #ens, #comps, #diffs))
     if #REQUIRED_MISSING > 0 then
         say("MISSING " .. #REQUIRED_MISSING .. ": " .. table.concat(REQUIRED_MISSING, ", "))
     end

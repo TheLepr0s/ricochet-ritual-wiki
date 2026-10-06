@@ -34,7 +34,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <a href="cards.html"><em>🂠</em>Upgrade cards</a>
         <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
         <a href="abilities.html"><em>✦</em>Abilities</a>
-        <a href="classes.html"><em>⚑</em>Classes</a>
         <a href="waves.html"><em>≋</em>Waves</a>
         <a href="achievements.html"><em>★</em>Achievements</a>
         <a href="systems.html"><em>⚙</em>Systems</a>
@@ -61,7 +60,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <tr><td><code>U</code></td><td>My Upgrades</td><td>Lists every card you hold, coloured by rarity. Escape (or U again) closes it.</td></tr>
         <tr><td><code>Escape</code></td><td>Pause</td><td>Opens settings without leaving the run. Everything freezes and goes silent: sound effects are held and the music stops. The music also stops whenever the game window is in the background, and comes back when you return — unless the game is still paused.</td></tr>
         <tr><td><code>F11</code></td><td>Fullscreen</td><td></td></tr>
-        <tr><td><code>F3</code></td><td>Developer overlay</td><td>Spawns anything, grants any card or ability, forces a wave modifier, class or special wave.</td></tr>
+        <tr><td><code>F3</code></td><td>Developer overlay</td><td>Spawns anything, grants any card or ability, forces a wave modifier or special wave.</td></tr>
       </tbody>
     </table>
 
@@ -87,8 +86,8 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         own in a family makes that family's other cards likelier to turn up — so an early lean
         compounds into an identity. Hold <b>3, 5 and 7</b> different cards of one family and its three
         <a href="builds.html#traits">traits</a> switch on, tracked in a column on the right of the
-        screen; a card that would complete one says so above it. Each class has a few cards only
-        it is ever offered. A
+        screen; a card that would complete one says so above it. A run starts with one card from
+        the family you <a href="builds.html#start">pick on the menu</a>. A
         legendary bought in the shop comes with a <b>curse</b>, printed on the card before you take it. The run ends
         with your build's name — the leading family's adjective and the runner-up's noun, a
         <i>Frost Juggernaut</i> — and each build name keeps its own records.</p>
@@ -197,7 +196,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
 
     <h2 id="difficulty">Difficulty</h2>
     <p>
-      Picked before the class, at the start of a run, and locked for its duration — changing the
+      Picked before the starting family, at the start of a run, and locked for its duration — changing the
       menu mid-run cannot rewrite what you are playing. Records store the difficulty alongside the
       score, because a HARD score and an EASY score are not the same number.
     </p>

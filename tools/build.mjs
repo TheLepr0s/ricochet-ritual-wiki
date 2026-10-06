@@ -61,8 +61,7 @@ function petLine(k) {
 }
 const ENEMY_BY_KEY = Object.fromEntries(D.enemies.map((e) => [e.k, e]));
 const FAMILY_BY_ID = Object.fromEntries((D.families || []).map((f) => [f.id, f]));
-const ARCH_BY_ID = Object.fromEntries((D.archetypes || []).map((a) => [a.id, a]));
-// A family or class colour, as CSS.
+// A family colour, as CSS.
 const rgb = (c) => `rgb(${(c || [1, 1, 1]).map((v) => Math.round(v * 255)).join(",")})`;
 
 // Everything a reader might type, lowercased, per row.
@@ -163,7 +162,6 @@ function homePage() {
     [D.enemies.length, "enemies"],
     [D.upgrades.length, "cards"],
     [D.abilities.length, "abilities"],
-    [D.archetypes.length, "classes"],
     [D.modifiers.length, "modifiers"],
     [D.compositions.length, "special waves"],
     [D.achievements.length, "achievements"],
@@ -176,10 +174,9 @@ function homePage() {
         "guide.html": "Controls, the run loop, and what the orb actually does.",
         "bestiary.html": "Every enemy, what drives it, and when it starts appearing.",
         "bosses.html": "The three boss fights, attack by attack.",
-        "builds.html": "Families, build names, curses, class cards, and the Essence Shop.",
+        "builds.html": "The family you start with, traits, build names, curses, and the Essence Shop.",
         "cards.html": `All ${D.upgrades.length} upgrade cards, with stack caps, prerequisites and exclusions.`,
         "abilities.html": "The twelve F-key abilities, and how they measured against each other.",
-        "classes.html": "The four starting classes, and the benchmark that set them.",
         "waves.html": "Difficulty, modifiers, special waves, elites and the boss rotation.",
         "achievements.html": `All ${D.achievements.length}, including the hidden ones.`,
         "systems.html": "Damage, drops, score and sound — how the machinery fits together.",
@@ -336,7 +333,7 @@ function guidePage() {
 
     <h2 id="difficulty">Difficulty</h2>
     <p>
-      Picked before the class, at the start of a run, and locked for its duration — changing the
+      Picked before the starting family, at the start of a run, and locked for its duration — changing the
       menu mid-run cannot rewrite what you are playing. Records store the difficulty alongside the
       score, because a HARD score and an EASY score are not the same number.
     </p>
@@ -661,18 +658,11 @@ function cardsPage() {
             `<div class="per">family <a href="builds.html#fam-${slug(fam.id)}">${famIcon(fam.id)}<b style="color:${rgb(fam.col)}">${esc(fam.n)}</b></a></div>`
           );
         }
-        const cls = ARCH_BY_ID[u.cls];
-        if (u.cls) {
-          meta.unshift(
-            `<div class="dep flag"><b style="color:${rgb(cls && cls.col)}">${esc((cls && cls.n) || u.cls)}</b> only</div>`
-          );
-        }
         const note = C.CARD_NOTE[u.k];
         const pet = petLine(u.k);
         return `<div class="row" id="${slug(u.k)}" style="--stripe:var(--${r})"
-          data-hay="${hay(u.k, u.n, u.d, u.v, r, note, fam && fam.n, u.cls)}"
+          data-hay="${hay(u.k, u.n, u.d, u.v, r, note, fam && fam.n)}"
           data-stackable="${u.s ? 1 : 0}" data-req="${u.req ? 1 : 0}" data-con="${u.con ? 1 : 0}"
-          data-cls="${u.cls ? 1 : 0}"
           data-grp-rarity="${r}" data-gord-rarity="${ri}" data-ord-rarity="${ui}"
           data-grp-family="${esc(u.fam || "none")}" data-gord-family="${FAM_ORDER[u.fam] ?? 99}" data-ord-family="${famRank[u.k] ?? 999}">
           <div class="r-name" data-anchor><span>${esc(u.n)}</span><span class="r-key">${esc(u.k)}</span></div>
@@ -703,9 +693,7 @@ function cardsPage() {
       const list = cards
         .map(
           (u) =>
-            `<a href="#${slug(u.k)}" style="color:var(--${u.r})">${esc(u.n)}</a>${
-              u.cls ? ` <span class="tot">(${esc((ARCH_BY_ID[u.cls] || {}).n || u.cls)} only)</span>` : ""
-            }`
+            `<a href="#${slug(u.k)}" style="color:var(--${u.r})">${esc(u.n)}</a>`
         )
         .join(" · ");
       return `<tr id="family-${slug(f.id)}"><td><a href="builds.html#fam-${slug(f.id)}">${famIcon(f.id, true)}<b style="color:${rgb(f.col)}">${esc(f.n)}</b></a><div class="tot">${esc(f.d)}</div></td><td>${cards.length}</td><td>${list}</td></tr>`;
@@ -724,14 +712,12 @@ function cardsPage() {
       <div class="count"><b>${capped}</b><span>with a cap</span></div>
       <div class="count"><b>${gated}</b><span>need a prereq</span></div>
       <div class="count"><b>${exclusive}</b><span>mutually exclusive</span></div>
-      <div class="count"><b>${D.upgrades.filter((u) => u.cls).length}</b><span>class-only</span></div>
     </div>
 
     ${toolbar("Filter cards by name, effect or stat key…", [
       { attr: "stackable", label: "stackable" },
       { attr: "req", label: "has prereq" },
       { attr: "con", label: "exclusive" },
-      { attr: "cls", label: "class cards" },
     ])}
     <div class="groupbar" role="group" aria-label="Group the cards by">
       <span class="gb-label">Group by</span>
@@ -793,6 +779,21 @@ function buildsPage() {
   const shop = D.consts.shop || {};
 
   // ── Families, each with every card in it ──
+  // The card a family starts a run with: one of these, at random.
+  const starterLinks = (f) =>
+    (f.start || [])
+      .map((k) => {
+        const u = D.upgrades.find((x) => x.k === k);
+        return `<a href="cards.html#${slug(k)}" style="color:var(--${u ? u.r : "common"})">${esc(NAME_BY_KEY[k] || k)}</a>`;
+      })
+      .join(" or ");
+  const startRows = fams
+    .map(
+      (f) =>
+        `<tr><td><a href="#fam-${slug(f.id)}">${famIcon(f.id, true)}<b style="color:${rgb(f.col)}">${esc(f.n)}</b></a></td><td>${starterLinks(f)}</td></tr>`
+    )
+    .join("\n        ");
+
   const famRows = fams
     .map((f) => {
       idx(f.n + " family", "Builds", "builds.html", `fam-${slug(f.id)}`, f.id, f.d);
@@ -802,12 +803,14 @@ function buildsPage() {
       const list = cards
         .map(
           (u) =>
-            `<a href="cards.html#${slug(u.k)}" style="color:var(--${u.r})">${esc(u.n)}</a>${u.cls ? ` <span class="tot">(${esc((ARCH_BY_ID[u.cls] || {}).n || u.cls)})</span>` : ""}`
+            `<a href="cards.html#${slug(u.k)}" style="color:var(--${u.r})">${esc(u.n)}</a>`
         )
         .join(", ");
       return `<div class="row" id="fam-${slug(f.id)}" style="--stripe:${rgb(f.col)}" data-hay="${hay(f.id, f.n, f.d, f.adj, f.noun, cards.map((u) => u.n).join(" "))}">
         <div class="r-name" data-anchor><span style="color:${rgb(f.col)}">${famIcon(f.id, true)}${esc(f.n)}</span><span class="r-key">${cards.length} cards</span></div>
         <div class="r-desc"><div>${esc(f.d)}</div><div class="tot">${list}</div>${
+          f.start && f.start.length ? `<div class="tot">Starts a run with ${starterLinks(f)}</div>` : ""
+        }${
           f.traits && f.traits.length
             ? `<div class="tot"><a href="#trait-${slug(f.id)}">Traits</a>: ${f.traits
                 .map((t, i) => (i === 2 ? `<b class="metal-gold">${esc(t.n)}</b>` : esc(t.n)))
@@ -873,17 +876,6 @@ function buildsPage() {
     })
     .join("\n        ");
 
-  // ── Class cards ──
-  const classRows = (D.archetypes || [])
-    .map((a) => {
-      const cards = D.upgrades.filter((u) => u.cls === a.id);
-      if (!cards.length) return "";
-      return `<tr><td style="color:${rgb(a.col)}"><b>${esc(a.n)}</b></td><td>${cards
-        .map((u) => `<a href="cards.html#${slug(u.k)}" style="color:var(--${u.r})">${esc(u.n)}</a> <span class="tot">${esc(u.r)}</span>`)
-        .join(" · ")}</td></tr>`;
-    })
-    .join("\n        ");
-
   // ── Shop prices, visit by visit ──
   const priceRows = (shop.waves || [])
     .map(
@@ -905,6 +897,15 @@ function buildsPage() {
 
     ${toolbar("Filter traits, families or cards…")}
 
+    <h2 id="start">Starting family</h2>
+    <p>${C.START_NOTE}</p>
+    <table>
+      <thead><tr><th>Family</th><th>Starts the run with</th></tr></thead>
+      <tbody>
+        ${startRows}
+      </tbody>
+    </table>
+
     <h2 id="traits">Traits</h2>
     <p>
       Hold <b>3</b>, <b>5</b> and <b>7</b> different cards of one family (Kinetic 2, 4 and 6; Frost and
@@ -924,7 +925,7 @@ function buildsPage() {
     <p>
       Each card you own in a family multiplies the draw weight of that family's other cards by
       <b>+${Math.round((fc.PULL || 0) * 100)}%</b>, up to <b>${fc.CAP}</b> cards' worth
-      (×${(1 + (fc.PULL || 0) * (fc.CAP || 0)).toFixed(1)} at most). Rarity, class and family all
+      (×${(1 + (fc.PULL || 0) * (fc.CAP || 0)).toFixed(1)} at most). Rarity, the difficulty's odds and family all
       multiply together, so a family you lean into still keeps its legendaries rare.
     </p>
     <div class="rows">
@@ -947,15 +948,6 @@ function buildsPage() {
       <thead><tr><th>Curse</th><th>Effect</th></tr></thead>
       <tbody>
         ${curseRows}
-      </tbody>
-    </table>
-
-    <h2 id="class-cards">Class cards</h2>
-    <p>${C.CLASS_CARD_NOTE}</p>
-    <table>
-      <thead><tr><th>Class</th><th>Its three cards</th></tr></thead>
-      <tbody>
-        ${classRows}
       </tbody>
     </table>
 
@@ -1035,13 +1027,13 @@ function buildsPage() {
   return page({
     file: "builds.html",
     title: "Builds & shop",
-    lead: `Twelve families, ${(D.curses || []).length} curses, ${D.upgrades.filter((u) => u.cls).length} class cards and the Essence Shop: how a run turns into a build rather than a pile.`,
+    lead: `Twelve families, ${(D.curses || []).length} curses and the Essence Shop: how a run turns into a build rather than a pile.`,
     toc: [
+      { id: "start", label: "Starting family" },
       { id: "traits", label: "Traits" },
       { id: "families", label: "Families" },
       { id: "names", label: "Build names" },
       { id: "curses", label: "Curses" },
-      { id: "class-cards", label: "Class cards" },
       { id: "shop", label: "The Essence Shop" },
       { id: "transmute", label: "Transmute" },
     ],
@@ -1115,86 +1107,6 @@ function abilitiesPage() {
     file: "abilities.html",
     title: "Utility abilities",
     lead: "Twelve buttons on a long cooldown. Five of them do damage, and those five were measured against each other rather than tuned by eye.",
-    toc: [{ id: "balance", label: "How these were balanced" }],
-    body,
-  });
-}
-
-/* ═══════════════════════════════════════════════════════════════════════
-   Classes
-   ═══════════════════════════════════════════════════════════════════ */
-function classesPage() {
-  const rows = D.archetypes
-    .map((a) => {
-      idx(a.n, "Classes", "classes.html", slug(a.id), a.id, a.d);
-      const m = C.ARCH_MEASURED[a.id] || {};
-      const counts = {};
-      for (const g of a.grant) counts[g] = (counts[g] || 0) + 1;
-      const opener = Object.entries(counts)
-        .map(([k, n]) => `<a href="cards.html#${slug(k)}">${esc(NAME_BY_KEY[k] || k)}</a>${n > 1 ? ` ×${n}` : ""}`)
-        .join(", ");
-      const bias = a.bias
-        .map((b) => `<a href="cards.html#${slug(b.k)}">${esc(NAME_BY_KEY[b.k] || b.k)}</a>`)
-        .join(", ");
-      const meta = [];
-      if (m.dmg) meta.push(`<div class="per">damage <b>${m.dmg}</b></div>`);
-      if (m.live) meta.push(`<div class="per">survival <b>${m.live}</b></div>`);
-      if (m.blind) meta.push(`<div class="dep flag"><b>the fixture cannot see this class</b></div>`);
-      meta.push(`<div class="dep">${a.bias.length} cards biased</div>`);
-
-      const rgb = (a.col || [1, 1, 1]).map((c) => Math.round(c * 255)).join(",");
-      return `<div class="row" id="${slug(a.id)}" style="--stripe:rgb(${rgb})"
-        data-hay="${hay(a.id, a.n, a.d, a.tag, a.bias.map((b) => b.k).join(" "))}">
-        <div class="r-name" data-anchor><span>${esc(a.n)}</span><span class="r-key">${esc(a.id)}</span></div>
-        <div class="r-desc">
-          <div>${esc(a.d)}</div>
-          <div class="tot">${esc(a.tag)}</div>
-          <div class="per">opens with <b>${opener}</b></div>
-          <div class="tot">biased toward: ${bias}</div>
-        </div>
-        <div class="r-meta">${meta.join("")}</div>
-      </div>`;
-    })
-    .join("\n      ");
-
-  const body = `    <p>
-      Picked once, after the difficulty, before the first wave. A class is not new content — it is
-      a <b>weighting</b>. Each one multiplies the draw weight of about a dozen cards that already
-      exist, so a Stormcaller run finds its chain pieces early and a Warden run finds its armour.
-      The pool is never restricted: every card can still appear for every class, so the bias steers
-      a run without railroading it, and taking the off-class card you were offered stays a real
-      decision.
-    </p>
-
-    ${toolbar("Filter classes…")}
-    <div class="rows">
-      ${rows}
-    </div>
-    ${EMPTY}
-
-    <h2 id="balance">How these were balanced</h2>
-    <div class="note">${C.ARCH_NOTE}</div>
-
-    <table>
-      <thead><tr><th>Class</th><th>Damage</th><th>Survival</th><th></th></tr></thead>
-      <tbody>
-        ${D.archetypes
-          .map((a) => {
-            const m = C.ARCH_MEASURED[a.id] || {};
-            return `<tr><td><a href="#${slug(a.id)}">${esc(a.n)}</a></td><td><code>${esc(
-              m.dmg || "—"
-            )}</code></td><td><code>${esc(m.live || "—")}</code></td><td>${
-              m.blind ? "measured as noise — the fixture is stationary" : ""
-            }</td></tr>`;
-          })
-          .join("\n        ")}
-      </tbody>
-    </table>`;
-
-  return page({
-    file: "classes.html",
-    title: "Classes",
-    lead: `${D.archetypes.length} starting classes. None of them is the correct pick, and that was checked rather than assumed.`,
     toc: [{ id: "balance", label: "How these were balanced" }],
     body,
   });
@@ -1499,7 +1411,6 @@ const PAGES = {
   "cards.html": cardsPage,
   "builds.html": buildsPage,
   "abilities.html": abilitiesPage,
-  "classes.html": classesPage,
   "waves.html": wavesPage,
   "achievements.html": achievementsPage,
   "systems.html": systemsPage,
