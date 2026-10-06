@@ -110,7 +110,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           </div>
           <p>The clock in a wave. It forces you to deal with it now rather than later, which is the only thing on the field that does.</p>
           <div class="statline"><span class="stat">HP <b>30</b></span><span class="stat">essence <b>0–2</b></span><span class="stat">speed <b>80</b></span><span class="stat">blast <b>90</b> for <b>15</b></span><span class="stat">from wave <b>3</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>38×34</b></span></div>
-          <p class="tot">The original art. <a href="#palerevenant">PaleRevenant</a>, <a href="#plaguepriest">PlaguePriest</a> are recolours of it.</p><p class="tot">Shares the skeleton sheet with the Revenant (and with the Ravager, before it became the Frog), which is why they read as bone rather than flesh.</p>
+          <p class="tot">The original art. <a href="#palerevenant">PaleRevenant</a>, <a href="#plaguepriest">PlaguePriest</a> are recolours of it.</p><p class="tot">Shares the skeleton sheet with the Revenant, which is why they read as bone rather than flesh.</p>
         </div>
       </div>
       <div class="beast" id="toadstool" style="--stripe:var(--common)"
@@ -148,7 +148,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         </div>
       </div>
       <div class="beast" id="evilwizard" style="--stripe:var(--legendary)"
-        data-hay="evilwizard caster casts from range and has no melee swing, but it is not safe to stand on any more — backlash punishes anything inside 100px, including a player who walked into a cast. wave 5"
+        data-hay="evilwizard caster casts from range and has no melee swing, but it is not safe to stand on — backlash punishes anything inside 100px, including a player who walked into a cast. wave 5"
         data-boss="0" data-ranged="1"
         data-variant="0">
         <div class="portrait"><img src="assets/img/EvilWizard.png" alt="EvilWizard" loading="lazy" width="82"></div>
@@ -159,7 +159,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
             
             
           </div>
-          <p>Casts from range and has no melee swing, but it is not safe to stand on any more — Backlash punishes anything inside 100px, including a player who walked into a cast.</p>
+          <p>Casts from range and has no melee swing, but it is not safe to stand on — Backlash punishes anything inside 100px, including a player who walked into a cast.</p>
           <div class="statline"><span class="stat">HP <b>120</b></span><span class="stat">essence <b>2–4</b></span><span class="stat">speed <b>38</b></span><span class="stat">damage <b>9</b></span><span class="stat">range <b>320</b></span><span class="stat">from wave <b>5</b></span><span class="stat">weight <b>2</b></span><span class="stat">hitbox <b>38×34</b></span></div>
           <p class="tot">The original art. <a href="#archmage">Archmage</a>, <a href="#bonecaller">Bonecaller</a>, <a href="#dreadsovereign">DreadSovereign</a>, <a href="#witchdoctor">Witchdoctor</a> are recolours of it.</p>
         </div>
@@ -178,7 +178,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           </div>
           <p>The first enemy you beat by reading it rather than out-damaging it. Low health, so the lane is the whole threat — and the time it spends winded afterwards is the damage window the fight pays you back with.</p>
           <div class="statline"><span class="stat">HP <b>75</b></span><span class="stat">essence <b>1–3</b></span><span class="stat">speed <b>52</b></span><span class="stat">damage <b>14</b></span><span class="stat">range <b>300</b></span><span class="stat">from wave <b>5</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>28×24</b></span></div>
-          <p class="tot">Was the skeletal Ravager until 2 October, when it became a frog. Its row's <code>attackRange</code> is dead data — FrogEnemy replaces the melee update entirely and uses its own trigger range, so the row value looks authoritative and governs nothing.</p>
+          <p class="tot">Its row's <code>attackRange</code> is unused — FrogEnemy replaces the melee update entirely and uses its own trigger range.</p>
         </div>
       </div>
       <div class="beast" id="sporeling" style="--stripe:var(--uncommon)"
@@ -199,7 +199,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         </div>
       </div>
       <div class="beast" id="wisp" style="--stripe:var(--rare)"
-        data-hay="wisp ranged a bat that keeps up with you, and outranges it. it glows because the bat sprite is near-black, and a hue rotation preserves luma — recolouring alone was invisible on it. fireball wave 6"
+        data-hay="wisp ranged a bat that keeps up with you, and outranges it. it glows because the bat sprite is near-black and a hue rotation preserves luma, so a recolour alone would be invisible on it. fireball wave 6"
         data-boss="0" data-ranged="1"
         data-variant="1">
         <div class="portrait"><img src="assets/img/Wisp.png" alt="Wisp" loading="lazy" width="82"></div>
@@ -210,7 +210,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
             
             
           </div>
-          <p>A Bat that keeps up with you, and outranges it. It glows because the bat sprite is near-black, and a hue rotation preserves luma — recolouring alone was invisible on it.</p>
+          <p>A Bat that keeps up with you, and outranges it. It glows because the bat sprite is near-black and a hue rotation preserves luma, so a recolour alone would be invisible on it.</p>
           <div class="statline"><span class="stat">HP <b>30</b></span><span class="stat">essence <b>0–2</b></span><span class="stat">speed <b>72</b></span><span class="stat">damage <b>11</b></span><span class="stat">range <b>360</b></span><span class="stat">fires <b>Fireball</b></span><span class="stat">from wave <b>6</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>30×28</b></span></div>
           <p class="tot">A recolour of <a href="#bat">Bat</a>'s art, told apart by a hue rotation.</p>
         </div>
@@ -246,7 +246,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           </div>
           <p>Barely fights, but everything it does POISONS you: its bite, the ball it lobs from range (it lands where you stood and leaves a pool), and the small pool of rot it leaves every 35px it walks. Poison is a tick a second for three seconds, each a fifth of its damage, and a new dose refreshes it rather than stacking; your health bar turns green and a POISONED plate counts it down. The pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.</p>
           <div class="statline"><span class="stat">HP <b>105</b></span><span class="stat">essence <b>3–5</b></span><span class="stat">speed <b>26</b></span><span class="stat">damage <b>10</b></span><span class="stat">range <b>90</b></span><span class="stat">from wave <b>7</b></span><span class="stat">weight <b>3</b></span><span class="stat">max <b>3</b> alive</span><span class="stat">hitbox <b>40×29</b></span></div>
-          <p class="tot">Drops are keyed to DISTANCE WALKED (every 35px since 25 September, with 40px pools; before that 70px and 58px, and originally 130px and 86px on a body a third slower), not to a timer. The player halved it on 30 September: speed 46 to 26 and health 210 to 105, so it now lays its line slowly and dies quickly. The pool a THROWN ball leaves is the big one, 90px. One parked against a wall would otherwise stack a dozen pools on one spot, when the whole point is that it draws a line you have to route around.</p>
+          <p class="tot">Drops are keyed to DISTANCE WALKED, not to a timer — a 40px pool every 35px — so one parked against a wall does not stack pools on one spot: it draws a line you have to route around. The pool a THROWN ball leaves is the big one, 90px.</p>
         </div>
       </div>
       <div class="beast" id="bulwark" style="--stripe:var(--rare)"
@@ -284,7 +284,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         </div>
       </div>
       <div class="beast" id="siphon" style="--stripe:var(--epic)"
-        data-hay="siphon drain hangs at range and drains you through a beam, healing off what it takes. the beam needs line of sight, so a tree is a real answer to it — the first time scenery has been anything but an obstacle. wave 9"
+        data-hay="siphon drain hangs at range and drains you through a beam, healing off what it takes. the beam needs line of sight, so a tree is a real answer to it. wave 9"
         data-boss="0" data-ranged="0"
         data-variant="1">
         <div class="portrait"><img src="assets/img/Siphon.png" alt="Siphon" loading="lazy" width="82"></div>
@@ -295,9 +295,9 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
             
             
           </div>
-          <p>Hangs at range and drains you through a beam, healing off what it takes. The beam needs line of sight, so a tree is a real answer to it — the first time scenery has been anything but an obstacle.</p>
+          <p>Hangs at range and drains you through a beam, healing off what it takes. The beam needs line of sight, so a tree is a real answer to it.</p>
           <div class="statline"><span class="stat">HP <b>140</b></span><span class="stat">essence <b>2–4</b></span><span class="stat">speed <b>44</b></span><span class="stat">from wave <b>9</b></span><span class="stat">weight <b>3</b></span><span class="stat">max <b>2</b> alive</span><span class="stat">hitbox <b>40×36</b></span></div>
-          <p class="tot">A recolour of <a href="#vampire">Vampire</a>'s art, told apart by a hue rotation.</p><p class="tot">Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well. Its self-heal never actually fired until 23 September: the drain waited for a result that a landed hit never returns, so a Siphon left alone was not getting any harder to kill.</p>
+          <p class="tot">A recolour of <a href="#vampire">Vampire</a>'s art, told apart by a hue rotation.</p><p class="tot">Its row carries <code>damage = 0</code> and <code>attackRange = 0</code>: it has no attack at all. Everything it does is the beam, and the beam is refused the moment the grid says it cannot see you — frozen or stunned, it drops as well.</p>
         </div>
       </div>
       <div class="beast" id="witchdoctor" style="--stripe:var(--uncommon)"
@@ -335,7 +335,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         </div>
       </div>
       <div class="beast" id="bonecaller" style="--stripe:var(--uncommon)"
-        data-hay="bonecaller support calls fresh bodies out of the ground on a timer, and what it calls outlives it — so killing it late buys you nothing. violet and badged so it is not mistaken for the healer at range; an earlier olive hue made the two indistinguishable. it unlocked at wave 14 with one point of weight for its first few versions, which meant most players never met it at all. wave 11"
+        data-hay="bonecaller support calls fresh bodies out of the ground on a timer, and what it calls outlives it — so killing it late buys you nothing. violet and badged so it is not mistaken for the healer at range. wave 11"
         data-boss="0" data-ranged="1"
         data-variant="1">
         <div class="portrait"><img src="assets/img/Bonecaller.png" alt="Bonecaller" loading="lazy" width="82"></div>
@@ -346,7 +346,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
             
             
           </div>
-          <p>Calls fresh bodies out of the ground on a timer, and what it calls OUTLIVES it — so killing it late buys you nothing. Violet and badged so it is not mistaken for the healer at range; an earlier olive hue made the two indistinguishable. It unlocked at wave 14 with one point of weight for its first few versions, which meant most players never met it at all.</p>
+          <p>Calls fresh bodies out of the ground on a timer, and what it calls OUTLIVES it — so killing it late buys you nothing. Violet and badged so it is not mistaken for the healer at range.</p>
           <div class="statline"><span class="stat">HP <b>165</b></span><span class="stat">essence <b>2–4</b></span><span class="stat">speed <b>34</b></span><span class="stat">damage <b>8</b></span><span class="stat">range <b>340</b></span><span class="stat">from wave <b>11</b></span><span class="stat">weight <b>2</b></span><span class="stat">max <b>2</b> alive</span><span class="stat">hitbox <b>38×36</b></span></div>
           <p class="tot">A recolour of <a href="#evilwizard">EvilWizard</a>'s art, told apart by a hue rotation.</p>
         </div>
@@ -386,7 +386,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         </div>
       </div>
       <div class="beast" id="plaguepriest" style="--stripe:var(--uncommon)"
-        data-hay="plaguepriest support halves your healing while you stand in its ring, and keeps close enough to hold you in it — walking away does not work for long, so the answer is to kill it. frozen or stunned, the aura switches off. healing had become the answer to everything, and nothing on the roster argued with it; the hud says healing halved beside your health bar while it does. wave 14"
+        data-hay="plaguepriest support halves your healing while you stand in its ring, and keeps close enough to hold you in it — walking away does not work for long, so the answer is to kill it. frozen or stunned, the aura switches off. the hud says healing halved beside your health bar while it does. wave 14"
         data-boss="0" data-ranged="0"
         data-variant="1">
         <div class="portrait"><img src="assets/img/PlaguePriest.png" alt="PlaguePriest" loading="lazy" width="82"></div>
@@ -397,9 +397,9 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
             
             
           </div>
-          <p>Halves your healing while you stand in its ring, and keeps close enough to hold you in it — walking away does not work for long, so the answer is to kill it. Frozen or stunned, the aura switches off. Healing had become the answer to everything, and nothing on the roster argued with it; the HUD says HEALING HALVED beside your health bar while it does.</p>
+          <p>Halves your healing while you stand in its ring, and keeps close enough to hold you in it — walking away does not work for long, so the answer is to kill it. Frozen or stunned, the aura switches off. The HUD says HEALING HALVED beside your health bar while it does.</p>
           <div class="statline"><span class="stat">HP <b>150</b></span><span class="stat">essence <b>2–4</b></span><span class="stat">speed <b>42</b></span><span class="stat">from wave <b>14</b></span><span class="stat">weight <b>2</b></span><span class="stat">max <b>2</b> alive</span><span class="stat">hitbox <b>37×37</b></span></div>
-          <p class="tot">A recolour of <a href="#bomber">Bomber</a>'s art, told apart by a colour tint.</p><p class="tot">The fourth SupportEnemy, told apart by <code>plague_range</code> in its row, and it carries <code>keep_min</code>/<code>keep_max</code> of its own so it stands inside its ring rather than at a healer's distance. It never attacks. The skeleton sheet is achromatic, so it is TINTED a bile yellow-green, clear of the Revenant's mint (and of the orange the Ravager wore before it became the Frog).</p>
+          <p class="tot">A recolour of <a href="#bomber">Bomber</a>'s art, told apart by a colour tint.</p><p class="tot">The fourth SupportEnemy, told apart by <code>plague_range</code> in its row, and it carries <code>keep_min</code>/<code>keep_max</code> of its own so it stands inside its ring rather than at a healer's distance. It never attacks. The skeleton sheet is achromatic, so it is TINTED a bile yellow-green, clear of the Revenant's mint.</p>
         </div>
       </div>
     </div>
@@ -421,7 +421,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           </div>
           <p>The third fight, and a test of the build rather than the footwork: it takes your three best cards for as long as it lives.</p>
           <div class="statline"><span class="stat">HP <b>2000</b></span><span class="stat">essence <b>30–45</b></span><span class="stat">speed <b>70</b></span><span class="stat">damage <b>20</b></span><span class="stat">range <b>430</b></span><span class="stat">hitbox <b>70×66</b></span></div>
-          <p class="tot">A recolour of <a href="#vampire">Vampire</a>'s art, told apart by a colour tint.</p><p class="tot">On the vampire sheet, TINTED gold: the cloak is too dark for a hue rotation to reach gold (a rotation keeps luminance, and the rendered sweep only ever found brown), while a multiply turns the face and hands gold and leaves the cloak a royal purple.</p>
+          <p class="tot">A recolour of <a href="#vampire">Vampire</a>'s art, told apart by a colour tint.</p><p class="tot">On the vampire sheet, TINTED gold: the cloak is too dark for a hue rotation to reach gold (a rotation keeps luminance), while a multiply turns the face and hands gold and leaves the cloak a royal purple.</p>
         </div>
       </div>
       <div class="beast" id="dreadsovereign" style="--stripe:var(--legendary)"
@@ -470,26 +470,23 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="ai-evilwizardenemy" style="--stripe:var(--legendary)" data-hay="evilwizardenemy caster stands still and drips a chain of grasping hands along the line to where you were when
         the cast began. a hand that closes roots you and deals the caster's damage. taking a hit
         cancels the cast. come within 100px and it discharges at its own feet instead —
-        &lt;b&gt;backlash&lt;/b&gt;, a 0.4s telegraphed blast and a hard shove — so standing on top of a
-        caster is no longer the free answer it once was. between casts it holds a band inside
-        its own range, giving ground if you press it and circling if you do not, so it never
-        walks itself into backlash range: you have to go in after it.">
+        &lt;b&gt;backlash&lt;/b&gt;, a 0.4s telegraphed blast and a hard shove. between casts it holds a band
+        inside its own range, giving ground if you press it and circling if you do not, so it
+        never walks itself into backlash range: you have to go in after it.">
         <div class="r-name" data-anchor><span>Caster</span><span class="r-key">EvilWizardEnemy</span></div>
         <div class="r-desc">Stands still and drips a chain of grasping hands along the line to where you were when
         the cast began. A hand that closes roots you and deals the caster's damage. Taking a hit
         cancels the cast. Come within 100px and it discharges at its own feet instead —
-        <b>Backlash</b>, a 0.4s telegraphed blast and a hard shove — so standing on top of a
-        caster is no longer the free answer it once was. Between casts it holds a band inside
-        its own range, giving ground if you press it and circling if you do not, so it never
-        walks itself into Backlash range: you have to go in after it.</div>
+        <b>Backlash</b>, a 0.4s telegraphed blast and a hard shove. Between casts it holds a band
+        inside its own range, giving ground if you press it and circling if you do not, so it
+        never walks itself into Backlash range: you have to go in after it.</div>
         <div class="r-meta"><div class="per"><a href="#archmage">Archmage</a>, <a href="#evilwizard">EvilWizard</a></div></div>
       </div>
       <div class="row" id="ai-rangedenemy" style="--stripe:var(--rare)" data-hay="rangedenemy ranged closes to its attack range, stops, and throws fireballs at 450px/s that hit for its own
         damage stat — so they scale with the wave — and expire after four seconds. a shooter
         that fires a fan hits for less with each bolt. &lt;b&gt;trees are cover&lt;/b&gt;: a shot dies on the
         first tree it crosses, and a shooter only opens fire with a clear line to you. rocks and
-        stumps are knee-high, and shots fly over them (since 25 september; before that anything
-        solid stopped a shot).
+        stumps are knee-high, and shots fly over them.
         blind, it circles you at range looking for one, then closes in round whatever is in the
         way. so the answer is to close, to leave, or to put a tree between you — never to trade
         in the open.">
@@ -498,8 +495,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         damage stat — so they scale with the wave — and expire after four seconds. A shooter
         that fires a fan hits for less with each bolt. <b>Trees are cover</b>: a shot dies on the
         first tree it crosses, and a shooter only opens fire with a clear line to you. Rocks and
-        stumps are knee-high, and shots fly over them (since 25 September; before that anything
-        solid stopped a shot).
+        stumps are knee-high, and shots fly over them.
         Blind, it circles you at range looking for one, then closes in round whatever is in the
         way. So the answer is to close, to leave, or to put a tree between you — never to trade
         in the open.</div>
@@ -516,17 +512,17 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       </div>
       <div class="row" id="ai-supportenemy" style="--stripe:var(--uncommon)" data-hay="supportenemy support never closes. it kites to a mid-range band, strafing at reduced speed, and spends a short
         cast pose on the thing it is actually for: mending the most wounded allies in range, or
-        calling fresh bodies out of the ground. the plague priest (29 september) has no cast at
-        all: its ring is a standing aura that halves your healing while you are inside it, and it
-        keeps close enough to hold you there. each wears a role badge above the health bar,
-        because at range the silhouette is identical.">
+        calling fresh bodies out of the ground. the plague priest has no cast at all: its ring is
+        a standing aura that halves your healing while you are inside it, and it keeps close
+        enough to hold you there. each wears a role badge above the health bar, because at range
+        the silhouette is identical.">
         <div class="r-name" data-anchor><span>Support</span><span class="r-key">SupportEnemy</span></div>
         <div class="r-desc">Never closes. It kites to a mid-range band, strafing at reduced speed, and spends a short
         cast pose on the thing it is actually for: mending the most wounded allies in range, or
-        calling fresh bodies out of the ground. The Plague Priest (29 September) has no cast at
-        all: its ring is a standing aura that halves your healing while you are inside it, and it
-        keeps close enough to hold you there. Each wears a role badge above the health bar,
-        because at range the silhouette is identical.</div>
+        calling fresh bodies out of the ground. The Plague Priest has no cast at all: its ring is
+        a standing aura that halves your healing while you are inside it, and it keeps close
+        enough to hold you there. Each wears a role badge above the health bar, because at range
+        the silhouette is identical.</div>
         <div class="r-meta"><div class="per"><a href="#bonecaller">Bonecaller</a>, <a href="#broodmother">Broodmother</a>, <a href="#plaguepriest">PlaguePriest</a>, <a href="#witchdoctor">Witchdoctor</a></div></div>
       </div>
       <div class="row" id="ai-meleeenemy" style="--stripe:var(--common)" data-hay="meleeenemy melee walks straight at you and swings once in range. the first swing skips its wind-up —

@@ -103,8 +103,7 @@ cover(D.modifiers, "modifiers", (m) => m.n);
 cover(D.enemies, "enemies", (e) => e.x.boss_name || e.k);
 
 // Every enemy is driven by a known AI class, and that class has a behaviour
-// row. A type the dumper could not resolve used to publish with a "—" badge
-// and no behaviour at all, and nothing here noticed.
+// row, so no type publishes with a "—" badge and no behaviour.
 {
   const noAi = D.enemies.filter((e) => !e.ai).map((e) => e.k);
   const bestiary = html["bestiary.html"] || "";

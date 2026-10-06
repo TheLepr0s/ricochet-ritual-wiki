@@ -39,10 +39,8 @@ const RARITY_ORDER = ["common", "uncommon", "rare", "epic", "legendary"];
 const NAME_BY_KEY = Object.fromEntries(D.upgrades.map((u) => [u.k, u.n]));
 
 // ── Companions: their numbers, read from the game (D.pets) ──
-// Pet stats are not on the card, and the hand-written notes that used to carry
-// them went stale when the Goat was retuned. These lines are generated from
-// each pet's constructor and file locals, so they cannot. Distances in metres
-// (50 px = 1 m), like the cards.
+// Pet stats are not on the card, so these lines are generated from each pet's
+// constructor and file locals. Distances in metres (50 px = 1 m), like the cards.
 const metres = (px) => String(Math.round((px / 50) * 10) / 10);
 const share = (f) => `${Math.round(f * 100)}%`;
 const PET_LINE = {
@@ -291,9 +289,9 @@ function guidePage() {
 
     <h2 id="upgrades">The upgrade screen</h2>
     <p>
-      Clearing a wave opens it. You are dealt three cards and take <b>one</b> — two a wave until
-      29 September. <a href="abilities.html">Utility abilities</a> are never in it: since 29
-      September they are sold only in the Essence Shop. After every
+      Clearing a wave opens it. You are dealt three cards and take <b>one</b>.
+      <a href="abilities.html">Utility abilities</a> are never in it: they are sold only in the
+      Essence Shop. After every
       <b>${D.consts.shop.every}th</b> wave the free card is replaced by the
       <a href="builds.html#shop">Essence Shop</a> instead. Which cards you are dealt leans toward the
       <a href="builds.html">families</a> you already own, and a legendary bought in the shop carries a curse.
@@ -390,10 +388,8 @@ function bestiaryPage() {
     if (e.cap) stats.push(`<span class="stat">max <b>${e.cap}</b> alive</span>`);
     stats.push(`<span class="stat">hitbox <b>${e.rx}×${e.ry}</b></span>`);
 
-    // A shared sheet means one of these is the ORIGINAL and the rest are
-    // recolours of it. Saying "shares art with" on both sides reads as though
-    // neither owns the sprite, and leaves the base enemy claiming it is told
-    // apart by a recolour it does not have.
+    // A shared sheet means one of these is the original and the rest are
+    // recolours of it, so each side says which it is.
     const isRecolour = !!(e.hue || e.tint);
     const shares = (bySheet[e.sheet] || []).filter((k) => k !== e.k);
     const how = e.tint ? "a colour tint" : "a hue rotation";
@@ -447,9 +443,7 @@ function bestiaryPage() {
     })
     .join("\n      ");
 
-  // Two classes share the label "Boss", so index them by MODULE name — a
-  // search result that cannot tell you which of two things it found is worse
-  // than no result.
+  // Two classes share the label "Boss", so index them by module name.
   for (const a of aiUsed) {
     const dup = aiUsed.filter((x) => C.AI[x].label === C.AI[a].label).length > 1;
     idx(dup ? `${C.AI[a].label} AI (${a})` : `${C.AI[a].label} AI`,
@@ -599,9 +593,9 @@ function scalingPara() {
     <p>
       <b>Bosses compound.</b> The Nth boss of a run (wave ${s.BOSS_EVERY}×N) also gets
       ×${s.BOSS_HEALTH_GROWTH}<sup>N</sup> health and ×${s.BOSS_DAMAGE_GROWTH}<sup>N</sup>
-      damage on top of the ramp — a player a card a wave richer is compounding too, and a boss
-      that only kept pace with a Mushroom was a smaller speed bump every time. Bosses keep a
-      gentler speed ramp (${p(s.BOSS_SPEED_SCALE)} a wave) so the Revenant can always be outrun.
+      damage on top of the ramp, so each boss keeps pace with a build that grows a card a wave.
+      Bosses keep a gentler speed ramp (${p(s.BOSS_SPEED_SCALE)} a wave) so the Revenant can
+      always be outrun.
     </p>`;
 }
 
@@ -614,8 +608,7 @@ function cardsPage() {
   const byRarity = {};
   for (const u of D.upgrades) (byRarity[u.rarity || u.r] ||= []).push(u);
 
-  // Grouping by family as well as by rarity (the player, Sept 29 2026: "make
-  // sorting by families in Upgrade cards"). Every row carries its place in
+  // Grouping by family as well as by rarity. Every row carries its place in
   // both orders -- group, then position in the group -- and wiki.js lays the
   // list out in whichever the reader picks. A family is listed rarest last,
   // then by name, the same order as the By family table.
@@ -701,8 +694,7 @@ function cardsPage() {
     })
     .join("\n      ");
 
-  // Every family and the cards in it, one row each (player, Sept 29 2026: "make a list of
-  // families and what upgrades are in which family"). Builds & shop has the pull mechanics.
+  // Every family and the cards in it, one row each. Builds & shop has the pull mechanics.
   const famTable = (D.families || [])
     .map((f) => {
       const cards = D.upgrades
@@ -793,7 +785,7 @@ function cardsPage() {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   Builds & shop (Sept 29 2026)
+   Builds & shop
    ═══════════════════════════════════════════════════════════════════ */
 function buildsPage() {
   const fams = D.families || [];
@@ -978,8 +970,8 @@ function buildsPage() {
       curse pays 70% of it, and nine <a href="#essence-cards">cards</a> deal in it. The shop is an
       <a href="abilities.html">ability</a> down the left (the only place one is sold), a
       <a href="#family-items">row for each of your two biggest families</a> beside it — a boost and a
-      pack — then Transmute, then Reroll and Leave. It has sold no loose cards since 3 October: packs
-      are its only cards. It is mouse only, like the card screen (no R, D or Enter since the same day).
+      pack — then Transmute, then Reroll and Leave. Packs are its only cards, and it is mouse
+      only, like the card screen.
       A price is a number of <b>units</b> — an ability <code>${shop.utilityUnits}</code> — times the
       size of the wave you just cleared: income is kills and the kill count grows with the wave, so
       one curve keeps a visit worth about the same at wave 5 and at wave 40. A reroll costs
@@ -1010,7 +1002,7 @@ function buildsPage() {
         their place, I to III.</li>
       <li><b>A pack</b> — three cards of that family you can still take, and you keep <b>one</b>
         (a legendary among them comes cursed). One a visit per family; a reroll puts it back.
-        <code>${shop.packUnits}</code> units (2.6 until 3 October, when the loose cards went).</li>
+        <code>${shop.packUnits}</code> units.</li>
       <li><b>The Recombobulator</b>, on ${Math.round((shop.recombChance || 0) * 100)}% of visits (and
         of rerolls), standing in place of <b>one</b> panel's boost — ${C.RECOMB_NOTE}
         <code>${shop.recombUnits}</code> units.</li>
@@ -1071,7 +1063,6 @@ function abilitiesPage() {
       if (m) {
         meta.push(`<div class="per"><b>${m.kills}</b> kills/cast</div>`);
         meta.push(`<div class="tot">${m.per} per second of cooldown</div>`);
-        if (m.was) meta.push(`<div class="dep flag">was <b>${m.was}</b> before the retune</div>`);
         if (m.note) meta.push(`<div class="dep">${esc(m.note)}</div>`);
       } else {
         meta.push(`<div class="dep">no damage — judged behaviourally</div>`);
@@ -1093,7 +1084,8 @@ function abilitiesPage() {
       <a href="builds.html#shop">Essence Shop</a></b>: every visit has one on the shelf, on a card of
       its own (cut corners, lit in the ability's colour, the cooldown in its footer) so it is never
       taken for an upgrade, and a reroll deals a different one. Buying one replaces what you had.
-      Until 29 September one was dealt as a fourth card on every third upgrade screen.
+      Pressing F drains the ability's bar over the effect's duration, and the cooldown starts once
+      the effect has ended.
     </p>
 
     <div class="rows">
@@ -1113,7 +1105,7 @@ function abilitiesPage() {
             const a = D.abilities.find((x) => x.id === id);
             return `<tr><td><a href="#${slug(id)}">${esc(a ? a.n : id)}</a></td><td><code>${m.kills}</code></td><td><code>${
               m.per
-            }</code></td><td>${esc(m.note || (m.was ? `was ${m.was}` : ""))}</td></tr>`;
+            }</code></td><td>${esc(m.note || "")}</td></tr>`;
           })
           .join("\n        ")}
       </tbody>
@@ -1299,8 +1291,7 @@ function wavesPage() {
 
     <h2 id="unlocks">When each enemy appears</h2>
     <p>
-      New types stagger in rather than arriving together, and the weights of the earlier ones were
-      trimmed to make room instead of inflating the total number of spawns.
+      New types stagger in rather than arriving together.
     </p>
     <table>
       <thead><tr><th>From</th><th>Joins the pool</th></tr></thead>
@@ -1407,8 +1398,7 @@ function achievementsPage() {
       <br><br>
       <b>Full Bestiary</b> counts ${bestiary ? bestiary.t : "every"} lines: one for every ordinary
       enemy type, the Witchdoctor and the Bonecaller separately, and neither boss — they have
-      achievements of their own. A test kills one of each type and checks the target against the
-      roster, because twice now new enemies shipped without a line of their own.
+      achievements of their own.
     </div>
 
     <div class="rows">
@@ -1471,8 +1461,7 @@ function systemsPage() {
     <p>
       <code>tools/build.mjs</code> then renders <code>docs/</code> from that JSON plus the
       hand-written prose in <code>content.mjs</code>. The split is the point: if a fact could have
-      been derived and was typed instead, it is a bug waiting to drift. An earlier version of this
-      reference kept those tables by hand, and three of them had already gone stale.
+      been derived and was typed instead, it is a bug waiting to drift.
     </p>
     <p>
       Enemy portraits are not copied out of the sprite folder. ${D.enemies.length - new Set(D.enemies.map((e) => e.sheet)).size}

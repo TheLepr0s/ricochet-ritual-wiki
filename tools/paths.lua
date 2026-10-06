@@ -2,11 +2,8 @@
 --
 -- Where the game is, and where this wiki is.
 --
--- These used to be one hardcoded absolute path, which was fine while the
--- generator lived inside the game's own repository. It does not any more: the
--- game is private and this repository is public, so they are separate
--- checkouts and the generator has to be told where the game is rather than
--- assuming it is overhead.
+-- The game is private and this repository is public, so they are separate
+-- checkouts and the generator has to be told where the game is.
 --
 -- Resolution order:
 --   1. RR_GAME  environment variable -- an absolute path to the game checkout

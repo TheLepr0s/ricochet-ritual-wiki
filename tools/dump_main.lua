@@ -247,7 +247,7 @@ local function build()
             local row = obj(
                 "k", k, "n", u.name, "r", u.rarity,
                 -- The rarity further stacks are drawn at, when it differs
-                -- (UpgradeList stack_rarity, Sept 28 2026).
+                -- (UpgradeList stack_rarity).
                 "sr", u.stack_rarity,
                 "t", TPNAME[u.type] or tostring(u.type),
                 "v", (type(u.variable) == "string") and u.variable or nil,
@@ -255,8 +255,8 @@ local function build()
                 "s", u.stackable and true or false,
                 "cap", STACK_CAPS[k],
                 "req", REQUIRES[k],
-                -- Sept 29 2026: the family a card belongs to (Families.lua),
-                -- and the class it is exclusive to, if any.
+                -- The family a card belongs to (Families.lua), and the class
+                -- it is exclusive to, if any.
                 "fam", u.family,
                 "cls", u.class,
                 "d", u.description)
@@ -370,7 +370,7 @@ local function build()
             REQUIRED_MISSING[#REQUIRED_MISSING + 1] = "AI module for " .. k .. " (add it to AI_FILES)"
             say("!! unresolved AI module for " .. k)
         end
-        -- What it pays into the Essence Shop's purse (Essence.lua, Sept 29 2026).
+        -- What it pays into the Essence Shop's purse (Essence.lua).
         local Essence = require("Utilities/systems/Essence")
         local eLo, eHi
         if e.is_boss then eLo, eHi = Essence.BOSS[1], Essence.BOSS[2]
@@ -489,7 +489,7 @@ local function build()
         CHANCE     = need(wcLocals, "CHANCE",     "WaveComposition"),
     }))
     -- How every spawn scales with the wave, and the boss-only compounding.
-    -- All WaveManager file-locals read by :_scaleEnemy (Sept 28 2026).
+    -- All WaveManager file-locals read by :_scaleEnemy.
     put(consts, "scaling", scalarMap({
         HEALTH_SCALE       = need(wmLocals, "HEALTH_SCALE",       "WaveManager"),
         DAMAGE_SCALE       = need(wmLocals, "DAMAGE_SCALE",       "WaveManager"),
@@ -503,12 +503,12 @@ local function build()
     }))
 
 
-    -- ── Families, curses, the Essence Shop (Sept 29 2026) ───────────────────
+    -- ── Families, curses, the Essence Shop ──────────────────────────────────
     -- Each family's three shop boosts (FamilyBoons.lua), in the shop's order,
     -- with the game's own names and descriptions, so the page cannot drift
     -- from the shelf.
     local FamilyBoons = require("Utilities/systems/FamilyBoons")
-    -- The family traits (Oct 4 2026): three tiers at 3/5/7 cards, each named
+    -- The family traits: three tiers per family, each named
     -- and described by the game. Older checkouts have no FamilyTraits.
     local okT, FamilyTraits = pcall(require, "Utilities/systems/FamilyTraits")
     if not okT then FamilyTraits = nil end
@@ -570,11 +570,9 @@ local function build()
 
     -- ── Companions ───────────────────────────────────────────────────────────
     -- A pet's numbers live in its constructor (self.stats) and its file locals,
-    -- nowhere else, so the wiki used to carry them as hand-typed prose -- and
-    -- went stale the day the player retuned the Goat (Oct 2026). Each pet is
-    -- built for real here, with a stub standing in for Animation so no sprite
-    -- has to load; the locals the page prints go through need(), so a rename
-    -- breaks the dump rather than blanking a number.
+    -- nowhere else. Each pet is built for real here, with a stub standing in for
+    -- Animation so no sprite has to load; the locals the page prints go through
+    -- need(), so a rename breaks the dump rather than blanking a number.
     local PET_FILES = {
         { "OwlCompanion",   "Owl",   { "CHAIN_RANGE", "CHAIN_MULT", "CHAIN_JUMPS" } },
         { "DemonCompanion", "Demon", { "CHASE_RANGE", "CLEAVE_RADIUS", "CLEAVE_MULT" } },

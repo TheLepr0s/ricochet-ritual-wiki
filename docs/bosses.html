@@ -48,26 +48,21 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <h1>Bosses</h1>
       <p>Three fights, each asking something different. The first asks you to read it, the second to already be moving, and the third takes your best cards away for the length of the fight.</p>
     </div>
-    <div class="note">Which boss arrives is <b>fixed rather than rolled</b>. A coin flip
-  would take away the one thing about a boss wave worth knowing in advance, and fixing the order
-  also guarantees that the first three bosses anyone meets are one of each. All three pay the
-  same on death: a large flat heal on the spot, plus one extra card banked for the next time the
-  upgrade screen opens — banked rather than granted, because that screen is not showing mid-wave.
-  On <b>Nightmare</b> a boss comes every seventh wave instead of every tenth.
+    <div class="note">Which boss arrives is <b>fixed rather than rolled</b>, so a boss wave is
+  something you can know in advance, and the first three bosses anyone meets are one of each. All
+  three pay the same on death: a large flat heal on the spot, plus one extra card banked for the
+  next time the upgrade screen opens — banked rather than granted, because that screen is not
+  showing mid-wave. On <b>Nightmare</b> a boss comes every seventh wave instead of every tenth.
   <br><br>
   <b>All three shrug off most knockback</b> — 85% for the Sovereign and the Collector, 88% for the
-  Revenant. Until 23 September they only claimed to: the resistance was applied inside the boss's
-  own damage handler, before the orb wrote its shove, so it never took effect, and every other push
-  in the game bypassed it entirely. It now sits where every push goes through. A boss is also never
-  pulled back toward you as a straggler, and no boss counts toward Full Bestiary — they have
-  achievements of their own.
+  Revenant — applied where every push in the game goes through. A boss is also never pulled back
+  toward you as a straggler, and no boss counts toward Full Bestiary — they have achievements of
+  their own.
   <br><br>
-  <b>Every boss is tougher than the last.</b> Since 27 September the Nth boss of a run carries
-  ×1.75<sup>N</sup> health and ×1.15<sup>N</sup> damage on top of the ordinary wave ramp — see
-  <a href="waves.html#shape">how enemies scale</a>. A wave-40 Sovereign (its second visit, since
-  the rotation is three long) is far past the 10,500 health a wave-30 one had before the change.
-  Their speed deliberately stays on a gentler ramp than everything else, so the Revenant can
-  always be outrun.</div>
+  <b>Every boss is tougher than the last.</b> The Nth boss of a run carries ×1.75<sup>N</sup>
+  health and ×1.15<sup>N</sup> damage on top of the ordinary wave ramp — see
+  <a href="waves.html#shape">how enemies scale</a>. Their speed stays on a gentler ramp than
+  everything else, so the Revenant can always be outrun.</div>
 
     <h2 id="rotation">The rotation</h2>
     <p>
@@ -102,13 +97,12 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <tbody>
         <tr><td>Slam</td><td>A wide ground telegraph, then a shockwave. The radius and the wind-up are
                        tuned together against one rule: running must work. From the edge of its
-                       own trigger range you can clear the circle on foot, without blink. The
-                       wind-up is 0.9s since 27 September (was 1.15s); 0.8s was tried and failed
-                       that rule, so 0.9 is as fast as it goes.</td></tr>
+                       own trigger range you can clear the circle on foot, without blink, in its
+                       0.9s wind-up.</td></tr>
         <tr><td>Bolt ring</td><td>A full ring of oversized bolts, one aimed at you — 8, 11 then 15 as
                             phases fall. Big enough to walk between: a movement puzzle, not a
-                            damage check. Since 24 September the bolts fly at 495px/s (was 360),
-                            fast enough that a ring has to be read rather than strolled through.</td></tr>
+                            damage check. The bolts fly at 495px/s, fast enough that a ring has to
+                            be read rather than strolled through.</td></tr>
         <tr><td>Alternating rings</td><td>Three to five rings in quick succession, each turned half a
                                     gap from the one before, so the lane you stood in for one ring
                                     is a bolt for the next. You step sideways every ring.</td></tr>
@@ -132,8 +126,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
             asking you to read it. Compare the Revenant, which asks you to already be moving.
             The ranged patterns come in a <b>fixed order per phase</b> — ring, wall, volley,
             summon, alternating rings in phase one — so the fight can be learned, and each new
-            phase starts its rotation from the top. Until 24 September it had a single ranged
-            attack and a summon, and from range the whole fight was one ring and a wait.</p>
+            phase starts its rotation from the top.</p>
 
     <h2 id="palerevenant">PALE REVENANT</h2>
     <div class="beast" style="--stripe:var(--legendary)">
@@ -154,36 +147,29 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <tbody>
         <tr><td>Dash combo</td><td>Three, four, then five dashes in a row as phases fall, each with its
                              own short wind-up and a gap between. The direction locks at the
-                             wind-up, so a combo is a sequence of dodges rather than one. Since
-                             24 September every dash runs its full length straight through trees
-                             and rocks (it used to stop dead on them and get stuck), and the lane
-                             is drawn full length to match.</td></tr>
+                             wind-up, so a combo is a sequence of dodges rather than one. Every dash
+                             runs its full length straight through trees and rocks, and the lane is
+                             drawn full length to match.</td></tr>
         <tr><td>Leap</td><td>Goes airborne and comes down in a wide circle. The hitbox stays on the
                        ground for the whole flight — only the sprite is lifted — so what you see
                        and what hurts never disagree.</td></tr>
-        <tr><td>Forced leap</td><td>After two dash combos it must leap. Without that it would simply
-                              never do it at close range, which is exactly what the first build
-                              did until a state-coverage assertion caught it.</td></tr>
-        <tr><td>Phantom Cross</td><td>Added 24 September; every third attack. It plants and marks two,
-                                three, then four lanes that all cross at your feet, a thousand
-                                pixels long. After the wind-up it slashes down the lanes itself,
-                                one after another: it vanishes, reappears at the end of a lane and
-                                streaks through in a tenth of a second, so the whole X lands in
-                                about half a second. It goes through scenery. One hit however many
-                                lanes you stand in. Step out of the X between two lanes: the
-                                wind-up is long enough that walking between them clears the nearest
-                                lane even in phase three. Since 28 September the lanes are drawn as
-                                one shape with a thick border (they used to be separate strips whose
-                                edges and ends overlapped), and the boss and its lanes are drawn over
-                                the scenery for the whole attack — it always cut through trees, but
-                                trees in front of it used to cover the lanes and hide it.</td></tr>
-        <tr><td>Reaper's Wheel</td><td>Added 24 September. When you are close it plants, and a
-                                  spectral scythe appears pointing just past you, with arrows round
-                                  a 300 / 330 / 350px circle showing which way it will turn. Then
-                                  it swings one full turn. The blade starts past you, so it
-                                  reaches you last: running straight out of the circle always
-                                  works, even from point blank. Running the way it turns carries
-                                  you across the blade.</td></tr>
+        <tr><td>Forced leap</td><td>After two dash combos it must leap, even at close range.</td></tr>
+        <tr><td>Phantom Cross</td><td>Every third attack. It plants and marks two, three, then four
+                                lanes that all cross at your feet, a thousand pixels long. After the
+                                wind-up it slashes down the lanes itself, one after another: it
+                                vanishes, reappears at the end of a lane and streaks through in a
+                                tenth of a second, so the whole X lands in about half a second. It
+                                goes through scenery, and the boss and its lanes are drawn over the
+                                scenery for the whole attack. One hit however many lanes you stand
+                                in. Step out of the X between two lanes: the wind-up is long enough
+                                that walking between them clears the nearest lane even in phase
+                                three.</td></tr>
+        <tr><td>Reaper's Wheel</td><td>When you are close it plants, and a spectral scythe appears
+                                  pointing just past you, with arrows round a 300 / 330 / 350px
+                                  circle showing which way it will turn. Then it swings one full
+                                  turn. The blade starts past you, so it reaches you last: running
+                                  straight out of the circle always works, even from point blank.
+                                  Running the way it turns carries you across the blade.</td></tr>
       </tbody>
     </table>
     <p>Its speed is capped below the wizard's own, even at phase three, on purpose: kiting
@@ -198,10 +184,10 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <h3>Wave 30, and every 30th after</h3>
           <span class="badge">Boss</span>
         </div>
-        <p>Added 29 September, and the one that tests your build rather than your footwork. It
-           arrives and <b>takes your three best cards</b> — highest rarity first, then whichever
-           has done the most damage this run — and holds them, circling its head and named under
-           its health bar, until it dies. Then every one comes back.</p>
+        <p>The one that tests your build rather than your footwork. It arrives and <b>takes your
+           three best cards</b> — highest rarity first, then whichever has done the most damage
+           this run — and holds them, circling its head and named under its health bar, until it
+           dies. Then every one comes back.</p>
         <div class="statline"><span class="stat">base HP <b>2000</b></span><span class="stat">essence <b>30–45</b></span><span class="stat">speed <b>70</b></span><span class="stat">contact <b>20</b></span><span class="stat">hitbox <b>70×66</b></span><span class="stat">scale <b>×2.3</b></span></div>
       </div>
     </div>

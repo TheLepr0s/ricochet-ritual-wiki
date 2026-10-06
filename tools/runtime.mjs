@@ -214,7 +214,7 @@ for (const p of pages) {
     }
   }
 
-  // Grouping (the cards page, Sept 29 2026): by family shows only family
+  // Grouping on the cards page: by family shows only family
   // headings, each over rows of its own family; back to rarity restores them.
   const famBtn = byId.get("group-family");
   const rarBtn = byId.get("group-rarity");

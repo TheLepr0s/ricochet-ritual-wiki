@@ -59,7 +59,8 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <a href="builds.html#shop">Essence Shop</a></b>: every visit has one on the shelf, on a card of
       its own (cut corners, lit in the ability's colour, the cooldown in its footer) so it is never
       taken for an upgrade, and a reroll deals a different one. Buying one replaces what you had.
-      Until 29 September one was dealt as a fourth card on every third upgrade screen.
+      Pressing F drains the ability's bar over the effect's duration, and the cooldown starts once
+      the effect has ended.
     </p>
 
     <div class="rows">
@@ -97,7 +98,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         data-hay="storm thunderstorm call a storm. for 5 seconds, lightning hammers the crowd three times a second -- 34 to what it hits and 15 to everything beside it, growing with the wave." data-damaging="1">
         <div class="r-name" data-anchor><span>Thunderstorm</span><span class="r-key">storm</span></div>
         <div class="r-desc">Call a storm. For 5 seconds, lightning hammers the crowd three times a second -- 34 to what it hits and 15 to everything beside it, growing with the wave.</div>
-        <div class="r-meta"><div class="per">45s cooldown</div><div class="tot">5s active</div><div class="per"><b>15.0</b> kills/cast</div><div class="tot">0.33 per second of cooldown</div><div class="dep flag">was <b>6.0</b> before the retune</div></div>
+        <div class="r-meta"><div class="per">45s cooldown</div><div class="tot">5s active</div><div class="per"><b>15.0</b> kills/cast</div><div class="tot">0.33 per second of cooldown</div></div>
       </div>
       <div class="row" id="bulwark" style="--stripe:var(--legendary)"
         data-hay="bulwark bulwark brace. gain 60 shield and take half damage for 8 seconds." data-damaging="0">
@@ -139,38 +140,25 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
 
     <h2 id="balance">How these were balanced</h2>
-    <div class="note"><b>The five damaging abilities were measured against each other</b>,
-  because “the Nuke is stronger than Thunderstorm” turned out to be exactly right and nothing in
-  the card benchmark could see it. An ability is a button, not a passive, so the fixture leaves
-  the wizard completely idle — no swinging, no moving, orb pinned in hand — fires the ability the
-  moment it is off cooldown, and counts <b>kills</b> rather than damage.
+    <div class="note"><b>The five damaging abilities are measured against each other.</b> An
+  ability is a button, not a passive, so the fixture leaves the wizard completely idle — no
+  swinging, no moving, orb pinned in hand — fires the ability the moment it is off cooldown, and
+  counts <b>kills</b> rather than damage. Kills, because damage clamps at the target's remaining
+  health and so cannot see <em>overkill</em>: a Nuke does several times a trash enemy's health.
   <br><br>
-  Kills, because damage clamps at the target's remaining health and therefore cannot see
-  <em>overkill</em>. A Nuke does several times a trash enemy's health, four fifths of it
-  uncounted, and the damage table duly ranked the game's screen-clear mid-table while the player
-  reporting the problem was looking at an empty field.
+  Thunderstorm's bolts splash to a neighbour, so a bolt that lands on something already dying is
+  not wasted. <b>The Nuke stays above the band on purpose</b> — it is the only ability that takes
+  your weapon away for five seconds to do what it does.
   <br><br>
-  Thunderstorm sat at less than half of anything else before this pass, which is exactly what was
-  reported. It picked one random target per bolt, so most of a storm landed on things already
-  dying; bolts now splash to a neighbour and it spends that overkill instead. <b>The Nuke stays
-  above the band on purpose</b> — it is the only ability that takes your weapon away for five
-  seconds to do what it does.
+  <b>Six of the twelve do no damage at all</b> and come back as a row of zeros: the fixture cannot
+  see them, which is not a verdict. <b>Overload</b> is in the same position for a different
+  reason: it amplifies an orb this fixture never throws. All seven are covered instead by
+  behavioural tests that check that pressing the button does its stated thing.
   <br><br>
-  <b>Six of the twelve do no damage at all</b> and come back as a row of zeros. That is the
-  fixture admitting what it cannot see, not a verdict. <b>Overload</b> is in the same position for
-  a different reason: it amplifies an orb this fixture deliberately never throws. All seven are
-  covered instead by behavioural assertions that check the one thing that matters — that pressing
-  the button does its stated thing at all.
-  <br><br>
-  <b>Fixed on 23 September.</b> Firing <b>Nuke</b> and then taking a different ability before the
-  orb had reformed left it invisible and unable to deal damage for the rest of the run: the
-  five-second hide only counted down inside the Nuke's own update, which stops running once the
-  slot holds something else. It was a likely thing to do, too — a Nuke often ends the wave, and
-  every third upgrade screen offers an ability. <b>Rewind</b> with nothing to rewind to no longer
-  spends its cooldown. <b>Cryostasis</b>'s “cannot detonate” is now true of a Bomber whose fuse
-  was already lit. And <b>Nuke</b>, <b>Meteor</b>, <b>Forcefield</b> and <b>Singularity</b> move
-  enemies through the same collision as everything else, so none of them throws a body into a
-  tree any more.</div>
+  <b>Rewind</b> with nothing to rewind to does not spend its cooldown. <b>Cryostasis</b> stops a
+  Bomber even once its fuse is lit. <b>Nuke</b>, <b>Meteor</b>, <b>Forcefield</b> and
+  <b>Singularity</b> move enemies through the same collision as everything else, so none of them
+  throws a body into a tree.</div>
 
     <h3>Kills per cast, and per second of cooldown</h3>
     <table>
@@ -178,7 +166,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <tbody>
         <tr><td><a href="#nuke">Nuke</a></td><td><code>20.0</code></td><td><code>0.40+</code></td><td>ceiling — it clears the screen</td></tr>
         <tr><td><a href="#singularity">Singularity</a></td><td><code>18.9</code></td><td><code>0.34</code></td><td></td></tr>
-        <tr><td><a href="#storm">Thunderstorm</a></td><td><code>15.0</code></td><td><code>0.33</code></td><td>was 6.0</td></tr>
+        <tr><td><a href="#storm">Thunderstorm</a></td><td><code>15.0</code></td><td><code>0.33</code></td><td></td></tr>
         <tr><td><a href="#meteor">Meteor</a></td><td><code>14.8</code></td><td><code>0.33</code></td><td></td></tr>
         <tr><td><a href="#sentry">Sentry</a></td><td><code>12.1</code></td><td><code>0.30</code></td><td>capped by shot count, not by targets</td></tr>
       </tbody>

@@ -2,7 +2,7 @@
    Generated site: see Tools/wiki/README.md. Edit this file, not docs/. */
 
 :root {
-  /* Trait tiers, TFT's metals (Oct 4 2026). Fills, so one set reads on both themes. */
+  /* Trait tiers, TFT's metals. Fills, so one set reads on both themes. */
   --bronze:    #c98a4f;
   --silver:    #b8c2cf;
   --gold:      #f2c14e;
@@ -373,7 +373,7 @@ tbody tr:hover td { background: var(--panel); }
   background: var(--accent); border-color: var(--accent); color: #12101a; font-weight: 600;
 }
 .hits { font-size: 0.78rem; color: var(--ink-faint); margin-left: auto; white-space: nowrap; }
-/* The cards page groups by rarity or by family (Sept 29 2026). */
+/* The cards page groups by rarity or by family. */
 .groupbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: -4px 0 14px; }
 .groupbar .gb-label { font-size: 0.78rem; color: var(--ink-faint); }
 .group-label .fam-ic { vertical-align: -5px; }
@@ -422,7 +422,7 @@ footer a { color: var(--ink-dim); }
 .fam-ic { width: 20px; height: 20px; image-rendering: pixelated; vertical-align: -4px; margin-right: 5px; }
 .fam-ic.big { width: 32px; height: 32px; vertical-align: middle; margin-right: 8px; }
 
-/* ── Traits (Oct 4 2026): TFT-style panels, bronze / silver / gold ───── */
+/* ── Traits: TFT-style panels, bronze / silver / gold ──────────────────── */
 .traits {
   display: grid; gap: 12px;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr));

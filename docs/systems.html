@@ -62,46 +62,32 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         through a crowd does not double-dip on the enemy it is touching.</p>
     <h3 id="every-status-ticks-in-one-place">Every status ticks in one place</h3>
     <p>Burn, bleed, freeze, chill, stun, curse and root all tick in a single function on the base
-        enemy. A status applied by a card that is never ticked there is a dead upgrade — which has
-        happened, and is why they all live together.</p>
+        enemy, so every status a card applies is guaranteed to run.</p>
     <h3 id="telegraphs-match-their-hitboxes">Telegraphs match their hitboxes</h3>
-    <p>Ground circles are drawn flattened for perspective, but damage is tested in plain
-        Euclidean distance. For a long time the two disagreed, so a boss slam and a meteor both
-        hit outside the circle they had drawn. Every ground telegraph now announces the radius it
-        actually uses.</p>
+    <p>Ground circles are drawn flattened for perspective, and every one is drawn at the radius
+        its damage actually uses, so a boss slam or a meteor never hits outside the circle it
+        drew.</p>
     <h3 id="enemies-go-round-trees-by-how-much-room-there-is">Enemies go round trees by how much room there is</h3>
     <p>Everything rests on one number, <b>clearance</b>: how far a point is from the nearest solid
-        box. The navigation this replaced only ever asked yes or no — does the body fit here? — and
-        a body that fits by one pixel slides along the trunk it is touching, with its sprite drawn
-        half inside the tree. Players saw exactly that: enemies sliding on trees, walking into
-        them, and stuck between one obstacle and the next.
+        box.
         <br><br>
         <b>Routes are planned for each body size.</b> One distance-to-you map per size of body on
         the field, over a 32px grid round you, where a cell is open only if a body that size fits
         there and costs more the tighter it is. So a Brute is never sent at a gap only a Mushroom
         fits through: it goes round. If you are somewhere it cannot reach at all, it waits in open
         ground until you come out, rather than wedging itself in the mouth of the gap and corking
-        it for everything behind. And a step between two cells only counts if the straight line
-        between them has room all the way along — a route that promised a step steering would not
-        take left the front body backing in and out of the gap while the queue behind it stood
-        still, which was two thirds of all the jams in a dense forest.
+        it for everything behind. A step between two cells only counts if the straight line
+        between them has room all the way along, so the front of a queue never backs in and out
+        of a gap it cannot take.
         <br><br>
         <b>Steering keeps its distance.</b> Every frame the body scores the headings round the one
         it wants by how well they point and how much room they leave, so it swings wide of a trunk
         early instead of meeting it and sliding.
         <br><br>
-        Measured on the navigation harness, eight seeds, a ring of enemies round a still wizard:
-        enemy-frames touching scenery fell from 2.29% to 0.02%, frames within 12px of it — where a
-        sprite visibly sinks into a tree — from 7.29% to 0.72%, time spent going nowhere from 0.63%
-        to zero, and every enemy arrived. In a forest three times denser than any real map,
-        touching fell from 13.7% to 0.05% and going nowhere from 29.7% to 0.6%; most of the enemies
-        that still do not arrive there are big bodies with no way in, waiting in the open.
-        <br><br>
         Bodies are tested at their <b>feet</b> against the real obstacle boxes, not at the sprite
-        origin (which sits on the creature's head), and a body inside a trunk is down to under
-        one enemy-frame in ten thousand.
-        Knockback and the drag of a Black Hole, Singularity or Gravity Snap go through the same
-        collision, so nothing is thrown through a tree either.
+        origin (which sits on the creature's head). Knockback and the drag of a Black Hole,
+        Singularity or Gravity Snap go through the same collision, so nothing is thrown through a
+        tree either.
         <br><br>
         <b>The horde keeps its shape.</b> Bodies ease apart rather than stacking, bigger ones
         shouldering smaller ones aside, so a crowd forms a ring round you instead of a single pile
@@ -111,349 +97,34 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         map's edge — and one left far out of sight for a few seconds is brought back to just off
         screen ahead of you. Bosses are never moved. Once the wave has nothing left to send and
         three or fewer remain, arrows at the screen edge point to them.</p>
-    <h3 id="a-card-is-worth-what-it-measures-not-what-it-says">A card is worth what it measures, not what it says</h3>
-    <p>Every card in the pool is benchmarked against a no-card baseline on the same seed, so
-        the map cancels out and what is left is the card. The September 2026 pass ran all 105
-        of them and the interesting results were not the numbers, they were the things the
-        numbers exposed.
-        <br><br>
-        <b>Explosive Touch was cheating.</b> It measured +157.6%, the highest figure in the
-        catalogue and nearly five times the median epic — and it barely responded to its own
-        damage number. At 1 damage per blast it still measured +123.7%, which meant almost none
-        of its output was the blast. Its explosion spawns eight fire particles for the look, into
-        the same list the Blazing Trail damage loop walks, and that loop charged full trail damage
-        for them without asking where they came from. The card was handing out a free Blazing
-        Trail on every landed hit to players who had never taken Blazing Trail. Particles now carry
-        a cosmetic flag; the card is linear again and sits at +37.0%, almost exactly the epic median,
-        at the damage value it always had. (The player removed the card on 29 September; the flag
-        stays for any fire drawn for show.)
-        <br><br>
-        <b>Twin Orbs did nothing.</b> A legendary measuring +2.7%, because a swing threw only the
-        NEAREST orb — so a second orb bought no extra throughput and simply waited its turn. One
-        swing now throws every orb in reach, which is what the card always claimed.
-        <br><br>
-        <b>Pushback made you worse.</b> Knocking a body away from you is knocking it out of the
-        orb's path, and the card measured −17.2% damage while being sold as brute force. The shove
-        is smaller now and carries damage with it.</p>
-    <h3 id="two-thirds-of-a-fixture-is-knowing-what-it-cannot-see">Two thirds of a fixture is knowing what it cannot see</h3>
-    <p>The same pass found three faults in the measuring equipment, each of which made working
-        cards look dead. Thirteen dependent cards were measured with no base card underneath them
-        and all reported an identical, impossible zero — Arc Damage without Chain Lightning is not
-        a weak card, it is not a card. The fixture could not see a second orb at all, so Resonance,
-        which needs both orbs to strike one target, could not register. And the defence fixture was
-        measuring its own ceiling: the baseline survived 1463 frames of a 1500-frame window, so
-        forty-two unrelated cards returned the same number.
-        <br><br>
-        A zero with a zero error bar is never "this card is weak". It means nothing happened, and
-        the first thing to suspect is the fixture.</p>
     <h3 id="an-orb-that-gets-stuck-lets-itself-out">An orb that gets stuck lets itself out</h3>
     <p>Two obstacles with a narrow gap between them can hold a thrown orb indefinitely, because
         nothing damps a wall bounce enough to end it. So the orb frees itself: if it has not
         travelled more than a short distance for about a second and a half, it checks whether it is
         in a <em>pocket</em>, and phases out through the scenery if it is.
         <br><br>
-        <b>Recall does not phase.</b> For one day in September 2026 a recalled orb passed through
-        everything on its way home, which made holding right click a guarantee — and looked like a
-        bug, an orb flying through trees. It collides again: it comes home round the scenery,
-        bouncing and sliding off it, and if a tree catches it you can step aside, since the pull
-        comes from wherever you stand. A pull that cannot arrive gives up after five seconds and
-        the orb flies on at the speed the pull gave it (until 27 September it braked to a dead
-        stop wherever the pull gave up). The escape above stands down while the orb is being recalled.
+        <b>Confinement is what marks a pocket, not speed</b>, since a slow trapped orb comes to rest
+        <em>inside</em> the gap. It samples a ring round the orb: a flat wall the orb has rolled up
+        against blocks at most half of it and is reachable on foot; a gap or an inside corner blocks
+        more. An orb already at rest is nudged toward you as well, since phasing alone does nothing
+        for something with no momentum.
         <br><br>
-        <b>Confinement is what marks a trap, not speed.</b> The first version also required the orb
-        to still be moving, on the reasoning that a stationary orb is one waiting to be collected --
-        and that let exactly the worst case through, because a wall bounce bleeds speed and a slow
-        trapped orb comes to rest <em>inside</em> the gap. Measured: an orb entering at 260px/s
-        stopped three pixels from the centre and stayed there forever. So it samples a ring
-        instead. A flat wall the orb has rolled up against blocks at most half of it and is
-        reachable on foot; a gap or an inside corner blocks more. An orb already at rest is nudged
-        toward you as well, since phasing alone does nothing for something with no momentum.</p>
-    <h3 id="october-5-traits-retuned">October 5: traits retuned</h3>
-    <p><b>Only different cards count</b> toward a trait now; a second copy of a card adds nothing.
-        Kinetic's tiers come at 2, 4 and 6 cards, and Frost's and Void's second at 4.
-        <br><br>
-        <b>Changed tiers.</b> Kinetic I: throws 20% faster (was 10%). Precision II, Exit Wound: a crit
-        sprays into everything in a 3 m cone behind the target for half the hit (a crit used to pass
-        through). Precision III: marked hits deal 2.5× (was 3×). Fire I, Long Burn: every burn lasts
-        2 s longer (burning enemies used to be slowed). Fire II, Flashpoint: an orb hit on a burning
-        enemy sets off the rest of its burn and lights it again (it used to be the recalled orb, in
-        a blast). Frost I: chills 2 s longer (was 1 s). Storm I reaches Capacitor's chain too.
-        Storm III also kills anything an arc leaves under 10% health. Blood II spreads to the 4
-        nearest only. Guardian I, Small Shield: a 15-point shield that comes back after 4 s unhit
-        (it used to slow attackers). Combo III, Encore: the lost half now flies as a combo bomb at
-        the biggest crowd on screen, and bosses take a quarter of it.
-        <br><br>
-        <b>Beast III, Apex Pack</b>, replaces choosing one companion to empower: every companion
-        gains a power. The Owl's bolts hit everything within 1.5 m for half, and every 4th bolt
-        stuns. An enemy dying within 4 s of the Demon's claws bursts into flame and sets everything
-        within 2 m alight. The Angel heals you 1 HP every 3 s. The Goat stampedes: rams 30% harder
-        and 30% more often, shove 50% further, and carry on in a 2.5 m cone behind the target for
-        half.</p>
-    <h3 id="october-4-family-traits">October 4: family traits</h3>
-    <p><b>Traits.</b> Every family has three tiers, switched on by owning 3, 5 and 7 of its cards —
-        see <a href="builds.html#traits">Traits</a>. The player picked Beast III (empower a
-        companion of your choosing), Storm III (chains go for the weakest within 6 m), Fire III
-        (Wildfire) and Arcane III (a ghost orb replaying the orb's path 5 seconds behind); the rest are
-        first drafts to be changed. A column on the right of the screen tracks them.
-        <br><br>
-        <b>Cards moved.</b> Backhand to Combo; Fracture and Split Shot to Arcane; Swift Steps and
-        Essence Nova to Wild. <b>Folded or cut:</b> Ignition (every Fire card ignites now),
-        Wildfire (Fire's third tier), Lightning Rod and Arc Damage (Chain Lightning's repeat picks),
-        Blink Strike (the Phase Step boost already did it). Resonant Field and Gravity Snap became
-        boosts, replacing Overcharge and Event Pull.
-        <br><br>
-        <b>Nineteen new cards</b>, and every family now has at least two uncommons: Running Throw,
-        Trick Shot, Pin, Pyre, Firewalk, Permafrost, Whiteout, Capacitor, Thunderhead, Pocket,
-        Wormhole, Imprint, Glint, Whistle, Bonded, Cash Out, On the Beat, Stage Fright and Multiplier.
-        Event Horizon is offered after a Black Hole again: a stacked prerequisite was never seen.</p>
-    <h3 id="september-30-to-october-3">September 30 to October 3</h3>
-    <p><b>The Frog.</b> The skeletal Ravager is now the <a href="bestiary.html#frog">Frog</a>, with new
-        art: it closes in small hops (longer ones since 3 October), crouches, shows its lane and
-        leaps. The <b>Slug</b> was halved (speed 46 to 26, health 210 to 105). The Owl, the Goat and
-        the Angel have new sprites; the <a href="cards.html#goatcompanion">Goat</a> was retuned to ram
-        less often for less, wander around you between rams and always go for whatever is closest to
-        you; the <a href="cards.html#angelcompanion">Angel</a>'s lance hits for 20 (26). Health drops
-        last 20 seconds (13). The <a href="cards.html#owlcompanion">Owl</a> is now an epic and the
-        Goat a rare; the Goat and the Demon walk round trees, and the flying pets are drawn above them.
-        <br><br>
-        <b>Cards.</b> <a href="cards.html#staticcharge">Static Charge</a> spends only the charges it
-        fires and keeps the rest when nothing is in reach. Arc Range is gone and
-        Lightning Rod reaches 3 m further (1.2 m) — it was folded into
-        <a href="cards.html#chainlightning">Chain Lightning</a> the next day.
-        <a href="cards.html#volatilecore">Volatile Core</a> goes off on the first enemy a recalled orb
-        hits, not when it lands in your hand. <a href="cards.html#boomerang">Boomerang</a> gives the
-        recall button back on a 30-second cooldown.
-        <br><br>
-        <b>The shop</b> sells no loose cards: an ability down the left, a boost and a pack for each
-        of your two biggest families, Transmute, then Reroll and Leave. Packs cost 4 units (2.6).
-        The card screen and the shop are mouse only — R, D and Enter do nothing there now. See
-        <a href="builds.html#shop">Builds &amp; shop</a>.</p>
-    <h3 id="the-september-29-overhaul">The September 29 overhaul</h3>
-    <p>The biggest pass yet, aimed at two complaints: runs where you ended up owning every good
-        card, and late runs where healing and shields meant you could not die.
-        <br><br>
-        <b>Builds.</b> One card a wave (was two). Every card now belongs to one of twelve
-        <a href="builds.html">families</a> that pull their own cards up the draw; each class has
-        three exclusive cards; a legendary bought in the shop carries a curse; and the run ends with a build name
-        that keeps its own records. <b>38 new cards</b> — Boomerang, Split Shot, Deadeye, Wrecking
-        Ball, a burn status (Ignition, Kindling, Wildfire, Cremation), Permafrost, Cold Snap,
-        Absolute Zero, Static Charge, Storm Front, Blood Price, Hemorrhage, Event Horizon, Pack
-        Leader, Raise Dead, a Goat and an Angel companion (the Angel excludes the Demon), Combo
-        Breaker, Showboat, Contract, and the twelve class cards.
-        <br><br>
-        <b>The Essence Shop</b> replaces the free card every fifth wave: essence from kills, a priced
-        shelf, restocks, and Transmute. See <a href="builds.html#shop">Builds &amp; shop</a>.
-        <br><br>
-        <b>Survival.</b> Invulnerability 0.3s, shields capped and draining, Life Steal on kills,
-        fewer hearts after wave 15, and the rest — see <a href="guide.html#drops">Staying alive</a>.
-        <b>Nightmare</b> is a fourth difficulty: harder enemies, worse odds
-        on rare cards, fewer hearts, and a boss every seventh wave.
-        <br><br>
-        <b>New enemies.</b> The <a href="bestiary.html#plaguepriest">Plague Priest</a> halves your
-        healing near it, and <a href="bosses.html#collector">The Collector</a>, the third boss,
-        steals your three best cards for the fight. The Sovereign's pattern bolts now fly through
-        scenery and draw above everything; its aimed volley still dies on trees.
-        <br><br>
-        <b>The death screen</b> explains the death: killer, biggest hit, who hurt you, what did your
-        damage, and healing per wave since your healing last changed. Enemy shots now name their
-        shooter there ("Bat's shot") rather than "Enemy shot".
-        <br><br>
-        <b>Later the same day.</b> Enemies speed up more gently: <b>+8%</b> from wave 1 (was +15%),
-        <b>+1.4%</b> a wave (was +2%), capped at <b>×1.8</b> (was ×2). Wave 20 is now ×1.37 on
-        Medium (was ×1.59) and ×1.77 on Nightmare (was ×2.13). And every difficulty heals
-        <b>a third of your max health</b> after each wave — Easy 40% — where it used to heal a
-        share of what you were missing, and Nightmare healed nothing.
-        <br><br>
-        The Blightspore is now simply the <a href="bestiary.html#slug">Slug</a>, in name as well as art.
-        <br><br>
-        <b>Family icons and family items.</b> Every card carries its family's icon, and the
-        <a href="builds.html#shop">Essence Shop</a> now sells three cards and two family items: a
-        <b>Family Boon</b> (a themed bonus, levels I to III), a <b>Family Pack</b> (a random card of
-        that family), or <b>the Recombobulator</b>, which swaps every card of one family for the same
-        rarities of another. Curses now come only with legendaries bought in the shop; a
-        legendary in an ordinary hand is clean.
-        <br><br>
-        <b>The shop, reworked again.</b> Abilities are sold <b>only</b> in the shop now — one on
-        every visit, on a card of their own design, and a restock deals a new one. The family items
-        became a panel for each of your two biggest families, each with <b>three boosts</b> (distinct
-        bonuses, bought once each), a <b>pack</b> that shows three of that family's cards and lets
-        you keep one, and sometimes the Recombobulator.
-        <br><br>
-        <b>Essence by strength.</b> A kill no longer pays a flat one: every enemy has a range, rolled
-        when it dies — 0–2 for a Mushroom, 1–3 for a Vampire, up to 3–6 for a Brute (listed in the
-        <a href="bestiary.html">bestiary</a>) — an elite rolls three times and a boss pays 30–45.
-        Small purple motes fly from the body to the counter as you are paid. Six new cards deal in it:
-        Deep Pockets, Bounty Hunter, Jackpot, Tip Jar, Interest and Blood Money. Shop prices follow
-        the new drops, so a visit buys what it did before.
-        <br><br>
-        <b>Later still.</b> The <a href="builds.html#shop">shop</a> pops in piece by piece, and the
-        pick screen more slowly; the top-right essence counter stays lit over the shop instead of a
-        second small one under its title. Each family panel shows <b>one</b> of its three boosts,
-        drawn from those you do not own, and one visit in ten the Recombobulator stands in for one of
-        them. Card text that ran off the bottom of a card (a cursed Angel Companion, Rewind) now
-        fits. Three essence cards above rare: <a href="cards.html#dragonshoard">Dragon's Hoard</a>
-        (legendary, damage from the essence you hold, weighed against prices so it cannot run away),
-        <a href="cards.html#spendthrift">Spendthrift</a> and
-        <a href="cards.html#essencenova">Essence Nova</a>. The Goat is weaker early — slower, and
-        its daze is now only Concussion's — and a shove plays under a stun instead of after it. A
-        stunned Bomber's fuse no longer pauses. Swift Steps is Kinetic. The achievements' scrollbar
-        can be dragged.
-        <br><br>
-        <b>The second list.</b> Every family's three boosts were replaced with the player's own —
-        Blood pools that slow, Precision's snap-back, a Frost shatter below 15%, Storm's fork and
-        stunning bolt, Void's slow, Arcane echoes, Combo's second chance, Guardian's spinning
-        shield and the rest (see <a href="builds.html#families">Builds &amp; shop</a>); the shop only
-        offers one that could do something for you. Permafrost, Ball Lightning, Afterimage,
-        Explosive Touch and Ambush are gone, and Wall Crush was folded into
-        <a href="cards.html#bowling">Bowling</a>. Shatter is +30% (was triple), Momentum stops at
-        +60% and says so, and Death Nova, Volatile Core, Cursed Glass, Rift Step, Rupture and
-        Thornmail grow with the waves. Event Horizon, Resonance and Reserve Charge are epics;
-        Deadeye is Precision; Phase Shot and Juggernaut exclude each other; Cold Snap needs a
-        chill. A Boomerang return counts as a recall, and card text gives distances in metres.
-        The cards page can be grouped by family.
-        <br><br>
-        <b>Companions.</b> The <a href="cards.html#goatcompanion">Goat</a> watches further (460px),
-        rams harder, and its ram now splashes, shoves the whole group away from you and dazes it — it
-        was far behind the other three — and it has three cards of its own like they do. The
-        <a href="cards.html#angelcompanion">Angel</a>'s judgement is no longer the Demon's curse in
-        gold: judged enemies hit you 20% softer, and when one dies a pillar of light smites everything
-        around it.</p>
-    <h3 id="the-september-28-pass">The September 28 pass</h3>
-    <p><b>Nerfs.</b> <a href="cards.html#tether">Tether</a>, <a href="cards.html#quickening">Quickening</a>
-        and <a href="cards.html#seeker">Seeker</a> are weaker and now epic. Seeker is the first card
-        with a separate rarity for further stacks: an epic to find, a rare to stack. See their notes.
-        <br><br>
-        <b>Faster enemies.</b> Everything walks 15% faster from wave 1, and speed now ramps +2% a
-        wave (was +1%), up to ×2. The fast events are much faster: <b>Blood Moon</b> ×1.7 (was ×1.3),
-        <b>Frenzy</b> ×1.5 (was ×1.1), and <b>The Hunt</b>, whose description always promised
-        "faster than you", has a real ×1.6 for the first time. Bosses keep the old gentle speed
-        ramp. See <a href="waves.html#shape">how enemies scale</a>.
-        <br><br>
-        <b>Screen shake</b> now fades under rapid hits the way the hit freeze already did (below),
-        so a crowd being carved up no longer rattles the camera nonstop. An
-        <b>Overloaded</b> orb is drawn above every tree, enemy and blast, so the thing you are
-        steering never disappears behind the scenery. The Revenant's
-        <a href="bosses.html">Phantom Cross</a> is drawn as one clean shape, over the scenery.</p>
-    <h3 id="the-september-27-pass">The September 27 pass</h3>
-    <p><b>Hitstop no longer stutters.</b> Each hit on an enemy freezes the game for a few
-        hundredths of a second so it lands with weight. Late in a run the orb hits several things a
-        second, and the freezes, each up to 0.12s, piled into what looked exactly like lag. Every
-        freeze now adds heat that drains over time and scales the next one down: a lone hit, or hits
-        a second or more apart, get the full freeze; a rally goes 0.12, 0.06, 0.03, 0.01s and then
-        nothing, and the punch comes back after a short breather. Hitting a tree freezes and shakes
-        nothing at all (Thunderclap was the one card that did).
-        <br><br>
-        <b>Bosses compound</b> (×1.75 health and ×1.15 damage per boss reached) and enemy damage
-        ramps +8% a wave (was +5%). The <b>combo ladder</b> has ten tiers, with GODLIKE at a 500
-        combo (was 60) and BRUTAL, UNREAL and LEGENDARY in between; the score multiplier still tops
-        out at ×3, spread over the ten. The <b>Sovereign's slam</b> winds up in 0.9s (was 1.15s).
-        <br><br>
-        <b>Fixes.</b> An orb shoved out of an enemy and into a tree used to stop dead at full speed
-        — the code that freed it from the trunk zeroed its velocity — and that was the "ball just
-        stops in a crowd" report; it now keeps its speed. A recall that times out leaves the orb
-        moving instead of braking it to a halt. An <b>Overloaded</b> orb can be swung from its rim:
-        swing reach grows with how much bigger the orb is than normal (Heavy Orb and Rampage
-        extend it a little too). The <b>My Upgrades</b> panel scrolls one row per wheel notch; it
-        moved about 7px.</p>
-    <h3 id="the-september-26-changes">The September 26 changes</h3>
-    <p><b>Ability bar.</b> Pressing F now drains the ability's bar over the effect's duration, so
-        you can see how long it lasts, and the cooldown only starts once the effect has ended (it
-        used to run underneath the effect). With Reserve Charge, a refill in progress waits too.
-        <br><br>
-        <b>Recall spam fixed.</b> Holding recall, swinging the orb out of the pull and releasing
-        used to skip the recall cooldown entirely, so you could recall again at once. Ending a
-        recall with a swing now spends the cooldown like any other ending.
-        <br><br>
-        <a href="cards.html#backhand">Backhand</a> works on a moving orb, and
-        <a href="cards.html#orbitmode">Mirror Ball</a> shards finally scale; see their notes.</p>
-    <h3 id="the-september-25-fixes">The September 25 fixes</h3>
-    <p><b>Later the same day.</b> A big crimson <b>boss arrow</b> is always showing: at the screen
-        edge, labelled with the boss's name, while it is off screen, and bobbing over its head while
-        it is on screen. The <b>orb arrow</b> is bigger, sits on a dark badge so it reads on any
-        ground, and says how far away the orb is. <b>Pausing</b> now stops the music outright
-        (sound effects were already held), and the music also stops while the game window is in
-        the background. On <b>easy and normal</b> the map leaves at least 96px — two orbs — between
-        any two solid obstacles. <b>Fireballs</b> are drawn over the rocks and stumps they fly
-        over; they used to be drawn underneath them. <b>Glass Cannon</b> has been removed, and its
-        achievement, Butterfingers, with it. <b>Slug</b> pools: thrown ones are bigger
-        (90px), and the trail it walks is smaller pools (40px) dropped twice as often (every 35px).
-        <br><br>
-        <b>Fireballs</b> fly over rocks and stumps and only stop on trees. <b>Both bosses</b>
-        have twice the health (Sovereign 2,200 and Revenant 1,720 before wave scaling).
-        <b>Second Wind</b> saves you on 30 HP with 5 seconds of invulnerability, not 1 HP.
-        <br><br>
-        <b>Companions.</b> The <a href="cards.html">Owl and Demon</a> were rebuilt to stand level
-        with Black Hole, the legendary they are measured against, and their damage now rides the
-        enemy health curve instead of staying flat. See their card notes.
-        <br><br>
-        <b>Damage numbers</b> are bigger and climb a colour ladder with the size of the hit:
-        white under 20, yellow 20+, orange 50+, red 100+, magenta 200+, purple 350+, cyan 500+,
-        blue 700+, gold 1,000+, white-hot with a red glow from 1,500, and cycling through the
-        rainbow from 2,000. Each step is also drawn a little larger. Crits add a "!". Burn
-        ticks, heals and damage you take keep their own fixed colours.
-        <br><br>
-        <b>Slugs</b> lob poison balls that land as pools, and <b>Reserve Charge</b>
-        (legendary, offered once you hold an F ability) gives the ability a second charge.
-        <br><br>
-        <b>Nuke</b>: while the orb is blown apart and reforming, a swing no longer "throws" it.
-        The hidden orb sits in your hand, so every swing launched an invisible, harmless orb that
-        snapped straight back, with the full swing sound: pushing nothing.
-        <br><br>
-        <b>Catching</b> an orb that is barely moving (under 40px/s) stops it silently. It no
-        longer plays the catch sound or triggers Backhand, Dead Stop or the catch achievement,
-        which is what let <b>Magnetic Grip</b> fire all of them every frame. The
-        <b>Tether</b> cord no longer disappears at long range. See those cards' notes.</p>
-    <h3 id="the-september-24-pass">The September 24 pass</h3>
-    <p><b>Bosses.</b> The <a href="bosses.html">Dread Sovereign</a> fires faster bolts and gained
-        four patterns: alternating rings, an aimed wall with a hole, a re-aimed volley and a spiral.
-        The <a href="bosses.html">Pale Revenant</a> gained the Phantom Cross, then (later the
-        same day) the Reaper's Wheel. The Cross became a quick run of slashes by the boss itself
-        rather than a single simultaneous strike, and its dashes now go through trees and rocks.
-        <br><br>
-        <b>Buffs.</b> The Owl and the Demon hit harder and more often, and each now spreads to a
-        second target; see their card notes for the numbers. <b>Rewind</b> is on a 25s
-        cooldown (was 40), always heals at least 15% on top of the health it restores, and leaves a
-        time-quake where you were that stuns for 1.5s. The
-        <a href="bestiary.html#slug">Slug</a> is half again as fast and drops smaller
-        pools twice as often, so its rot is a trail rather than a scatter of puddles.
-        <br><br>
-        <b>Black Hole</b> is a stackable card now, capped at three: a smaller well at one card
-        (150px, from 240) that grows to 260px at three.
-        <br><br>
-        <b>Fixes.</b> The Mirror Ball ring could vanish whenever the main orb was far off screen or
-        hidden by a Nuke, and the Quickening chevrons flipped when you turned.</p>
-    <h3 id="the-september-23-sweep">The September 23 sweep</h3>
-    <p>A pass over the whole game for bugs, most of them the quiet kind: nothing crashed, the
-        game simply did less than it said. In one place, so the list is findable:
-        <br><br>
-        <b>Sound.</b> Card sounds were placed so that most of them were near-silent at ordinary
-        range, several cards had no sound or someone else's, and effects kept playing under the
-        pause menu — see <a href="#sound">Sound</a> below. The combo tier-ups became a
-        <a href="#combo">streak ladder</a> that climbs, and its top rung finally plays.
-        <br><br>
-        <b>Enemies.</b> Navigation was rebuilt around how much room there is (above): routes per
-        body size, steering that keeps clear of trunks, and big bodies that wait in the open rather
-        than wedge in a gap. Bodies collide at their feet, the crowd spreads into a ring, spawns
-        come from outside the real view,
-        stragglers are brought back, and arrows point to the last few. Trees block enemy shots,
-        and shooters need a line to you. Casters hold their distance between casts, the
-        <a href="bestiary.html#bulwark">Bulwark</a>'s shield turns to face you in any direction, and
-        the <a href="bestiary.html#siphon">Siphon</a>'s heal works.
-        <br><br>
-        <b>Cards and abilities.</b> Glass Cannon (removed on 25 September) re-shattered on every wall. The Twin Orbs twin
-        collided at the wrong size and kept Overload forever. Thunderclap fired on any touch.
-        Vampire Orb's card said +2. Nuke could leave the orb gone for the rest of the run, Rewind
-        spent its cooldown on nothing, Cryostasis let a lit fuse go off, and boss knockback
-        resistance never applied. The off-screen orb arrow pointed the wrong way, and a recalled
-        orb passed through trees; it collides again. And the orb's direct hit was aimed at every
-        enemy's head: it measured from the sprite's anchor, which sits on the head, instead of
-        the body — so on a Mushroom it struck the air above the cap and passed through the
-        stalk. It now hits the body where it is drawn.
-        <br><br>
-        <b>Achievements.</b> <a href="achievements.html#ach-bestiary">Full Bestiary</a> unlocked
-        without the three newest enemies, which had no kill counter; it now counts every ordinary
-        type on a line of its own — the Witchdoctor and the Bonecaller separately — and neither
-        boss.</p>
+        <b>Recall does not phase.</b> A recalled orb comes home round the scenery, bouncing and
+        sliding off it, and if a tree catches it you can step aside, since the pull comes from
+        wherever you stand. A pull that cannot arrive gives up after five seconds and the orb flies
+        on at the speed the pull gave it. The escape above stands down while the orb is being
+        recalled.</p>
+    <h3 id="hits-land-with-weight-not-lag">Hits land with weight, not lag</h3>
+    <p>Each hit on an enemy freezes the game for a few hundredths of a second. Every freeze adds
+        heat that drains over time and scales the next one down: a lone hit, or hits a second or
+        more apart, get the full freeze; a rally goes 0.12, 0.06, 0.03, 0.01s and then nothing, and
+        the punch comes back after a short breather. Screen shake fades the same way under rapid
+        hits. Hitting a tree freezes and shakes nothing.</p>
+    <h3 id="damage-numbers">Damage numbers</h3>
+    <p>Bigger hits climb a colour ladder: white under 20, yellow 20+, orange 50+, red 100+,
+        magenta 200+, purple 350+, cyan 500+, blue 700+, gold 1,000+, white-hot with a red glow from
+        1,500, and cycling through the rainbow from 2,000. Each step is also drawn a little larger.
+        Crits add a "!". Burn ticks, heals and damage you take keep their own fixed colours.</p>
 
     <h2 id="combo">The combo ladder</h2>
     <p>
@@ -494,21 +165,9 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   streak is: one instrument, and every rung a clear step higher and a little bigger than the one
   before. Each is a quick run up to its note, from C5 at the first tier to C7 at the last, and the
   last one is an event of its own, with a chord that blooms underneath and sparkle off the top.
-  There are six rungs and, since 27 September, ten tiers: the first five promotions climb the
-  first five rungs, BRUTAL, UNREAL and LEGENDARY replay the fifth pitched up to G6, A6 and B6 so
-  the climb keeps rising, and GODLIKE keeps the last rung to itself. (The set before these had
-  seven sounds for six promotions, and its top one could never play.)
-  <br><br>
-  <b>Fixed on 23 September.</b> Crescendo asked for a sound that was never loaded, and was
-  silent. Aegis played Glass Cannon's shatter on every deflect. Twin Orbs doubled the throw, and
-  Charged Shot with Backhand fired two full-volume swings at once. Chain Lightning zapped on
-  every hit whether or not there was anything to arc to. Slingshot's arming borrowed the
-  “ability ready” cue, and the Owl whooshed when it appeared rather than when it struck. Soul
-  Harvest chimed on full health with nothing healed. Death Nova, Explosive Touch, Volatile Core,
-  Rupture, Void Pulse and Thunderclap made no sound at all. Evil Wizards and Archmages groaned
-  twice per hit, each wizard's hand chain fired about eleven full-volume digs per cast, the
-  Bomber had no hurt sound, and effects kept playing under the pause menu. A test now fails on
-  any sound name in the code that does not exist.
+  There are six rungs and ten tiers: the first five promotions climb the first five rungs, BRUTAL,
+  UNREAL and LEGENDARY replay the fifth pitched up to G6, A6 and B6 so the climb keeps rising, and
+  GODLIKE keeps the last rung to itself.
   <br><br>
   <b>Voices and rate limits are central, not per-caller.</b> A pool of sources per sound key lets
   one overlap itself where that overlap <em>is</em> the feedback, and pins announcements to exactly
@@ -520,15 +179,13 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
   gentle fade: full volume anywhere on screen, easing to about a third a screen or so beyond it,
   and a soft pan that never puts a sound hard in one ear. Your own orb's sounds keep a floor, so
   your weapon connecting is always audible. Every effect is made mono when it loads so this
-  applies to all of them. (The old falloff was so steep that a crit or a freeze a few hundred
-  pixels away, in plain view, came out close to silent — while stereo samples, which could not
-  be placed at all, played at full volume from anywhere on the map.)
+  applies to all of them.
   <br><br>
   Nearly every sound in the game is <b>synthesised by a Lua script in the repo</b> rather than
   licensed, which is why they sit together tonally — including a voice of its own for every card
-  that fires an effect: Void Pulse, Crescendo, Death Nova, Explosive Touch, Thunderclap, Volatile
-  Core, Rupture, Aegis's parry, the Owl's strike and Slingshot's arming click. One bought sound
-  was kept: the orb recall.</div>
+  that fires an effect: Void Pulse, Crescendo, Death Nova, Thunderclap, Volatile Core, Rupture,
+  Aegis's parry, the Owl's strike and Slingshot's arming click. One bought sound was kept: the orb
+  recall.</div>
 
     <h2 id="tooling">How this wiki is built</h2>
     <p>
@@ -542,8 +199,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <p>
       <code>tools/build.mjs</code> then renders <code>docs/</code> from that JSON plus the
       hand-written prose in <code>content.mjs</code>. The split is the point: if a fact could have
-      been derived and was typed instead, it is a bug waiting to drift. An earlier version of this
-      reference kept those tables by hand, and three of them had already gone stale.
+      been derived and was typed instead, it is a bug waiting to drift.
     </p>
     <p>
       Enemy portraits are not copied out of the sprite folder. 16
