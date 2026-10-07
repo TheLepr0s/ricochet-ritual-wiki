@@ -45,7 +45,7 @@ const metres = (px) => String(Math.round((px / 50) * 10) / 10);
 const share = (f) => `${Math.round(f * 100)}%`;
 const PET_LINE = {
   OwlCompanion: (s, c) =>
-    `${s.damage} damage a bolt at wave 1, one every ${s.cooldown}s at up to ${metres(s.attack_range)} m; each bolt leaps on through up to ${c.CHAIN_JUMPS} more enemies within ${metres(c.CHAIN_RANGE)} m, each taking ${share(c.CHAIN_MULT)} of it.`,
+    `${s.damage} damage a bolt at wave 1, one every ${s.cooldown}s at up to ${metres(s.attack_range)} m. With Owl Thunder each bolt leaps on through up to ${c.CHAIN_JUMPS} more enemies within ${metres(c.CHAIN_RANGE)} m, each taking ${share(c.CHAIN_MULT)} of it.`,
   DemonCompanion: (s, c) =>
     `${s.damage} claw damage at wave 1 every ${s.attack_cooldown}s, on enemies within ${metres(c.CHASE_RANGE)} m of you; every swipe rakes everything within ${metres(c.CLEAVE_RADIUS)} m of its target for ${share(c.CLEAVE_MULT)} and curses it: ×${s.curse_mult} damage taken for ${s.curse_duration}s.`,
   AngelCompanion: (s, c) =>
