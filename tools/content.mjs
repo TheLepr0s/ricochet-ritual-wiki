@@ -697,7 +697,7 @@ export const KILL_TIERS = [
 export const FIELD_LABEL = {
   healthMult: "enemy health", damageMult: "enemy damage", speedMult: "enemy speed",
   countMult: "wave size", spawnIntervalMult: "spawn interval", maxAliveMult: "concurrent cap",
-  scoreMult: "score per kill", allElite: "every spawn is elite", volatile: "corpses explode",
+  scoreMult: "score per kill", essenceMult: "essence per kill", allElite: "every spawn is elite", volatile: "corpses explode",
   splitAll: "everything splits on death", rampMult: "scaling rate",
   healFrac: "between-wave heal", healFlat: "between-wave heal (flat)",
   rerolls: "starting rerolls", banishes: "starting banishes",
