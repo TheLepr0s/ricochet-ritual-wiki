@@ -596,8 +596,8 @@ function scalingPara() {
       ×${s.BOSS_HEALTH_GROWTH}<sup>N</sup> health and ×${s.BOSS_DAMAGE_GROWTH}<sup>N</sup>
       damage on top of the ramp, so each boss keeps pace with a build that grows a card a wave.
       A boss wave sends only ${Math.round(s.BOSS_WAVE_COUNT * 100)}% of its normal count as an
-      escort, and no more than ${s.BOSS_WAVE_ALIVE} enemies are alive at once, the boss and its
-      summons included.
+      escort, and no more than ${s.BOSS_WAVE_ALIVE} enemies are alive at once, the boss included.
+      No boss summons help.
       Bosses keep a gentler speed ramp (${p(s.BOSS_SPEED_SCALE)} a wave) so the Revenant can
       always be outrun.
     </p>`;

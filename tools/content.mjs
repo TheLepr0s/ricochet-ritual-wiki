@@ -366,15 +366,13 @@ export const BOSSES = {
       { n: "Spiral", d: `Phase two onwards. Two arms of bolts wound out over a second and a half.
                          The space between shots widens as they fly, so the way through is a little
                          way out, not up close.` },
-      { n: "Summon", d: `Calls bodies out of the ground, more each phase. Everything shares one
-                         cooldown, and a pattern's own length is added to it, so it never does two
-                         things at once.` },
     ],
     close: `The telegraph lengths are the design. At nearly a second of wind-up, the Sovereign is
             asking you to read it. Compare the Revenant, which asks you to already be moving.
             The ranged patterns come in a <b>fixed order per phase</b> — ring, wall, volley,
-            summon, alternating rings in phase one — so the fight can be learned, and each new
-            phase starts its rotation from the top.`,
+            alternating rings in phase one — so the fight can be learned, and each new phase
+            starts its rotation from the top. Everything shares one cooldown, and a pattern's own
+            length is added to it, so it never does two things at once.`,
   },
   PaleRevenant: {
     sub: "Wave 20, and every 30th after",
@@ -443,7 +441,6 @@ export const BOSSES = {
       { n: "Blink", d: `It steps away to somewhere at range and clear of scenery, and the next
                         attack follows quickly. It also blinks out if it is stuck against
                         something.` },
-      { n: "Summon", d: `Hired help, more each phase.` },
     ],
     close: `It keeps its distance and strafes, like a merchant behind a counter: the Sovereign
             walks at you and the Revenant runs at you, so the third one makes you do the chasing.
@@ -463,7 +460,7 @@ export const BOSS_SHARED = `Which boss arrives is <b>fixed rather than rolled</b
   their own.
   <br><br>
   <b>A boss wave is the boss's fight.</b> Only a small escort comes with it, and no more than
-  five enemies are alive at once, the boss and its summons included.
+  five enemies are alive at once, the boss included. No boss summons help.
   <br><br>
   <b>Every boss is tougher than the last.</b> Every boss carries ×1.3 health and ×1.15 damage,
   and the Nth boss of a run also gets ×1.75<sup>N</sup> health and ×1.15<sup>N</sup> damage on
