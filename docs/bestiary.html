@@ -233,7 +233,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         </div>
       </div>
       <div class="beast" id="slug" style="--stripe:var(--uncommon)"
-        data-hay="slug hazard barely fights, but everything it does poisons you: its bite, the ball it lobs from range (it lands where you stood and leaves a pool), and the small pool of rot it leaves every 35px it walks. poison is a tick a second for three seconds, 3 damage each at every wave (armour does not reduce it, a shield soaks it), and a new dose refreshes it rather than stacking; your health bar turns green and a poisoned plate counts it down. the pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. the first enemy that makes where the fight happens matter. wave 7"
+        data-hay="slug hazard barely fights, but everything it does poisons you: its bite, the ball it lobs from range (it lands where you stood and leaves a pool), and the small pool of rot it leaves every 35px it walks. poison is a tick a second for three seconds, 3 damage each at every wave (armour does not reduce it, a shield soaks it), and a new dose refreshes it rather than stacking; your health bar turns green and a poisoned plate counts it down. each pool lasts 4.5s and stays after it dies — kite in a tight circle around one and you can wall off your own escape route. the first enemy that makes where the fight happens matter. wave 7"
         data-boss="0" data-ranged="0"
         data-variant="0">
         <div class="portrait"><img src="assets/img/Slug.png" alt="Slug" loading="lazy" width="82"></div>
@@ -244,7 +244,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
             
             
           </div>
-          <p>Barely fights, but everything it does POISONS you: its bite, the ball it lobs from range (it lands where you stood and leaves a pool), and the small pool of rot it leaves every 35px it walks. Poison is a tick a second for three seconds, 3 damage each at every wave (armour does not reduce it, a shield soaks it), and a new dose refreshes it rather than stacking; your health bar turns green and a POISONED plate counts it down. The pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.</p>
+          <p>Barely fights, but everything it does POISONS you: its bite, the ball it lobs from range (it lands where you stood and leaves a pool), and the small pool of rot it leaves every 35px it walks. Poison is a tick a second for three seconds, 3 damage each at every wave (armour does not reduce it, a shield soaks it), and a new dose refreshes it rather than stacking; your health bar turns green and a POISONED plate counts it down. Each pool lasts 4.5s and stays after it dies — kite in a tight circle around one and you can wall off your own escape route. The first enemy that makes WHERE the fight happens matter.</p>
           <div class="statline"><span class="stat">HP <b>105</b></span><span class="stat">essence <b>3–5</b></span><span class="stat">speed <b>26</b></span><span class="stat">damage <b>10</b></span><span class="stat">range <b>90</b></span><span class="stat">from wave <b>7</b></span><span class="stat">weight <b>3</b></span><span class="stat">max <b>3</b> alive</span><span class="stat">hitbox <b>40×29</b></span></div>
           <p class="tot">Drops are keyed to DISTANCE WALKED, not to a timer — a 40px pool every 35px — so one parked against a wall does not stack pools on one spot: it draws a line you have to route around. The pool a THROWN ball leaves is the big one, 90px.</p>
         </div>
@@ -468,14 +468,14 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </p>
     <div class="rows">
       <div class="row" id="ai-evilwizardenemy" style="--stripe:var(--legendary)" data-hay="evilwizardenemy caster stands still and drips a chain of grasping hands along the line to where you were when
-        the cast began. a hand that closes roots you and deals the caster's damage. taking a hit
+        the cast began. a hand that closes roots you for 1s and deals the caster's damage. taking a hit
         cancels the cast. come within 100px and it discharges at its own feet instead —
         &lt;b&gt;backlash&lt;/b&gt;, a 0.4s telegraphed blast and a hard shove. between casts it holds a band
         inside its own range, giving ground if you press it and circling if you do not, so it
         never walks itself into backlash range: you have to go in after it.">
         <div class="r-name" data-anchor><span>Caster</span><span class="r-key">EvilWizardEnemy</span></div>
         <div class="r-desc">Stands still and drips a chain of grasping hands along the line to where you were when
-        the cast began. A hand that closes roots you and deals the caster's damage. Taking a hit
+        the cast began. A hand that closes roots you for 1s and deals the caster's damage. Taking a hit
         cancels the cast. Come within 100px and it discharges at its own feet instead —
         <b>Backlash</b>, a 0.4s telegraphed blast and a hard shove. Between casts it holds a band
         inside its own range, giving ground if you press it and circling if you do not, so it
@@ -570,25 +570,29 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-meta"><div class="per"><a href="#dreadsovereign">DreadSovereign</a></div></div>
       </div>
       <div class="row" id="ai-frogenemy" style="--stripe:var(--warn)" data-hay="frogenemy leaper chase → windup → dash → recover. it closes in small hops (moving only while airborne),
-        crouches at range, flashes a ground lane, then leaps.
-        the direction locks when the wind-up starts, so the telegraph is the entire fight: step
-        out of the lane and it charges anyway, then stands winded and takes damage like anything
-        else.">
+        crouches at range, flashes a green ground lane, then leaps.
+        the direction and the length lock when the wind-up starts, so the telegraph is the entire
+        fight: step out of the lane and it charges anyway, then stands winded and takes damage
+        like anything else. the lane is exact: it is the area the leap's damage sweeps, a hit is
+        your hitbox touching the green, and the leap lands where the lane ends.">
         <div class="r-name" data-anchor><span>Leaper</span><span class="r-key">FrogEnemy</span></div>
         <div class="r-desc">CHASE → WINDUP → DASH → RECOVER. It closes in small hops (moving only while airborne),
-        crouches at range, flashes a ground lane, then leaps.
-        The direction locks when the wind-up starts, so the telegraph is the entire fight: step
-        out of the lane and it charges anyway, then stands winded and takes damage like anything
-        else.</div>
+        crouches at range, flashes a green ground lane, then leaps.
+        The direction and the length lock when the wind-up starts, so the telegraph is the entire
+        fight: step out of the lane and it charges anyway, then stands winded and takes damage
+        like anything else. The lane is exact: it is the area the leap's damage sweeps, a hit is
+        your hitbox touching the green, and the leap lands where the lane ends.</div>
         <div class="r-meta"><div class="per"><a href="#frog">Frog</a></div></div>
       </div>
-      <div class="row" id="ai-vampireenemy" style="--stripe:var(--epic)" data-hay="vampireenemy vampire bites for contact damage, heals itself, and &lt;b&gt;roots you&lt;/b&gt; while it drinks. killing it
-        mid-bite frees you immediately, which makes it the one enemy where burst damage is
-        worth more than its health bar suggests.">
+      <div class="row" id="ai-vampireenemy" style="--stripe:var(--epic)" data-hay="vampireenemy vampire bites for contact damage, heals itself, and &lt;b&gt;roots you&lt;/b&gt; for 0.6s while it drinks.
+        killing it mid-bite frees you immediately, which makes it the one enemy where burst
+        damage is worth more than its health bar suggests. once any root ends you cannot be
+        rooted again for 3s.">
         <div class="r-name" data-anchor><span>Vampire</span><span class="r-key">VampireEnemy</span></div>
-        <div class="r-desc">Bites for contact damage, heals itself, and <b>roots you</b> while it drinks. Killing it
-        mid-bite frees you immediately, which makes it the one enemy where burst damage is
-        worth more than its health bar suggests.</div>
+        <div class="r-desc">Bites for contact damage, heals itself, and <b>roots you</b> for 0.6s while it drinks.
+        Killing it mid-bite frees you immediately, which makes it the one enemy where burst
+        damage is worth more than its health bar suggests. Once any root ends you cannot be
+        rooted again for 3s.</div>
         <div class="r-meta"><div class="per"><a href="#nosferatu">Nosferatu</a>, <a href="#vampire">Vampire</a></div></div>
       </div>
       <div class="row" id="ai-revenantboss" style="--stripe:var(--legendary)" data-hay="revenantboss boss the mobile boss. dash combos, a leap, the phantom cross and the reaper's wheel, no

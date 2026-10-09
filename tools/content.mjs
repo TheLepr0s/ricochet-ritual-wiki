@@ -170,14 +170,15 @@ export const AI = {
   },
   VampireEnemy: {
     label: "Vampire", tone: "epic",
-    p: `Bites for contact damage, heals itself, and <b>roots you</b> while it drinks. Killing it
-        mid-bite frees you immediately, which makes it the one enemy where burst damage is
-        worth more than its health bar suggests.`,
+    p: `Bites for contact damage, heals itself, and <b>roots you</b> for 0.6s while it drinks.
+        Killing it mid-bite frees you immediately, which makes it the one enemy where burst
+        damage is worth more than its health bar suggests. Once any root ends you cannot be
+        rooted again for 3s.`,
   },
   EvilWizardEnemy: {
     label: "Caster", tone: "legendary",
     p: `Stands still and drips a chain of grasping hands along the line to where you were when
-        the cast began. A hand that closes roots you and deals the caster's damage. Taking a hit
+        the cast began. A hand that closes roots you for 1s and deals the caster's damage. Taking a hit
         cancels the cast. Come within 100px and it discharges at its own feet instead —
         <b>Backlash</b>, a 0.4s telegraphed blast and a hard shove. Between casts it holds a band
         inside its own range, giving ground if you press it and circling if you do not, so it
@@ -186,10 +187,11 @@ export const AI = {
   FrogEnemy: {
     label: "Leaper", tone: "warn",
     p: `CHASE → WINDUP → DASH → RECOVER. It closes in small hops (moving only while airborne),
-        crouches at range, flashes a ground lane, then leaps.
-        The direction locks when the wind-up starts, so the telegraph is the entire fight: step
-        out of the lane and it charges anyway, then stands winded and takes damage like anything
-        else.`,
+        crouches at range, flashes a green ground lane, then leaps.
+        The direction and the length lock when the wind-up starts, so the telegraph is the entire
+        fight: step out of the lane and it charges anyway, then stands winded and takes damage
+        like anything else. The lane is exact: it is the area the leap's damage sweeps, a hit is
+        your hitbox touching the green, and the leap lands where the lane ends.`,
   },
   SplitterEnemy: {
     label: "Splitter", tone: "uncommon",
@@ -270,7 +272,7 @@ export const ENEMY_NOTE = {
   Bulwark:    "The card check. An orb that only goes forwards bounces off it all day; anything that flanks, pierces, arcs or simply arrives fast walks through. Its health is a long time to spend doing the wrong thing.",
   Witchdoctor:"Heals the most wounded allies around it often enough to outpace chip damage across a crowd. Capped at two alive at once, because three means nothing dies.",
   Bonecaller: "Calls fresh bodies out of the ground on a timer, and what it calls OUTLIVES it — so killing it late buys you nothing. Violet and badged so it is not mistaken for the healer at range.",
-  Slug:"Barely fights, but everything it does POISONS you: its bite, the ball it lobs from range (it lands where you stood and leaves a pool), and the small pool of rot it leaves every 35px it walks. Poison is a tick a second for three seconds, 3 damage each at every wave (armour does not reduce it, a shield soaks it), and a new dose refreshes it rather than stacking; your health bar turns green and a POISONED plate counts it down. The pools stay after it dies — kite in a circle around one for long enough and you have walled off your own escape route. The first enemy that makes WHERE the fight happens matter.",
+  Slug:"Barely fights, but everything it does POISONS you: its bite, the ball it lobs from range (it lands where you stood and leaves a pool), and the small pool of rot it leaves every 35px it walks. Poison is a tick a second for three seconds, 3 damage each at every wave (armour does not reduce it, a shield soaks it), and a new dose refreshes it rather than stacking; your health bar turns green and a POISONED plate counts it down. Each pool lasts 4.5s and stays after it dies — kite in a tight circle around one and you can wall off your own escape route. The first enemy that makes WHERE the fight happens matter.",
   Siphon:     "Hangs at range and drains you through a beam, healing off what it takes. The beam needs line of sight, so a tree is a real answer to it.",
   Broodmother:"The Bonecaller inverted. She calls faster, and every Toadstool she makes is tethered to her: kill the mother and the whole swarm drops at once. The swarm is a decoy, and walking past it is the correct play.",
   PlaguePriest: "Halves your healing while you stand in its ring, and keeps close enough to hold you in it — walking away does not work for long, so the answer is to kill it. Frozen or stunned, the aura switches off. The HUD says HEALING HALVED beside your health bar while it does.",
