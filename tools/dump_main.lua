@@ -481,6 +481,10 @@ local function build()
         BOSS_HEALTH_GROWTH = need(wmLocals, "BOSS_HEALTH_GROWTH", "WaveManager"),
         BOSS_DAMAGE_GROWTH = need(wmLocals, "BOSS_DAMAGE_GROWTH", "WaveManager"),
         BOSS_EVERY         = need(wmLocals, "BOSS_EVERY",         "WaveManager"),
+        BOSS_HEALTH_MULT   = need(wmLocals, "BOSS_HEALTH_MULT",   "WaveManager"),
+        BOSS_DAMAGE_MULT   = need(wmLocals, "BOSS_DAMAGE_MULT",   "WaveManager"),
+        BOSS_WAVE_COUNT    = need(wmLocals, "BOSS_WAVE_COUNT",    "WaveManager"),
+        BOSS_WAVE_ALIVE    = need(wmLocals, "BOSS_WAVE_ALIVE",    "WaveManager"),
     }))
 
 
