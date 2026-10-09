@@ -106,13 +106,18 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </table>
 
     <h2 id="cards">Cards</h2>
-    <p>All 14 Blood cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <p>All 15 Blood cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
     <div class="toolbar">
       <input class="filter" id="page-filter" type="search" placeholder="Filter Blood cards…" autocomplete="off" aria-label="Filter this page">
       <div id="page-chips"></div>
       <span class="hits" id="page-hits"></span>
     </div>
     <div class="rows">
+      <div class="row" id="bloodrush" style="--stripe:var(--uncommon)" data-hay="bloodrush bloodrush hunter's high. each kill boosts your movement speed by 120 for 2 seconds. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#bloodrush" style="color:var(--uncommon)">Bloodrush</a><span class="r-key">Bloodrush</span></div>
+        <div class="r-desc">Hunter's high. Each kill boosts your movement speed by 120 for 2 seconds.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
       <div class="row" id="lifesteal" style="--stripe:var(--uncommon)" data-hay="life steal lifesteal vampiric orb. every enemy the orb kills restores 2 hp. uncommon">
         <div class="r-name" data-anchor><a href="cards.html#lifesteal" style="color:var(--uncommon)">Life Steal</a><span class="r-key">LifeSteal</span></div>
         <div class="r-desc">Vampiric orb. Every enemy the orb kills restores 2 HP.</div>
