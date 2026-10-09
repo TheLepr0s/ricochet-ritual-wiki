@@ -52,23 +52,13 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
 
     <h2 id="start">Starting with Blood</h2>
     <p>
-      Pick Blood on the circle before a run and the run starts with one of these 3, at random — Blood's weakest cards that a fresh run can be dealt.
+      Pick Blood on the circle before a run and the run starts with this card — Blood's weakest card that a fresh run can be dealt.
       See <a href="families.html#start">choosing a family</a>.
     </p>
     <div class="rows">
-      <div class="row" id="start-bloodrush" style="--stripe:var(--uncommon)" data-hay="bloodrush bloodrush hunter's high. each kill boosts your movement speed by 120 for 2 seconds. uncommon">
-        <div class="r-name" data-anchor><a href="cards.html#bloodrush" style="color:var(--uncommon)">Bloodrush</a><span class="r-key">Bloodrush</span></div>
-        <div class="r-desc">Hunter's high. Each kill boosts your movement speed by 120 for 2 seconds.</div>
-        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
-      </div>
-      <div class="row" id="start-lifesteal" style="--stripe:var(--uncommon)" data-hay="life steal lifesteal vampiric orb. every enemy the orb kills restores 2 hp. uncommon">
-        <div class="r-name" data-anchor><a href="cards.html#lifesteal" style="color:var(--uncommon)">Life Steal</a><span class="r-key">LifeSteal</span></div>
-        <div class="r-desc">Vampiric orb. Every enemy the orb kills restores 2 HP.</div>
-        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
-      </div>
-      <div class="row" id="start-vampiricaura" style="--stripe:var(--uncommon)" data-hay="vampiric aura vampiricaura close feeding. anything that dies near you gives back 2 hp. uncommon">
-        <div class="r-name" data-anchor><a href="cards.html#vampiricaura" style="color:var(--uncommon)">Vampiric Aura</a><span class="r-key">VampiricAura</span></div>
-        <div class="r-desc">Close feeding. Anything that dies near you gives back 2 HP.</div>
+      <div class="row" id="start-bleed" style="--stripe:var(--uncommon)" data-hay="open wound bleed cuts that linger. direct hits apply a bleed dealing 5 damage per second for 3s. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#bleed" style="color:var(--uncommon)">Open Wound</a><span class="r-key">Bleed</span></div>
+        <div class="r-desc">Cuts that linger. Direct hits apply a bleed dealing 5 damage per second for 3s.</div>
         <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
       </div>
     </div>
@@ -76,7 +66,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <h2 id="traits">Traits</h2>
     <p>Hold 3, 5 and 7 different Blood cards for its three tiers. See <a href="families.html#traits">how traits work</a>.</p>
     <div class="traits">
-      <article class="trait" id="trait-blood" style="--fam:rgb(242,64,77)" data-hay="blood blood bloodrush every kill gives you a burst of speed for 2s. contagion enemies that die bleeding spread their bleed to the 4 nearest within 2 m. tap the vein an orb hit on a bleeding enemy deals its remaining bleed three times over at once, then bleeds the 2 nearest enemies within 4 m.">
+      <article class="trait" id="trait-blood" style="--fam:rgb(242,64,77)" data-hay="blood blood contagion enemies that die bleeding spread their bleed to the 4 nearest within 2 m. tap the vein an orb hit on a bleeding enemy deals its remaining bleed twice over at once, then bleeds the 2 nearest enemies within 4 m. bloodbath every bleed deals double damage, and any damage, not only a direct orb hit, starts a bleed on an enemy that is not already bleeding.">
         <header class="trait-head">
           <a class="emblem" href="family-blood.html"><img class="fam-ic big" src="assets/img/family/blood.png" alt=""></a>
           <h3><a href="family-blood.html">Blood</a></h3>
@@ -85,20 +75,20 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <ol class="tiers"><li class="tier bronze">
             <span class="hex" title="3 Blood cards">3</span>
             <div class="tier-body">
-              <div class="tier-name"><span class="tier-num">I</span><b>Bloodrush</b></div>
-              <div class="tier-desc">Every kill gives you a burst of speed for 2s.</div>
+              <div class="tier-name"><span class="tier-num">I</span><b>Contagion</b></div>
+              <div class="tier-desc">Enemies that die bleeding spread their bleed to the 4 nearest within 2 m.</div>
             </div>
           </li><li class="tier silver">
             <span class="hex" title="5 Blood cards">5</span>
             <div class="tier-body">
-              <div class="tier-name"><span class="tier-num">II</span><b>Contagion</b></div>
-              <div class="tier-desc">Enemies that die bleeding spread their bleed to the 4 nearest within 2 m.</div>
+              <div class="tier-name"><span class="tier-num">II</span><b>Tap the Vein</b></div>
+              <div class="tier-desc">An orb hit on a bleeding enemy deals its remaining bleed twice over at once, then bleeds the 2 nearest enemies within 4 m.</div>
             </div>
           </li><li class="tier gold cap">
             <span class="hex" title="7 Blood cards">7</span>
             <div class="tier-body">
-              <div class="tier-name"><span class="cap-tag">Capstone</span><b>Tap the Vein</b></div>
-              <div class="tier-desc">An orb hit on a bleeding enemy deals its remaining bleed three times over at once, then bleeds the 2 nearest enemies within 4 m.</div>
+              <div class="tier-name"><span class="cap-tag">Capstone</span><b>Bloodbath</b></div>
+              <div class="tier-desc">Every bleed deals double damage, and any damage, not only a direct orb hit, starts a bleed on an enemy that is not already bleeding.</div>
             </div>
           </li></ol>
       </article>
@@ -116,21 +106,21 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </table>
 
     <h2 id="cards">Cards</h2>
-    <p>All 15 Blood cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <p>All 14 Blood cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
     <div class="toolbar">
       <input class="filter" id="page-filter" type="search" placeholder="Filter Blood cards…" autocomplete="off" aria-label="Filter this page">
       <div id="page-chips"></div>
       <span class="hits" id="page-hits"></span>
     </div>
     <div class="rows">
-      <div class="row" id="bloodrush" style="--stripe:var(--uncommon)" data-hay="bloodrush bloodrush hunter's high. each kill boosts your movement speed by 120 for 2 seconds. uncommon">
-        <div class="r-name" data-anchor><a href="cards.html#bloodrush" style="color:var(--uncommon)">Bloodrush</a><span class="r-key">Bloodrush</span></div>
-        <div class="r-desc">Hunter's high. Each kill boosts your movement speed by 120 for 2 seconds.</div>
-        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
-      </div>
       <div class="row" id="lifesteal" style="--stripe:var(--uncommon)" data-hay="life steal lifesteal vampiric orb. every enemy the orb kills restores 2 hp. uncommon">
         <div class="r-name" data-anchor><a href="cards.html#lifesteal" style="color:var(--uncommon)">Life Steal</a><span class="r-key">LifeSteal</span></div>
         <div class="r-desc">Vampiric orb. Every enemy the orb kills restores 2 HP.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="bleed" style="--stripe:var(--uncommon)" data-hay="open wound bleed cuts that linger. direct hits apply a bleed dealing 5 damage per second for 3s. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#bleed" style="color:var(--uncommon)">Open Wound</a><span class="r-key">Bleed</span></div>
+        <div class="r-desc">Cuts that linger. Direct hits apply a bleed dealing 5 damage per second for 3s.</div>
         <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
       </div>
       <div class="row" id="vampiricaura" style="--stripe:var(--uncommon)" data-hay="vampiric aura vampiricaura close feeding. anything that dies near you gives back 2 hp. uncommon">
@@ -161,7 +151,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="hemorrhage" style="--stripe:var(--rare)" data-hay="hemorrhage hemorrhage deep cuts. each bleed stack on an enemy makes it take 2% more damage from everything, up to 10 stacks. rare">
         <div class="r-name" data-anchor><a href="cards.html#hemorrhage" style="color:var(--rare)">Hemorrhage</a><span class="r-key">Hemorrhage</span></div>
         <div class="r-desc">Deep cuts. Each bleed stack on an enemy makes it take 2% more damage from everything, up to 10 stacks.</div>
-        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="dep">needs <a href="cards.html#bleed" style="color:var(--epic)">Open Wound</a></div></div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="dep">needs <a href="cards.html#bleed" style="color:var(--uncommon)">Open Wound</a></div></div>
       </div>
       <div class="row" id="soulharvest" style="--stripe:var(--rare)" data-hay="soul harvest soulharvest reaping. every 8th enemy that dies leaves a soul that restores 6 hp. rare">
         <div class="r-name" data-anchor><a href="cards.html#soulharvest" style="color:var(--rare)">Soul Harvest</a><span class="r-key">SoulHarvest</span></div>
@@ -176,11 +166,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="bloodprice" style="--stripe:var(--epic)" data-hay="blood price bloodprice paid in full. orb damage +1% for every 1% of health you are missing, but all healing is halved. epic">
         <div class="r-name" data-anchor><a href="cards.html#bloodprice" style="color:var(--epic)">Blood Price</a><span class="r-key">BloodPrice</span></div>
         <div class="r-desc">Paid in full. Orb damage +1% for every 1% of health you are missing, but all healing is halved.</div>
-        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
-      </div>
-      <div class="row" id="bleed" style="--stripe:var(--epic)" data-hay="open wound bleed cuts that linger. direct hits apply a bleed dealing 5 damage per second for 3s. epic">
-        <div class="r-name" data-anchor><a href="cards.html#bleed" style="color:var(--epic)">Open Wound</a><span class="r-key">Bleed</span></div>
-        <div class="r-desc">Cuts that linger. Direct hits apply a bleed dealing 5 damage per second for 3s.</div>
         <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
       </div>
       <div class="row" id="quickening" style="--stripe:var(--epic)" data-hay="quickening quickening blood in the air. each kill makes you faster, stacking up to 10. every hit you take costs 4 stacks. epic">

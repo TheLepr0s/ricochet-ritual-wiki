@@ -126,8 +126,8 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="fc-info" data-f="blood">
           <b class="fc-title" style="color:rgb(242,64,77)">Blood</b>
           <span class="fc-blurb">Kills, bleeding, and power drawn from your own wounds.</span>
-          <span class="fc-lead">Starts with one of</span>
-          <span class="fc-start"><span style="color:var(--uncommon)">Bloodrush</span>, <span style="color:var(--uncommon)">Life Steal</span> or <span style="color:var(--uncommon)">Vampiric Aura</span></span>
+          <span class="fc-lead">Starts with</span>
+          <span class="fc-start"><span style="color:var(--uncommon)">Open Wound</span></span>
         </div>
         <div class="fc-info" data-f="beast">
           <b class="fc-title" style="color:rgb(153,230,115)">Beast</b>
@@ -242,9 +242,9 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-desc"><div>Echoes and copies: mirror shards, phantoms, links.</div><div class="tot">Starts a run with <a href="cards.html#glint" style="color:var(--uncommon)">Glint</a> or <a href="cards.html#imprint" style="color:var(--uncommon)">Imprint</a></div><div class="tot"><a href="#trait-arcane">Traits</a>: Resonant Copies · Phantom · <b class="metal-gold">Playback</b></div></div>
         <div class="r-meta"><div class="per"><a href="family-arcane.html">its page →</a></div></div>
       </div>
-      <div class="row" id="fam-blood" style="--stripe:rgb(242,64,77)" data-hay="blood blood kills, bleeding, and power drawn from your own wounds. blood reaper bloodrush life steal vampiric aura adrenaline berserker core blood feast blood money hemorrhage soul harvest blood pact blood price open wound quickening rampage vampire orb">
-        <div class="r-name" data-anchor><a href="family-blood.html" style="color:rgb(242,64,77)"><img class="fam-ic big" src="assets/img/family/blood.png" alt="">Blood</a><span class="r-key">15 cards</span></div>
-        <div class="r-desc"><div>Kills, bleeding, and power drawn from your own wounds.</div><div class="tot">Starts a run with <a href="cards.html#bloodrush" style="color:var(--uncommon)">Bloodrush</a> or <a href="cards.html#lifesteal" style="color:var(--uncommon)">Life Steal</a> or <a href="cards.html#vampiricaura" style="color:var(--uncommon)">Vampiric Aura</a></div><div class="tot"><a href="#trait-blood">Traits</a>: Bloodrush · Contagion · <b class="metal-gold">Tap the Vein</b></div></div>
+      <div class="row" id="fam-blood" style="--stripe:rgb(242,64,77)" data-hay="blood blood kills, bleeding, and power drawn from your own wounds. blood reaper life steal open wound vampiric aura adrenaline berserker core blood feast blood money hemorrhage soul harvest blood pact blood price quickening rampage vampire orb">
+        <div class="r-name" data-anchor><a href="family-blood.html" style="color:rgb(242,64,77)"><img class="fam-ic big" src="assets/img/family/blood.png" alt="">Blood</a><span class="r-key">14 cards</span></div>
+        <div class="r-desc"><div>Kills, bleeding, and power drawn from your own wounds.</div><div class="tot">Starts a run with <a href="cards.html#bleed" style="color:var(--uncommon)">Open Wound</a></div><div class="tot"><a href="#trait-blood">Traits</a>: Contagion · Tap the Vein · <b class="metal-gold">Bloodbath</b></div></div>
         <div class="r-meta"><div class="per"><a href="family-blood.html">its page →</a></div></div>
       </div>
       <div class="row" id="fam-beast" style="--stripe:rgb(153,230,115)" data-hay="beast beast companions that fight beside you. feral packmaster bonded whistle angel's wrath demon claws goat companion headstrong lasting judgement lingering curse owl swiftness owl talons owl thunder owl vision pack leader sharpened horns concussion curse potency divine potency owl companion raise dead angel companion demon companion">
@@ -462,7 +462,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
             </div>
           </li></ol>
       </article>
-      <article class="trait" id="trait-blood" style="--fam:rgb(242,64,77)" data-hay="blood blood bloodrush every kill gives you a burst of speed for 2s. contagion enemies that die bleeding spread their bleed to the 4 nearest within 2 m. tap the vein an orb hit on a bleeding enemy deals its remaining bleed three times over at once, then bleeds the 2 nearest enemies within 4 m.">
+      <article class="trait" id="trait-blood" style="--fam:rgb(242,64,77)" data-hay="blood blood contagion enemies that die bleeding spread their bleed to the 4 nearest within 2 m. tap the vein an orb hit on a bleeding enemy deals its remaining bleed twice over at once, then bleeds the 2 nearest enemies within 4 m. bloodbath every bleed deals double damage, and any damage, not only a direct orb hit, starts a bleed on an enemy that is not already bleeding.">
         <header class="trait-head">
           <a class="emblem" href="family-blood.html"><img class="fam-ic big" src="assets/img/family/blood.png" alt=""></a>
           <h3><a href="family-blood.html">Blood</a></h3>
@@ -471,20 +471,20 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <ol class="tiers"><li class="tier bronze">
             <span class="hex" title="3 Blood cards">3</span>
             <div class="tier-body">
-              <div class="tier-name"><span class="tier-num">I</span><b>Bloodrush</b></div>
-              <div class="tier-desc">Every kill gives you a burst of speed for 2s.</div>
+              <div class="tier-name"><span class="tier-num">I</span><b>Contagion</b></div>
+              <div class="tier-desc">Enemies that die bleeding spread their bleed to the 4 nearest within 2 m.</div>
             </div>
           </li><li class="tier silver">
             <span class="hex" title="5 Blood cards">5</span>
             <div class="tier-body">
-              <div class="tier-name"><span class="tier-num">II</span><b>Contagion</b></div>
-              <div class="tier-desc">Enemies that die bleeding spread their bleed to the 4 nearest within 2 m.</div>
+              <div class="tier-name"><span class="tier-num">II</span><b>Tap the Vein</b></div>
+              <div class="tier-desc">An orb hit on a bleeding enemy deals its remaining bleed twice over at once, then bleeds the 2 nearest enemies within 4 m.</div>
             </div>
           </li><li class="tier gold cap">
             <span class="hex" title="7 Blood cards">7</span>
             <div class="tier-body">
-              <div class="tier-name"><span class="cap-tag">Capstone</span><b>Tap the Vein</b></div>
-              <div class="tier-desc">An orb hit on a bleeding enemy deals its remaining bleed three times over at once, then bleeds the 2 nearest enemies within 4 m.</div>
+              <div class="tier-name"><span class="cap-tag">Capstone</span><b>Bloodbath</b></div>
+              <div class="tier-desc">Every bleed deals double damage, and any damage, not only a direct orb hit, starts a bleed on an enemy that is not already bleeding.</div>
             </div>
           </li></ol>
       </article>
