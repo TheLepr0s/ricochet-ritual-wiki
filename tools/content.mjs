@@ -300,7 +300,7 @@ export const ENEMY_EXTRA = {
 export const CARD_NOTE = {
   TwinOrbs:    "The second orb matches the first's size, Heavy Orb included, and drops Overload when it ends.",
   Thunderclap: "Needs a real bounce: a wall touched slower than the orb's damage speed does nothing, as with Carom and Fracture.",
-  BlackHoleCore: "Stacks up to three: 3 m at one card, 4.1 m at two, 5.2 m at three. The pull and the grind are as strong at the centre at every size and fade to nothing at the rim, so a wider well also pulls harder at any given distance, not just further.",
+  BlackHoleCore: "Stacks up to three: 3 m at one card, 4.1 m at two, 5.2 m at three. The pull and the grind are as strong at the centre at every size and fade to nothing at the rim, so a wider well also pulls harder at any given distance, not just further. The grind, 13 a second at the centre, is a wave-1 figure that grows with the waves.",
   OwlCompanion:  "Its numbers above are read from the game. A bolt strikes its target only; Owl Thunder makes it leap on, never to the same enemy twice. Its damage rides the enemy health curve. Owl Talons also gives it 20% more strikes a stack.",
   DemonCompanion: "Its numbers above are read from the game. Its damage rides the enemy health curve, every swipe rakes the enemies around its target as well, and the curse multiplies damage from every source, the orb included; Curse Potency tops out at ×2.15. It goes for the nearest enemy that is NOT cursed yet, changing target the moment its swipe marks one; only when everything in reach is cursed does it renew the curse closest to running out. It walks round trees, not through them.",
   OrbitMode:     "A shard's hit carries the orb's standing bonuses — Berserker, Blood Pact, Momentum, Adrenaline, Rampage, Last Stand — can crit through Critical Mass, and grows with the square root of the enemy health curve (about ×1.9 by wave 20). Per-throw bonuses like Charged Shot and Comet do not apply: the ring is not a throw.",
@@ -309,7 +309,7 @@ export const CARD_NOTE = {
   Backhand:      "A swing that meets the orb while it is still flying at you (faster than 1.2 m/s) counts too, judged per orb, so you can rally it: slap it back, it returns, slap it again. An orb already heading away does not count, so swinging twice cannot bank a second bonus.",
   MagneticGrip:  "Pulls the orb home until it is within 0.8 m of you (inside swing reach), then brakes it to rest there.",
   ReserveCharge: "Your F ability holds two charges, and the cooldown refills one at a time whenever you are below two, so while one charge sits ready the other is already coming back. Spending the spare mid-refill does not restart the clock. Only offered once an ability is in the slot, and a newly swapped-in ability arrives with both charges. The ability bar shows the count after its name.",
-  SecondWind:    "It puts you back on 30 HP and makes you invulnerable for 3 seconds: no damage and no roots, shown as a golden shell that flickers in its last second. The window is its own timer, so the Evil Wizard's hand, which wipes your ordinary iframes when it grabs you, cannot cut it short.",
+  SecondWind:    "It puts you back on 30 HP and makes you invulnerable for 3 seconds: no damage and no roots, shown as a golden shell that flickers in its last second. The window is its own timer, so the Evil Wizard's hand, which wipes your ordinary iframes when it grabs you, cannot cut it short. The blast's 90 is a wave-1 figure that grows with the waves.",
   LifeSteal:     "Heals on the KILL — 2 HP for every enemy the orb kills — not on every hit.",
   Overflow:      "Only half of any overheal becomes shield. Shields are capped at 30% of your max health and drain once you go 8 seconds without being hit — see Staying alive on How to play.",
   IronSkin:      "+0.06s of invulnerability a stack, on top of the 0.3s base.",
@@ -326,7 +326,7 @@ export const CARD_NOTE = {
   DeathNova:     "18 is a wave-1 figure: it grows with the waves like enemy health, as the companions and abilities do.",
   VolatileCore:  "20 is a wave-1 figure that grows with the waves. It goes off on the first enemy the returning orb hits, once a recall; a recall that hits nothing does nothing. A Boomerang return sets it off too.",
   StaticCharge:  "A recall spends only the charges it actually fires — one per enemy within 6.4 m of the orb — and keeps the rest.",
-  ChainLightning: "Stackable: each copy after the first adds one jump, 1.5 m of reach and 5 damage a jump.",
+  ChainLightning: "Stackable: each copy after the first adds one jump, 1.5 m of reach and 5 damage a jump. 12 a jump is a wave-1 figure that grows with the waves.",
   CursedGlass:   "8 a shard is a wave-1 figure that grows with the waves. Each shard homes on the nearest enemy within 6.4 m and cuts up to two.",
   Fracture:      "Each shard homes on the nearest enemy within 6.4 m and cuts up to two.",
   Firestorm:     "A spread burn is as strong as the burn it came from. Each burning enemy lights one neighbour a second.",
@@ -344,7 +344,13 @@ export const CARD_NOTE = {
   Thornmail:     "22 is a wave-1 figure that grows with the waves.",
   PhaseShot:     "Cannot be held with Juggernaut: Juggernaut already lets every enemy through.",
   ColdSnap:      "Offered only once you own something that chills or freezes (Freezing Shot, Frozen Court, Hoarfrost, Absolute Zero, Temporal Rift or Tether).",
-  Tether:        "24 damage every 0.36s to everything on the cord, 67 a second, and the slow is ×0.70 for 0.8s.",
+  Tether:        "24 damage every 0.36s to everything on the cord, 67 a second at wave 1 and growing with the waves, and the slow is ×0.70 for 0.8s.",
+  VoidPulse:     "14 a ring is a wave-1 figure that grows with the waves.",
+  OrbFire:       "20 a second is a wave-1 figure that grows with the waves.",
+  TemporalRift:  "The bleed, 7 a second, is a wave-1 figure that grows with the waves.",
+  Frostbite:     "The nova's 30 is a wave-1 figure that grows with the waves.",
+  Resonance:     "The detonation's 60 is a wave-1 figure that grows with the waves.",
+  StaticField:   "6 a pulse is a wave-1 figure that grows with the waves.",
 };
 
 /* ── Bosses ─────────────────────────────────────────────────────────────── */
