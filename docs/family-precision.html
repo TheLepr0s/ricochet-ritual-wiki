@@ -52,10 +52,20 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
 
     <h2 id="start">Starting with Precision</h2>
     <p>
-      Pick Precision on the circle before a run and the run starts with one of these 2, at random — Precision's weakest cards that a fresh run can be dealt.
+      Pick Precision on the circle before a run and the run starts with one of these 4, at random — Precision's weakest cards that a fresh run can be dealt.
       See <a href="families.html#start">choosing a family</a>.
     </p>
     <div class="rows">
+      <div class="row" id="start-carom" style="--stripe:var(--uncommon)" data-hay="carom carom trick shot. every wall bounce charges the orb +15% damage, up to 5, spent on the next enemy hit. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#carom" style="color:var(--uncommon)">Carom</a><span class="r-key">Carom</span></div>
+        <div class="r-desc">Trick shot. Every wall bounce charges the orb +15% damage, up to 5, spent on the next enemy hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="start-keeneye" style="--stripe:var(--uncommon)" data-hay="keen eye keeneye sharp sight. +5% crit chance, and critical hits deal 15% more. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#keeneye" style="color:var(--uncommon)">Keen Eye</a><span class="r-key">KeenEye</span></div>
+        <div class="r-desc">Sharp sight. +5% crit chance, and critical hits deal 15% more.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
       <div class="row" id="start-marksman" style="--stripe:var(--uncommon)" data-hay="marksman marksman distance is damage. hits landed far from you deal +12% more per stack. uncommon">
         <div class="r-name" data-anchor><a href="cards.html#marksman" style="color:var(--uncommon)">Marksman</a><span class="r-key">Marksman</span></div>
         <div class="r-desc">Distance is damage. Hits landed far from you deal +12% more per stack.</div>
@@ -111,13 +121,23 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </table>
 
     <h2 id="cards">Cards</h2>
-    <p>All 10 Precision cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <p>All 15 Precision cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
     <div class="toolbar">
       <input class="filter" id="page-filter" type="search" placeholder="Filter Precision cards…" autocomplete="off" aria-label="Filter this page">
       <div id="page-chips"></div>
       <span class="hits" id="page-hits"></span>
     </div>
     <div class="rows">
+      <div class="row" id="carom" style="--stripe:var(--uncommon)" data-hay="carom carom trick shot. every wall bounce charges the orb +15% damage, up to 5, spent on the next enemy hit. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#carom" style="color:var(--uncommon)">Carom</a><span class="r-key">Carom</span></div>
+        <div class="r-desc">Trick shot. Every wall bounce charges the orb +15% damage, up to 5, spent on the next enemy hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="keeneye" style="--stripe:var(--uncommon)" data-hay="keen eye keeneye sharp sight. +5% crit chance, and critical hits deal 15% more. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#keeneye" style="color:var(--uncommon)">Keen Eye</a><span class="r-key">KeenEye</span></div>
+        <div class="r-desc">Sharp sight. +5% crit chance, and critical hits deal 15% more.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
       <div class="row" id="marksman" style="--stripe:var(--uncommon)" data-hay="marksman marksman distance is damage. hits landed far from you deal +12% more per stack. uncommon">
         <div class="r-name" data-anchor><a href="cards.html#marksman" style="color:var(--uncommon)">Marksman</a><span class="r-key">Marksman</span></div>
         <div class="r-desc">Distance is damage. Hits landed far from you deal +12% more per stack.</div>
@@ -153,6 +173,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-desc">Find the seam. Critical hits deal an extra 60% of the orb's damage, per stack.</div>
         <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 3)</div><div class="dep">needs <a href="cards.html#criticalmass" style="color:var(--rare)">Critical Mass</a></div></div>
       </div>
+      <div class="row" id="steadyhand" style="--stripe:var(--rare)" data-hay="steady hand steadyhand breathe out. a throw made after standing still for 0.5s gets +20% crit chance. rare">
+        <div class="r-name" data-anchor><a href="cards.html#steadyhand" style="color:var(--rare)">Steady Hand</a><span class="r-key">SteadyHand</span></div>
+        <div class="r-desc">Breathe out. A throw made after standing still for 0.5s gets +20% crit chance.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
       <div class="row" id="deadeye" style="--stripe:var(--epic)" data-hay="deadeye deadeye one perfect shot. the first enemy each throw hits takes a guaranteed critical hit at double damage. after that, the throw cannot crit. epic">
         <div class="r-name" data-anchor><a href="cards.html#deadeye" style="color:var(--epic)">Deadeye</a><span class="r-key">Deadeye</span></div>
         <div class="r-desc">One perfect shot. The first enemy each throw hits takes a guaranteed critical hit at double damage. After that, the throw cannot crit.</div>
@@ -167,6 +192,16 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-name" data-anchor><a href="cards.html#seeker" style="color:var(--epic)">Seeker</a><span class="r-key">Seeker</span></div>
         <div class="r-desc">Predatory arc. After a direct hit the orb turns and flies at the next nearest enemy. +1 redirect per stack, up to 5.</div>
         <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="tot">stacks (up to 5)</div></div>
+      </div>
+      <div class="row" id="weakspot" style="--stripe:var(--epic)" data-hay="weak spot weakspot found it. each critical hit on an enemy makes it take 10% more critical damage, stacking to +30%. epic">
+        <div class="r-name" data-anchor><a href="cards.html#weakspot" style="color:var(--epic)">Weak Spot</a><span class="r-key">WeakSpot</span></div>
+        <div class="r-desc">Found it. Each critical hit on an enemy makes it take 10% more critical damage, stacking to +30%.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="perfectedge" style="--stripe:var(--legendary)" data-hay="perfect edge perfectedge beyond certain. +25% crit chance, and crit chance past 100% is not wasted: every full 100% over it adds the critical bonus again. legendary">
+        <div class="r-name" data-anchor><a href="cards.html#perfectedge" style="color:var(--legendary)">Perfect Edge</a><span class="r-key">PerfectEdge</span></div>
+        <div class="r-desc">Beyond certain. +25% crit chance, and crit chance past 100% is not wasted: every full 100% over it adds the critical bonus again.</div>
+        <div class="r-meta"><div class="per" style="color:var(--legendary)">legendary</div></div>
       </div>
     </div>
     <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>

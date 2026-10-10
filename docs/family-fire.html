@@ -52,13 +52,18 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
 
     <h2 id="start">Starting with Fire</h2>
     <p>
-      Pick Fire on the circle before a run and the run starts with one of these 3, at random — Fire's weakest cards that a fresh run can be dealt.
+      Pick Fire on the circle before a run and the run starts with one of these 4, at random — Fire's weakest cards that a fresh run can be dealt.
       See <a href="families.html#start">choosing a family</a>.
     </p>
     <div class="rows">
       <div class="row" id="start-firewalk" style="--stripe:var(--uncommon)" data-hay="firewalk firewalk trail of embers. you leave a line of fire where you walk for 2s, and enemies that step in it catch fire. uncommon">
         <div class="r-name" data-anchor><a href="cards.html#firewalk" style="color:var(--uncommon)">Firewalk</a><span class="r-key">Firewalk</span></div>
         <div class="r-desc">Trail of embers. You leave a line of fire where you walk for 2s, and enemies that step in it catch fire.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="start-hotcoals" style="--stripe:var(--uncommon)" data-hay="hot coals hotcoals scorched feet. burning enemies move 15% slower. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#hotcoals" style="color:var(--uncommon)">Hot Coals</a><span class="r-key">HotCoals</span></div>
+        <div class="r-desc">Scorched feet. Burning enemies move 15% slower.</div>
         <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
       </div>
       <div class="row" id="start-orbfire" style="--stripe:var(--uncommon)" data-hay="blazing trail orbfire scorched earth. orb leaves burning fire that deals 20 damage per second. uncommon">
@@ -116,7 +121,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </table>
 
     <h2 id="cards">Cards</h2>
-    <p>All 9 Fire cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <p>All 15 Fire cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
     <div class="toolbar">
       <input class="filter" id="page-filter" type="search" placeholder="Filter Fire cards…" autocomplete="off" aria-label="Filter this page">
       <div id="page-chips"></div>
@@ -133,14 +138,34 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-desc">Trail of embers. You leave a line of fire where you walk for 2s, and enemies that step in it catch fire.</div>
         <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
       </div>
+      <div class="row" id="hotcoals" style="--stripe:var(--uncommon)" data-hay="hot coals hotcoals scorched feet. burning enemies move 15% slower. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#hotcoals" style="color:var(--uncommon)">Hot Coals</a><span class="r-key">HotCoals</span></div>
+        <div class="r-desc">Scorched feet. Burning enemies move 15% slower.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
       <div class="row" id="pyre" style="--stripe:var(--uncommon)" data-hay="pyre pyre funeral fire. a burning enemy that dies leaves a patch of fire for 2s that sets alight whatever walks in. uncommon">
         <div class="r-name" data-anchor><a href="cards.html#pyre" style="color:var(--uncommon)">Pyre</a><span class="r-key">Pyre</span></div>
         <div class="r-desc">Funeral fire. A burning enemy that dies leaves a patch of fire for 2s that sets alight whatever walks in.</div>
         <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
       </div>
+      <div class="row" id="smokewall" style="--stripe:var(--uncommon)" data-hay="smoke wall smokewall through the smoke. enemy shots that pass through your ground fire deal 50% less damage to you. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#smokewall" style="color:var(--uncommon)">Smoke Wall</a><span class="r-key">SmokeWall</span></div>
+        <div class="r-desc">Through the smoke. Enemy shots that pass through your ground fire deal 50% less damage to you.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
       <div class="row" id="blastradius" style="--stripe:var(--rare)" data-hay="blast radius blastradius wider ruin. every explosion, pulse and shockwave your orb makes reaches 30% further. rare">
         <div class="r-name" data-anchor><a href="cards.html#blastradius" style="color:var(--rare)">Blast Radius</a><span class="r-key">BlastRadius</span></div>
         <div class="r-desc">Wider ruin. Every explosion, pulse and shockwave your orb makes reaches 30% further.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="bonfire" style="--stripe:var(--rare)" data-hay="bonfire bonfire bank the fire. your ground fire -- pyre and firewalk patches and blazing trail embers -- lasts 50% longer and spreads 30% wider. rare">
+        <div class="r-name" data-anchor><a href="cards.html#bonfire" style="color:var(--rare)">Bonfire</a><span class="r-key">Bonfire</span></div>
+        <div class="r-desc">Bank the fire. Your ground fire -- Pyre and Firewalk patches and Blazing Trail embers -- lasts 50% longer and spreads 30% wider.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="heathaze" style="--stripe:var(--rare)" data-hay="heat haze heathaze running hot. orb damage +2% for each burning enemy on screen, up to +30%. rare">
+        <div class="r-name" data-anchor><a href="cards.html#heathaze" style="color:var(--rare)">Heat Haze</a><span class="r-key">HeatHaze</span></div>
+        <div class="r-desc">Running hot. Orb damage +2% for each burning enemy on screen, up to +30%.</div>
         <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
       </div>
       <div class="row" id="kindling" style="--stripe:var(--rare)" data-hay="kindling kindling fuel for the fire. burning enemies take 25% more damage from the orb. rare">
@@ -151,6 +176,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="aftershock" style="--stripe:var(--epic)" data-hay="aftershock aftershock the ground remembers. half a second after each direct hit, the spot detonates for 40% of the damage. epic">
         <div class="r-name" data-anchor><a href="cards.html#aftershock" style="color:var(--epic)">Aftershock</a><span class="r-key">Aftershock</span></div>
         <div class="r-desc">The ground remembers. Half a second after each direct hit, the spot detonates for 40% of the damage.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="combustion" style="--stripe:var(--epic)" data-hay="combustion combustion burnt out. when a burn goes out on a living enemy, it bursts for the damage that burn dealt (up to 3x the orb's damage), hitting everything within 1.5 m. epic">
+        <div class="r-name" data-anchor><a href="cards.html#combustion" style="color:var(--epic)">Combustion</a><span class="r-key">Combustion</span></div>
+        <div class="r-desc">Burnt out. When a burn goes out on a living enemy, it bursts for the damage that burn dealt (up to 3x the orb's damage), hitting everything within 1.5 m.</div>
         <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
       </div>
       <div class="row" id="comet" style="--stripe:var(--epic)" data-hay="comet comet every 6th throw leaves burning: 2.5x damage and a crater where it lands. epic">
@@ -167,6 +197,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-name" data-anchor><a href="cards.html#volatilecore" style="color:var(--epic)">Volatile Core</a><span class="r-key">VolatileCore</span></div>
         <div class="r-desc">Delayed charge. The first enemy a recalled orb hits on its way back sets it off: 20 damage in a burst around it. Grows with the waves.</div>
         <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="firestorm" style="--stripe:var(--legendary)" data-hay="firestorm firestorm out of control. fire spreads on its own: once a second, every burning enemy sets the nearest unburnt enemy within 2 m alight. legendary">
+        <div class="r-name" data-anchor><a href="cards.html#firestorm" style="color:var(--legendary)">Firestorm</a><span class="r-key">Firestorm</span></div>
+        <div class="r-desc">Out of control. Fire spreads on its own: once a second, every burning enemy sets the nearest unburnt enemy within 2 m alight.</div>
+        <div class="r-meta"><div class="per" style="color:var(--legendary)">legendary</div></div>
       </div>
     </div>
     <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>

@@ -111,7 +111,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </table>
 
     <h2 id="cards">Cards</h2>
-    <p>All 12 Arcane cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <p>All 15 Arcane cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
     <div class="toolbar">
       <input class="filter" id="page-filter" type="search" placeholder="Filter Arcane cards…" autocomplete="off" aria-label="Filter this page">
       <div id="page-chips"></div>
@@ -128,6 +128,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-desc">Left behind. Each throw leaves a copy of the orb where you threw it for 2s, and anything that walks into it takes 30% of a hit.</div>
         <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
       </div>
+      <div class="row" id="residue" style="--stripe:var(--uncommon)" data-hay="residue residue lingering magic. copies, shards and fragments slow what they hit by 25% for 1s. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#residue" style="color:var(--uncommon)">Residue</a><span class="r-key">Residue</span></div>
+        <div class="r-desc">Lingering magic. Copies, shards and fragments slow what they hit by 25% for 1s.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
       <div class="row" id="fracture" style="--stripe:var(--rare)" data-hay="fracture fracture spalling. wall bounces shed two cutting shards that fly off and carve anything they meet. rare">
         <div class="r-name" data-anchor><a href="cards.html#fracture" style="color:var(--rare)">Fracture</a><span class="r-key">Fracture</span></div>
         <div class="r-desc">Spalling. Wall bounces shed two cutting shards that fly off and carve anything they meet.</div>
@@ -136,6 +141,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="orbitmode" style="--stripe:var(--rare)" data-hay="mirror ball orbitmode a shard circles you forever, striking anything it sweeps through. weaker than your orb, but never stops. rare">
         <div class="r-name" data-anchor><a href="cards.html#orbitmode" style="color:var(--rare)">Mirror Ball</a><span class="r-key">OrbitMode</span></div>
         <div class="r-desc">A shard circles you forever, striking anything it sweeps through. Weaker than your orb, but never stops.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="spellbound" style="--stripe:var(--rare)" data-hay="spellbound spellbound marked by magic. anything a copy, shard or fragment hits takes 15% more damage from your orb for 3s. rare">
+        <div class="r-name" data-anchor><a href="cards.html#spellbound" style="color:var(--rare)">Spellbound</a><span class="r-key">Spellbound</span></div>
+        <div class="r-desc">Marked by magic. Anything a copy, shard or fragment hits takes 15% more damage from your orb for 3s.</div>
         <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
       </div>
       <div class="row" id="orbitrange" style="--stripe:var(--rare)" data-hay="wide orbit orbitrange wider circle. mirror ball radius +0.6 m, covers more ground. rare">
@@ -177,6 +187,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-name" data-anchor><a href="cards.html#splitshot" style="color:var(--epic)">Split Shot</a><span class="r-key">SplitShot</span></div>
         <div class="r-desc">Twin trajectory. Every throw splits in two; each half deals 60% damage, and they merge back when you catch or recall the orb.</div>
         <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="hallofmirrors" style="--stripe:var(--legendary)" data-hay="hall of mirrors hallofmirrors every copy is real. ghost orbs, split halves, mirror ball shards, imprints, fragments and glint shards deal double damage, and glint goes off on every direct hit. legendary">
+        <div class="r-name" data-anchor><a href="cards.html#hallofmirrors" style="color:var(--legendary)">Hall of Mirrors</a><span class="r-key">HallOfMirrors</span></div>
+        <div class="r-desc">Every copy is real. Ghost orbs, split halves, Mirror Ball shards, imprints, fragments and Glint shards deal double damage, and Glint goes off on every direct hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--legendary)">legendary</div></div>
       </div>
     </div>
     <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>

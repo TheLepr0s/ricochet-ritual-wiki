@@ -52,13 +52,18 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
 
     <h2 id="start">Starting with Combo</h2>
     <p>
-      Pick Combo on the circle before a run and the run starts with one of these 4, at random — Combo's weakest cards that a fresh run can be dealt.
+      Pick Combo on the circle before a run and the run starts with one of these 5, at random — Combo's weakest cards that a fresh run can be dealt.
       See <a href="families.html#start">choosing a family</a>.
     </p>
     <div class="rows">
       <div class="row" id="start-backhand" style="--stripe:var(--uncommon)" data-hay="backhand backhand no wind-up. slap the orb back as it comes at you, or swing within a second of catching it, and it leaves +60% faster and +35% harder. uncommon">
         <div class="r-name" data-anchor><a href="cards.html#backhand" style="color:var(--uncommon)">Backhand</a><span class="r-key">Backhand</span></div>
         <div class="r-desc">No wind-up. Slap the orb back as it comes at you, or swing within a second of catching it, and it leaves +60% faster and +35% harder.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="start-headstart" style="--stripe:var(--uncommon)" data-hay="head start headstart never from zero. when your combo drops, it falls to 5% of what it was instead of to nothing. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#headstart" style="color:var(--uncommon)">Head Start</a><span class="r-key">HeadStart</span></div>
+        <div class="r-desc">Never from zero. When your combo drops, it falls to 5% of what it was instead of to nothing.</div>
         <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
       </div>
       <div class="row" id="start-metronome" style="--stripe:var(--uncommon)" data-hay="metronome metronome keep the beat. you get 1.6s longer to land the next hit before the combo drops. uncommon">
@@ -121,7 +126,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </table>
 
     <h2 id="cards">Cards</h2>
-    <p>All 12 Combo cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <p>All 15 Combo cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
     <div class="toolbar">
       <input class="filter" id="page-filter" type="search" placeholder="Filter Combo cards…" autocomplete="off" aria-label="Filter this page">
       <div id="page-chips"></div>
@@ -131,6 +136,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
       <div class="row" id="backhand" style="--stripe:var(--uncommon)" data-hay="backhand backhand no wind-up. slap the orb back as it comes at you, or swing within a second of catching it, and it leaves +60% faster and +35% harder. uncommon">
         <div class="r-name" data-anchor><a href="cards.html#backhand" style="color:var(--uncommon)">Backhand</a><span class="r-key">Backhand</span></div>
         <div class="r-desc">No wind-up. Slap the orb back as it comes at you, or swing within a second of catching it, and it leaves +60% faster and +35% harder.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="headstart" style="--stripe:var(--uncommon)" data-hay="head start headstart never from zero. when your combo drops, it falls to 5% of what it was instead of to nothing. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#headstart" style="color:var(--uncommon)">Head Start</a><span class="r-key">HeadStart</span></div>
+        <div class="r-desc">Never from zero. When your combo drops, it falls to 5% of what it was instead of to nothing.</div>
         <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
       </div>
       <div class="row" id="metronome" style="--stripe:var(--uncommon)" data-hay="metronome metronome keep the beat. you get 1.6s longer to land the next hit before the combo drops. uncommon">
@@ -183,10 +193,20 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-desc">Spend it. Recalling by hand cashes in your combo: the returning orb deals +2% for every point of combo, and the combo drops to half.</div>
         <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
       </div>
+      <div class="row" id="crowdpleaser" style="--stripe:var(--epic)" data-hay="crowd pleaser crowdpleaser encore! at combo 50 or more, every hit arcs to one more enemy within 3 m for 30% of it. epic">
+        <div class="r-name" data-anchor><a href="cards.html#crowdpleaser" style="color:var(--epic)">Crowd Pleaser</a><span class="r-key">CrowdPleaser</span></div>
+        <div class="r-desc">Encore! At combo 50 or more, every hit arcs to one more enemy within 3 m for 30% of it.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
       <div class="row" id="momentum" style="--stripe:var(--epic)" data-hay="momentum momentum rolling thunder. orb damage +3% per point of combo, up to +60% at 20, lost when the combo drops. epic">
         <div class="r-name" data-anchor><a href="cards.html#momentum" style="color:var(--epic)">Momentum</a><span class="r-key">Momentum</span></div>
         <div class="r-desc">Rolling thunder. Orb damage +3% per point of combo, up to +60% at 20, lost when the combo drops.</div>
         <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="flowstate" style="--stripe:var(--legendary)" data-hay="flow state flowstate in the zone. your combo never times out: each hit you take costs 15% of it, it drops if the orb lies still for 3s, and every combo tier adds +5% orb damage. legendary">
+        <div class="r-name" data-anchor><a href="cards.html#flowstate" style="color:var(--legendary)">Flow State</a><span class="r-key">FlowState</span></div>
+        <div class="r-desc">In the zone. Your combo never times out: each hit you take costs 15% of it, it drops if the orb lies still for 3s, and every combo tier adds +5% orb damage.</div>
+        <div class="r-meta"><div class="per" style="color:var(--legendary)">legendary</div></div>
       </div>
     </div>
     <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>

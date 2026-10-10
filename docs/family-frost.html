@@ -52,10 +52,15 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
 
     <h2 id="start">Starting with Frost</h2>
     <p>
-      Pick Frost on the circle before a run and the run starts with one of these 3, at random — Frost's weakest cards that a fresh run can be dealt.
+      Pick Frost on the circle before a run and the run starts with one of these 4, at random — Frost's weakest cards that a fresh run can be dealt.
       See <a href="families.html#start">choosing a family</a>.
     </p>
     <div class="rows">
+      <div class="row" id="start-coldreturn" style="--stripe:var(--uncommon)" data-hay="cold return coldreturn chill wind. a recalled orb chills everything within 1.5 m of its path home for 2s. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#coldreturn" style="color:var(--uncommon)">Cold Return</a><span class="r-key">ColdReturn</span></div>
+        <div class="r-desc">Chill wind. A recalled orb chills everything within 1.5 m of its path home for 2s.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
       <div class="row" id="start-freezingshot" style="--stripe:var(--uncommon)" data-hay="freezing shot freezingshot chill to the bone. hit an enemy twice in 3s to freeze them solid for 2s. uncommon">
         <div class="r-name" data-anchor><a href="cards.html#freezingshot" style="color:var(--uncommon)">Freezing Shot</a><span class="r-key">FreezingShot</span></div>
         <div class="r-desc">Chill to the bone. Hit an enemy twice in 3s to freeze them solid for 2s.</div>
@@ -116,13 +121,18 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </table>
 
     <h2 id="cards">Cards</h2>
-    <p>All 10 Frost cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <p>All 15 Frost cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
     <div class="toolbar">
       <input class="filter" id="page-filter" type="search" placeholder="Filter Frost cards…" autocomplete="off" aria-label="Filter this page">
       <div id="page-chips"></div>
       <span class="hits" id="page-hits"></span>
     </div>
     <div class="rows">
+      <div class="row" id="coldreturn" style="--stripe:var(--uncommon)" data-hay="cold return coldreturn chill wind. a recalled orb chills everything within 1.5 m of its path home for 2s. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#coldreturn" style="color:var(--uncommon)">Cold Return</a><span class="r-key">ColdReturn</span></div>
+        <div class="r-desc">Chill wind. A recalled orb chills everything within 1.5 m of its path home for 2s.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
       <div class="row" id="coldsnap" style="--stripe:var(--uncommon)" data-hay="cold snap coldsnap numbing chill. chilled and frozen enemies deal 25% less damage to you. uncommon">
         <div class="r-name" data-anchor><a href="cards.html#coldsnap" style="color:var(--uncommon)">Cold Snap</a><span class="r-key">ColdSnap</span></div>
         <div class="r-desc">Numbing chill. Chilled and frozen enemies deal 25% less damage to you.</div>
@@ -142,6 +152,16 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-name" data-anchor><a href="cards.html#hoarfrost" style="color:var(--uncommon)">Hoarfrost</a><span class="r-key">Hoarfrost</span></div>
         <div class="r-desc">Cold touch. Every direct hit slows the enemy by 40% for 1.5 seconds.</div>
         <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
+      <div class="row" id="coldfront" style="--stripe:var(--rare)" data-hay="cold front coldfront frosted walls. every wall bounce leaves a 1.5 m patch of frost for 3s that chills whatever crosses it. rare">
+        <div class="r-name" data-anchor><a href="cards.html#coldfront" style="color:var(--rare)">Cold Front</a><span class="r-key">ColdFront</span></div>
+        <div class="r-desc">Frosted walls. Every wall bounce leaves a 1.5 m patch of frost for 3s that chills whatever crosses it.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
+      </div>
+      <div class="row" id="deepfreeze" style="--stripe:var(--rare)" data-hay="deep freeze deepfreeze colder still. every freeze you cause lasts 0.5s longer, per stack. rare">
+        <div class="r-name" data-anchor><a href="cards.html#deepfreeze" style="color:var(--rare)">Deep Freeze</a><span class="r-key">DeepFreeze</span></div>
+        <div class="r-desc">Colder still. Every freeze you cause lasts 0.5s longer, per stack.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 3)</div></div>
       </div>
       <div class="row" id="frostbite" style="--stripe:var(--rare)" data-hay="frostbite frostbite cold shatter. a frozen enemy that dies bursts into an ice nova, damaging and chilling the rest. rare">
         <div class="r-name" data-anchor><a href="cards.html#frostbite" style="color:var(--rare)">Frostbite</a><span class="r-key">Frostbite</span></div>
@@ -168,10 +188,20 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-desc">Flash freeze. Every 15th hit you land freezes every enemy within 3 m of the orb for 1.5 seconds.</div>
         <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
       </div>
+      <div class="row" id="iceage" style="--stripe:var(--epic)" data-hay="ice age iceage long winter. the orb chills everything within 1.5 m of its path, and an enemy kept chilled for 3s straight freezes for 1.5s. epic">
+        <div class="r-name" data-anchor><a href="cards.html#iceage" style="color:var(--epic)">Ice Age</a><span class="r-key">IceAge</span></div>
+        <div class="r-desc">Long winter. The orb chills everything within 1.5 m of its path, and an enemy kept chilled for 3s straight freezes for 1.5s.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
       <div class="row" id="whiteout" style="--stripe:var(--epic)" data-hay="whiteout whiteout blizzard. every 10th enemy you freeze chills every enemy within 14 m for 2s. epic">
         <div class="r-name" data-anchor><a href="cards.html#whiteout" style="color:var(--epic)">Whiteout</a><span class="r-key">Whiteout</span></div>
         <div class="r-desc">Blizzard. Every 10th enemy you freeze chills every enemy within 14 m for 2s.</div>
         <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="coldstorage" style="--stripe:var(--legendary)" data-hay="cold storage coldstorage frozen debt. your freezes last 1.5s longer, and a frozen enemy banks every point of damage it takes. when the freeze breaks, it takes twice the bank at once. bosses bank half. legendary">
+        <div class="r-name" data-anchor><a href="cards.html#coldstorage" style="color:var(--legendary)">Cold Storage</a><span class="r-key">ColdStorage</span></div>
+        <div class="r-desc">Frozen debt. Your freezes last 1.5s longer, and a frozen enemy banks every point of damage it takes. When the freeze breaks, it takes twice the bank at once. Bosses bank half.</div>
+        <div class="r-meta"><div class="per" style="color:var(--legendary)">legendary</div></div>
       </div>
     </div>
     <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>

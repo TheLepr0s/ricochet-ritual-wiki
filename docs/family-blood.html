@@ -106,7 +106,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </table>
 
     <h2 id="cards">Cards</h2>
-    <p>All 15 Blood cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <p>All 16 Blood cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
     <div class="toolbar">
       <input class="filter" id="page-filter" type="search" placeholder="Filter Blood cards…" autocomplete="off" aria-label="Filter this page">
       <div id="page-chips"></div>
@@ -187,6 +187,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-name" data-anchor><a href="cards.html#vampireorb" style="color:var(--epic)">Vampire Orb</a><span class="r-key">VampireOrb</span></div>
         <div class="r-desc">Insatiable hunger. Life Steal heals +1 extra HP per kill per stack.</div>
         <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="tot">stacks (up to 2)</div><div class="dep">needs <a href="cards.html#lifesteal" style="color:var(--uncommon)">Life Steal</a></div></div>
+      </div>
+      <div class="row" id="exsanguinate" style="--stripe:var(--legendary)" data-hay="exsanguinate exsanguinate drain them. bleed stacks bleed separately -- each deals its own tick, up to 5 at once -- and every direct hit adds a stack. legendary">
+        <div class="r-name" data-anchor><a href="cards.html#exsanguinate" style="color:var(--legendary)">Exsanguinate</a><span class="r-key">Exsanguinate</span></div>
+        <div class="r-desc">Drain them. Bleed stacks bleed separately -- each deals its own tick, up to 5 at once -- and every direct hit adds a stack.</div>
+        <div class="r-meta"><div class="per" style="color:var(--legendary)">legendary</div><div class="dep">needs <a href="cards.html#bleed" style="color:var(--uncommon)">Open Wound</a></div></div>
       </div>
     </div>
     <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>

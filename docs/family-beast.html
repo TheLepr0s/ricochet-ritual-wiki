@@ -106,7 +106,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </table>
 
     <h2 id="cards">Cards</h2>
-    <p>All 21 Beast cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <p>All 17 Beast cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
     <div class="toolbar">
       <input class="filter" id="page-filter" type="search" placeholder="Filter Beast cards…" autocomplete="off" aria-label="Filter this page">
       <div id="page-chips"></div>
@@ -123,11 +123,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-desc">Sic 'em. Recalling sends every companion at the orb's last target at once. Once every 8s.</div>
         <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
       </div>
-      <div class="row" id="angeldamage" style="--stripe:var(--rare)" data-hay="angel's wrath angeldamage brighter light. angel lance damage +7. rare">
-        <div class="r-name" data-anchor><a href="cards.html#angeldamage" style="color:var(--rare)">Angel's Wrath</a><span class="r-key">AngelDamage</span></div>
-        <div class="r-desc">Brighter light. Angel lance damage +7.</div>
-        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 5)</div><div class="dep">needs <a href="cards.html#angelcompanion" style="color:var(--legendary)">Angel Companion</a></div></div>
-      </div>
       <div class="row" id="demondamage" style="--stripe:var(--rare)" data-hay="demon claws demondamage serrated demonic claws. demon hit damage +8. rare">
         <div class="r-name" data-anchor><a href="cards.html#demondamage" style="color:var(--rare)">Demon Claws</a><span class="r-key">DemonDamage</span></div>
         <div class="r-desc">Serrated demonic claws. Demon hit damage +8.</div>
@@ -138,30 +133,15 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-desc">A mountain goat guards you. It charges anything that comes near you and rams it -- and everything beside it -- flying away. Grows with the waves.</div>
         <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
       </div>
-      <div class="row" id="goatfrequency" style="--stripe:var(--rare)" data-hay="headstrong goatfrequency never tires. the goat rams 25% more often. rare">
-        <div class="r-name" data-anchor><a href="cards.html#goatfrequency" style="color:var(--rare)">Headstrong</a><span class="r-key">GoatFrequency</span></div>
-        <div class="r-desc">Never tires. The goat rams 25% more often.</div>
-        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 3)</div><div class="dep">needs <a href="cards.html#goatcompanion" style="color:var(--rare)">Goat Companion</a></div></div>
-      </div>
       <div class="row" id="angeljudgement" style="--stripe:var(--rare)" data-hay="lasting judgement angeljudgement the verdict holds. judgement lasts 1.5s longer. rare">
         <div class="r-name" data-anchor><a href="cards.html#angeljudgement" style="color:var(--rare)">Lasting Judgement</a><span class="r-key">AngelJudgement</span></div>
         <div class="r-desc">The verdict holds. Judgement lasts 1.5s longer.</div>
         <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#angelcompanion" style="color:var(--legendary)">Angel Companion</a></div></div>
       </div>
-      <div class="row" id="demoncurse" style="--stripe:var(--rare)" data-hay="lingering curse demoncurse the mark festers longer. curse duration +1.5s. rare">
-        <div class="r-name" data-anchor><a href="cards.html#demoncurse" style="color:var(--rare)">Lingering Curse</a><span class="r-key">DemonCurse</span></div>
-        <div class="r-desc">The mark festers longer. Curse duration +1.5s.</div>
-        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#demoncompanion" style="color:var(--legendary)">Demon Companion</a></div></div>
-      </div>
-      <div class="row" id="owlfrequency" style="--stripe:var(--rare)" data-hay="owl swiftness owlfrequency relentless diver. owl strikes 25% more often. rare">
-        <div class="r-name" data-anchor><a href="cards.html#owlfrequency" style="color:var(--rare)">Owl Swiftness</a><span class="r-key">OwlFrequency</span></div>
-        <div class="r-desc">Relentless diver. Owl strikes 25% more often.</div>
-        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 3)</div><div class="dep">needs <a href="cards.html#owlcompanion" style="color:var(--epic)">Owl Companion</a></div></div>
-      </div>
-      <div class="row" id="owldamage" style="--stripe:var(--rare)" data-hay="owl talons owldamage razor-sharp claws. owl attack damage +11. rare">
+      <div class="row" id="owldamage" style="--stripe:var(--rare)" data-hay="owl talons owldamage razor-sharp claws. owl attack damage +9, and it strikes 20% more often. rare">
         <div class="r-name" data-anchor><a href="cards.html#owldamage" style="color:var(--rare)">Owl Talons</a><span class="r-key">OwlDamage</span></div>
-        <div class="r-desc">Razor-sharp claws. Owl attack damage +11.</div>
-        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 6)</div><div class="dep">needs <a href="cards.html#owlcompanion" style="color:var(--epic)">Owl Companion</a></div></div>
+        <div class="r-desc">Razor-sharp claws. Owl attack damage +9, and it strikes 20% more often.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#owlcompanion" style="color:var(--epic)">Owl Companion</a></div></div>
       </div>
       <div class="row" id="owlthunder" style="--stripe:var(--rare)" data-hay="owl thunder owlthunder forked lightning. each owl bolt leaps on through two more enemies within 4.4 m, each taking 60% of the strike. rare">
         <div class="r-name" data-anchor><a href="cards.html#owlthunder" style="color:var(--rare)">Owl Thunder</a><span class="r-key">OwlThunder</span></div>
@@ -178,25 +158,25 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-desc">Alpha. Every companion deals 20% more damage for each companion you have.</div>
         <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
       </div>
-      <div class="row" id="goatdamage" style="--stripe:var(--rare)" data-hay="sharpened horns goatdamage filed to a point. goat ram damage +9. rare">
+      <div class="row" id="goatdamage" style="--stripe:var(--rare)" data-hay="sharpened horns goatdamage filed to a point. goat ram damage +7, and it rams 20% more often. rare">
         <div class="r-name" data-anchor><a href="cards.html#goatdamage" style="color:var(--rare)">Sharpened Horns</a><span class="r-key">GoatDamage</span></div>
-        <div class="r-desc">Filed to a point. Goat ram damage +9.</div>
-        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 5)</div><div class="dep">needs <a href="cards.html#goatcompanion" style="color:var(--rare)">Goat Companion</a></div></div>
+        <div class="r-desc">Filed to a point. Goat ram damage +7, and it rams 20% more often.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#goatcompanion" style="color:var(--rare)">Goat Companion</a></div></div>
+      </div>
+      <div class="row" id="angeldamage" style="--stripe:var(--epic)" data-hay="angel's wrath angeldamage brighter light. angel lance damage +6, and its smite hits +6 harder and reaches 0.2 m further. epic">
+        <div class="r-name" data-anchor><a href="cards.html#angeldamage" style="color:var(--epic)">Angel's Wrath</a><span class="r-key">AngelDamage</span></div>
+        <div class="r-desc">Brighter light. Angel lance damage +6, and its smite hits +6 harder and reaches 0.2 m further.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#angelcompanion" style="color:var(--legendary)">Angel Companion</a></div></div>
       </div>
       <div class="row" id="goatdaze" style="--stripe:var(--epic)" data-hay="concussion goatdaze seeing stars. the goat's rams daze everything they hit for 0.5s (+0.5s a stack). epic">
         <div class="r-name" data-anchor><a href="cards.html#goatdaze" style="color:var(--epic)">Concussion</a><span class="r-key">GoatDaze</span></div>
         <div class="r-desc">Seeing stars. The goat's rams daze everything they hit for 0.5s (+0.5s a stack).</div>
         <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="tot">stacks (up to 3)</div><div class="dep">needs <a href="cards.html#goatcompanion" style="color:var(--rare)">Goat Companion</a></div></div>
       </div>
-      <div class="row" id="demonpotency" style="--stripe:var(--epic)" data-hay="curse potency demonpotency amplified hex. cursed enemies take 10% more damage from all sources. epic">
+      <div class="row" id="demonpotency" style="--stripe:var(--epic)" data-hay="curse potency demonpotency amplified hex. cursed enemies take 8% more damage from all sources, and curses last 1s longer. epic">
         <div class="r-name" data-anchor><a href="cards.html#demonpotency" style="color:var(--epic)">Curse Potency</a><span class="r-key">DemonPotency</span></div>
-        <div class="r-desc">Amplified hex. Cursed enemies take 10% more damage from all sources.</div>
+        <div class="r-desc">Amplified hex. Cursed enemies take 8% more damage from all sources, and curses last 1s longer.</div>
         <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#demoncompanion" style="color:var(--legendary)">Demon Companion</a></div></div>
-      </div>
-      <div class="row" id="angelpotency" style="--stripe:var(--epic)" data-hay="divine potency angelpotency wrath from above. the angel's smite hits +8 harder and reaches 0.3 m further. epic">
-        <div class="r-name" data-anchor><a href="cards.html#angelpotency" style="color:var(--epic)">Divine Potency</a><span class="r-key">AngelPotency</span></div>
-        <div class="r-desc">Wrath from above. The Angel's smite hits +8 harder and reaches 0.3 m further.</div>
-        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div><div class="tot">stacks (up to 4)</div><div class="dep">needs <a href="cards.html#angelcompanion" style="color:var(--legendary)">Angel Companion</a></div></div>
       </div>
       <div class="row" id="owlcompanion" style="--stripe:var(--epic)" data-hay="owl companion owlcompanion a storm familiar joins you. calls down lightning every 1.3 seconds. grows with the waves. epic">
         <div class="r-name" data-anchor><a href="cards.html#owlcompanion" style="color:var(--epic)">Owl Companion</a><span class="r-key">OwlCompanion</span></div>

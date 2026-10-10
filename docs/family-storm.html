@@ -52,10 +52,15 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
 
     <h2 id="start">Starting with Storm</h2>
     <p>
-      Pick Storm on the circle before a run and the run starts with one of these 2, at random — Storm's weakest cards that a fresh run can be dealt.
+      Pick Storm on the circle before a run and the run starts with one of these 3, at random — Storm's weakest cards that a fresh run can be dealt.
       See <a href="families.html#start">choosing a family</a>.
     </p>
     <div class="rows">
+      <div class="row" id="start-arcspark" style="--stripe:var(--uncommon)" data-hay="arc spark arcspark static. every direct hit arcs to the nearest other enemy within 2 m for 25% of the hit. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#arcspark" style="color:var(--uncommon)">Arc Spark</a><span class="r-key">ArcSpark</span></div>
+        <div class="r-desc">Static. Every direct hit arcs to the nearest other enemy within 2 m for 25% of the hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
       <div class="row" id="start-capacitor" style="--stripe:var(--uncommon)" data-hay="capacitor capacitor stored spark. each wall bounce stores a charge, up to 3. the orb's next enemy hit chains lightning to one more enemy per charge, for half the hit. uncommon">
         <div class="r-name" data-anchor><a href="cards.html#capacitor" style="color:var(--uncommon)">Capacitor</a><span class="r-key">Capacitor</span></div>
         <div class="r-desc">Stored spark. Each wall bounce stores a charge, up to 3. The orb's next enemy hit chains lightning to one more enemy per charge, for half the hit.</div>
@@ -111,13 +116,18 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </table>
 
     <h2 id="cards">Cards</h2>
-    <p>All 10 Storm cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
+    <p>All 15 Storm cards, rarest last. Each one you own makes the others likelier to be dealt.</p>
     <div class="toolbar">
       <input class="filter" id="page-filter" type="search" placeholder="Filter Storm cards…" autocomplete="off" aria-label="Filter this page">
       <div id="page-chips"></div>
       <span class="hits" id="page-hits"></span>
     </div>
     <div class="rows">
+      <div class="row" id="arcspark" style="--stripe:var(--uncommon)" data-hay="arc spark arcspark static. every direct hit arcs to the nearest other enemy within 2 m for 25% of the hit. uncommon">
+        <div class="r-name" data-anchor><a href="cards.html#arcspark" style="color:var(--uncommon)">Arc Spark</a><span class="r-key">ArcSpark</span></div>
+        <div class="r-desc">Static. Every direct hit arcs to the nearest other enemy within 2 m for 25% of the hit.</div>
+        <div class="r-meta"><div class="per" style="color:var(--uncommon)">uncommon</div></div>
+      </div>
       <div class="row" id="capacitor" style="--stripe:var(--uncommon)" data-hay="capacitor capacitor stored spark. each wall bounce stores a charge, up to 3. the orb's next enemy hit chains lightning to one more enemy per charge, for half the hit. uncommon">
         <div class="r-name" data-anchor><a href="cards.html#capacitor" style="color:var(--uncommon)">Capacitor</a><span class="r-key">Capacitor</span></div>
         <div class="r-desc">Stored spark. Each wall bounce stores a charge, up to 3. The orb's next enemy hit chains lightning to one more enemy per charge, for half the hit.</div>
@@ -132,6 +142,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-name" data-anchor><a href="cards.html#chainlightning" style="color:var(--rare)">Chain Lightning</a><span class="r-key">ChainLightning</span></div>
         <div class="r-desc">Arc discharge. Every hit chains lightning to up to 3 nearby foes. Take it again: +1 jump, +1.5 m reach and +5 arc damage.</div>
         <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div><div class="tot">stacks (up to 5)</div></div>
+      </div>
+      <div class="row" id="lightningreflexes" style="--stripe:var(--rare)" data-hay="lightning reflexes lightningreflexes charged legs. every enemy killed by lightning takes 0.3s off your blink cooldown. rare">
+        <div class="r-name" data-anchor><a href="cards.html#lightningreflexes" style="color:var(--rare)">Lightning Reflexes</a><span class="r-key">LightningReflexes</span></div>
+        <div class="r-desc">Charged legs. Every enemy killed by lightning takes 0.3s off your blink cooldown.</div>
+        <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
       </div>
       <div class="row" id="staticcharge" style="--stripe:var(--rare)" data-hay="static charge staticcharge stored current. each throw banks a charge, up to 5. recalling fires one lightning bolt per charge at enemies near the orb; charges with no enemy to strike are kept. rare">
         <div class="r-name" data-anchor><a href="cards.html#staticcharge" style="color:var(--rare)">Static Charge</a><span class="r-key">StaticCharge</span></div>
@@ -153,6 +168,16 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-desc">Sonic impact. Wall bounces release a shockwave that stuns nearby enemies for 1.2s.</div>
         <div class="r-meta"><div class="per" style="color:var(--rare)">rare</div></div>
       </div>
+      <div class="row" id="groundedorb" style="--stripe:var(--epic)" data-hay="lightning rod groundedorb grounded. an orb at rest strikes every enemy within 3 m with lightning once a second, for 40% of its damage. epic">
+        <div class="r-name" data-anchor><a href="cards.html#groundedorb" style="color:var(--epic)">Lightning Rod</a><span class="r-key">GroundedOrb</span></div>
+        <div class="r-desc">Grounded. An orb at rest strikes every enemy within 3 m with lightning once a second, for 40% of its damage.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="seismicimpact" style="--stripe:var(--epic)" data-hay="seismic impact seismicimpact heavy landing. hits faster than 12 m/s send out a shockwave that deals 60% of the hit to everything nearby. epic">
+        <div class="r-name" data-anchor><a href="cards.html#seismicimpact" style="color:var(--epic)">Seismic Impact</a><span class="r-key">SeismicImpact</span></div>
+        <div class="r-desc">Heavy landing. Hits faster than 12 m/s send out a shockwave that deals 60% of the hit to everything nearby.</div>
+        <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
       <div class="row" id="stormfront" style="--stripe:var(--epic)" data-hay="storm front stormfront thunder follows. the orb sheds a lightning bolt every 4 m it travels, striking the nearest enemy. epic">
         <div class="r-name" data-anchor><a href="cards.html#stormfront" style="color:var(--epic)">Storm Front</a><span class="r-key">StormFront</span></div>
         <div class="r-desc">Thunder follows. The orb sheds a lightning bolt every 4 m it travels, striking the nearest enemy.</div>
@@ -167,6 +192,11 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <div class="r-name" data-anchor><a href="cards.html#tether" style="color:var(--epic)">Tether</a><span class="r-key">Tether</span></div>
         <div class="r-desc">Live wire. While recalling, the cord between you and the orb cuts and slows everything it crosses.</div>
         <div class="r-meta"><div class="per" style="color:var(--epic)">epic</div></div>
+      </div>
+      <div class="row" id="stormsurge" style="--stripe:var(--legendary)" data-hay="storm surge stormsurge the sky splits. chain lightning carries on: every enemy it strikes sends its own chain on to 2 more, three generations deep. no enemy is struck twice. legendary">
+        <div class="r-name" data-anchor><a href="cards.html#stormsurge" style="color:var(--legendary)">Storm Surge</a><span class="r-key">StormSurge</span></div>
+        <div class="r-desc">The sky splits. Chain Lightning carries on: every enemy it strikes sends its own chain on to 2 more, three generations deep. No enemy is struck twice.</div>
+        <div class="r-meta"><div class="per" style="color:var(--legendary)">legendary</div><div class="dep">needs <a href="cards.html#chainlightning" style="color:var(--rare)">Chain Lightning</a></div></div>
       </div>
     </div>
     <div class="empty" id="page-empty" hidden>Nothing matches the current filters.</div>
