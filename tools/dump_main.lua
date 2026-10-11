@@ -474,6 +474,7 @@ local function build()
     put(consts, "scaling", scalarMap({
         HEALTH_SCALE       = need(wmLocals, "HEALTH_SCALE",       "WaveManager"),
         DAMAGE_SCALE       = need(wmLocals, "DAMAGE_SCALE",       "WaveManager"),
+        ORB_DAMAGE_SCALE   = need(wmLocals, "ORB_DAMAGE_SCALE",   "WaveManager"),
         SPEED_BASE         = need(wmLocals, "SPEED_BASE",         "WaveManager"),
         SPEED_SCALE        = need(wmLocals, "SPEED_SCALE",        "WaveManager"),
         SPEED_RAMP_MAX     = need(wmLocals, "SPEED_RAMP_MAX",     "WaveManager"),

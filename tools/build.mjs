@@ -591,6 +591,13 @@ function scalingPara() {
       a wave's event multiplies on top: Blood Moon, Frenzy and The Hunt are the fast ones.
     </p>
     <p>
+      <b>Your orb grows too.</b> Its damage adds <b>${p(s.ORB_DAMAGE_SCALE)}</b> of its base a
+      wave (×${(1 + 9 * s.ORB_DAMAGE_SCALE).toFixed(2)} at wave 10,
+      ×${(1 + 19 * s.ORB_DAMAGE_SCALE).toFixed(2)} at wave 20) on every difficulty, and so does
+      everything that deals a share of it, such as Static Charge, Storm Front or Reckoning.
+      Cards still have to carry the rest of the climb.
+    </p>
+    <p>
       <b>Bosses compound.</b> Every boss carries ×${s.BOSS_HEALTH_MULT} health and
       ×${s.BOSS_DAMAGE_MULT} damage, and the Nth boss of a run (wave ${s.BOSS_EVERY}×N) also gets
       ×${s.BOSS_HEALTH_GROWTH}<sup>N</sup> health and ×${s.BOSS_DAMAGE_GROWTH}<sup>N</sup>
