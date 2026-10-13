@@ -311,7 +311,7 @@ export const CARD_NOTE = {
   ReserveCharge: "Your F ability holds two charges, and the cooldown refills one at a time whenever you are below two, so while one charge sits ready the other is already coming back. Spending the spare mid-refill does not restart the clock. Only offered once an ability is in the slot, and a newly swapped-in ability arrives with both charges. The ability bar shows the count after its name.",
   SecondWind:    "It puts you back on 30 HP and makes you invulnerable for 3 seconds: no damage and no roots, shown as a golden shell that flickers in its last second. The window is its own timer, so the Evil Wizard's hand, which wipes your ordinary iframes when it grabs you, cannot cut it short. The blast's 90 is a wave-1 figure that grows with the waves.",
   LifeSteal:     "Heals on the KILL — 2 HP for every enemy the orb kills — not on every hit.",
-  Overflow:      "Only half of any overheal becomes shield. Shields are capped at 30% of your max health and drain once you go 8 seconds without being hit — see Staying alive on How to play.",
+  Overflow:      "Only half of any overheal becomes shield. Shields hold at most 30 (Guardian's Steadfast boost adds 15) and never drain — see Staying alive on How to play.",
   IronSkin:      "+0.06s of invulnerability a stack, on top of the 0.3s base.",
   SafeHands:     "0.6s of invulnerability, against the 0.3s base.",
   GoatCompanion: "Its numbers above are read from the game. It rams whatever comes near you — always whatever is closest to you, switching mid-charge if something else gets nearer — and shoves the target hard, straight away from you; everything beside it is shoved the same way by the same share it takes of the damage. Between rams it never stands still, ambling from spot to spot around you and trotting to catch up if you outrun it. It has no daze of its own: Concussion adds one, and the shove plays under the daze rather than after it. It walks round trees, not through them.",
@@ -571,8 +571,8 @@ export const DROP_NOTE = `The drop rate reads your health <b>fraction</b>, so it
   <code>mitigate()</code> funnel, so two sources cannot silently multiply into immunity.
   <br><br>
   <b>Dying stays possible late in a run.</b> Invulnerability after a hit is <b>0.3s</b>, so a
-  crowd can land a second hit. Shields are capped at <b>30% of max health</b> and <b>drain after
-  8 seconds</b> without being hit. Life Steal heals on kills rather than hits, Overflow converts
+  crowd can land a second hit. Shields are capped at <b>30</b> (they never drain, but never grow
+  past that). Life Steal heals on kills rather than hits, Overflow converts
   half, Second Wind is 3 seconds, Ward rebuilds in 25, and every difficulty heals a third of your
   max health between waves (Easy 40%). Every heal runs through one function, so a
   <a href="bestiary.html#plaguepriest">Plague Priest</a>'s aura, the Withered curse and Blood
