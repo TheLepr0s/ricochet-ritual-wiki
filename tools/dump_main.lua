@@ -596,12 +596,31 @@ local function build()
     cache[ANIM] = realAnim
     PhysicalObjects = hadObjects
 
+    -- ── Co-op ────────────────────────────────────────────────────────────────
+    -- The party's size and how it scales a wave, the revive shrine's numbers
+    -- (its task at a few waves), the seat colours and the port.
+    local Seats  = require("Utilities/net/Seats")
+    local Shrine = require("Objects/Shrine")
+    local NetMod = require("Utilities/net/Net")
+    local tasks, colors = {}, {}
+    for _, w in ipairs({ 1, 5, 10, 20, 30 }) do
+        tasks[#tasks + 1] = obj("wave", w, "kills", Shrine.killsFor(w), "hold", Shrine.holdFor(w))
+    end
+    for _, c in ipairs(Seats.COLORS) do
+        colors[#colors + 1] = obj("n", c.name, "rgb", arr({ c.rgb[1], c.rgb[2], c.rgb[3] }))
+    end
+    local T = Shrine.TUNING
+    local coop = obj("max", Seats.MAX, "extraEnemies", Seats.EXTRA_ENEMIES, "extraHealth", Seats.EXTRA_HEALTH,
+                     "port", NetMod.PORT, "radius", T.radius, "distMin", T.distMin, "distMax", T.distMax,
+                     "reviveHealth", T.reviveHealth, "reviveGuard", T.reviveGuard, "vigilDrain", T.vigilDrain,
+                     "tasks", arr(tasks), "colors", arr(colors))
+
     -- ── Out ──────────────────────────────────────────────────────────────────
     local root = obj("upgrades", ups, "achievements", achs,
                      "abilities", abis, "modifiers", mods, "enemies", ens,
                      "compositions", comps,
                      "difficulties", diffs, "families", fams, "curses", curses,
-                     "consts", consts, "pets", pets)
+                     "consts", consts, "pets", pets, "coop", coop)
 
     local fh = assert(io.open(OUT, "wb"))
     fh:write(enc(root))

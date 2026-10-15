@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-page="coop-html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Co-op · Ricochet Ritual</title>
+<meta name="description" content="Up to 4 wizards in one run, invited with a link.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128302;</text></svg>">
+<link rel="stylesheet" href="assets/wiki.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong scheme. */
+try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-page="coop-html">
+
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><b>Ricochet Ritual</b><span>wiki</span></a>
+  <div class="search-wrap">
+    <input id="site-search" type="search" placeholder="Search everything…  ( / )" autocomplete="off" aria-label="Search the wiki">
+    <div id="search-results" role="listbox"></div>
+  </div>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle colour scheme">◐</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav>
+        <a href="index.html"><em>◆</em>Home</a>
+        <a href="guide.html"><em>▶</em>How to play</a>
+        <a href="coop.html" aria-current="page"><em>⚇</em>Co-op</a>
+        <a href="bestiary.html"><em>☠</em>Bestiary</a>
+        <a href="bosses.html"><em>♛</em>Bosses</a>
+        <a href="cards.html"><em>🂠</em>Upgrade cards</a>
+        <a href="families.html"><em>❂</em>Families</a>
+        <a href="builds.html"><em>✧</em>Builds &amp; shop</a>
+        <a href="abilities.html"><em>✦</em>Abilities</a>
+        <a href="waves.html"><em>≋</em>Waves</a>
+        <a href="achievements.html"><em>★</em>Achievements</a>
+        <a href="systems.html"><em>⚙</em>Systems</a>
+    </nav>
+    <div class="side-head">On this page</div>
+        <div class="toc"><a href="#party">Starting a party</a><a href="#reach">Reaching the host</a><a href="#colours">Who is who</a><a href="#scaling">Harder with more</a><a href="#own">Your run, together</a><a href="#shrines">Falling, and the shrines</a><a href="#different">What changes</a><a href="#sync">How it stays in step</a></div>
+  </aside>
+
+  <main>
+    <div class="page-head" id="top">
+      <h1>Co-op</h1>
+      <p>Up to 4 wizards in one run, invited with a link.</p>
+    </div>
+    <h2 id="party">Starting a party</h2>
+    <p>From the main menu, <b>Multiplayer → Host party</b> opens a lobby with four seats and
+    <b>Copy invite link</b>. Paste the link to your friends: clicking it opens the game and
+    drops them into your lobby, or they can copy it and press <b>Join from link</b> on the same
+    screen, which reads it off the clipboard. Each player picks their own starting family on
+    their seat with the arrows; the host picks the difficulty and presses <b>Start run</b>.
+    Everyone needs the same version of the game: a different one is turned away at the door.</p>
+
+    <h2 id="reach">Reaching the host</h2>
+    <p>The host's game listens on <b>UDP port 27420</b> and asks the router to open
+    it (UPnP); the lobby says whether that worked. When it does not, players on the same network
+    can still join, and friends elsewhere need the host to forward UDP 27420 to their PC by
+    hand. A link carries both the host's public address and its address on the local network,
+    and the game tries both.</p>
+
+    <h2 id="colours">Who is who</h2>
+    <p>Each seat has a colour, worn on the wizard's robe, its orb, the ring at its feet, its name
+    over its head and its bar in the party list at the bottom left. An arrow at the edge of the
+    screen points at a teammate, or a shrine, that is out of sight.</p>
+    <table>
+      <thead><tr><th>Seat</th><th>Colour</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><b style="color:rgb(128,166,255)">Blue</b></td><td>the host</td></tr>
+        <tr><td>2</td><td><b style="color:rgb(255,97,97)">Red</b></td><td>in the order they joined</td></tr>
+        <tr><td>3</td><td><b style="color:rgb(102,242,128)">Green</b></td><td>in the order they joined</td></tr>
+        <tr><td>4</td><td><b style="color:rgb(255,209,77)">Gold</b></td><td>in the order they joined</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="scaling">Harder with more</h2>
+    <p>Each wizard past the first adds <b>50% more enemies</b> to a
+    wave, and to how many can be alive at once, and <b>35% more health</b>
+    to every enemy, bosses included. Enemy damage is unchanged. Abilities and cards that deal flat
+    damage still scale with the wave alone, so a bigger party is a bigger fight rather than a
+    weaker one.</p>
+    <table>
+      <thead><tr><th>Wizards</th><th>Enemies</th><th>Enemy health</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>×1.00</td><td>×1.00</td></tr>
+        <tr><td>2</td><td>×1.50</td><td>×1.35</td></tr>
+        <tr><td>3</td><td>×2.00</td><td>×1.70</td></tr>
+        <tr><td>4</td><td>×2.50</td><td>×2.05</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="own">Your run, together</h2>
+    <p><b>Everyone plays their own build in a shared world.</b> Each wizard has their own cards,
+    essence, Essence Shop, rerolls and banishes, ability, companions, combo and score. When a wave
+    ends, every wizard is dealt their own hand, and the world waits until <b>everyone</b> has
+    picked (the screen says who it is waiting for). An enemy chases whichever wizard is nearest,
+    and keeps chasing it unless another comes clearly closer. A kill, and everything a kill pays
+    out (essence, kill-triggered cards, score), goes to whoever landed it, including burns and
+    other damage over time. Drops go to whoever reaches them.</p>
+
+    <h2 id="shrines">Falling, and the shrines</h2>
+    <p>A wizard who goes down leaves a ghost where they fell, and a <b>shrine</b> rises
+    7–11 m away, with a ring
+    2.2 m across. The rest of the party revives them by doing the shrine's
+    task: an <b>Offering</b> counts enemies killed inside the ring, by anyone and by anything;
+    a <b>Vigil</b> counts seconds spent standing in it, and drains back at
+    0.5 s a second while nobody is there, so it has to be held rather than visited. A
+    boss wave has no crowd to offer, so its shrines are always a Vigil. Done, the wizard stands
+    up in the ring at 50% health with 2 s in
+    which nothing can touch them. A downed player watches whoever is nearest, still picks cards
+    between waves, and sees how far along their shrine is. <b>The run ends only when the whole
+    party is down at once.</b></p>
+    <table>
+      <thead><tr><th>Wave</th><th>Offering</th><th>Vigil</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>6 kills</td><td>5.1 s</td></tr>
+        <tr><td>5</td><td>8 kills</td><td>5.5 s</td></tr>
+        <tr><td>10</td><td>11 kills</td><td>6 s</td></tr>
+        <tr><td>20</td><td>16 kills</td><td>7 s</td></tr>
+        <tr><td>30</td><td>18 kills</td><td>8 s</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="different">What changes</h2>
+    <p><b>No hitstop:</b> one wizard's hit freezing the world would stall the other three.
+    <b>The pause menu and [U] do not stop the world</b>, since it is not yours alone, and the F3
+    cheat menu is off. Co-op runs are <b>not recorded</b> in your personal bests; achievements
+    count what <b>you</b> did, not what a teammate did.</p>
+
+    <h2 id="sync">How it stays in step</h2>
+    <div class="note">Every machine in the party runs the whole game itself from the same seed, and the only thing
+    sent is each player's controls, a few ticks ahead of when they are used. The delay is set from the
+    party's ping when the run starts, and the run moves at the pace of its slowest connection:
+    if someone's input is late, everyone waits for it (the screen names who). Each machine
+    fingerprints its world every two seconds and the host compares them, so if the copies ever
+    disagree the game says <i>out of sync</i> rather than playing on quietly wrong. A player who
+    leaves mid-run is gone from that moment; the rest play on.</div>
+    <footer>
+      Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every
+      number on this page is dumped out of the source — nothing here is typed by hand twice.
+      The game's repository is private; this site is published from a separate public one.
+      <br>
+      <a href="https://github.com/TheLepr0s/ricochet-ritual-wiki">This site on GitHub</a> ·
+      <a href="index.html">Wiki home</a>
+    </footer>
+  </main>
+</div>
+
+<script src="assets/search.js"></script>
+<script src="assets/wiki.js"></script>
+</body>
+</html>

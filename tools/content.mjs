@@ -24,6 +24,7 @@ export const SITE = {
 export const NAV = [
   { file: "index.html",        label: "Home",         icon: "◆" },
   { file: "guide.html",        label: "How to play",   icon: "▶" },
+  { file: "coop.html",         label: "Co-op",         icon: "⚇" },
   { file: "bestiary.html",     label: "Bestiary",      icon: "☠" },
   { file: "bosses.html",       label: "Bosses",        icon: "♛" },
   { file: "cards.html",        label: "Upgrade cards", icon: "🂠" },
@@ -804,6 +805,52 @@ export const TRANSMUTE_NOTE = `<b>Transmute</b> sacrifices <b>random</b> cards y
   them back.`;
 
 /* ── Glossary ──────────────────────────────────────────────────────────── */
+/* ── Co-op ─────────────────────────────────────────────────────────────────
+   Read off Utilities/net (Seats, Net, Invite), Objects/Shrine.lua and the
+   lobby. The numbers come from data.json's `coop`. */
+export const COOP = {
+  party: `From the main menu, <b>Multiplayer → Host party</b> opens a lobby with four seats and
+    <b>Copy invite link</b>. Paste the link to your friends: clicking it opens the game and
+    drops them into your lobby, or they can copy it and press <b>Join from link</b> on the same
+    screen, which reads it off the clipboard. Each player picks their own starting family on
+    their seat with the arrows; the host picks the difficulty and presses <b>Start run</b>.
+    Everyone needs the same version of the game: a different one is turned away at the door.`,
+  reach: (c) => `The host's game listens on <b>UDP port ${c.port}</b> and asks the router to open
+    it (UPnP); the lobby says whether that worked. When it does not, players on the same network
+    can still join, and friends elsewhere need the host to forward UDP ${c.port} to their PC by
+    hand. A link carries both the host's public address and its address on the local network,
+    and the game tries both.`,
+  own: `<b>Everyone plays their own build in a shared world.</b> Each wizard has their own cards,
+    essence, Essence Shop, rerolls and banishes, ability, companions, combo and score. When a wave
+    ends, every wizard is dealt their own hand, and the world waits until <b>everyone</b> has
+    picked (the screen says who it is waiting for). An enemy chases whichever wizard is nearest,
+    and keeps chasing it unless another comes clearly closer. A kill, and everything a kill pays
+    out (essence, kill-triggered cards, score), goes to whoever landed it, including burns and
+    other damage over time. Drops go to whoever reaches them.`,
+  shrine: (c) => `A wizard who goes down leaves a ghost where they fell, and a <b>shrine</b> rises
+    ${Math.round(c.distMin / 50)}–${Math.round(c.distMax / 50)} m away, with a ring
+    ${(c.radius / 50).toFixed(1)} m across. The rest of the party revives them by doing the shrine's
+    task: an <b>Offering</b> counts enemies killed inside the ring, by anyone and by anything;
+    a <b>Vigil</b> counts seconds spent standing in it, and drains back at
+    ${c.vigilDrain} s a second while nobody is there, so it has to be held rather than visited. A
+    boss wave has no crowd to offer, so its shrines are always a Vigil. Done, the wizard stands
+    up in the ring at ${Math.round(c.reviveHealth * 100)}% health with ${c.reviveGuard} s in
+    which nothing can touch them. A downed player watches whoever is nearest, still picks cards
+    between waves, and sees how far along their shrine is. <b>The run ends only when the whole
+    party is down at once.</b>`,
+  different: `<b>No hitstop:</b> one wizard's hit freezing the world would stall the other three.
+    <b>The pause menu and [U] do not stop the world</b>, since it is not yours alone, and the F3
+    cheat menu is off. Co-op runs are <b>not recorded</b> in your personal bests; achievements
+    count what <b>you</b> did, not what a teammate did.`,
+  sync: `Every machine in the party runs the whole game itself from the same seed, and the only thing
+    sent is each player's controls, a few ticks ahead of when they are used. The delay is set from the
+    party's ping when the run starts, and the run moves at the pace of its slowest connection:
+    if someone's input is late, everyone waits for it (the screen names who). Each machine
+    fingerprints its world every two seconds and the host compares them, so if the copies ever
+    disagree the game says <i>out of sync</i> rather than playing on quietly wrong. A player who
+    leaves mid-run is gone from that moment; the rest play on.`,
+};
+
 export const GLOSSARY = [
   { t: "Direct hit", d: "The orb striking an enemy body, as opposed to an explosion, arc or aura. Most on-hit cards read direct hits only." },
   { t: "Recall", d: "Holding right click to drag the orb back. A returning orb does full damage." },

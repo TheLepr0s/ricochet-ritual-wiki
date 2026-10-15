@@ -174,6 +174,7 @@ function homePage() {
     .map((n) => {
       const blurb = {
         "guide.html": "Controls, the run loop, and what the orb actually does.",
+        "coop.html": `Up to ${D.coop.max} wizards: party links, how a party scales the waves, and the revive shrines.`,
         "bestiary.html": "Every enemy, what drives it, and when it starts appearing.",
         "bosses.html": "The three boss fights, attack by attack.",
         "families.html": "The twelve families: the one you start with, their traits, and every card in each.",
@@ -1634,10 +1635,133 @@ function systemsPage() {
    Write
    ═══════════════════════════════════════════════════════════════════ */
 mkdirSync(join(DOCS, "assets", "img"), { recursive: true });
+/* ═══════════════════════════════════════════════════════════════════════
+   Co-op, and the page a party link opens
+   ═══════════════════════════════════════════════════════════════════ */
+function coopPage() {
+  const c = D.coop;
+  const sections = [
+    ["party", "Starting a party"], ["reach", "Reaching the host"], ["colours", "Who is who"],
+    ["scaling", "Harder with more"], ["own", "Your run, together"], ["shrines", "Falling, and the shrines"],
+    ["different", "What changes"], ["sync", "How it stays in step"],
+  ];
+  for (const [id, label] of sections) idx(label, "Co-op", "coop.html", id, "co-op multiplayer party", "");
+  idx("Shrine", "Co-op", "coop.html", "shrines", "co-op revive offering vigil", "");
+
+  const colours = c.colors
+    .map((s, i) => `<tr><td>${i + 1}</td><td><b style="color:${rgb(s.rgb)}">${esc(s.n)}</b></td><td>${i === 0 ? "the host" : "in the order they joined"}</td></tr>`)
+    .join("\n        ");
+  const scaling = [1, 2, 3, 4]
+    .map((n) => `<tr><td>${n}</td><td>×${(1 + c.extraEnemies * (n - 1)).toFixed(2)}</td><td>×${(1 + c.extraHealth * (n - 1)).toFixed(2)}</td></tr>`)
+    .join("\n        ");
+  const tasks = c.tasks
+    .map((t) => `<tr><td>${t.wave}</td><td>${t.kills} kills</td><td>${Math.round(t.hold * 10) / 10} s</td></tr>`)
+    .join("\n        ");
+
+  const body = `    <h2 id="party">Starting a party</h2>
+    <p>${C.COOP.party}</p>
+
+    <h2 id="reach">Reaching the host</h2>
+    <p>${C.COOP.reach(c)}</p>
+
+    <h2 id="colours">Who is who</h2>
+    <p>Each seat has a colour, worn on the wizard's robe, its orb, the ring at its feet, its name
+    over its head and its bar in the party list at the bottom left. An arrow at the edge of the
+    screen points at a teammate, or a shrine, that is out of sight.</p>
+    <table>
+      <thead><tr><th>Seat</th><th>Colour</th><th></th></tr></thead>
+      <tbody>
+        ${colours}
+      </tbody>
+    </table>
+
+    <h2 id="scaling">Harder with more</h2>
+    <p>Each wizard past the first adds <b>${Math.round(c.extraEnemies * 100)}% more enemies</b> to a
+    wave, and to how many can be alive at once, and <b>${Math.round(c.extraHealth * 100)}% more health</b>
+    to every enemy, bosses included. Enemy damage is unchanged. Abilities and cards that deal flat
+    damage still scale with the wave alone, so a bigger party is a bigger fight rather than a
+    weaker one.</p>
+    <table>
+      <thead><tr><th>Wizards</th><th>Enemies</th><th>Enemy health</th></tr></thead>
+      <tbody>
+        ${scaling}
+      </tbody>
+    </table>
+
+    <h2 id="own">Your run, together</h2>
+    <p>${C.COOP.own}</p>
+
+    <h2 id="shrines">Falling, and the shrines</h2>
+    <p>${C.COOP.shrine(c)}</p>
+    <table>
+      <thead><tr><th>Wave</th><th>Offering</th><th>Vigil</th></tr></thead>
+      <tbody>
+        ${tasks}
+      </tbody>
+    </table>
+
+    <h2 id="different">What changes</h2>
+    <p>${C.COOP.different}</p>
+
+    <h2 id="sync">How it stays in step</h2>
+    <div class="note">${C.COOP.sync}</div>`;
+
+  return page({
+    file: "coop.html",
+    title: "Co-op",
+    lead: `Up to ${c.max} wizards in one run, invited with a link.`,
+    toc: sections.map(([id, label]) => ({ id, label })),
+    body,
+  });
+}
+
+// Where a party link lands. It hands the code to the game through the
+// ricochet:// handler the game registers for itself, and shows the code to
+// paste in by hand. The href is set by the script (only http links, mailto and
+// "#" are left out of the link check).
+function joinPage() {
+  const body = `    <div class="note" id="join-none" hidden>
+      This link has no party code in it. Ask the host to press <b>Copy invite link</b> again and send you
+      what it copies.
+    </div>
+    <div id="join-ok" hidden>
+      <p><a class="join-btn" id="join-open" href="#">Open Ricochet Ritual and join</a></p>
+      <p>Windows asks the first time whether to open the game; say yes. If nothing happens, open the
+      game yourself, copy this page's address, and press <b>Multiplayer → Join from link</b>.</p>
+      <p>Party code: <code id="join-code"></code> <button type="button" id="join-copy">Copy link</button></p>
+    </div>
+    <p>The host's game has to be open, in its lobby, and on the same version as yours. See
+    <a href="coop.html">Co-op</a> for how parties work.</p>
+    <script>
+    (function () {
+      var m = (location.hash || "").match(/r1[A-Za-z0-9_-]{16}/);
+      document.getElementById(m ? "join-ok" : "join-none").hidden = false;
+      if (!m) return;
+      var open = document.getElementById("join-open");
+      open.setAttribute("href", "ricochet" + "://join/" + m[0]);
+      document.getElementById("join-code").textContent = m[0];
+      document.getElementById("join-copy").onclick = function () {
+        if (navigator.clipboard) navigator.clipboard.writeText(location.href);
+        this.textContent = "Copied";
+      };
+      location.href = open.getAttribute("href");
+    })();
+    </script>`;
+  return page({
+    file: "join.html",
+    title: "Join a party",
+    lead: "Someone has invited you to a co-op run.",
+    body,
+    nav: "coop.html",
+  });
+}
+
 
 const PAGES = {
   "index.html": homePage,
   "guide.html": guidePage,
+  "coop.html": coopPage,
+  "join.html": joinPage,
   "bestiary.html": bestiaryPage,
   "bosses.html": bossesPage,
   "cards.html": cardsPage,

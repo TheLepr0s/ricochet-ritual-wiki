@@ -572,3 +572,16 @@ footer a { color: var(--ink-dim); }
 .fam-strip .fam-ic.big { margin: 0; width: 28px; height: 28px; }
 .fam-nav { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
 .trait-head h3 a, .trait-head a.emblem { color: inherit; text-decoration: none; }
+
+/* ── Join a party (join.html) ───────────────────────────────────────────── */
+.join-btn {
+  display: inline-block;
+  padding: 0.8em 1.6em;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 1.15em;
+  text-decoration: none;
+}
+.join-btn:hover { filter: brightness(1.1); text-decoration: none; }
