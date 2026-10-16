@@ -1641,8 +1641,10 @@ mkdirSync(join(DOCS, "assets", "img"), { recursive: true });
 function coopPage() {
   const c = D.coop;
   const sections = [
-    ["party", "Starting a party"], ["reach", "Reaching the host"], ["colours", "Who is who"],
+    ["party", "Starting a party"], ["reach", "Reaching the host"], ["networks", "Two different networks"],
+    ["colours", "Who is who"],
     ["scaling", "Harder with more"], ["own", "Your run, together"], ["shrines", "Falling, and the shrines"],
+    ["stats", "The party board"], ["achievements", "Co-op achievements"],
     ["different", "What changes"], ["sync", "How it stays in step"],
   ];
   for (const [id, label] of sections) idx(label, "Co-op", "coop.html", id, "co-op multiplayer party", "");
@@ -1654,6 +1656,10 @@ function coopPage() {
   const scaling = [1, 2, 3, 4]
     .map((n) => `<tr><td>${n}</td><td>×${(1 + c.extraEnemies * (n - 1)).toFixed(2)}</td><td>×${(1 + c.extraHealth * (n - 1)).toFixed(2)}</td></tr>`)
     .join("\n        ");
+  const coopAchs = D.achievements
+    .filter((a) => a.id.startsWith("ACH_COOP_"))
+    .map((a) => `<tr><td><b>${esc(a.n)}</b></td><td>${a.h ? "<i>hidden until earned</i>" : esc(a.d)}</td></tr>`)
+    .join("\n        ");
   const tasks = c.tasks
     .map((t) => `<tr><td>${t.wave}</td><td>${t.kills} kills</td><td>${Math.round(t.hold * 10) / 10} s</td></tr>`)
     .join("\n        ");
@@ -1663,6 +1669,11 @@ function coopPage() {
 
     <h2 id="reach">Reaching the host</h2>
     <p>${C.COOP.reach(c)}</p>
+
+    <h2 id="networks">Two different networks</h2>
+    <ul>
+      ${C.COOP.networks(c).map((l) => `<li>${l}</li>`).join("\n      ")}
+    </ul>
 
     <h2 id="colours">Who is who</h2>
     <p>Each seat has a colour, worn on the wizard's robe, its orb, the ring at its feet, its name
@@ -1700,6 +1711,19 @@ function coopPage() {
       </tbody>
     </table>
 
+    <h2 id="stats">The party board</h2>
+    <p>${C.COOP.stats}</p>
+
+    <h2 id="achievements">Co-op achievements</h2>
+    <p>Counted for the player at the keyboard: a teammate's revive is theirs. The hidden ones are
+    listed on <a href="achievements.html">Achievements</a> with the rest.</p>
+    <table>
+      <thead><tr><th>Achievement</th><th>What it takes</th></tr></thead>
+      <tbody>
+        ${coopAchs}
+      </tbody>
+    </table>
+
     <h2 id="different">What changes</h2>
     <p>${C.COOP.different}</p>
 
@@ -1734,7 +1758,7 @@ function joinPage() {
     <a href="coop.html">Co-op</a> for how parties work.</p>
     <script>
     (function () {
-      var m = (location.hash || "").match(/r1[A-Za-z0-9_-]{16}/);
+      var m = (location.hash || "").match(/r2[A-Za-z0-9_-]{6,60}/);
       document.getElementById(m ? "join-ok" : "join-none").hidden = false;
       if (!m) return;
       var open = document.getElementById("join-open");

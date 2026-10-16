@@ -816,10 +816,30 @@ export const COOP = {
     their seat with the arrows; the host picks the difficulty and presses <b>Start run</b>.
     Everyone needs the same version of the game: a different one is turned away at the door.`,
   reach: (c) => `The host's game listens on <b>UDP port ${c.port}</b> and asks the router to open
-    it (UPnP); the lobby says whether that worked. When it does not, players on the same network
-    can still join, and friends elsewhere need the host to forward UDP ${c.port} to their PC by
-    hand. A link carries both the host's public address and its address on the local network,
-    and the game tries both.`,
+    it (UPnP); the lobby says whether that worked. A link carries every address the host might be
+    reached at -- its public address (from the router, or from a public STUN server when the router
+    will not say), its address on the local network, and any VPN adapter's -- and the joining game
+    tries them all at once. <b>Join from link</b> also takes a bare address someone copied by hand.`,
+  networks: (c) => [
+    `<b>Share a VPN</b> (no router settings): both players install a free gaming VPN such as
+      <b>Radmin VPN</b> or <b>ZeroTier</b> and join the same network; the host then hosts and copies
+      the invite link as usual. The link includes the host's VPN address, so the friend just clicks it.`,
+    `<b>Or forward the port</b>: on the host's router, forward <b>UDP ${c.port}</b> to the host's PC
+      (the lobby shows its local address). The link already carries the public address.`,
+    `<b>Allow the game through Windows Firewall</b> the first time it asks, ticking <b>both</b>
+      private and public networks (a VPN's network is often counted as public).`,
+    `<b>Play the same build</b>: a different version is turned away at the door, so send your friend
+      the same zip you are playing from.`,
+    `If someone's internet provider shares their address between customers, the router can be
+      forwarded and still not be reachable; the one who can be reached should host, or use the VPN.`,
+  ],
+  stats: `When a co-op run ends, the game-over screen opens on <b>the party board</b>: every wizard's
+    kills, score, damage dealt and taken, how often they went down and for how long, the revives they
+    gave and their cards, with a title for what each did most -- <i>MVP</i>, <i>Medic</i>,
+    <i>Heavy Hitter</i>, <i>Punching Bag</i>, <i>Professional Spectator</i>, <i>Hoarder</i>,
+    <i>Shrine Keeper</i>, or <i>Along for the Ride</i>. <b>PARTY</b> on that screen shows it again.
+    Co-op runs keep their own bests, shown on the Multiplayer menu: the furthest wave for each party
+    size, runs played, and the revives you have given and the times you have gone down.`,
   own: `<b>Everyone plays their own build in a shared world.</b> Each wizard has their own cards,
     essence, Essence Shop, rerolls and banishes, ability, companions, combo and score. When a wave
     ends, every wizard is dealt their own hand, and the world waits until <b>everyone</b> has

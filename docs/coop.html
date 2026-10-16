@@ -41,7 +41,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <a href="systems.html"><em>⚙</em>Systems</a>
     </nav>
     <div class="side-head">On this page</div>
-        <div class="toc"><a href="#party">Starting a party</a><a href="#reach">Reaching the host</a><a href="#colours">Who is who</a><a href="#scaling">Harder with more</a><a href="#own">Your run, together</a><a href="#shrines">Falling, and the shrines</a><a href="#different">What changes</a><a href="#sync">How it stays in step</a></div>
+        <div class="toc"><a href="#party">Starting a party</a><a href="#reach">Reaching the host</a><a href="#networks">Two different networks</a><a href="#colours">Who is who</a><a href="#scaling">Harder with more</a><a href="#own">Your run, together</a><a href="#shrines">Falling, and the shrines</a><a href="#stats">The party board</a><a href="#achievements">Co-op achievements</a><a href="#different">What changes</a><a href="#sync">How it stays in step</a></div>
   </aside>
 
   <main>
@@ -59,10 +59,25 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
 
     <h2 id="reach">Reaching the host</h2>
     <p>The host's game listens on <b>UDP port 27420</b> and asks the router to open
-    it (UPnP); the lobby says whether that worked. When it does not, players on the same network
-    can still join, and friends elsewhere need the host to forward UDP 27420 to their PC by
-    hand. A link carries both the host's public address and its address on the local network,
-    and the game tries both.</p>
+    it (UPnP); the lobby says whether that worked. A link carries every address the host might be
+    reached at -- its public address (from the router, or from a public STUN server when the router
+    will not say), its address on the local network, and any VPN adapter's -- and the joining game
+    tries them all at once. <b>Join from link</b> also takes a bare address someone copied by hand.</p>
+
+    <h2 id="networks">Two different networks</h2>
+    <ul>
+      <li><b>Share a VPN</b> (no router settings): both players install a free gaming VPN such as
+      <b>Radmin VPN</b> or <b>ZeroTier</b> and join the same network; the host then hosts and copies
+      the invite link as usual. The link includes the host's VPN address, so the friend just clicks it.</li>
+      <li><b>Or forward the port</b>: on the host's router, forward <b>UDP 27420</b> to the host's PC
+      (the lobby shows its local address). The link already carries the public address.</li>
+      <li><b>Allow the game through Windows Firewall</b> the first time it asks, ticking <b>both</b>
+      private and public networks (a VPN's network is often counted as public).</li>
+      <li><b>Play the same build</b>: a different version is turned away at the door, so send your friend
+      the same zip you are playing from.</li>
+      <li>If someone's internet provider shares their address between customers, the router can be
+      forwarded and still not be reachable; the one who can be reached should host, or use the VPN.</li>
+    </ul>
 
     <h2 id="colours">Who is who</h2>
     <p>Each seat has a colour, worn on the wizard's robe, its orb, the ring at its feet, its name
@@ -123,6 +138,41 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         <tr><td>10</td><td>11 kills</td><td>6 s</td></tr>
         <tr><td>20</td><td>16 kills</td><td>7 s</td></tr>
         <tr><td>30</td><td>18 kills</td><td>8 s</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="stats">The party board</h2>
+    <p>When a co-op run ends, the game-over screen opens on <b>the party board</b>: every wizard's
+    kills, score, damage dealt and taken, how often they went down and for how long, the revives they
+    gave and their cards, with a title for what each did most -- <i>MVP</i>, <i>Medic</i>,
+    <i>Heavy Hitter</i>, <i>Punching Bag</i>, <i>Professional Spectator</i>, <i>Hoarder</i>,
+    <i>Shrine Keeper</i>, or <i>Along for the Ride</i>. <b>PARTY</b> on that screen shows it again.
+    Co-op runs keep their own bests, shown on the Multiplayer menu: the furthest wave for each party
+    size, runs played, and the revives you have given and the times you have gone down.</p>
+
+    <h2 id="achievements">Co-op achievements</h2>
+    <p>Counted for the player at the keyboard: a teammate's revive is theirs. The hidden ones are
+    listed on <a href="achievements.html">Achievements</a> with the rest.</p>
+    <table>
+      <thead><tr><th>Achievement</th><th>What it takes</th></tr></thead>
+      <tbody>
+        <tr><td><b>Better Together</b></td><td>Clear a wave in a co-op party.</td></tr>
+        <tr><td><b>Full Coven</b></td><td>Clear a wave with a party of four.</td></tr>
+        <tr><td><b>Fellowship</b></td><td>Reach wave 20 in a co-op party.</td></tr>
+        <tr><td><b>Four Against the Dark</b></td><td>Reach wave 30 with a party of four.</td></tr>
+        <tr><td><b>Second Opinion</b></td><td>Revive a teammate at their shrine.</td></tr>
+        <tr><td><b>Field Medic</b></td><td>Revive teammates 25 times.</td></tr>
+        <tr><td><b>No One Left Behind</b></td><td>Reach wave 15 in co-op without anyone in the party going down.</td></tr>
+        <tr><td><b>Last Wizard Standing</b></td><td>Revive a teammate while you are the only one still standing.</td></tr>
+        <tr><td><b>Clutch</b></td><td>Revive a teammate with less than 15% of your health left.</td></tr>
+        <tr><td><b>Hold My Orb</b></td><td>Kill a boss while the rest of your party is down.</td></tr>
+        <tr><td><b>One-Wizard Congregation</b></td><td>Make every offering a shrine asks for yourself.</td></tr>
+        <tr><td><b>Carry</b></td><td>End a co-op run with more kills than the rest of the party put together, and at least 150.</td></tr>
+        <tr><td><b>Dead Weight</b></td><td><i>hidden until earned</i></td></tr>
+        <tr><td><b>Frequent Flyer</b></td><td><i>hidden until earned</i></td></tr>
+        <tr><td><b>Till Death Do Us Part</b></td><td><i>hidden until earned</i></td></tr>
+        <tr><td><b>Professional Spectator</b></td><td><i>hidden until earned</i></td></tr>
+        <tr><td><b>Passenger</b></td><td><i>hidden until earned</i></td></tr>
       </tbody>
     </table>
 

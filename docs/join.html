@@ -62,7 +62,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <a href="coop.html">Co-op</a> for how parties work.</p>
     <script>
     (function () {
-      var m = (location.hash || "").match(/r1[A-Za-z0-9_-]{16}/);
+      var m = (location.hash || "").match(/r2[A-Za-z0-9_-]{6,60}/);
       document.getElementById(m ? "join-ok" : "join-none").hidden = false;
       if (!m) return;
       var open = document.getElementById("join-open");
