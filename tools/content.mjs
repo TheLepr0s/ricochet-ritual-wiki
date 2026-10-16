@@ -826,8 +826,10 @@ export const COOP = {
       the invite link as usual. The link includes the host's VPN address, so the friend just clicks it.`,
     `<b>Or forward the port</b>: on the host's router, forward <b>UDP ${c.port}</b> to the host's PC
       (the lobby shows its local address). The link already carries the public address.`,
-    `<b>Allow the game through Windows Firewall</b> the first time it asks, ticking <b>both</b>
-      private and public networks (a VPN's network is often counted as public).`,
+    `<b>Every player allows the game through Windows Firewall</b>: Windows asks the first time
+      you open <b>Multiplayer</b>. Tick <b>both</b> private and public networks (a VPN's network is
+      often counted as public) and press Allow. If anyone misses it the party cannot connect; fix it
+      in Windows Security, Firewall &amp; network protection, Allow an app through firewall.`,
     `<b>Play the same build</b>: a different version is turned away at the door, so send your friend
       the same zip you are playing from.`,
     `If someone's internet provider shares their address between customers, the router can be
