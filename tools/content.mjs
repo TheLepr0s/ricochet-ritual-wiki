@@ -814,7 +814,8 @@ export const COOP = {
     drops them into your lobby, or they can copy it and press <b>Join from link</b> on the same
     screen, which reads it off the clipboard. Each player picks their own colour from the
     palette on their seat and their starting family with the arrows; the host picks the
-    difficulty and presses <b>Start run</b>.
+    difficulty and presses <b>Start run</b>. A host still alone in the lobby gets
+    <b>Play solo</b> there instead, an ordinary single-player run on that difficulty and family.
     Everyone needs the same version of the game: a different one is turned away at the door.`,
   reach: (c) => `The host's game listens on <b>UDP port ${c.port}</b> and asks the router to open
     it (UPnP); the lobby says whether that worked. A link carries every address the host might be
@@ -861,7 +862,8 @@ export const COOP = {
     ${c.vigilDrain} s a second while nobody is there, so it has to be held rather than visited. A
     boss wave has no crowd to offer, so its shrines are always a Vigil. Done, the wizard stands
     up in the ring at ${Math.round(c.reviveHealth * 100)}% health with ${c.reviveGuard} s in
-    which nothing can touch them. A downed player watches whoever is nearest, still picks cards
+    which nothing can touch them. A downed player's companions stand still and out of sight
+    until then. A downed player watches whoever is nearest, still picks cards
     between waves, and sees how far along their shrine is. <b>The run ends only when the whole
     party is down at once.</b>`,
   different: `<b>No hitstop:</b> one wizard's hit freezing the world would stall the other three.
@@ -877,7 +879,8 @@ export const COOP = {
     game then writes <code>coop_report.txt</code> in its save folder
     (<code>%APPDATA%\\Ricochet Ritual</code>), with that machine's world at the moment it went out of
     step and any frames that ran slow; the two reports side by side show what differed. A player who
-    leaves mid-run is gone from that moment; the rest play on.`,
+    leaves mid-run is out from that moment, a still ghost marked <i>(left)</i> where they stood,
+    their companions with them; the rest play on.`,
 };
 
 export const GLOSSARY = [
