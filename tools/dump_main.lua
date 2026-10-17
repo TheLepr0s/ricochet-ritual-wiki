@@ -610,7 +610,8 @@ local function build()
         colors[#colors + 1] = obj("n", c.name, "rgb", arr({ c.rgb[1], c.rgb[2], c.rgb[3] }))
     end
     local T = Shrine.TUNING
-    local coop = obj("max", Seats.MAX, "extraEnemies", Seats.EXTRA_ENEMIES, "extraHealth", Seats.EXTRA_HEALTH,
+    local coop = obj("max", NetMod.MAX, "extraEnemies", Seats.EXTRA_ENEMIES, "extraHealth", Seats.EXTRA_HEALTH,
+                     "essence", Seats.ESSENCE,
                      "port", NetMod.PORT, "radius", T.radius, "distMin", T.distMin, "distMax", T.distMax,
                      "reviveHealth", T.reviveHealth, "reviveGuard", T.reviveGuard, "vigilDrain", T.vigilDrain,
                      "tasks", arr(tasks), "colors", arr(colors))

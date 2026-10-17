@@ -812,8 +812,9 @@ export const COOP = {
   party: `From the main menu, <b>Multiplayer → Host party</b> opens a lobby with four seats and
     <b>Copy invite link</b>. Paste the link to your friends: clicking it opens the game and
     drops them into your lobby, or they can copy it and press <b>Join from link</b> on the same
-    screen, which reads it off the clipboard. Each player picks their own starting family on
-    their seat with the arrows; the host picks the difficulty and presses <b>Start run</b>.
+    screen, which reads it off the clipboard. Each player picks their own colour from the
+    palette on their seat and their starting family with the arrows; the host picks the
+    difficulty and presses <b>Start run</b>.
     Everyone needs the same version of the game: a different one is turned away at the door.`,
   reach: (c) => `The host's game listens on <b>UDP port ${c.port}</b> and asks the router to open
     it (UPnP); the lobby says whether that worked. A link carries every address the host might be
@@ -842,16 +843,19 @@ export const COOP = {
     <i>Shrine Keeper</i>, or <i>Along for the Ride</i>. <b>PARTY</b> on that screen shows it again.
     Co-op runs keep their own bests, shown on the Multiplayer menu: the furthest wave for each party
     size, runs played, and the revives you have given and the times you have gone down.`,
-  own: `<b>Everyone plays their own build in a shared world.</b> Each wizard has their own cards,
+  own: (c) => `<b>Everyone plays their own build in a shared world.</b> Each wizard has their own cards,
     essence, Essence Shop, rerolls and banishes, ability, companions, combo and score. When a wave
     ends, every wizard is dealt their own hand, and the world waits until <b>everyone</b> has
-    picked (the screen says who it is waiting for). An enemy chases whichever wizard is nearest,
-    and keeps chasing it unless another comes clearly closer. A kill, and everything a kill pays
-    out (essence, kill-triggered cards, score), goes to whoever landed it, including burns and
-    other damage over time. Drops go to whoever reaches them.`,
+    picked (the screen says who it is waiting for). <b>[U]</b> lists your cards; <b>Tab</b>, or a
+    click on a name at its top, turns to a teammate's. An enemy chases whichever wizard is nearest,
+    and keeps chasing it unless another comes clearly closer. A kill, and what it triggers
+    (kill cards, score), goes to whoever landed it, including burns and other damage over time.
+    <b>Essence is shared:</b> every kill pays every wizard a share, so over a wave each one earns
+    ${c.essence}× what a wizard playing alone would, the extra enemies counted, and the first
+    shop is as affordable as in a solo run. Drops go to whoever reaches them.`,
   shrine: (c) => `A wizard who goes down leaves a ghost where they fell, and a <b>shrine</b> rises
     ${Math.round(c.distMin / 50)}–${Math.round(c.distMax / 50)} m away, with a ring
-    ${(c.radius / 50).toFixed(1)} m across. The rest of the party revives them by doing the shrine's
+    ${(2 * c.radius / 50).toFixed(1)} m across. The rest of the party revives them by doing the shrine's
     task: an <b>Offering</b> counts enemies killed inside the ring, by anyone and by anything;
     a <b>Vigil</b> counts seconds spent standing in it, and drains back at
     ${c.vigilDrain} s a second while nobody is there, so it has to be held rather than visited. A
@@ -869,7 +873,10 @@ export const COOP = {
     party's ping when the run starts, and the run moves at the pace of its slowest connection:
     if someone's input is late, everyone waits for it (the screen names who). Each machine
     fingerprints its world every two seconds and the host compares them, so if the copies ever
-    disagree the game says <i>out of sync</i> rather than playing on quietly wrong. A player who
+    disagree the game says <i>out of sync</i> rather than playing on quietly wrong. Each player's
+    game then writes <code>coop_report.txt</code> in its save folder
+    (<code>%APPDATA%\\Ricochet Ritual</code>), with that machine's world at the moment it went out of
+    step and any frames that ran slow; the two reports side by side show what differed. A player who
     leaves mid-run is gone from that moment; the rest play on.`,
 };
 

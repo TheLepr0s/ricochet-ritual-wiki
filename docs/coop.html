@@ -53,8 +53,9 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <p>From the main menu, <b>Multiplayer → Host party</b> opens a lobby with four seats and
     <b>Copy invite link</b>. Paste the link to your friends: clicking it opens the game and
     drops them into your lobby, or they can copy it and press <b>Join from link</b> on the same
-    screen, which reads it off the clipboard. Each player picks their own starting family on
-    their seat with the arrows; the host picks the difficulty and presses <b>Start run</b>.
+    screen, which reads it off the clipboard. Each player picks their own colour from the
+    palette on their seat and their starting family with the arrows; the host picks the
+    difficulty and presses <b>Start run</b>.
     Everyone needs the same version of the game: a different one is turned away at the door.</p>
 
     <h2 id="reach">Reaching the host</h2>
@@ -82,18 +83,12 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     </ul>
 
     <h2 id="colours">Who is who</h2>
-    <p>Each seat has a colour, worn on the wizard's robe, its orb, the ring at its feet, its name
-    over its head and its bar in the party list at the bottom left. An arrow at the edge of the
-    screen points at a teammate, or a shrine, that is out of sight.</p>
-    <table>
-      <thead><tr><th>Seat</th><th>Colour</th><th></th></tr></thead>
-      <tbody>
-        <tr><td>1</td><td><b style="color:rgb(128,166,255)">Blue</b></td><td>the host</td></tr>
-        <tr><td>2</td><td><b style="color:rgb(255,97,97)">Red</b></td><td>in the order they joined</td></tr>
-        <tr><td>3</td><td><b style="color:rgb(102,242,128)">Green</b></td><td>in the order they joined</td></tr>
-        <tr><td>4</td><td><b style="color:rgb(255,209,77)">Gold</b></td><td>in the order they joined</td></tr>
-      </tbody>
-    </table>
+    <p>Each player picks a colour in the lobby, from the palette on their own seat; no two in a
+    party can wear the same one, and the game remembers your pick for the next party. It is worn
+    on the wizard's robe, its orb, the ring at its feet, its name over its head and its bar in the
+    party list at the bottom left. An arrow at the edge of the screen points at a teammate, or a
+    shrine, that is out of sight.</p>
+    <p><b style="color:rgb(128,166,255)">Blue</b> · <b style="color:rgb(255,97,97)">Red</b> · <b style="color:rgb(102,242,128)">Green</b> · <b style="color:rgb(255,209,77)">Gold</b> · <b style="color:rgb(191,140,255)">Purple</b> · <b style="color:rgb(255,158,77)">Orange</b> · <b style="color:rgb(255,153,209)">Pink</b> · <b style="color:rgb(115,235,255)">Cyan</b> · <b style="color:rgb(191,255,102)">Lime</b> · <b style="color:rgb(77,204,184)">Teal</b> · <b style="color:rgb(255,115,242)">Magenta</b> · <b style="color:rgb(224,71,87)">Crimson</b> · <b style="color:rgb(122,140,235)">Navy</b> · <b style="color:rgb(204,153,107)">Brown</b> · <b style="color:rgb(224,230,245)">Silver</b> · <b style="color:rgb(168,153,199)">Shadow</b></p>
 
     <h2 id="scaling">Harder with more</h2>
     <p>Each wizard past the first adds <b>50% more enemies</b> to a
@@ -115,15 +110,18 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     <p><b>Everyone plays their own build in a shared world.</b> Each wizard has their own cards,
     essence, Essence Shop, rerolls and banishes, ability, companions, combo and score. When a wave
     ends, every wizard is dealt their own hand, and the world waits until <b>everyone</b> has
-    picked (the screen says who it is waiting for). An enemy chases whichever wizard is nearest,
-    and keeps chasing it unless another comes clearly closer. A kill, and everything a kill pays
-    out (essence, kill-triggered cards, score), goes to whoever landed it, including burns and
-    other damage over time. Drops go to whoever reaches them.</p>
+    picked (the screen says who it is waiting for). <b>[U]</b> lists your cards; <b>Tab</b>, or a
+    click on a name at its top, turns to a teammate's. An enemy chases whichever wizard is nearest,
+    and keeps chasing it unless another comes clearly closer. A kill, and what it triggers
+    (kill cards, score), goes to whoever landed it, including burns and other damage over time.
+    <b>Essence is shared:</b> every kill pays every wizard a share, so over a wave each one earns
+    1.25× what a wizard playing alone would, the extra enemies counted, and the first
+    shop is as affordable as in a solo run. Drops go to whoever reaches them.</p>
 
     <h2 id="shrines">Falling, and the shrines</h2>
     <p>A wizard who goes down leaves a ghost where they fell, and a <b>shrine</b> rises
-    7–11 m away, with a ring
-    2.2 m across. The rest of the party revives them by doing the shrine's
+    9–13 m away, with a ring
+    13.2 m across. The rest of the party revives them by doing the shrine's
     task: an <b>Offering</b> counts enemies killed inside the ring, by anyone and by anything;
     a <b>Vigil</b> counts seconds spent standing in it, and drains back at
     0.5 s a second while nobody is there, so it has to be held rather than visited. A
@@ -190,7 +188,10 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
     party's ping when the run starts, and the run moves at the pace of its slowest connection:
     if someone's input is late, everyone waits for it (the screen names who). Each machine
     fingerprints its world every two seconds and the host compares them, so if the copies ever
-    disagree the game says <i>out of sync</i> rather than playing on quietly wrong. A player who
+    disagree the game says <i>out of sync</i> rather than playing on quietly wrong. Each player's
+    game then writes <code>coop_report.txt</code> in its save folder
+    (<code>%APPDATA%\Ricochet Ritual</code>), with that machine's world at the moment it went out of
+    step and any frames that ran slow; the two reports side by side show what differed. A player who
     leaves mid-run is gone from that moment; the rest play on.</div>
     <footer>
       Generated by <code>Tools/wiki/build.mjs</code> from the game's own definition tables. Every

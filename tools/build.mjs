@@ -1651,8 +1651,8 @@ function coopPage() {
   idx("Shrine", "Co-op", "coop.html", "shrines", "co-op revive offering vigil", "");
 
   const colours = c.colors
-    .map((s, i) => `<tr><td>${i + 1}</td><td><b style="color:${rgb(s.rgb)}">${esc(s.n)}</b></td><td>${i === 0 ? "the host" : "in the order they joined"}</td></tr>`)
-    .join("\n        ");
+    .map((s) => `<b style="color:${rgb(s.rgb)}">${esc(s.n)}</b>`)
+    .join(" · ");
   const scaling = [1, 2, 3, 4]
     .map((n) => `<tr><td>${n}</td><td>×${(1 + c.extraEnemies * (n - 1)).toFixed(2)}</td><td>×${(1 + c.extraHealth * (n - 1)).toFixed(2)}</td></tr>`)
     .join("\n        ");
@@ -1676,15 +1676,12 @@ function coopPage() {
     </ul>
 
     <h2 id="colours">Who is who</h2>
-    <p>Each seat has a colour, worn on the wizard's robe, its orb, the ring at its feet, its name
-    over its head and its bar in the party list at the bottom left. An arrow at the edge of the
-    screen points at a teammate, or a shrine, that is out of sight.</p>
-    <table>
-      <thead><tr><th>Seat</th><th>Colour</th><th></th></tr></thead>
-      <tbody>
-        ${colours}
-      </tbody>
-    </table>
+    <p>Each player picks a colour in the lobby, from the palette on their own seat; no two in a
+    party can wear the same one, and the game remembers your pick for the next party. It is worn
+    on the wizard's robe, its orb, the ring at its feet, its name over its head and its bar in the
+    party list at the bottom left. An arrow at the edge of the screen points at a teammate, or a
+    shrine, that is out of sight.</p>
+    <p>${colours}</p>
 
     <h2 id="scaling">Harder with more</h2>
     <p>Each wizard past the first adds <b>${Math.round(c.extraEnemies * 100)}% more enemies</b> to a
@@ -1700,7 +1697,7 @@ function coopPage() {
     </table>
 
     <h2 id="own">Your run, together</h2>
-    <p>${C.COOP.own}</p>
+    <p>${C.COOP.own(c)}</p>
 
     <h2 id="shrines">Falling, and the shrines</h2>
     <p>${C.COOP.shrine(c)}</p>
