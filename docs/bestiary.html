@@ -77,7 +77,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           </div>
           <p>The baseline: two orb hits at base damage and one after two stacks of Striking Force, which is what makes early orb damage a breakpoint rather than a rounding error.</p>
           <div class="statline"><span class="stat">HP <b>45</b></span><span class="stat">essence <b>0–2</b></span><span class="stat">speed <b>40</b></span><span class="stat">damage <b>5</b></span><span class="stat">range <b>80</b></span><span class="stat">from wave <b>1</b></span><span class="stat">weight <b>4</b></span><span class="stat">hitbox <b>30×34</b></span></div>
-          <p class="tot">The original art. <a href="#broodmother">Broodmother</a>, <a href="#brute">Brute</a>, <a href="#sporeling">Sporeling</a>, <a href="#toadstool">Toadstool</a> are recolours of it.</p>
+          <p class="tot">The original art. <a href="#broodmother">Broodmother</a>, <a href="#brute">Brute</a>, <a href="#sporeling">Sporeling</a> are recolours of it.</p>
         </div>
       </div>
       <div class="beast" id="firespirit" style="--stripe:var(--rare)"
@@ -114,21 +114,21 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <p class="tot">The original art. <a href="#palerevenant">PaleRevenant</a>, <a href="#plaguepriest">PlaguePriest</a> are recolours of it.</p><p class="tot">Shares the skeleton sheet with the Revenant, which is why they read as bone rather than flesh.</p>
         </div>
       </div>
-      <div class="beast" id="toadstool" style="--stripe:var(--common)"
-        data-hay="toadstool melee half a mushroom's health at nearly double the speed. the enemy that punishes standing still. wave 3"
+      <div class="beast" id="goblin" style="--stripe:var(--common)"
+        data-hay="goblin melee a small goblin with a dagger: half a mushroom's health at nearly double the speed. the enemy that punishes standing still. it crouches and its blade glints just before the stab, and the stab only reaches as far as the dagger does. wave 3"
         data-boss="0" data-ranged="0"
-        data-variant="1">
-        <div class="portrait"><img src="assets/img/Toadstool.png" alt="Toadstool" loading="lazy" width="82"></div>
+        data-variant="0">
+        <div class="portrait"><img src="assets/img/Goblin.png" alt="Goblin" loading="lazy" width="82"></div>
         <div class="beast-body">
           <div class="beast-head" data-anchor>
-            <h3>Toadstool</h3>
+            <h3>Goblin</h3>
             <span class="badge">Melee</span>
             
             
           </div>
-          <p>Half a Mushroom's health at nearly double the speed. The enemy that punishes standing still.</p>
-          <div class="statline"><span class="stat">HP <b>24</b></span><span class="stat">essence <b>0–1</b></span><span class="stat">speed <b>78</b></span><span class="stat">damage <b>4</b></span><span class="stat">range <b>80</b></span><span class="stat">from wave <b>3</b></span><span class="stat">weight <b>4</b></span><span class="stat">hitbox <b>26×30</b></span></div>
-          <p class="tot">A recolour of <a href="#mushroom">Mushroom</a>'s art, told apart by a hue rotation.</p>
+          <p>A small goblin with a dagger: half a Mushroom's health at nearly double the speed. The enemy that punishes standing still. It crouches and its blade glints just before the stab, and the stab only reaches as far as the dagger does.</p>
+          <div class="statline"><span class="stat">HP <b>24</b></span><span class="stat">essence <b>0–1</b></span><span class="stat">speed <b>78</b></span><span class="stat">damage <b>4</b></span><span class="stat">range <b>56</b></span><span class="stat">from wave <b>3</b></span><span class="stat">weight <b>4</b></span><span class="stat">hitbox <b>24×26</b></span></div>
+          
         </div>
       </div>
       <div class="beast" id="vampire" style="--stripe:var(--epic)"
@@ -183,7 +183,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         </div>
       </div>
       <div class="beast" id="sporeling" style="--stripe:var(--uncommon)"
-        data-hay="sporeling splitter health that becomes two toadstools, which are faster than the thing that made them. kill it with room around you, or inside an explosion big enough to catch what comes out. wave 6"
+        data-hay="sporeling splitter health that becomes two goblins, which are faster than the thing that made them. kill it with room around you, or inside an explosion big enough to catch what comes out. wave 6"
         data-boss="0" data-ranged="0"
         data-variant="1">
         <div class="portrait"><img src="assets/img/Sporeling.png" alt="Sporeling" loading="lazy" width="82"></div>
@@ -194,7 +194,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
             
             
           </div>
-          <p>Health that becomes two Toadstools, which are faster than the thing that made them. Kill it with room around you, or inside an explosion big enough to catch what comes out.</p>
+          <p>Health that becomes two Goblins, which are faster than the thing that made them. Kill it with room around you, or inside an explosion big enough to catch what comes out.</p>
           <div class="statline"><span class="stat">HP <b>80</b></span><span class="stat">essence <b>1–3</b></span><span class="stat">speed <b>44</b></span><span class="stat">damage <b>6</b></span><span class="stat">range <b>80</b></span><span class="stat">from wave <b>6</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>34×38</b></span></div>
           <p class="tot">A recolour of <a href="#mushroom">Mushroom</a>'s art, told apart by a hue rotation.</p>
         </div>
@@ -370,7 +370,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         </div>
       </div>
       <div class="beast" id="broodmother" style="--stripe:var(--uncommon)"
-        data-hay="broodmother support the bonecaller inverted. she calls faster, and every toadstool she makes is tethered to her: kill the mother and the whole swarm drops at once. the swarm is a decoy, and walking past it is the correct play. wave 13"
+        data-hay="broodmother support the bonecaller inverted. she calls faster, and every goblin she makes is tethered to her: kill the mother and the whole swarm drops at once. the swarm is a decoy, and walking past it is the correct play. wave 13"
         data-boss="0" data-ranged="1"
         data-variant="1">
         <div class="portrait"><img src="assets/img/Broodmother.png" alt="Broodmother" loading="lazy" width="82"></div>
@@ -381,7 +381,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
             
             
           </div>
-          <p>The Bonecaller inverted. She calls faster, and every Toadstool she makes is tethered to her: kill the mother and the whole swarm drops at once. The swarm is a decoy, and walking past it is the correct play.</p>
+          <p>The Bonecaller inverted. She calls faster, and every Goblin she makes is tethered to her: kill the mother and the whole swarm drops at once. The swarm is a decoy, and walking past it is the correct play.</p>
           <div class="statline"><span class="stat">HP <b>260</b></span><span class="stat">essence <b>3–6</b></span><span class="stat">speed <b>30</b></span><span class="stat">damage <b>8</b></span><span class="stat">range <b>340</b></span><span class="stat">from wave <b>13</b></span><span class="stat">weight <b>2</b></span><span class="stat">max <b>1</b> alive</span><span class="stat">hitbox <b>46×46</b></span></div>
           <p class="tot">A recolour of <a href="#mushroom">Mushroom</a>'s art, told apart by a hue rotation.</p><p class="tot">Shares SupportEnemy with the Witchdoctor and the Bonecaller; <code>summon_bound</code> in her row is the single flag that makes her brood die with her. Her summons are killed rather than deleted, so each one still scores, drops loot and triggers every on-kill upgrade you own.</p>
         </div>
@@ -516,7 +516,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         it starts on frame 5 and the damage lands on frame 6, a few hundredths of a second after
         you step into reach — so treat its reach as contact damage and keep out of it. A swing
         that keeps going while you stay in range plays the full wind-up each time.</div>
-        <div class="r-meta"><div class="per"><a href="#brute">Brute</a>, <a href="#mushroom">Mushroom</a>, <a href="#toadstool">Toadstool</a></div></div>
+        <div class="r-meta"><div class="per"><a href="#brute">Brute</a>, <a href="#goblin">Goblin</a>, <a href="#mushroom">Mushroom</a></div></div>
       </div>
       <div class="row" id="ai-shieldenemy" style="--stripe:var(--rare)" data-hay="shieldenemy shield carries a shield across a wide arc, and the shield turns to face you — up, down or
         sideways. an orb arriving inside that arc is refused outright — &lt;code&gt;takedamage&lt;/code&gt;
