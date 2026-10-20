@@ -80,21 +80,21 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
           <p class="tot">The original art. <a href="#broodmother">Broodmother</a>, <a href="#brute">Brute</a>, <a href="#sporeling">Sporeling</a>, <a href="#toadstool">Toadstool</a> are recolours of it.</p>
         </div>
       </div>
-      <div class="beast" id="bat" style="--stripe:var(--rare)"
-        data-hay="bat ranged ranged, but no faster than a mushroom — you can simply walk away from it, which is the point of a first ranged enemy. fireball wave 2"
+      <div class="beast" id="firespirit" style="--stripe:var(--rare)"
+        data-hay="firespirit ranged ranged, but no faster than a mushroom — you can simply walk away from it, which is the point of a first ranged enemy. a fourth rock gathers beside it before the throw, so you can see each one coming. firerock wave 2"
         data-boss="0" data-ranged="1"
         data-variant="0">
-        <div class="portrait"><img src="assets/img/Bat.png" alt="Bat" loading="lazy" width="82"></div>
+        <div class="portrait"><img src="assets/img/FireSpirit.png" alt="FireSpirit" loading="lazy" width="82"></div>
         <div class="beast-body">
           <div class="beast-head" data-anchor>
-            <h3>Bat</h3>
+            <h3>FireSpirit</h3>
             <span class="badge">Ranged</span>
             
             
           </div>
-          <p>Ranged, but no faster than a Mushroom — you can simply walk away from it, which is the point of a first ranged enemy.</p>
-          <div class="statline"><span class="stat">HP <b>40</b></span><span class="stat">essence <b>0–2</b></span><span class="stat">speed <b>40</b></span><span class="stat">damage <b>8</b></span><span class="stat">range <b>300</b></span><span class="stat">fires <b>Fireball</b></span><span class="stat">from wave <b>2</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>38×34</b></span></div>
-          <p class="tot">The original art. <a href="#hivemind">Hivemind</a>, <a href="#wisp">Wisp</a> are recolours of it.</p>
+          <p>Ranged, but no faster than a Mushroom — you can simply walk away from it, which is the point of a first ranged enemy. A fourth rock gathers beside it before the throw, so you can see each one coming.</p>
+          <div class="statline"><span class="stat">HP <b>40</b></span><span class="stat">essence <b>0–2</b></span><span class="stat">speed <b>40</b></span><span class="stat">damage <b>8</b></span><span class="stat">range <b>300</b></span><span class="stat">fires <b>FireRock</b></span><span class="stat">from wave <b>2</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>30×38</b></span></div>
+          
         </div>
       </div>
       <div class="beast" id="bomber" style="--stripe:var(--warn)"
@@ -200,7 +200,7 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         </div>
       </div>
       <div class="beast" id="wisp" style="--stripe:var(--rare)"
-        data-hay="wisp ranged a bat that keeps up with you, and outranges it. it glows because the bat sprite is near-black and a hue rotation preserves luma, so a recolour alone would be invisible on it. fireball wave 6"
+        data-hay="wisp ranged a bat that keeps up with you, and outranges the fire spirit. it glows because the bat sprite is near-black and a hue rotation preserves luma, so a recolour alone would be invisible on it. fireball wave 6"
         data-boss="0" data-ranged="1"
         data-variant="1">
         <div class="portrait"><img src="assets/img/Wisp.png" alt="Wisp" loading="lazy" width="82"></div>
@@ -211,9 +211,9 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
             
             
           </div>
-          <p>A Bat that keeps up with you, and outranges it. It glows because the bat sprite is near-black and a hue rotation preserves luma, so a recolour alone would be invisible on it.</p>
+          <p>A bat that keeps up with you, and outranges the Fire Spirit. It glows because the bat sprite is near-black and a hue rotation preserves luma, so a recolour alone would be invisible on it.</p>
           <div class="statline"><span class="stat">HP <b>30</b></span><span class="stat">essence <b>0–2</b></span><span class="stat">speed <b>72</b></span><span class="stat">damage <b>11</b></span><span class="stat">range <b>360</b></span><span class="stat">fires <b>Fireball</b></span><span class="stat">from wave <b>6</b></span><span class="stat">weight <b>3</b></span><span class="stat">hitbox <b>30×28</b></span></div>
-          <p class="tot">A recolour of <a href="#bat">Bat</a>'s art, told apart by a hue rotation.</p>
+          <p class="tot">A recolour of the shared sheet's art, told apart by a hue rotation.</p>
         </div>
       </div>
       <div class="beast" id="brute" style="--stripe:var(--common)"
@@ -364,9 +364,9 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
             
             
           </div>
-          <p>A Bat that fires three bolts in a narrow fan. Individually weak, but it punishes the straight-line retreat that answers every other ranged enemy.</p>
+          <p>A bat that fires three bolts in a narrow fan. Individually weak, but it punishes the straight-line retreat that answers every other ranged enemy.</p>
           <div class="statline"><span class="stat">HP <b>65</b></span><span class="stat">essence <b>1–3</b></span><span class="stat">speed <b>48</b></span><span class="stat">damage <b>9</b></span><span class="stat">range <b>340</b></span><span class="stat">fires <b>Fireball</b></span><span class="stat">from wave <b>12</b></span><span class="stat">weight <b>2</b></span><span class="stat">hitbox <b>34×32</b></span></div>
-          <p class="tot">A recolour of <a href="#bat">Bat</a>'s art, told apart by a hue rotation.</p>
+          <p class="tot">A recolour of the shared sheet's art, told apart by a hue rotation.</p>
         </div>
       </div>
       <div class="beast" id="broodmother" style="--stripe:var(--uncommon)"
@@ -483,25 +483,6 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         never walks itself into Backlash range: you have to go in after it.</div>
         <div class="r-meta"><div class="per"><a href="#archmage">Archmage</a>, <a href="#evilwizard">EvilWizard</a></div></div>
       </div>
-      <div class="row" id="ai-rangedenemy" style="--stripe:var(--rare)" data-hay="rangedenemy ranged closes to its attack range, stops, and throws fireballs at 450px/s that hit for its own
-        damage stat — so they scale with the wave — and expire after four seconds. a shooter
-        that fires a fan hits for less with each bolt. &lt;b&gt;trees are cover&lt;/b&gt;: a shot dies on the
-        first tree it crosses, and a shooter only opens fire with a clear line to you. rocks and
-        stumps are knee-high, and shots fly over them.
-        blind, it circles you at range looking for one, then closes in round whatever is in the
-        way. so the answer is to close, to leave, or to put a tree between you — never to trade
-        in the open.">
-        <div class="r-name" data-anchor><span>Ranged</span><span class="r-key">RangedEnemy</span></div>
-        <div class="r-desc">Closes to its attack range, stops, and throws fireballs at 450px/s that hit for its own
-        damage stat — so they scale with the wave — and expire after four seconds. A shooter
-        that fires a fan hits for less with each bolt. <b>Trees are cover</b>: a shot dies on the
-        first tree it crosses, and a shooter only opens fire with a clear line to you. Rocks and
-        stumps are knee-high, and shots fly over them.
-        Blind, it circles you at range looking for one, then closes in round whatever is in the
-        way. So the answer is to close, to leave, or to put a tree between you — never to trade
-        in the open.</div>
-        <div class="r-meta"><div class="per"><a href="#bat">Bat</a>, <a href="#hivemind">Hivemind</a>, <a href="#wisp">Wisp</a></div></div>
-      </div>
       <div class="row" id="ai-bomberenemy" style="--stripe:var(--warn)" data-hay="bomberenemy bomber no attack at all: it sprints at you and detonates on contact, after a 0.45s flashing
         warning. its health is deliberately low enough that a base-damage orb one-shots it, so
         popping it early is always a clean single hit. frozen or stunned, even a lit fuse stops.">
@@ -569,6 +550,25 @@ try { var t = localStorage.getItem("rr-theme"); if (t) document.documentElement.
         From range it cycles five bullet patterns in a fixed order per phase, each asking a
         different movement of you.</div>
         <div class="r-meta"><div class="per"><a href="#dreadsovereign">DreadSovereign</a></div></div>
+      </div>
+      <div class="row" id="ai-rangedenemy" style="--stripe:var(--rare)" data-hay="rangedenemy ranged closes to its attack range, stops, and throws fireballs at 450px/s that hit for its own
+        damage stat — so they scale with the wave — and expire after four seconds. a shooter
+        that fires a fan hits for less with each bolt. &lt;b&gt;trees are cover&lt;/b&gt;: a shot dies on the
+        first tree it crosses, and a shooter only opens fire with a clear line to you. rocks and
+        stumps are knee-high, and shots fly over them.
+        blind, it circles you at range looking for one, then closes in round whatever is in the
+        way. so the answer is to close, to leave, or to put a tree between you — never to trade
+        in the open.">
+        <div class="r-name" data-anchor><span>Ranged</span><span class="r-key">RangedEnemy</span></div>
+        <div class="r-desc">Closes to its attack range, stops, and throws fireballs at 450px/s that hit for its own
+        damage stat — so they scale with the wave — and expire after four seconds. A shooter
+        that fires a fan hits for less with each bolt. <b>Trees are cover</b>: a shot dies on the
+        first tree it crosses, and a shooter only opens fire with a clear line to you. Rocks and
+        stumps are knee-high, and shots fly over them.
+        Blind, it circles you at range looking for one, then closes in round whatever is in the
+        way. So the answer is to close, to leave, or to put a tree between you — never to trade
+        in the open.</div>
+        <div class="r-meta"><div class="per"><a href="#firespirit">FireSpirit</a>, <a href="#hivemind">Hivemind</a>, <a href="#wisp">Wisp</a></div></div>
       </div>
       <div class="row" id="ai-frogenemy" style="--stripe:var(--warn)" data-hay="frogenemy leaper chase → windup → dash → recover. it closes in small hops (moving only while airborne),
         crouches at range, flashes a green ground lane, then leaps.
